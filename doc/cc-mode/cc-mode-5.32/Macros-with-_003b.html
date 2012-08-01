@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+<title>Macros with ; - CC Mode Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CC Mode Manual">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Custom-Macros.html#Custom-Macros" title="Custom Macros">
+<link rel="prev" href="Macro-Backslashes.html#Macro-Backslashes" title="Macro Backslashes">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011  Free Software
+Foundation, Inc.
+
+This manual is free documentation; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 3, or (at
+your option) any later version.
+
+This manual is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License, the
+file `COPYING', along with CC Mode.  If not, see
+`http://www.gnu.org/licenses/gpl.html'.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Macros-with-_003b"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Macro-Backslashes.html#Macro-Backslashes">Macro Backslashes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Custom-Macros.html#Custom-Macros">Custom Macros</a>
+<hr><br>
+</div>
+
+<!-- node-name,  next,  previous,  up -->
+<h3 class="section">12.2 Macros with semicolons</h3>
+
+<p><a name="index-macros-with-semicolons-617"></a><!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+Macros which needn't (or mustn't) be followed by a semicolon when you
+invoke them, <dfn>macros with semicolons</dfn>, are very common.  These can
+cause CC Mode to parse the next line wrongly as a
+<code>statement-cont</code> (see <a href="Function-Symbols.html#Function-Symbols">Function Symbols</a>) and thus mis-indent
+it.
+
+   <p>You can prevent this by specifying which macros have semicolons.  It
+doesn't matter whether or not such a macro has a parameter list:
+
+<div class="defun">
+&mdash; User Option: <b>c-macro-names-with-semicolon</b><var><a name="index-c_002dmacro_002dnames_002dwith_002dsemicolon-618"></a></var><br>
+<blockquote><p><a name="index-macro_002dnames_002dwith_002dsemicolon-_0028c_002d_0029-619"></a>This buffer-local variable specifies which macros have semicolons. 
+After setting its value, you need to call
+<code>c-make-macro-with-semi-re</code> for it to take effect.  It should be
+set to one of these values:
+
+          <dl>
+<dt>nil<dd>There are no macros with semicolons. 
+<br><dt>a list of strings<dd>Each string is the name of a macro with a semicolon.  Only valid
+<code>#define</code> names are allowed here.  For example, to set the
+default value, you could write the following into your <span class="file">.emacs</span>:
+
+          <pre class="example">               (setq c-macro-names-with-semicolon
+                     '("Q_OBJECT" "Q_PROPERTY" "Q_DECLARE" "Q_ENUMS"))
+          </pre>
+          <br><dt>a regular expression<dd>This matches each symbol which is a macro with a semicolon.  It must
+not match any string which isn't a valid <code>#define</code> name.  For
+example:
+
+          <pre class="example">               (setq c-macro-names-with-semicolon
+                     "\\&lt;\\(CLEAN_UP_AND_RETURN\\|Q_[[:upper:]]+\\)\\&gt;")
+          </pre>
+          </dl>
+        </p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: <b>c-make-macro-with-semi-re</b><var><a name="index-c_002dmake_002dmacro_002dwith_002dsemi_002dre-620"></a></var><br>
+<blockquote><p><a name="index-make_002dmacro_002dwith_002dsemi_002dre-_0028c_002d_0029-621"></a>Call this (non-interactive) function, which sets internal variables,
+each time you change the value of
+<code>c-macro-names-with-semicolon</code>.  It takes no arguments, and its
+return value has no meaning.  This function is called by CC Mode's
+initialization code. 
+</p></blockquote></div>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+</body></html>
+

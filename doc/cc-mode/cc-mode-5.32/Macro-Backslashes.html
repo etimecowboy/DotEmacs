@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+<title>Macro Backslashes - CC Mode Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CC Mode Manual">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Custom-Macros.html#Custom-Macros" title="Custom Macros">
+<link rel="prev" href="Custom-Macros.html#Custom-Macros" title="Custom Macros">
+<link rel="next" href="Macros-with-_003b.html#Macros-with-_003b" title="Macros with ;">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011  Free Software
+Foundation, Inc.
+
+This manual is free documentation; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 3, or (at
+your option) any later version.
+
+This manual is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License, the
+file `COPYING', along with CC Mode.  If not, see
+`http://www.gnu.org/licenses/gpl.html'.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Macro-Backslashes"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Macros-with-_003b.html#Macros-with-_003b">Macros with ;</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Custom-Macros.html#Custom-Macros">Custom Macros</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Custom-Macros.html#Custom-Macros">Custom Macros</a>
+<hr><br>
+</div>
+
+<!-- node-name,  next,  previous,  up -->
+<h3 class="section">12.1 Customizing Macro Backslashes</h3>
+
+<p><a name="index-_0023define-610"></a><!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+   <p>CC Mode provides some tools to help keep the line continuation
+backslashes in macros neat and tidy.  Their precise action is
+customized with these variables:
+
+<div class="defun">
+&mdash; User Option: <b>c-backslash-column</b><var><a name="index-c_002dbackslash_002dcolumn-611"></a></var><br>
+<blockquote><p><a name="index-backslash_002dcolumn-_0028c_002d_0029-612"></a>
+
+   &mdash; User Option: <b>c-backslash-max-column</b><var><a name="index-c_002dbackslash_002dmax_002dcolumn-613"></a></var><br>
+<blockquote><p><a name="index-backslash_002dmax_002dcolumn-_0028c_002d_0029-614"></a>These variables control the alignment columns for line continuation
+backslashes in multiline macros.  They are used by the functions that
+automatically insert or align such backslashes,
+e.g. <code>c-backslash-region</code> and <code>c-context-line-break</code>.
+
+        <p><code>c-backslash-column</code> specifies the minimum column for the
+backslashes.  If any line in the macro goes past this column, then the
+next tab stop (i.e. next multiple of <code>tab-width</code>) in that line is
+used as the alignment column for all the backslashes, so that they
+remain in a single column.  However, if any lines go past
+<code>c-backslash-max-column</code> then the backslashes in the rest of the
+macro will be kept at that column, so that the lines which are too
+long &ldquo;stick out&rdquo; instead.
+
+        <p>Don't ever set these variables to <code>nil</code>.  If you want to disable
+the automatic alignment of backslashes, use
+<code>c-auto-align-backslashes</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; User Option: <b>c-auto-align-backslashes</b><var><a name="index-c_002dauto_002dalign_002dbackslashes-615"></a></var><br>
+<blockquote><p><a name="index-auto_002dalign_002dbackslashes-_0028c_002d_0029-616"></a>Align automatically inserted line continuation backslashes if
+non-<code>nil</code>.  When line continuation backslashes are inserted
+automatically for line breaks in multiline macros, e.g. by
+<code>c-context-line-break</code>, they are aligned with the other
+backslashes in the same macro if this flag is set.
+
+        <p>If <code>c-auto-align-backslashes</code> is <code>nil</code>, automatically
+inserted backslashes are preceded by a single space, and backslashes
+get aligned only when you explicitly invoke the command
+<code>c-backslash-region</code> (<kbd>C-c C-\</kbd>). 
+</p></blockquote></div>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+</body></html>
+

@@ -1,0 +1,205 @@
+<html lang="en">
+<head>
+<title>CC Mode Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CC Mode Manual">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="../index.html#dir" title="(dir)">
+<link rel="prev" href="../index.html#dir" title="(dir)">
+<link rel="next" href="Introduction.html#Introduction" title="Introduction">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011  Free Software
+Foundation, Inc.
+
+This manual is free documentation; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 3, or (at
+your option) any later version.
+
+This manual is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License, the
+file `COPYING', along with CC Mode.  If not, see
+`http://www.gnu.org/licenses/gpl.html'.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">CC Mode Manual</h1>
+<div class="node">
+<p>
+<a name="Top"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Introduction.html#Introduction">Introduction</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="../index.html#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="../index.html#dir">(dir)</a>
+<hr><br>
+</div>
+
+<!-- node-name, next, previous, up -->
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<ul class="menu">
+<li><a accesskey="1" href="Introduction.html#Introduction">Introduction</a>
+<li><a accesskey="2" href="Overview.html#Overview">Overview</a>
+<li><a accesskey="3" href="Getting-Started.html#Getting-Started">Getting Started</a>
+<li><a accesskey="4" href="Commands.html#Commands">Commands</a>
+<li><a accesskey="5" href="Font-Locking.html#Font-Locking">Font Locking</a>
+<li><a accesskey="6" href="Config-Basics.html#Config-Basics">Config Basics</a>
+<li><a accesskey="7" href="Custom-Filling-and-Breaking.html#Custom-Filling-and-Breaking">Custom Filling and Breaking</a>
+<li><a accesskey="8" href="Custom-Auto_002dnewlines.html#Custom-Auto_002dnewlines">Custom Auto-newlines</a>
+<li><a accesskey="9" href="Clean_002dups.html#Clean_002dups">Clean-ups</a>
+<li><a href="Indentation-Engine-Basics.html#Indentation-Engine-Basics">Indentation Engine Basics</a>
+<li><a href="Customizing-Indentation.html#Customizing-Indentation">Customizing Indentation</a>
+<li><a href="Custom-Macros.html#Custom-Macros">Custom Macros</a>
+<li><a href="Odds-and-Ends.html#Odds-and-Ends">Odds and Ends</a>
+<li><a href="Sample-_002eemacs-File.html#Sample-_002eemacs-File">Sample .emacs File</a>
+<li><a href="Performance-Issues.html#Performance-Issues">Performance Issues</a>
+<li><a href="Limitations-and-Known-Bugs.html#Limitations-and-Known-Bugs">Limitations and Known Bugs</a>
+<li><a href="FAQ.html#FAQ">FAQ</a>
+<li><a href="Updating-CC-Mode.html#Updating-CC-Mode">Updating CC Mode</a>
+<li><a href="Mailing-Lists-and-Bug-Reports.html#Mailing-Lists-and-Bug-Reports">Mailing Lists and Bug Reports</a>
+<li><a href="Command-and-Function-Index.html#Command-and-Function-Index">Command and Function Index</a>
+<li><a href="Variable-Index.html#Variable-Index">Variable Index</a>
+<li><a href="Concept-and-Key-Index.html#Concept-and-Key-Index">Concept and Key Index</a>
+
+</li></ul>
+<p>--- The Detailed Node Listing ---
+
+<p>Commands
+
+</p>
+<ul class="menu">
+<li><a href="Indentation-Commands.html#Indentation-Commands">Indentation Commands</a>
+<li><a href="Comment-Commands.html#Comment-Commands">Comment Commands</a>
+<li><a href="Movement-Commands.html#Movement-Commands">Movement Commands</a>
+<li><a href="Filling-and-Breaking.html#Filling-and-Breaking">Filling and Breaking</a>
+<li><a href="Minor-Modes.html#Minor-Modes">Minor Modes</a>
+<li><a href="Electric-Keys.html#Electric-Keys">Electric Keys</a>
+<li><a href="Auto_002dnewlines.html#Auto_002dnewlines">Auto-newlines</a>
+<li><a href="Hungry-WS-Deletion.html#Hungry-WS-Deletion">Hungry WS Deletion</a>
+<li><a href="Subword-Movement.html#Subword-Movement">Subword Movement</a>
+<li><a href="Other-Commands.html#Other-Commands">Other Commands</a>
+
+</li></ul>
+<p>Font Locking
+
+</p>
+<ul class="menu">
+<li><a href="Font-Locking-Preliminaries.html#Font-Locking-Preliminaries">Font Locking Preliminaries</a>
+<li><a href="Faces.html#Faces">Faces</a>
+<li><a href="Doc-Comments.html#Doc-Comments">Doc Comments</a>
+<li><a href="AWK-Mode-Font-Locking.html#AWK-Mode-Font-Locking">AWK Mode Font Locking</a>
+
+</li></ul>
+<p>Configuration Basics
+
+</p>
+<ul class="menu">
+<li><a href="CC-Hooks.html#CC-Hooks">CC Hooks</a>
+<li><a href="Style-Variables.html#Style-Variables">Style Variables</a>
+<li><a href="Styles.html#Styles">Styles</a>
+
+</li></ul>
+<p>Styles
+
+</p>
+<ul class="menu">
+<li><a href="Built_002din-Styles.html#Built_002din-Styles">Built-in Styles</a>
+<li><a href="Choosing-a-Style.html#Choosing-a-Style">Choosing a Style</a>
+<li><a href="Adding-Styles.html#Adding-Styles">Adding Styles</a>
+<li><a href="Guessing-the-Style.html#Guessing-the-Style">Guessing the Style</a>
+<li><a href="File-Styles.html#File-Styles">File Styles</a>
+
+</li></ul>
+<p>Customizing Auto-newlines
+
+</p>
+<ul class="menu">
+<li><a href="Hanging-Braces.html#Hanging-Braces">Hanging Braces</a>
+<li><a href="Hanging-Colons.html#Hanging-Colons">Hanging Colons</a>
+<li><a href="Hanging-Semicolons-and-Commas.html#Hanging-Semicolons-and-Commas">Hanging Semicolons and Commas</a>
+
+</li></ul>
+<p>Hanging Braces
+
+</p>
+<ul class="menu">
+<li><a href="Custom-Braces.html#Custom-Braces">Custom Braces</a>
+
+</li></ul>
+<p>Indentation Engine Basics
+
+</p>
+<ul class="menu">
+<li><a href="Syntactic-Analysis.html#Syntactic-Analysis">Syntactic Analysis</a>
+<li><a href="Syntactic-Symbols.html#Syntactic-Symbols">Syntactic Symbols</a>
+<li><a href="Indentation-Calculation.html#Indentation-Calculation">Indentation Calculation</a>
+
+</li></ul>
+<p>Syntactic Symbols
+
+</p>
+<ul class="menu">
+<li><a href="Function-Symbols.html#Function-Symbols">Function Symbols</a>
+<li><a href="Class-Symbols.html#Class-Symbols">Class Symbols</a>
+<li><a href="Conditional-Construct-Symbols.html#Conditional-Construct-Symbols">Conditional Construct Symbols</a>
+<li><a href="Switch-Statement-Symbols.html#Switch-Statement-Symbols">Switch Statement Symbols</a>
+<li><a href="Brace-List-Symbols.html#Brace-List-Symbols">Brace List Symbols</a>
+<li><a href="External-Scope-Symbols.html#External-Scope-Symbols">External Scope Symbols</a>
+<li><a href="Paren-List-Symbols.html#Paren-List-Symbols">Paren List Symbols</a>
+<li><a href="Literal-Symbols.html#Literal-Symbols">Literal Symbols</a>
+<li><a href="Multiline-Macro-Symbols.html#Multiline-Macro-Symbols">Multiline Macro Symbols</a>
+<li><a href="Objective_002dC-Method-Symbols.html#Objective_002dC-Method-Symbols">Objective-C Method Symbols</a>
+<li><a href="Java-Symbols.html#Java-Symbols">Java Symbols</a>
+<li><a href="Statement-Block-Symbols.html#Statement-Block-Symbols">Statement Block Symbols</a>
+<li><a href="K_0026R-Symbols.html#K_0026R-Symbols">K&amp;R Symbols</a>
+
+</li></ul>
+<p>Customizing Indentation
+
+</p>
+<ul class="menu">
+<li><a href="c_002doffsets_002dalist.html#c_002doffsets_002dalist">c-offsets-alist</a>
+<li><a href="Interactive-Customization.html#Interactive-Customization">Interactive Customization</a>
+<li><a href="Line_002dUp-Functions.html#Line_002dUp-Functions">Line-Up Functions</a>
+<li><a href="Custom-Line_002dUp.html#Custom-Line_002dUp">Custom Line-Up</a>
+<li><a href="Other-Indentation.html#Other-Indentation">Other Indentation</a>
+
+</li></ul>
+<p>Line-Up Functions
+
+</p>
+<ul class="menu">
+<li><a href="Brace_002fParen-Line_002dUp.html#Brace_002fParen-Line_002dUp">Brace/Paren Line-Up</a>
+<li><a href="List-Line_002dUp.html#List-Line_002dUp">List Line-Up</a>
+<li><a href="Operator-Line_002dUp.html#Operator-Line_002dUp">Operator Line-Up</a>
+<li><a href="Comment-Line_002dUp.html#Comment-Line_002dUp">Comment Line-Up</a>
+<li><a href="Misc-Line_002dUp.html#Misc-Line_002dUp">Misc Line-Up</a>
+
+</li></ul>
+<p>Customizing Macros
+
+</p>
+<ul class="menu">
+<li><a href="Macro-Backslashes.html#Macro-Backslashes">Macro Backslashes</a>
+<li><a href="Macros-with-_003b.html#Macros-with-_003b">Macros with ;</a>
+
+   </ul>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+</body></html>
+

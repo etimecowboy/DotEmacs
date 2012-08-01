@@ -1,0 +1,505 @@
+This file has been translated from LaTeX by HeVeA.
+
+Node: Subsection 6-2,	Next: Subsection 6-3,	Prev: Subsection 6-1,	Up: Section 6
+  
+
+6.2   Defining your own previewer
+=================================
+  
+  To use your own command as a previewer, you must choose either type
+'-dvi' or '-ps' . In particular, your previewer should  accept 'SIGUSR1'
+(for '-dvi') signal or 'SIGHUP' (for '-ps')  signal and respond by
+reloading the file.
+   
+
+Node: Subsection 6-3,	Next: Section 7,	Prev: Subsection 6-2,	Up: Section 6
+  
+
+6.3   Viewing with xpdf
+=======================
+  
+  WhizzyTeX also works with 'pdf' using the 'xpdf' previewer and its
+remote server capabilities to reload the file and jump to the cursor
+position (this does not work with 'acroread' because they is no simple
+way to tell  'acroread' to reload its file in batch). You must choose
+'-pdf'  as previewer type, which will also set other variables so as to
+compile the document with pdflatex instead of latex. You must leave the
+default previewer command, i.e. enter '-pdf .' and not '-pdf xpdf' (or
+else understand the internals of the 'whizzytex' script) because other
+options need to be passed to 'xpdf'.
+  When compiling with 'pdflatex', you need to explicitly use the package
+'hyperref'. 
+  Another solution is to compile via the generation of a Postscript file
+'ps' and its translation to PDF using 'ps2pdf'.  This allows the use of
+'pstricks'. In this case, you tune the configuration manually, following
+the example given in 'examples/ps2pdf/'. 
+
+Node: Section 7,	Next: Section 8,	Prev: Section 6,	Up: Top
+  
+
+7   Whizzy Effects
+*=*=*=*=*=*=*=*=*=
+
+  
+  Since WhizzyTeX knowns about the current point in the buffer,
+rendering of the document may depend on that possition. For examples, an
+environment may be displayed differently when the point is inside or
+outside the environment. A natural choice is to make drawer-like
+environments that  are closed when the point is outside and open when
+the point is inside.
+  WhizzyTeX provides a the macro '\WhizzyInsideEnvironment' to help make
+such effects. It takes the same parameters as the command
+'\newenvironnement'. The first argument should be the name of an
+existing environment, which will behave as before when the point appears
+outside and according to the new definition when the points is inside.
+The second and first arguments defines the behavoir as do the arguments
+of '\newenvironment'. However, '\WhizzyInsideEnvironment' also defines
+the macro '\out@myenv' and 'endout@myenv' to refers to the
+cursor-outside version of the environment. Typically, these macros can
+be used in the second and third argument of '\WhizzyInsideEnvironment'
+to define the cursor-inside version by difference with the
+cursor-outside version. 
+  The example 'effects' shows two applications. First, a 'drawer'
+environment is used to delimit sections and make them open or closed
+automatically as cursor moves. Second, using the exercise package, we
+provide a cursor-inside version of the answer environment that inline
+the answer rather than pushing it to the Appendix. 
+   
+
+Node: Section 8,	Next: Subsection 8-1,	Prev: Section 7,	Up: Top
+  
+
+8   WhizzyEditing
+*=*=*=*=*=*=*=*=*
+
+   
+    This feature requires at least version 1.60 of ActiveDVI. 
+  
+  When used together with Active-DVI, WhizzyTeX can be made much mode
+powerful. In particular, it is not difficult to lift WhizzyTeX from an
+incremental viewer to an assistant editor.
+  What was a dream has now become real. The latest version Active-DVI
+provides a notion of active boxes.  The DVI may be annotated with 'advi:
+edit' specials commands.  When ActiveDVI is put in edition mode, active
+boxes are drawn on top of the previewer window and can be move or
+resized with the mouse.  When the mouse is released, the new size or
+position is printed on standard output together with the action to be
+taken and received by emacs watching the output. Emacs has then enough
+information to adjust some dimensional parameters in the source buffer.
+Just after this edition, the new slice is processed and the new position
+is displayed. Thanks to the short incremental loop, this almost appears
+as if actions where executed by Active-DVI itself.
+  Indeed, WhizzyEditing is not meant to break up the structual edition
+philosophy of TeX and LaTeX. Its incremental viewing is an assistant to
+an not a replacement of structural source edition. Mouse editing should
+also be seen similarly. In particular, all editions are visible in the
+emacs source buffer, can be saved, manually changed or disable.
+Moreover, Whizzy-editing is not meant for document layout (even it can
+occassionally be used for that, e.g. in slides), but rather to help
+adjust dinmensions that require manual tuning.
+  For instance, imaging you are importing an Encapsulated Postscript
+picture you would like to place some bubble whose origin must be
+position precisely inside the picture. Then, you'd better do it with the
+mouse rather than by small measurements or adjustements. Drawing a graph
+with a few nodes may now become quite confortable with PStricks, with
+the advantage of remaining within LaTeX rather than using some external
+tool. Finally, Whizzy-editing is likely to be convenient when writting
+slides with visual gadgets. For instance, adjusting bubbles with the
+mouse is likely to be more efficient than doing it by hand.
+* Menu:
+
+* Subsection 8-1::	Enabling edition with the \adviedit macro
+* Subsection 8-2::	Performing mouse edition under ActiveDVI control
+* Subsection 8-3::	Examples
+* Subsection 8-4::	Writing whizzy-editable macros
+
+
+Node: Subsection 8-1,	Next: Subsection 8-2,	Prev: Section 8,	Up: Section 8
+  
+
+8.1   Enabling edition with the \adviedit macro
+===============================================
+  
+  ActiveDVI provides one general editing command that can be used by
+WhizzyTeX for all mouse editing. The syntax of this command is 
+    \adviedit[tag]{<bra  options ket>}{<bra  body ket>} 
+   where <bra  options ket> is a comma separated list of bindings
+according to the keyval package. Each binding is either of the form
+<bra  var ket>=<bra  float ket> where  <bra  var ket> ranges other
+letters  x, y, h, w, d  in lowercase or uppercase, or field=<bra 
+dimension ket> where  <bra  field ket> ranges over <bra  unit ket> and
+<bra  min ket>.
+  The <bra  field ket> respectively bindings specifies the unit, which
+default to 1em, and the minimal dimension of boxes. Both fields are
+inherited, which enable inner edition to be scale altogether. The <bra 
+var ket> bindings defines values for the corresponding variables.  The
+are not inherited. On the opposite, they are always reset to default
+values. Lowercase letters mean that the corresponding variables are
+whizzy-editable, while uppercase letters treat them as constants.  The
+expression body should be horizontal box material: it is then placed in
+an \hbox at coordinates (x, y) relatively to the current position. 
+Moreover, a virtual box of width w, height h, and depth d is draw at
+that position when editing is made active. The box can this float around
+the current point and has no dimension. However, a box with no
+coordinates specified is fixed and has the dimensions  of w, h, and d.
+When not specified, these fields takes the value of the box in which
+body is typeset.  All dimensions x, y, w, h, and d are bound to advix,
+advix, adviy, adviw, advih, and advid macros during the evaluation of
+<bra  body ket>. 
+  Whizzy-editable objects can be nested. All parameters are reset to
+default values, within the new object. Sometimes, emacs may be confused
+and take an object for another. In these rare cases, the two objects can
+use the  <bra  tag ket> argument to be distinguished. This argument does
+nothing but being passed to ActiveDVI and sent back to Emacs to
+identified  the object exactly. 
+
+Node: Subsection 8-2,	Next: Subsection 8-3,	Prev: Subsection 8-1,	Up: Section 8
+  
+
+8.2   Performing mouse edition under ActiveDVI control
+======================================================
+   
+   This section depends entirely on ActiveDVI. Hence, it may depend on
+   your version of ActiveDVI or how you have parameterized it. The
+   appearance and description below is based on default bindings for
+   version 1.50+3. 
+  
+  To actually edit whizzy-editable objects, you need to toggle the edit
+mode of ActiveDVI. You can do this interactively by key stoke 'e' in the
+ActiveDVI window. You may also start ActiveDVI in edit mode by passing
+the option -edit.
+  When in edit mode, whizzy-editable objects are drawn as below: 
+                            *whizzytex001.png*
+   
+  You may edit such objects in two ways:  
+  
+   - move them, using the middle button. 
+   - resize them, using the right button for width and height or the
+   shift-right button for depth. 
+   When pressing the button on the corresponding rectangle, the mouse
+shape should intuitively illustrate the action to be perfomed.  However,
+some actions may be inhibited. For instance, the \parbox can only be
+moved or resized in width and the vertical space can only be resized in
+depth but not be moved. When an action (either move or resize) is
+disable in all directions, the cursor will not changed. When resizing is
+enabled both in height and in depth, the default action is height and
+you must press the shift key to perform the depth resizing.
+  Finally, an edition can be aborted by pressing the meta key (actually
+the one bound to modifier-1) while release the mouse. 
+
+Node: Subsection 8-3,	Next: Subsection 8-4,	Prev: Subsection 8-2,	Up: Section 8
+  
+
+8.3   Examples
+==============
+   Several examples can be found in file example/edit/main.tex coming
+with ActiveDVI distribution. Here are a couple of simple ones.  For
+example,  
+<<        \adviedit{x=-2.8845,y=0.2717}{A}
+>>
+  will simply place make the letter A whizzy-movable.  The values of x
+and y when unspecified defaults to 0.  Values for W, H or D when not
+given, will default to the value of A. However, if W, H, or D are zero
+(or too small) they will default to some small value. 
+<<        \adviedit{X=2,Y=3}{A}
+>>
+  can simply be used instead of the latex \put command. Spaces are also
+whizzy-adjustables: an horizontal space is just 
+<<        \adviedit{w}{\hspace{\adviw}}
+>>
+  Note that the material is placed into a default \hbox.  Thus, for
+vertical spaces, one need and explicit \vbox: 
+<<        \adviedit{d}{\vtop {\vspace {\advid}}}
+>>
+  Note that  
+<<        \adviedit{h}{\vbox {\vspace {\advih}}}
+>>
+  would do as well, but would usually be less intuitive, graphically.
+  A paragraph of adjustable size:  
+<<        \adviedit{w}{\parbox[c]{\adviw}{text material}}
+>>
+  Whizzy-edition can also be used to resize images (as well as return
+them) 
+<<       
+\adviedit{w,h}{\includegraphics[width=\adviw,height=\advih]{caml.eps}}
+>>
+  Note that while \adviedit must remain in the should, hence the whole
+line cannot be abbreviated into a macro, one can freely abbreviate its
+body, and it is quite easy to build a camel caravan:  
+<<        \adviedit[A]{w,unit=\hsize}{%
+            \setedit{unit=0.2\adviw}%    
+            \def
+\camel{\includegraphics[width=\adviw,height=\advih]{caml.eps}}%
+            \adviedit{x,y,w,h}{\camel}%
+            \adviedit{x,y,w,h}{\camel}%
+            \adviedit{x,y,w,h}{\camel}%
+            \adviedit{d}{\vtop{\vspace\advid}}% 
+            \hspace{\adviw}% 
+          }
+>>
+  Be aware that a camel may hide another one! Indeed, at the beginning
+all camels are superposed. The first caml you pick is the one in front. 
+An interesting use of units is to let an inner editable command sets its
+unit according to the dimension of an outer command, as illustrated
+above. Here the outer object (tagged A) is used to control the origin
+and scale of the projection. Then, each camel can be translated and
+resized, but relatively to this origin and this scale. Thus moving  of
+rescaling the outer object will treate the caravan as a whole. The last
+line allow expansion of the bounding box as needed.  The one before last
+sets the vertical ratio of the bounding box. The result can be seen in
+Figure 1*Note Subsection 8-3::.  
+        --------------------------------------------------------
+   
+                            *whizzytex002.png*
+   
+  Figure 1: A Whizzy-editable Camel Caravan
+   
+        --------------------------------------------------------
+   Below is another example with two circles: 
+<<        \adviedit[A]{w=4}
+            {\setedit{unit=\adviw}%
+             \psset{boxsep=0pt,framesep=0pt}%
+             \hbox to \adviw
+               {\circlenode{A}{\hspace {\adviw}}\hss
+                \adviedit[B]{w=0.5}{\circlenode{B}{\hspace{\adviw}}}}}
+>>
+  Many LaTeX commands such as \hspace, \parbox, etc. are parameterized
+by dimensions. However, some other commands, such as \picture, 
+\pspicture and most PsTricks commands, \bubble, and \adviedit itself are
+parameterized by a coefficients (floats) and, separately, a dimension. 
+  To whizzy-edit such coefficients, there are also commands \advicx,
+\advicy, \advicw, \advich, and  \advicd that contain the float ratio of 
+the corresponding dimension with respect to \adviunit---whenever the
+dimension is itself defined. As an example, the position of bubble can
+whizzy-edited as follows: 
+<<        \adviedit{h=1.8902,w=1.5259,unit=\bubbleunit}
+            {\bubble{anchored text}(\advicw,\advich){bulle text}}
+>>
+  
+
+Node: Subsection 8-4,	Next: Section 9,	Prev: Subsection 8-3,	Up: Section 8
+  
+
+8.4   Writing whizzy-editable macros
+====================================
+  
+  Although the command \whizzyedit is quite general and powerful, the
+user may wish to write its own versions.  One must then be careful that
+the macro correctly passes its name to  ActiveDVI. For instance,
+rebinding or partially evaluating the macro \adviedit does not work,
+since then the text-source macro will not be \adviedit anymore. See the
+latex advi.sty source package for envolved examples. 
+  Below are just a couple of simple examples.  We can abbreviate the
+example of adjustable horizontal spaces defining the following macro:  
+<<        \newcommand{\advihspace}[1]
+             {\adviedit{comm=\advihspace,#1}{\hspace{\adviw}}}
+>>
+  The argument 'comm=\advihspace' set the name of the calling source
+text macro to '\advihspace'. Then, you may simply write:  
+<<        \advihspace{w}
+>>
+  instead of  
+<<        \adviedit{w}{\hspace{\adviw}}
+>>
+  The macro could additionally check that 'w' is indeed defined.
+  Another example of specialization is to place bubbles: so as to be
+more intuitive, the orgin of the edition should start at the center
+rather then at the left of the anchor, which requires a small acrobatics
+with boxes and dimensions:  
+<<        \newcommand{\editbubble}[3]
+             {\setbox0=\hbox{#2}\copy0\hbox to 0em {\kern-0.5\wd0\relax
+              \bbb@dima=\ht0\bbb@dimb=\dp0
+              \setbox0=\null\ht0=\bbb@dima\dp0=\bbb@dimb
+                {\adviedit{comm=\editbubble,unit=\bubbleunit,#1}
+                   {\bubble{\box0}(\advicw,\advich){#3}}}\hfilneg}}
+>>
+  Then a nicely editable bublle can be obtained with 
+<<        \editbubble{w,h}
+            {\editbubble{w,h}
+              {\editbubble{w,h}{flowers}{First}}
+              {Second}}
+            {third}
+>>
+  (See the result in Figure 2*Note Subsection 8-4::) 
+        --------------------------------------------------------
+   
+                          *whizzytex003.png* 
+   
+  Figure 2: A bubble flower
+   
+        --------------------------------------------------------
+  
+   
+
+Node: Section 9,	Next: Subsection 9-1,	Prev: Section 8,	Up: Top
+  
+
+9   A quick overview of the implementation
+*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+
+  
+  In short, WhizzyTeX is selecting a small slice of the document that 
+you are editing around the cursor (according to the selected mode)  and
+redisplay the slice incrementally as it changes through edition.  
+ 
+ 
+   - Emacs is watching you typing and moving in the  Emacs buffer
+   attached to the LaTeX source file that your editing and keeps saving
+   the current slice (current slide, section, or subsection, according
+   to the mode).
+ 
+   - A shell-script daemon keeps recompiling whenever a new slice (or
+   other files) are produced, and if recompilation succeeds, tels the
+   previewer to updates the display of the slice.
+ 
+   - A few LaTeX macros allow to build a specialized format with all
+   macro loaded, which considerably speed up the time for slicing.
+   Additionally, the slice is a bit instrumented to show the cursor, and
+   includes specials that allows back-pointing from the DVI file into
+   the Emacs buffer.
+   The rest of this section briefly describe these three
+parts (7*Note Notes 0::), and their interactions.
+* Menu:
+
+* Subsection 9-1::	Emacs code
+* Subsection 9-2::	LaTeX code
+* Subsection 9-3::	Bash code
+* Subsection 9-4::	Interaction between the components
+* Subsection 9-5::	Whizzy edition
+
+
+Node: Subsection 9-1,	Next: Subsection 9-2,	Prev: Section 9,	Up: Section 9
+  
+
+9.1   Emacs code
+================
+  
+  The main trick is to use 'post-command-hook' to make Emacs watch
+changes. It uses 'buffer-modified-tick' to tell if any editing has
+actually occurred, and compare the point position with the (remembered)
+position of the region being displayed to see if saving should occur. It
+uses 'sit-for' to delay slicing until at least the time of slice
+computation has ellapsed since last saving, a significant number of
+editing changes has occurred, or iddleness.
+  WhizzyTeX can also display the cursor position, in which case slices
+are also recomputed when the cursor moves, but with lower priority.
+
+Node: Subsection 9-2,	Next: Subsection 9-3,	Prev: Subsection 9-1,	Up: Section 9
+  
+
+9.2   LaTeX code
+================
+  
+  The main TeX trick is to build a format specialized to the current
+document so as to avoid reloading the whole macros at each compilation.
+This is (almost (8*Note Notes 0::)) entirely transparent, that is,
+the source file does not have to understand this trick.
+  This is implemented by redefining '\documentclass' which in turn
+redefines '\document' to execute '\dump' (after redefining '\document'
+to its old value and '\documentclass' so that it skips everything till
+'\document'). This is robust ---and seems  to work with rather complex
+macros. 
+  The specialized format can be used in two modes: by default it expects
+a full document: it them dumps counters at sectioning commands
+(chapters,  sections, and subsections). This is useful to correctly 
+numberred sections and pages on slices. 
+  There are also a a few other used to get more advanced behavior,
+especially to dump source line numbers and file names so that the
+previewer can transform clicks into source file positions. 
+  When building the format, WhizzyTeX also look for a local file of name
+'whizzy.sty', which if existing is loaded at the end of the macros. 
+This may be used to add other macros in whizzy mode, e.g.  some TeX
+environments may be redefined to changed they type setting, according to
+whether the current line is inside or outside the environment.  (We have
+written such an extension for an exercise package that sends the answers
+at the end in an appendix, unless the cursor is inside the answer, in
+which case the answer is in-lined.)
+
+Node: Subsection 9-3,	Next: Subsection 9-4,	Prev: Subsection 9-2,	Up: Section 9
+  
+
+9.3   Bash code
+===============
+  
+  There is no real trick there. This is a shell-script watching the pool
+(a directory where slices and other new version of files must be
+dropped).  It them recompiles a slice and wait for input (in stdin).  It
+recognizes a few one-line commands as input reformat, dupplex, and by
+default just watch for the presence of a new slice.  It recompiles the
+format file (and the page and section number, but in batch mode)
+whenever the source file (its Unix date) has changed and  recompiles the
+slice whenever it is present (since WhizzyTeX renames ---hence
+removes--- the slice before processing it).
+  If the file has been recompiled successfully, it triggers the
+previewer (ghostscript or xdvi) so that it rereads the dvi or ps file.
+Otherwise, it processes the TeX log file and tries to locate the error.
+It then sends part of the log file with annotations to the '*TeX-shell*'
+buffer from which Emacs has been WhizzyTeX, so that Emacs can report the
+error. 
+
+Node: Subsection 9-4,	Next: Subsection 9-5,	Prev: Subsection 9-3,	Up: Section 9
+  
+
+9.4   Interaction between the components
+========================================
+   
+  The control is normally done by Emacs, which launches and kills the
+Unix daemon. Quitting the previewer should be noticed by the daemon,
+which tells Emacs to turn mode off before exiting. 
+  Muliple WhizzyTeX running on the same file would certainly raise
+racing conditions between files and would not make sense.  For that
+purpose, the daemon pid is saved in a file and WhizzyTeX will kill any
+old WhizzyTeX process on startup. 
+
+Node: Subsection 9-5,	Prev: Subsection 9-4,	Up: Section 9
+  
+
+9.5   Whizzy edition
+====================
+  
+  The macros \adviedit passes information to ActiveDVI inside edit
+specials. This information is used to identify the source file command
+that requested some edition and is passed by from ActiveDVI to emacs as
+command strings of the form:  
+    
+   <<<edit "\adviedit" ""[x=1.2001]" #56 @main.tex moveto
+   5.1529,-1.1708>
+   >>
+   This command emitted by ActiveDVI in its standard output is thus
+received by emacs via WhizzyTeX in the process buffer associated to the
+current session. 
+  Emacs interprets such commands starting with the "'<edit '" prefix  as
+whizzy edition commands. In the above example, the string '\adviedit' is
+a latex commands that should be present the master buffer 'main.tex' at
+line '56' and with x coordinate equal to 1.2001. Its x and y coordinates
+should be  changed by 5.1529 and -1.1708. Usually, the command can be
+precisely located by its line position in the buffer and one significant
+coordinates. In case of conflict, a tag optional argument pass \adviedit
+will be passed to ActiveDVI and then sent back to emacs (which is filled
+in the empty string above).
+
+Node: Notes 0
+ -----------------------------------
+ 
+(1) WhizzyTeX is free software,  Copyright (c)2001, 2002
+INRIA and distributed under the GNU General Public License (See the
+COPYING file enclosed with the distribution).
+
+(2) http://gallium.inria.fr/advi/
+
+(3) It has  been reported to successfully work on Windows
+under Cygwin---See the  FAQ (4*Note Notes 0::).
+
+(4) FAQ.html
+
+(5) http://gallium.inria.fr/whizzytex
+
+(6) http://gallium.inria.fr/advi/
+
+(7) This section is not quite up-to-date, hence it puts
+emphasis on the original design, but several aspects have changed
+significantly since the first version. Implementation of more recent
+features is thus omitted.
+
+(8) \begin{document} should be typed as such without any
+white white space

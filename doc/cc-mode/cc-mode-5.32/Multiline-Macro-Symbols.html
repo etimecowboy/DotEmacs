@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+<title>Multiline Macro Symbols - CC Mode Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CC Mode Manual">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Syntactic-Symbols.html#Syntactic-Symbols" title="Syntactic Symbols">
+<link rel="prev" href="Literal-Symbols.html#Literal-Symbols" title="Literal Symbols">
+<link rel="next" href="Objective_002dC-Method-Symbols.html#Objective_002dC-Method-Symbols" title="Objective-C Method Symbols">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011  Free Software
+Foundation, Inc.
+
+This manual is free documentation; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 3, or (at
+your option) any later version.
+
+This manual is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License, the
+file `COPYING', along with CC Mode.  If not, see
+`http://www.gnu.org/licenses/gpl.html'.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Multiline-Macro-Symbols"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Objective_002dC-Method-Symbols.html#Objective_002dC-Method-Symbols">Objective-C Method Symbols</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Literal-Symbols.html#Literal-Symbols">Literal Symbols</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Syntactic-Symbols.html#Syntactic-Symbols">Syntactic Symbols</a>
+<hr><br>
+</div>
+
+<!-- node-name, next, previous, up -->
+<h4 class="subsection">10.2.9 Multiline Macro Symbols</h4>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<p><a name="index-multiline-macros-486"></a><a name="index-syntactic-whitespace-487"></a><a name="index-cpp_002ddefine_002dintro-488"></a><a name="index-cpp_002dmacro_002dcont-489"></a>Multiline preprocessor macro definitions are normally handled just like
+other code, i.e. the lines inside them are indented according to the
+syntactic analysis of the preceding lines inside the macro.  The first
+line inside a macro definition (i.e. the line after the starting line of
+the cpp directive itself) gets <code>cpp-define-intro</code>.  In this example:
+
+<pre class="example">      1: #define LIST_LOOP(cons, listp)                         \
+      2:   for (cons = listp; !NILP (cons); cons = XCDR (cons)) \
+      3:     if (!CONSP (cons))                                 \
+      4:       signal_error ("Invalid list format", listp);     \
+      5:     else
+</pre>
+   <p class="noindent">line 1 is given the syntactic symbol <code>cpp-macro</code>.  The first line
+of a cpp directive is always given that symbol.  Line 2 is given
+<code>cpp-define-intro</code>, so that you can give the macro body as a whole
+some extra indentation.  Lines 3 through 5 are then analyzed as normal
+code, i.e. <code>substatement</code> on lines 3 and 4, and <code>else-clause</code>
+on line 5.
+
+   <p>The syntactic analysis inside macros can be turned off with
+<code>c-syntactic-indentation-in-macros</code> (see <a href="Custom-Macros.html#Custom-Macros">Custom Macros</a>).  In
+that case, lines 2 through 5 would all be given <code>cpp-macro-cont</code>
+with an anchor position pointing to the <code>#</code> which starts the cpp
+directive<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>.
+
+   <p>See <a href="Custom-Macros.html#Custom-Macros">Custom Macros</a>, for more info about the treatment of macros.
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<div class="footnote">
+<hr>
+<h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> This is how CC Mode 5.28 and earlier analyzed
+macros.</p>
+
+   <p><hr></div>
+
+   </body></html>
+

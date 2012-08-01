@@ -1,0 +1,106 @@
+* Introduction
+
+This is my Emacs configuration with various collected lisps.
+
+All the files should be placed in "~/.emacs.d/", where "~" means your
+HOME. For Windows users, please set a environment vairable for your
+account.
+
+* Installation
+
+1. Clone the repository to "~/.emacs.d/".
+
+2. Enter "~/.emacs.d/backup/" folder, and decompress 
+
+     - `elpa.tar.gz':      lisps downloaded via Emacs ELPA package
+                           services, which is shipped by Emacs 24.1
+                           or later (`package.el'). 
+     - `emacswiki.tar.gz': lisps download from emacswiki.org via
+                           `auto-install.el' functions.
+     - `lisps.tar.gz':     manually downloaded lisps and git 
+                           submodules.
+
+   to the  "~/.emacs.d/" folder.
+   
+     - `cedet-8112.tar.gz'
+
+   to the  "~/.emacs.d/lisps/" folder
+
+3. Enter the "~/.emacs.d/lisp/cedet" folder, and run
+
+     "Emacs -nw -Q -l cedet-build.el -f cedet-build"
+
+   in terminal/command-line to install the cedet package.
+
+4. Run Emacs, you will get errors, but it is OK.
+
+5. "M-x xy/emacs-build" serveral times to build the whole customized
+   emacs, untill there is no error.
+
+6. Restart Emacs.
+
+* Tips
+
+** Customize configurations
+
+After installation, you may want to customize the configuration files
+in "~/.emacs.d/my-lisps/init/". Just do it and save your files.
+
+If you made changes to
+
+- `~/.emacs.d/my-lisps/init/xy-rcroot-env.el'
+- `~/.emacs.d/my-lisps/init/xy-rc-utils.el'
+
+don't forget to delete the their compiled elc files, before your
+rebuild, or you will got errors in Windows.
+
+** Change local lisp packages
+
+After you update/delete/modify the local lisp packages, just
+change the corresponding configuration files and run 
+"M-x xy/emacs-build" in the Emacs program to activate the new 
+lisps.
+
+* ELPA packages installed
+
+- ac-dabbrev                       - ioccur
+- ansi                             - isearch+
+- ascii                            - iy-go-to-char
+- auto-complete                    - json
+- autopair                         - kill-ring-search
+- bm                               - light-symbol
+- bookmark+                        - logito
+- boxquote                         - magit
+- browse-kill-ring                 - magithub
+- buffer-move                      - markdown-mode
+- c-eldoc                          - mediawiki
+- cal-china-x                      - melpa
+- caps-mode                        - modeline-posn
+- cdlatex                          - mouse+
+- cmake-mode                       - multi-term
+- columnify                        - openwith
+- cperl-mode                       - org
+- css-mode                         - org-mime
+- ctags                            - org-table-comment
+- desktop                          - outline-magic
+- dictionary                       - pcache
+- diff-git                         - popup
+- diminish                         - rw-hunspell
+- dired+                           - rw-ispell
+- doc-mode                         - session
+                                   - smarter-compile
+- emms                             - smex
+- ert                              
+- ess                              - sunrise-commander
+- full-ack                         - tabbar
+- fuzzy                            - tabbar-ruler
+- gh                               - texdrive
+- gist                             - twittering-mode
+- git-blame                        - undo-tree
+- google-maps                      - wcheck-mode
+- graphviz-dot-mode                - weblogger
+- highlight-parentheses            - window-number
+- highlight-symbol                 - windresize
+- htmlize                          - winpoint
+- hungry-delete                    - xml-rpc
+- ido-ubiquitous                   - yasnippet

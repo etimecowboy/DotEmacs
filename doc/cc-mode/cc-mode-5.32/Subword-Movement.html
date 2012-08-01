@@ -1,0 +1,106 @@
+<html lang="en">
+<head>
+<title>Subword Movement - CC Mode Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CC Mode Manual">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Commands.html#Commands" title="Commands">
+<link rel="prev" href="Hungry-WS-Deletion.html#Hungry-WS-Deletion" title="Hungry WS Deletion">
+<link rel="next" href="Other-Commands.html#Other-Commands" title="Other Commands">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011  Free Software
+Foundation, Inc.
+
+This manual is free documentation; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 3, or (at
+your option) any later version.
+
+This manual is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License, the
+file `COPYING', along with CC Mode.  If not, see
+`http://www.gnu.org/licenses/gpl.html'.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Subword-Movement"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Other-Commands.html#Other-Commands">Other Commands</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Hungry-WS-Deletion.html#Hungry-WS-Deletion">Hungry WS Deletion</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Commands.html#Commands">Commands</a>
+<hr><br>
+</div>
+
+<!-- node-name, next, previous, up -->
+<h3 class="section">4.9 Subword Movement and Editing</h3>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<p><a name="index-nomenclature-194"></a><a name="index-subword-195"></a>In spite of the GNU Coding Standards, it is popular to name a symbol
+by mixing uppercase and lowercase letters, e.g. <span class="samp">GtkWidget</span>,
+<span class="samp">EmacsFrameClass</span>, or <span class="samp">NSGraphicsContext</span>.  Here we call
+these mixed case symbols <dfn>nomenclatures</dfn>.  Also, each capitalized
+(or completely uppercase) part of a nomenclature is called a
+<dfn>subword</dfn>.  Here are some examples:
+
+   <p><table summary=""><tr align="left"><th valign="top">Nomenclature
+  </th><th valign="top">Subwords
+<br></th></tr><tr align="left"><td valign="top"><span class="samp">GtkWindow</span>
+  </td><td valign="top"><span class="samp">Gtk</span> and <span class="samp">Window</span>
+<br></td></tr><tr align="left"><td valign="top"><span class="samp">EmacsFrameClass</span>
+  </td><td valign="top"><span class="samp">Emacs</span>, <span class="samp">Frame</span>, and <span class="samp">Class</span>
+<br></td></tr><tr align="left"><td valign="top"><span class="samp">NSGraphicsContext</span>
+  </td><td valign="top"><span class="samp">NS</span>, <span class="samp">Graphics</span>, and <span class="samp">Context</span>
+   <br></td></tr></table>
+
+   <p>The subword minor mode replaces the basic word oriented movement and
+editing commands with variants that recognize subwords in a
+nomenclature and treat them as separate words:
+
+   <p><a name="index-c_002dforward_002dsubword-196"></a><a name="index-forward_002dsubword-_0028c_002d_0029-197"></a><a name="index-c_002dbackward_002dsubword-198"></a><a name="index-backward_002dsubword-_0028c_002d_0029-199"></a><a name="index-c_002dmark_002dsubword-200"></a><a name="index-mark_002dsubword-_0028c_002d_0029-201"></a><a name="index-c_002dkill_002dsubword-202"></a><a name="index-kill_002dsubword-_0028c_002d_0029-203"></a><a name="index-c_002dbackward_002dkill_002dsubword-204"></a><a name="index-backward_002dkill_002dsubword-_0028c_002d_0029-205"></a><a name="index-c_002dtranspose_002dsubwords-206"></a><a name="index-transpose_002dsubwords-_0028c_002d_0029-207"></a><a name="index-c_002dcapitalize_002dsubword-208"></a><a name="index-capitalize_002dsubword-_0028c_002d_0029-209"></a><a name="index-c_002dupcase_002dsubword-210"></a><a name="index-upcase_002dsubword-_0028c_002d_0029-211"></a><a name="index-c_002ddowncase_002dsubword-212"></a><a name="index-downcase_002dsubword-_0028c_002d_0029-213"></a>
+   <p><table summary=""><tr align="left"><th valign="top" width="20%">Key         </th><th valign="top" width="40%">Word oriented command     </th><th valign="top" width="40%">Subword oriented command
+<br></th></tr><tr align="left"><td valign="top" width="20%"><kbd>M-f</kbd>   </td><td valign="top" width="40%"><code>forward-word</code>       </td><td valign="top" width="40%"><code>c-forward-subword</code>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><kbd>M-b</kbd>   </td><td valign="top" width="40%"><code>backward-word</code>      </td><td valign="top" width="40%"><code>c-backward-subword</code>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><kbd>M-@</kbd>  </td><td valign="top" width="40%"><code>mark-word</code>          </td><td valign="top" width="40%"><code>c-mark-subword</code>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><kbd>M-d</kbd>   </td><td valign="top" width="40%"><code>kill-word</code>          </td><td valign="top" width="40%"><code>c-kill-subword</code>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><kbd>M-DEL</kbd> </td><td valign="top" width="40%"><code>backward-kill-word</code> </td><td valign="top" width="40%"><code>c-backward-kill-subword</code>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><kbd>M-t</kbd>   </td><td valign="top" width="40%"><code>transpose-words</code>    </td><td valign="top" width="40%"><code>c-transpose-subwords</code>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><kbd>M-c</kbd>   </td><td valign="top" width="40%"><code>capitalize-word</code>    </td><td valign="top" width="40%"><code>c-capitalize-subword</code>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><kbd>M-u</kbd>   </td><td valign="top" width="40%"><code>upcase-word</code>        </td><td valign="top" width="40%"><code>c-upcase-subword</code>
+<br></td></tr><tr align="left"><td valign="top" width="20%"><kbd>M-l</kbd>   </td><td valign="top" width="40%"><code>downcase-word</code>      </td><td valign="top" width="40%"><code>c-downcase-subword</code>
+   <br></td></tr></table>
+
+   <p>Note that if you have changed the key bindings for the word oriented
+commands in your <span class="file">.emacs</span> or a similar place, the keys you have
+configured are also used for the corresponding subword oriented
+commands.
+
+   <p>Type <kbd>C-c C-w</kbd> to toggle subword mode on and off.  To make the
+mode turn on automatically, put the following code in your
+<span class="file">.emacs</span>:
+
+<pre class="example">     (add-hook 'c-mode-common-hook
+               (lambda () (c-subword-mode 1)))
+</pre>
+   <p>As a bonus, you can also use <code>c-subword-mode</code> in non-CC Mode
+buffers by typing <kbd>M-x c-subword-mode</kbd>.
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+</body></html>
+

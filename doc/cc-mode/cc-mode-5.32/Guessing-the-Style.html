@@ -1,0 +1,145 @@
+<html lang="en">
+<head>
+<title>Guessing the Style - CC Mode Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CC Mode Manual">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Styles.html#Styles" title="Styles">
+<link rel="prev" href="Adding-Styles.html#Adding-Styles" title="Adding Styles">
+<link rel="next" href="File-Styles.html#File-Styles" title="File Styles">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011  Free Software
+Foundation, Inc.
+
+This manual is free documentation; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 3, or (at
+your option) any later version.
+
+This manual is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License, the
+file `COPYING', along with CC Mode.  If not, see
+`http://www.gnu.org/licenses/gpl.html'.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Guessing-the-Style"></a>Next:&nbsp;<a rel="next" accesskey="n" href="File-Styles.html#File-Styles">File Styles</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Adding-Styles.html#Adding-Styles">Adding Styles</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Styles.html#Styles">Styles</a>
+<hr><br>
+</div>
+
+<!-- node-name, next, previous, up -->
+<h4 class="subsection">6.3.4 Guessing the Style</h4>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<p>Instead of specifying a style, you can get CC Mode to <dfn>guess</dfn>
+your style by examining an already formatted code buffer.  CC Mode
+then determines the &rdquo;most frequent&rdquo; offset (see <a href="c_002doffsets_002dalist.html#c_002doffsets_002dalist">c-offsets-alist</a>)
+for each of the syntactic symbols (see <a href="Indentation-Engine-Basics.html#Indentation-Engine-Basics">Indentation Engine Basics</a>)
+encountered in the buffer, and the &rdquo;most frequent&rdquo; value of
+c-basic-offset (see <a href="Customizing-Indentation.html#Customizing-Indentation">Customizing Indentation</a>), then merges the
+current style with these &rdquo;guesses&rdquo; to form a new style.  This
+combined style is known as the <dfn>guessed style</dfn>.
+
+   <p>To do this, call <code>c-guess</code> (or one of the other 5 guessing
+commands) on your sample buffer.  The analysis of your code may take
+some time.
+
+   <p>You can then set the guessed style in any CC Mode buffer with
+<code>c-guess-install</code>.  You can display the style with
+<code>c-guess-view</code>, and preserve it by copying it into your
+<span class="file">.emacs</span> for future use, preferably after editing it.
+
+     <dl>
+<dt><kbd>M-x c-guess-no-install</kbd><dt><kbd>M-x c-guess-buffer-no-install</kbd><dt><kbd>M-x c-guess-region-no-install</kbd><dd><a name="index-c_002dguess_002dno_002dinstall-307"></a><a name="index-c_002dguess_002dbuffer_002dno_002dinstall-308"></a><a name="index-c_002dguess_002dregion_002dno_002dinstall-309"></a><a name="index-guess_002dno_002dinstall-_0028c_002d_0029-310"></a><a name="index-guess_002dbuffer_002dno_002dinstall-_0028c_002d_0029-311"></a><a name="index-guess_002dregion_002dno_002dinstall-_0028c_002d_0029-312"></a>These commands analyze a part of the current buffer and guess the
+style from it.
+
+     <p>The part of the buffer examined is either the region
+(<code>c-guess-region-no-install</code>), the entire buffer
+(<code>c-guess-buffer-no-install</code>), or the first
+<code>c-guess-region-max</code> bytes (<code>c-guess-no-install</code>).
+
+     <p>Each of these commands can be given an optional prefix argument.  This
+instructs CC Mode to combine the new guesses with the current
+guesses before forming the guessed style. 
+</dl>
+
+     <dl>
+<dt><kbd>M-x c-guess</kbd><dt><kbd>M-x c-guess-buffer</kbd><dt><kbd>M-x c-guess-region</kbd><dd><a name="index-c_002dguess-313"></a><a name="index-c_002dguess_002dbuffer-314"></a><a name="index-c_002dguess_002dregion-315"></a><a name="index-guess-_0028c_002d_0029-316"></a><a name="index-guess_002dbuffer-_0028c_002d_0029-317"></a><a name="index-guess_002dregion-_0028c_002d_0029-318"></a>These commands analyze a part of the current buffer, guess the style
+from it, then install the guessed style on the buffer.  The guessed
+style is given a name based on the buffer's absolute file name, and
+you can then set this style on any CC Mode buffer with <kbd>C-c .</kbd>.
+
+     <p>The part of the buffer examined is either the region
+(<code>c-guess-region</code>), the entire buffer (<code>c-guess-buffer</code>), or
+the first <code>c-guess-region-max</code> bytes (<code>c-guess</code>).
+
+     <p>Each of these commands can be given an optional prefix argument.  This
+instructs CC Mode to combine the new guesses with the current
+guesses before forming the guessed style. 
+</dl>
+
+<div class="defun">
+&mdash; User Option: <b>c-guess-region-max</b><var><a name="index-c_002dguess_002dregion_002dmax-319"></a></var><br>
+<blockquote><p><a name="index-guess_002dregion_002dmax-_0028c_002d_0029-320"></a>This variable, default 50000, is the size in bytes of the buffer
+portion examined by c-guess and c-guess-no-install.  If set to
+<code>nil</code>, the entire buffer is examined. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; User Option: <b>c-guess-offset-threshold</b><var><a name="index-c_002dguess_002doffset_002dthreshold-321"></a></var><br>
+<blockquote><p><a name="index-guess_002doffset_002dthreshold-_0028c_002d_0029-322"></a>This variable, default 10, is the maximum offset, either outwards or
+inwards, which will be taken into account by the analysis process. 
+Any offset bigger than this will be ignored.  For no limit, set this
+variable to a large number. 
+</p></blockquote></div>
+
+     <dl>
+<dt><kbd>M-x c-guess-install</kbd><dd><a name="index-c_002dguess_002dinstall-323"></a><a name="index-guess_002dinstall-_0028c_002d_0029-324"></a>
+Set the current buffer's style to the guessed style.  This prompts you
+to enter an optional new style name to give to the guessed style.  By
+default, this name is based on the buffer's absolute file name.  You
+can then use this style like any other.
+
+     <br><dt><kbd>M-x c-guess-view</kbd><dd><a name="index-c_002dguess_002dview-325"></a><a name="index-guess_002dview-_0028c_002d_0029-326"></a>Display the most recently guessed style in a temporary buffer.  This
+display is in the form of a <code>c-add-style</code> form (see <a href="Adding-Styles.html#Adding-Styles">Adding Styles</a>) which can be easily copied to your <span class="file">.emacs</span>.  You will
+probably want to edit it first.
+
+     <p>The display of the guessed style contains these elements:
+
+          <dl>
+<dt>Placeholder Name<dd>You should replace this with a style name of your own. 
+<br><dt>Parent Style<dd>The style current when the guessing began, from which the guessed
+style inherits (see <a href="Config-Basics.html#Config-Basics">Config Basics</a>) the settings which weren't
+guessed. 
+<br><dt>Guessed Offsets<dd>These are the core result of the guessing process.  Each of them is
+marked by a comment. 
+<br><dt>Inherited Offsets<dd>These are syntactic offsets which have been taken over from the parent
+style.  To avoid possible future conflicts, you should remove either
+these offsets or the parent style name. 
+</dl>
+     </dl>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+</body></html>
+

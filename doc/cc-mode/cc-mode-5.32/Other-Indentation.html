@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+<title>Other Indentation - CC Mode Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CC Mode Manual">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Customizing-Indentation.html#Customizing-Indentation" title="Customizing Indentation">
+<link rel="prev" href="Custom-Line_002dUp.html#Custom-Line_002dUp" title="Custom Line-Up">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011  Free Software
+Foundation, Inc.
+
+This manual is free documentation; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 3, or (at
+your option) any later version.
+
+This manual is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License, the
+file `COPYING', along with CC Mode.  If not, see
+`http://www.gnu.org/licenses/gpl.html'.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Other-Indentation"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Custom-Line_002dUp.html#Custom-Line_002dUp">Custom Line-Up</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Customizing-Indentation.html#Customizing-Indentation">Customizing Indentation</a>
+<hr><br>
+</div>
+
+<!-- node-name, next, previous, up -->
+<h3 class="section">11.5 Other Special Indentations</h3>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<p>To configure macros which you invoke without a terminating <span class="samp">;</span>,
+see See <a href="Macros-with-_003b.html#Macros-with-_003b">Macros with ;</a>.
+
+   <p>Here are the remaining odds and ends regarding indentation:
+
+<div class="defun">
+&mdash; User Option: <b>c-label-minimum-indentation</b><var><a name="index-c_002dlabel_002dminimum_002dindentation-600"></a></var><br>
+<blockquote><p><a name="index-label_002dminimum_002dindentation-_0028c_002d_0029-601"></a>In <span class="samp">gnu</span> style (see <a href="Built_002din-Styles.html#Built_002din-Styles">Built-in Styles</a>), a minimum indentation is
+imposed on lines inside code blocks.  This minimum indentation is
+controlled by this style variable.  The default value is 1.
+
+        <p><a name="index-c_002dgnu_002dimpose_002dminimum-602"></a><a name="index-gnu_002dimpose_002dminimum-_0028c_002d_0029-603"></a>It's the function <code>c-gnu-impose-minimum</code> that enforces this minimum
+indentation.  It must be present on <code>c-special-indent-hook</code> to
+work. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; User Option: <b>c-special-indent-hook</b><var><a name="index-c_002dspecial_002dindent_002dhook-604"></a></var><br>
+<blockquote><p><a name="index-special_002dindent_002dhook-_0028c_002d_0029-605"></a>This style variable is a standard hook variable that is called after
+every line is indented by CC Mode.  It is called only if
+<code>c-syntactic-indentation</code> is non-<code>nil</code> (which it is by
+default (see <a href="Indentation-Engine-Basics.html#Indentation-Engine-Basics">Indentation Engine Basics</a>)).  You can put a function
+on this hook to do any special indentation or ad hoc line adjustments
+your style dictates, such as adding extra indentation to constructors
+or destructor declarations in a class definition, etc.  Sometimes it
+is better to write a custom Line-up Function instead (see <a href="Custom-Line_002dUp.html#Custom-Line_002dUp">Custom Line-Up</a>).
+
+        <p>The indentation engine calls each function on this hook with no
+parameters, with point somewhere on the pertinent line, and with the
+variable <code>c-syntactic-context</code> bound to the current syntactic
+context (i.e. what you would get by typing <kbd>C-c C-s</kbd> on the source
+line.  See <a href="Custom-Braces.html#Custom-Braces">Custom Braces</a>.).  Note that you should not change
+<code>c-syntactic-context</code> or point or mark inside a
+<code>c-special-indent-hook</code> function; thus you'll probably want to
+wrap your function in a <code>save-excursion</code><a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>.
+
+        <p>Setting <code>c-special-indent-hook</code> in style definitions is handled
+slightly differently from other variables&mdash;A style can only add
+functions to this hook, not remove them.  See <a href="Style-Variables.html#Style-Variables">Style Variables</a>. 
+</p></blockquote></div>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<div class="footnote">
+<hr>
+<h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> The numerical
+value returned by <code>point</code> will change if you change the
+indentation of the line within a <code>save-excursion</code> form, but point
+itself will still be over the same piece of text.</p>
+
+   <p><hr></div>
+
+   </body></html>
+

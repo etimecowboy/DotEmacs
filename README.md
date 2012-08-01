@@ -1,4 +1,0 @@
-DotEmacs
-========
-
-My emacs configuration

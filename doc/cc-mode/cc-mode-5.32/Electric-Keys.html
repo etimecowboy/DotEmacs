@@ -1,0 +1,181 @@
+<html lang="en">
+<head>
+<title>Electric Keys - CC Mode Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CC Mode Manual">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Commands.html#Commands" title="Commands">
+<link rel="prev" href="Minor-Modes.html#Minor-Modes" title="Minor Modes">
+<link rel="next" href="Auto_002dnewlines.html#Auto_002dnewlines" title="Auto-newlines">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011  Free Software
+Foundation, Inc.
+
+This manual is free documentation; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 3, or (at
+your option) any later version.
+
+This manual is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License, the
+file `COPYING', along with CC Mode.  If not, see
+`http://www.gnu.org/licenses/gpl.html'.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Electric-Keys"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Auto_002dnewlines.html#Auto_002dnewlines">Auto-newlines</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Minor-Modes.html#Minor-Modes">Minor Modes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Commands.html#Commands">Commands</a>
+<hr><br>
+</div>
+
+<!-- node-name, next, previous, up -->
+<h3 class="section">4.6 Electric Keys and Keywords</h3>
+
+<p><a name="index-electric-characters-123"></a><!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+   <p>Most punctuation keys provide <dfn>electric</dfn> behavior - as well as
+inserting themselves they perform some other action, such as
+reindenting the line.  This reindentation saves you from having to
+reindent a line manually after typing, say, a <span class="samp">}</span>.  A few
+keywords, such as <code>else</code>, also trigger electric action.
+
+   <p>You can inhibit the electric behavior described here by disabling
+electric minor mode (see <a href="Minor-Modes.html#Minor-Modes">Minor Modes</a>).
+
+   <p>Common to all these keys is that they only behave electrically when
+used in normal code (as contrasted with getting typed in a string
+literal or comment).  Those which cause re-indentation do so only when
+<code>c-syntactic-indentation</code> has a non-<code>nil</code> value (which it
+does by default).
+
+   <p>These keys and keywords are:
+<!-- ACM, 2004/8/24:  c-electric-pound doesn't check c-s-i: this is more -->
+<!-- like a bug in the code than a bug in this document.  It'll get -->
+<!-- fixed in the code sometime. -->
+
+     <dl>
+<dt><kbd>#</kbd><dd><a name="index-_0023-124"></a><a name="index-c_002delectric_002dpound-125"></a><a name="index-electric_002dpound-_0028c_002d_0029-126"></a><a name="index-c_002delectric_002dpound_002dbehavior-127"></a><a name="index-electric_002dpound_002dbehavior-_0028c_002d_0029-128"></a>Pound (bound to <code>c-electric-pound</code>) is electric when typed as the
+first non-whitespace character on a line and not within a macro
+definition.  In this case, the variable <code>c-electric-pound-behavior</code>
+is consulted for the electric behavior.  This variable takes a list
+value, although the only element currently defined is <code>alignleft</code>,
+which tells this command to force the <span class="samp">#</span> character into column
+zero.  This is useful for entering preprocessor macro definitions.
+
+     <p>Pound is not electric in AWK buffers, where <span class="samp">#</span> starts a comment,
+and is bound to <code>self-insert-command</code> like any typical printable
+character. 
+<!-- ACM, 2004/8/24:  Change this (and the code) to do AWK comment -->
+<!-- reindentation. -->
+
+     <br><dt><kbd>*</kbd><dd><a name="index-_002a-129"></a><dt><kbd>/</kbd><dd><a name="index-_002f-130"></a><a name="index-c_002delectric_002dstar-131"></a><a name="index-electric_002dstar-_0028c_002d_0029-132"></a><a name="index-c_002delectric_002dslash-133"></a><a name="index-electric_002dslash-_0028c_002d_0029-134"></a>A star (bound to <code>c-electric-star</code>) or a slash
+(<code>c-electric-slash</code>) causes reindentation when you type it as the
+second component of a C style block comment opener (<span class="samp">/*</span>) or a
+C++ line comment opener (<span class="samp">//</span>) respectively, but only if the
+comment opener is the first thing on the line (i.e. there's only
+whitespace before it).
+
+     <p>Additionally, you can configure CC Mode so that typing a slash at
+the start of a line within a block comment will terminate the
+comment.  You don't need to have electric minor mode enabled to get
+this behavior.  See <a href="Clean_002dups.html#Clean_002dups">Clean-ups</a>.
+
+     <p>In AWK mode, <span class="samp">*</span> and <span class="samp">/</span> do not delimit comments and are not
+electric.
+
+     <br><dt><kbd>&lt;</kbd><dd><a name="index-_003c-135"></a><dt><kbd>&gt;</kbd><dd><a name="index-_003e-136"></a><a name="index-c_002delectric_002dlt_002dgt-137"></a><a name="index-electric_002dlt_002dgt-_0028c_002d_0029-138"></a>A less-than or greater-than sign (bound to <code>c-electric-lt-gt</code>) is
+electric in two circumstances: when it is an angle bracket in a C++
+<span class="samp">template</span> declaration (and similar constructs in other
+languages) and when it is the second of two <kbd>&lt;</kbd> or <kbd>&gt;</kbd>
+characters in a C++ style stream operator.  In either case, the line
+is reindented.  Angle brackets in C <span class="samp">#include</span> directives are not
+electric.
+
+     <br><dt><kbd>(</kbd><dd><a name="index-_0028-139"></a><dt><kbd>)</kbd><dd><a name="index-_0029-140"></a><a name="index-c_002delectric_002dparen-141"></a><a name="index-electric_002dparen-_0028c_002d_0029-142"></a>The normal parenthesis characters <span class="samp">(</span> and <span class="samp">)</span> (bound to
+<code>c-electric-paren</code>) reindent the current line.  This is useful
+for getting the closing parenthesis of an argument list aligned
+automatically.
+
+     <p>You can also configure CC Mode to insert a space automatically
+between a function name and the <span class="samp">(</span> you've just typed, and to
+remove it automatically after typing <span class="samp">)</span>, should the argument
+list be empty.  You don't need to have electric minor mode enabled to
+get these actions.  See <a href="Clean_002dups.html#Clean_002dups">Clean-ups</a>.
+
+     <br><dt><kbd>{</kbd><dd><a name="index-_0040_007b-143"></a><dt><kbd>}</kbd><dd><a name="index-_0040_007d-144"></a><a name="index-c_002delectric_002dbrace-145"></a><a name="index-electric_002dbrace-_0028c_002d_0029-146"></a>Typing a brace (bound to <code>c-electric-brace</code>) reindents the
+current line.  Also, one or more newlines might be inserted if
+auto-newline minor mode is enabled.  See <a href="Auto_002dnewlines.html#Auto_002dnewlines">Auto-newlines</a>. 
+Additionally, you can configure CC Mode to compact excess whitespace
+inserted by auto-newline mode in certain circumstances. 
+See <a href="Clean_002dups.html#Clean_002dups">Clean-ups</a>.
+
+     <br><dt><kbd>:</kbd><dd><a name="index-_003a-147"></a><a name="index-c_002delectric_002dcolon-148"></a><a name="index-electric_002dcolon-_0028c_002d_0029-149"></a>Typing a colon (bound to <code>c-electric-colon</code>) reindents the
+current line.  Additionally, one or more newlines might be inserted if
+auto-newline minor mode is enabled.  See <a href="Auto_002dnewlines.html#Auto_002dnewlines">Auto-newlines</a>.  If you
+type a second colon immediately after such an auto-newline, by default
+the whitespace between the two colons is removed, leaving a C++ scope
+operator.  See <a href="Clean_002dups.html#Clean_002dups">Clean-ups</a>.
+
+     <p>If you prefer, you can insert <span class="samp">::</span> in a single operation,
+avoiding all these spurious reindentations, newlines, and clean-ups. 
+See <a href="Other-Commands.html#Other-Commands">Other Commands</a>.
+
+     <br><dt><kbd>;</kbd><dd><a name="index-_003b-150"></a><dt><kbd>,</kbd><dd><a name="index-_002c-151"></a><a name="index-c_002delectric_002dsemi_0026comma-152"></a><a name="index-electric_002dsemi_0026comma-_0028c_002d_0029-153"></a>Typing a semicolon or comma (bound to <code>c-electric-semi&amp;comma</code>)
+reindents the current line.  Also, a newline might be inserted if
+auto-newline minor mode is enabled.  See <a href="Auto_002dnewlines.html#Auto_002dnewlines">Auto-newlines</a>. 
+Additionally, you can configure CC Mode so that when auto-newline
+has inserted whitespace after a <span class="samp">}</span>, it will be removed again
+when you type a semicolon or comma just after it.  See <a href="Clean_002dups.html#Clean_002dups">Clean-ups</a>.
+
+   </dl>
+
+<div class="defun">
+&mdash; Command: <b>c-electric-continued-statement</b><var><a name="index-c_002delectric_002dcontinued_002dstatement-154"></a></var><br>
+<blockquote><p><a name="index-electric_002dcontinued_002dstatement-_0028c_002d_0029-155"></a>
+Certain keywords are electric, causing reindentation when they are
+preceded only by whitespace on the line.  The keywords are those that
+continue an earlier statement instead of starting a new one:
+<code>else</code>, <code>while</code>, <code>catch</code> (only in C++ and Java) and
+<code>finally</code> (only in Java).
+
+        <p>An example:
+
+     <pre class="example">          for (i = 0; i &lt; 17; i++)
+            if (a[i])
+              res += a[i]-&gt;offset;
+          else
+     </pre>
+        <p>Here, the <code>else</code> should be indented like the preceding <code>if</code>,
+since it continues that statement. CC Mode will automatically
+reindent it after the <code>else</code> has been typed in full, since only
+then is it possible to decide whether it's a new statement or a
+continuation of the preceding <code>if</code>.
+
+        <p><a name="index-abbrev_002dmode-156"></a><a name="index-abbrev_002dmode-157"></a><a name="index-Abbrev-mode-158"></a>CC Mode uses Abbrev mode (see <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Abbrevs.html#Abbrevs">Abbrevs (GNU Emacs Manual)</a>)
+to accomplish this. It's therefore turned on by default in all language
+modes except IDL mode, since CORBA IDL doesn't have any statements. 
+</p></blockquote></div>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+</body></html>
+
