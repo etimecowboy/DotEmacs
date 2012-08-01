@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-01 Wed 20:12 by xin on p5q>
+;; Time-stamp: <2012-08-02 Thu 00:14 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -285,7 +285,7 @@
 ;; REF: (@url :file-name "https://github.com/punchagan/org2blog" :display "Git Source")
 (xy/load-autoloads (concat my-git-lisp-path "/org2blog"))
 
-;;*** google-maps (ELPA, HACK: moved to `~/.emacs.d/my-lisps')
+;;*** google-maps (ELPA)
 ;; REF: (@url :file-name "http://git.naquadah.org/?p=google-maps.git;a=summary" :display "Git Source")
 ;; (xy/load-autoloads (concat my-git-lisp-path "/google-maps"))
 

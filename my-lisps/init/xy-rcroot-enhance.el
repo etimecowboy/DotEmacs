@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-01 Wed 10:00 by xin on p5q>
+;; Time-stamp: <2012-08-01 Wed 23:44 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -240,18 +240,19 @@ from tradition chinese to simple chinese" t)
         ("C-x L l" linkd-insert-link)))))
 
 (global-set-key (kbd "<f6> l") 'linkd-mode)
-;; NOTE: Manually start it is better.
-(am-add-hooks
- `(lisp-mode-hook emacs-lisp-mode-hook
-                  c-common-mode-hook
-                  sh-mode-hook matlab-mode-hook
-                  vhdl-mode-hook verilog-mode-hook
-                  ;; org-mode-hook ;; NOTE: C-c ' conflicts with linkd
-                  LaTeX-mode-hook)
- '(lambda () (linkd-mode 1)))
-(am-add-hooks
- `(lisp-interaction-mode-hook org-mode-hook)
- '(lambda () (linkd-mode -1)))
+;; NOTE: Manually start it is better, or it would cause error when
+;; the first time of `xy/build-emacs' is called.
+;; (am-add-hooks
+;;  `(lisp-mode-hook emacs-lisp-mode-hook
+;;                   c-common-mode-hook
+;;                   sh-mode-hook matlab-mode-hook
+;;                   vhdl-mode-hook verilog-mode-hook
+;;                   ;; org-mode-hook ;; NOTE: C-c ' conflicts with linkd
+;;                   LaTeX-mode-hook)
+;;  '(lambda () (linkd-mode 1)))
+;; (am-add-hooks
+;;  `(lisp-interaction-mode-hook org-mode-hook)
+;;  '(lambda () (linkd-mode -1)))
 
 ;;====================================================================
 ;;* ascii

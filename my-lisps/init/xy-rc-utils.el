@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-01 Wed 17:51 by xin on p5q>
+;; Time-stamp: <2012-08-01 Wed 23:47 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1407,6 +1407,7 @@ See `bypass-trash-in-function' for more information."
   ;; (xy/install-lisps (concat my-local-lisp-path "/flim"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/semi"))
   (xy/install-lisps (concat my-local-lisp-path "/cc-mode-5.32.3"))
+  (xy/install-lisps (concat my-local-lisp-path "/command-log-mode"))
   (xy/install-lisps (concat my-local-lisp-path "/dea"))
   (xy/install-lisps (concat my-local-lisp-path "/eim-2.4"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/elib-1.0"))
@@ -1414,6 +1415,8 @@ See `bypass-trash-in-function' for more information."
   (xy/install-lisps (concat my-local-lisp-path "/emacs-w3m/shimbun"))
   (xy/install-lisps (concat my-local-lisp-path "/emacs-w3m"))
   (xy/install-lisps (concat my-local-lisp-path "/eim-2.4"))
+  (xy/install-lisps (concat my-local-lisp-path "/google-weather-el"))
+  (xy/install-lisps (concat my-local-lisp-path "/hideshow-org"))
   (xy/install-lisps (concat my-local-lisp-path "/ibus-el-0.3.2"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
   (xy/install-lisps (concat my-local-lisp-path "/matlab-emacs"))
@@ -1423,13 +1426,8 @@ See `bypass-trash-in-function' for more information."
   (xy/install-lisps (concat my-git-lisp-path "/anything-config"))
   (xy/install-lisps (concat my-git-lisp-path "/anything-config/extensions"))
   (xy/install-lisps (concat my-git-lisp-path "/anything-config/contrib"))
-  (xy/install-lisps (concat my-git-lisp-path "/command-log-mode"))
-  (xy/install-lisps (concat my-git-lisp-path "/hideshow-org"))
   (xy/install-lisps (concat my-git-lisp-path "/o-blog"))
   (xy/install-lisps (concat my-git-lisp-path "/org2blog"))
-  (xy/install-lisps (concat my-git-lisp-path "/google-weather-el"))
-  (xy/install-lisps (concat my-git-lisp-path "/google-maps"))
-  (xy/install-lisps (concat my-git-lisp-path "/org-html5presentation"))
 
   ;; ELPA lisps
   (xy/recompile-dir my-elpa-lisp-path 'with-subdirs 'recursive)
