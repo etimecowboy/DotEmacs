@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-01 Sun 23:37 by xin on XIN-PC>
+;; Time-stamp: <2012-08-02 Thu 02:21 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-tramp.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,7 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;; REF: (@url :file-name "http://nflath.com/2009/08/tramp/" :display "Post")
@@ -46,7 +46,6 @@
     (shell-command (concat "touch " tramp-persistency-file-name)))
   (setq tramp-backup-directory-alist '(("." . "~/.emacs-backup")))
 
-  (message "* ---[ tramp configuration is complete ]---")
-)
+  (message "* ---[ tramp configuration is complete ]---"))
 
 (provide 'xy-rc-tramp)

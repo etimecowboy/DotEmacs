@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-16 Mon 20:18 by xin on p5q>
+;; Time-stamp: <2012-08-02 Thu 01:58 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auctex.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,7 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;; NOTE:

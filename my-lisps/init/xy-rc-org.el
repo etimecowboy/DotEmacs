@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-01 Wed 16:27 by xin on p5q>
+;; Time-stamp: <2012-08-02 Thu 02:15 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -14,7 +14,7 @@
 ;; TODO: Divid org-settings into a few more funtions for org-agenda,
 ;; org-capture and so on.
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;; REF: (@url :file-name "http://www.mfasold.net/blog/2009/02/using-emacs-org-mode-to-draft-papers/" :display "Post")

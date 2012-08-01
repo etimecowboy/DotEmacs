@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-18 Wed 08:12 by xin on p5q>
+;; Time-stamp: <2012-08-02 Thu 02:17 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -12,7 +12,7 @@
 ;;  \____|_| |_| |_|\__,_|\___|___/
 ;;
 ;;--------------------------------------------------------------------
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;;====================================================================

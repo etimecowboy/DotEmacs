@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-01 Sun 23:34 by xin on XIN-PC>
+;; Time-stamp: <2012-08-02 Thu 02:19 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sh.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,7 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;;;###autoload
@@ -22,8 +22,7 @@
   (font-lock-add-keywords
    'sh-mode
    '(("\\<\\(local\\|let\\)\\>" . font-lock-keyword-face)))
-  (message "* ---[ sh-mode configuration is complete ]---")
-)
+  (message "* ---[ sh-mode configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;;   (defun sh-mode-face-settings ()

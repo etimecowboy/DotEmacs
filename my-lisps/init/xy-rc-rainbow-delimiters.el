@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-01 Sun 23:34 by xin on XIN-PC>
+;; Time-stamp: <2012-08-02 Thu 02:17 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-rainbow-delimiters.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,7 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;;;###autoload
@@ -583,7 +583,6 @@
           ("Yellow4" . "#8b8b00")
           ("YellowGreen" . "#9acd32")))
 
-  (message "* ---[ rainbow-delimiters configuration is complete ]---")
-)
+  (message "* ---[ rainbow-delimiters configuration is complete ]---"))
 
 (provide 'xy-rc-rainbow-delimiters)

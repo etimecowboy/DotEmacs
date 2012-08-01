@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 00:14 by xin on p5q>
+;; Time-stamp: <2012-08-02 Thu 01:56 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -13,10 +13,8 @@
 ;;
 ;;--------------------------------------------------------------------
 
-;; Turn on Common Lisp support by loading cl (common lisp) package
-(require 'cl)
-;; `Header' for my Emacs configuration
-(require 'xy-rc-utils)
+(eval-when-compile (require 'cl))
+(require 'xy-rc-utils) ;; `header' for all
 
 ;;====================================================================
 ;;* User information
@@ -543,6 +541,7 @@ Toggle keyboard command logging of whole emacs.
 ;; 设置 sentence-end 可以识别中文断句。
 (setq sentence-end
       "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
+(setq sentence-end-double-space nil)
 
 ;; 支持中文分词的M-f与M-b
 (try-require 'ws)
@@ -602,23 +601,54 @@ Toggle keyboard command logging of whole emacs.
 ;; Use scalable fonts
 (setq scalable-fonts-allowed t)
 
-;;*** Default font, using hybird font `yahei_mono.ttf'
+;;*** Default font
+
+;; ;; NOTE: not working well
+;; ;; Use hybird font `yahei_mono.ttf'
 ;; (set-frame-font "Yahei Mono")
+;; (set-face-attribute 'default nil :font "Yahei Mono 14")
+;; (setq default-frame-list (append '((font . "Yahei Mono 14"))
+;;                                  default-frame-alist))
+
+;; ;; NOTE: not working
+;; ;; REF: (@url :file-name "http://att.newsmth.net/nForum/#!article/Emacs/101697" :display "Fengyuan42@newsmth")
+;; ;; copy from Tux in newsmth.net
+;; ;; http://dto.github.com/notebook/require-cl.html#sec-8
+;; ;; http://stackoverflow.com/questions/5019724/in-emacs-what-does-this-error-mean-warning-cl-package-required-at-runtime
+;; (let ((fonts
+;;        (ecase system-type
+;;          (gnu/linux '("DejaVu Sans Mono" "vera Sans YuanTi Mono" 15)))))
+;;   (set-face-attribute 'default nil :font
+;;                       (format "%s:pixelsize=%d" (car fonts) (caddr fonts)))
+;;   (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;     (set-fontset-font (frame-parameter nil 'font) charset
+;;                       (font-spec :family (cadr fonts) :size nil))))
+
+;; ;; NOTE: not working well
+;; ;; REF: (@url :file-name "http://att.newsmth.net/nForum/#!article/Emacs/101601" :display "icejill@newsmth")
+;; ;; Chinese Font
+;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;   (set-fontset-font (frame-parameter nil 'font)
+;;                     charset
+;;                     (font-spec :family "Microsoft Yahei")))
 
 ;;*** Emacs auto font selection for different OS
 ;; REF: (@url :file-name "http://emacser.com/torture-emacs.htm" :display "emacser")
 (xy/set-font-write-big)
+
 ;; (am-add-hooks
 ;;  `(lisp-mode-hook emacs-lisp-mode-hook cc-mode-hook c-mode-hook
 ;;    c++-mode-hook sh-mode-hook vhdl-mode-hook verilog-mode-hook
 ;;    matlab-mode-hook)
 ;;  'xy/set-font-prog)
+
 ;; (am-add-hooks
 ;;  `(LaTeX-mode-hook latex-mode-hook tex-mode-hook
 ;;    muse-mode-hook w3m-mode-hook Info-mode-hook
 ;;    ;; org-mode-hook ;; NOTE: not to bother me when capturing notes
 ;;    gnus-startup-hook mew-summary-mode-hook)
 ;;  'xy/set-font-write)
+
 (global-set-key (kbd "C-x F d") 'xy/set-font-default)
 (global-set-key (kbd "C-x F w") 'xy/set-font-write)
 (global-set-key (kbd "C-x F m") 'xy/set-font-write-2)

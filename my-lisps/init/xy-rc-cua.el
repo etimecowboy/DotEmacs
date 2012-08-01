@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-01 Sun 23:26 by xin on XIN-PC>
+;; Time-stamp: <2012-08-02 Thu 02:04 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-cua.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,7 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;;;###autoload
@@ -55,7 +55,6 @@
 ;;      ("<left>"  cua-resize-rectangle-left)
 ;;      ("<down"   cua-resize-rectangle-down)
 ;;      ("<up>"    cua-resize-rectangle-up)))
-  (message "* ---[ cua configuration is complete ]---")
-)
+  (message "* ---[ cua configuration is complete ]---"))
 
 (provide 'xy-rc-cua)

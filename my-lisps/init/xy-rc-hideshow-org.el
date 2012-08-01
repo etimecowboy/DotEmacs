@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-27 Fri 15:03 by xin on XIN-PC>
+;; Time-stamp: <2012-08-02 Thu 02:09 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-hideshow-org.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,7 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;;;###autoload

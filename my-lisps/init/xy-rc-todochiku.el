@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-01 Sun 23:36 by xin on XIN-PC>
+;; Time-stamp: <2012-08-02 Thu 02:21 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-todochiku.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,7 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;;;###autoload
@@ -33,7 +33,6 @@
   (setq-default todochiku-icons-directory
         (concat my-local-image-path "/todochiku"))
   (setq todochiku-timeout 15)
-  (message "* ---[ todochiku configuration is complete ]---")
-)
+  (message "* ---[ todochiku configuration is complete ]---"))
 
 (provide 'xy-rc-todochiku)

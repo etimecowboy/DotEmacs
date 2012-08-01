@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-27 Fri 15:32 by xin on p5q>
+;; Time-stamp: <2012-08-02 Thu 02:12 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-isearch.el'
 ;; Author:       Xin Yang
@@ -15,7 +15,7 @@
 ;;       in the current file or directory
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;; 在C-s进入incremental search的时候,按M-i,替换当前查找内容

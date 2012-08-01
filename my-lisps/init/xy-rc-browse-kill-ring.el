@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-01 Sun 23:25 by xin on XIN-PC>
+;; Time-stamp: <2012-08-02 Thu 02:02 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-browse-kill-ring.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,7 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;; browse-kill-ring navigation have bug when linum-mode is on
@@ -55,8 +55,7 @@
 
   (def-without-linum-mode "browse-kill-ring-forward")
   (def-without-linum-mode "browse-kill-ring-previous")
-  (message "* ---[ browse-kill-ring configuration is complete ]---")
-)
+  (message "* ---[ browse-kill-ring configuration is complete ]---"))
 
 ;;;###autoload
 (defun browse-kill-ring-face-settings ()

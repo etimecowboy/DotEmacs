@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp:<2011-12-06 Tue 08:07 xin on P6T-WIN7>
+;; Time-stamp: <2012-08-02 Thu 02:25 by xin on p5q>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -14,7 +14,7 @@
 
 ;;; Code:
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 
 ;;====================================================================
 ;;* 小强的“折腾Emacs“中的函数

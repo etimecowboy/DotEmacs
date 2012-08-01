@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-01 Sun 23:38 by xin on XIN-PC>
+;; Time-stamp: <2012-08-02 Thu 02:24 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-xcscope.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,7 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;; Fix the bug of `cscope-bury-buffer'
@@ -53,7 +53,6 @@
    (setq cscope-indexing-script
          "cscope-indexer.bat"))
   ;; (define-key cscope-list-entry-mode-map (kbd "q") 'xy/cscope-quit)
-  (message "* ---[ xcscope configuration is complete ]---")
-)
+  (message "* ---[ xcscope configuration is complete ]---"))
 
 (provide 'xy-rc-xcscope)

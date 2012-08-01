@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-01 Sun 23:26 by xin on XIN-PC>
+;; Time-stamp: <2012-08-02 Thu 02:03 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-company.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,7 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;;;###autoload
@@ -25,7 +25,6 @@
   (setq company-begin-commands '(self-insert-command))
   (define-key company-mode-map
     (kbd "M-RET") 'company-expand-top)
-  (message "* ---[ company configuration is complete ]---")
-)
+  (message "* ---[ company configuration is complete ]---"))
 
 (provide 'xy-rc-company)

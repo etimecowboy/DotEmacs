@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-30 Mon 19:54 by xin on XIN-PC>
+;; Time-stamp: <2012-08-02 Thu 02:16 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,7 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;; (defvar package-filter-function nil
@@ -128,6 +128,7 @@
   (require-package 'gist)
   (require-package 'git-blame)
   (require-package 'graphviz-dot-mode)
+  (require-package 'google-maps)
   (require-package 'highlight-parentheses)
   (require-package 'highlight-symbol)
   (require-package 'htmlize)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-01 Wed 23:47 by xin on p5q>
+;; Time-stamp: <2012-08-02 Thu 02:22 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,8 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
+
 ;; REF: (@url :file-name "http://emacser.com/eval-after-load.htm" :display "emacser")
 ;; 利用`eval-after-load'加快启动速度的库，避免不必要的elisp包的加载
 ;; (require 'eval-after-load)
@@ -1416,7 +1417,7 @@ See `bypass-trash-in-function' for more information."
   (xy/install-lisps (concat my-local-lisp-path "/emacs-w3m"))
   (xy/install-lisps (concat my-local-lisp-path "/eim-2.4"))
   (xy/install-lisps (concat my-local-lisp-path "/google-weather-el"))
-  (xy/install-lisps (concat my-local-lisp-path "/hideshow-org"))
+  ;; (xy/install-lisps (concat my-local-lisp-path "/hideshow-org")) ;;BUG: strange errors
   (xy/install-lisps (concat my-local-lisp-path "/ibus-el-0.3.2"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
   (xy/install-lisps (concat my-local-lisp-path "/matlab-emacs"))

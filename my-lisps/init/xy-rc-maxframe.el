@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-01 Sun 23:32 by xin on XIN-PC>
+;; Time-stamp: <2012-08-02 Thu 02:13 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-maxframe.el'
 ;; Author:       Xin Yang
@@ -13,15 +13,14 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;;;###autoload
 (defun maxframe-settings ()
   "Settings of `maxframe.el'."
   (UKDesktop
-   (setq mf-max-width 1280)  ;; Pixel width of main monitor
-   )
+   (setq mf-max-width 1280))  ;; Pixel width of main monitor
   (message "* ---[ maxframe configuration is complete ]---"))
 
 (provide 'xy-rc-maxframe)

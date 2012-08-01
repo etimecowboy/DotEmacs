@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-01 Sun 23:27 by xin on XIN-PC>
+;; Time-stamp: <2012-08-02 Thu 02:06 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-eclim.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,7 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 
@@ -21,7 +21,6 @@
 (defun eclim-settings ()
   "Settings for `eclim'."
   (setq eclim-auto-save t)
-  (message "* ---[ eclim configuration is complete ]---")
-)
+  (message "* ---[ eclim configuration is complete ]---"))
 
 (provide 'xy-rc-eclim)

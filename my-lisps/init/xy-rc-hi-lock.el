@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-07-01 Sun 23:29 by xin on XIN-PC>
+;; Time-stamp: <2012-08-02 Thu 02:10 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-hi-lock.el'
 ;; Author:       Xin Yang
@@ -13,7 +13,7 @@
 ;;
 ;;--------------------------------------------------------------------
 
-(require 'cl)
+(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;; Show all the hi-lock-ed lines
@@ -68,8 +68,7 @@
     (let ((font-lock-fontified nil))
       ad-do-it))
 
-  (message "* ---[ hi-lock configuration is complete ]---")
-)
+  (message "* ---[ hi-lock configuration is complete ]---"))
 
 
 
