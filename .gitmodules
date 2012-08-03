@@ -7,3 +7,6 @@
 [submodule "git-lisps/org2blog"]
 	path = git-lisps/org2blog
 	url = https://github.com/punchagan/org2blog.git
+[submodule "emacswiki"]
+	path = emacswiki
+	url = git@github.com:etimecowboy/emacswiki.git
