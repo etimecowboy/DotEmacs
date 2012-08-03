@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:18 by xin on p5q>
+;; Time-stamp: <2012-08-02 Thu 03:54 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -134,7 +134,7 @@
 ;;  M-x local-set-key RET C-z self-insert-command
 ;; And if you want to background Emacs, just go to a different buffer.
 ;; ‘C-q C-z’ doesn’t work? - No, but C-c C-z should.
-(global-set-key (kbd "<f9> s") 'shell)
+(global-set-key (kbd "<f9> s") 'ansi-shell)
 (global-set-key (kbd "<f9> e") 'eshell)
 
 ;;====================================================================

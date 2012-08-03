@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 01:56 by xin on p5q>
+;; Time-stamp: <2012-08-03 Fri 09:43 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -95,17 +95,20 @@
 ;;====================================================================
 ;;* Search pathes
 
-;; Load pathes
+;; load-path
 ;; NOTE: add all = very slow
 (fni/add-to-load-path my-emacswiki-lisp-path)
 (fni/add-to-load-path my-local-lisp-path 'with-subdirs 'recursive)
 (fni/add-to-load-path my-git-lisp-path 'with-subdirs 'recursive)
 (fni/add-to-load-path my-own-lisp-path 'with-subdirs 'recursive)
+(delete-dups load-path)
 
-;; Image (icon) files
+;; image-path
 (fni/add-to-image-load-path my-local-image-path
                             'with-subdirs 'recursive)
-;; Exec binaries
+(delete-dups image-load-path)
+
+;; exec-path
 (add-to-list 'exec-path (expand-file-name my-local-exec-path))
 (Windows
  (add-to-list 'exec-path (expand-file-name
@@ -120,6 +123,7 @@
 (GNULinux
   (add-to-list 'exec-path (expand-file-name
                            (concat my-local-exec-path "/lin64"))))
+(delete-dups exec-path)
 
 ;; Info files
 ;; NOTE: auto-customised by setting `Info-additional-directory-list'
@@ -128,6 +132,7 @@
 (add-to-list 'Info-default-directory-list my-local-info-path)
 ;; Man files
 ;; NOTE: additional manual(man) pathes are added in `woman-settings'
+(delete-dups Info-default-directory-list)
 
 ;;====================================================================
 ;;* Install additional lisp packages
@@ -220,7 +225,7 @@
 
 ;;*** mailcrypt
 ;; ;; REF: (@url :file-name "http://mailcrypt.sourceforge.net/" :display "Source")
-;; (xy/load-autoloads (concat my-local-lisp-path "/mailcrypt-3.5.8"))
+(xy/load-autoloads (concat my-local-lisp-path "/mailcrypt-3.5.8"))
 
 ;;*** matlab-emacs
 ;; REF: (@url :file-name "http://matlab-emacs.sourceforge.net/" :display "CVS Source")
@@ -232,7 +237,9 @@
 
 ;;*** org-html5presentation (Inactive git source. Many forks avaliable for tests)
 ;; HTML5 Presentation export for Org-mode
-;; REF: (@url :file-name "https://gist.github.com/509761" :display "Git Source")
+;; REF: (@url :file-name "https://gist.github.com/509761" :display "kinjo's original Git Source")
+;;      (@url :file-name "https://gist.github.com/2706322" :display "exaos's github fork (using)")
+(xy/load-autoloads (concat my-local-lisp-path "/org-html5presentation"))
 
 ;;---------------------------------------------------------------------
 ;;** Git submodules
@@ -745,7 +752,7 @@ Toggle keyboard command logging of whole emacs.
 ;;====================================================================
 ;;* Emacs server
 
-;; Emacs-21 以前的版本要用 gnuserv
+;; Emacs-21 和以前的版本要用 gnuserv
 ;; (if is-before-emacs-21
 ;;     (progn
 ;;       ;; gnuserv
@@ -759,7 +766,8 @@ Toggle keyboard command logging of whole emacs.
 ;;--------------------------------------------------------------------
 ;; Emacs 22 or newer
 (eval-after-load "server" '(server-settings))
-(server-start-if-not-exists)
+;; (server-start-if-not-exists) ;; BUG: cannot connect to server.
+(server-start)
 
 ;;--------------------------------------------------------------------
 ;; Emacs 23.2 以后还提供了 `Emacs --daemon' 模式，加快启动。

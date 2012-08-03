@@ -38,6 +38,9 @@
 (eval-when-compile
   (require 'cl))
 
+;; HACK: function `find-if' is from `cl' package
+(require 'cl)
+
 (defgroup eal nil
   "Package use `eval-after-load' technique."
   :prefix "eal-")

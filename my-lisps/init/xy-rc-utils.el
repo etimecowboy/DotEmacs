@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:22 by xin on p5q>
+;; Time-stamp: <2012-08-03 Fri 09:33 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -226,6 +226,22 @@ argument is not nil."
                                       'with-subdirs 'recursive)
               (fni/add-to-load-path dir-or-file)))
           (setq files (cdr files)))))))
+
+;; TODO: try to wirte a new add-to-load-path function
+;; REF: emacs@newsmth by SeaCat
+;; 最好在.emacs开头用个递归的命令，每次启动都把~/.emacs.d目录下的
+;; 所有子目录都加入到load-path里去，这样就比较方便以后安装扩展包了。
+;; 只要丢到~/.emacs.d里，然后(require ....)一下就OK了，
+;; 也不用操心那些load-path的事情了。
+;; 这个命令是从版上copy来的，我自己加了一句删除重复的load-path。
+;; 一并贴上来吧。
+;; (let* ((dir (expand-file-name "~/.emacs.d/my-lisps"))
+;;        (default-directory dir))
+;;   (when (file-directory-p dir)
+;;     (add-to-list 'load-path dir)
+;;     (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+;;         (normal-top-level-add-subdirs-to-load-path)))
+;;   (delete-dups load-path))
 
 ;;--------------------------------------------------------------------
 ;;;###autoload
@@ -1419,9 +1435,10 @@ See `bypass-trash-in-function' for more information."
   (xy/install-lisps (concat my-local-lisp-path "/google-weather-el"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/hideshow-org")) ;;BUG: strange errors
   (xy/install-lisps (concat my-local-lisp-path "/ibus-el-0.3.2"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
+  (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
   (xy/install-lisps (concat my-local-lisp-path "/matlab-emacs"))
   (xy/install-lisps (concat my-local-lisp-path "/mew-6.5"))
+  (xy/install-lisps (concat my-local-lisp-path "/org-html5presentation"))
 
   ;; git submodules
   (xy/install-lisps (concat my-git-lisp-path "/anything-config"))
