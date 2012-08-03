@@ -10,3 +10,9 @@
 [submodule "emacswiki"]
 	path = emacswiki
 	url = git@github.com:etimecowboy/emacswiki.git
+[submodule "elpa"]
+	path = elpa
+	url = git@github.com:etimecowboy/elpa.git
+[submodule "lisps"]
+	path = lisps
+	url = git@github.com:etimecowboy/lisps.git
