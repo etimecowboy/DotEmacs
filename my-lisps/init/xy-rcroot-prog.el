@@ -68,8 +68,7 @@
 ;; An extension and replacement to the packages `paren.el' and
 ;; `stig-paren.el' for Emacs
 (eval-after-load "mic-paren" '(mic-paren-settings))
-(require 'mic-paren)
-(paren-activate)
+(when (try-require 'mic-paren) (paren-activate))
 
 ;;--------------------------------------------------------------------
 ;;** rainbow-delimiters
