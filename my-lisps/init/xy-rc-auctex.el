@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 01:58 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:08 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auctex.el'
 ;; Author:       Xin Yang
@@ -54,8 +54,8 @@
     candidate))
 
 ;;;###autoload
-(defun auctex-settings ()
-  "Settings of `auctex'."
+(defun auctex-postload ()
+  "Settings of `auctex' after it's been loaded."
 
   (require 'tex-site)
   (require 'font-latex)
@@ -232,11 +232,11 @@
           LaTeX-section-section
           LaTeX-section-label))
 
-  (message "* ---[ auctex configuration is complete ]---"))
+  (message "* ---[ auctex post-load configuration is complete ]---"))
 
 ;;;###autoload
-(defun preview-latex-settings ()
-  "Settings of `preview-latex'."
+(defun preview-latex-postload ()
+  "Settings of `preview-latex' after it's been loaded."
   (require 'preview)
   ;; preview-latex, preview latex output in Emacs
   (LaTeX-preview-setup)
@@ -246,6 +246,6 @@
         preview-transparent-color "white")
         ;; preview-fast-dvips-command "pdftops -origpagesizes %s.pdf %m/preview.ps")
 
-  (message "* ---[ preview-latex configuration is complete ]---"))
+  (message "* ---[ preview-latex post-load configuration is complete ]---"))
 
 (provide 'xy-rc-auctex)

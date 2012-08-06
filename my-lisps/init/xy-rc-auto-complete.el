@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 01:58 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:09 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auto-complete.el'
 ;; Author:       Xin Yang
@@ -28,8 +28,8 @@
   (global-auto-complete-mode 1))
 
 ;;;###autoload
-(defun auto-complete-settings ()
-  "Settings for `auto-complete'."
+(defun auto-complete-postload ()
+  "Settings for `auto-complete' after it's been loaded."
 
   (require 'auto-complete-config)
   ;; (require 'auto-complete+)
@@ -170,7 +170,7 @@
 
   (add-hook 'org-mode-hook 'my-ac-org-mode-setup)
 
-  (message "* ---[ auto-complete configuration is complete ]---"))
+  (message "* ---[ auto-complete post-load configuration is complete ]---"))
 
 (provide 'xy-rc-auto-complete)
 

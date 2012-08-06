@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:14 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:29 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-mic-paren.el'
 ;; Author:       Xin Yang
@@ -17,11 +17,11 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun mic-paren-settings ()
-  "Settings for `mic-paren'."
+(defun mic-paren-postload ()
+  "Settings for `mic-paren' after it's been loaded."
   ;; (paren-activate)
   (setq paren-message-show-linenumber 'absolute)
-  (message "* ---[ mic-paren configuration is complete ]---"))
+  (message "* ---[ mic-paren post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun mic-paren-face-settings ()

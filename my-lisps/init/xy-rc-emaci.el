@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:06 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:16 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-emaci.el'
 ;; Author:       Xin Yang
@@ -39,13 +39,13 @@
   (emaci-mode-off))
 
 ;;;###autoload
-(defun emaci-settings ()
-  "settings for `emaci'."
+(defun emaci-postload ()
+  "Settings for `emaci' after it's been loaded."
   (setq emaci-brief-key-defs
         (append emaci-brief-key-defs
                 `(("]" goto-paren))))
   (emaci-bind-brief-keys)
-  (message "* ---[ emaci configuration is complete ]---"))
+  (message "* ---[ emaci post-load configuration is complete ]---"))
 
 (provide 'xy-rc-emaci)
 

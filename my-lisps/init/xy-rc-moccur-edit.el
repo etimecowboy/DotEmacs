@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:14 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 23:46 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-moccur-edit.el'
 ;; Author:       Xin Yang
@@ -17,14 +17,16 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun moccur-edit-settings ()
-  "Settings for `moccur'."
+(defun moccur-edit-postload ()
+  "Settings for `moccur' before it's been loaded."
 
+  ;; NOTE: dangerous!
   ;; Modified buffers are saved automatically.
   ;; Thanks request!
   ;; (defadvice moccur-edit-change-file
   ;;  (after save-after-moccur-edit-buffer activate)
   ;;  (save-buffer))
-  (message "* ---[ moccur-edit configuration is complete ]---"))
+
+  (message "* ---[ moccur-edit post-load configuration is complete ]---"))
 
 (provide 'xy-rc-moccur-edit)

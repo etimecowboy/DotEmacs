@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:18 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 21:06 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -94,7 +94,7 @@
 (eval-after-load "isearch"
   '(progn
      ;; (isearch-face-settings)
-     (isearch-settings)
+     (isearch-postload)
      (eal-define-keys
       'isearch-mode-map
       `(("M-i" isearch-query-replace-current)
@@ -124,7 +124,7 @@
 
 ;;--------------------------------------------------------------------
 ;;** my own replace face
-;; (eval-after-load "replace" '(replace-settings))
+;; (eval-after-load "replace" '(replace-postload))
 
 ;;====================================================================
 ;;* Fast select regions
@@ -166,7 +166,7 @@
 ;;** CUA model settings
 ;; CUA的矩阵区域操作特别方便
 ;; (setq use-cua t)
-;; (eval-after-load "cua-base" '(cua-settings))
+;; (eval-after-load "cua-base" '(cua-postload))
 
 ;;--------------------------------------------------------------------
 
@@ -191,7 +191,7 @@
 (global-set-kbd "C-x A d" 'artist-mode)
 (eval-after-load "artist"
   '(progn
-     (artist-settings)
+     (artist-postload)
      (eal-define-keys
       'artist-mode-map
       `(("C-c l"   artist-select-op-line)

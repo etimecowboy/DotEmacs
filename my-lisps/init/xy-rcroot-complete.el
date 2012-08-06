@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:17 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 21:05 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -33,7 +33,7 @@
 ;; (add-hook 'after-init-hook 'xy/ido-start)
 (eval-after-load 'ido
   '(progn
-     (ido-settings)))
+     (ido-postload)))
      ;; (eal-define-keys
      ;;  'ido-mode-map
      ;;  `(("M-."   ido-next-match-dir)
@@ -55,7 +55,7 @@
 ;; minibuffer中输入部分命令就可以使用补全
 (eval-after-load "icomplete"
   '(progn
-    (icomplete-settings)))
+    (icomplete-postload)))
 ;;     (eal-define-keys
 ;;      'completion-list-mode-map
 ;;      `(("SPC" scroll-up)
@@ -79,7 +79,7 @@
 ;; REF: (@url :file-name "https://github.com/nonsequitur/smex" :display "Source")
 (eval-after-load 'smex
   '(progn
-     (smex-settings)
+     (smex-postload)
      (eal-define-keys-commonly
       global-map
       `(("M-x" smex)
@@ -138,7 +138,7 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 (eval-after-load "hippie-exp"
   '(progn
-     (hippie-expand-settings)))
+     (hippie-expand-postload)))
 
 ;;--------------------------------------------------------------------
 ;;** auto-complete settings
@@ -146,16 +146,16 @@
 ;; 不能正确工作。
 (eval-after-load "auto-complete"
   '(progn
-     (auto-complete-settings)
+     (auto-complete-postload)
      ;; 不让回车的时候执行`ac-complete', 因为当你输入完一个
      ;; 单词的时候, 很有可能补全菜单还在, 这时候你要回车的话,
-     ;; 必须要干掉补全菜单, 很麻烦, 用M-j来执行`ac-complete'
+     ;; 必须要干掉补全菜单, 很麻烦, 用C-j来执行`ac-complete'
      (eal-define-keys
       'ac-complete-mode-map
       `(("<return>"    nil)
-         ("C-n"        ac-next)
-         ("C-p"        ac-previous)
-         ("<C-tab>"    auto-complete)))))
+        ("M-n"        ac-next)
+        ("M-p"        ac-previous)
+        ("C-<tab>"    auto-complete)))))
 ;; (autoload 'auto-complete-mode "auto-complete" "AutoComplete mode" t nil)
 (global-set-key (kbd "<f6> a") 'xy/ac-start)
 
@@ -163,7 +163,7 @@
 ;;** company settings
 ;; It is a modular in-buffer completion mechanism.
 ;; (autoload 'company-mode "company" nil t)
-;; (eval-after-load "company" '(company-settings))
+;; (eval-after-load "company" '(company-postload))
 ;; (am-add-hooks
 ;;  `(c-mode-common-hook lisp-mode-hook emacs-lisp-mode-hook
 ;;    java-mode-hook lisp-interaction-mode-hook sh-mode-hook
@@ -213,7 +213,7 @@
 ;; (autoload 'global-predictive-mode "predictive" nil t)
 ;; (eval-after-load "predictive"
 ;;   '(progn
-;;      (predictive-settings)))
+;;      (predictive-postload)))
 ;; (am-add-hooks
 ;;  `(org-mode-hook latex-mode-hook LaTeX-mode-hook)
 ;;  '(lambda ()
@@ -228,13 +228,13 @@
 ;;  `(("C-c T" my-template-expand-template)
 ;;    ("C-c C-t" template-expand-template)))
 ;; (eval-after-load "template"
-;;   '(progn (template-settings)))
+;;   '(progn (template-postload)))
 ;; (template-initialize)
 
 ;;--------------------------------------------------------------------
 ;;** auto-insert
 ;; 用template, 自动插入一些文件模板
-;; (eval-after-load "autoinsert" '(auto-insert-settings))
+;; (eval-after-load "autoinsert" '(auto-insert-postload))
 ;; (auto-insert-mode 1)
 
 ;;--------------------------------------------------------------------
@@ -242,7 +242,7 @@
 (autoload 'yas/minor-mode "yasnippet" nil t)
 (eval-after-load "yasnippet"
   '(progn
-     (yasnippet-settings)
+     (yasnippet-postload)
      ;; tab is widely-used by ido/icicles/org/indent/outline/hideshow
      (setq yas/trigger-key "C-c <tab>")
      (eal-define-keys
@@ -265,7 +265,7 @@
 ;;====================================================================
 ;;* icicles
 ;; System-wide completion
-(eval-after-load "icicles" '(icicles-settings))
+(eval-after-load "icicles" '(icicles-postload))
 ;; (add-hook 'after-init-hook 'icy-mode)
 (global-set-key (kbd "<f6> i") 'xy/icy-start)
 
@@ -274,7 +274,7 @@
 ;; (with icicles?) completion
 (eval-after-load "apropos"
   '(progn
-     ;; (apropos-settings)
+     ;; (apropos-postload)
      (eal-define-keys
       'apropos-mode-map
       `(("u" scroll-down)
@@ -285,7 +285,7 @@
 ;;====================================================================
 ;;* anything
 ;; Quicksilver for Emacs
-(eval-after-load 'anything '(anything-settings))
+(eval-after-load 'anything '(anything-postload))
 (global-set-key (kbd "C-c i") 'xy/my-anything)
 
 (provide 'xy-rcroot-complete)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:12 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:27 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-linkd.el'
 ;; Author:       Xin Yang
@@ -17,12 +17,12 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun linkd-settings ()
-  "settings for `linkd'."
+(defun linkd-postload ()
+  "Settings for `linkd' after it's been loaded."
   (setq linkd-use-icons t)
   (setq linkd-icons-directory
     (concat my-local-image-path "/linkd"))
-  (message "* ---[ linkd configuration is complete ]---"))
+  (message "* ---[ linkd post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun linkd-face-settings ()

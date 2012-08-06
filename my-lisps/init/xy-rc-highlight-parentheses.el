@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:09 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:21 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-highlight-parentheses.el'
 ;; Author:       Xin Yang
@@ -17,11 +17,11 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun highlight-parentheses-settings ()
-  "Settings for `highlight-parentheses'."
+(defun highlight-parentheses-postload ()
+  "Settings for `highlight-parentheses' after it's been loaded."
   ;;Test: (((((((((((((())))))))))))))
   (setq hl-paren-colors '("red" "magenta" "orange" "yellow" "green"
                           "cyan" "blue"))
-  (message "* ---[ highlight-parentheses configuration is complete ]---"))
+  (message "* ---[ highlight-parentheses post-load configuration is complete ]---"))
 
 (provide 'xy-rc-highlight-parentheses)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 01:59 by xin on p5q>
+;; Time-stamp: <2012-08-06 Mon 09:19 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auto-install.el'
 ;; Author:       Xin Yang
@@ -17,11 +17,13 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun auto-install-settings ()
-  "Settings of `auto-install.el'."
+(defun auto-install-postload ()
+  "Settings of `auto-install.el' after it's been loaded."
+
   (setq auto-install-save-confirm nil)
   (setq auto-install-directory my-emacswiki-lisp-path)
   ;; (auto-install-update-emacswiki-package-name t)
-  (message "* ---[ auto-install configuration is complete ]---"))
+
+  (message "* ---[ auto-install post-load configuration is complete ]---"))
 
 (provide 'xy-rc-auto-install)

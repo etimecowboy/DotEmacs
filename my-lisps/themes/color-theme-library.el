@@ -30,6 +30,7 @@
 (eval-when-compile
   (require 'color-theme))
 
+;;;###autoload
 (defun color-theme-gnome ()
   "Wheat on darkslategrey scheme.
 From one version of Emacs in RH6 and Gnome, modified by Jonadab."
@@ -51,6 +52,7 @@ From one version of Emacs in RH6 and Gnome, modified by Jonadab."
      (font-lock-comment-face ((t (:foreground "Firebrick"))))
      (bold ((t (:bold)))))))
 
+;;;###autoload
 (defun color-theme-blue-gnus ()
   "Color theme for gnus and message faces only.
 This is intended for other color themes to use (eg. `color-theme-gnome2'
@@ -130,6 +132,7 @@ and `color-theme-blue-sea')."
      (message-header-xheader-face ((t (:foreground "MediumAquamarine"))))
      (message-separator-face ((t (:foreground "chocolate")))))))
 
+;;;###autoload
 (defun color-theme-dark-gnus ()
   "Color theme for gnus and message faces only.
 This is intended for other color themes to use
@@ -209,6 +212,7 @@ This is intended for other color themes to use
      (message-header-xheader-face ((t (:foreground "#666"))))
      (message-separator-face ((t (:foreground "#999")))))))
 
+;;;###autoload
 (defun color-theme-blue-eshell ()
   "Color theme for eshell faces only.
 This is intended for other color themes to use (eg. `color-theme-gnome2')."
@@ -232,6 +236,7 @@ This is intended for other color themes to use (eg. `color-theme-gnome2')."
      (eshell-ls-unreadable-face ((t (:foreground "DimGray"))))
      (eshell-prompt-face ((t (:foreground "powder blue")))))))
 
+;;;###autoload
 (defun color-theme-salmon-font-lock ()
   "Color theme for font-lock faces only.
 This is intended for other color themes to use (eg. `color-theme-gnome2')."
@@ -252,6 +257,7 @@ This is intended for other color themes to use (eg. `color-theme-gnome2')."
      (font-lock-variable-name-face ((t (:bold t :foreground "Aquamarine"))))
      (font-lock-warning-face ((t (:bold t :foreground "red")))))))
 
+;;;###autoload
 (defun color-theme-dark-font-lock ()
   "Color theme for font-lock faces only.
 This is intended for other color themes to use (eg. `color-theme-late-night')."
@@ -273,6 +279,7 @@ This is intended for other color themes to use (eg. `color-theme-late-night')."
      (font-lock-variable-name-face ((t (:bold t :foreground "#888"))))
      (font-lock-warning-face ((t (:bold t :foreground "#999")))))))
 
+;;;###autoload
 (defun color-theme-dark-info ()
   "Color theme for info, help and apropos faces.
 This is intended for other color themes to use (eg. `color-theme-late-night')."
@@ -287,6 +294,7 @@ This is intended for other color themes to use (eg. `color-theme-late-night')."
      (info-node ((t (:bold t :foreground "#888"))))
      (info-xref ((t (:bold t :foreground "#777")))))))
 
+;;;###autoload
 (defun color-theme-gnome2 ()
   "Wheat on darkslategrey scheme.
 `color-theme-gnome' started it all.
@@ -386,6 +394,7 @@ emacs*Foreground:		Wheat"
        (woman-unknown-face ((t (:foreground "LightSalmon"))))
        (zmacs-region ((t (:background "dark cyan" :foreground "cyan"))))))))
 
+;;;###autoload
 (defun color-theme-simple-1 ()
   "Black background.
 Doesn't mess with most faces, but does turn on dark background mode."
@@ -404,6 +413,7 @@ Doesn't mess with most faces, but does turn on dark background mode."
      (underline ((t (:underline t))))
      (region ((t (:background "grey")))))))
 
+;;;###autoload
 (defun color-theme-jonadabian ()
   "Dark blue background.
 Supports standard faces, font-lock, highlight-changes, widget and
@@ -436,6 +446,7 @@ custom."
      (custom-documentation-face ((t (:foreground "#10D010"))))
      (custom-set-face ((t (:foreground "#2020D0")))))))
 
+;;;###autoload
 (defun color-theme-ryerson ()
   "White on midnightblue scheme.
 Used at Ryerson Polytechnic University in the Electronic Engineering department."
@@ -454,6 +465,7 @@ Used at Ryerson Polytechnic University in the Electronic Engineering department.
      (underline ((t (:underline t))))
      (region ((t (:foreground "black" :background "slategray3")))))))
 
+;;;###autoload
 (defun color-theme-wheat ()
   "Default colors on a wheat background.
 Calls the standard color theme function `color-theme-standard' in order
@@ -465,6 +477,7 @@ to reset all faces."
      '(color-theme-wheat
        ((background-color . "Wheat"))))))
 
+;;;###autoload
 (defun color-theme-standard ()
   "Emacs default colors.
 If you are missing standard faces in this theme, please notify the maintainer."
@@ -703,6 +716,7 @@ If you are missing standard faces in this theme, please notify the maintainer."
      (widget-inactive-face ((t (:foreground "dim gray"))))
      (widget-single-line-field-face ((t (:background "gray85")))))))
 
+;;;###autoload
 (defun color-theme-fischmeister ()
   "The light colors on a grey blackground.
 Sebastian Fischmeister <sfischme@nexus.lzk.tuwien.ac.at>"
@@ -740,6 +754,7 @@ Sebastian Fischmeister <sfischme@nexus.lzk.tuwien.ac.at>"
      (font-lock-warning-face ((t (:foreground "Orchid" :bold t))))
      (font-lock-reference-face ((t (:foreground "SteelBlue")))))))
 
+;;;###autoload
 (defun color-theme-sitaramv-solaris ()
   "White on a midnight blue background.  Lots of yellow and orange.
 Includes faces for font-lock, widget, custom, speedbar, message, gnus,
@@ -916,6 +931,7 @@ eshell."
      (gnus-cite-face-10 ((t (:foreground "medium purple"))))
      (gnus-cite-face-11 ((t (:foreground "turquoise")))))))
 
+;;;###autoload
 (defun color-theme-sitaramv-nt ()
   "Black foreground on white background.
 Includes faces for font-lock, widget, custom, speedbar."
@@ -980,6 +996,7 @@ Includes faces for font-lock, widget, custom, speedbar."
      (show-paren-match-face ((t (:background "light blue"))))
      (show-paren-mismatch-face ((t (:foreground "white" :background "purple")))))))
 
+;;;###autoload
 (defun color-theme-billw ()
   "Cornsilk on black.
 Includes info, diary, font-lock, eshell, sgml, message, gnus,
@@ -1163,6 +1180,7 @@ widget, custom, latex, ediff."
      (gnus-cite-face-10 ((t (:foreground "medium purple"))))
      (gnus-cite-face-11 ((t (:foreground "turquoise")))))))
 
+;;;###autoload
 (defun color-theme-retro-green (&optional color func)
   "Plain green on black faces for those longing for the good old days."
   (interactive)
@@ -1195,11 +1213,13 @@ widget, custom, latex, ediff."
 		  (cons 'background-mode 'dark)))
       faces))))
 
+;;;###autoload
 (defun color-theme-retro-orange ()
   "Plain orange on black faces for those longing for the good old days."
   (interactive)
   (color-theme-retro-green "orange" 'color-theme-retro-orange))
 
+;;;###autoload
 (defun color-theme-subtle-hacker ()
   "Subtle Hacker Color Theme.
 Based on gnome2, but uses white for important things like comments,
@@ -1264,6 +1284,7 @@ and less of the unreadable tomato.  By Colin Walters <levanti@verbum.org>"
        (message-header-other-face ((t (:foreground "LightSkyBlue3"))))
        (message-header-xheader-face ((t (:foreground "DodgerBlue3"))))))))
 
+;;;###autoload
 (defun color-theme-pok-wog ()
   "Low-contrast White-on-Gray by S.Pokrovsky.
 
@@ -1400,6 +1421,7 @@ Emacs.pane.menubar.foreground: black"
      (widget-inactive-face ((t (:foreground "light gray"))))
      (widget-single-line-field-face ((t (:background "dim gray" :foreground "white")))))))
 
+;;;###autoload
 (defun color-theme-pok-wob ()
   "White-on-Black by S. Pokrovsky.
 
@@ -1552,6 +1574,7 @@ Emacs.pane.menubar.foreground: black"
    (widget-inactive-face ((t (:foreground "light gray"))))
    (widget-single-line-field-face ((t (:background "dim gray" :foreground "white")))))))
 
+;;;###autoload
 (defun color-theme-blue-sea ()
   "The grey on midnight blue theme.
 
@@ -1672,6 +1695,7 @@ emacs*Foreground:		Wheat"
        (woman-unknown-face ((t (:foreground "LightSalmon"))))
        (zmacs-region ((t (:background "DarkSlateBlue"))))))))
 
+;;;###autoload
 (defun color-theme-rotor ()
   "Black on Beige color theme by Jinwei Shen, created 2000-06-08.
 Supports default faces, font-lock, custom, widget, message, man,
@@ -1751,6 +1775,7 @@ show-paren, viper."
     (widget-inactive-face ((t (:foreground "dim gray"))))
     (widget-single-line-field-face ((t (:background "gray85")))))))
 
+;;;###autoload
 (defun color-theme-pierson ()
   "Black on White color theme by Dan L. Pierson, created 2000-06-08.
 Supports default faces, font-lock, show-paren."
@@ -1788,6 +1813,7 @@ Supports default faces, font-lock, show-paren."
     (show-paren-mismatch-face ((t (:background "purple" :foreground "white"))))
     (underline ((t (:underline t)))))))
 
+;;;###autoload
 (defun color-theme-xemacs ()
   "XEmacs standard colors.
 If you are missing standard faces in this theme, please notify the maintainer.
@@ -1880,6 +1906,7 @@ XEmacs color theme."
     (yellow ((t (:foreground "yellow"))))
     (zmacs-region ((t (:background "gray65")))))))
 
+;;;###autoload
 (defun color-theme-jsc-light ()
   "Color theme by John S Cooper, created 2000-06-08."
   (interactive)
@@ -2018,6 +2045,7 @@ XEmacs color theme."
     (widget-inactive-face ((t (:foreground "dim gray"))))
     (widget-single-line-field-face ((t (:background "gray85")))))))
 
+;;;###autoload
 (defun color-theme-jsc-dark ()
   "Color theme by John S Cooper, created 2000-06-11."
   (interactive)
@@ -2189,6 +2217,7 @@ XEmacs color theme."
     (woman-italic-face ((t (:foreground "beige"))))
     (woman-unknown-face ((t (:foreground "LightSalmon")))))))
 
+;;;###autoload
 (defun color-theme-greiner ()
   "Color theme by Kevin Greiner, created 2000-06-13.
 Black on Beige, supports default, font-lock, speedbar, custom, widget
@@ -2257,6 +2286,7 @@ computers which commonly have white window backgrounds."
     (widget-inactive-face ((t (:foreground "dim gray"))))
     (widget-single-line-field-face ((t (:background "gray85")))))))
 
+;;;###autoload
 (defun color-theme-jb-simple ()
   "Color theme by jeff, created 2000-06-14.
 Uses white background and bold for many things"
@@ -2554,6 +2584,7 @@ Uses white background and bold for many things"
     (yellow ((t (nil))))
     (zmacs-region ((t (nil)))))))
 
+;;;###autoload
 (defun color-theme-beige-diff ()
   "Brownish faces for diff and change-log modes.
 This is intended for other color themes to use (eg. `color-theme-gnome2'
@@ -2581,6 +2612,7 @@ and `color-theme-blue-sea')."
      (diff-removed-face ((t (nil))))
      (log-view-message-face ((t (:foreground "lemon chiffon")))))))
 
+;;;###autoload
 (defun color-theme-standard-ediff ()
   "Standard colors for ediff faces.
 This is intended for other color themes to use
@@ -2605,6 +2637,7 @@ This is intended for other color themes to use
      (ediff-odd-diff-face-B ((t (:background "light grey" :foreground "Black"))))
      (ediff-odd-diff-face-C ((t (:background "Grey" :foreground "White")))))))
 
+;;;###autoload
 (defun color-theme-beige-eshell ()
   "Brownish colors for eshell faces only.
 This is intended for other color themes to use (eg. `color-theme-goldenrod')."
@@ -2627,6 +2660,7 @@ This is intended for other color themes to use (eg. `color-theme-goldenrod')."
      (eshell-ls-unreadable-face ((t (:foreground "DimGray"))))
      (eshell-prompt-face ((t (:foreground "lemon chiffon")))))))
 
+;;;###autoload
 (defun color-theme-goldenrod ()
   "Brown color theme.  Very different from the others.
 Supports standard, font-lock and info faces, and it uses
@@ -2681,6 +2715,7 @@ Supports standard, font-lock and info faces, and it uses
        (tool-bar ((t (:background "gray25" :foreground "lemon chiffon" :box (:line-width 1 :style released-button)))))
        (underline ((t (:underline t))))))))
 
+;;;###autoload
 (defun color-theme-ramangalahy ()
   "Color theme by Solofo Ramangalahy, created 2000-10-18.
 Black on light grey, includes faces for vm, ispell, gnus,
@@ -2862,6 +2897,7 @@ dired, display-time, cperl, font-lock, widget, x-symbol."
     (yellow ((t (:foreground "yellow"))))
     (zmacs-region ((t (:background "yellow")))))))
 
+;;;###autoload
 (defun color-theme-raspopovic ()
   "Color theme by Pedja Raspopovic, created 2000-10-19.
 Includes faces for dired, font-lock, info, paren."
@@ -2935,6 +2971,7 @@ Includes faces for dired, font-lock, info, paren."
     (yellow ((t (:background "darkblue" :foreground "yellow"))))
     (zmacs-region ((t (:background "gray" :foreground "black")))))))
 
+;;;###autoload
 (defun color-theme-taylor ()
   "Color theme by Art Taylor, created 2000-10-20.
 Wheat on black.  Includes faces for font-lock, gnus, paren."
@@ -3030,6 +3067,7 @@ Wheat on black.  Includes faces for font-lock, gnus, paren."
     (xref-list-pilot-face ((t (:foreground "navy"))))
     (xref-list-symbol-face ((t (:foreground "navy")))))))
 
+;;;###autoload
 (defun color-theme-marquardt ()
   "Color theme by Colin Marquardt, created 2000-10-25.
 Black on bisque, a light color. Based on some settings from Robin S. Socha.
@@ -3152,6 +3190,7 @@ in your ~/.Xdefaults."
     (yellow ((t (:foreground "yellow"))))
     (zmacs-region ((t (:background "steelblue" :foreground "yellow")))))))
 
+;;;###autoload
 (defun color-theme-parus ()
   "Color theme by Jon K Hellan, created 2000-11-01.
 White on dark blue color theme.
@@ -3298,6 +3337,7 @@ emacs.pane.menubar.background:	midnightblue"
     (widget-inactive-face ((t (:foreground "light gray"))))
     (widget-single-line-field-face ((t (:background "dim gray")))))))
 
+;;;###autoload
 (defun color-theme-high-contrast ()
   "High contrast color theme, maybe for the visually impaired.
 Watch out!  This will set a very large font-size!
@@ -3341,6 +3381,7 @@ fonts."
        (secondary-selection ((t (:background "black" :foreground "white" :bold 1))))
        (underline ((t (:bold t :underline t))))))))
 
+;;;###autoload
 (defun color-theme-infodoc ()
   "Color theme by Frederic Giroud, created 2001-01-18.
 Black on wheat scheme.  Based on infodoc (xemacs variant distribution),
@@ -3438,6 +3479,7 @@ with my favorit fontlock color."
     (yellow ((t (:bold t :foreground "yellow"))))
     (zmacs-region ((t (:bold t :background "lightyellow" :foreground "darkgreen")))))))
 
+;;;###autoload
 (defun color-theme-classic ()
   "Color theme by Frederic Giroud, created 2001-01-18.
 AntiqueWhite on darkslategrey scheme.  Based on Gnome 2, with my favorit
@@ -3540,6 +3582,7 @@ color foreground-color and fontlock color."
        (woman-italic-face ((t (:foreground "beige"))))
        (woman-unknown-face ((t (:foreground "LightSalmon"))))))))
 
+;;;###autoload
 (defun color-theme-scintilla ()
   "Color theme by Gordon Messmer, created 2001-02-07.
 Based on the Scintilla editor.
@@ -3580,6 +3623,7 @@ fonts."
      (widget-field-face ((t (:background "NavyBlue"))))
      (widget-single-line-field-face ((t (:background "RoyalBlue")))))) )
 
+;;;###autoload
 (defun color-theme-gtk-ide ()
   "Color theme by Gordon Messmer, created 2001-02-07.
 Inspired by a GTK IDE whose name I've forgotten.
@@ -3620,6 +3664,7 @@ fonts."
      (widget-field-face ((t (:background "navy"))))
      (widget-single-line-field-face ((t (:background "royalblue")))))) )
 
+;;;###autoload
 (defun color-theme-midnight ()
   "Color theme by Gordon Messmer, created 2001-02-07.
 A color theme inspired by a certain IDE for Windows.  It's all from memory,
@@ -3659,6 +3704,7 @@ fonts."
      (widget-field-face ((t (:background "navy"))))
      (widget-single-line-field-face ((t (:background "royalblue")))))) )
 
+;;;###autoload
 (defun color-theme-jedit-grey ()
   "Color theme by Gordon Messmer, created 2001-02-07.
 Based on a screenshot of jedit.
@@ -3696,6 +3742,7 @@ fonts."
      (widget-field-face ((t (:background "royalblue"))))
      (widget-single-line-field-face ((t (:background "royalblue")))))) )
 
+;;;###autoload
 (defun color-theme-snow ()
   "Color theme by Nicolas Rist, created 2001-03-08.
 Black on gainsboro.  In Emacs, the text background is a shade darker
@@ -3805,6 +3852,7 @@ The color theme includes gnus, message, font-lock, sgml, and speedbar."
     (speedbar-tag-face ((t (:foreground "brown"))))
     (underline ((t (:underline t)))))))
 
+;;;###autoload
 (defun color-theme-montz ()
   "Color theme by Brady Montz, created 2001-03-08.
 Black on Gray.
@@ -3974,6 +4022,7 @@ Includes dired, bbdb, font-lock, gnus, message, viper, and widget."
     (yellow ((t (:foreground "yellow"))))
     (zmacs-region ((t (:background "black" :foreground "white")))))))
 
+;;;###autoload
 (defun color-theme-aalto-light ()
   "Color theme by Jari Aalto, created 2001-03-08.
 Black on light yellow.
@@ -4109,6 +4158,7 @@ Includes cvs, font-lock, gnus, message, sgml, widget"
     (widget-inactive-face ((t (:foreground "dim gray"))))
     (widget-single-line-field-face ((t (:background "gray85")))))))
 
+;;;###autoload
 (defun color-theme-aalto-dark ()
   "Color theme by Jari Aalto, created 2001-03-08.
 White on Deep Sky Blue 3.
@@ -4167,6 +4217,7 @@ Includes font-lock, info, and message."
     (show-paren-mismatch-face ((t (:background "purple" :foreground "white"))))
     (underline ((t (:underline t)))))))
 
+;;;###autoload
 (defun color-theme-blippblopp ()
   "Color theme by Thomas Sicheritz-Ponten, created 2001-03-12.
 Used by researchers at Uppsala University and the Center for Biological
@@ -4241,6 +4292,7 @@ Includes font-lock and message."
     (yellow ((t (:foreground "yellow"))))
     (zmacs-region ((t (:background "gray65")))))))
 
+;;;###autoload
 (defun color-theme-hober (&optional preview)
   "Does all sorts of crazy stuff.
 Originally based on color-theme-standard, so I probably still have some
@@ -4390,6 +4442,7 @@ other ones; I hope you like it."
      (flyspell-incorrect-face ((t (:foreground "OrangeRed" :bold t :underline t))))
      (flyspell-duplicate-face ((t (:foreground "Gold3" :bold t :underline t)))))))
 
+;;;###autoload
 (defun color-theme-bharadwaj ()
   "Color theme by Girish Bharadwaj, created 2001-03-28.
 Black on gainsboro.  Includes BBDB, custom, cperl, cvs, dired, ediff,
@@ -4738,6 +4791,7 @@ shell, speedbar, term, vhdl, viper, widget, woman, xref.  Wow!"
     (yellow ((t (nil))))
     (zmacs-region ((t (:background "royalblue")))))))
 
+;;;###autoload
 (defun color-theme-oswald ()
   "Color theme by Tom Oswald, created 2001-04-18.
 Green on black, includes font-lock, show-paren, and ediff."
@@ -4802,6 +4856,7 @@ Green on black, includes font-lock, show-paren, and ediff."
     (underline ((t (:underline t))))
     (zmacs-region ((t (:background "dim gray" :foreground "aquamarine")))))))
 
+;;;###autoload
 (defun color-theme-salmon-diff ()
   "Salmon and aquamarine faces for diff and change-log modes.
 This is intended for other color themes to use (eg. `color-theme-gnome2')."
@@ -4828,6 +4883,7 @@ This is intended for other color themes to use (eg. `color-theme-gnome2')."
      (diff-removed-face ((t (nil))))
      (log-view-message-face ((t (:foreground "light salmon")))))))
 
+;;;###autoload
 (defun color-theme-robin-hood ()
   "`color-theme-gnome2' with navajo white on green.
 This theme tries to avoid underlined and italic faces, because
@@ -4862,6 +4918,7 @@ uses neep, for example."
        (tool-bar ((t (:background "#304020" :foreground "wheat" :box (:line-width 1 :style released-button)))))
        (tooltip ((t (:background "lemon chiffon" :foreground "black"))))))))
 
+;;;###autoload
 (defun color-theme-snowish ()
   "Color theme by Girish Bharadwaj, created 2001-05-17.
 Dark slate gray on snow2, lots of blue colors.
@@ -5100,6 +5157,7 @@ term, widget."
      (yellow ((t (:foreground "yellow"))))
      (zmacs-region ((t (:background "gray65")))))))
 
+;;;###autoload
 (defun color-theme-dark-laptop ()
   "Color theme by Laurent Michel, created 2001-05-24.
 Includes custom, fl, font-lock, gnus, message, widget."
@@ -5242,6 +5300,7 @@ Includes custom, fl, font-lock, gnus, message, widget."
      (widget-inactive-face ((t (:foreground "light gray"))))
      (widget-single-line-field-face ((t (:background "dim gray")))))))
 
+;;;###autoload
 (defun color-theme-taming-mr-arneson ()
   "Color theme by Erik Arneson, created 2001-06-12.
 Light sky blue on black.  Includes bbdb, cperl, custom, cvs, diff,
@@ -5402,6 +5461,7 @@ message, paren, shell, and widget."
      (yellow ((t (:foreground "yellow"))))
      (zmacs-region ((t (:background "gray65")))))))
 
+;;;###autoload
 (defun color-theme-digital-ofs1 ()
   "Color theme by Gareth Owen, created 2001-06-13.
 This works well on an old, beat-up Digital Unix box with its 256 colour
@@ -5894,6 +5954,7 @@ vhdl, viper, w3m, widget, woman, x-symbol, xref."
     (yellow ((t (:bold t :foreground "yellow"))))
     (zmacs-region ((t (:bold t :background "gray65")))))))
 
+;;;###autoload
 (defun color-theme-mistyday ()
   "Color theme by K.C. Hari Kumar, created 2001-06-13.
 Black on mistyrose.  Includes CUA, calendar, diary, font-latex and
@@ -5963,6 +6024,7 @@ font-lock.  Uses backgrounds on some font-lock faces."
     (underline ((t (:underline t))))
     (zmacs-region ((t (:background "sienna" :foreground "light cyan")))))))
 
+;;;###autoload
 (defun color-theme-marine ()
   "Color theme by Girish Bharadwaj, created 2001-06-22.
 Matches the MS Windows Marine color theme.
@@ -6053,6 +6115,7 @@ Includes custom, font-lock, paren, widget."
      (yellow ((t (:foreground "yellow"))))
      (zmacs-region ((t (:background "blue")))))))
 
+;;;###autoload
 (defun color-theme-blue-erc ()
   "Color theme for erc faces only.
 This is intended for other color themes to use (eg. `color-theme-gnome2')."
@@ -6106,6 +6169,7 @@ This is intended for other color themes to use (eg. `color-theme-gnome2')."
      (bg:erc-color-face14 ((t (nil))))
      (bg:erc-color-face15 ((t (nil)))))))
 
+;;;###autoload
 (defun color-theme-dark-erc ()
   "Color theme for erc faces only.
 This is intended for other color themes to use (eg. `color-theme-late-night')."
@@ -6161,6 +6225,7 @@ This is intended for other color themes to use (eg. `color-theme-late-night')."
      (bg:erc-color-face14 ((t (nil))))
      (bg:erc-color-face15 ((t (nil)))))))
 
+;;;###autoload
 (defun color-theme-subtle-blue ()
   "Color theme by Chris McMahan, created 2001-09-06.
 Light blue background.  Includes bbdb, comint, cperl, custom, cvs,
@@ -6584,6 +6649,7 @@ sgml, speedbar, term, vhdl, viper, vm, widget, woman, xref, xxml."
     (yellow ((t (:foreground "yellow"))))
     (zmacs-region ((t (:background "#4f657d")))))))
 
+;;;###autoload
 (defun color-theme-dark-blue ()
   "Color theme by Chris McMahan, created 2001-09-09.
 Based on `color-theme-subtle-blue' with a slightly darker background."
@@ -6624,6 +6690,7 @@ Based on `color-theme-subtle-blue' with a slightly darker background."
        (xref-keyword-face ((t (:foreground "blue"))))
        (zmacs-region ((t (:background "SlateGray"))))))))
 
+;;;###autoload
 (defun color-theme-jonadabian-slate ()
   "Another slate-and-wheat color theme by Jonadab the Unsightly One.
 Updated 2001-10-12."
@@ -6747,6 +6814,7 @@ Updated 2001-10-12."
      (widget-inactive-face ((t (:foreground "gray"))))
      (widget-single-line-field-face ((t (:background "dim gray")))))))
 
+;;;###autoload
 (defun color-theme-gray1 ()
   "Color theme by Paul Pulli, created 2001-10-19."
   (interactive)
@@ -6814,6 +6882,7 @@ Updated 2001-10-12."
      (yellow ((t (:foreground "yellow3"))))
      (zmacs-region ((t (:background "paleturquoise" :foreground "black")))))))
 
+;;;###autoload
 (defun color-theme-word-perfect ()
   "White on blue background, based on WordPerfect 5.1.
 Color theme by Thomas Gehrlein, created 2001-10-21."
@@ -7010,6 +7079,7 @@ Color theme by Thomas Gehrlein, created 2001-10-21."
 ;; 4. Make the color theme usable on Xemacs (add more faces, resolve
 ;;    :inherit attributes)
 ;;
+;;;###autoload
 (defun color-theme-emacs-21 ()
   "Color theme used by Emacs 21.1.
 Added and adapted for XEmacs by Alex Schroeder.  Adaptation mostly
@@ -7380,6 +7450,7 @@ flyspell texinfo tex-mode tooltip vcursor wid-edit woman term man"
      (woman-unknown-face ((t (:foreground "brown"))))
      (zmacs-region ((t (:background "lightgoldenrod2")))))))
 
+;;;###autoload
 (defun color-theme-jsc-light2 ()
   "Color theme by John S Cooper, created 2001-10-29.
 This builds on `color-theme-jsc-light'."
@@ -7429,6 +7500,7 @@ This builds on `color-theme-jsc-light'."
        (show-paren-mismatch-face ((t (:background "purple" :foreground "white"))))
        (tooltip ((t (:background "lightyellow" :foreground "black"))))))))
 
+;;;###autoload
 (defun color-theme-ld-dark ()
   "Dark Color theme by Linh Dang, created 2001-11-06."
   (interactive)
@@ -7643,6 +7715,7 @@ This builds on `color-theme-jsc-light'."
      (widget-single-line-field-face ((t (:background "dim gray"))))
      (zmacs-region ((t (:background "DarkSlateGray")))))))
 
+;;;###autoload
 (defun color-theme-deep-blue ()
    "Color theme by Tomas Cerha, created 2001-11-13."
    (interactive)
@@ -7755,6 +7828,7 @@ This builds on `color-theme-jsc-light'."
       (widget-inactive-face ((t (:foreground "light gray"))))
       (widget-single-line-field-face ((t (:background "dim gray")))))))
 
+;;;###autoload
 (defun color-theme-kingsajz ()
   "Color theme by Olgierd \"Kingsajz\" Ziolko, created 2001-12-04.
 Another theme with wheat on DarkSlatGrey. Based on Subtle Hacker. 
@@ -8033,6 +8107,7 @@ Hail Eris! All hail Discordia!"
      (woman-unknown-face ((t (:foreground "LightSalmon"))))
      (zmacs-region ((t (:background "dark cyan" :foreground "cyan")))))))
 
+;;;###autoload
 (defun color-theme-comidia ()
   "Color theme by Marcelo Dias de Toledo, created 2001-12-17.
 Steel blue on black."
@@ -8203,6 +8278,7 @@ Steel blue on black."
      (widget-single-line-field-face ((t (:background "dim gray"))))
      (zmacs-region ((t (:background "blue3")))))))
 
+;;;###autoload
 (defun color-theme-katester ()
   "Color theme by walterh@rocketmail.com, created 2001-12-12.
 A pastelly-mac like color-theme."
@@ -8230,6 +8306,7 @@ A pastelly-mac like color-theme."
        (region ((t (:background "lavender" ))))
        (underline ((t (:underline t))))))))
 
+;;;###autoload
 (defun color-theme-arjen ()
   "Color theme by awiersma, created 2001-08-27."
   (interactive)
@@ -8439,6 +8516,7 @@ A pastelly-mac like color-theme."
      (yellow ((t (:foreground "yellow"))))
      (zmacs-region ((t (:background "snow" :foreground "blue")))))))
 
+;;;###autoload
 (defun color-theme-tty-dark ()
   "Color theme by Oivvio Polite, created 2002-02-01.  Good for tty display."
   (interactive)
@@ -8496,6 +8574,7 @@ A pastelly-mac like color-theme."
      (show-paren-mismatch-face ((t (:background "magenta" :foreground "white"))))
      (underline ((t (:underline t)))))))
 
+;;;###autoload
 (defun color-theme-aliceblue ()
   "Color theme by Girish Bharadwaj, created 2002-03-27.
 Includes comint prompt, custom, font-lock, isearch,
@@ -8619,6 +8698,7 @@ jde, senator, speedbar, and widget."
      (widget-single-line-field-face ((t (:background "gray85"))))
      (zmacs-region ((t (:background "lightgoldenrod2")))))))
 
+;;;###autoload
 (defun color-theme-black-on-gray ()
   "Color theme by sbhojwani, created 2002-04-03.
 Includes ecb, font-lock, paren, semantic, and widget faces.
@@ -8721,6 +8801,7 @@ the look of \"angry fruit salad\" when editing."
      (yellow ((t (:foreground "yellow"))))
      (zmacs-region ((t (:background "gray65")))))))
 
+;;;###autoload
 (defun color-theme-dark-blue2 ()
   "Color theme by Chris McMahan, created 2002-04-12.
 Includes antlr, bbdb, change-log, comint, cperl, custom cvs, diff,
@@ -9345,6 +9426,7 @@ a large theme."
      (yellow ((t (:foreground "yellow"))))
      (zmacs-region ((t (:background "Cyan4")))))))
 
+;;;###autoload
 (defun color-theme-blue-mood ()
   "Color theme by Nelson Loyola, created 2002-04-15.
 Includes cperl, custom, font-lock, p4, speedbar, widget."
@@ -9452,6 +9534,7 @@ Includes cperl, custom, font-lock, p4, speedbar, widget."
      (yellow ((t (:foreground "yellow"))))
      (zmacs-region ((t (:background "white" :foreground "midnightblue")))))))
 
+;;;###autoload
 (defun color-theme-euphoria ()
   "Color theme by oGLOWo, created 2000-04-19.
 Green on black theme including font-lock, speedbar, and widget."
@@ -9527,6 +9610,7 @@ Green on black theme including font-lock, speedbar, and widget."
      (widget-single-line-field-face ((t (:background "dim gray"))))
      (zmacs-region ((t (:background "steelblue" :foreground "white")))))))
 
+;;;###autoload
 (defun color-theme-resolve ()
   "Color theme by Damien Elmes, created 2002-04-24.
 A white smoke on blue color theme."
@@ -9687,6 +9771,7 @@ A white smoke on blue color theme."
      (widget-single-line-field-face ((t (:background "gray85"))))
      (zmacs-region ((t (:background "gray91" :foreground "DodgerBlue4")))))))
 
+;;;###autoload
 (defun color-theme-xp ()
   "Color theme by Girish Bharadwaj, created 2002-04-25.
 Includes custom, erc, font-lock, jde, semantic, speedbar, widget."
@@ -9845,6 +9930,7 @@ Includes custom, erc, font-lock, jde, semantic, speedbar, widget."
      (widget-single-line-field-face ((t (:background "gray85"))))
      (zmacs-region ((t (:background "lightgoldenrod2")))))))
 
+;;;###autoload
 (defun color-theme-gray30 ()
   "Color theme by Girish Bharadwaj, created 2002-04-22."
   (interactive)
@@ -10009,6 +10095,7 @@ Includes custom, erc, font-lock, jde, semantic, speedbar, widget."
      (widget-single-line-field-face ((t (:background "dim gray"))))
      (zmacs-region ((t (:background "blue3")))))))
 
+;;;###autoload
 (defun color-theme-dark-green ()
   "Color theme by ces93, created 2002-03-30."
   (interactive)
@@ -10064,6 +10151,7 @@ Includes custom, erc, font-lock, jde, semantic, speedbar, widget."
      (yellow ((t (:foreground "yellow"))))
      (zmacs-region ((t (:background "darkorange" :foreground "black")))))))
 
+;;;###autoload
 (defun color-theme-whateveryouwant ()
   "Color theme by Fabien Penso, created 2002-05-02."
   (interactive)
@@ -10463,6 +10551,7 @@ Includes custom, erc, font-lock, jde, semantic, speedbar, widget."
      (woman-unknown-face ((t (:foreground "brown"))))
      (zmacs-region ((t (:background "lightgoldenrod2")))))))
 
+;;;###autoload
 (defun color-theme-bharadwaj-slate ()
   "Color theme by Girish Bharadwaj, created 2002-05-06."
   (interactive)
@@ -10749,6 +10838,7 @@ Includes custom, erc, font-lock, jde, semantic, speedbar, widget."
      (widget-single-line-field-face ((t (:background "dim gray"))))
      (zmacs-region ((t (:background "dimgray")))))))
 
+;;;###autoload
 (defun color-theme-lethe ()
   "Color theme by Ivica Loncar, created 2002-08-02.
 Some additional X resources as suggested by the author:
@@ -11194,6 +11284,7 @@ Bonus: do not use 3D modeline."
      (yellow ((t (:foreground "yellow"))))
      (zmacs-region ((t (:background "white" :foreground "black")))))))
 
+;;;###autoload
 (defun color-theme-shaman ()
   "Color theme by shaman, created 2002-11-11."
   (interactive)
@@ -11279,6 +11370,7 @@ Bonus: do not use 3D modeline."
      (yellow ((t (:foreground "yellow"))))
      (zmacs-region ((t (:background "gray65")))))))
 
+;;;###autoload
 (defun color-theme-emacs-nw ()
   "Follow emacs21's color-theme, with -nw getting 100% compatibility. 
 
@@ -11655,6 +11747,7 @@ than absolute, viz: call that first and then tweak minor stuff."
      (woman-unknown-face ((t (:foreground "brown"))))
      (zmacs-region ((t (:background "lightgoldenrod2")))))))
 
+;;;###autoload
 (defun color-theme-late-night ()
   "Color theme by Alex Schroeder, created 2003-08-07.
 This theme is for use late at night, with only little light in the room.
@@ -11707,6 +11800,7 @@ its default 80x25 state -- dark grey on black."
        (widget-button-face ((t (:bold t :foreground "#888"))))
        (widget-field-face ((t (:bold t :foreground "#999"))))))))
 
+;;;###autoload
 (defun color-theme-clarity ()
   "White on black color theme by Richard Wellum, created 2003-01-16."
   (interactive)
@@ -11798,6 +11892,7 @@ its default 80x25 state -- dark grey on black."
      (widget-inactive-face ((t (:foreground "light gray"))))
      (widget-single-line-field-face ((t (:background "dim gray")))))))
 
+;;;###autoload
 (defun color-theme-andreas ()
   "Color theme by Andreas Busch, created 2003-02-06."
   (interactive)
@@ -11985,6 +12080,7 @@ its default 80x25 state -- dark grey on black."
      (yellow ((t (:foreground "yellow"))))
      (zmacs-region ((t (:background "gray65" :foreground "yellow")))))))
 
+;;;###autoload
 (defun color-theme-charcoal-black ()
   "Color theme by Lars Chr. Hausmann, created 2003-03-24."
   (interactive)
@@ -12264,6 +12360,7 @@ its default 80x25 state -- dark grey on black."
      (woman-unknown-face ((t (:foreground "LightSalmon"))))
      (zmacs-region ((t (:background "DarkSlateBlue")))))))
 
+;;;###autoload
 (defun color-theme-vim-colors ()
   "Color theme by Michael Soulier, created 2003-03-26."
   (interactive)
@@ -12362,6 +12459,7 @@ its default 80x25 state -- dark grey on black."
      (widget-inactive-face ((t (:foreground "dim gray"))))
      (widget-single-line-field-face ((t (:background "gray85")))))))
 
+;;;###autoload
 (defun color-theme-calm-forest ()
   "Color theme by Artur Hefczyc, created 2003-04-18."
   (interactive)
@@ -12508,6 +12606,7 @@ released-button)))))
      (widget-inactive-face ((t (:foreground "light gray"))))
      (widget-single-line-field-face ((t (:background "dim gray")))))))
 
+;;;###autoload
 (defun color-theme-lawrence ()
   "Color theme by lawrence mitchell <wence@gmx.li>.
 Mainly shades of green.
@@ -12761,6 +12860,7 @@ Contains faces for erc, gnus, most of jde."
      (widget-inactive-face ((t (nil))))
      (widget-single-line-field-face ((t (nil)))))))
 
+;;;###autoload
 (defun color-theme-matrix ()
   "Color theme by walterh@rocketmail.com, created 2003-10-16."
   (interactive)
@@ -13431,6 +13531,7 @@ bold))))
      (yellow ((t (nil))))
      (zmacs-region ((t (nil)))))))
 
+;;;###autoload
 (defun color-theme-feng-shui ()
   "Color theme by walterh@rocketmail.com (www.xanadb.com), created
   2003-10-16. Evolved from color-theme-katester"
@@ -13497,6 +13598,7 @@ bold))))
      (widget-single-line-field-face ((t (:background "gray85")))))))
 
 
+;;;###autoload
 (defun color-theme-renegade ()
  "Renegade BBS styled color theme. Works well in X and terminals.
 Created by Dave Benjamin <ramen@ramenfest.com> Dec 23 2005."

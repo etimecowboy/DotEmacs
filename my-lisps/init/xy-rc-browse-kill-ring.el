@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:02 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:11 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-browse-kill-ring.el'
 ;; Author:       Xin Yang
@@ -28,8 +28,8 @@
        (linum-mode (if displn 1 -1)))))
 
 ;;;###autoload
-(defun browse-kill-ring-settings ()
-  "settings for `browse-kill-ring'."
+(defun browse-kill-ring-postload ()
+  "Settings for `browse-kill-ring' after it's been loaded."
 
   (browse-kill-ring-default-keybindings)
   (setq browse-kill-ring-maximum-display-length nil)
@@ -55,7 +55,7 @@
 
   (def-without-linum-mode "browse-kill-ring-forward")
   (def-without-linum-mode "browse-kill-ring-previous")
-  (message "* ---[ browse-kill-ring configuration is complete ]---"))
+  (message "* ---[ browse-kill-ring post-load configuration is complete ]---"))
 
 ;;;###autoload
 (defun browse-kill-ring-face-settings ()

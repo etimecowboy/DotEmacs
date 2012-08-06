@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:20 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:50 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-time-stamp.el'
 ;; Author:       Xin Yang
@@ -17,14 +17,14 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun time-stamp-settings ()
-   "settings of `time-stamp.el'."
+(defun time-stamp-postload ()
+   "Settings of `time-stamp.el' after it's been loaded."
    ;; Start of a time stamp
    (setq time-stamp-start "Time-stamp:")
    ;; End of a time stamp
    (setq time-stamp-end "\n")
    ;; format of the string inserted by `M-x time-stamp'
    (setq time-stamp-format " <%Y-%02m-%02d %3a %02H:%02M by %u on %s>")
-   (message "* ---[ time-stamp configuration is complete ]---"))
+   (message "* ---[ time-stamp post-load configuration is complete ]---"))
 
 (provide 'xy-rc-time-stamp)

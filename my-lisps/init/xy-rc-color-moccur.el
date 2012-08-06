@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:03 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:13 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-color-moccur.el'
 ;; Author:       Xin Yang
@@ -61,10 +61,10 @@
 ;;   (moccur-prev 1))
 
 ;;;###autoload
-(defun moccur-settings ()
-  "Settings for `moccur'."
+(defun moccur-postload ()
+  "Settings for `moccur' after it's been loaded."
   (try-require 'moccur-edit)
-  (message "* ---[ moccur configuration is complete ]---"))
+  (message "* ---[ moccur post-load configuration is complete ]---"))
 
 (provide 'xy-rc-color-moccur)
 

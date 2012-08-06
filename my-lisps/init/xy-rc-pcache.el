@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:16 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 23:42 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-pcache.el'
 ;; Author:       Xin Yang
@@ -17,12 +17,18 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun pcache-settings ()
-  "Settings of `pcache.el'."
-  (setq pcache-directory
-    (let ((dir (concat my-var-path "/pcache")))
-      (make-directory dir t)
-      dir))
-  (message "* ---[ pcache configuration is complete ]---"))
+(defun pcache-preload ()
+  "Settings of `pcache' before it's been loaded."
+  (setq-default pcache-directory
+                ;; (let ((dir (concat my-var-path "/pcache")))
+                ;;   (make-directory dir t)
+                ;;   dir))
+                (concat my-var-path "/pcache"))
+  (message "* ---[ pcache post-load configuration is complete ]---"))
+
+;;;###autoload
+(defun pcache-postload ()
+  "Settings of `pcache.el' after it's been loaded."
+  (message "* ---[ pcache post-load configuration is complete ]---"))
 
 (provide 'xy-rc-pcache)

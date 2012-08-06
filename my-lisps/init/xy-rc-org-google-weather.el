@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:15 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:29 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org-google-weather.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun org-google-weather-settings ()
-  "Settings of `org-google-weather.el'."
+(defun org-google-weather-postload ()
+  "Settings of `org-google-weather.el' after it's been loaded."
   (setq org-google-weather-cache-time 3600)
   (if window-system
       (setq org-google-weather-display-icon-p t)
@@ -54,6 +54,6 @@
   (setq org-google-weather-icon-directory (concat my-local-image-path
                                                   "/gnome-status"))
   (setq org-google-weather-use-google-icons nil)
-  (message "* ---[ org-google-weather configuration is complete ]---"))
+  (message "* ---[ org-google-weather post-load configuration is complete ]---"))
 
 (provide 'xy-rc-org-google-weather)

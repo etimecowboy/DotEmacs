@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:02 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:12 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-cdlatex.el'
 ;; Author:       Xin Yang
@@ -17,10 +17,10 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun cdlatex-settings ()
-  "Settings of `cdlatex.el'."
+(defun cdlatex-postload ()
+  "Settings of `cdlatex.el' after it's been loaded."
   ;; (setq cdlatex-math-symbol-prefix "`"
         ;; cdlatex-math-modify-prefix "'")
-  (message "* ---[ cdlatex configuration is complete ]---"))
+  (message "* ---[ cdlatex post-load configuration is complete ]---"))
 
 (provide 'xy-rc-cdlatex)

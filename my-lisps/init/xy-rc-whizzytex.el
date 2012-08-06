@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:23 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:55 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-whizzytex.el'
 ;; Author:       Xin Yang
@@ -36,8 +36,8 @@
    (message "Sorry, whizzytex cannot be used in Windows!")))
 
 ;;;###autoload
-(defun whizzytex-settings ()
-  "Settings of `whizzytex.el'."
-  (message "* ---[ whizzytex configuration is complete ]---"))
+(defun whizzytex-postload ()
+  "Settings of `whizzytex.el' after it's been loaded."
+  (message "* ---[ whizzytex post-load configuration is complete ]---"))
 
 (provide 'xy-rc-whizzytex)

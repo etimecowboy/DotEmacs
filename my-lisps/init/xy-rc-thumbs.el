@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:20 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 21:26 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-thumbs.el'
 ;; Author:       Xin Yang
@@ -17,18 +17,26 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun thumbs-settings ()
-  "Settings of `thumbs.el'."
-  (setq-default thumbs-thumbsdir
-                (concat my-var-path "/thumbs"))
+(defun thumbs-preload ()
+  "Settings of `thumbs.el' after it's been loaded."
+
+  (setq-default thumbs-thumbsdir (concat my-var-path "/thumbs")
+                thumbs-temp-dir (concat my-var-path "/thumbs"))
+
+  (message "* ---[ thumbs pre-load configuration is complete ]---"))
+
+;;;###autoload
+(defun thumbs-postload ()
+  "Settings of `thumbs.el' after it's been loaded."
+
   ;; (setq thumbs-conversion-program "convert") ;; use imagemagick
-  (setq thumbs-geometry "196x196")
-  (setq thumbs-per-line 5)
-  (setq thumbs-margin 3)
-  (setq thumbs-thumbsdir-max-size 10000000) ;; 10M limit
-  (setq thumbs-relief 0)
-  (setq thumbs-thumbsdir-auto-clean t)
-  (setq thumbs-temp-dir (concat my-var-path "/thumbs"))
-  (message "* ---[ thumbs configuration is complete ]---"))
+  (setq thumbs-geometry "196x196"
+        thumbs-per-line 5
+        thumbs-margin 3
+        thumbs-thumbsdir-max-size 10000000 ;; 10M limit
+        thumbs-relief 0
+        thumbs-thumbsdir-auto-clean t)
+
+  (message "* ---[ thumbs post-load configuration is complete ]---"))
 
 (provide 'xy-rc-thumbs)

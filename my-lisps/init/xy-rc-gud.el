@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:09 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:20 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-gud.el'
 ;; Author:       Xin Yang
@@ -87,8 +87,8 @@
 ;;                                   (gud-tooltip-mode -1))))))))
 
 ;;;###autoload
-(defun gud-settings ()
-  "Settings of `gud.el'."
+(defun gud-postload ()
+  "Settings of `gud.el' after it's been loaded."
   (require 'gdb-ui nil 'noerror)
   (require 'gdb-mi nil 'noerror)
 
@@ -116,6 +116,6 @@
     (gud-tooltip-mode -1)
     (tool-bar-mode -1))
 
-  (message "* ---[ gud configuration is complete ]---"))
+  (message "* ---[ gud post-load configuration is complete ]---"))
 
 (provide 'xy-rc-gud)

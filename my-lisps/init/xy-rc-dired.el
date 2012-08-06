@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:05 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:15 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired.el'
 ;; Author:       Xin Yang
@@ -66,8 +66,8 @@ will remain open and unsaved."
   (dired-sort-other dired-listing-switches))
 
 ;;;###autoload
-(defun dired-settings ()
-  "Settings for `dired'."
+(defun dired-postload ()
+  "Settings for `dired' after it's been loaded."
   ;; (setq truncate-lines t)
   (setq dired-kept-versions 1)
   (setq dired-recursive-deletes 'top)  ; 询问是否递归的删除目录
@@ -98,7 +98,7 @@ will remain open and unsaved."
   (try-require 'dired-tar) ;; Press `T' in dired mode to compress a
                            ;; dir or decompress a .tar.gz file
   (try-require 'thumb)
-  (message "* ---[ dired configuration is complete ]---"))
+  (message "* ---[ dired post-load configuration is complete ]---"))
 
 (provide 'xy-rc-dired)
 

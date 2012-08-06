@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:00 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:10 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-autopair.el'
 ;; Author:       Xin Yang
@@ -18,9 +18,9 @@
 
 
 ;;;###autoload
-(defun autopair-settings ()
-  "settings for `autopair'."
-  (message "* ---[ autopair configuration is complete ]---"))
+(defun autopair-postload ()
+  "Settings for `autopair' after it's been loaded."
+  (message "* ---[ autopair post-load configuration is complete ]---"))
 
 (provide 'xy-rc-autopair)
 

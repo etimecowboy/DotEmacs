@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:13 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:28 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-matlab.el'
 ;; Author:       Xin Yang
@@ -33,8 +33,8 @@
 ;;   (ecb-layout-switch "left-analyse"))
 
 ;;;###autoload
-(defun matlab-settings ()
-  "Settings of `matlab-emacs'."
+(defun matlab-postload ()
+  "Settings of `matlab-emacs' after it's been loaded."
 
   ;; `matlab-emacs'
   ;; NOTE: matlab-emcs has not been updated for more than 2 years, so
@@ -88,7 +88,7 @@
         matlab-vers-on-startup nil)
   
   (matlab-cedet-setup)
-  (message "* ---[ matlab configuration is complete ]---"))
+  (message "* ---[ matlab post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun matlab-face-settings ()

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:03 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:12 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-cedet.el'
 ;; Author:       Xin Yang
@@ -50,8 +50,8 @@
   )
 
 ;;;###autoload
-(defun cedet-settings ()
-  "Settings for `cedet'."
+(defun cedet-postload ()
+  "Settings for `cedet' after it's been loaded."
 
   ;; semantic
   ;; (semantic-load-enable-minimum-features)
@@ -190,7 +190,7 @@
   ;; cedet之后强行把auto-save-hook清空：
   (setq auto-save-hook nil)
 
-  (message "* ---[ cedet configuration is complete ]---"))
+  (message "* ---[ cedet post-load configuration is complete ]---"))
 
 (provide 'xy-rc-cedet)
 

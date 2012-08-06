@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 01:58 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:08 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-artist.el'
 ;; Author:       Xin Yang
@@ -38,8 +38,8 @@
     (highlight-symbol-mode 1)))
 
 ;;;###autoload
-(defun artist-settings ()
-  "Settings for `artist-mode'."
+(defun artist-postload ()
+  "Settings for `artist-mode' after it's been loaded."
 
   (defvar hl-line-mode-active          nil "`hl-line-mode' active or not.")
   (defvar highlight-symbol-mode-active nil "`hlghlight-symbol-mode' active or not.")
@@ -53,6 +53,6 @@
   (add-hook 'artist-mode-init-hook 'artist-mode-init-hook-settings)
   (add-hook 'artist-mode-exit-hook 'artist-mode-exit-hook-settings)
 
-  (message "* ---[ artist configuration is complete ]---"))
+  (message "* ---[ artist post-load configuration is complete ]---"))
 
 (provide 'xy-rc-artist)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:05 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:15 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-doc-view.el'
 ;; Author:       Xin Yang
@@ -17,10 +17,10 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun doc-view-settings ()
-  "settings for `doc-view'."
+(defun doc-view-postload ()
+  "Settings for `doc-view' after it's been loaded."
   (setq doc-view-conversion-refresh-interval 3)
   (setq doc-view-continuous t)
-  (message "* ---[ doc-view configuration is complete ]---"))
+  (message "* ---[ doc-view post-load configuration is complete ]---"))
 
 (provide 'xy-rc-doc-view)

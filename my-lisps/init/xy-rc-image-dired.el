@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:11 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:25 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-image-dired.el'
 ;; Author:       Xin Yang
@@ -17,9 +17,16 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun image-dired-settings ()
-  "Settings for `dired'."
-  (setq image-dired-dir (concat my-var-path "/image-dired"))
+(defun image-dired-preload ()
+  "Settings for `image-dired' before it's been loadded."
+
+  (setq-default image-dired-dir (concat my-var-path "/image-dired"))
+  (message "* ---[ image-dired pre-load configuration is complete ]---"))
+
+;;;###autoload
+(defun image-dired-postload ()
+  "Settings for `dired' after it's been loaded."
+
   (GNULinux
    (setq image-dired-main-image-directory "~/Pictures"))
   (Windows
@@ -45,6 +52,6 @@
           "xpm"  "XPM"  "pbm"  "PBM"  "pgm" "PGM"
           "ppm"  "PPM"  "pnm"  "PNM"
           "svg"  "SVG"  "eps"  "EPS"))
-  (message "* ---[ image-dired configuration is complete ]---"))
+  (message "* ---[ image-dired post-load configuration is complete ]---"))
 
 (provide 'xy-image-dired)

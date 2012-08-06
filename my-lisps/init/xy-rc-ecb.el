@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:05 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:15 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ecb.el'
 ;; Author:       Xin Yang
@@ -27,8 +27,8 @@
   (ecb-layout-switch "left-analyse"))
 
 ;;;###autoload
-(defun ecb-settings ()
-  "Settings for `ecb'."
+(defun ecb-postload ()
+  "Settings for `ecb' after it's been loaded."
   (setq-default ecb-auto-compatibility-check nil
                 ecb-tip-of-the-day nil
                 ecb-options-version "2.40")
@@ -42,6 +42,6 @@
   (GNULinux
    (setq ecb-source-path
          '("~/work" "~/Dropbox/phdwork")))
-  (message "* ---[ ecb configuration is complete ]---"))
+  (message "* ---[ ecb post-load configuration is complete ]---"))
 
 (provide 'xy-rc-ecb)

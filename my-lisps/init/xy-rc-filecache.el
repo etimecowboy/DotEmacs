@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:07 by xin on p5q>
+;; Time-stamp: <2012-08-06 Mon 10:25 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-filecache.el'
 ;; Author:       Xin Yang
@@ -17,14 +17,16 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun filecache-settings ()
-  "Settings of `filecache.el'."
+(defun filecache-postload ()
+  "Settings of `filecache.el' after it's been loaded."
+
   (file-cache-add-directory-list load-path)
   (file-cache-add-directory-list user-include-dirs)
   ;; (file-cache-add-directory "/usr/include")
   ;; (file-cache-add-directory-recursively "/usr/include/c++")
   ;; (file-cache-add-directory-recursively "/usr/local/include")
   (file-cache-add-directory-recursively my-emacs-path)
-  (message "* ---[ filecache configuration is complete ]---"))
+
+  (message "* ---[ filecache post-load configuration is complete ]---"))
 
 (provide 'xy-rc-filecache)

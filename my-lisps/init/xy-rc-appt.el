@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 01:57 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 19:57 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-appt.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun appt-settings ()
-  "Settings of `appt'."
+(defun appt-postload ()
+  "Settings of `appt' after it's been loaded."
   ;; (add-hook 'diary-hook 'appt-make-list)
   ;; (setq appt-display-format 'window)
   ;; (setq appt-display-diary nil)
@@ -48,6 +48,6 @@
   ;; turn appointment checking on
   (unless (daemonp) (appt-activate 1))
 
-  (message "* ---[ appt configuration is complete ]---"))
+  (message "* ---[ appt post-load configuration is complete ]---"))
 
 (provide 'xy-rc-appt)

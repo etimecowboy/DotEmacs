@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:22 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:54 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-verilog.el'
 ;; Author:       Xin Yang
@@ -18,8 +18,8 @@
 
 
 ;;;###autoload
-(defun verilog-mode-settings ()
-  "settings for `verilog-mode'."
+(defun verilog-mode-postload ()
+  "Settings for `verilog-mode' after it's been loaded."
 
   (setq verilog-mode-hook 'verilog-set-compile-command linum-mode)
 
@@ -47,6 +47,6 @@
         verilog-indent-begin-after-if    t
         verilog-auto-lineup              'all)
 
-  (message "* ---[ verilog-mode configuration is complete ]---"))
+  (message "* ---[ verilog-mode post-load configuration is complete ]---"))
 
 (provide 'xy-rc-verilog)

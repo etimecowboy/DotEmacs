@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:17 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:35 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-rainbow-delimiters.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun rainbow-delimiters-settings ()
-  "Settings for `rainbow-delimiters'."
+(defun rainbow-delimiters-postload ()
+  "Settings for `rainbow-delimiters' after it's been loaded."
   ;; (setq-default frame-background-mode 'dark)
   ;; (custom-set-faces
   ;;  '(rainbow-delimiters-depth-1-face ((((background dark)) (:foreground "grey30"))))
@@ -583,6 +583,6 @@
           ("Yellow4" . "#8b8b00")
           ("YellowGreen" . "#9acd32")))
 
-  (message "* ---[ rainbow-delimiters configuration is complete ]---"))
+  (message "* ---[ rainbow-delimiters post-load configuration is complete ]---"))
 
 (provide 'xy-rc-rainbow-delimiters)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:20 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:44 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-smex.el'
 ;; Author:       Xin Yang
@@ -28,8 +28,8 @@
   (smex-initialize))
 
 ;;;###autoload
-(defun smex-settings ()
-  "Settings of `smex.el'."
+(defun smex-postload ()
+  "Settings of `smex.el' after it's been loaded."
   ;; BUG: cannot automatically create smex-save file in Linux, you
   ;;      have to create it manually.
   ;; (setq-default smex-save-file
@@ -50,6 +50,6 @@
       (smex-update)))
   (add-hook 'after-load-functions 'smex-update-after-load)
 
-  (message "* ---[ smex configuration is complete ]---"))
+  (message "* ---[ smex post-load configuration is complete ]---"))
 
 (provide 'xy-rc-smex)

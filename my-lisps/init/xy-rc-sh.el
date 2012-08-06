@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:19 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:44 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sh.el'
 ;; Author:       Xin Yang
@@ -17,12 +17,12 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun sh-mode-settings ()
-  "settings for `sh-mode'."
+(defun sh-mode-postload ()
+  "Settings for `sh-mode' after it's been loaded."
   (font-lock-add-keywords
    'sh-mode
    '(("\\<\\(local\\|let\\)\\>" . font-lock-keyword-face)))
-  (message "* ---[ sh-mode configuration is complete ]---"))
+  (message "* ---[ sh-mode post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;;   (defun sh-mode-face-settings ()

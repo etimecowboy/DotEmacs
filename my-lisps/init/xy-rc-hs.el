@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:10 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:21 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-hs.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun hs-minor-mode-settings ()
-  "settings of `hs-minor-mode'."
+(defun hs-minor-mode-postload ()
+  "Settings of `hs-minor-mode' after it's been loaded."
 
   (defvar hs-headline-max-len 30 "*Maximum length of `hs-headline' to display.")
   (setq hs-isearch-open t)
@@ -95,7 +95,7 @@
   (when (try-require 'hideshowvis)
     (hideshowvis-minor-mode t))
 
-  (message "* ---[ hideshow configuration is complete ]---"))
+  (message "* ---[ hideshow post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun hs-minor-mode-face-settings ()

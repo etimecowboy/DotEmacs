@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:11 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:22 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-icicles.el'
 ;; Author:       Xin Yang
@@ -28,8 +28,8 @@
   (global-set-key (kbd "M-X") 'icicle-execute-extended-command))
 
 ;;;###autoload
-(defun icicles-settings ()
-  "settings of icicles."
+(defun icicles-postload ()
+  "Settings of icicles after it's been loaded."
   (icicle-ido-like-mode 1)
   (setq icicle-download-dir                         my-local-lisp-path
         icicle-Completions-display-min-input-chars  2
@@ -84,7 +84,7 @@
     )
   (add-hook 'icicle-mode-hook 'icicle-keys t)
 
-  (message "* ---[ icicles configuration is complete ]---"))
+  (message "* ---[ icicles post-load configuration is complete ]---"))
 
 (provide 'xy-rc-icicles)
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:04 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:13 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-diary.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun diary-settings ()
-  "Settings of `diary'."
+(defun diary-postload ()
+  "Settings of `diary' after it's been loaded."
   (setq diary-file (concat my-emacs-path "/diary/diary"))
   ;; create an empty diary file (if it does not exist yet)
   (unless (file-exists-p diary-file)
@@ -45,6 +45,6 @@
   (add-hook 'today-visible-calendar-hook 'calendar-mark-today)
   ;; (add-hook 'diary-hook 'appt-make-list) ;; BUG: emacs24
 
-  (message "* ---[ diary configuration is complete ]---"))
+  (message "* ---[ diary post-load configuration is complete ]---"))
 
 (provide 'xy-rc-diary)

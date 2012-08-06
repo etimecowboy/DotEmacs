@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:04 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:14 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired-details.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun dired-details-settings ()
-  "Settings of `dired-details.el'."
+(defun dired-details-postload ()
+  "Settings of `dired-details.el' after it's been loaded."
   ;; (dired-details-install) ;; called in `dired-details+'
   (setq dired-details-hide-link-targets nil
         dired-details-initially-hide t
@@ -26,6 +26,6 @@
   ;; (require 'dired-details+)
   ;; (setq dired-details-propagate-flag t) ;option added by
   ;;                                       ;`dired-details+'
-  (message "* ---[ dired-details configuration is complete ]---"))
+  (message "* ---[ dired-details post-load configuration is complete ]---"))
 
 (provide 'xy-rc-dired-details)

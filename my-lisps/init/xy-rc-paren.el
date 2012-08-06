@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:16 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:32 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-paren.el'
 ;; Author:       Xin Yang
@@ -17,10 +17,10 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun paren-settings ()
-  "Settings for `paren'."
+(defun paren-postload ()
+  "Settings for `paren' after it's been loaded."
   (setq show-paren-style 'expression)
-  (message "* ---[ paren configuration is complete ]---"))
+  (message "* ---[ paren post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun paren-face-settings ()

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:18 by xin on p5q>
+;; Time-stamp: <2012-08-06 Mon 10:06 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-filemgr.el'
 ;; Author:       Xin Yang
@@ -23,13 +23,13 @@
 
 ;;--------------------------------------------------------------------
 ;;** ibuffer
-(eval-after-load "ibuffer" '(ibuffer-settings))
+(eval-after-load "ibuffer" '(ibuffer-postload))
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;;--------------------------------------------------------------------
 ;;** uniquify
 ;; 可以为重名的 buffer 在前面加上其父目录的名字来让名字区分开来，
-(eval-after-load "uniquify" '(uniquify-settings))
+(eval-after-load "uniquify" '(uniquify-postload))
 (require 'uniquify)
 
 ;;====================================================================
@@ -38,7 +38,7 @@
 ;;** dired
 (eval-after-load "dired"
   '(progn
-     (dired-settings)
+     (dired-postload)
      (eal-define-keys-commonly
       global-map
       `(("C-x d" dired-jump)))
@@ -67,7 +67,7 @@
 
 ;;*** GNU Emacs features for dired
 ;; 对特定文件简略显示
-(eval-after-load "dired-x" '(dired-x-settings))
+(eval-after-load "dired-x" '(dired-x-postload))
 ;; (require 'dired-x)
 
 ;; 以文件形式修改dired buffer,  has been a part of GNU Emacs since 23
@@ -78,11 +78,11 @@
 ;;     M-s f C-s   – `dired-isearch-filenames'
 ;;     M-s f C-M-s – `dired-isearch-filenames-regexp'
 ;;     M-s a C-M-s – `dired-do-isearch-regexp'
-;; (eval-after-load "dired-isearch" '(dired-isearch-settings))
+;; (eval-after-load "dired-isearch" '(dired-isearch-postload))
 
 ;;*** Contrib features for dired
 ;; Use a single frame for visiting a sub-directory
-;; (eval-after-load "dired-single" (dired-single-settings))
+;; (eval-after-load "dired-single" (dired-single-postload))
 ;; `T' 把目录压缩为.tar.gz文件
 ;; (require 'dired-tar)
 
@@ -90,7 +90,7 @@
 ;; NOTE: it need to be patched in order to run on windows
 ;; NOTE: semms not work in Linux, `dired+' is better.
 ;; (GNULinux
-;;  (eval-after-load "openwith" '(openwith-settings))
+;;  (eval-after-load "openwith" '(openwith-postload))
 ;;  (require 'openwith)
 ;;  (add-hook 'dired-mode-hook
 ;;            (function (lambda ()
@@ -98,7 +98,7 @@
 
 ;; dired-details
 ;; 简略文件列表信息, BUG: not working properly
-;; (eval-after-load "dired-details" '(dired-details-settings))
+;; (eval-after-load "dired-details" '(dired-details-postload))
 ;; (require 'dired-details)
 ;; ;; (dired-details-install) ;; called in `dired-details+'
 ;; (setq dired-details-hide-link-targets nil
@@ -109,19 +109,20 @@
 ;;                                         ;`dired-details+'
 
 ;; TODO: do a research and add more configurations.
-(eval-after-load "dired+" '(dired+-settings)) ;; dired大补
+(eval-after-load "dired+" '(dired+-postload)) ;; dired大补
 ;; (require 'dired+)
 ;; (setq diredp-prompt-for-bookmark-prefix-flag nil)
 
 ;; BUG: NOT work
 ;; Pop up a sort menu when press `C-d' or `S-mouse2' in dired mode
-;; (eval-after-load "dired-sort-menu" '(dired-sort-menu-settings))
-
+;; (eval-after-load "dired-sort-menu" '(dired-sort-menu-postload))
 (when window-system
   ;; image-dired
-  (eval-after-load "image-dired" '(image-dired-settings))
+  (image-dired-preload)
+  (eval-after-load "image-dired" '(image-dired-postload))
   ;; thumbs, Thumbnails previewer for images files
-  (eval-after-load "thumbs" '(thumbs-settings)))
+  (thumbs-preload)
+  (eval-after-load "thumbs" '(thumbs-postload)))
 
 ;;--------------------------------------------------------------------
 ;; ** w32-browser
@@ -132,7 +133,7 @@
 ;;** Sunrise commander; file manager
 ;; BUG: NOT work properly with other dired lisps. Removed.
 ;; Check (@url :file-name "http://www.emacswiki.org/emacs/Sunrise_Commander_Tips" :display "emacswiki")
-(eval-after-load "sunrise-commander" '(sunrise-settings))
+(eval-after-load "sunrise-commander" '(sunrise-postload))
 (global-set-key (kbd "C-x J") 'sunrise)
 
 ;;====================================================================
@@ -151,10 +152,10 @@
 
 ;; Autosaved files
 (setq auto-save-default nil)
-;; (setq auto-save-list-file-prefix
-;;       (concat my-var-path "/auto-save-list/auto-saves-"
-;;               user-login-name "@" system-name "@" system-configuration
-;;               "-"))
+(setq-default auto-save-list-file-prefix
+              (concat my-var-path "/auto-save-list/auto-saves-"
+                      user-login-name "@" system-name "@" system-configuration
+                      "-"))
 
 ;;--------------------------------------------------------------------
 ;;** git settings
@@ -162,12 +163,12 @@
 ;;*** git.el
 
 ;;*** egg
-;; (eval-after-load "egg" '(egg-settings))
+;; (eval-after-load "egg" '(egg-postload))
 
 ;;*** magit
 (eval-after-load "magit"
   '(progn
-     (magit-settings)
+     (magit-postload)
      (eal-define-keys-commonly
       magit-mode-map
       `(("M-n"   magit-show-commit-forward)
@@ -179,7 +180,7 @@
 ;;*** diff-git
 (eval-after-load "diff-git"
   '(progn
-     (diff-git-settings)
+     (diff-git-postload)
      (eal-define-keys 'vc-prefix-map
                       `(("[" diff-git-diff-unstaged)
                         ("]" diff-git-diff-staged)))
@@ -189,5 +190,10 @@
      (define-key diff-mode-shared-map "g" 'diff-git-update-current-buffer)))
 (global-set-key (kbd "<f11> u") 'diff-git-diff-unstaged)
 (global-set-key (kbd "<f11> s") 'diff-git-diff-staged)
+
+;;--------------------------------------------------------------------
+;;** diff-hl
+;; Highlight vc diff section of current file
+(when (try-require 'diff-hl) (global-diff-hl-mode))
 
 (provide 'xy-rcroot-filemgr)

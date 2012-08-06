@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 03:54 by xin on XIN-PC>
+;; Time-stamp: <2012-08-05 Sun 21:08 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -38,14 +38,14 @@
 ;;--------------------------------------------------------------------
 ;;** ffap, finding Files and URLs at point
 ;; REF: (@url :file-name "http://www.gnu.org/software/emacs/manual/html_node/emacs/FFAP.html#index-ffap-3860" :display "emacs manual")
-(eval-after-load "ffap" '(ffap-settings))
+(eval-after-load "ffap" '(ffap-postload))
 (ffap-bindings) ;; BUG: conflict with `ido.el' C-x C-f, can be fixed
                 ;;      by (setq ffap-require-prefix t)
-                ;;      (Has been added to `ffap-settings')
+                ;;      (Has been added to `ffap-postload')
 
 ;;--------------------------------------------------------------------
 ;;** linum
-(eval-after-load 'linum '(linum-settings))
+(eval-after-load 'linum '(linum-postload))
 (am-add-hooks
  `(lisp-mode-hook emacs-lisp-mode-hook ;; lisp-interaction-mode-hook
                   sh-mode-hook cperl-mode-hook c-common-mode-hook
@@ -62,16 +62,16 @@
 ;; maintain last change time stamps
 ;; (`Time-stamp:<>' occurring within the first 8 lines)
 ;; in files edited by Emacs
-(eval-after-load "time-stamp" '(time-stamp-settings))
+(eval-after-load "time-stamp" '(time-stamp-postload))
 (add-hook 'write-file-hooks 'time-stamp)
 
 ;;** ispell
 ;; 其他拼写检查的基础
-(eval-after-load "ispell" '(ispell-settings))
+(eval-after-load "ispell" '(ispell-postload))
 
 ;;--------------------------------------------------------------------
 ;;** flyspell
-(eval-after-load 'flyspell '(flyspell-settings))
+(eval-after-load 'flyspell '(flyspell-postload))
 (am-add-hooks
  `(;;text-mode-hook ;; BUG: cause error when start emacs daemon or
                     ;;      emacs24
@@ -108,20 +108,22 @@
 ;; i a    加入周年纪念（anniversary），比如生日等
 ;; d    察看当前日期的diary
 ;; -----------------------------------------------
-(eval-after-load "calendar" '(calendar-settings))
-(eval-after-load "diary-lib" '(diary-settings))
-(eval-after-load "appt" '(appt-settings))
+(eval-after-load "calendar" '(calendar-postload))
+(eval-after-load "diary-lib" '(diary-postload))
+(eval-after-load "appt" '(appt-postload))
+(try-require 'chinese-calendar) ;;中文日历 by wanson@newsmth
 
 ;;--------------------------------------------------------------------
 ;;** tramp
 ;; 以另一用户编辑文件, 或者编辑远程主机文件
-(eval-after-load "tramp" '(tramp-settings))
+(tramp-preload)
+(eval-after-load "tramp" '(tramp-postload))
 (GNULinux
  (global-set-key (kbd "C-c C-R") 'sudo-edit-current-file))
 
 ;;--------------------------------------------------------------------
 ;;** term-mode
-(eval-after-load "term" '(term-settings))
+(eval-after-load "term" '(term-postload))
 
 ;;--------------------------------------------------------------------
 ;;** Shell/eshell-mode
@@ -162,13 +164,13 @@
 ;; Snarl (Win 32, http://www.fullphat.net/) and libnotify (linux/unix).
 ;; It can also do standard messages (in the minibuffer) and pop up a
 ;;tooltip.
-(eval-after-load "todochiku" '(todochiku-settings))
+(eval-after-load "todochiku" '(todochiku-postload))
 
 ;;====================================================================
 ;;* browse-kill-ring
 (eval-after-load "browse-kill-ring"
   '(progn
-     (browse-kill-ring-settings)
+     (browse-kill-ring-postload)
      (browse-kill-ring-face-settings)
      (eal-define-keys
       'browse-kill-ring-mode-map
@@ -213,7 +215,7 @@ from tradition chinese to simple chinese" t)
 ;;====================================================================
 ;;* htmlize
 ;; 把文件或buffer彩色输出成html
-(eval-after-load "htmlize" '(htmlize-settings))
+(eval-after-load "htmlize" '(htmlize-postload))
 
 ;;====================================================================
 ;;* inkd
@@ -222,7 +224,7 @@ from tradition chinese to simple chinese" t)
   "linkd" "Make hypertext with active links in any buffer" t)
 (eval-after-load "linkd"
   '(progn
-     (linkd-settings)
+     (linkd-postload)
      (eal-define-keys
       'linkd-overlay-map
       `(("n"        linkd-next-link)
@@ -272,7 +274,7 @@ from tradition chinese to simple chinese" t)
 (autoload 'multi-term "multi-term" nil t)
 (eval-after-load "multi-term"
   '(progn
-     (multi-term-settings)
+     (multi-term-postload)
      (eal-define-keys-commonly
       global-map
       `(("C-c T n" multi-term-next)
@@ -289,20 +291,20 @@ from tradition chinese to simple chinese" t)
 ;; pop up a window for shell
 (autoload 'shell-pop "shell-pop" "Pop-up a shell" t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-(eval-after-load "shell-pop" '(shell-pop-settings))
+(eval-after-load "shell-pop" '(shell-pop-postload))
 (global-set-key (kbd "<f9> p") 'shell-pop)
 
 (provide 'xy-rcroot-enhance)
 ;;* hanspell
-;; (eval-after-load "rw-hunspell" '(rw-hunspell-settings))
-;; (eval-after-load "rw-ispell" '(rw-ispell-settings))
+;; (eval-after-load "rw-hunspell" '(rw-hunspell-postload))
+;; (eval-after-load "rw-ispell" '(rw-ispell-postload))
 ;; (require 'rw-language-and-country-codes)
 ;; (require 'rw-ispell)
 ;; (Windows
 ;;  (require 'rw-hunspell))
 (Windows
- (eval-after-load "rw-hunspell" '(rw-hunspell-settings))
- (eval-after-load "rw-ispell" '(rw-ispell-settings))
+ (eval-after-load "rw-hunspell" '(rw-hunspell-postload))
+ (eval-after-load "rw-ispell" '(rw-ispell-postload))
  ;; (require 'rw-language-and-country-codes)
  (require 'rw-ispell)
  (require 'rw-hunspell))
@@ -310,4 +312,4 @@ from tradition chinese to simple chinese" t)
 ;;====================================================================
 ;;* wcheck-mode
 ;; TODO: make wcheck-mode working
-;; (eval-after-load "wcheck-mode" '(wcheck-mode-settings))
+;; (eval-after-load "wcheck-mode" '(wcheck-mode-postload))

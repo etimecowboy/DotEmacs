@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:16 by xin on p5q>
+;; Time-stamp: <2012-08-06 Mon 12:09 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -37,8 +37,9 @@
         (require-package package min-version t)))))
 
 ;;;###autoload
-(defun package-settings ()
-  "settings of `package.el'."
+(defun package-postload ()
+  "Settings of `package.el' after it's been loaded."
+
   (setq-default package-enable-at-startup nil) ;; NOTE: t will be slow
   (setq-default package-user-dir my-elpa-lisp-path)
   (setq package-archives
@@ -115,6 +116,7 @@
   (require-package 'ctags)
   (require-package 'desktop)
   (require-package 'dictionary)
+  (require-package 'diff-hl)
   (require-package 'diff-git)
   (require-package 'diminish)
   (require-package 'dired+)
@@ -175,6 +177,6 @@
   (require-package 'xml-rpc)
   (require-package 'yasnippet)
 
-  (message "* ---[ package configuration is complete ]---"))
+  (message "* ---[ package post-load configuration is complete ]---"))
 
 (provide 'xy-rc-package)

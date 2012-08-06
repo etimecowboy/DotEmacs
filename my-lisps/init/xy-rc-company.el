@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:03 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:13 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-company.el'
 ;; Author:       Xin Yang
@@ -17,14 +17,14 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun company-settings ()
-  "Settings of `company'."
+(defun company-postload ()
+  "Settings of `company' after it's been loaded."
 
   (setq company-idle-delay 0.2)
   (setq company-minimum-prefix-length 1)
   (setq company-begin-commands '(self-insert-command))
   (define-key company-mode-map
     (kbd "M-RET") 'company-expand-top)
-  (message "* ---[ company configuration is complete ]---"))
+  (message "* ---[ company post-load configuration is complete ]---"))
 
 (provide 'xy-rc-company)

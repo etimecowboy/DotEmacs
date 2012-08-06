@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:18 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 21:19 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-view.el'
 ;; Author:       Xin Yang
@@ -27,7 +27,7 @@
 ;;** view-mode settings
 (eval-after-load "view"
   '(progn
-     (view-mode-settings)
+     (view-mode-postload)
      ;; (eal-define-keys
      ;;  'view-mode-map
      ;;  `(("U"           View-scroll-page-backward)
@@ -55,7 +55,7 @@
 
 ;;--------------------------------------------------------------------
 ;;** doc-view
-(eval-after-load "doc-view" '(doc-view-settings))
+(eval-after-load "doc-view" '(doc-view-postload))
 
 ;;--------------------------------------------------------------------
 ;;** log-view
@@ -66,7 +66,7 @@
 ;; REF: (@url :file-name "http://emacser.com/emaci.htm" :display "emacser")
 (eval-after-load "emaci"
   '(progn
-     (emaci-settings)
+     (emaci-postload)
      (eal-define-keys
       'emaci-mode-map
       `(("/" describe-symbol-at-point)
@@ -94,7 +94,7 @@
 ;;** diff
 (eval-after-load "diff-mode"
   '(progn
-     (diff-settings)
+     (diff-postload)
      ;; (eal-define-keys
      ;;  'diff-mode-map
      ;;  `(("C-k" diff-hunk-kill)
@@ -113,7 +113,7 @@
 ;; (global-set-key (kbd "<f6> d") 'ediff)
 (eval-after-load "ediff"
   '(progn
-     (ediff-settings)
+     (ediff-postload)
      ;; (defun ediff-keys ()
      ;;   (interactive)
      ;;   "`ediff-mode'的按键设置"
@@ -162,7 +162,7 @@
 ;;      ("N"     select-buffer-forward)
 ;;      ("P"     select-buffer-backward)
 ;;      ("L"     count-brf-lines))))
-;; (eval-after-load "grep" `(grep-settings))
+;; (eval-after-load "grep" `(grep-postload))
 
 ;;--------------------------------------------------------------------
 ;;** full-ack
@@ -187,14 +187,14 @@
 ;;    ("1"   delete-other-windows)
 ;;    ("'"   switch-to-other-buffer)
 ;;    ("Q"   kill-this-buffer)))
-;; (eval-after-load "full-ack" `(full-ack-settings))
+;; (eval-after-load "full-ack" `(full-ack-postload))
 
 ;;--------------------------------------------------------------------
 ;;** color-moccur
 ;; With color-moccur, you can search a regexp in all buffers. And you
 ;; can search files like grep(-find) without grep (and find) command.
 (autoload 'moccur-grep-find "color-moccur" nil t)
-(eval-after-load "color-moccur" '(moccur-settings))
+(eval-after-load "color-moccur" '(moccur-postload))
 (global-set-key (kbd "<f7> g") 'moccurd)
 (global-set-key (kbd "<f7> f") 'moccur-grep-find)
 
@@ -205,7 +205,7 @@
 ;; "C-x C-q".
 ;; Use C-c C-f when finished or C-c C-k to abort or C-c C-r to remove
 ;; the changes in the region.
-(eval-after-load "moccur-edit" '(moccur-edit-settings))
+(eval-after-load "moccur-edit" '(moccur-edit-postload))
 
 ;;--------------------------------------------------------------------
 ;;** ioccur

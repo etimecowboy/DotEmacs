@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-03 Fri 09:33 by xin on XIN-PC>
+;; Time-stamp: <2012-08-06 Mon 11:19 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -801,30 +801,41 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
            "黑体") 20)
     (set-default-font "Monospace 16")))
 
+;; ;;;###autoload
+;; (defun xy/set-font-write-big ()
+;;   "My Emacs font setting for writing articles."
+;;   (interactive)
+;;   (if window-system
+;;       (qiang-set-font
+;;        '("Monaco" "Monospace" "Consolas"
+;;          "Courier" "DejaVu Sans Mono") 16
+;;          '("Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
+;;            "黑体"))
+;;     (set-default-font "Monospace 16")))
+
 ;;--------------------------------------------------------------------
 ;;;###autoload
-(defun xy/set-font-write-1 ()
+(defun xy/set-font-mix ()
   "My Emacs font setting for writing articles."
   (interactive)
   (if window-system
-      (qiang-set-font
-       '("Monofur") ":pixelsize=15"
-         '("Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
-           "黑体") 16)
-    (set-default-font "Monospace 12")))
+      (qiang-set-font '("Monofur") 15 '("STHeiti"))
+    (set-default-font "Monospace 15")))
 
 ;;--------------------------------------------------------------------
 ;; 配合的比较好的字体组合，可以一齐缩放
 ;;;###autoload
-(defun xy/set-font-write-2 ()
+(defun xy/set-font-default-mix ()
   "My Emacs font setting for writing articles."
   (interactive)
   (if window-system
       (progn
+        ;; Setting default Font
+        (set-frame-font "Monofur 14")
         ;; Setting English Font
-        (set-face-attribute
-         'default nil :font "Monofur")
-
+        (set-face-attribute 'default nil :font "Monofur")
+        ;; (setq default-frame-list (append '((font . "Monofur"))
+        ;;                                  default-frame-alist))
         ;; Chinese Font
         (dolist (charset '(kana han symbol cjk-misc bopomofo))
           (set-fontset-font (frame-parameter nil 'font)
@@ -840,7 +851,8 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
   (if window-system
       (progn
         (xy/set-font-write-big)
-        (color-theme-solarized-dark)
+        (when (try-require 'color-theme)
+          (color-theme-solarized-dark))
         (xy/toggle-fullscreen))))
 
 ;;*===================================================================
@@ -1372,13 +1384,12 @@ The process is:
 Improved C-x C-c."
   (interactive)
   (save-some-buffers)
-  (kill-this-buffer)
-  (Windows
-   (server-edit)
-   (when window-system
-     (make-frame-invisible nil t)))
-  (GNULinux
-     (save-buffers-kill-terminal)))
+  ;; (kill-this-buffer)
+  (server-edit)
+  (if window-system
+     (make-frame-invisible nil t)
+    ;; else block (terminal mode and emacs daemon is running)
+    (delete-frame)))
 
 ;;--------------------------------------------------------------------
 ;; NOTE: With this macro, `server-start', `server-force-delete', and
@@ -1438,7 +1449,6 @@ See `bypass-trash-in-function' for more information."
   (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
   (xy/install-lisps (concat my-local-lisp-path "/matlab-emacs"))
   (xy/install-lisps (concat my-local-lisp-path "/mew-6.5"))
-  (xy/install-lisps (concat my-local-lisp-path "/org-html5presentation"))
 
   ;; git submodules
   (xy/install-lisps (concat my-git-lisp-path "/anything-config"))

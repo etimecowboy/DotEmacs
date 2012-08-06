@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-03 Fri 09:43 by xin on XIN-PC>
+;; Time-stamp: <2012-08-05 Sun 23:47 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -69,9 +69,9 @@
 ;;- \"While any text editor can save your files,
 ;;   only Emacs can save your soul.\"
 ;;                                          [Per Abrahamsen]
-;;
+;;==========================================================
+")
 ;;================ 工具还是玩物，这是个问题 ================
-;;
 ;;- Emacs：    “只有你想不到，没有我做不到！”
 ;;- 我：       “太棒了！那就尽量多学一些吧！”
 ;;- Emacs：    “那交出你全部的时间吧！”
@@ -80,8 +80,6 @@
 ;;
 ;; ================ Emacs-lisp code begins =================
 ;;
-")
-
 ;;====================================================================
 ;;* Emacs generated customization
 (fni/add-to-load-path my-var-path)
@@ -131,7 +129,7 @@
 ;; But seems not working
 (add-to-list 'Info-default-directory-list my-local-info-path)
 ;; Man files
-;; NOTE: additional manual(man) pathes are added in `woman-settings'
+;; NOTE: additional manual(man) pathes are added in `woman-postload'
 (delete-dups Info-default-directory-list)
 
 ;;====================================================================
@@ -238,8 +236,6 @@
 ;;*** org-html5presentation (Inactive git source. Many forks avaliable for tests)
 ;; HTML5 Presentation export for Org-mode
 ;; REF: (@url :file-name "https://gist.github.com/509761" :display "kinjo's original Git Source")
-;;      (@url :file-name "https://gist.github.com/2706322" :display "exaos's github fork (using)")
-(xy/load-autoloads (concat my-local-lisp-path "/org-html5presentation"))
 
 ;;---------------------------------------------------------------------
 ;;** Git submodules
@@ -381,7 +377,7 @@
 ;;** Info
 (eval-after-load "info"
   '(progn
-     (info-settings)
+     (info-postload)
      (eal-define-keys
       'Info-mode-map
       `(("j"         next-line)
@@ -415,7 +411,7 @@
 ;;** Man
 (eval-after-load "man"
   '(progn
-     (man-settings)
+     (man-postload)
      (eal-define-keys
       'Man-mode-map
       `(("Q"     Man-kill)
@@ -444,14 +440,14 @@
  `(("C-c /" man-current-word)))
 
 ;;*** woman settings
-(eval-after-load "woman" '(woman-settings))
+(eval-after-load "woman" '(woman-postload))
 (global-set-key (kbd "M-<f1>") 'woman)
 
 ;;--------------------------------------------------------------------
 ;;** help
 (eval-after-load "help-mode"
   '(progn
-     (help-mode-settings)
+     (help-mode-postload)
      (eal-define-keys
       'help-mode-map
       `(("B"   help-go-back)
@@ -609,13 +605,7 @@ Toggle keyboard command logging of whole emacs.
 (setq scalable-fonts-allowed t)
 
 ;;*** Default font
-
-;; ;; NOTE: not working well
-;; ;; Use hybird font `yahei_mono.ttf'
-;; (set-frame-font "Yahei Mono")
-;; (set-face-attribute 'default nil :font "Yahei Mono 14")
-;; (setq default-frame-list (append '((font . "Yahei Mono 14"))
-;;                                  default-frame-alist))
+(xy/set-font-mix)
 
 ;; ;; NOTE: not working
 ;; ;; REF: (@url :file-name "http://att.newsmth.net/nForum/#!article/Emacs/101697" :display "Fengyuan42@newsmth")
@@ -631,17 +621,9 @@ Toggle keyboard command logging of whole emacs.
 ;;     (set-fontset-font (frame-parameter nil 'font) charset
 ;;                       (font-spec :family (cadr fonts) :size nil))))
 
-;; ;; NOTE: not working well
-;; ;; REF: (@url :file-name "http://att.newsmth.net/nForum/#!article/Emacs/101601" :display "icejill@newsmth")
-;; ;; Chinese Font
-;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
-;;   (set-fontset-font (frame-parameter nil 'font)
-;;                     charset
-;;                     (font-spec :family "Microsoft Yahei")))
-
 ;;*** Emacs auto font selection for different OS
 ;; REF: (@url :file-name "http://emacser.com/torture-emacs.htm" :display "emacser")
-(xy/set-font-write-big)
+;; (xy/set-font-write-big)
 
 ;; (am-add-hooks
 ;;  `(lisp-mode-hook emacs-lisp-mode-hook cc-mode-hook c-mode-hook
@@ -658,7 +640,7 @@ Toggle keyboard command logging of whole emacs.
 
 (global-set-key (kbd "C-x F d") 'xy/set-font-default)
 (global-set-key (kbd "C-x F w") 'xy/set-font-write)
-(global-set-key (kbd "C-x F m") 'xy/set-font-write-2)
+(global-set-key (kbd "C-x F m") 'xy/set-font-mix)
 (global-set-key (kbd "C-x F p") 'xy/set-font-prog)
 (global-set-key (kbd "C-x F D") 'xy/set-font-default-big)
 (global-set-key (kbd "C-x F W") 'xy/set-font-write-big)
@@ -699,7 +681,7 @@ Toggle keyboard command logging of whole emacs.
 ;;   誤。比如"碼表"被搞成了"碼錶"。
 (eval-after-load "eim"
   '(progn
-     (eim-settings)
+     (eim-postload)
      (when (require 'eim-extra nil 'noerror)
        (global-set-key ";" 'eim-insert-ascii))))
 (try-require 'eim)
@@ -736,14 +718,14 @@ Toggle keyboard command logging of whole emacs.
 ;;   "Display a list of packages.
 ;; Fetches the updated list of packages before displaying.
 ;; The list is displayed in a buffer named `*Packages*'." nil t)
-(eval-after-load "package" '(package-settings))
+(eval-after-load "package" '(package-postload))
 (require 'package)
 
 ;;--------------------------------------------------------------------
 ;;** auto-install
 (eval-after-load "auto-install"
   '(progn
-     (auto-install-settings)
+     (auto-install-postload)
      (eal-define-keys
       'dired-mode-map
       `(("C-i"    auto-install-from-dired)))))
@@ -765,7 +747,8 @@ Toggle keyboard command logging of whole emacs.
 
 ;;--------------------------------------------------------------------
 ;; Emacs 22 or newer
-(eval-after-load "server" '(server-settings))
+(server-preload)
+(eval-after-load "server" '(server-postload))
 ;; (server-start-if-not-exists) ;; BUG: cannot connect to server.
 (server-start)
 

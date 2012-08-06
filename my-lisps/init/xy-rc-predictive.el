@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:16 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:35 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-predictive.el'
 ;; Author:       Xin Yang
@@ -17,12 +17,12 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun predictive-settings ()
-  "Settings of `predictive.el'."
+(defun predictive-postload ()
+  "Settings of `predictive.el' after it's been loaded."
 
   (setq predictive-auto-learn t
         predictive-auxiliary-file-location "~/emacs/predictive/")
 
-  (message "* ---[ predictive configuration is complete ]---"))
+  (message "* ---[ predictive post-load configuration is complete ]---"))
 
 (provide 'xy-rc-predictive)

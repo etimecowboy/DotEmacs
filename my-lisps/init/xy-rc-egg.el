@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:06 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:16 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-egg.el'
 ;; Author:       Xin Yang
@@ -17,12 +17,12 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun egg-settings ()
-  "Settings for `egg'."
+(defun egg-postload ()
+  "Settings for `egg' after it's been loaded."
   (setq egg-enable-tooltip t)
   (setq egg-refresh-index-in-backround t)
   (setq egg-show-key-help-in-buffers
         '((:status :log :file-log :reflog :diff :commit)))
-  (message "* ---[ egg configuration is complete ]---"))
+  (message "* ---[ egg post-load configuration is complete ]---"))
 
 (provide 'xy-rc-egg)

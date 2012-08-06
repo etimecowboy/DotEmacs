@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:11 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:27 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-imenu-tree.el'
 ;; Author:       Xin Yang
@@ -34,10 +34,10 @@
 
 
 ;;;###autoload
-(defun imenu-tree-settings ()
-  "Settings for `imenu-tree'."
+(defun imenu-tree-postload ()
+  "Settings for `imenu-tree' after it's been loaded."
   ;; (add-hook 'imenu-tree 'imenu-tree-expand)
   (setq imenu-tree-auto-update t)
-  (message "* ---[ imenu-tree configuration is complete ]---"))
+  (message "* ---[ imenu-tree post-load configuration is complete ]---"))
 
 (provide 'xy-rc-imenu-tree)

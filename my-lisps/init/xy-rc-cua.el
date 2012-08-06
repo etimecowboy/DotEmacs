@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:04 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:13 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-cua.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun cua-settings ()
-  "settings for `cua'."
+(defun cua-postload ()
+  "Settings for `cua' after it's been loaded."
 
   (setq cua-rectangle-mark-key [C-RET]) ;; default is [C-RET]
   (setq cua-keep-region-after-copy t)
@@ -55,6 +55,6 @@
 ;;      ("<left>"  cua-resize-rectangle-left)
 ;;      ("<down"   cua-resize-rectangle-down)
 ;;      ("<up>"    cua-resize-rectangle-up)))
-  (message "* ---[ cua configuration is complete ]---"))
+  (message "* ---[ cua post-load configuration is complete ]---"))
 
 (provide 'xy-rc-cua)

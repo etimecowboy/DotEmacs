@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:04 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:14 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-diff.el'
 ;; Author:       Xin Yang
@@ -17,10 +17,10 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun diff-settings ()
-  "settings for `diff'."
+(defun diff-postload ()
+  "Settings for `diff' after it's been loaded."
   (setq diff-switches "-w")
-  (message "* ---[ diff configuration is complete ]---"))
+  (message "* ---[ diff post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun diff-face-settings ()

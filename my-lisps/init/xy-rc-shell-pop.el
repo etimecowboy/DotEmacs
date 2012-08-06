@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:19 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:44 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-shell-pop.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun shell-pop-settings ()
-  "Settings for `shell-pop.el'."
+(defun shell-pop-postload ()
+  "Settings for `shell-pop.el' after it's been loaded."
   (shell-pop-set-internal-mode "eshell")
   ;; (shell-pop-set-internal-mode-shell "/bin/bash")
   ;; the number for the percentage of the selected window.
@@ -26,6 +26,6 @@
   (shell-pop-set-window-height 35)
   ;; shell-pop-up position. You can choose "top" or "bottom".
   (shell-pop-set-window-position "bottom")
-  (message "* ---[ shell-pop configuration is complete ]---"))
+  (message "* ---[ shell-pop post-load configuration is complete ]---"))
 
 (provide 'xy-rc-shell-pop)

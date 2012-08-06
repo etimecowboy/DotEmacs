@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:03 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:11 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-c-includes.el'
 ;; Author:       Xin Yang
@@ -16,10 +16,10 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun c-includes-settings ()
-  "Settings of `c-includes.el'."
+(defun c-includes-postload ()
+  "Settings of `c-includes.el' after it's been loaded."
     (setq c-includes-binding t)
     (setq c-includes-path user-include-dirs)
-    (message "* ---[ c-includes configuration is complete ]---"))
+    (message "* ---[ c-includes post-load configuration is complete ]---"))
 
 (provide 'xy-rc-c-includes)

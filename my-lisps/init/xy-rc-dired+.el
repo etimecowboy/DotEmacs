@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:05 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:14 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired+.el'
 ;; Author:       Xin Yang
@@ -17,11 +17,11 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun dired+-settings ()
-  "Settings for `dired+'."
+(defun dired+-postload ()
+  "Settings for `dired+' after it's been loaded."
   (setq diredp-prompt-for-bookmark-prefix-flag nil)
   (setq diredp-prompt-for-bookmark-prefix-flag nil)
-  (message "* ---[ dired+ configuration is complete ]---"))
+  (message "* ---[ dired+ post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun dired+-face-settings ()

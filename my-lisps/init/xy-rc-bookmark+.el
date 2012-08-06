@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:02 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:10 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-bookmark+.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun bookmark+-settings ()
-  "Settings of `bookmark+.el'."
+(defun bookmark+-postload ()
+  "Settings of `bookmark+.el' after it's been loaded."
   (setq bmkp-bmenu-commands-file
         (concat my-var-path "/emacs-bmk-bmenu-commands.el"))
   (setq bmkp-bmenu-state-file
@@ -36,6 +36,6 @@
   ;; among different OSs.
   ;; (unless (file-exists-p bmkp-last-as-first-bookmark-file)
   ;;   (shell-command (concat "touch " bmkp-last-as-first-bookmark-file)))
-  (message "* ---[ bookmark+ configuration is complete ]---"))
+  (message "* ---[ bookmark+ post-load configuration is complete ]---"))
 
 (provide 'xy-rc-bookmark+)

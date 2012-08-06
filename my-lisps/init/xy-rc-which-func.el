@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:23 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:54 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-which-func.el'
 ;; Author:       Xin Yang
@@ -17,14 +17,14 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun which-func-settings ()
-  "Settings for `which-func'."
+(defun which-func-postload ()
+  "Settings for `which-func' after it's been loaded."
   (setq which-func-unknown "unknown")
   (setq which-func-modes
         '(emacs-lisp-mode cc-mode c-mode c++-mode perl-mode cperl-mode
           python-mode makefile-mode sh-mode fortran-mode f90-mode
           ada-mode diff-mode vhdl-mode verilog-mode))
-  (message "* ---[ which-func configuration is complete ]---"))
+  (message "* ---[ which-func post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun which-func-face-settings ()

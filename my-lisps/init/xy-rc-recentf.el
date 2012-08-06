@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:17 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 23:59 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-recentf.el'
 ;; Author:       Xin Yang
@@ -15,6 +15,18 @@
 
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
+
+;;;###autoload
+(defun recentf-preload ()
+  "Settings of `recentf.el' before it's been loaded."
+  (setq-default recentf-save-file
+                (concat my-var-path "/recentf-"
+                        user-login-name "@"
+                        system-name "@"
+                        system-configuration))
+  (unless (file-exists-p recentf-save-file)
+    (shell-command (concat "touch " recentf-save-file)))
+  (message "* ---[ recentf pre-load configuration is complete ]---"))
 
 ;;;###autoload
 ;; BUG: NOT working
@@ -35,15 +47,8 @@
     (find-file (nth (- arg 1) recently-killed-list))))
 
 ;;;###autoload
-(defun recentf-settings ()
-  "Settings of `recentf.el'."
-  (setq-default recentf-save-file
-                  (concat my-var-path "/recentf-"
-                          user-login-name "@"
-                          system-name "@"
-                          system-configuration))
-  (unless (file-exists-p recentf-save-file)
-    (shell-command (concat "touch " recentf-save-file)))
+(defun recentf-postload ()
+  "Settings of `recentf.el' after it's been loaded."
   (setq recentf-exclude '("bbdb" "gnus" "mew" "w3m" "gtd" "/temp/"
                           "/ssh:" "loaddefs"))
   (setq recentf-menu-open-all-flag t)
@@ -56,6 +61,6 @@
     "Move current buffer to the beginning of the recent list after killed."
     (recentf-track-opened-file))
 
-  (message "* ---[ recentf configuration is complete ]---"))
+  (message "* ---[ recentf post-load configuration is complete ]---"))
 
 (provide 'xy-rc-recentf)

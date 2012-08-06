@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:14 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 21:25 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-multi-term.el'
 ;; Author:       Xin Yang
@@ -17,12 +17,16 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun multi-term-settings ()
-  "Settings for `term'."
-  ;; (when use-cua
-  ;;   (cua-selection-mode 1))
+(defun multi-term-postload ()
+  "Settings for `term' after it's been loaded."
+
+  ;; (when use-cua (cua-selection-mode 1))
   (setq multi-term-switch-after-close nil)
-  (setq multi-term-program "bash")
-  (message "* ---[ multi-term configuration is complete ]---"))
+  (GNULinux
+   (setq multi-term-program "bash"))
+  (Windows
+   (setq multi-term-program "bash.exe"))
+
+  (message "* ---[ multi-term post-load configuration is complete ]---"))
 
 (provide 'xy-rc-multi-term)

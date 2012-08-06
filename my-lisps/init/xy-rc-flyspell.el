@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:07 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:19 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-flyspell.el'
 ;; Author:       Xin Yang
@@ -26,13 +26,13 @@
 
 ;;TODO: try hunspell instead of aspell
 ;;;###autoload
-(defun flyspell-settings ()
-  "settings of `flyspell.el'."
+(defun flyspell-postload ()
+  "Settings of `flyspell.el' after it's been loaded."
   (setq flyspell-delay 1)
   (setq flyspell-issue-welcome-flag nil)
   ;; 令flyspell按照相近程度补齐
   (setq flyspell-sort-corrections nil)
   ;; (add-hook 'flyspell-incorrect-hook 'my-flyspell-ignore-uppercase)
-  (message "* ---[ flyspell configuration is complete ]---"))
+  (message "* ---[ flyspell post-load configuration is complete ]---"))
 
 (provide 'xy-rc-flyspell)

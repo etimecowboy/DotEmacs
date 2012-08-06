@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:23 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:59 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-woman.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,9 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun woman-settings ()
-  "Settings for `woman-mode'."
+(defun woman-postload ()
+  "Settings for `woman-mode' after it's been loaded."
+
   (add-to-list 'woman-manpath my-local-man-path)
   (setq woman-cache-filename (concat my-var-path "/wmncach"))
   (unless (file-exists-p woman-cache-filename)
@@ -31,7 +32,7 @@
     (setq truncate-lines nil))
   (am-add-hooks 'woman-mode-hook 'woman-mode-hook-settings)
 
-  (message "* ---[ woman configuration is complete ]---"))
+  (message "* ---[ woman post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun woman-face-settings ()

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 01:58 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:10 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auto-insert.el'
 ;; Author:       Xin Yang
@@ -18,8 +18,8 @@
 
 ;; NOTE: ahei's setttings
 ;; ;;;###autoload
-;; (defun auto-insert-settings ()
-;;   "Settings for `auto-insert'."
+;; (defun auto-insert-postload ()
+;;   "Settings for `auto-insert' after it's been loaded."
 ;;   (setq auto-insert-query nil)
 ;;   (setq auto-insert-directory ;; my-emacs-templates-path)
 ;;         (list (concat my-emacs-path "/template/templates")))

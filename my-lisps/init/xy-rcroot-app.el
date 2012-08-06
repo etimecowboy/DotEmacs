@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:17 by xin on p5q>
+;; Time-stamp: <2012-08-06 Mon 11:16 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-app.el'
 ;; Author:       Xin Yang
@@ -82,15 +82,17 @@
 ;;      causes info-mode reports an error when following a link. Have
 ;;      to load these two lisp files in order to fix it, whether it is
 ;;      in console mode or GUI mode.
-(eval-after-load "fit-frame" '(fit-frame-settings))
-(eval-after-load "maxframe"  '(maxframe-settings))
+(eval-after-load "fit-frame" '(fit-frame-postload))
+(eval-after-load "maxframe"  '(maxframe-postload))
 (try-require 'fit-frame)
-(when window-system
-  (add-hook 'after-make-frame-functions 'fit-frame)
-  (add-hook 'temp-buffer-show-hook 'fit-frame-if-one-window 'append))
-(try-require 'autofit-frame)
 (try-require 'thumb-frm)
 (try-require 'maxframe) ;; NOTE: not stable with two or more monitors
+(if window-system
+    (let ((when (try-require 'autofit-frame) ;; NOTE: annoying and cause problem in terminal
+            (autofit-frames-flag nil))
+          (add-hook 'after-make-frame-functions 'fit-frame)
+          (add-hook 'temp-buffer-show-hook 'fit-frame-if-one-window 'append)))
+  (let ((autofit-frames-flag t))))
 
 (eal-define-keys-commonly
  global-map
@@ -128,9 +130,6 @@ numbers with the C-x C-j prefix.  Another mode,
   "A global minor mode that enables use of the M- prefix to select
 windows, use `window-number-mode' to display the window numbers in
 the mode-line." t)
-;; (add-hook 'org-mode-hook
-;;           '(lambda ()
-;;              (window-number-meta-mode 1)))
 (window-number-meta-mode 1)
 
 ;;--------------------------------------------------------------------
@@ -138,7 +137,7 @@ the mode-line." t)
 ;; NOTE: If not fast enough, use `window-number.el'
 ;; NOTE: the default key bindings C-left/right/up/down conflicts
 ;; with org-mode default key bindings.
-(eval-after-load "windmove" '(windmove-settings))
+(eval-after-load "windmove" '(windmove-postload))
 
 (eal-define-keys-commonly
  global-map
@@ -267,7 +266,7 @@ the mode-line." t)
 ;;** mode-line-frame
 ;; offers a frame to show various information
 ;; Just call `xy/separate-line-frame' to use it.
-(eval-after-load "mode-line-frame" '(mode-line-frame-settings))
+(eval-after-load "mode-line-frame" '(mode-line-frame-postload))
 
 ;;====================================================================
 ;;* mini-buffer settings
@@ -383,7 +382,7 @@ the mode-line." t)
 ;;* Syntax highlighting
 
 ;;** font-lock
-(eval-after-load "font-lock" '(font-lock-settings))
+(eval-after-load "font-lock" '(font-lock-postload))
 (global-font-lock-mode 1)
 ;; 避免打开大的文本文件时反应缓慢
 ;; BUG: org-mode 显示错误
@@ -418,7 +417,7 @@ the mode-line." t)
 (eval-after-load "highlight-symbol"
   '(progn
      ;; (highlight-symbol-face-settings)
-     (highlight-symbol-settings)))
+     (highlight-symbol-postload)))
 
 ;; NOTE: C-x H has been binded to `goto-help-buffer'
 (eal-define-keys
@@ -448,7 +447,7 @@ the mode-line." t)
 (eval-after-load "pulse"
   '(progn
      (pulse-face-settings)
-     (pulse-settings)))
+     (pulse-postload)))
 (require 'pulse)
 
 ;;--------------------------------------------------------------------
@@ -457,7 +456,7 @@ the mode-line." t)
 (eval-after-load "zjl-hl"
   '(progn
      (zjl-hl-face-settings)
-     (zjl-hl-settings)))
+     (zjl-hl-postload)))
 
 ;;====================================================================
 ;;* Color settings
@@ -470,22 +469,22 @@ the mode-line." t)
 ;;** color-theme
 ;; fancy themes for emacs
 ;; REF: (@url :file-name "http://emacser.com/color-theme.htm" :display "emacser")
-(eval-after-load "color-theme" '(color-theme-settings))
-(require 'color-theme)
-(when window-system
-  (color-theme-solarized-dark))
+(eval-after-load "color-theme" '(color-theme-postload))
+;; (require 'color-theme)
+;; (when window-system
+;;   (color-theme-solarized-dark))
 ;; (global-set-key (kbd "<f6> t") 'xy/load-themes)
 
 ;;--------------------------------------------------------------------
 ;;** doremi
-;; (eval-after-load "icicles" `(doremi-settings))
+;; (eval-after-load "icicles" `(doremi-postload))
 
 ;; ;;--------------------------------------------------------------------
 ;; ;;** palette
 ;; ;; emacs 的调色板
 ;; (eval-after-load "palette"
 ;;   '(progn
-;;      (palette-settings)
+;;      (palette-postload)
 ;;      (eal-define-keys
 ;;       'palette-mode-map
 ;;       `(("j"     palette-down)

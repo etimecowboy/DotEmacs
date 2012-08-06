@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:19 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:44 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-simple.el'
 ;; Author:       Xin Yang
@@ -17,9 +17,9 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun simple-settings ()
-  "Settings of `simple.el'."
+(defun simple-postload ()
+  "Settings of `simple.el' after it's been loaded."
   (setq-default fill-column 70)
-  (message "* ---[ simple configuration is complete ]---"))
+  (message "* ---[ simple post-load configuration is complete ]---"))
 
 (provide 'xy-rc-simple)

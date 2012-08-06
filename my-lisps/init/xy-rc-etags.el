@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:07 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:17 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-etags.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun etags-settings ()
-  "Settings of `etags.el'."
+(defun etags-postload ()
+  "Settings of `etags.el' after it's been loaded."
   (defadvice find-tag (before tags-file-name-advice activate)
     "Find TAGS file in ./ or ../ or ../../ dirs"
     (let ((list (mapcar 'expand-file-name '("./TAGS" "../TAGS" "../../TAGS"))))
@@ -28,6 +28,6 @@
               (setq tags-file-name (car list))
               (setq list nil))
           (setq list (cdr list))))))
-  (message "* ---[ etags configuration is complete ]---"))
+  (message "* ---[ etags post-load configuration is complete ]---"))
 
 (provide 'xy-rc-etags)

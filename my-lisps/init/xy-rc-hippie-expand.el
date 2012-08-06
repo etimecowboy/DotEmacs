@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:10 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:21 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-hippie-expand.el'
 ;; Author:       Xin Yang
@@ -29,8 +29,8 @@
     (call-interactively 'hippie-expand)))
 
 ;;;###autoload
-(defun hippie-expand-settings ()
-  "Settings for `hippie-expand'."
+(defun hippie-expand-postload ()
+  "Settings for `hippie-expand' after it's been loaded."
   (setq hippie-expand-try-functions-list
         '(try-expand-dabbrev
           try-expand-dabbrev-visible
@@ -61,6 +61,6 @@
               try-expand-line
               try-expand-whole-kill))))
 
-  (message "* ---[ hippie-expand configuration is complete ]---"))
+  (message "* ---[ hippie-expand post-load configuration is complete ]---"))
 
 (provide 'xy-rc-hippie-expand)

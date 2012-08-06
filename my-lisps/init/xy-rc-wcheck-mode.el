@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:22 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:54 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-wcheck-mode.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun wcheck-mode-settings ()
-  "Settings of `wcheck-mode.el'."
+(defun wcheck-mode-postload ()
+  "Settings of `wcheck-mode.el' after it's been loaded."
   (setq ispell-really-hunspell t)
   (setq  wcheck-timer-idle .1)
   (setq-default
@@ -84,6 +84,6 @@
   ;; (define-key global-map [f5] 'wcheck-mode)
   ;; (define-key global-map [S-f5] 'wcheck-toggle-language)
   ;; (global-set-key "\M-n" 'wcheck-spelling-suggestions)
-  (message "* ---[ wcheck-mode configuration is complete ]---"))
+  (message "* ---[ wcheck-mode post-load configuration is complete ]---"))
 
 (provide 'xy-rc-wcheck-mode)

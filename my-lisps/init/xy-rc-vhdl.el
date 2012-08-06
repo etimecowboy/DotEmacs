@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:22 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:54 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-vhdl.el'
 ;; Author:       Xin Yang
@@ -18,8 +18,8 @@
 
 
 ;;;###autoload
-(defun vhdl-mode-settings ()
-  "settings for `vhdl-mode'."
+(defun vhdl-mode-postload ()
+  "Settings for `vhdl-mode' after it's been loaded."
   (setq vhdl-include-direction-comments t
         vhdl-include-group-comments 'decl
         vhdl-include-port-comments t
@@ -32,6 +32,6 @@
         vhdl-upper-case-keywords t
         vhdl-upper-case-types t)
   (autopair-mode -1)
-  (message "* ---[ vhdl-mode configuration is complete ]---"))
+  (message "* ---[ vhdl-mode post-load configuration is complete ]---"))
 
 (provide 'xy-rc-vhdl)

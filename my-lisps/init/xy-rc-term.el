@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:20 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:45 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-term.el'
 ;; Author:       Xin Yang
@@ -111,8 +111,8 @@
   (text-mode))
 
 ;;;###autoload
-(defun term-settings ()
-  "Settings for `term'."
+(defun term-postload ()
+  "Settings for `term' after it's been loaded."
 
   ;; multi-term: a mode based on term.el,
   ;; for managing multiple terminal buffers in Emacs.
@@ -156,7 +156,7 @@
         ("M-8"   . term-send-raw-meta)
         ("M-9"   . term-send-raw-meta)))
 
-  (message "* ---[ term-mode configuration is complete ]---"))
+  (message "* ---[ term-mode post-load configuration is complete ]---"))
 
 ;; emacs上水木的一些配置
 ;; (@url :file-name "http://www.newsmth.net/bbsanc.php?path=%2Fgroups%2Fcomp.faq%2FEmacs%2Fmode%2Fdired%2Frokia" :display "Emacs版 (精华区)@newsmth.net")

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 01:57 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 19:57 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-anything.el'
 ;; Author:       Xin Yang
@@ -54,8 +54,8 @@
    "*my-anything*"))
 
 ;;;###autoload
-(defun anything-settings ()
-  "settings for `anything'."
+(defun anything-postload ()
+  "Settings for `anything' after it's been loaded."
   ;;NOTE: anything-config will use <f5> as the prefix key, this
   ;; conflicts with your own emacs <f5> key bindings.
   ;; The following 6 are included in `anything-startup'
@@ -135,7 +135,7 @@
                                   anything-c-source-emacs-functions-with-abbrevs
                                   anything-c-source-info-emacs))))))
 
-  (message "* ---[ anything configuration is complete ]---"))
+  (message "* ---[ anything post-load configuration is complete ]---"))
 
 (provide 'xy-rc-anything)
 

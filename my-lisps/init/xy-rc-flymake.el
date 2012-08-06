@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:07 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:18 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-flymake.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun flymake-settings ()
-  "Settings for `flymake'."
+(defun flymake-postload ()
+  "Settings for `flymake' after it's been loaded."
   (setq flymake-allowed-file-name-masks '())
   (setq flymake-gui-warnings-enabled nil)
   (setq flymake-log-level 0)
@@ -301,7 +301,7 @@ checked via master file compilation."
   ;;  "-interaction=nonstopmode"
   ;; file-name))
 
-  (message "* ---[ flymake configuration is complete ]---")
+  (message "* ---[ flymake post-load configuration is complete ]---")
 )
 
 

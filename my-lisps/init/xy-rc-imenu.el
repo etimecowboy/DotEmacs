@@ -1,5 +1,5 @@
 ;;   -*- Mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:11 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:27 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-imenu.el'
 ;; Author:       Xin Yang
@@ -22,8 +22,8 @@
 
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/ImenuMode" :display "emacswiki")
 ;;;###autoload
-(defun imenu-settings ()
-  "Settings for `imenu'."
+(defun imenu-postload ()
+  "Settings for `imenu' after it's been loaded."
   (try-require 'imenu+)
 
   (defvar text-imenu-generic-expression
@@ -61,6 +61,6 @@
               (setq imenu-generic-expression
                     sql-imenu-generic-expression)))
 
-  (message "* ---[ imenu configuration is complete ]---"))
+  (message "* ---[ imenu post-load configuration is complete ]---"))
 
 (provide 'xy-rc-imenu)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:15 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:30 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -126,8 +126,8 @@ If html-file-name is not given, read it from minibuffer."
     (org-table-align)))
 
 ;;;###autoload
-(defun org-settings ()
-  "Settings of `org'."
+(defun org-postload ()
+  "Settings of `org' after it's been loaded."
 
   ;;==================================================================
   ;; Some basic settings and some confliction fixes
@@ -470,8 +470,8 @@ If html-file-name is not given, read it from minibuffer."
                       (org-tags-match-list-sublevels nil)))
 
           ;;----------------------------------------------------------
-          ("i" "Ideas in the past 10 days" tags
-           "+idea+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-10d>\""
+          ("e" "Review English new words/phrases/sentences" tags
+           "+english+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-60d>\""
            ((org-agenda-overriding-header "Recent ideas (refile ASAP)")
             (org-tags-match-list-sublevels nil)))
 
@@ -640,28 +640,28 @@ If html-file-name is not given, read it from minibuffer."
 
   ;; cpature templates
   (setq org-capture-templates
-          '(("p" "Add a PhD  Wish"
+          '(("p" "Capture a PhD  Wish"
              entry (file+headline "~/emacs/org/gtd/Capture.org" "PhD")
              "** TODO %? %^g\n\
    :LOGBOOK:\n\
    - State \"TODO\" from \"%i\" in \"%a\"    %U\n\
    :END:\n"
              :empty-lines 1 :prepend t :clock-keep t)
-            ("w" "Add a Work Wish"
+            ("w" "Capture a Work Wish"
              entry (file+headline "~/emacs/org/gtd/Capture" "Work")
              "** TODO %? %^g\n\
    :LOGBOOK:\n\
    - State \"TODO\" from \"%i\" in \"%a\"    %U\n\
    :END:\n"
              :empty-lines 1 :prepend t :clock-keep t)
-            ("l" "Add a Life Wish"
+            ("l" "Capture a Life Wish"
              entry (file+headline "~/emacs/org/gtd/Capture" "Life")
              "** TODO %? %^g\n\
    :LOGBOOK:\n\
    - State \"TODO\" from \"%i\" in \"%a\"    %U\n\
    :END:\n"
              :empty-lines 1 :prepend t :clock-keep t)
-            ("g" "Add a Geek Wish"
+            ("g" "Capture a Geek Wish"
              entry (file+headline "~/emacs/org/gtd/Capture.org" "Geek")
              "** TODO %? %^g\n\
    :LOGBOOK:\n\
@@ -672,8 +672,19 @@ If html-file-name is not given, read it from minibuffer."
              entry (file+headline "~/emacs/org/gtd/Capture.org" "Notes")
              "** %? %^G\n\
    :LOGBOOK:\n\
-   - Entered from \"%i\" in \"%a\"   %U\n\
+   - Taken from \"%i\" in \"%a\"   %U\n\
    - Last updated on   %U\n\
+   :END:\n"
+             :empty-lines 1 :prepend t :clock-keep t)
+            ("j" "Write my Journal"
+             entry (file+headline "~/emacs/org/source/myblogs/oblog-journal/blog-journal.org" "Journal")
+             "** %U %? %^G\n"
+             :empty-lines 1 :prepend t :clock-keep t)
+            ("e" "Add English new words/phrases/sentences"
+             entry (file+headline "~/emacs/org/gtd/Capture.org" "English")
+             "** %? %^G\n\
+   :LOGBOOK:\n\
+   - Captureed from \"%i\" in \"%a\"   %U\n\
    :END:\n"
              :empty-lines 1 :prepend t :clock-keep t)
              ))
@@ -1190,7 +1201,7 @@ colorlinks, linkcolor=RoyalBlue, urlcolor=blue" "hyperref" nil)))
   ;; Add the following in one of your Org file.
   ;;   * Weather
   ;;   %%(org-google-weather "New York" "en-gb")
-  (eval-after-load "org-google-weather" '(org-google-weather-settings))
+  (eval-after-load "org-google-weather" '(org-google-weather-postload))
   (try-require 'org-google-weather)
 
   ;;------------------------------------------------------------------
@@ -1216,7 +1227,7 @@ colorlinks, linkcolor=RoyalBlue, urlcolor=blue" "hyperref" nil)))
   (define-key org-mode-map (kbd "C-c t") 'timestamp)
   (define-key org-mode-map (kbd "C-c h") 'xy/org-html-chinese-no-extra-space)
 
-  (message "* ---[ org configuration is complete ]---"))
+  (message "* ---[ org post-load configuration is complete ]---"))
 
 (provide 'xy-rc-org)
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:17 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:35 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-reftex.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun reftex-settings ()
-  "Settings of `reftex.el'."
+(defun reftex-postload ()
+  "Settings of `reftex.el' after it's been loaded."
 
   (setq reftex-default-bibliography
         (list "~/emacs/org/source/phd/bib/bio"
@@ -45,6 +45,6 @@
   ;;*toc*buffer 使用整个 frame 的比例。
   (setq reftex-toc-split-windows-fraction 0.4)
 
-  (message "* ---[ reftex configuration is complete ]---"))
+  (message "* ---[ reftex post-load configuration is complete ]---"))
 
 (provide 'xy-rc-reftex)

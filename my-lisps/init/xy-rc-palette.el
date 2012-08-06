@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:16 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:32 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-palette.el'
 ;; Author:       Xin Yang
@@ -91,8 +91,8 @@
   (when (get-buffer "Current/Original") (kill-buffer "Current/Original")))
 
 ;;;###autoload
-(defun palette-settings ()
-  "settings of `palette'."
+(defun palette-postload ()
+  "Settings of `palette' after it's been loaded."
   (require 'facemenu+)
   (defvar facemenup-palette-change-face-bg nil
     "Face background be changed or not.")
@@ -116,9 +116,9 @@
      ("palette-left"  7)
      ("palette-right" 7)))
   (add-to-list 'delete-frame-functions 'kill-palette-buffers)
-  (message "* ---[ palette configuration is complete ]---"))
+  (message "* ---[ palette post-load configuration is complete ]---"))
 
-(provide 'palette-settings)
+(provide 'xy-rc-palette)
 
 ;; (if window-system
 ;;     (let ((font (car (x-list-fonts "-outline-Courier New-normal-normal-normal-mono-6-*-*-*-c-*-iso8859-1" nil nil 1))))

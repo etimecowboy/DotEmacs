@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:06 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:16 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-eim.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun eim-settings ()
-  "Settings for eim"
+(defun eim-postload ()
+  "Settings for ei after it's been loaded."
   (setq eim-use-tooltip nil) ;; 显示效果不好，老是闪烁
   ;; (register-input-method
   ;;  "eim-wb" "utf-8" 'eim-use-package "eim-wb" "eim-wb" "wb.txt")
@@ -30,6 +30,6 @@
   ;; (add-hook 'find-file-hook
   ;;           (lambda ()(if (eq input-activate t)
   ;;                       (toggle-input-method))))
-  (message "* ---[ eim configuration is complete ]---"))
+  (message "* ---[ eim post-load configuration is complete ]---"))
 
 (provide 'xy-rc-eim)

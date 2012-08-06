@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:13 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:28 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-man.el'
 ;; Author:       Xin Yang
@@ -23,13 +23,13 @@
   (manual-entry (current-word)))
 
 ;;;###autoload
-(defun man-settings ()
-  "settings for `man'."
+(defun man-postload ()
+  "Settings for `man' after it's been loaded."
   (setq Man-notify-method 'newframe)
   (setq Man-fontify-manpage-flag t)
   ;; (setq Man-overstrike-face 'bold)
   (setq Man-width 67)
-  (message "* ---[ Man configuration is complete ]---"))
+  (message "* ---[ Man post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun man-face-settings ()

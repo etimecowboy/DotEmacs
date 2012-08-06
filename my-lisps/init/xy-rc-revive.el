@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:17 by xin on p5q>
+;; Time-stamp: <2012-08-06 Mon 11:31 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-revive.el'
 ;; Author:       Xin Yang
@@ -17,15 +17,32 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun revive-settings ()
-  "Settings of `revive.el'."
-  ;; set configuration file location.
+(defun revive-preload ()
+  "Settings of `revive' before it's been loaded."
+
   (setq revive:configuration-file (concat my-var-path "/revive-"
                                           user-login-name "@"
                                           system-name "@"
                                           system-configuration))
   (unless (file-exists-p revive:configuration-file)
     (shell-command (concat "touch " revive:configuration-file)))
-  (message "* ---[ revive configuration is complete ]---"))
+
+  (message "* ---[ revive pre-load configuration is complete ]---"))
+
+;;;###autoload
+(defun revive-postload ()
+  "Settings of `revive.el' after it's been loaded."
+
+  (setq revive:configuration-file (concat my-var-path "/revive-"
+                                          user-login-name "@"
+                                          system-name "@"
+                                          system-configuration))
+  (unless (file-exists-p revive:configuration-file)
+    (shell-command (concat "touch " revive:configuration-file)))
+
+  (add-hook 'delete-frame-hook 'save-current-configuration)
+  (add-hook 'kill-emacs-hook 'save-current-configuration)
+
+  (message "* ---[ revive post-load configuration is complete ]---"))
 
 (provide 'xy-rc-revive)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:05 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:15 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-doremi.el'
 ;; Author:       Xin Yang
@@ -17,11 +17,11 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun doremi-settings ()
-  "Settings of `doremi'."
+(defun doremi-postload ()
+  "Settings of `doremi' after it's been loaded."
   (setq doremi-up-keys   '(?\M-p ?p ?k))
   (setq doremi-down-keys '(?\M-n ?n ?j ?\ ))
   (setq doremi-RGB-increment-factor 256)
-  (message "* ---[ doremi configuration is complete ]---"))
+  (message "* ---[ doremi post-load configuration is complete ]---"))
 
 (provide 'xy-rc-doremi)

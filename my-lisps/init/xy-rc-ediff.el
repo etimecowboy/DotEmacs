@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:06 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:16 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ediff.el'
 ;; Author:       Xin Yang
@@ -40,8 +40,8 @@
     (split-window-horizontally))))
 
 ;;;###autoload
-(defun ediff-settings ()
-  "settings for `ediff'."
+(defun ediff-postload ()
+  "Settings for `ediff' after it's been loaded."
   (add-hook 'ediff-startup-hook 'ediff-startup-settings)
   (add-hook 'ediff-prepare-buffer-hook 'turn-off-hideshow)
   (add-hook 'ediff-mode-hook 'ediff-variable-settings)
@@ -52,7 +52,7 @@
   (setq ediff-split-window-function 'split-window-horizontally)
   ;; (require 'ediff+)
   ;; (ediff+-set-actual-diff-options))
-  (message "* ---[ ediff configuration is complete ]---"))
+  (message "* ---[ ediff post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun ediff-face-settings ()

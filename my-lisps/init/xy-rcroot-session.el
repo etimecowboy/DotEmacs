@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:18 by xin on p5q>
+;; Time-stamp: <2012-08-06 Mon 12:11 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-session.el'
 ;; Author:       Xin Yang
@@ -25,7 +25,7 @@
 ;; same as in the other window, not as it was before we switched away.
 ;; This mode tries to work around this problem by storing and
 ;; restoring per-window positions for each buffer.
-(eval-after-load "winpoint" '(winpoint-settings))
+(eval-after-load "winpoint" '(winpoint-postload))
 (autoload 'window-point-remember-mode "winpoint" nil t)
 (window-point-remember-mode 1)
 
@@ -47,10 +47,10 @@
 ;;         keeping the bookmark list open
 ;; * ‘C-o’ – switch to the current bookmark in another window
 ;; * ‘r’ – rename the current bookmark
-(eval-after-load "bookmark" '(bookmark-settings))
+(eval-after-load "bookmark" '(bookmark-postload))
 
 ;;*** Bookmark+
-(eval-after-load "bookmark+" '(bookmark+-settings))
+(eval-after-load "bookmark+" '(bookmark+-postload))
 
 ;;*** bm
 ;; provides visible, buffer local, bookmarks and the ability
@@ -77,38 +77,36 @@
 
 ;;** recentf
 ;; Save recent openned files
-(eval-after-load "recentf" '(recentf-settings))
-;; (global-set-key (kbd "C-x y") 'undo-kill-buffer) ;; BUG:
+(recentf-preload)
+(eval-after-load "recentf" '(recentf-postload))
 (recentf-mode 1)
+;; (global-set-key (kbd "C-x y") 'undo-kill-buffer) ;; BUG:
 
 ;;--------------------------------------------------------------------
 ;;** save-place
 ;; Save point places in buffers
-;; (eval-after-load "saveplace" '(saveplace-settings))
-(setq-default save-place t)
-(setq save-place-file (concat my-var-path "/saveplace-"
-                              user-login-name "@"
-                              system-name "@"
-                              system-configuration))
-(unless (file-exists-p save-place-file)
-  (shell-command (concat "touch " save-place-file)))
+(saveplace-preload)
+(eval-after-load "saveplace" '(saveplace-postload))
 
 ;;--------------------------------------------------------------------
 ;;** savehist
-(eval-after-load "savehist" '(savehist-settings))
+(savehist-preload)
+(eval-after-load "savehist" '(savehist-postload))
 (if window-system        ;BUG: cause error in terminal ---
     (savehist-mode 1)    ;(wrong-type-argument listp ido-file-history)
   (savehist-mode -1))
 
 ;;--------------------------------------------------------------------
 ;;** filecache
-(eval-after-load "filecache" '(filecache-settings))
+(eval-after-load "filecache" '(filecache-postload))
 
 ;;--------------------------------------------------------------------
-;;** windows and revive
+;;** windows and revive (heavy weight, cannot used with emacs daemon)
 ;; Workspace store and recover
-(eval-after-load "windows" '(windows-settings))
-(eval-after-load "revive" '(revive-settings))
+(revive-preload)
+(eval-after-load "revive" '(revive-postload))
+(windows-preload)
+(eval-after-load "windows" '(windows-postload))
 (eal-define-keys-commonly
  global-map
  `(("C-c w q" see-you-again)
@@ -117,18 +115,41 @@
    ("C-c w s" save-current-configuration)
    ("C-c w r" resume)
    ("C-c w k" wipe)))
-(when (try-require 'windows)
-;; Automatically save window configuration when quit emacs
-      (add-hook 'kill-emacs-hook 'save-current-configuration)
-      (win:startup-with-window))
+;; (win:startup-with-window)
+
+;;--------------------------------------------------------------------
+;;** `elscreen.el' based on APEL
+;; (try-require 'elscreen)
+
+;;--------------------------------------------------------------------
+;;** `winring.el'
+;; ;; (eval-after-load "winring" '(winring-postload))
+;; (when (try-require 'winring)
+;;   (add-hook 'after-init-hook 'winring-initialize)
+;;   (define-key winring-map "o" 'winring-next-configuration))
 
 ;;--------------------------------------------------------------------
 ;;** session
 ;; session.el can remember more information.
-(eval-after-load "session" '(session-settings))
+(eval-after-load "session" '(session-postload))
 (when (try-require 'session)
-  (add-hook 'after-init-hook ;; 'session-start)
-            'session-initialize))
+  (add-hook 'after-init-hook 'session-initialize))
+
+;;--------------------------------------------------------------------
+;;** `desktop.el'
+;; (desktop-preload)
+(eval-after-load "desktop" '(desktop-postload))
+;; (desktop-save-mode 1)
+
+;;--------------------------------------------------------------------
+;;** `wcy-desktop.el', light weight version `desktop.el'
+;; (when (try-require 'wcy-desktop)
+;;   (add-hook 'after-init-hook 'wcy-desktop-init))
+
+;;--------------------------------------------------------------------
+;;** `wcy-escreen.el' by 王纯业(wcy), based on `session.el'
+;; (when (try-require 'wcy-escreen)
+;;   (add-hook 'after-init-hook 'wcy-escreen-install))
 
 (provide 'xy-rcroot-session)
 

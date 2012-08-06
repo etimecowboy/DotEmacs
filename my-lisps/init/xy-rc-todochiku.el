@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:21 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:50 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-todochiku.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun todochiku-settings ()
-  "Settings of `todochiku'."
+(defun todochiku-postload ()
+  "Settings of `todochiku' after it's been loaded."
   (setq-default todochiku-command
         (case system-type
           (windows-nt "D:/Growl for Windows/growlnotify.exe")
@@ -33,6 +33,6 @@
   (setq-default todochiku-icons-directory
         (concat my-local-image-path "/todochiku"))
   (setq todochiku-timeout 15)
-  (message "* ---[ todochiku configuration is complete ]---"))
+  (message "* ---[ todochiku post-load configuration is complete ]---"))
 
 (provide 'xy-rc-todochiku)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:08 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:20 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-gnus.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun gnus-settings ()
-  "Settings of `gnus'."
+(defun gnus-postload ()
+  "Settings of `gnus' after it's been loaded."
 
   ;; Set Gnus directorys
   (setq gnus-init-file "~/.emacs.d/init-gnus.el" ;gnus设置文件
@@ -105,7 +105,7 @@
   ;;       - news.motzarella.org
   (setq gnus-select-method
         ;; '(nntp "news.aioe.org"))
-        '(nntp "nntp.aioe.org"))
+        '(nntp "news.aioe.org"))
   (UKDesktop
    (setq gnus-select-method
          '(nntp "news.virginmedia.com"
@@ -558,6 +558,6 @@ archive more then one article."
   ;; 把emacs里的代码按照当前模式的语法加上ANSI色彩，以方便贴在BBS上
   ;; (try-require 'ansit) ;; 新闻组不好用。加在这里只是为了贴到BBS
   
-  (message "* ---[ gnus configuration is complete ]---"))
+  (message "* ---[ gnus post-load configuration is complete ]---"))
 
 (provide 'xy-rc-gnus)

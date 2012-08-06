@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:03 by xin on p5q>
+;; Time-stamp: <2012-08-06 Mon 11:48 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-color-theme.el'
 ;; Author:       Xin Yang
@@ -20,12 +20,12 @@
 (defun xy/load-themes ()
   "Load all themes."
   (interactive)
-  (xy/load-all-lisps "~/.emacs.d/themes")
+  (xy/install-lisps (concat my-own-lisp-path "/themes"))
   (setq color-theme-initialized t))
 
 ;;;###autoload
-(defun color-theme-settings ()
-  "Settings of `color-theme.el'."
+(defun color-theme-postload ()
+  "Settings of `color-theme.el' after it's been loaded."
   (setq color-theme-is-global t)
   ;; (setq color-theme-is-cumulative t)
   (setq color-theme-directory "~/.emacs.d/themes")
@@ -38,7 +38,7 @@
   ;;     (color-theme-standard)
   ;;     (select-frame (make-frame))
   ;;     (color-theme-standard))
-  (message "* ---[ color-theme configuration is complete ]---"))
+  (message "* ---[ color-theme post-load configuration is complete ]---"))
 
 (provide 'xy-rc-color-theme)
 

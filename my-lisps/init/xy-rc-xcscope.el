@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:24 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 21:00 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-xcscope.el'
 ;; Author:       Xin Yang
@@ -38,8 +38,9 @@
     (delete-window)))
 
 ;;;###autoload
-(defun xcscope-settings ()
-  "Settings of `xcscope.el'."
+(defun xcscope-postload ()
+  "Settings of `xcscope' after it's been loaded."
+
   (setq cscope-database-file "cscope.out"
         cscope-index-file "cscope.files"
         cscope-index-recursively t
@@ -53,6 +54,7 @@
    (setq cscope-indexing-script
          "cscope-indexer.bat"))
   ;; (define-key cscope-list-entry-mode-map (kbd "q") 'xy/cscope-quit)
-  (message "* ---[ xcscope configuration is complete ]---"))
+
+  (message "* ---[ xcscope post-load configuration is complete ]---"))
 
 (provide 'xy-rc-xcscope)

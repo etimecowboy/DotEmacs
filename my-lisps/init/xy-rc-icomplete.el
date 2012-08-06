@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:11 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:22 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-icomplete.el'
 ;; Author:       Xin Yang
@@ -17,12 +17,12 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun icomplete-settings ()
-  "Settings for `icomplete'."
+(defun icomplete-postload ()
+  "Settings for `icomplete' after it's been loaded."
   ;; There is a icomolete+ available, check it later.
   ;; Here I use ahei's hacked version of icomplete+.
   (require 'icomplete+)
-  (message "* ---[ icomplete configuration is complete ]---"))
+  (message "* ---[ icomplete post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun icomplete+-face-settings ()

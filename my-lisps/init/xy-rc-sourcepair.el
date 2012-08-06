@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:20 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:45 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sourcepair.el'
 ;; Author:       Xin Yang
@@ -17,12 +17,12 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun sourcepair-settings ()
-  "Settings for `sourcepair'."
+(defun sourcepair-postload ()
+  "Settings for `sourcepair' after it's been loaded."
   (setq sourcepair-source-path '( "." "../src" "../../src"))
   (setq sourcepair-header-path user-include-dirs)
   (setq sourcepair-recurse-ignore
         '("CVS" "bin" "lib" "Obj" "Debug" "Release" ".svn" ".git"))
-  (message "* ---[ sourcepair configuration is complete ]---"))
+  (message "* ---[ sourcepair post-load configuration is complete ]---"))
 
 (provide 'xy-rc-sourcepair)

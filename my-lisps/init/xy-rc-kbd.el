@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:12 by xin on p5q>
+;; Time-stamp: <2012-08-04 Sat 16:39 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-kbd.el'
 ;; Author:       Xin Yang

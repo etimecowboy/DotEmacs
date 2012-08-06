@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:09 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:20 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-help.el'
 ;; Author:       Xin Yang
@@ -26,11 +26,11 @@
       (message "*Help* buffer dose not exist!"))))
 
 ;;;###autoload
-(defun help-mode-settings ()
-  "settings of `help-mode'."
+(defun help-mode-postload ()
+  "Settings of `help-mode' after it's been loaded."
   (def-turn-on "view-mode" nil)
   (am-add-hooks 'help-mode-hook 'view-mode-off)
-  (message "* ---[ help configuration is complete ]---"))
+  (message "* ---[ help post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun help-mode-face-settings ()

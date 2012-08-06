@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:02 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:12 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-cc-mode.el'
 ;; Author:       Xin Yang
@@ -16,8 +16,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun cc-mode-settings ()
-  "Settings for `cc-mode'."
+(defun cc-mode-postload ()
+  "Settings for `cc-mode' after it's been loaded."
   ;; Make a non-standard key binding.  We can put this in
   ;; c-mode-base-map because c-mode-map, c++-mode-map, and so on,
   ;; inherit from it.
@@ -72,7 +72,7 @@
   (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
   ;;------------------------------------------------------------------
-  (message "* ---[ cc-mode configuration is complete ]---"))
+  (message "* ---[ cc-mode post-load configuration is complete ]---"))
 
 ;; Customizations for all modes in CC Mode.
 ;;;###autoload
@@ -141,7 +141,7 @@
 ;;   ;; (when (try-require 'c-eldoc)
 ;;   ;;       (eval-after-load "c-eldoc"
 ;;   ;;         (progn
-;;   ;;           (c-eldoc-settings)))))
+;;   ;;           (c-eldoc-postload)))))
 ;;   )
 
 

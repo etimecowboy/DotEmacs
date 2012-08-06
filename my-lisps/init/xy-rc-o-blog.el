@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:14 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:29 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-o-blog.el'
 ;; Author:       Xin Yang
@@ -26,8 +26,8 @@
             "~/emacs/org/html/myblogs/oblog-emacs/index.html"))))
 
 ;;;###autoload
-(defun o-blog-settings ()
-  "Settings of `o-blog.el'."
-  (message "* ---[ o-blog configuration is complete ]---"))
+(defun o-blog-postload ()
+  "Settings of `o-blog.el' after it's been loaded."
+  (message "* ---[ o-blog post-load configuration is complete ]---"))
 
 (provide 'xy-rc-o-blog)

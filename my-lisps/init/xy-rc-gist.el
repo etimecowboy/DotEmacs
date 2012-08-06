@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:08 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:20 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-gist.el'
 ;; Author:       Xin Yang
@@ -17,9 +17,9 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun gist-settings ()
-  "Settings of `gist.el'."
+(defun gist-postload ()
+  "Settings of `gist.el' after it's been loaded."
 
-  (message "* ---[ gist configuration is complete ]---"))
+  (message "* ---[ gist post-load configuration is complete ]---"))
 
 (provide 'xy-rc-gist)

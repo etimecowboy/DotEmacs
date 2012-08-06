@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:11 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:22 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ido.el'
 ;; Author:       Xin Yang
@@ -58,8 +58,8 @@
   (exit-minibuffer))
 
 ;;;###autoload
-(defun ido-settings ()
-  "settings for `ido'."
+(defun ido-postload ()
+  "Settings for `ido' after it's been loaded."
 
   ;; (If is-before-emacs-21
   ;;     (setq read-buffer-function 'ido-read-buffer)
@@ -124,6 +124,6 @@
   ;; ido-yes-or-no
   (require 'ido-yes-or-no)
 
-  (message "* ---[ ido configuration is complete ]---"))
+  (message "* ---[ ido post-load configuration is complete ]---"))
 
 (provide 'xy-rc-ido)

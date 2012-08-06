@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:12 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:27 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-isearch.el'
 ;; Author:       Xin Yang
@@ -143,10 +143,10 @@ This is useful when followed by an immediate kill."
   (goto-char isearch-other-end))
 
 ;;;###autoload
-(defun isearch-settings ()
-  "settings for `isearch'."
+(defun isearch-postload ()
+  "Settings for `isearch' after it's been loaded."
   (setq-default case-fold-search t) ;; 搜索时不区分大小写
-  (message "* ---[ isearch configuration is complete ]---"))
+  (message "* ---[ isearch post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun isearch-face-settings ()

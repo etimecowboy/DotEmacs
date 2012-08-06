@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:14 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:29 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-mode-line-frame.el'
 ;; Author:       Xin Yang
@@ -61,8 +61,8 @@
   ;; (custom-set-faces '(mode-line ((t (:height 0.2)))))) ;; look better
 
 ;;;###autoload
-(defun mode-line-frame-settings ()
-  "Settings of `mode-line-frame.el'."
+(defun mode-line-frame-postload ()
+  "Settings of `mode-line-frame.el' after it's been loaded."
   (setq mode-line-frame-format mode-line-format)
   (setq mode-line-frame-parameters '((title . "mode-line")
                                      (name . "mode-line-frame")
@@ -71,6 +71,6 @@
                                      (mode-line . 1)
                                      (width . 100)
                                      (height . 10)))
-  (message "* ---[ mode-line-frame configuration is complete ]---"))
+  (message "* ---[ mode-line-frame post-load configuration is complete ]---"))
 
 (provide 'xy-rc-mode-line-frame)

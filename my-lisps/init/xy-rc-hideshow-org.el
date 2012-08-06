@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:09 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:21 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-hideshow-org.el'
 ;; Author:       Xin Yang
@@ -17,12 +17,12 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun hideshow-org-settings ()
-  "Settings of `hideshow-org.el'."
+(defun hideshow-org-postload ()
+  "Settings of `hideshow-org.el' after it's been loaded."
 
   (setq hs-org/trigger-keys-block '(kbd "TAB"))
   (setq tab-always-indent t)
   ;; (indent-tabs-mode -1)
-  (message "* ---[ hideshow-org configuration is complete ]---"))
+  (message "* ---[ hideshow-org post-load configuration is complete ]---"))
 
 (provide 'xy-rc-hideshow-org)

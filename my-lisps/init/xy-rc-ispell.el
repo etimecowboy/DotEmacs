@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:12 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:27 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ispell.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun ispell-settings ()
-  "Settings of `ispell.el'."
+(defun ispell-postload ()
+  "Settings of `ispell.el' after it's been loaded."
 
   (GNULinux
    (setq ispell-program-name "aspell")
@@ -46,6 +46,6 @@
         ispell-skip-tib t
         ispell-use-framepop-p nil)
 
-  (message "* ---[ ispell configuration is complete ]---"))
+  (message "* ---[ ispell post-load configuration is complete ]---"))
 
 (provide 'xy-rc-ispell)

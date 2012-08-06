@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:09 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:21 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-hideif.el'
 ;; Author:       Xin Yang
@@ -54,12 +54,12 @@
   (re-search-forward hif-ifx-else-endif-regexp (point-max) t))
 
 ;;;###autoload
-(defun hideif-settings()
-  "Settings for hideif.el"
+(defun hideif-postload()
+  "Settings for hideif.e after it's been loaded."
   (setq hide-ifdef-env
         '((GNU_LINUX . t)
           (__GNUC__ . t)
           (__cplusplus . t)))
-  (message "* ---[ hideif configuration is complete ]---"))
+  (message "* ---[ hideif post-load configuration is complete ]---"))
 
 (provide 'xy-rc-hideif)

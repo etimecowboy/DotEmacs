@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:08 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:19 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-font-lock.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun font-lock-settings ()
-  "Settings for `font-lock'."
+(defun font-lock-postload ()
+  "Settings for `font-lock' after it's been loaded."
 
   (setq  font-lock-maximum-decoration t
          font-lock-support-mode 'jit-lock-mode)
@@ -47,7 +47,7 @@
        ;; ("{\\|}" . green-face)
        )
      ))
-  (message "* ---[ font-lock configuration is complete ]---"))
+  (message "* ---[ font-lock post-load configuration is complete ]---"))
 
 ;; NOTE: moved to my `color-theme-xy.el'
 ;; ;;;###autoload

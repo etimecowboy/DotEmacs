@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:19 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 19:33 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-savehist.el'
 ;; Author:       Xin Yang
@@ -17,14 +17,21 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun savehist-settings ()
-  "Settings of `savehist.el'."
+(defun savehist-preload ()
+  "Settings of `savehist.el' before it's been loaded."
   (setq-default savehist-file (concat my-var-path "/savehist-"
                                       user-login-name "@"
                                       system-name "@"
                                       system-configuration))
   (unless (file-exists-p savehist-file)
     (shell-command (concat "touch " savehist-file)))
-  (message "* ---[ savehist configuration is complete ]---"))
+  (message "* ---[ savehist pre-load configuration is complete ]---"))
+
+
+;;;###autoload
+(defun savehist-postload ()
+  "Settings of `savehist.el' after it's been loaded"
+
+  (message "* ---[ savehist post-load configuration is complete ]---"))
 
 (provide 'xy-rc-savehist)

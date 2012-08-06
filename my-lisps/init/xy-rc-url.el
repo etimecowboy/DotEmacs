@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:21 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:54 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-url.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun url-settings ()
-  "Settings of `url.el'."
+(defun url-postload ()
+  "Settings of `url.el' after it's been loaded."
   (setq-default url-configuration-directory
                 (concat my-var-path "/url"))
   (setq url-privacy-level (quote high))
@@ -27,6 +27,6 @@
   ;; NOTE: Suggested in http://melpa.milkbox.net/#known-issues for
   ;;       melpa ELPA repo.
   (setq url-http-attempt-keepalives nil)
-  (message "* ---[ url configuration is complete ]---"))
+  (message "* ---[ url post-load configuration is complete ]---"))
 
 (provide 'xy-rc-url)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:10 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:22 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ibuffer.el'
 ;; Author:       Xin Yang
@@ -24,8 +24,8 @@
   (message "%d Buffers right now" (length l)))
 
 ;;;###autoload
-(defun ibuffer-settings ()
-  "Settings of `ibuffer'."
+(defun ibuffer-postload ()
+  "Settings of `ibuffer' after it's been loaded."
   ;; ibuffer, advanced replacement for the `buffer-menu
   ;; (if is-before-emacs-21 (require 'ibuffer-for-21))
 
@@ -143,6 +143,6 @@
             (lambda ()
               (ibuffer-switch-to-saved-filter-groups "default")))
 
-  (message "* ---[ ibuffer configuration is complete ]---"))
+  (message "* ---[ ibuffer post-load configuration is complete ]---"))
 
 (provide 'xy-rc-ibuffer)

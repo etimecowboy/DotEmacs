@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:12 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:28 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-lisp.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun lisp-mode-settings ()
-  "Settings for `lisp-interaction-mode'."
+(defun lisp-mode-postload ()
+  "Settings for `lisp-interaction-mode' after it's been loaded."
   ;; (am-add-hooks
   ;;  ;; `(lisp-mode-hook lisp-interaction-mode-hook)
   ;;  `(lisp-mode-hook)
@@ -41,11 +41,11 @@
   ;;     ;; (turn-on-eldoc-mode)
   ;;     ;; (turn-on-hungry-delete-mode)
 
-  (message "* ---[ lisp-mode configuration is complete ]---"))
+  (message "* ---[ lisp-mode post-load configuration is complete ]---"))
 
 ;;;###autoload
-(defun emacs-lisp-mode-settings ()
-  "Settings for `emacs-lisp-mode'."
+(defun emacs-lisp-mode-postload ()
+  "Settings for `emacs-lisp-mode' after it's been loaded."
   ;; Add menu item for emacs-lisp mode
   ;; NOTE: can use `font-lock-mode-hook' to add Imenu Index for any
   ;; mode that supports Imenu.
@@ -61,6 +61,6 @@
   ;;              ;; (xy/yas-start)
   ;;              ;; (xy/linkd-start)))
 
-  (message "* ---[ emacs-lisp-mode configuration is complete ]---"))
+  (message "* ---[ emacs-lisp-mode post-load configuration is complete ]---"))
 
 (provide 'xy-rc-lisp)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:16 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:35 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-pulse.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun pulse-settings ()
-  "Settings for `pulse'."
+(defun pulse-postload ()
+  "Settings for `pulse' after it's been loaded."
   (setq pulse-command-advice-flag t) ;; (if window-system 1 nil)
   ;; (pulse-toggle-integration-advice t)
   ;; (pulse-toggle-integration-advice (if window-system 1 -1))
@@ -77,7 +77,7 @@
     (when (and pulse-command-advice-flag (interactive-p))
       (pulse-momentary-highlight-one-line (point))))
   (add-hook 'next-error-hook 'pulse-line-hook-function)
-  (message "* ---[ pulse configuration is complete ]---"))
+  (message "* ---[ pulse post-load configuration is complete ]---"))
 
 ;;;###autoload
 (defun pulse-face-settings ()

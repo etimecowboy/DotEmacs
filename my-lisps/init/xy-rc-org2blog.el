@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:14 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:30 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org2blog.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun org2blog-settings ()
-  "Settings of `org2blog.el'."
+(defun org2blog-postload ()
+  "Settings of `org2blog.el' after it's been loaded."
   (setq org2blog/wp-blog-alist
         '(("etimecowboy.wordpress.com"
            :url "http://etimecowboy.wordpress.com/xmlrpc.php"
@@ -60,6 +60,6 @@
 #+EMAIL:  xin2.yang@gmail.com
 #+DESCRIPTION:
 ")
-  (message "* ---[ org2blog configuration is complete ]---"))
+  (message "* ---[ org2blog post-load configuration is complete ]---"))
 
 (provide 'xy-rc-org2blog)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:06 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:16 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-emms.el'
 ;; Author:       Xin Yang
@@ -92,8 +92,8 @@
       (setq xwl-emms-playlist-last-track track))))
 
 ;;;###autoload
-(defun emms-settings ()
-  "Settings of `emms.el'."
+(defun emms-postload ()
+  "Settings of `emms.el' after it's been loaded."
   ;;------------------------------------------------------------------
   ;; REF: (@url :file-name "http://www.gnu.org/software/emms/configs/xwl-emms.el" :display "Official example")
 
@@ -225,6 +225,6 @@
   ;; (emms-player-set emms-player-mplayer 'regex
   ;;                    "\\.ogg\\|\\.mp3\\|\\.wav\\|\\.mpg\\|\\.mpeg\\|\\.wmv\\|\\.wma\\|\\.mov\\|\\.avi\\|\\.divx\\|\\.ogm\\|\\.asf\\|\\.mkv\\|http://\\|mms://\\|\\.rm\\|\\.rmvb\\|\\.mp4\\|\\.flac\\|\\.vob\\|\\.m4a\\|\\.ape\\|\\.mpc")
 
-  (message "* ---[ emms configuration is complete ]---"))
+  (message "* ---[ emms post-load configuration is complete ]---"))
 
 (provide 'xy-rc-emms)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:04 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:13 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-compile.el'
 ;; Author:       Xin Yang
@@ -17,12 +17,12 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun compile-settings ()
-  "Settings for `compile'."
+(defun compile-postload ()
+  "Settings for `compile' after it's been loaded."
   (require 'compile-misc)
   (setq compile-command "make -k")
   (setq compilation-scroll-output t)
-  (message "* ---[ compile configuration is complete ]---"))
+  (message "* ---[ compile post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun compile-face-settings ()

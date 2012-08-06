@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:19 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:44 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-shell.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun shell-settings ()
-  "Settings for `term'."
+(defun shell-postload ()
+  "Settings for `term' after it's been loaded."
   ;; Remove ^M characters
   ;; (add-hook 'comint-output-filter-functions
   ;;          'comint-strip-ctrl-m)
@@ -29,6 +29,6 @@
   ;; `compile', `grep', and `background' to shell history file
   (require 'shell-history)
 
-  (message "* ---[ shell-mode configuration is complete ]---"))
+  (message "* ---[ shell-mode post-load configuration is complete ]---"))
 
 (provide 'xy-rc-shell)

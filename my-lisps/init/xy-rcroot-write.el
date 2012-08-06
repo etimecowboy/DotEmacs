@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:18 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 21:21 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -18,7 +18,7 @@
 
 ;;====================================================================
 ;;* muse
-;; (eval-after-load "muse-mode" '(muse-settings))
+;; (eval-after-load "muse-mode" '(muse-postload))
 
 ;;====================================================================
 ;;* org
@@ -27,7 +27,7 @@
 
 (eval-after-load "org"
   '(progn
-     (org-settings)
+     (org-postload)
      ;; (org-google-agenda-maps-key-bindings)
      (eal-define-keys
       'org-mode-map
@@ -41,8 +41,8 @@
         ("C-c M-A" org-address-google-geocode-set)
         ("C-c M-l" org-location-google-maps)
         ("C-c g"   org-publish-blog)))))
-(eval-after-load "org-agenda" '(org-settings))
-(eval-after-load "org-capture" '(org-settings))
+(eval-after-load "org-agenda" '(org-postload))
+(eval-after-load "org-capture" '(org-postload))
 
 (eal-define-keys-commonly
  global-map
@@ -60,28 +60,28 @@
 
 ;;** o-blog
 ;; A stand-alone blog and publication tool for org-mode.
-(eval-after-load "o-blog" '(o-blog-settings))
+(eval-after-load "o-blog" '(o-blog-postload))
 
 ;;** org2blog
 ;; use publish org to HTML then use xml-rpc to blog
-(eval-after-load "org2blog" '(org2blog-settings))
+(eval-after-load "org2blog" '(org2blog-postload))
 
 ;;====================================================================
 ;;* auctex
 (eval-after-load "auctex"
   '(progn
-     (auctex-settings)
+     (auctex-postload)
      ;; (eal-define-keys ;; BUG: not working
      ;;  'latex-mode-map
      ;;  `(("C-x `" TeX-next-error)))
      )) ;; default C-c ` conflict with icy-mode
-(eval-after-load "preview-latex" '(preview-latex-settings))
+(eval-after-load "preview-latex" '(preview-latex-postload))
 (global-set-key (kbd "<f6> t") 'xy/auctex-start)
 
 ;;--------------------------------------------------------------------
 ;;** reftex
 ;; reference
-(eval-after-load "reftex" '(reftex-settings))
+(eval-after-load "reftex" '(reftex-postload))
 (autoload 'reftex-mode "reftex" "RefTeX Minor Mode" t)
 (autoload 'turn-on-reftex "reftex" "RefTeX Minor Mode" t)
 (autoload 'reftex-citation "reftex-cite" "Make citation" t)
@@ -89,7 +89,7 @@
 
 ;;--------------------------------------------------------------------
 ;;** cdlatex, tex writing tools
-(eval-after-load "cdlatex" '(cdlatex-settings))
+(eval-after-load "cdlatex" '(cdlatex-postload))
 (autoload 'cdlatex-mode "cdlatex" "CDLaTeX Mode" t)
 (autoload 'turn-on-cdlatex "cdlatex" "CDLaTeX Mode" nil)
 
@@ -101,17 +101,17 @@
 ;; offer more functionalities.
 ;; NOTE: - whizztex now only support latex engine, NOT pdflatex.
 ;;       - Chinese is not supported.
-(eval-after-load "Whizzytex-mode" '(whizzytex-settings))
-(global-set-key (kbd "<f6> w") 'xy/whizzytex-start)
+;; (eval-after-load "Whizzytex-mode" '(whizzytex-postload))
+;; (global-set-key (kbd "<f6> w") 'xy/whizzytex-start)
 
 ;;--------------------------------------------------------------------
 ;;** wysiwyg-tex
 ;; REF: (@url :file-name "https://github.com/laysakura/WYSIWYG-TeX-el" :display "Source")
 ;; WYSIWYG (What You See Is What You Get) tex writitng mode using
 ;; `doc-view.el' and `doc-view-fit-page.el'
-(autoload 'wysiwyg-tex-show-preview "wysiwyg-tex" nil t)
-(autoload 'wysiwyg-tex-show-whole-preview "wysiwyg-tex" nil t)
-(eval-after-load "wysiwyg-tex" '(wysiwyg-tex-settings))
+;; (autoload 'wysiwyg-tex-show-preview "wysiwyg-tex" nil t)
+;; (autoload 'wysiwyg-tex-show-whole-preview "wysiwyg-tex" nil t)
+;; (eval-after-load "wysiwyg-tex" '(wysiwyg-tex-postload))
 ;; (add-hook 'tex-mode-hook
 ;;           ;; key-binds for tex-mode
 ;;           (local-set-key "\C-c\C-t" ; Displays a page around cursor.

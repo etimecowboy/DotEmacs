@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:02 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:11 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-calendar.el'
 ;; Author:       Xin Yang
@@ -34,8 +34,8 @@
           ((or (= x 2) (= x -10))  "猪"))))
 
 ;;;###autoload
-(defun calendar-settings ()
-  "Settings of `calendar.el'."
+(defun calendar-postload ()
+  "Settings of `calendar.el' after it's been loaded."
 
   ;; years must be written in full
   (setq abbreviated-calendar-year nil)
@@ -174,6 +174,6 @@
   ;; (setq calendar-longitude [4 71 east])
   ;; (setq calendar-location-name "Leuven, BE")
 
-  (message "* ---[ calendar configuration is complete ]---"))
+  (message "* ---[ calendar post-load configuration is complete ]---"))
 
 (provide 'xy-rc-calendar)

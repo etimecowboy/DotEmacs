@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:08 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:20 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-git.el'
 ;; Author:       Xin Yang
@@ -25,8 +25,8 @@
   (call-interactively 'git-status))
 
 ;;;###autoload
-(defun git-settings ()
-  "Settings of `git.el'."
-  (message "* ---[ git configuration is complete ]---"))
+(defun git-postload ()
+  "Settings of `git.el' after it's been loaded."
+  (message "* ---[ git post-load configuration is complete ]---"))
 
 (provide 'xy-rc-git)

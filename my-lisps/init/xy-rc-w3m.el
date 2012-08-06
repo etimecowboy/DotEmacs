@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:22 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:54 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-w3m.el'
 ;; Author:       Xin Yang
@@ -198,8 +198,8 @@
 ;;--------------------------------------------------------------------------------------
 
 ;;;###autoload
-(defun w3m-settings ()
-  "Settings for `w3m'."
+(defun w3m-postload ()
+  "Settings for `w3m' after it's been loaded."
   (setq w3m-command-arguments '("-cookie" "-F"))
   ;; Make this comment if you have no a proper proxy
   ;; (setq w3m-command-arguments-alist
@@ -280,7 +280,7 @@
   ;; (dolist (k '([right] [left] [up] [down]))
   ;;     (define-key w3m-mode-map k nil))
 
-  (message "* ---[ w3m configuration is complete ]---"))
+  (message "* ---[ w3m post-load configuration is complete ]---"))
 
 (provide 'xy-rc-w3m)
 

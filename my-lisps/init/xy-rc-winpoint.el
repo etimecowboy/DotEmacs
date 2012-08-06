@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:23 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:59 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-winpoint.el'
 ;; Author:       Xin Yang
@@ -17,9 +17,11 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun winpoint-settings ()
-  "Settings of `winpoint.el'."
+(defun winpoint-postload ()
+  "Settings of `winpoint.el' after it's been loaded."
+
   (setq winpoint-non-restore-buffer-list '("*Group*"))
-  (message "* ---[ winpoint configuration is complete ]---"))
+
+  (message "* ---[ winpoint post-load configuration is complete ]---"))
 
 (provide 'xy-rc-winpoint)

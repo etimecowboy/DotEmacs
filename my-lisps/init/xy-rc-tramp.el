@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:21 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:53 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-tramp.el'
 ;; Author:       Xin Yang
@@ -28,15 +28,13 @@
 (defun sudo-edit-current-file ()
   "Open the current file as sudo without prompting"
   (interactive)
+  (require 'tramp)
   (find-alternate-file (concat "/sudo:root@localhost:" (buffer-file-name (current-buffer)))))
 
 ;;;###autoload
-(defun tramp-settings ()
-  "Settings of `tramp'."
-  ;; (require 'tramp)
-  (setq tramp-default-method "pscp")
-  (setq tramp-verbose 10)
-  (setq tramp-chunksize 500)
+(defun tramp-preload ()
+  "Settings of `tramp' before it's been loaded."
+
   (setq-default tramp-persistency-file-name
                 (concat my-var-path "/tramp-"
                         user-login-name "@"
@@ -46,6 +44,16 @@
     (shell-command (concat "touch " tramp-persistency-file-name)))
   (setq tramp-backup-directory-alist '(("." . "~/.emacs-backup")))
 
-  (message "* ---[ tramp configuration is complete ]---"))
+  (message "* ---[ tramp post-load configuration is complete ]---"))
+
+;;;###autoload
+(defun tramp-postload ()
+  "Settings of `tramp' after it's been loaded."
+
+  (setq tramp-default-method "pscp")
+  (setq tramp-verbose 10)
+  (setq tramp-chunksize 500)
+
+  (message "* ---[ tramp post-load configuration is complete ]---"))
 
 (provide 'xy-rc-tramp)

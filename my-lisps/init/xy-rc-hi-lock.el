@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:10 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:20 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-hi-lock.el'
 ;; Author:       Xin Yang
@@ -54,8 +54,8 @@
 ;;     nil))
 
 ;;;###autoload
-(defun hi-lock-settings ()
-  "Settings of `hi-lock.el'."
+(defun hi-lock-postload ()
+  "Settings of `hi-lock.el' after it's been loaded."
   (setq hi-lock-file-patterns-policy 'ask) ;; default
 
   ;; Fix problem with `hl-line'
@@ -68,7 +68,7 @@
     (let ((font-lock-fontified nil))
       ad-do-it))
 
-  (message "* ---[ hi-lock configuration is complete ]---"))
+  (message "* ---[ hi-lock post-load configuration is complete ]---"))
 
 
 

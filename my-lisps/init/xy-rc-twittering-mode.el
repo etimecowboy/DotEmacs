@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:21 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:53 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-twittering-mode.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun twittering-mode-settings ()
-  "Settings of `twittering-mode'."
+(defun twittering-mode-postload ()
+  "Settings of `twittering-mode' after it's been loaded."
 
   ;; 避免每次都需要输入密码 (需要安装 gpg )
   (setq twittering-use-master-password t)
@@ -42,6 +42,6 @@
   (setq twittering-accounts '((sina (username "15327122549"))))
                                     ;; (auth oauth))))
 
-  (message "* ---[ twittering-mode configuration is complete ]---"))
+  (message "* ---[ twittering-mode post-load configuration is complete ]---"))
 
 (provide 'xy-rc-twittering-mode)

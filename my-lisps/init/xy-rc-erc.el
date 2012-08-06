@@ -5,8 +5,8 @@
 ;;   (erc :server "irc.oftc.net"))
 
 ;; ;;;###autoload
-;; (defun erc-settings ()
-;;   "Settings of `erc'."
+;; (defun erc-postload ()
+;;   "Settings of `erc' after it's been loaded."
 ;;   (require 'erc-nicklist)
 ;;   (require 'erc-highlight-nicknames)
 

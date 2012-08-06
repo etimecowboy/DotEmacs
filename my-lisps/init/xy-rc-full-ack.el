@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:08 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:19 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-full-ack.el'
 ;; Author:       Xin Yang
@@ -31,12 +31,12 @@
     arguments))
 
 ;;;###autoload
-(defun full-ack-settings ()
-  "settings for `full-ack'."
+(defun full-ack-postload ()
+  "Settings for `full-ack' after it's been loaded."
   (setq ack-context 0)
   (setq ack-executable (executable-find "ack-grep"))
   (setq ack-heading nil)
   (setq ack-prompt-for-directory t)
-  (message "* ---[ full-ack configuration is complete ]---"))
+  (message "* ---[ full-ack post-load configuration is complete ]---"))
 
 (provide 'xy-rc-full-ack)

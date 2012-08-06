@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:22 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:54 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-view.el'
 ;; Author:       Xin Yang
@@ -25,8 +25,8 @@
     (call-interactively 'previous-line)))
 
 ;;;###autoload
-(defun view-mode-settings ()
-  "settings for `view-mode'."
+(defun view-mode-postload ()
+  "Settings for `view-mode' after it's been loaded."
   ;; (defface view-mode-mode-line-face
   ;;   '((((type tty pc)) :bold t :background "red" :foreground "white")
   ;;     (t (:background "red" :foreground "white")))
@@ -46,6 +46,6 @@
          `((view-mode " ") (view-mode ,view-mode-line-format))
          (delq (assq 'view-mode minor-mode-alist) minor-mode-alist) ))
 
-  (message "* ---[ view-mode configuration is complete ]---"))
+  (message "* ---[ view-mode post-load configuration is complete ]---"))
 
 (provide 'xy-rc-view)

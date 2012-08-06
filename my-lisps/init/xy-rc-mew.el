@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:14 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:29 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-mew.el'
 ;; Author:       Xin Yang
@@ -25,8 +25,8 @@
 ;;   - (@url :file-name "http://zerodoo.appspot.com/emacs.mew.1.0001.htm" :display "6")
 
 ;;;###autoload
-(defun mew-settings ()
-  "Settings of `Mew'."
+(defun mew-postload ()
+  "Settings of `Mew' after it's been loaded."
   ;; 编码设置，用 utf-8 发送邮件
   ;; NOTE: 经测试好像不需要。全英文时 Mew 用 ascii 编码，有中文时用
   ;; UTF-8
@@ -313,6 +313,6 @@
               (lambda ()
                 (local-set-key "\C-c\M-o" 'org-mime-htmlize))))
 
-  (message "* ---[ mew configuration is complete ]---"))
+  (message "* ---[ mew post-load configuration is complete ]---"))
 
 (provide 'xy-rc-mew)

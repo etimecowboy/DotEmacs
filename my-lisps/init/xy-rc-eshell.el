@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:07 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:17 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-eshell.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun eshell-settings ()
-  "Settings for `term'."
+(defun eshell-postload ()
+  "Settings for `term' after it's been loaded."
   ;; (add-hook 'eshell-preoutput-filter-functions
   ;;           'ansi-color-filter-apply)
 
@@ -79,6 +79,6 @@
        (require 'em-cmpl)
        (setenv "PAGER" "cat")))
 
-  (message "* ---[ eshell configuration is complete ]---"))
+  (message "* ---[ eshell post-load configuration is complete ]---"))
 
 (provide 'xy-rc-eshell)

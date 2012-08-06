@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:01 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:11 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-bookmark.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun bookmark-settings ()
-  "Settings of `bookmark.el'."
+(defun bookmark-postload ()
+  "Settings of `bookmark.el' after it's been loaded."
   (setq bookmark-save-flag 1)
   ;; BUG: not work! use default ~/.emacs.d/bookmarks instead.
   ;; (setq-default bookmark-default-file
@@ -28,6 +28,6 @@
   ;;                       system-configuration))
   ;; (unless (file-exists-p bookmark-default-file)
   ;;   (shell-command (concat "touch " bookmark-default-file)))
-  (message "* ---[ bookmark configuration is complete ]---"))
+  (message "* ---[ bookmark post-load configuration is complete ]---"))
 
 (provide 'xy-rc-bookmark)

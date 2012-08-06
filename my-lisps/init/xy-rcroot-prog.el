@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:18 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 21:17 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -38,7 +38,7 @@
 
 ;;--------------------------------------------------------------------
 ;;** auto-fill
-(eval-after-load "simple" '(simple-settings))
+(eval-after-load "simple" '(simple-postload))
 (am-add-hooks
  `(lisp-mode-hook emacs-lisp-mode-hook latex-mode-hook
                   c-common-mode-hook LaTeX-mode-hook
@@ -59,7 +59,7 @@
 
 ;;--------------------------------------------------------------------
 ;;** paren-mode
-(eval-after-load "paren" '(paren-settings))
+(eval-after-load "paren" '(paren-postload))
 ;; (show-paren-mode 1)
 ;; (setq show-paren-style 'parenthesis)
 
@@ -67,7 +67,7 @@
 ;;** mic-paren
 ;; An extension and replacement to the packages `paren.el' and
 ;; `stig-paren.el' for Emacs
-(eval-after-load "mic-paren" '(mic-paren-settings))
+(eval-after-load "mic-paren" '(mic-paren-postload))
 (when (try-require 'mic-paren) (paren-activate))
 
 ;;--------------------------------------------------------------------
@@ -77,7 +77,7 @@
 ;; NOTE: It takes a lot of computation resource, so I disabled it.
 ;; (eval-after-load "rainbow-delimiters"
 ;;   '(progn
-;;      (rainbow-delimiters-settings)))
+;;      (rainbow-delimiters-postload)))
 ;; (require 'rainbow-delimiters)
 ;; (am-add-hooks
 ;;  `(find-file-hook
@@ -93,7 +93,7 @@
 ;;** highlight-parentheses
 (autoload 'highlight-parentheses-mode "highlight-parentheses" nil t)
 (eval-after-load "highlight-parentheses"
-  '(highlight-parentheses-settings))
+  '(highlight-parentheses-postload))
 (am-add-hooks
  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
                   sh-mode-hook cperl-mode-hook c-common-mode-hook
@@ -106,7 +106,7 @@
 ;; NOTE: autopair-mode conflicts with `auctex'/`cdlatex', and
 ;; `yasnippet'. Need to use hooks to disable it in these modes.
 (autoload 'autopair-mode "autopair" nil t)
-(eval-after-load "autopair" '(autopair-settings))
+(eval-after-load "autopair" '(autopair-postload))
 (am-add-hooks
  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
                   sh-mode-hook cperl-mode-hook c-common-mode-hook
@@ -120,7 +120,7 @@
 ;;** hide-region
 ;; (eval-after-load "hide-region"
 ;;   '(progn
-;;      (hide-region-settings)))
+;;      (hide-region-postload)))
 ;; (am-add-hooks
 ;;  `(lisp-mode-hook emacs-lisp-mode-hook
 ;;    cperl-mode-hook cc-mode-hook
@@ -176,7 +176,7 @@
 (autoload 'hs-minor-mode "hideshow" nil t)
 (eval-after-load "hideshow"
   '(progn
-     (hs-minor-mode-settings)
+     (hs-minor-mode-postload)
      ;; (define-key hs-minor-mode-map (kbd "C-c @ C-h") 'hs-hide-block)
      ;; (define-key hs-minor-mode-map (kbd "C-c @ C-w") 'hs-show-block)
      ;; (define-key hs-minor-mode-map (kbd "S-<f6>") 'hs-toggle-hiding)
@@ -184,7 +184,7 @@
      ;; (define-key hs-minor-mode-map (kbd "M-<f6>") 'hs-hide-all)
      ;; (define-key hs-minor-mode-map (kbd "M-S-<f6>") 'hs-show-all)
      ))
-;; BUG: start it manually, or it will conflicts with my `ediff-settings'
+;; BUG: start it manually, or it will conflicts with my `ediff-postload'
 ;; (am-add-hooks
 ;;  `(c-mode-common-hook lisp-mode-hook emacs-lisp-mode-hook
 ;;                       vhdl-mode-hook verilog-mode-hook)
@@ -199,7 +199,7 @@
 ;;       `yasnippet'
 ;; BUG: strange byte compile error which does not stop it from working.
 (autoload 'hs-org/minor-mode "hideshow-org" nil t)
-(eval-after-load "hideshow-org" '(hideshow-org-settings))
+(eval-after-load "hideshow-org" '(hideshow-org-postload))
 (global-set-key (kbd "<f6> h") 'hs-org/minor-mode)
 
 ;;--------------------------------------------------------------------
@@ -258,27 +258,27 @@
 ;;--------------------------------------------------------------------
 ;;** which-func
 ;; 用来显示当前光标在哪个函数
-(eval-after-load "which-func" '(which-func-settings))
+(eval-after-load "which-func" '(which-func-postload))
 (which-func-mode 1)
 
 ;;--------------------------------------------------------------------
 ;;** imenu
-(eval-after-load "imenu" '(imenu-settings))
+(eval-after-load "imenu" '(imenu-postload))
 ;; (add-hook 'font-lock-mode-hook ;; Add an Imenu index to the menu bar
 ;;                                ;; in any mode that supports Imenu.
 ;;           'try-to-add-imenu)
 
 ;;*** imenu-tree
-(eval-after-load "imenu-tree" '(imenu-tree-settings))
+(eval-after-load "imenu-tree" '(imenu-tree-postload))
 (global-set-key (kbd "<f7> i") 'imenu-tree)
 
 ;;--------------------------------------------------------------------
 ;;** etags
-(eval-after-load "etags" '(etags-settings))
+(eval-after-load "etags" '(etags-postload))
 
 ;;====================================================================
 ;;* Shell script development settings
-(eval-after-load "sh-script" '(sh-mode-settings))
+(eval-after-load "sh-script" '(sh-mode-postload))
 ;; (eal-define-keys
 ;;  'sh-mode-map
 ;;  `(("<"       self-insert-command)
@@ -295,7 +295,7 @@
 ;;* Emacs-lisp development settings
 (eval-after-load "emacs-lisp-mode"
   '(progn
-     (emacs-lisp-mode-settings)
+     (emacs-lisp-mode-postload)
      (eal-define-keys
       'emacs-lisp-mode-map
       `(;; ("C-c M-a"             beginning-of-defun)
@@ -313,7 +313,7 @@
 
 (eval-after-load "lisp-mode"
   '(progn
-     (lisp-mode-settings)
+     (lisp-mode-postload)
      (eal-define-keys
       `(lisp-mode-map lisp-interaction-mode-map)
       `(;; ("C-j"                 goto-line)
@@ -345,12 +345,12 @@
 ;; error-message-string] 4)
 ;; (eval-after-load "lisp-interaction-mode"
 ;;   '(progn
-;;     (lisp-mode-settings)))
+;;     (lisp-mode-postload)))
 
 ;;--------------------------------------------------------------------
 ;;** eldoc
 ;; 显示变量, 函数的声明，可用在很多语言中(c)
-;; (eval-after-load "eldoc" '(eldoc-settings))
+;; (eval-after-load "eldoc" '(eldoc-postload))
 (am-add-hooks
  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook)
  'turn-on-eldoc-mode)
@@ -368,7 +368,7 @@
 ;;** cc-mode
 (eval-after-load "cc-mode"
   '(progn
-     (cc-mode-settings)
+     (cc-mode-postload)
      (eal-define-keys
       `(c-mode-base-map)
       `(("C-c <backspace>"     c-electric-backspace)
@@ -396,11 +396,11 @@
 
 ;;--------------------------------------------------------------------
 ;;** ifdef
-(eval-after-load "ifdef" '(ifdef-settings))
+(eval-after-load "ifdef" '(ifdef-postload))
 
 ;;--------------------------------------------------------------------
 ;;** hide-ifdef
-(eval-after-load "hideif" '(hideif-settings))
+(eval-after-load "hideif" '(hideif-postload))
 ;; (autoload 'hide-ifdef-block "hideif"
 ;;   "Hide the ifdef block (true or false part) enclosing or before the cursor."
 ;;   t)
@@ -420,11 +420,11 @@
 
 ;;--------------------------------------------------------------------
 ;;** c-includes
-(eval-after-load "c-includes" '(c-includes-settings))
+(eval-after-load "c-includes" '(c-includes-postload))
 
 ;;--------------------------------------------------------------------
 ;;** sourcepair
-(eval-after-load "sourcepair" '(sourcepair-settings))
+(eval-after-load "sourcepair" '(sourcepair-postload))
 ;; (autoload 'sourcepair-load "sourcepair"
 ;;   "Load the corresponding C/C++ header or source file for the current
 ;; buffer."  t)
@@ -503,7 +503,7 @@
 
 ;;--------------------------------------------------------------------
 ;;** xcscope
-(eval-after-load "xcscope" '(xcscope-settings))
+(eval-after-load "xcscope" '(xcscope-postload))
 
 ;;--------------------------------------------------------------------
 ;;** ctags
@@ -511,19 +511,19 @@
 ;; make a comparison with the `xcscope.el' (ctags vs cscope)
 ;; REF:
 ;;     - (@url :file-name "http://stackoverflow.com/questions/934233/cscope-or-ctags-why-choose-one-over-the-other" :display "cscope vs ctags")
-;; (eval-after-load "ctags" '(ctags-settings))
+;; (eval-after-load "ctags" '(ctags-postload))
 
 ;;====================================================================
 ;;* vhdl development settings
-(eval-after-load "vhdl" '(vhdl-mode-settings))
+(eval-after-load "vhdl" '(vhdl-mode-postload))
 
 ;;====================================================================
 ;;* verilog development settings
-(eval-after-load "verilog" '(verilog-mode-settings))
+(eval-after-load "verilog" '(verilog-mode-postload))
 
 ;;====================================================================
 ;;* Matlab development settings
-(eval-after-load "matlab" '(matlab-settings))
+(eval-after-load "matlab" '(matlab-postload))
 (autoload 'matlab-mode "matlab" "Enter MATLAB mode." t)
 (setq auto-mode-alist (cons '("\\.m\\'" . matlab-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.M\\'" . matlab-mode) auto-mode-alist))
@@ -535,8 +535,7 @@
 ;;* Documentation settings
 
 ;;** doxygen
-;; (eval-after-load "doxymacs" '(doxymacs-settings))
-;; (require 'doxymacs-settings)
+;; (eval-after-load "doxymacs" '(doxymacs-postload))
 ;; (autoload 'doxymacs-mode "doxymacs"
 ;;   ;; All of the following text shows up in the "mode help" (C-h m)
 ;;   "Minor mode for using/creating Doxygen documentation.
@@ -561,8 +560,8 @@
 ;;* Compiler settings
 
 ;;** autoconf-mode settings
-;; (eval-after-load "autoconf-mode" '(autoconf-mode-settings))
-;; (require 'autoconf-mode-settings)
+;; (eval-after-load "autoconf-mode" '(autoconf-mode-postload))
+;; (require 'autoconf-mode-postload)
 
 ;;--------------------------------------------------------------------
 ;;** flymake
@@ -570,7 +569,7 @@
 (autoload 'flymake-find-file-hook "flymake" "" t)
 (eval-after-load "flymake"
   '(progn
-     (flymake-settings)
+     (flymake-postload)
      (eal-define-keys
       'flymake-mode-map
       `(("C-c N"   flymake-goto-next-error-disp)
@@ -630,7 +629,7 @@
 ;; (eval-after-load "compile"
 ;;   '(progn
 ;;      (compile-face-settings)
-;;      (compile-settings)))
+;;      (compile-postload)))
 
 ;;====================================================================
 ;;* Debug settings
@@ -680,7 +679,7 @@
 ;;    ("C-c m" make)))
 (eval-after-load "gdb-ui"
   '(progn
-     (gud-settings)
+     (gud-postload)
      ;; (define-key c-mode-base-map [f2] 'gdb)
      ;; (define-key gud-minor-mode-map [f5]
      ;;   (lambda (&optional kill)
@@ -700,18 +699,18 @@
      ;;      (define-key gud-minor-mode-map [f11] 'gud-step)
      ;;      (define-key gud-minor-mode-map [C-f11] 'gud-finish)))
      ))
-;; (eval-after-load "gdb-mi" '(gud-settings))
+;; (eval-after-load "gdb-mi" '(gud-postload))
 
 ;;====================================================================
 ;;* IDE settings
 
 ;;** CEDET settings
-(eval-after-load "cedet" '(cedet-settings))
+(eval-after-load "cedet" '(cedet-postload))
 (global-set-key (kbd "<f6> c") 'xy/cedet-start)
 
 ;;--------------------------------------------------------------------
 ;;** ECB settings
-(eval-after-load "ecb-autoloads" '(ecb-settings))
+(eval-after-load "ecb-autoloads" '(ecb-postload))
 (global-set-key (kbd "<f6> b") 'xy/ecb-start)
 
 ;;--------------------------------------------------------------------

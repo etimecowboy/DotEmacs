@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:18 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 21:13 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-net.el'
 ;; Author:       Xin Yang
@@ -18,7 +18,7 @@
 
 ;;====================================================================
 ;;* url
-(eval-after-load "url" '(url-settings)) ;; proxy setting is in it
+(eval-after-load "url" '(url-postload)) ;; proxy setting is in it
 
 ;; Abbrev quickurl
 ;; (setq quickurl-url-file (concat my-emacs-path "/quickurls"))
@@ -39,7 +39,7 @@
 ;;* w3m
 (eval-after-load "w3m"
   '(progn
-     (w3m-settings)
+     (w3m-postload)
      (eal-define-keys
       'w3m-mode-map
       `(("C-x W f"      w3m-external-view-current-url)
@@ -68,17 +68,17 @@
 
 ;;====================================================================
 ;;* erc
-;; (eval-after-load "erc" '(erc-settings))
+;; (eval-after-load "erc" '(erc-postload))
 
 ;;====================================================================
 ;;* weblogger
-;; (eval-after-load "weblogger" '(weblogger-settings))
+;; (eval-after-load "weblogger" '(weblogger-postload))
 
 ;;====================================================================
 ;;* org2blog
 ;; use publish org to HTML then use xml-rpc to blog
 ;; NOTE: Moved to `xy-rcroot-write.el'
-;; (eval-after-load "org2blog" '(org2blog-settings))
+;; (eval-after-load "org2blog" '(org2blog-postload))
 
 ;;====================================================================
 ;;* babel
@@ -91,7 +91,7 @@
   "Use a web translation service to translate MSG, returning a string." t)
 (autoload 'babel-buffer "babel"
   "Use a web translation service to translate the current buffer." t)
-(eval-after-load "babel" '(babel-settings))
+(eval-after-load "babel" '(babel-postload))
 ;; (global-set-key [f12] 'babel)
 (global-set-key (kbd "<f12> r") 'babel-region)
 ;; (global-set-key (kbd "S-<f12>") 'babel-buffer)
@@ -103,7 +103,7 @@
 ;; (global-set-key "\C-cS" 'dictionary-search)
 ;; (global-set-key "\C-cM" 'dictionary-match-words)
 (global-set-key (kbd "<f12> d") 'dictionary-search)
-(global-set-key (kbd "<f12> w") 'dictionary-match-words)
+(global-set-key (kbd "<f12> m") 'dictionary-match-words)
 
 ;;====================================================================
 ;;* eagle
@@ -127,14 +127,14 @@
 ;; TODO: Make it work
 ;; (eval-after-load "twittering-mode"
 ;;   '(progn
-;;     (twittering-mode-settings)))
+;;     (twittering-mode-postload)))
 
 ;;====================================================================
 ;;* google-maps
 ;; REF: (@url :file-name "http://emacser.com/emacs-google-map.htm" :display "emacswiki")
 ;; (eval-after-load "google-maps"
 ;;   '(progn
-;;     (google-maps-settings)))
+;;     (google-maps-postload)))
 ;; (eal-define-keys
 ;;  'google-maps-static-mode-map
 ;;  `(("t"   sb-toggle-keep-buffer)
@@ -158,7 +158,7 @@
 ;; Emacs 音乐播放器
 (eval-after-load "emms-playlist-mode"
   '(progn
-     (emms-settings)
+     (emms-postload)
      (eal-define-keys
      'emms-playlist-mode-map
       `(("<double-mouse-1>" emms-pause)))))
@@ -195,7 +195,7 @@
 ;; 新闻组阅读
 (eval-after-load "gnus"
   '(progn
-     (gnus-settings)
+     (gnus-postload)
      (define-key gnus-summary-mode-map (kbd "C-c C-x C-s")
        'my-archive-article)))
 (global-set-key (kbd "<f8> g") 'gnus)
@@ -203,7 +203,7 @@
 ;;====================================================================
 ;;* mew
 ;; email client
-(eval-after-load "mew" '(mew-settings))
+(eval-after-load "mew" '(mew-postload))
 (setq mail-user-agent 'mew-user-agent) ;; set mew as emacs email agent
 (autoload 'mew "mew" nil t)
 (autoload 'mew-send "mew" nil t)
@@ -229,9 +229,10 @@
 ;;* gist
 ;; Github gist service
 ;; Online code snippet for sharing and version controlling
-(eval-after-load "gist" '(gist-settings))
+(pcache-preload)
+(eval-after-load "gist" '(gist-postload))
 ;; NOTE: Change the location of cache file (by pcache)
-(eval-after-load "pcache" '(pcache-settings))
+(eval-after-load "pcache" '(pcache-postload))
 (global-set-key (kbd "C-x G y") 'gist-region-or-buffer)
 (global-set-key (kbd "C-x G p") 'gist-region-or-buffer-private)
 (global-set-key (kbd "C-x G l") 'gist-list)

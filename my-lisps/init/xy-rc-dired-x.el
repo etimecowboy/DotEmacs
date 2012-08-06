@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:05 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:15 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired-x.el'
 ;; Author:       Xin Yang
@@ -17,8 +17,8 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun dired-x-settings ()
-  "Settings of `dired-x.el'."
+(defun dired-x-postload ()
+  "Settings of `dired-x.el' after it's been loaded."
 
   (setq dired-omit-size-limit 1000000)
 
@@ -68,7 +68,7 @@
   ;;              "\\)")))
   ;;       (funcall dired-omit-regexp-orig))))
 
-  (message "* ---[ dired-x configuration is complete ]---"))
+  (message "* ---[ dired-x post-load configuration is complete ]---"))
 
 (provide 'xy-rc-dired-x)
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:10 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:21 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-highlight-symbol.el'
 ;; Author:       Xin Yang
@@ -62,8 +62,8 @@ DIR has to be 1 or -1."
       (error "No symbol at point"))))
 
 ;;;###autoload
-(defun highlight-symbol-settings ()
-  "Settings for `highlight-symbol'."
+(defun highlight-symbol-postload ()
+  "Settings for `highlight-symbol' after it's been loaded."
   (setq highlight-symbol-idle-delay 0.5)
   ;; I bind "C-x w" to `copy-sexp'
   (eal-define-keys
@@ -84,7 +84,7 @@ DIR has to be 1 or -1."
        html-mode-hook sh-mode-hook Info-mode-hook perl-mode-hook)
      'highlight-symbol-mode-on))
 
-  (message "* ---[ highlight-symbol configuration is complete ]---"))
+  (message "* ---[ highlight-symbol post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
 ;; (defun highlight-symbol-face-settings ()

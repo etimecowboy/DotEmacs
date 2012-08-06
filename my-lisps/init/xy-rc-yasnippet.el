@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:24 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 21:00 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-yasnippet.el'
 ;; Author:       Xin Yang
@@ -40,8 +40,9 @@
 ;;       (yas/load-snippet-buffer))))
 
 ;;;###autoload
-(defun yasnippet-settings ()
-  "settings for `yasnippet'."
+(defun yasnippet-postload ()
+  "Settings for `yasnippet' after it's been loaded."
+
   ;; 2011-07-29 yasnippet. Make the “yas/minor-mode”'s expansion
   ;; behavior to take input word including hyphen.
   ;; (setq yas/key-syntaxes '("w_" "w_." "^ ")) ; default is '("w" "w_"
@@ -71,7 +72,7 @@
         yas/trigger-symbol " =>"
         yas/use-menu 'abbreviate)
 
-  (message "* ---[ yasnippet configuration is complete ]---"))
+  (message "* ---[ yasnippet post-load configuration is complete ]---"))
 
 (provide 'xy-rc-yasnippet)
 

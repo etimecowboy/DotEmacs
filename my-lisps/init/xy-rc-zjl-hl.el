@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:24 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 21:01 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-zjl-hl.el'
 ;; Author:       Xin Yang
@@ -17,11 +17,13 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun zjl-hl-settings ()
-  "Settings for `zjl-hl'."
+(defun zjl-hl-postload ()
+  "Settings for `zjl-hl' after it's been loaded."
+
   (setq zjl-hl-c++-mode-enable-flag t)
   (zjl-hl-enable-global-all-modes)
-  (message "* ---[ zjl-hl configuration is complete ]---"))
+
+  (message "* ---[ zjl-hl post-load configuration is complete ]---"))
 
 ;;;###autoload
 (defun zjl-hl-face-settings ()

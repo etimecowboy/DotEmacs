@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:19 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:40 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-server.el'
 ;; Author:       Xin Yang
@@ -83,10 +83,17 @@ leave it alone."
                (ignore-errors (delete-file ,server-file)))))))))
 
 ;;;###autoload
-(defun server-settings ()
-  "Settings of `server.el'."
+(defun server-preload ()
+  "Settings of `server.el' before it's been loaded."
 
   (setq-default server-auth-dir (concat my-var-path "/server"))
+
+  (message "* ---[ server pre-load configuration is complete ]---"))
+
+;;;###autoload
+(defun server-postload ()
+  "Settings of `server.el' after it's been loaded."
+
   ;; Any server function that may delete the server file should never
   ;; move it to trash instead.
   ;; macro `bypass-trash-in-function(fun)' sets FUN to always use
@@ -94,6 +101,6 @@ leave it alone."
   (mapc (lambda (fun) (eval `(bypass-trash-in-function ,fun)))
         '(server-start server-sentinel server-force-delete))
 
-  (message "* ---[ server configuration is complete ]---"))
+  (message "* ---[ server post-load configuration is complete ]---"))
 
 (provide 'xy-rc-server)

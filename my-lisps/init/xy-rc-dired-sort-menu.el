@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:05 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:14 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired-sort-menu.el'
 ;; Author:       Xin Yang
@@ -17,10 +17,10 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun dired-sort-menu-settings ()
-  "Settings of `dired-sort-menu.el'."
+(defun dired-sort-menu-postload ()
+  "Settings of `dired-sort-menu.el' after it's been loaded."
   (setq dired-sort-dialogue-own-frame t
         dired-sort-menu-saved-config nil)
-  (message "* ---[ dired-sort-menu configuration is complete ]---"))
+  (message "* ---[ dired-sort-menu post-load configuration is complete ]---"))
 
 (provide 'xy-rc-dired-sort-menu)

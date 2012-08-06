@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-02 Thu 02:20 by xin on p5q>
+;; Time-stamp: <2012-08-05 Sun 20:45 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-template.el'
 ;; Author:       Xin Yang
@@ -18,8 +18,8 @@
 
 
 ;;;###autoload
-(defun template-settings ()
-  "settings for `template'."
+(defun template-postload ()
+  "Settings for `template' after it's been loaded."
   (setq template-default-directories
         (list (concat my-emacs-path "/template/templates")))
 
@@ -36,6 +36,6 @@
     (template-expand-template template)
     (setq last-template template))
 
-  (message "* ---[ template configuration is complete ]---"))
+  (message "* ---[ template post-load configuration is complete ]---"))
 
 (provide 'xy-rc-template)
