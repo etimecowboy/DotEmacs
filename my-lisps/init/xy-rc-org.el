@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:30 by xin on p5q>
+;; Time-stamp: <2012-08-06 Mon 20:41 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -678,7 +678,10 @@ If html-file-name is not given, read it from minibuffer."
              :empty-lines 1 :prepend t :clock-keep t)
             ("j" "Write my Journal"
              entry (file+headline "~/emacs/org/source/myblogs/oblog-journal/blog-journal.org" "Journal")
-             "** %U %? %^G\n"
+             "** %? %^G\n\
+   :LOGBOOK:\n\
+   - Begin this journal on                   %U\n\
+   :END:\n"
              :empty-lines 1 :prepend t :clock-keep t)
             ("e" "Add English new words/phrases/sentences"
              entry (file+headline "~/emacs/org/gtd/Capture.org" "English")

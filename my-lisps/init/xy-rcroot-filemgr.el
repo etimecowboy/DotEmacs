@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-06 Mon 10:06 by xin on p5q>
+;; Time-stamp: <2012-08-06 Mon 17:16 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-filemgr.el'
 ;; Author:       Xin Yang
@@ -89,12 +89,8 @@
 ;; open-with, open files in external applications
 ;; NOTE: it need to be patched in order to run on windows
 ;; NOTE: semms not work in Linux, `dired+' is better.
-;; (GNULinux
-;;  (eval-after-load "openwith" '(openwith-postload))
-;;  (require 'openwith)
-;;  (add-hook 'dired-mode-hook
-;;            (function (lambda ()
-;;                        (openwith-mode 1)))))
+;; (eval-after-load "openwith" '(openwith-postload))
+;; (when (try-require 'openwith) (openwith-mode 1))
 
 ;; dired-details
 ;; 简略文件列表信息, BUG: not working properly
