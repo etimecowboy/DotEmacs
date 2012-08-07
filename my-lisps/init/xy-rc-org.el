@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-06 Mon 20:41 by xin on p5q>
+;; Time-stamp: <2012-08-07 Tue 17:00 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -195,16 +195,9 @@ If html-file-name is not given, read it from minibuffer."
 
   ;;==================================================================
   ;; GTD system settings
-
+  ;; NOTE: set in local custom file for my privacy
   ;; agenda files
-  (setq org-agenda-files
-        (list
-         "~/emacs/org/gtd/Life.org"
-         "~/emacs/org/gtd/Phd.org"
-         "~/emacs/org/gtd/Work.org"
-         "~/emacs/org/gtd/Geek.org"
-         "~/emacs/org/gtd/Capture.org"
-         ))
+  ;; (setq org-agenda-files '(".org" ".org"))
 
   ;; For `seesion.el'
   ;; BUG: error when load this two lines

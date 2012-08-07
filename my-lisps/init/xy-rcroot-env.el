@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 23:47 by xin on p5q>
+;; Time-stamp: <2012-08-07 Tue 17:10 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -79,16 +79,17 @@
 ;;- Emacs：    “你能经得起诱惑吗？”
 ;;
 ;; ================ Emacs-lisp code begins =================
-;;
-;;====================================================================
-;;* Emacs generated customization
-(fni/add-to-load-path my-var-path)
+
+;; ===================================================================
+;; * Local custom file
+;; Emacs generated customization, which overwrites settings above
+(add-to-list 'load-path my-var-path)
 (setq custom-file (expand-file-name
-                   (concat my-var-path "/xy-rc-custom-"
-                           user-login-name "@"
-                           system-name "@"
-                           system-configuration ".el")))
-(load custom-file 'noerror t t)
+                   (concat my-var-path "/xy-rc-custom.el")))
+;; user-login-name "@"
+;; system-name "@"
+;; system-configuration ".el")))
+(load custom-file)
 
 ;;====================================================================
 ;;* Search pathes
