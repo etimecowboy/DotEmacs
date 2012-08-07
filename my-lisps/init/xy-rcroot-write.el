@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 21:21 by xin on p5q>
+;; Time-stamp: <2012-08-07 Tue 22:05 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -31,16 +31,17 @@
      ;; (org-google-agenda-maps-key-bindings)
      (eal-define-keys
       'org-mode-map
-      `(("C-c C-x C-h" xy/org-html-chinese-no-extra-space)
+      `(("C-c h"       xy/org-html-chinese-no-extra-space)
         ("C-c o m"     org2blog/wp-mode)
         ("C-c o l"     org2blog/wp-login)
         ("C-c o t"     org2blog/wp-post-subtree)
-        ("C-c s"   org-export-as-html5presentation-and-open)
-        ("C-c M-c" org-coordinates-google-geocode-set)
-        ("C-c M-L" org-address-google-geocode-set)
-        ("C-c M-A" org-address-google-geocode-set)
-        ("C-c M-l" org-location-google-maps)
-        ("C-c g"   org-publish-blog)))))
+        ("C-c s"       org-export-as-html5presentation-and-open)
+        ("C-c M-c"     org-coordinates-google-geocode-set)
+        ("C-c M-L"     org-address-google-geocode-set)
+        ("C-c M-A"     org-address-google-geocode-set)
+        ("C-c M-l"     org-location-google-maps)
+        ("C-c g"       org-publish-blog)
+        ("C-c p"       xy/toggle-latex-to-pdf-process)))))
 (eval-after-load "org-agenda" '(org-postload))
 (eval-after-load "org-capture" '(org-postload))
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-07 Tue 17:00 by xin on XIN-PC>
+;; Time-stamp: <2012-08-07 Tue 21:59 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -110,7 +110,7 @@ If html-file-name is not given, read it from minibuffer."
 ;; REF: (@url :file-name "http://orgmode.org/worg/org-hacks.html#sec-1-3-1" :display "worg")
 ;;;###autoload
 (defun org-transpose-table-at-point ()
-  "Transpose orgmode table at point, eliminate hlines"
+  "Transpose orgmode table at point, eliminate hlines."
   (interactive)
   (let ((contents
          (apply #'mapcar* #'list
@@ -124,6 +124,26 @@ If html-file-name is not given, read it from minibuffer."
                   (concat "| " (mapconcat 'identity x " | " )
                           "  |\n" )) contents ""))
     (org-table-align)))
+
+(defvar xy:pdf-flag t)
+;;;###autoload
+(defun xy/toggle-latex-to-pdf-process ()
+  "Toggle the commands (latexmk/xelatex) to generate PDF file."
+  (interactive)
+  (if xy:pdf-flag
+      (progn
+        (setq org-latex-to-pdf-process
+              '("latexmk -xelatex -d -f -silent -c %b"))
+        (setq xy:pdf-flag nil)
+        (message "* ---[ Using `latexmk' as the LaTeX PDF exporter now ]---"))
+    (progn
+      (setq org-latex-to-pdf-process
+            '("xelatex -interaction nonstopmode -output-directory %o %f"
+              "bibtex %b"
+              "xelatex -interaction nonstopmode -output-directory %o %f"
+              "xelatex -interaction nonstopmode -output-directory %o %f"))
+      (setq xy:pdf-flag t)
+      (message "* ---[ Using `xelatex' as the LaTeX PDF exporter now ]---"))))
 
 ;;;###autoload
 (defun org-postload ()
@@ -868,18 +888,18 @@ colorlinks, linkcolor=RoyalBlue, urlcolor=blue" "hyperref" nil)))
           ))
 
   ;; Use xelatex instead of pdflatex for better font supports.
-  (setq org-latex-to-pdf-process
-        '("xelatex -interaction nonstopmode -output-directory %o %f"
-          "bibtex %b"
-          "xelatex -interaction nonstopmode -output-directory %o %f"
-          "xelatex -interaction nonstopmode -output-directory %o %f"))
+  ;; (setq org-latex-to-pdf-process
+  ;;       '("xelatex -interaction nonstopmode -output-directory %o %f"
+  ;;         "bibtex %b"
+  ;;         "xelatex -interaction nonstopmode -output-directory %o %f"
+  ;;         "xelatex -interaction nonstopmode -output-directory %o %f"))
 
-  ;; Better solution: use latexmk
-  ;; BUG: cause error when using tikz
+  ;; Better solution: use latexmk, but cause error when using tikz
   ;; (setq org-latex-to-pdf-process
   ;;   '("latexmk -c -bm DRAFT -pdf -pdflatex=\"xelatex -synctex=1 %O %S\" -silent -pvc -f %b"))
-  ;; (setq org-latex-to-pdf-process
-  ;;   '("latexmk -xelatex -d -f -silent -c %b"))
+  (setq xy:pdf-flag t)
+  (setq org-latex-to-pdf-process
+    '("latexmk -xelatex -d -f -silent -c %b"))
 
   ;; load reftex
   (require 'reftex)
