@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-06 Mon 12:11 by xin on p5q>
+;; Time-stamp: <2012-08-08 Wed 17:50 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-session.el'
 ;; Author:       Xin Yang
@@ -16,7 +16,7 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
-;;====================================================================
+
 ;;* Save editing information
 
 ;;** Winpoint,
@@ -29,7 +29,7 @@
 (autoload 'window-point-remember-mode "winpoint" nil t)
 (window-point-remember-mode 1)
 
-;;-----------------------------------------------------------------------
+
 ;;** Bookmark
 ;; * ‘C-x r m’ – set a bookmark at the current location (e.g. in a file)
 ;; * ‘C-x r b’ – jump to a bookmark
@@ -72,7 +72,7 @@
    ("<left-fringe> <mouse-4>"   bm-previous-mouse)
    ("<left-fringe> <mouse-1>"   bm-toggle-mouse)))
 
-;;====================================================================
+
 ;;* Save Emacs session information
 
 ;;** recentf
@@ -82,13 +82,13 @@
 (recentf-mode 1)
 ;; (global-set-key (kbd "C-x y") 'undo-kill-buffer) ;; BUG:
 
-;;--------------------------------------------------------------------
+
 ;;** save-place
 ;; Save point places in buffers
 (saveplace-preload)
 (eval-after-load "saveplace" '(saveplace-postload))
 
-;;--------------------------------------------------------------------
+
 ;;** savehist
 (savehist-preload)
 (eval-after-load "savehist" '(savehist-postload))
@@ -96,11 +96,11 @@
     (savehist-mode 1)    ;(wrong-type-argument listp ido-file-history)
   (savehist-mode -1))
 
-;;--------------------------------------------------------------------
+
 ;;** filecache
 (eval-after-load "filecache" '(filecache-postload))
 
-;;--------------------------------------------------------------------
+
 ;;** windows and revive (heavy weight, cannot used with emacs daemon)
 ;; Workspace store and recover
 (revive-preload)
@@ -117,40 +117,41 @@
    ("C-c w k" wipe)))
 ;; (win:startup-with-window)
 
-;;--------------------------------------------------------------------
+
 ;;** `elscreen.el' based on APEL
 ;; (try-require 'elscreen)
 
-;;--------------------------------------------------------------------
+
 ;;** `winring.el'
 ;; ;; (eval-after-load "winring" '(winring-postload))
 ;; (when (try-require 'winring)
 ;;   (add-hook 'after-init-hook 'winring-initialize)
 ;;   (define-key winring-map "o" 'winring-next-configuration))
 
-;;--------------------------------------------------------------------
+
 ;;** session
 ;; session.el can remember more information.
 (eval-after-load "session" '(session-postload))
 (when (try-require 'session)
   (add-hook 'after-init-hook 'session-initialize))
 
-;;--------------------------------------------------------------------
+
 ;;** `desktop.el'
 ;; (desktop-preload)
 (eval-after-load "desktop" '(desktop-postload))
 ;; (desktop-save-mode 1)
 
-;;--------------------------------------------------------------------
+
 ;;** `wcy-desktop.el', light weight version `desktop.el'
 ;; (when (try-require 'wcy-desktop)
 ;;   (add-hook 'after-init-hook 'wcy-desktop-init))
 
-;;--------------------------------------------------------------------
+
 ;;** `wcy-escreen.el' by 王纯业(wcy), based on `session.el'
 ;; (when (try-require 'wcy-escreen)
 ;;   (add-hook 'after-init-hook 'wcy-escreen-install))
 
+
 (provide 'xy-rcroot-session)
 
 ;; NOTE: This is the last root configuration file to load

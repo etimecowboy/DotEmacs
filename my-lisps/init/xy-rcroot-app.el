@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-06 Mon 11:16 by xin on p5q>
+;; Time-stamp: <2012-08-08 Wed 17:51 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-app.el'
 ;; Author:       Xin Yang
@@ -15,7 +15,7 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
-;;====================================================================
+
 ;;* Frame settings
 
 ;; TODO: create my own frame layout
@@ -38,7 +38,7 @@
 
 (global-set-key (kbd "C-x C-0") 'xy/toggle-fullscreen)
 
-;;--------------------------------------------------------------------
+
 ;;** Frame title
 ;; ;; Set frame title display: filename @ process
 ;; ;; (setq frame-title-format "%f @ %s")
@@ -66,7 +66,7 @@
            ""))
         " - Emacs"))
 
-;;--------------------------------------------------------------------
+
 ;;** Transparent frame
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/TransparentEmacs" :display "emacswiki")
 ;;; `alpha.el'
@@ -76,7 +76,7 @@
 (global-set-key (kbd "C->") 'transparency-increase)
 (global-set-key (kbd "C-<") 'transparency-decrease)
 
-;;---------------------------------------------------------------------
+
 ;;** Resize frame and window
 ;; BUG: there is a bug in `fit-frame.el' or `thumb-frm.el' which
 ;;      causes info-mode reports an error when following a link. Have
@@ -98,14 +98,14 @@
  global-map
  `(;; `fit-frame.el'
    ("S-<f5>" fit-frame)
-   ;;-----------------------------------
+
    ;; `maxframe.el'
    ("M-<f5>" xy/smart-toggle-maxframe)
    ;; ("M-S-<f5>" restore-frame)
-   ;;------------------------------------
+
    ;; `windresize.el'
    ("C-<f5>" windresize)
-   ;;----------------------------------
+
    ;; `thumb-frm.el'
    ;; (define-key special-event-map [iconify-frame]
    ;;             'thumfr-thumbify-frame-upon-event)
@@ -118,7 +118,7 @@
    ("C-S-n" thumfr-fisheye-next-frame)
    ("C-S-z" thumfr-toggle-thumbnail-frame))) ;; thumfr-really-iconify-or-deiconify-frame
 
-;;====================================================================
+
 ;;* Window settings
 
 ;;** window-number
@@ -132,7 +132,7 @@ windows, use `window-number-mode' to display the window numbers in
 the mode-line." t)
 (window-number-meta-mode 1)
 
-;;--------------------------------------------------------------------
+
 ;;** windmove
 ;; NOTE: If not fast enough, use `window-number.el'
 ;; NOTE: the default key bindings C-left/right/up/down conflicts
@@ -146,7 +146,7 @@ the mode-line." t)
    ("C-S-<up>" windmove-up)
    ("C-S-<down>" windmove-down)))
 
-;;--------------------------------------------------------------------
+
 ;;** buffer-move
 ;; swap buffers without typing C-x b on each window
 (autoload 'buf-move-up "buffer-move" nil t)
@@ -161,17 +161,17 @@ the mode-line." t)
    ("M-S-<left>"  buf-move-left)
    ("M-S-<right>" buf-move-right)))
 
-;;--------------------------------------------------------------------
+
 ;;** Winner mode for window splits
 (winner-mode 1)
 
-;;--------------------------------------------------------------------
+
 ;;** Windresize
 (eal-define-keys-commonly
  global-map
  `(("C-<f5>" windresize)))
 
-;;====================================================================
+
 ;;* Buffer settings
 
 (global-visual-line-mode 1) ;; Wrap line dynamically
@@ -192,7 +192,7 @@ the mode-line." t)
 ;; emacs lock
 ;; (autoload 'toggle-emacs-lock "emacs-lock" "Emacs lock" t)
 
-;;===================================================================
+
 ;;* Fringe settings
 (fringe-mode '(nil . 0))
 (setq visual-line-fringe-indicators '(left-curly-arrow nil))
@@ -200,7 +200,7 @@ the mode-line." t)
               indicate-empty-lines t ;; Indicate empty lines
               overflow-newline-into-fringe t)
 
-;;====================================================================
+
 ;;* mode-line settings
 
 (setq-default ;; Display mode-line the same in non-selected windows
@@ -214,7 +214,7 @@ the mode-line." t)
 (when is-after-emacs-23
   (display-battery-mode -1)) ;; battery infomation is not necessary
 
-;;--------------------------------------------------------------------
+
 ;;** diminish
 ;; Removing or abbreviating minor mode indicators
 (eval-after-load "filladapt" '(diminish 'filladapt-mode))
@@ -250,11 +250,11 @@ the mode-line." t)
 ;; (my-modeline-format-toggle-minor-modes)
 ;; (global-set-key (kbd "<f6> h") 'my-modeline-format-toggle-minor-modes)
 
-;;--------------------------------------------------------------------
+
 ;;** modeline-posn
 ;; (require 'modeline-posn)  ;; Display number of characters in region
 
-;;--------------------------------------------------------------------
+
 ;;** hide-mode-line
 ;; REF: (@url :file-name "http://webonastick.com/emacs-lisp/hide-mode-line.el" :display "Source")
 ;; NOTE: NOT good for me, cause no screen sapce can be saved
@@ -262,13 +262,13 @@ the mode-line." t)
 ;; (hide-mode-line)
 ;; Don't show mode-line, after all mode-line configureation is done
 
-;;--------------------------------------------------------------------
+
 ;;** mode-line-frame
 ;; offers a frame to show various information
 ;; Just call `xy/separate-line-frame' to use it.
 (eval-after-load "mode-line-frame" '(mode-line-frame-postload))
 
-;;====================================================================
+
 ;;* mini-buffer settings
 
 (setq enable-recursive-minibuffers t)
@@ -276,7 +276,7 @@ the mode-line." t)
           'comint-watch-for-password-prompt)
 ;; (minibuffer-electric-default-mode t) ;; ido or icicles
 
-;;====================================================================
+
 
 ;;* Menu settings
 (defvar menu-bar-rectangle-map
@@ -296,7 +296,7 @@ the mode-line." t)
   [rectangle]
   '("Rectangle" . menu-bar-rectangle-map) 'bookmark)
 
-;;====================================================================
+
 ;;* Vaious bar settings
 
 ;;** menu-bar
@@ -313,14 +313,14 @@ the mode-line." t)
 ;; ;; `facemenu.el', these two menus are the same.
 ;; (require 'facemenu+)
 
-;;--------------------------------------------------------------------
+
 ;;** tool-bar
 (tool-bar-mode -1)
 
 ;; ;;*** tool-bar+
 ;; (require 'tool-bar+)
 
-;;--------------------------------------------------------------------
+
 ;;** scroll-bar
 ;; No scroll bar as default
 (scroll-bar-mode -1)
@@ -330,7 +330,7 @@ the mode-line." t)
       scroll-down-aggressively 0.01
       scroll-conservatively 10000)
 
-;;--------------------------------------------------------------------
+
 ;;** tabbar
 ;; tab style buffer switch
 ;; (require 'tabbar)
@@ -345,26 +345,26 @@ the mode-line." t)
 ;; (setq tabbar-ruler-popup-toolbar 't) ; If you want a popup toolbar
 ;; (require 'tabbar-ruler)
 
-;;====================================================================
+
 ;;* Point (cursor) settings
 (blink-cursor-mode 1)
 (setq x-stretch-cursor t)
 
-;;--------------------------------------------------------------------
+
 ;;** bar-cursor
 ;; 光标由方块变成一个小长条
 ;; (require 'bar-cursor)
 ;; (autoload 'bar-cursor-mode "bar-cursor" nil t)
 ;; (bar-cursor-mode 1)
 
-;;--------------------------------------------------------------------
+
 ;;** cursor-change
 ;; 智能的改变光标形状
 ;; REF: (@url :file-name "http://emacser.com/cursor-change.htm" :display "emacser")
 (autoload 'cursor-change-mode "cursor-change" nil t)
 (cursor-change-mode 1)
 
-;;====================================================================
+
 ;;* Mouse settings
 
 ;; (mouse-wheel-mode 1)
@@ -378,7 +378,7 @@ the mode-line." t)
       mouse-throw-with-scroll-bar nil)
 (when (not window-system) (xterm-mouse-mode 1)) ;; Mouse in terminal
 
-;;====================================================================
+
 ;;* Syntax highlighting
 
 ;;** font-lock
@@ -394,11 +394,11 @@ the mode-line." t)
 ;;                   org-mode-hook)
 ;;  '(lambda () (font-lock-mode 1)))
 
-;;--------------------------------------------------------------------
+
 ;;** hl-line
 ;; (global-hl-line-mode 1) ; (if window-system 1 -1)
 
-;;--------------------------------------------------------------------
+
 ;;** hi-lock
 ;; (global-hi-lock-mode 1)
 (eal-define-keys
@@ -411,7 +411,7 @@ the mode-line." t)
    ("C-c H w" hi-lock-write-interactive-patterns)
    ("C-c H a" hi-lock-show-all)))
 
-;;--------------------------------------------------------------------
+
 ;;** highlight-symbol
 ;; 像Eclipse那样高亮光标处单词, 基于hi-lock，方便但是不能保存高亮设置
 (eval-after-load "highlight-symbol"
@@ -432,14 +432,14 @@ the mode-line." t)
    ("C-c H N" highlight-symbol-next-in-defun)
    ("C-c H P" highlight-symbol-prev-in-defun)))
 
-;;--------------------------------------------------------------------
+
 ;;** smart-hl
 ;; 像Eclipse那样双击高亮当前字符串
 ;; NOTE: A part of codepilot which is removed.
 ;;       Use highlight-symbol-mode instead.
 ;; (require 'smart-hl)
 
-;;------------------------------------------------------------------
+
 ;; pulse
 ;; 实现Emacs的淡入淡出效果, is a part of cedet
 ;; REF: (@url :file-name "http://emacser.com/pulse.htm" :display "Emacser")
@@ -450,7 +450,7 @@ the mode-line." t)
      (pulse-postload)))
 (require 'pulse)
 
-;;--------------------------------------------------------------------
+
 ;;** zjl-hl
 ;; use CEDET semantic to highlight function calls
 (eval-after-load "zjl-hl"
@@ -458,14 +458,14 @@ the mode-line." t)
      (zjl-hl-face-settings)
      (zjl-hl-postload)))
 
-;;====================================================================
+
 ;;* Color settings
 
 ;;** generic-x
 ;; 增加更丰富的高亮
 ;; (require 'generic-x)
 
-;;--------------------------------------------------------------------
+
 ;;** color-theme
 ;; fancy themes for emacs
 ;; REF: (@url :file-name "http://emacser.com/color-theme.htm" :display "emacser")
@@ -475,11 +475,11 @@ the mode-line." t)
 ;;   (color-theme-solarized-dark))
 ;; (global-set-key (kbd "<f6> t") 'xy/load-themes)
 
-;;--------------------------------------------------------------------
+
 ;;** doremi
 ;; (eval-after-load "icicles" `(doremi-postload))
 
-;; ;;--------------------------------------------------------------------
+
 ;; ;;** palette
 ;; ;; emacs 的调色板
 ;; (eval-after-load "palette"
@@ -510,8 +510,8 @@ the mode-line." t)
 ;;    ("C-x P f" facemenup-palette-face-fg-at-point)
 ;;    ("C-x P b" facemenup-palette-face-bg-at-point)))
 
-;;--------------------------------------------------------------------
-;; rainbow-mode
+
+;;** rainbow-mode
 ;; displays strings representing colors with the color they represent
 ;; as background
 ;; (require 'rainbow-mode)
@@ -527,4 +527,24 @@ the mode-line." t)
 ;; ;; 打开 global-rainbow-mode
 ;; (global-rainbow-mode)
 
+
+;;** pp-c-l
+;; Display Vontrol-l characters in a pretty way
+(eval-after-load "pp-c-l" '(pp-c-l-postload))
+(require 'pp-c-l)
+(pretty-control-l-mode 1)
+
+
+;;** page-break-mode
+;; display a play brake symbol as a horizontal line
+;; BUG: NOT working
+;; (when (try-require 'page-break-mode)
+;;   (turn-on-page-break-mode))
+;; (am-add-hooks
+;;  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
+;;                   sh-mode-hook cperl-mode-hook c-common-mode-hook
+;;                   vhdl-mode-hook verilog-mode-hook matlab-mode-hook)
+;;  'turn-on-page-break-mode)
+
+
 (provide 'xy-rcroot-app)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 21:13 by xin on p5q>
+;; Time-stamp: <2012-08-08 Wed 17:50 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-net.el'
 ;; Author:       Xin Yang
@@ -16,14 +16,14 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
-;;====================================================================
+
 ;;* url
 (eval-after-load "url" '(url-postload)) ;; proxy setting is in it
 
 ;; Abbrev quickurl
 ;; (setq quickurl-url-file (concat my-emacs-path "/quickurls"))
 
-;;====================================================================
+
 ;; Use external program as the default web browser in X-window
 (if window-system
     (progn
@@ -35,7 +35,7 @@
              'browse-url-default-browser)))
   (setq browse-url-browser-function 'w3m-browse-url))
 
-;;====================================================================
+
 ;;* w3m
 (eval-after-load "w3m"
   '(progn
@@ -66,21 +66,21 @@
                                         ;; default browser
 (global-set-key (kbd "<f8> w") 'w3m)
 
-;;====================================================================
+
 ;;* erc
 ;; (eval-after-load "erc" '(erc-postload))
 
-;;====================================================================
+
 ;;* weblogger
 ;; (eval-after-load "weblogger" '(weblogger-postload))
 
-;;====================================================================
+
 ;;* org2blog
 ;; use publish org to HTML then use xml-rpc to blog
 ;; NOTE: Moved to `xy-rcroot-write.el'
 ;; (eval-after-load "org2blog" '(org2blog-postload))
 
-;;====================================================================
+
 ;;* babel
 ;; 网络翻译接口
 (autoload 'babel "babel"
@@ -96,7 +96,7 @@
 (global-set-key (kbd "<f12> r") 'babel-region)
 ;; (global-set-key (kbd "S-<f12>") 'babel-buffer)
 
-;;====================================================================
+
 ;;* dictionary
 ;; Web dictionary via dictd
 ;; (require 'dictionary-autoloads)
@@ -105,13 +105,13 @@
 (global-set-key (kbd "<f12> d") 'dictionary-search)
 (global-set-key (kbd "<f12> m") 'dictionary-match-words)
 
-;;====================================================================
+
 ;;* eagle
 ;; twitter client
 
-;;====================================================================
+
 ;; * weibo.emacs
-;; REF: (@url :file-name "https://github.com/austin-----/weibo.emacs" :display "Source")
+
 ;;      (@url :file-name "http://emacser.com/weibo.htm" :display "Post@emacser.com")
 ;; TODO: Make it work
 ;; (autoload 'weibo-timeline "weibo-timeline"
@@ -120,7 +120,7 @@
   (setq oauth-use-curl t))
 ;; (try-require 'weibo)
 
-;;====================================================================
+
 ;; * twittering-mode
 ;; REF: (@url :file-name "http://emacser.com/twittering-mode.htm" :display "Post@emacser.com")
 ;;      (@url :file-name "http://harfang.yo2.cn/?p=11522" :display "Another Post")
@@ -129,7 +129,7 @@
 ;;   '(progn
 ;;     (twittering-mode-postload)))
 
-;;====================================================================
+
 ;;* google-maps
 ;; REF: (@url :file-name "http://emacser.com/emacs-google-map.htm" :display "emacswiki")
 ;; (eval-after-load "google-maps"
@@ -147,13 +147,13 @@
 ;;    ("C-t" google-maps-static-set-maptype)))
 ;; (require 'google-maps)
 
-;;====================================================================
+
 ;;* cn-weather
 ;; (require 'cn-weather)
 ;; (defalias 'weather 'cn-weather-today)
 ;; (defalias 'weather-tomorrow 'cn-weather-forecast)
 
-;;====================================================================
+
 ;;* emms
 ;; Emacs 音乐播放器
 (eval-after-load "emms-playlist-mode"
@@ -190,7 +190,7 @@
    ("C-x E +"  emms-volume-raise)
    ("C-x E -"  emms-volume-lower)))
 
-;;====================================================================
+
 ;;* gnus
 ;; 新闻组阅读
 (eval-after-load "gnus"
@@ -200,7 +200,7 @@
        'my-archive-article)))
 (global-set-key (kbd "<f8> g") 'gnus)
 
-;;====================================================================
+
 ;;* mew
 ;; email client
 (eval-after-load "mew" '(mew-postload))
@@ -210,14 +210,14 @@
 (autoload 'mew-user-agent-compose "mew" nil t)
 (global-set-key (kbd "<f8> m") 'mew)
 
-;;====================================================================
+
 ;;* ansit
 ;; 把emacs中的代码以ansi高亮形式贴到bbs上
 (autoload 'ansit "ansit" nil t)
 (autoload 'ansit-buffer "ansit" nil t)
 (autoload 'ansit-copy-and-kill-buffer "ansit" nil t)
 
-;;====================================================================
+
 ;;* edit-server
 ;; Chrome extension: Edit with Emacs
 ;; REF: (@url :file-name "https://chrome.google.com/webstore/detail/ljobjlafonikaiipfkggjbhkghgicgoh" :display "website")
@@ -225,7 +225,7 @@
   (setq edit-server-new-frame nil)
   (edit-server-start))
 
-;;====================================================================
+
 ;;* gist
 ;; Github gist service
 ;; Online code snippet for sharing and version controlling
@@ -237,4 +237,5 @@
 (global-set-key (kbd "C-x G p") 'gist-region-or-buffer-private)
 (global-set-key (kbd "C-x G l") 'gist-list)
 
+
 (provide 'xy-rcroot-net)

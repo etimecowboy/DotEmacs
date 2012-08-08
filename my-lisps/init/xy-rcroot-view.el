@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 21:19 by xin on p5q>
+;; Time-stamp: <2012-08-08 Wed 17:49 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-view.el'
 ;; Author:       Xin Yang
@@ -16,14 +16,14 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
-;;====================================================================
+
 ;;* View files
 
 ;; Allow to view read-only files
 (setq view-read-only t)
 ;; (toggle-read-only t)
 
-;;--------------------------------------------------------------------
+
 ;;** view-mode settings
 (eval-after-load "view"
   '(progn
@@ -53,14 +53,14 @@
      ;;    ("B"           eval-buffer)))
      ))
 
-;;--------------------------------------------------------------------
+
 ;;** doc-view
 (eval-after-load "doc-view" '(doc-view-postload))
 
-;;--------------------------------------------------------------------
+
 ;;** log-view
 
-;;--------------------------------------------------------------------
+
 ;;** Emaci
 ;; Emacs才是世界上最强大的IDE － 用Emaci阅读文件
 ;; REF: (@url :file-name "http://emacser.com/emaci.htm" :display "emacser")
@@ -83,12 +83,12 @@
    ;; ("M-S" emaci-mode-off)
    ))
 
-;;--------------------------------------------------------------------
+
 ;;** hexl-mode
 (add-to-list 'auto-mode-alist
              '("\\.\\(exe\\|vsd\\|so\\|dll\\)$" . hexl-mode))
 
-;;====================================================================
+
 ;;* Compare buffers/files
 
 ;;** diff
@@ -108,7 +108,7 @@
      ;;    ("K" roll-up)))
      ))
 
-;;--------------------------------------------------------------------
+
 ;;** ediff
 ;; (global-set-key (kbd "<f6> d") 'ediff)
 (eval-after-load "ediff"
@@ -136,7 +136,7 @@
      ;; (add-hook 'ediff-keymap-setup-hook 'ediff-keys)
      ))
 
-;;====================================================================
+
 ;;* Grep related settings
 
 ;;** Use grep in Emacs
@@ -164,7 +164,7 @@
 ;;      ("L"     count-brf-lines))))
 ;; (eval-after-load "grep" `(grep-postload))
 
-;;--------------------------------------------------------------------
+
 ;;** full-ack
 ;; ack is a tool like grep, designed for programmers with large trees
 ;; of heterogeneous source code.
@@ -189,7 +189,7 @@
 ;;    ("Q"   kill-this-buffer)))
 ;; (eval-after-load "full-ack" `(full-ack-postload))
 
-;;--------------------------------------------------------------------
+
 ;;** color-moccur
 ;; With color-moccur, you can search a regexp in all buffers. And you
 ;; can search files like grep(-find) without grep (and find) command.
@@ -207,7 +207,7 @@
 ;; the changes in the region.
 (eval-after-load "moccur-edit" '(moccur-edit-postload))
 
-;;--------------------------------------------------------------------
+
 ;;** ioccur
 ;; This package provide similar functionality as occur but is
 ;; incremental, (without `anything')
@@ -215,4 +215,5 @@
 (autoload 'ioccur "ioccur" "Incremental occur" t)
 (global-set-key (kbd "<f7> s") 'ioccur)
 
+
 (provide 'xy-rcroot-view)

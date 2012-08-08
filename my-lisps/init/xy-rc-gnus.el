@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:20 by xin on p5q>
+;; Time-stamp: <2012-08-08 Wed 12:20 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-gnus.el'
 ;; Author:       Xin Yang
@@ -104,8 +104,8 @@
   ;;       - news.aioe.org
   ;;       - news.motzarella.org
   (setq gnus-select-method
+        '(nntp "forums.sybase.com"))
         ;; '(nntp "news.aioe.org"))
-        '(nntp "news.aioe.org"))
   (UKDesktop
    (setq gnus-select-method
          '(nntp "news.virginmedia.com"

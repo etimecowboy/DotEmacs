@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-06 Mon 17:16 by xin on p5q>
+;; Time-stamp: <2012-08-08 Wed 17:50 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-filemgr.el'
 ;; Author:       Xin Yang
@@ -15,24 +15,24 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
-;;====================================================================
+
 ;;* Buffer management
 
 ;; 按下C-x k立即关闭掉当前的buffer
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
-;;--------------------------------------------------------------------
+
 ;;** ibuffer
 (eval-after-load "ibuffer" '(ibuffer-postload))
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-;;--------------------------------------------------------------------
+
 ;;** uniquify
 ;; 可以为重名的 buffer 在前面加上其父目录的名字来让名字区分开来，
 (eval-after-load "uniquify" '(uniquify-postload))
 (require 'uniquify)
 
-;;====================================================================
+
 ;;* File management
 
 ;;** dired
@@ -120,19 +120,19 @@
   (thumbs-preload)
   (eval-after-load "thumbs" '(thumbs-postload)))
 
-;;--------------------------------------------------------------------
+
 ;; ** w32-browser
 (Windows
  (try-require 'w32-browser))
 
-;;--------------------------------------------------------------------
+
 ;;** Sunrise commander; file manager
 ;; BUG: NOT work properly with other dired lisps. Removed.
 ;; Check (@url :file-name "http://www.emacswiki.org/emacs/Sunrise_Commander_Tips" :display "emacswiki")
 (eval-after-load "sunrise-commander" '(sunrise-postload))
 (global-set-key (kbd "C-x J") 'sunrise)
 
-;;====================================================================
+
 ;;* Version control settings
 
 ;;** Emacs internal version control
@@ -153,7 +153,7 @@
                       user-login-name "@" system-name "@" system-configuration
                       "-"))
 
-;;--------------------------------------------------------------------
+
 ;;** git settings
 
 ;;*** git.el
@@ -187,9 +187,10 @@
 (global-set-key (kbd "<f11> u") 'diff-git-diff-unstaged)
 (global-set-key (kbd "<f11> s") 'diff-git-diff-staged)
 
-;;--------------------------------------------------------------------
+
 ;;** diff-hl
 ;; Highlight vc diff section of current file
 (when (try-require 'diff-hl) (global-diff-hl-mode))
 
+
 (provide 'xy-rcroot-filemgr)
