@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 17:13 by xin on XIN-PC>
+;; Time-stamp: <2012-08-08 Wed 20:28 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-pp-c-l.el'
 ;; Author:       Xin Yang
@@ -23,7 +23,12 @@
   (setq pp^L-^L-string-function
         (lambda (win)
           (make-string
-           (1- (window-width win)) ? )))
+           (1- (+ (window-width win) -4)) ? )))
+
+  (if window-system
+      (custom-set-faces
+       '(pp^L-highlight ((t (:overline t :weight extra-bold)))))
+    (custom-set-faces '(pp^L-highlight ((t (:background "cyan"))))))
 
   (message "* ---[ pp-c-l post-load configuration is complete ]---"))
 

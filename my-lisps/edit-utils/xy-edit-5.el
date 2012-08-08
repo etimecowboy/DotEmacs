@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2012-08-02 Thu 02:25 by xin on p5q>
+;; Time-stamp: <2012-08-08 Wed 22:52 by xin on XIN-PC>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -24,6 +24,7 @@
   (interactive)
   (text-scale-increase 0))
 
+
 ;;;###autoload
 (defun toggle-line-move-visual ()
   "Toggle behavior of up/down arrow key, by visual line vs logical line."
@@ -33,6 +34,7 @@
     (setq line-move-visual t))
   )
 
+
 ;;;###autoload
 (defun cmd-shell (&optional arg)
   "Run cmd.exe (WinNT) or command.com shell. A numeric prefix
@@ -48,6 +50,7 @@ arg switches to the specified session, creating it if necessary."
                                       "command.com")))
     (shell buf-name)))
 
+
 ;;;###autoload
 (defun msys-shell (&optional arg)
   "Run MSYS shell (sh.exe).  It's like a Unix Shell in Windows.
@@ -63,6 +66,7 @@ it if necessary."
         (explicit-shell-file-name "sh.exe"))
     (shell buf-name)))
 
+
 ;;;###autoload
 (defun soft-wrap-lines ()
   "Make lines wrap at window edge and on word boundary,
@@ -72,6 +76,7 @@ in current buffer."
   (setq word-wrap t)
   )
 
+
 ;;;###autoload
 (defun close-frame ()
   "Closes the current frame or kill emacs if there are just one
@@ -82,6 +87,7 @@ the frame title bar."
       (delete-frame)
     (save-buffers-kill-terminal)))
 
+
 ;; auto compile elisp files after save, do so only if there's exists a
 ;; byte-compiled file
 ;;;###autoload
@@ -91,3 +97,6 @@ the frame title bar."
              (file-exists-p (byte-compile-dest-file buffer-file-name)))
     (byte-compile-file buffer-file-name)))
 ;; (add-hook 'after-save-hook 'auto-recompile-el-buffer)
+
+
+(provide 'xy-edit-5)

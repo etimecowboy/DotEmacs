@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2012-08-02 Thu 02:25 by xin on p5q>
+;; Time-stamp: <2012-08-08 Wed 22:57 by xin on XIN-PC>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -16,7 +16,7 @@
 
 (eval-when-compile (require 'cl))
 
-;;====================================================================
+
 ;;* Rick Bielawski's function collection
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/Rick_Bielawski" :display "Source")
 
@@ -32,7 +32,7 @@
     (switch-to-buffer one-buf)
     (goto-char buf-point)))
 
-;;--------------------------------------------------------------------
+
 ;;;###autoload
 (defun rgb-window-vertical-to-horizontal ()
   "Switches from a vertical split to a horizontal split."
@@ -45,7 +45,7 @@
     (switch-to-buffer one-buf)
     (goto-char buf-point)))
 
-;;--------------------------------------------------------------------
+
 ;;;###autoload
 (defun insert-prior-line-char ()
   "Insert the same character as in the prior line. Space if none."
@@ -58,21 +58,21 @@
                    (char-after)))))
     (insert char)))
 
-;;--------------------------------------------------------------------
+
 ;;;###autoload
 (defun insert-sequence-symbol (key)
   "Insert the name of the function that key chord executes."
   (interactive "kInseret key description: ")
   (insert (symbol-name (key-binding key))))
 
-;;--------------------------------------------------------------------
+
 ;;;###autoload
 (defun insert-sequence-key (key)
   "Inserts a keystroke suitable for use in fcns like global-set-key"
   (interactive "kInseret key chord: ")
   (insert (format "(kbd \"%s\")" (key-description key))))
 
-;;--------------------------------------------------------------------
+
 ;;;###autoload
 (defun search-word-at-mouseclick (event)
   "Performs a nonincremental-search-forward starting from the

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 17:50 by xin on XIN-PC>
+;; Time-stamp: <2012-08-08 Wed 18:46 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -116,11 +116,11 @@
 ;;** ace-jump-mode
 ;; ace-jump-mode is an fast/direct cursor location minor mode.
 ;; (try-require 'ace-jump-mode)
-(define-key global-map (kbd "C-c j") 'ace-jump-mode)
+(define-key global-map (kbd "M-p") 'ace-jump-mode)
 ;; NOTE:
-;;      - "C-c j"         ==> ace-jump-word-mode
-;;      - "C-u C-c j"     ==> ace-jump-char-mode
-;;      - "C-u C-u C-c j" ==> ace-jump-line-mode
+;;      - "M-p"         ==> ace-jump-word-mode
+;;      - "C-u M-p"     ==> ace-jump-char-mode
+;;      - "C-u C-u M-p" ==> ace-jump-line-mode
 
 
 ;;** my own replace face

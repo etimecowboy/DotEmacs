@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 17:50 by xin on XIN-PC>
+;; Time-stamp: <2012-08-08 Wed 21:54 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-filemgr.el'
 ;; Author:       Xin Yang
@@ -187,6 +187,10 @@
 (global-set-key (kbd "<f11> u") 'diff-git-diff-unstaged)
 (global-set-key (kbd "<f11> s") 'diff-git-diff-staged)
 
+;;;*** mo-git-blame
+(eval-after-load "diff-git" '(diff-git-postload))
+(global-set-key (kbd "<f11> c") 'mo-git-blame-current)
+(global-set-key (kbd "<f11> f") 'mo-git-blame-file)
 
 ;;** diff-hl
 ;; Highlight vc diff section of current file

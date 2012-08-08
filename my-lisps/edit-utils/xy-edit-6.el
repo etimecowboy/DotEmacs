@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2012-08-02 Thu 02:25 by xin on p5q>
+;; Time-stamp: <2012-08-08 Wed 22:57 by xin on XIN-PC>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -16,25 +16,21 @@
 
 (eval-when-compile (require 'cl))
 
-;;====================================================================
 ;;* From  (Steve Purcell)
 ;; REF: (@url :file-name "https://github.com/purcell/emacs.d" :display "Github Source")
 
-;;============================================================================
+
 ;; From file: `init-utils.el'
-;;----------------------------------------------------------------------------
+
 ;; Handier way to add modes to auto-mode-alist
-;;----------------------------------------------------------------------------
 ;;;###autoload
 (defun add-auto-mode (mode &rest patterns)
   "Add entries to `auto-mode-alist' to use `MODE' for all given file `PATTERNS'."
   (dolist (pattern patterns)
     (add-to-list 'auto-mode-alist (cons pattern mode))))
 
-
-;;----------------------------------------------------------------------------
+
 ;; String utilities missing from core emacs
-;;----------------------------------------------------------------------------
 ;;;###autoload
 (defun string-all-matches (regex str &optional group)
   "Find all matches for `REGEX' within `STR', returning the full match string or group `GROUP'."
@@ -51,20 +47,16 @@
   "Remove trailing whitespace from `STR'."
   (replace-regexp-in-string "[ \t\n]*$" "" str))
 
-
-;;----------------------------------------------------------------------------
+
 ;; Find the directory containing a given library
-;;----------------------------------------------------------------------------
 (autoload 'find-library-name "find-func")
 ;;;###autoload
 (defun directory-of-library (library-name)
   "Return the directory in which the `LIBRARY-NAME' load file is found."
   (file-name-as-directory (file-name-directory (find-library-name library-name))))
 
-
-;;----------------------------------------------------------------------------
+
 ;; Delete the current file
-;;----------------------------------------------------------------------------
 ;;;###autoload
 (defun delete-this-file ()
   "Delete the current file, and kill the buffer."
@@ -75,10 +67,8 @@
     (delete-file (buffer-file-name))
     (kill-this-buffer)))
 
-
-;;----------------------------------------------------------------------------
+
 ;; Rename the current file
-;;----------------------------------------------------------------------------
 ;;;###autoload
 (defun rename-this-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
@@ -95,9 +85,8 @@
         (set-visited-file-name new-name)
         (set-buffer-modified-p nil)))))
 
-;;----------------------------------------------------------------------------
+
 ;; Browse current HTML file
-;;----------------------------------------------------------------------------
 ;;;###autoload
 (defun browse-current-file ()
   "Open the current file as a URL using `browse-url'."
@@ -116,7 +105,7 @@
              (progn ,@forms)
            (select-frame ,prev-frame))))))
 
-;;============================================================================
+
 ;; From file: `init-fonts.el'
 
 ;;;###autoload
@@ -125,6 +114,7 @@
     (setcar (nthcdr 7 parts) (format "%d" new-size))
     (mapconcat 'identity parts "-")))
 
+
 ;;;###autoload
 (defun increment-default-font-height (delta)
   "Adjust the default font height by DELTA on every frame.
@@ -143,6 +133,7 @@ DELTA should be a multiple of 10, in the units used by the
     (set-face-attribute 'default nil :height new-height)
     (message "default font size is now %d" new-point-height)))
 
+
 ;;;###autoload
 (defun increase-default-font-height ()
   (interactive)

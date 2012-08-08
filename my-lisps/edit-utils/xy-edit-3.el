@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2012-08-02 Thu 02:25 by xin on p5q>
+;; Time-stamp: <2012-08-08 Wed 22:57 by xin on XIN-PC>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -16,7 +16,7 @@
 
 (eval-when-compile (require 'cl))
 
-;;====================================================================
+
 ;;* 小强的“折腾Emacs“中的函数
 ;; REF: (@url :file-name "http://emacser.com/torture-emacs.htm" :display "Source")
 
@@ -46,7 +46,7 @@ the end of the line."
        (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
 
-;;--------------------------------------------------------------------
+
 ;;** 复制当前行
 ;; 把 Alt-k 设成复制光标所在处到行尾。与 kill-line 的 Ctrl-k对应。这样
 ;; 一来，如果是要拷贝一整行的话，只要将光标移动到该行任意位置，按下
@@ -89,7 +89,7 @@ instead."
   ;; (line-beginning-position (+ 1 arg)))
   (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
 
-;;--------------------------------------------------------------------
+
 ;;** 拷贝代码自动格式化
 ;; Emacs 里对代码的格式化支持的非常好，不但可以在编辑的时候自动帮你格式
 ;; 化， 还可以选中一块代码，按 Ctrl-Alt-\ 对这块代码重新进行格式化。如

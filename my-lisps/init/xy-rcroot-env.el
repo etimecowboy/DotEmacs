@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 18:02 by xin on XIN-PC>
+;; Time-stamp: <2012-08-08 Wed 22:16 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -238,6 +238,9 @@
 ;; HTML5 Presentation export for Org-mode
 ;; REF: (@url :file-name "https://gist.github.com/509761" :display "kinjo's original Git Source")
 
+;;;*** mo-git-blame
+;; REF: (@url :file-name "https://github.com/mbunkus/mo-git-blame" :display "Git Source")
+(xy/load-autoloads (concat my-local-lisp-path "mo-git-blame"))
 
 ;;** Git submodules
 

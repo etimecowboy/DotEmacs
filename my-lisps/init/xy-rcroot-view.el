@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 17:49 by xin on XIN-PC>
+;; Time-stamp: <2012-08-08 Wed 22:30 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-view.el'
 ;; Author:       Xin Yang
@@ -74,14 +74,14 @@
         ("L" count-brf-lines)
         ("]" goto-paren)))))
 
-(eal-define-keys-commonly
- global-map
- `(;; ("C-x q" switch-major-mode-with-emaci)
-   ("M-s"   xy/read-only)
-   ("M-S"   xy/normal-edit)
-   ;; ("M-s" emaci-mode-on)
-   ;; ("M-S" emaci-mode-off)
-   ))
+;; (eal-define-keys-commonly
+;;  global-map
+;;  `(;; ("C-x q" switch-major-mode-with-emaci)
+;;    ("M-s"   xy/read-only)
+;;    ("M-S"   xy/normal-edit)
+;;    ;; ("M-s" emaci-mode-on)
+;;    ;; ("M-S" emaci-mode-off)
+;;    ))
 
 
 ;;** hexl-mode

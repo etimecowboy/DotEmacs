@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:35 by xin on p5q>
+;; Time-stamp: <2012-08-08 Wed 20:13 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-pulse.el'
 ;; Author:       Xin Yang
@@ -82,6 +82,7 @@
 ;;;###autoload
 (defun pulse-face-settings ()
   "Face settings for `pulse'."
+
   (custom-set-faces
    '(pulse-highlight-start-face
      ((((class color) (min-colors 88) (background dark)) :background "#AAAA33")
