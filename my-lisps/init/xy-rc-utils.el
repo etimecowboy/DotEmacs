@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-10 Fri 17:27 by xin on XIN-PC>
+;; Time-stamp: <2012-08-10 Fri 21:33 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -841,15 +841,14 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 
 ;;;###autoload
-(defun xy/daemon-after ()
+(defun xy/gui-start ()
   "Tasks been done after emacsclient first start."
   (interactive)
-  (if window-system
-      (progn
-        (xy/set-font-write)
-        (when (try-require 'color-theme)
-          (color-theme-solarized-dark))
-        (xy/toggle-fullscreen))))
+  (when window-system
+    ;; (xy/set-font-write)
+    (color-theme-solarized-dark)
+    (xy/toggle-fullscreen)
+    (xy/my-anything)))
 
 
 ;;* 全屏控制

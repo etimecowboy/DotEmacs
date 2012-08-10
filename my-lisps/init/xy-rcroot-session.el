@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 17:50 by xin on XIN-PC>
+;; Time-stamp: <2012-08-10 Fri 21:47 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-session.el'
 ;; Author:       Xin Yang
@@ -47,9 +47,11 @@
 ;;         keeping the bookmark list open
 ;; * ‘C-o’ – switch to the current bookmark in another window
 ;; * ‘r’ – rename the current bookmark
+(bookmark-preload)
 (eval-after-load "bookmark" '(bookmark-postload))
 
 ;;*** Bookmark+
+(bookmark+-preload)
 (eval-after-load "bookmark+" '(bookmark+-postload))
 
 ;;*** bm

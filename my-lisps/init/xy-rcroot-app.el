@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-10 Fri 17:16 by xin on XIN-PC>
+;; Time-stamp: <2012-08-10 Fri 22:28 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-app.el'
 ;; Author:       Xin Yang
@@ -91,34 +91,26 @@
 (if window-system
     (progn
       (when (try-require 'autofit-frame) ;; NOTE: annoying and cause problem in terminal
-        (setq autofit-frames-flag nil))
+        (setq autofit-frames-flag t))
       (add-hook 'after-make-frame-functions 'fit-frame)
-      (add-hook 'temp-buffer-show-hook 'fit-frame-if-one-window 'append))
-  (setq autofit-frames-flag t))
+      (add-hook 'temp-buffer-show-hook
+                'fit-frame-if-one-window 'append))
+  (progn
+    (when (try-require 'autofit-frame)
+      (setq autofit-frames-flag nil))))
 
 (eal-define-keys-commonly
  global-map
- `(;; `fit-frame.el'
-   ("S-<f5>" fit-frame)
-
-   ;; `maxframe.el'
-   ("M-<f5>" xy/smart-toggle-maxframe)
-   ;; ("M-S-<f5>" restore-frame)
-
-   ;; `windresize.el'
-   ("C-<f5>" windresize)
-
-   ;; `thumb-frm.el'
-   ;; (define-key special-event-map [iconify-frame]
-   ;;             'thumfr-thumbify-frame-upon-event)
-   ;; (global-set-key [(shift mouse-3)]
-   ;;                 'thumfr-toggle-thumbnail-frame)
-   ;; (global-set-key [(shift control mouse-3)]
-   ;;                 'thumfr-thumbify-other-frames)
-   ("C-M-z" thumfr-thumbify-other-frames)
+ `(("S-<f5>" fit-frame) ;; `fit-frame.el'
+   ("M-<f5>" xy/smart-toggle-maxframe) ;; `maxframe.el'
+   ("C-<f5>" windresize) ;; `windresize.el'
+   ("C-M-z" thumfr-thumbify-other-frames) ;; `thumb-frm.el'
    ("C-S-p" thumfr-fisheye-previous-frame)
    ("C-S-n" thumfr-fisheye-next-frame)
    ("C-S-z" thumfr-toggle-thumbnail-frame))) ;; thumfr-really-iconify-or-deiconify-frame
+;; avoid system maximize window icon conflict with `maxframe.el'
+(define-key special-event-map [iconify-frame]
+  'thumfr-thumbify-frame-upon-event)
 
 
 ;;* Window settings
@@ -534,8 +526,8 @@ the mode-line." t)
 ;;** pp-c-l
 ;; Display Vontrol-l characters in a pretty way
 (eval-after-load "pp-c-l" '(pp-c-l-postload))
-(require 'pp-c-l)
-(pretty-control-l-mode 1)
+(when (try-require 'pp-c-l)
+  (pretty-control-l-mode 1))
 
 
 ;;** page-break-mode

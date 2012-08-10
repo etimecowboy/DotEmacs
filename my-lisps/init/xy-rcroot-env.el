@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-10 Fri 19:36 by xin on XIN-PC>
+;; Time-stamp: <2012-08-10 Fri 22:19 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -650,7 +650,7 @@ Toggle keyboard command logging of whole emacs.
 (global-set-key (kbd "C-x F W") 'xy/set-font-write-big)
 ;; (global-set-key (kbd "C-x F M") 'xy/set-font-write-2)
 (global-set-key (kbd "C-x F P") 'xy/set-font-prog-big)
-(global-set-key (kbd "C-x F A") 'xy/daemon-after)
+(global-set-key (kbd "C-x F A") 'xy/gui-start)
 
 ;;*** Font scale by mouse wheel
 (GNULinux
