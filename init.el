@@ -1,7 +1,7 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
 ;;--------------------------------------------------------------------
 ;; File name:    `init.el'
-;; Time-stamp: <2012-08-07 Tue 17:03 by xin on XIN-PC>
+;; Time-stamp: <2012-08-10 Fri 22:54 by xin on XIN-PC>
 ;; Author:       Xin Yang
 ;; Email:        xin2.yang@gmail.com
 ;; Depend on:    None
@@ -20,14 +20,30 @@
 
 (message "* ---[ Loading my Emacs init file ]---")
 
+;; (defconst emacs-load-time-start (float-time))
+;; (defvar emacs-last-time emacs-load-time-start)
+;; (defun measure-time (txt)
+;;   "*Emacs Time"
+;;   (message "* ---[ Emacs %s loaded in %1f seconds, \
+;; %1f seconds elapsed ]---"
+;;            txt
+;;            (- (float-time) emacs-last-time)
+;;            (- (float-time) emacs-load-time-start))
+
+;;   (when (and nil (eq system-type 'windows-nt))
+;;     (with-temp-file (concat (getenv "TEMP") "/runningep.flg")
+;;       (insert "Loaded ")
+;;       (insert txt)))
+;;   (setq emacs-last-time (float-time)))
+
 ;; measure the loading time per file.
-(defadvice load (around load-with-time-logging)
-  "display the load time for each file."
-  (let ((now (float-time)))
-    ad-do-it
-    (message "* ---[ %2.3f seconds used ]---"
-             (- (float-time) now))))
-(ad-activate 'load)
+;; (defadvice load-time (around load-with-time-logging)
+;;   "display the load time for each file."
+;;   (let ((now (float-time)))
+;;     ad-do-it
+;;     (message "* ---[ %2.3f seconds used ]---"
+;;              (- (float-time) now))))
+;; (ad-activate 'load-time)
 
 ;; Add ~/.emacs.d/my-lisp to Emacs lisp load path
 ;; (add-to-list 'load-path "~/.emacs.d/my-lisps")

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-10 Fri 22:19 by xin on XIN-PC>
+;; Time-stamp: <2012-08-10 Fri 23:36 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-tramp.el'
 ;; Author:       Xin Yang
@@ -40,11 +40,9 @@
                         user-login-name "@"
                         system-name "@"
                         system-configuration))
-  (unless (file-exists-p tramp-persistency-file-name)
-    (shell-command (concat "touch " tramp-persistency-file-name)))
+  ;; (unless (file-exists-p tramp-persistency-file-name)
+  ;;   (shell-command (concat "touch " tramp-persistency-file-name)))
   (setq tramp-backup-directory-alist '(("." . "~/.emacs-backup")))
-  (Windows
-   (setq tramp-default-method "plink"))
 
   (message "* ---[ tramp post-load configuration is complete ]---"))
 
@@ -52,7 +50,15 @@
 (defun tramp-postload ()
   "Settings of `tramp' after it's been loaded."
 
-  (setq tramp-default-method "pscp")
+  (GNULinux
+   (setq tramp-default-method "pscp"))
+
+  ;; REF: (@url :file-name "http://www.jeremyenglish.org/docs/tramp_ntmacs.pdf" :display "PDF file")
+  ;; REF: readme.org and startup.org in (@url :file-name "https://github.com/mlf176f2/EmacsPortable.App/" :display "EmacsProtable.app")
+  (Windows
+   (when (and (executable-find "plink.exe"))
+     (setq tramp-default-method "plink.exe")))
+
   (setq tramp-verbose 10)
   (setq tramp-chunksize 500)
 

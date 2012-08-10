@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-10 Fri 21:47 by xin on XIN-PC>
+;; Time-stamp: <2012-08-10 Fri 23:04 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-session.el'
 ;; Author:       Xin Yang
@@ -117,7 +117,8 @@
    ("C-c w s" save-current-configuration)
    ("C-c w r" resume)
    ("C-c w k" wipe)))
-;; (win:startup-with-window)
+(when window-system
+  (win:startup-with-window))
 
 
 ;;** `elscreen.el' based on APEL

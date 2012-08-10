@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 22:04 by xin on XIN-PC>
+;; Time-stamp: <2012-08-10 Fri 23:23 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-magit.el'
 ;; Author:       Xin Yang
@@ -16,23 +16,23 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
-;; NOTE: current version of `magit' don't need this patch
-;; REF: (@url :file-name "http://www.emacswiki.org/emacs/Magit#toc3" :display "emacswiki")
-;; Tramp under windows
-;; Had to change magit-escape-for-shell To make it work on windows.
-;; ;;;###autoload
-;; (defun magit-escape-for-shell (str)
-;;   (if (or (string= str "git")
-;;           (string-match "^--" str))
-;;       str
-;;     (concat "'" (replace-regexp-in-string "'" "'\\''" str) "'")))
-
 ;;;###autoload
 (defun magit-postload ()
   "Settings of `magit' after it's been loaded."
+
   (setq magit-log-edit-mode-hook
         '(lambda ()
            (flyspell-mode 1)))
+  ;; NOTE: current version of `magit' don't need this patch
+  ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/Magit#toc3" :display "emacswiki")
+  ;; Tramp under windows
+  ;; Had to change magit-escape-for-shell To make it work on windows.
+  (defun magit-escape-for-shell (str)
+    (if (or (string= str "git")
+            (string-match "^--" str))
+        str
+      (concat "'" (replace-regexp-in-string "'" "'\\''" str) "'")))
+
   (message "* ---[ magit post-load configuration is complete ]---"))
 
 (provide 'xy-rc-magit)
