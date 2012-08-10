@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-04 Sat 16:39 by xin on p5q>
+;; Time-stamp: <2012-08-10 Fri 11:35 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-kbd.el'
 ;; Author:       Xin Yang
@@ -156,5 +156,8 @@
                                 (interactive)
                                 (kill-buffer)
                                 (delete-window)))
+
+(global-set-key (kbd "S-<f4>") 'name-last-kbd-marco)
+(global-set-key (kbd "C-<f4>") 'insert-kbd-marco)
 
 (provide 'xy-rc-kbd)

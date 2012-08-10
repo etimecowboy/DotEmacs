@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:30 by xin on p5q>
+;; Time-stamp: <2012-08-10 Fri 17:38 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org2blog.el'
 ;; Author:       Xin Yang
@@ -60,6 +60,33 @@
 #+EMAIL:  xin2.yang@gmail.com
 #+DESCRIPTION:
 ")
+
+  ;; fix original function
+  (defun ob-get-entry-text ()
+    "Return entry text from point with not properties.
+
+Please note that a blank line _MUST_ be present between entry
+headers and body."
+    (save-excursion
+      (save-restriction
+        (save-match-data
+          (org-narrow-to-subtree)
+          (let ((text (buffer-string)))
+            (with-temp-buffer
+              (insert text)
+              (goto-char (point-min))
+              (org-mode)
+              (while (<= 2 (save-match-data (funcall outline-level)))
+                (org-promote-subtree))
+              (run-hooks 'o-blog-html-plugins-hook)
+              (goto-char (point-min))
+              (when (search-forward-regexp "^\\s-*$" nil t)
+                (goto-char (match-end 0)))
+              (save-excursion
+                ;; HACK: add    ^:{}
+                (insert "#+OPTIONS: H:7 num:nil  toc:nil d:nil todo:nil <:nil pri:nil tags:nil ^:{}\n\n"))
+              (buffer-substring-no-properties (point) (point-max))))))))
+
   (message "* ---[ org2blog post-load configuration is complete ]---"))
 
 (provide 'xy-rc-org2blog)

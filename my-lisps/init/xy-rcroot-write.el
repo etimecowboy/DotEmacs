@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 17:49 by xin on XIN-PC>
+;; Time-stamp: <2012-08-10 Fri 10:06 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -41,7 +41,8 @@
         ("C-c M-A"     org-address-google-geocode-set)
         ("C-c M-l"     org-location-google-maps)
         ("C-c g"       org-publish-blog)
-        ("C-c p"       xy/toggle-latex-to-pdf-process)))))
+        ("C-c p"       xy/toggle-latex-to-pdf-process)
+        ("C-c L"       org-toggle-link-display)))))
 (eval-after-load "org-agenda" '(org-postload))
 (eval-after-load "org-capture" '(org-postload))
 

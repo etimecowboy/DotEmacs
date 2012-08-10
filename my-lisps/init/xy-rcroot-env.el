@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 22:16 by xin on XIN-PC>
+;; Time-stamp: <2012-08-10 Fri 17:25 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -609,7 +609,7 @@ Toggle keyboard command logging of whole emacs.
 (setq scalable-fonts-allowed t)
 
 ;;*** Default font
-(xy/set-font-mix)
+(xy/set-font-write)
 
 ;; ;; NOTE: not working
 ;; ;; REF: (@url :file-name "http://att.newsmth.net/nForum/#!article/Emacs/101697" :display "Fengyuan42@newsmth")

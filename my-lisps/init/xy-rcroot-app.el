@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 17:51 by xin on XIN-PC>
+;; Time-stamp: <2012-08-10 Fri 17:16 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-app.el'
 ;; Author:       Xin Yang
@@ -87,12 +87,14 @@
 (try-require 'fit-frame)
 (try-require 'thumb-frm)
 (try-require 'maxframe) ;; NOTE: not stable with two or more monitors
+
 (if window-system
-    (let ((when (try-require 'autofit-frame) ;; NOTE: annoying and cause problem in terminal
-            (autofit-frames-flag nil))
-          (add-hook 'after-make-frame-functions 'fit-frame)
-          (add-hook 'temp-buffer-show-hook 'fit-frame-if-one-window 'append)))
-  (let ((autofit-frames-flag t))))
+    (progn
+      (when (try-require 'autofit-frame) ;; NOTE: annoying and cause problem in terminal
+        (setq autofit-frames-flag nil))
+      (add-hook 'after-make-frame-functions 'fit-frame)
+      (add-hook 'temp-buffer-show-hook 'fit-frame-if-one-window 'append))
+  (setq autofit-frames-flag t))
 
 (eal-define-keys-commonly
  global-map
@@ -321,14 +323,15 @@ the mode-line." t)
 ;; (require 'tool-bar+)
 
 
-;;** scroll-bar
+;;** scroll related
 ;; No scroll bar as default
 (scroll-bar-mode -1)
-(setq scroll-step 1
+(setq scroll-step 10
       scroll-margin 3
       scroll-up-aggressively 0.01
       scroll-down-aggressively 0.01
-      scroll-conservatively 10000)
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 'always)
 
 
 ;;** tabbar
