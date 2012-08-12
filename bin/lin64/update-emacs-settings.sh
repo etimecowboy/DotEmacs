@@ -1,3 +1,4 @@
+#!/bin/bash
 cd ~/.emacs.d/my-lisps
 rm loaddefs*
 rm *.elc

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-10 Fri 22:28 by xin on XIN-PC>
+;; Time-stamp: <2012-08-11 Sat 10:54 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-app.el'
 ;; Author:       Xin Yang
@@ -105,8 +105,8 @@
    ("M-<f5>" xy/smart-toggle-maxframe) ;; `maxframe.el'
    ("C-<f5>" windresize) ;; `windresize.el'
    ("C-M-z" thumfr-thumbify-other-frames) ;; `thumb-frm.el'
-   ("C-S-p" thumfr-fisheye-previous-frame)
-   ("C-S-n" thumfr-fisheye-next-frame)
+   ;; ("C-S-p" thumfr-fisheye-previous-frame)
+   ;; ("C-S-n" thumfr-fisheye-next-frame)
    ("C-S-z" thumfr-toggle-thumbnail-frame))) ;; thumfr-really-iconify-or-deiconify-frame
 ;; avoid system maximize window icon conflict with `maxframe.el'
 (define-key special-event-map [iconify-frame]

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:44 by xin on p5q>
+;; Time-stamp: <2012-08-11 Sat 18:45 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-shell.el'
 ;; Author:       Xin Yang
@@ -19,6 +19,7 @@
 ;;;###autoload
 (defun shell-postload ()
   "Settings for `term' after it's been loaded."
+
   ;; Remove ^M characters
   ;; (add-hook 'comint-output-filter-functions
   ;;          'comint-strip-ctrl-m)
@@ -28,6 +29,10 @@
   ;; Add command of `shell-command', `shell-command-on-region',
   ;; `compile', `grep', and `background' to shell history file
   (require 'shell-history)
+
+  ;; SHELL = %your_emacs_path%\bin\cmdproxy.exe
+  ;; (Windows
+  ;;  (setenv SHELL "cmdproxy.exe"))
 
   (message "* ---[ shell-mode post-load configuration is complete ]---"))
 

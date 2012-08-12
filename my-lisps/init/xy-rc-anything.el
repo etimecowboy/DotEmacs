@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 19:57 by xin on p5q>
+;; Time-stamp: <2012-08-12 Sun 21:20 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-anything.el'
 ;; Author:       Xin Yang
@@ -24,7 +24,9 @@
   (interactive)
   (require 'anything)
   (anything-other-buffer
-   '(;; Buffer:
+   '(;; Bookmark:
+     anything-c-source-bookmarks
+     ;; Buffer:
      anything-c-source-buffers
      ;; anything-c-source-buffer-not-found
      ;; File:
@@ -35,12 +37,8 @@
      anything-c-source-ffap-line
      anything-c-source-ffap-guesser
      ;; anything-c-source-locate  ;; BUG: 慢，还可能出问题
-     ;; Bookmark:
-     anything-c-source-bookmarks
      ;; Command:
-     ;; BUG: Conflicts with `session.el'. Error when
-     ;; running`xy/my-anything'
-     ;; anything-c-source-minibuffer-history
+     ;; anything-c-source-minibuffer-history ;; BUG: Conflicts with `session.el'
      anything-c-source-emacs-commands
      ;; Buffer Contents:
      anything-c-source-imenu

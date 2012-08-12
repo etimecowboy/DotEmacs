@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-10 Fri 23:04 by xin on XIN-PC>
+;; Time-stamp: <2012-08-11 Sat 17:39 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-session.el'
 ;; Author:       Xin Yang
@@ -107,8 +107,10 @@
 ;; Workspace store and recover
 (revive-preload)
 (eval-after-load "revive" '(revive-postload))
+(try-require 'revive)
 (windows-preload)
 (eval-after-load "windows" '(windows-postload))
+(try-require 'windows)
 (eal-define-keys-commonly
  global-map
  `(("C-c w q" see-you-again)

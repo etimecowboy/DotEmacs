@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-07 Tue 21:59 by xin on XIN-PC>
+;; Time-stamp: <2012-08-11 Sat 21:22 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -171,15 +171,8 @@ If html-file-name is not given, read it from minibuffer."
   ;;------------------------------------------------------------------
   ;; Loaded modules
   (setq org-modules
-        (quote
-         (org-bbdb org-bibtex org-crypt org-ctags org-docview org-gnus
-  org-id org-info org-habit org-inlinetask org-mew org-special-blocks
-  org-w3m org-annotate-file org-bookmark org-checklist org-choose
-  org-collector org-depend org-elisp-symbol org-eshell org-eval
-  org-eval-light org-expiry org-exp-bibtex  org-git-link
-  org-interactive-query org-invoice org-learn org-mairix org-man
-  org-mtags org-odt org-panel org-registry org2rem org-screen
-  org-secretary orgtbl-sqlinsert org-toc org-track)))
+        '(org-bbdb org-bibtex org-crypt org-docview org-gnus
+                   org-info org-jsinfo org-mew org-w3m))
 
   ;;------------------------------------------------------------------
   ;; Fix some other lisp packages
@@ -1226,9 +1219,9 @@ colorlinks, linkcolor=RoyalBlue, urlcolor=blue" "hyperref" nil)))
   (try-require 'org-location-google-maps)
 
   ;;------------------------------------------------------------------
-  ;; `org-html5presentation'
+  ;; `org-html5presentation' not very useful now
   ;; HTML5 Presentation export for Org-mode
-  (try-require 'org-html5presentation)
+  ;; (try-require 'org-html5presentation)
 
   ;;------------------------------------------------------------------
   ;; `o-blog'
@@ -1240,8 +1233,6 @@ colorlinks, linkcolor=RoyalBlue, urlcolor=blue" "hyperref" nil)))
   (try-require 'org2blog)
 
   ;;------------------------------------------------------------------
-  (define-key org-mode-map (kbd "C-c t") 'timestamp)
-  (define-key org-mode-map (kbd "C-c h") 'xy/org-html-chinese-no-extra-space)
 
   (message "* ---[ org post-load configuration is complete ]---"))
 

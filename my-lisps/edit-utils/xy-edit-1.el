@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2012-08-08 Wed 22:57 by xin on XIN-PC>
+;; Time-stamp: <2012-08-11 Sat 10:26 by xin on p5q>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -106,7 +106,7 @@
 
 ;;;###autoload
 (defun mark-function ()
-  "Mark function."
+  "Mark a lisp/c/c++ function."
   (interactive)
   (cond
    ((or (equal major-mode 'c-mode) (equal major-mode 'c++-mode))

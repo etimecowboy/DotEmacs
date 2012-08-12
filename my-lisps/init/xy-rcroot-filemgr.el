@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 21:54 by xin on XIN-PC>
+;; Time-stamp: <2012-08-11 Sat 18:37 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-filemgr.el'
 ;; Author:       Xin Yang
@@ -63,6 +63,7 @@
         ;; ("C-y"       wuxch-dired-paste)
         ;; ("M-k"       wuxch-dired-cut
         ("X"         mrc-dired-do-command)
+        ("q"         kill-this-buffer)
         ))))
 
 ;;*** GNU Emacs features for dired
