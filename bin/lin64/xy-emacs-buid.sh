@@ -1,4 +1,5 @@
 #!/bin/bash
+cd ~/.emacs.d
 git submodule init
 git submodule update
 cd  ~/.emacs.d/git-lisps/o-blog/
