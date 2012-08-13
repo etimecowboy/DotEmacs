@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-13 Mon 08:20 by xin on XIN-PC>
+;; Time-stamp: <2012-08-13 Mon 08:25 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-shell.el'
 ;; Author:       Xin Yang
@@ -31,8 +31,8 @@
   (require 'shell-history)
 
   ;; SHELL = %your_emacs_path%\bin\cmdproxy.exe
-  (Windows
-   (setenv SHELL "cmdproxy.exe"))
+  ;; (Windows
+  ;;  (setenv SHELL "cmdproxy.exe"))
 
   (message "* ---[ shell-mode post-load configuration is complete ]---"))
 
