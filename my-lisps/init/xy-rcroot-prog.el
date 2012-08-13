@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 17:50 by xin on XIN-PC>
+;; Time-stamp: <2012-08-14 Tue 00:03 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -675,7 +675,7 @@
 ;;    ("M-j"   gud-next)
 ;;    ("M-k"   gud-step)
 ;;    ("M-c"   gud-cont)
-;;    ("M-C"   capitalize-word)
+;;    ("M-S-c"   capitalize-word)
 ;;    ("C-c m" make)))
 (eval-after-load "gdb-ui"
   '(progn

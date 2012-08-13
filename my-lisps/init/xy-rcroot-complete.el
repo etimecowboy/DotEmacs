@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 17:51 by xin on XIN-PC>
+;; Time-stamp: <2012-08-13 Mon 23:59 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -40,7 +40,7 @@
      ;;    ("M-,"   ido-prev-match-dir)
      ;;    ("C-h"   ido-delete-backward-updir)
      ;;    ("M-h"   ido-up-directory)
-     ;;    ("M-H"   ido-up-directory-clean-text)
+     ;;    ("M-S-h"   ido-up-directory-clean-text)
      ;;    ("C-M-h" ido-goto-home)
      ;;    ("C-r"   ido-goto-root)
      ;;    ("C-u"   ido-clean-text)
@@ -83,7 +83,7 @@
      (eal-define-keys-commonly
       global-map
       `(("M-x" smex)
-        ("M-X" smex-major-mode-commands)
+        ("M-S-x" smex-major-mode-commands)
         ("C-c M-x" execute-extended-command)))))
 
 

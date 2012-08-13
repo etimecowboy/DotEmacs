@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-10 Fri 22:19 by xin on XIN-PC>
+;; Time-stamp: <2012-08-14 Tue 00:48 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -214,9 +214,9 @@
 ;; REF: (@url :file-name "http://git.naquadah.org/?p=google-weather-el.git;a=summary" :display "Git Source")
 (xy/load-autoloads (concat my-local-lisp-path "/google-weather-el"))
 
-;;*** hideshow-org (Inactive git source)
+;;*** hideshow-org (Inactive git source, strange error)
 ;; REF: (@url :file-name "https://github.com/secelis/hideshow-org" :display "Git Source")
-(xy/load-autoloads (concat my-local-lisp-path "/hideshow-org"))
+;; (xy/load-autoloads (concat my-local-lisp-path "/hideshow-org"))
 
 ;;*** ibus-el
 ;; REF: (@url :file-name "https://launchpad.net/ibus.el" :display "Brz Source")

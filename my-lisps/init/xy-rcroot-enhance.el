@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 17:50 by xin on XIN-PC>
+;; Time-stamp: <2012-08-14 Tue 00:03 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -281,9 +281,9 @@ from tradition chinese to simple chinese" t)
         ("C-c T p" multi-term-prev)))))
      ;; (eal-define-keys
      ;;  'text-mode-map
-     ;;  `(("M-J"   switch-term-and-text)
-     ;;    ("M-L"   enter-term-mode)))))
-(global-set-key (kbd "C-x T") 'multi-term)
+     ;;  `(("M-S-j"   switch-term-and-text)
+     ;;    ("M-S-l"   enter-term-mode)))))
+(global-set-key (kbd "C-x S-t") 'multi-term)
 
 
 ;;* shell-pop

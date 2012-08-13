@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-11 Sat 12:00 by xin on p5q>
+;; Time-stamp: <2012-08-14 Tue 00:35 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1096,7 +1096,8 @@ directories starting with a `.'."
                 (progn
                   (byte-compile-file srcfile)
                   (message "* ---[ Byte compiling `%s'... ]---" srcfile))
-              (message "* ---[ `%s' exists and is newer. ]---" dstfile)))
+              ;; (message "* ---[ `%s' exists and is newer. ]---"  dstfile))
+              ))
           (setq files (cdr files))))
 
       (when with-subdirs
@@ -1109,84 +1110,8 @@ directories starting with a `.'."
               (xy/recompile-dir dir-or-file)))
           (setq files (cdr files)))))))
 
-
-;; ;;;###autoload
-;; (defun xy/update-all-autoloads
-;;   (this-directory &optional with-subdirs recursive)
-;;   "Update the autoloads cache file for THIS-DIRECTORY.
+;; 
 
-;; If there are newer .el files. The file name of the autoloads
-;; cache is like `loaddefs@!home!user!.emacs.d!lisps.el', which is
-;; built from the full path of the directory.
-
-;; Provide WITH-SUBDIRS and RECURSIVE options to allow recursive
-;; operation when you use it in non-interatively manner, but without
-;; directories starting with a `.'."
-
-;;   ;; (require 'autoload)
-;;   ;; (defvar update-flag nil)
-;;   (interactive (list (read-file-name "Source directory: ")))
-
-;;   (when (and this-directory
-;;              (file-directory-p this-directory))
-;;     (let* ((this-directory (expand-file-name this-directory))
-;;            (files (directory-files this-directory t "^[^\\.]")))
-
-;;       ;; completely canonicalize the directory name (*may not* begin with `~')
-;;       (while (not (string= this-directory
-;;                            (expand-file-name this-directory)))
-;;         (setq this-directory (expand-file-name this-directory)))
-
-;;       (setq generated-autoload-file
-;;             (concat this-directory "/loaddefs@"
-;;                     (subst-char-in-string ?/ ?!
-;;                                           (subst-char-in-string ?: ?! this-directory))
-;;                     ".el"))
-;;       (setq update-flag nil)
-;;       (let ((files (directory-files
-;;                     this-directory t "^[^.]+\\.el$" nil)))
-;;         (while files
-;;           (let ((srcfile (car files))
-;;                 (dstfile (concat (car files) "c")))
-;;             (if (or (not (file-exists-p generated-autoload-file))
-;;                     (not (file-exists-p dstfile))
-;;                     (file-newer-than-file-p
-;;                      srcfile dstfile)
-;;                     (file-newer-than-file-p
-;;                      srcfile generated-autoload-file)
-;;                     (file-newer-than-file-p
-;;                      dstfile generated-autoload-file))
-;;                 (setq update-flag (or update-flag t)))
-;;             (setq files (cdr files))))
-
-;;         (if update-flag
-;;             (progn
-;;               (cond ((fboundp 'update-autoloads-from-directory)
-;;                      (update-autoloads-from-directory this-directory))
-;;                     ((fboundp 'update-autoloads-from-directories)
-;;                      (update-autoloads-from-directories this-directory))
-;;                     ((fboundp 'update-directory-autoloads)
-;;                      (update-directory-autoloads this-directory)))
-;;               (message "* ---[ Updating `%s'... ]---"
-;;                        generated-autoload-file))
-;;           (message "* ---[ `%s' exists and is newer. ]---"
-;;                    generated-autoload-file))
-
-;;         (load-file generated-autoload-file)
-;;         (message "* ---[ Loading `%s'... ]---"
-;;                  generated-autoload-file))
-
-;;       (when with-subdirs
-;;         (while files
-;;           (setq dir-or-file (car files))
-;;           (when (file-directory-p dir-or-file)
-;;             (if recursive
-;;                 (xy/install-all-lisps dir-or-file
-;;                                       'with-subdirs 'recursive)
-;;               (xy/install-all-lisps dir-or-file)))
-;;           (setq files (cdr files)))))))
-
-
 ;;;###autoload
 (defun xy/install-lisps
   (this-directory &optional with-subdirs recursive)
@@ -1237,7 +1162,8 @@ directories starting with a `.'."
                 (progn
                   (byte-compile-file srcfile)
                   (message "* ---[ Byte compiling `%s'... ]---" srcfile))
-              (message "* ---[ `%s' exists and is newer. ]---" dstfile))
+              ;; (message "* ---[ `%s' exists and is newer. ]---" dstfile)
+              )
 
             (if (or (not (file-exists-p generated-autoload-file))
                     (not (file-exists-p dstfile))
@@ -1245,6 +1171,7 @@ directories starting with a `.'."
                     (file-newer-than-file-p srcfile generated-autoload-file)
                     (file-newer-than-file-p dstfile generated-autoload-file))
                 (setq update-flag (or update-flag t)))
+
             (setq files (cdr files))))
 
         (when update-flag ;; t
@@ -1255,14 +1182,14 @@ directories starting with a `.'."
                    (update-autoloads-from-directories this-directory))
                   ((fboundp 'update-directory-autoloads)
                    (update-directory-autoloads this-directory)))
-            (message "* ---[ Updating `%s'... ]---"
-                     generated-autoload-file))
-          (message "* ---[ `%s' exists and is newer. ]---"
-                   generated-autoload-file))
+            (message "* ---[ Updating `%s'... ]---" generated-autoload-file))
+          ;; (message "* ---[ `%s' exists and is newer. ]---"
+          ;;          generated-autoload-file)
+          )
 
         (load generated-autoload-file 'noerror t t)
-        (message "* ---[ Loading `%s'... ]---"
-                 generated-autoload-file))
+        ;; (message "* ---[ Loading `%s'... ]---" generated-autoload-file)
+	)
 
       (when with-subdirs
         (while files
@@ -1276,6 +1203,7 @@ directories starting with a `.'."
 
 
 ;;;###autoload
+;; NOTE: load is too heavy when running recursively
 (defun xy/load-autoloads
   (this-directory &optional with-subdirs recursive)
   "Install all the lisps in THIS-DIRECTORY.
@@ -1305,73 +1233,9 @@ The process is:
                         (subst-char-in-string ?: ?! this-directory))
                     ".el"))
       (if (file-exists-p generated-autoload-file)
-        ;; (progn
-          ;; (add-to-list 'load-path this-directory)
-          ;; (message "* ---[ Adding `%s' to load-path... ]---"
-          ;;          this-directory)
           (load generated-autoload-file 'noerror t t)
-          ;; (message "* ---[ Loading `%s'... ]---"
-          ;;          generated-autoload-file)
-          ;; )
-        ;; else
         (message "* ---[ Error: `%s' does not exist]"
-                 generated-autoload-file)))
-
-    ;; (when with-subdirs
-    ;;   (while files
-    ;;     (setq dir-or-file (car files))
-    ;;     (when (file-directory-p dir-or-file)
-    ;;       (if recursive
-    ;;           (xy/load-autoloads dir-or-file
-    ;;                              'with-subdirs 'recursive)
-    ;;         (xy/load-autoloads dir-or-file)))
-    ;;     (setq files (cdr files))))
-
-    ))
-
-
-;; ;;;###autoload
-;; (defun xy/load-all-lisps
-;;   (this-directory &optional with-subdirs recursive)
-;;   "Load all the lisps in THIS-DIRECTORY."
-
-;;   ;; (require 'bytecomp)
-;;   (interactive (list (read-file-name "Source directory: ")))
-
-;;   (when (and this-directory
-;;              (file-directory-p this-directory))
-;;     (let* ((this-directory (expand-file-name this-directory))
-;;            (files (directory-files this-directory t "^[^\\.]")))
-
-;;       ;; completely canonicalize the directory name (*may not* begin with `~')
-;;       (while (not (string= this-directory
-;;                            (expand-file-name this-directory)))
-;;         (setq this-directory (expand-file-name this-directory)))
-
-;;       (let ((files
-;;              (directory-files this-directory t "^[^.]+\\.el$" nil)))
-;;         (while files
-;;           (let ((srcfile (car files))
-;;                 (dstfile (concat (car files) "c")))
-;;             (if (or (not (file-exists-p dstfile))
-;;                     (file-newer-than-file-p srcfile dstfile))
-;;                 (progn
-;;                   (byte-compile-file srcfile)
-;;                   (message "* ---[ Byte compiling `%s'... ]---" srcfile))
-;;               (message "* ---[ `%s' exists and is newer. ]---" dstfile))
-;;             (load-file dstfile)
-;;             (message "* ---[ Loading `%s'... ]---" dstfile))
-;;           (setq files (cdr files)))))
-
-;;     (when with-subdirs
-;;       (while files
-;;         (setq dir-or-file (car files))
-;;         (when (file-directory-p dir-or-file)
-;;           (if recursive
-;;               (xy/require-all-lisps dir-or-file
-;;                                     'with-subdirs 'recursive)
-;;             (xy/require-all-lisps dir-or-file)))
-;;         (setq files (cdr files))))))
+                 generated-autoload-file)))))
 
 
 ;;;###autoload
@@ -1481,7 +1345,6 @@ See `bypass-trash-in-function' for more information."
   (xy/install-lisps (concat my-local-lisp-path "/emacs-w3m"))
   (xy/install-lisps (concat my-local-lisp-path "/eim-2.4"))
   (xy/install-lisps (concat my-local-lisp-path "/google-weather-el"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/hideshow-org")) ;;BUG: strange errors
   (xy/install-lisps (concat my-local-lisp-path "/ibus-el-0.3.2"))
   (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
   (xy/install-lisps (concat my-local-lisp-path "/matlab-emacs"))

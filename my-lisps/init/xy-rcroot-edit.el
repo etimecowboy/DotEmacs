@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-13 Mon 21:09 by xin on XIN-PC>
+;; Time-stamp: <2012-08-14 Tue 00:03 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -104,10 +104,10 @@
         ("M-y" isearch-yank-line)
         ("C-y" isearch-yank-kill)
         ("M-h" isearch-del-char)
-        ;; ("M-H" ,(if is-after-emacs-23 isearch-help-map
+        ;; ("M-S-h" ,(if is-after-emacs-23 isearch-help-map
         ;;           'isearch-mode-help))
         ("C-o" isearch-occur)  ;; Activate occur easily inside isearch
-        ("M-Z" zap-to-isearch)
+        ("M-S-z" zap-to-isearch)
         ("C-<return>" isearch-exit-other-end)
         ))))
 (global-set-key (kbd "C-x M-s") 'isearch-forward-cur-word)
@@ -116,7 +116,7 @@
 ;;** ace-jump-mode
 ;; ace-jump-mode is an fast/direct cursor location minor mode.
 ;; (try-require 'ace-jump-mode)
-(define-key global-map (kbd "C-J") 'ace-jump-mode)
+(define-key global-map (kbd "C-S-j") 'ace-jump-mode)
 ;; NOTE:
 ;;      - "M-p"         ==> ace-jump-word-mode
 ;;      - "C-u M-p"     ==> ace-jump-char-mode
@@ -218,17 +218,17 @@
    ;;    ("M-C" copy-whole-paragraph)
    ;;    ("C-x c" copy-whole-buffer)
    ;;    ("C-x C" kill-whole-buffer)
-   ;;    ("M-W" which-copy)
+   ;;    ("M-S-w" which-copy)
    ;;    ("M-w" smart-copy)
    ;;    ("C-x M-w" insert-cur-line)
    ;;    ("C-x M-W" insert-cur-sexp)
    ("C-M-w"               copy-sentence)
    ;;    ;; 删除整行
-   ;;    ("M-K" kill-line)
+   ;;    ("M-S-k" kill-line)
    ;;    ("C-k" smart-kill)
    ;;    ("C-\\" delete-indentation)
    ;; ("C-x M-m"             mark-invisible-region)
-   ("M-U"                 del-to-begin)
+   ("M-S-u"                 del-to-begin)
    ("C-^"                 case-trans)
    ;;    ("C-6" case-trans)
    ("C-w"                 backward-kill-word-or-kill-region)
@@ -261,8 +261,8 @@
    ("M-;"                 qiang-comment-dwim-line)
    ("M-k"                 qiang-copy-line)
    ;; Meteor Liu's functions
-   ("C-S-n"               move-line-down)
    ("C-S-p"               move-line-up)
+   ("C-S-n"               move-line-down)
    ("C-c C-x f"           format-region)
    ("C-c C-x F"           format-cxx-file)
    ("C-x M-l"             mark-current-line)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-13 Mon 21:17 by xin on XIN-PC>
+;; Time-stamp: <2012-08-14 Tue 00:03 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -56,7 +56,7 @@
    ("C-c c"   org-capture)
    ("C-c n"   org2blog/wp-new-entry)
    ("C-c u e" xy/browse-my-emacs-blog)
-   ("M-W" tzz-copy-region-with-mode-property)))
+   ("M-S-w"   tzz-copy-region-with-mode-property)))
 
 ;; BUG: when use this to fix org-agenda/org-mobile-push error ((error
 ;;      function `appt-make-list') in Emacs24 ((@url :file-name "http://www.mail-archive.com/emacs-orgmode@gnu.org/msg47051.html" :display "REF")) .

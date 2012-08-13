@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 22:30 by xin on XIN-PC>
+;; Time-stamp: <2012-08-14 Tue 00:03 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-view.el'
 ;; Author:       Xin Yang
@@ -78,9 +78,9 @@
 ;;  global-map
 ;;  `(;; ("C-x q" switch-major-mode-with-emaci)
 ;;    ("M-s"   xy/read-only)
-;;    ("M-S"   xy/normal-edit)
+;;    ("M-S-s"   xy/normal-edit)
 ;;    ;; ("M-s" emaci-mode-on)
-;;    ;; ("M-S" emaci-mode-off)
+;;    ;; ("M-S-s" emaci-mode-off)
 ;;    ))
 
 

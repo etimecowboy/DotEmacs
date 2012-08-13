@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:22 by xin on p5q>
+;; Time-stamp: <2012-08-13 Mon 23:57 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-icicles.el'
 ;; Author:       Xin Yang
@@ -25,7 +25,7 @@
   (require 'icicles)
   (icy-mode 1)
   (global-set-key (kbd "M-x") 'icicle-execute-extended-command)
-  (global-set-key (kbd "M-X") 'icicle-execute-extended-command))
+  (global-set-key (kbd "M-S-x") 'icicle-execute-extended-command))
 
 ;;;###autoload
 (defun icicles-postload ()

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:45 by xin on p5q>
+;; Time-stamp: <2012-08-13 Mon 23:58 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-term.el'
 ;; Author:       Xin Yang
@@ -131,8 +131,8 @@
         ("C-y"   . term-send-raw)
         (,(if window-system "C-/" "C-_") . term-send-undo)
         ("C-M-h" . term-send-backward-kill-semi-word)
-        ("M-H"   . enter-text-mode)
-        ("M-J"   . switch-term-and-text)
+        ("M-S-h"   . enter-text-mode)
+        ("M-S-j"   . switch-term-and-text)
         ("M-f"   . term-send-raw-meta)
         ("M-b"   . term-send-raw-meta)
         ("M-d"   . term-send-raw-meta)
@@ -141,7 +141,7 @@
         ("M-n"   . next-line)
         ("M-u"   . term-send-raw-meta)
         ("M-w"   . term-send-copy-line)
-        ("M-W"   . term-send-copy-line-left)
+        ("M-S-w"   . term-send-copy-line-left)
         ("M-y"   . term-send-raw-meta)
         ("M-."   . term-send-raw-meta)
         ("M-/"   . term-send-raw-meta)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-11 Sat 10:54 by xin on p5q>
+;; Time-stamp: <2012-08-14 Tue 00:17 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-app.el'
 ;; Author:       Xin Yang
@@ -88,26 +88,25 @@
 (try-require 'thumb-frm)
 (try-require 'maxframe) ;; NOTE: not stable with two or more monitors
 
-(if window-system
+    ;; NOTE: may be annoying and cause problem in terminal mode
+(if (and window-system (try-require 'autofit-frame))
     (progn
-      (when (try-require 'autofit-frame) ;; NOTE: annoying and cause problem in terminal
-        (setq autofit-frames-flag t))
+      (setq autofit-frames-flag t)
       (add-hook 'after-make-frame-functions 'fit-frame)
       (add-hook 'temp-buffer-show-hook
                 'fit-frame-if-one-window 'append))
-  (progn
-    (when (try-require 'autofit-frame)
-      (setq autofit-frames-flag nil))))
+  (setq autofit-frames-flag nil))
 
 (eal-define-keys-commonly
  global-map
- `(("S-<f5>" fit-frame) ;; `fit-frame.el'
-   ("M-<f5>" xy/smart-toggle-maxframe) ;; `maxframe.el'
-   ("C-<f5>" windresize) ;; `windresize.el'
-   ("C-M-z" thumfr-thumbify-other-frames) ;; `thumb-frm.el'
-   ;; ("C-S-p" thumfr-fisheye-previous-frame)
-   ;; ("C-S-n" thumfr-fisheye-next-frame)
-   ("C-S-z" thumfr-toggle-thumbnail-frame))) ;; thumfr-really-iconify-or-deiconify-frame
+ `(("S-<f5>"  fit-frame) ;; `fit-frame.el'
+   ("M-<f5>"  xy/smart-toggle-maxframe) ;; `maxframe.el'
+   ("C-<f5>"  windresize) ;; `windresize.el'
+   ("C-z"     thumfr-toggle-thumbnail-frame) ;; thumfr-really-iconify-or-deiconify-frame
+   ("C-S-z"   thumfr-thumbify-other-frames)  ;; `thumb-frm.el'
+   ("C-M-z"   thumfr-fisheye-next-frame)
+   ("C-M-S-z" thumfr-fisheye-previous-frame)))
+
 ;; avoid system maximize window icon conflict with `maxframe.el'
 (define-key special-event-map [iconify-frame]
   'thumfr-thumbify-frame-upon-event)
@@ -318,7 +317,7 @@ the mode-line." t)
 ;;** scroll related
 ;; No scroll bar as default
 (scroll-bar-mode -1)
-(setq scroll-step 10
+(setq scroll-step 1
       scroll-margin 3
       scroll-up-aggressively 0.01
       scroll-down-aggressively 0.01
