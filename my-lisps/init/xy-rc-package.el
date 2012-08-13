@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-06 Mon 12:09 by xin on p5q>
+;; Time-stamp: <2012-08-14 Tue 02:48 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -56,11 +56,11 @@
 
   ;; REF: (@url :file-name "https://github.com/purcell/emacs.d/blob/master/init-elpa.el" :display "Github Source")
   ;; Patch up annoying package.el quirks
-  (defadvice package-generate-autoloads (after close-autoloads (name pkg-dir) activate)
-    "Stop package.el from leaving open autoload files lying around."
-    (let ((path (expand-file-name (concat name "-autoloads.el") pkg-dir)))
-      (with-current-buffer (find-file-existing path)
-        (kill-buffer nil))))
+  ;; (defadvice package-generate-autoloads (after close-autoloads (name pkg-dir) activate)
+  ;;   "Stop package.el from leaving open autoload files lying around."
+  ;;   (let ((path (expand-file-name (concat name "-autoloads.el") pkg-dir)))
+  ;;     (with-current-buffer (find-file-existing path)
+  ;;       (kill-buffer nil))))
 
   ;; ;; REF: (@url :file-name "https://github.com/purcell/emacs.d/blob/master/init-elpa.el" :display "Github Source")
   ;; ;; Add support to package.el for pre-filtering available packages
@@ -122,7 +122,6 @@
   (require-package 'dired+)
   (require-package 'doc-mode)
   (require-package 'emms)
-  (require-package 'ert)
   (require-package 'ess)
   (require-package 'full-ack)
   (require-package 'fuzzy)
