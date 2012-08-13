@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 21:00 by xin on p5q>
+;; Time-stamp: <2012-08-13 Mon 21:10 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-yasnippet.el'
 ;; Author:       Xin Yang
@@ -71,6 +71,13 @@
         yas/snippet-revival t
         yas/trigger-symbol " =>"
         yas/use-menu 'abbreviate)
+
+  ;; NOTE: seems no conflict now.
+  ;; fix conflict with `ethan-wspace' snippet mode
+  ;; (add-hook 'snippet-mode-hook
+  ;;           '(lambda ()
+  ;;              (when (featurep 'ethan-wspace)
+  ;;                (ethan-wspace-mode -1))))
 
   (message "* ---[ yasnippet post-load configuration is complete ]---"))
 

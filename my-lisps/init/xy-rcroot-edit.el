@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-11 Sat 10:59 by xin on p5q>
+;; Time-stamp: <2012-08-13 Mon 21:09 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -37,16 +37,16 @@
 
 ;;** ethan-wspace
 ;; REF: (@url :file-name "https://github.com/glasserc/ethan-wspace" :display "Source")
-(autoload 'ethan-wspace-mode "ethan-wspace" nil t)
 ;; (autoload 'global-ethan-wspace-mode "ethan-wspace" nil t)
-;; (require 'ethan-wspace)
-;; (global-ethan-wspace-mode 1) ;BUG: conflict with `yasnippet' snippet mode
-(am-add-hooks
- `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
-                  c-common-mode-hook sh-mode-hook matlab-mode-hook
-                  vhdl-mode-hook verilog-mode-hook
-                  org-mode-hook LaTeX-mode-hook)
- '(lambda () (ethan-wspace-mode 1)))
+(when (try-require 'ethan-wspace)
+  (global-ethan-wspace-mode 1))
+
+;; NOTE: seems no conflict now.
+;; fix conflict with `yasnippet' snippet mode
+;; (am-add-hooks
+;;  `(snippet-mode)
+;;  '(lambda () (ethan-wspace-mode -1)))
+
 (global-set-key (kbd "<f6> W") 'ethan-wspace-mode)
 
 

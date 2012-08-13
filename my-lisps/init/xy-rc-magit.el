@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-13 Mon 18:54 by xin on XIN-PC>
+;; Time-stamp: <2012-08-13 Mon 22:08 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-magit.el'
 ;; Author:       Xin Yang
@@ -15,6 +15,21 @@
 
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
+
+;; `magit-wip.el' need support of git-wip,
+;; which uses WIP branches to save every edit
+;; REF: (@url :file-name "https://github.com/bartman/git-wip" :display "official website")
+;; REF: (@url :file-name "http://www.jukie.net/~bart/blog/save-everything-with-git-wip" :display "author's blog post")
+;;
+;;;###autoload
+(defun xy/magit-wip-start ()
+  "Start using magit-wip to record every changes."
+
+  (interactive)
+  (when (try-require 'magit-wip)
+    (magit-wip-mode 1)
+    (magit-wip-save-mode 1) ;; don't use the global mode.
+  ))
 
 ;;;###autoload
 (defun magit-postload ()
@@ -32,15 +47,6 @@
   ;;     (define-key map (kbd "q") 'magit-blame-mode)
   ;;     (define-key map (kbd "n") 'magit-blame-next-chunk)
   ;;     (define-key map (kbd "p") 'magit-blame-previous-chunk)
-
-  ;; FIXME: test it in Linux
-  ;; `magit-wip.el' need support of git-wip,
-  ;; which uses WIP branches to save every edit
-  ;; REF: (@url :file-name "https://github.com/bartman/git-wip" :display "official website")
-  ;; REF: (@url :file-name "http://www.jukie.net/~bart/blog/save-everything-with-git-wip" :display "author's blog post")
-  (when (try-require 'magit-wip)
-    (magit-wip-mode 1)
-    (global-magit-wip-save-mode 1))
 
   ;; (add-hook 'magit-mode-hook
   ;;           '(lambda ()
