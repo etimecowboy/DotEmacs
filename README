@@ -9,54 +9,7 @@ account.
 * Installation
 
 1. Clone the repository to "~/.emacs.d/".
-
-2. Enter "~/.emacs.d/backup/" folder, and decompress 
-
-     - `elpa.tar.gz':      lisps downloaded via Emacs ELPA package
-                           services, which is shipped by Emacs 24.1
-                           or later (`package.el'). 
-     - `emacswiki.tar.gz': lisps download from emacswiki.org via
-                           `auto-install.el' functions.
-     - `lisps.tar.gz':     manually downloaded lisps and git 
-                           submodules.
-
-   to the  "~/.emacs.d/" folder.
-   
-     - `cedet-8112.tar.gz'
-
-   to the  "~/.emacs.d/lisps/" folder
-
-3. Enter the "~/.emacs.d/lisp/cedet" folder, and run
-
-     "Emacs -nw -Q -l cedet-build.el -f cedet-build"
-
-   in terminal/command-line to install the cedet package.
-
-4. Run Emacs, you will get errors, but it is OK.
-
-5. "M-x xy/emacs-build" serveral times to build the whole customized
-   emacs, untill there is no error.
-
-6. Restart Emacs.
-
-* Tips
-
-** Customize configurations
-
-After installation, you may want to customize the configuration files
-in "~/.emacs.d/my-lisps/init/". Just do it and save your files.
-
-If you made changes to
-
-- `~/.emacs.d/my-lisps/init/xy-rcroot-env.el'
-- `~/.emacs.d/my-lisps/init/xy-rc-utils.el'
-
-don't forget to delete the their compiled elc files, before your
-rebuild, or you will got errors in Windows.
-
-** Change local lisp packages
-
-After you update/delete/modify the local lisp packages, just
-change the corresponding configuration files and run 
-"M-x xy/emacs-build" in the Emacs program to activate the new 
-lisps.
+2. Enter "~/.emacs.d/bin" folder, and then the sub-folder that matches
+   the running operating system.
+3. Run the "xy-emacs-build" script in your Linux terminal or the MinGW
+   bash shell in Windows.

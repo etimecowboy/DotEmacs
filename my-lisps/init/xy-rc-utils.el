@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-14 Tue 00:35 by xin on XIN-PC>
+;; Time-stamp: <2012-08-14 Tue 10:37 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -210,7 +210,7 @@ argument is not nil."
                            (expand-file-name this-directory)))
         (setq this-directory (expand-file-name this-directory)))
 
-      (message "* ---[ Adding `%s' to load-path... ]---" this-directory)
+      ;; (message "* ---[ Adding `%s' to load-path... ]---" this-directory)
       (add-to-list 'load-path this-directory)
 
       (when with-subdirs
@@ -258,8 +258,7 @@ third argument is not nil."
                            (expand-file-name this-directory)))
         (setq this-directory (expand-file-name this-directory)))
 
-      (message "* ---[ Adding `%s' to image-load-path... ]---"
-               this-directory)
+      ;; (message "* ---[ Adding `%s' to image-load-path... ]---" this-directory)
       (add-to-list 'image-load-path this-directory)
 
       (when with-subdirs
@@ -318,8 +317,7 @@ just add the package to a list of missing packages."
   (if file
       (if (file-executable-p file)
           file
-        (message "* ---[ WARNING: Can't find executable `%s' ]---"
-                 file)
+        (message "* ---[ WARNING: Can't find executable `%s' ]---" file)
         ;; sleep 1 s so that you can read the warning
         (sit-for 1))
     (error "my-file-executable-p: missing operand")))
