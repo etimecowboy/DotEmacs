@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-14 Tue 00:03 by xin on XIN-PC>
+;; Time-stamp: <2012-08-14 Tue 09:55 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -242,8 +242,8 @@ from tradition chinese to simple chinese" t)
         ("C-x L l" linkd-insert-link)))))
 
 (global-set-key (kbd "<f6> l") 'linkd-mode)
-;; NOTE: Manually start it is better, or it would cause error when
-;; the first time of `xy/build-emacs' is called.
+
+;; NOTE: it is better to turn on linkd-mode manually
 ;; (am-add-hooks
 ;;  `(lisp-mode-hook emacs-lisp-mode-hook
 ;;                   c-common-mode-hook
