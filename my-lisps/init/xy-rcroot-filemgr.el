@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-13 Mon 21:21 by xin on XIN-PC>
+;; Time-stamp: <2012-08-14 Tue 17:10 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-filemgr.el'
 ;; Author:       Xin Yang
@@ -63,7 +63,7 @@
         ;; ("C-y"       wuxch-dired-paste)
         ;; ("M-k"       wuxch-dired-cut
         ("X"         mrc-dired-do-command)
-        ("q"         kill-this-buffer)
+        ;; ("q"         kill-this-buffer) ;; BUG: cause `sunrise' error
         ))))
 
 ;;*** GNU Emacs features for dired

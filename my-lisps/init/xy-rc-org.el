@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-11 Sat 21:22 by xin on p5q>
+;; Time-stamp: <2012-08-15 Wed 21:49 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -74,7 +74,7 @@ If html-file-name is not given, read it from minibuffer."
           (error "Error: %s is not a valid filename" html-file)
         (save-excursion
           (with-current-buffer
-              (find-file-noselect html-file)
+              (qfind-file-noselect html-file)
             (beginning-of-buffer)
             (while (not done)
               (setq thisdone nil)
@@ -125,16 +125,16 @@ If html-file-name is not given, read it from minibuffer."
                           "  |\n" )) contents ""))
     (org-table-align)))
 
-(defvar xy:pdf-flag t)
+(defvar xy:latexmk-flag t)
 ;;;###autoload
 (defun xy/toggle-latex-to-pdf-process ()
   "Toggle the commands (latexmk/xelatex) to generate PDF file."
   (interactive)
-  (if xy:pdf-flag
+  (if xy:latexmk-flag
       (progn
         (setq org-latex-to-pdf-process
               '("latexmk -xelatex -d -f -silent -c %b"))
-        (setq xy:pdf-flag nil)
+        (setq xy:latexmk-flag nil)
         (message "* ---[ Using `latexmk' as the LaTeX PDF exporter now ]---"))
     (progn
       (setq org-latex-to-pdf-process
@@ -142,7 +142,7 @@ If html-file-name is not given, read it from minibuffer."
               "bibtex %b"
               "xelatex -interaction nonstopmode -output-directory %o %f"
               "xelatex -interaction nonstopmode -output-directory %o %f"))
-      (setq xy:pdf-flag t)
+      (setq xy:latexmk-flag t)
       (message "* ---[ Using `xelatex' as the LaTeX PDF exporter now ]---"))))
 
 ;;;###autoload
@@ -273,9 +273,9 @@ If html-file-name is not given, read it from minibuffer."
   ;; TODO item keywords
   (setq org-use-fast-todo-selection t) ;; C-c C-t key
   (setq org-todo-keywords
-          '((sequence "TODO(t!)" "NEXT(n)" "STARTED(s!)" "|"
+          '((sequence "TODO(t)" "NEXT(n!)" "STARTED(s)" "|"
                     "DONE(d!)")
-            (sequence "SOMEDAY(x!)" "WAITING(w@/!)" "|"
+            (sequence "SOMEDAY(x)" "WAITING(w!)" "|"
                     "CANCELLED(c@/!)")))
 
   ;; (setq org-todo-keyword-faces
@@ -680,21 +680,30 @@ If html-file-name is not given, read it from minibuffer."
    :LOGBOOK:\n\
    - Taken from \"%i\" in \"%a\"   %U\n\
    - Last updated on   %U\n\
-   :END:\n"
+   :END:\n
+
+
+"
              :empty-lines 1 :prepend t :clock-keep t)
             ("j" "Write my Journal"
              entry (file+headline "~/emacs/org/source/myblogs/oblog-journal/blog-journal.org" "Journal")
-             "** %? %^G\n\
+             "** 【%?】 %^G\n\
    :LOGBOOK:\n\
    - Begin this journal on                   %U\n\
-   :END:\n"
+   :END:\n
+
+
+"
              :empty-lines 1 :prepend t :clock-keep t)
             ("e" "Add English new words/phrases/sentences"
              entry (file+headline "~/emacs/org/gtd/Capture.org" "English")
              "** %? %^G\n\
    :LOGBOOK:\n\
    - Captureed from \"%i\" in \"%a\"   %U\n\
-   :END:\n"
+   :END:\n
+
+
+"
              :empty-lines 1 :prepend t :clock-keep t)
              ))
 
@@ -890,7 +899,7 @@ colorlinks, linkcolor=RoyalBlue, urlcolor=blue" "hyperref" nil)))
   ;; Better solution: use latexmk, but cause error when using tikz
   ;; (setq org-latex-to-pdf-process
   ;;   '("latexmk -c -bm DRAFT -pdf -pdflatex=\"xelatex -synctex=1 %O %S\" -silent -pvc -f %b"))
-  (setq xy:pdf-flag t)
+  (setq xy:latexmk-flag t)
   (setq org-latex-to-pdf-process
     '("latexmk -xelatex -d -f -silent -c %b"))
 

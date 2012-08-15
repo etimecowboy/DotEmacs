@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-13 Mon 23:59 by xin on XIN-PC>
+;; Time-stamp: <2012-08-15 Wed 22:21 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -152,12 +152,20 @@
      ;; 必须要干掉补全菜单, 很麻烦, 用C-j来执行`ac-complete'
      (eal-define-keys
       'ac-complete-mode-map
-      `(("<return>"    nil)
+      `(("<return>"   nil)
+        ;; ("<space>"    nil)
+        ("<left>"     nil)
+        ("<right>"    nil)
+        ("<up>"       nil)
+        ("<down>"     nil)
+        ("C-n"        ac-next)
         ("M-n"        ac-next)
+        ("C-p"        ac-previous)
         ("M-p"        ac-previous)
+        ("<tab>"      nil)
         ("C-<tab>"    auto-complete)))))
 ;; (autoload 'auto-complete-mode "auto-complete" "AutoComplete mode" t nil)
-(global-set-key (kbd "<f6> a") 'xy/ac-start)
+(global-set-key (kbd "<f6> a") 'xy/toggle-ac-mode-with-yas)
 
 
 ;;** company settings
@@ -253,8 +261,9 @@
       'yas/minor-mode-map
       `(("C-c C-f" yas/find-snippets)))))
 ;; NOTE: manually start it when required.
-;; NOTE: use with `auto-complete' would be nice!
-;; (global-set-key (kbd "<f6> y") 'yas/minor-mode)
+;; NOTE: use with `auto-complete' would be nice! (no need to remember
+;; the trigger keys)
+(global-set-key (kbd "<f6> y") 'yas/minor-mode)
 ;; (am-add-hooks
 ;;  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
 ;;                   c-common-mode-hook sh-mode-hook matlab-mode-hook

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-14 Tue 00:17 by xin on XIN-PC>
+;; Time-stamp: <2012-08-15 Wed 21:20 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-app.el'
 ;; Author:       Xin Yang
@@ -102,14 +102,13 @@
  `(("S-<f5>"  fit-frame) ;; `fit-frame.el'
    ("M-<f5>"  xy/smart-toggle-maxframe) ;; `maxframe.el'
    ("C-<f5>"  windresize) ;; `windresize.el'
-   ("C-z"     thumfr-toggle-thumbnail-frame) ;; thumfr-really-iconify-or-deiconify-frame
-   ("C-S-z"   thumfr-thumbify-other-frames)  ;; `thumb-frm.el'
+   ("C-z"     thumfr-toggle-thumbnail-frame) ;; `thumb-frm.el'
+   ("C-S-z"   thumfr-thumbify-other-frames)
    ("C-M-z"   thumfr-fisheye-next-frame)
    ("C-M-S-z" thumfr-fisheye-previous-frame)))
-
-;; avoid system maximize window icon conflict with `maxframe.el'
-(define-key special-event-map [iconify-frame]
-  'thumfr-thumbify-frame-upon-event)
+;; ;; avoid system maximize window icon conflict with `maxframe.el'
+;; (define-key special-event-map [iconify-frame]
+;;   'thumfr-thumbify-frame-upon-event)
 
 
 ;;* Window settings
@@ -438,11 +437,11 @@ the mode-line." t)
 ;; 实现Emacs的淡入淡出效果, is a part of cedet
 ;; REF: (@url :file-name "http://emacser.com/pulse.htm" :display "Emacser")
 ;; BUG: face-settings seem not working
-(eval-after-load "pulse"
-  '(progn
-     (pulse-face-settings)
-     (pulse-postload)))
-(require 'pulse)
+;; (eval-after-load "pulse"
+;;   '(progn
+;;      (pulse-face-settings)
+;;      (pulse-postload)))
+;; (try-require 'pulse)
 
 
 ;;** zjl-hl

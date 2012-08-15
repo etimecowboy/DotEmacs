@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:09 by xin on p5q>
+;; Time-stamp: <2012-08-15 Wed 08:40 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auto-complete.el'
 ;; Author:       Xin Yang
@@ -17,15 +17,15 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun xy/ac-start ()
+(defun xy/toggle-ac-mode-with-yas ()
   "Start auto-complete"
   (interactive)
-  (require 'yasnippet)
-  (require 'auto-complete)
-  ;; (require 'patch_yas0.7+ac1.4)
-  ;; (ac-config-default)
-  (yas/global-mode 1)
-  (global-auto-complete-mode 1))
+  (when (try-require 'yasnippet)
+    (yas/minor-mode))
+  (when (try-require 'auto-complete)
+    ;; (require 'patch_yas0.7+ac1.4) ;; old patch
+    ;; (ac-config-default)
+    (auto-complete-mode)))
 
 ;;;###autoload
 (defun auto-complete-postload ()
@@ -45,16 +45,16 @@
 
   (setq ac-use-comphist t)
   (setq ac-comphist-file
-        (concat my-emacs-path "/auto-complete/ac-comphist"))
+        (concat my-var-path "/ac-comphist"))
   (unless (file-exists-p ac-comphist-file)
     (shell-command (concat "touch " ac-comphist-file)))
 
-  (setq ac-auto-show-menu t
+  (setq ac-auto-show-menu 5.0
         ac-auto-start t
         ac-dwim t
         ac-candidate-limit ac-menu-height
         ac-use-quick-help t
-        ac-quick-help-delay 5.0
+        ac-quick-help-delay 8.0
         ac-disable-faces nil)
 
   ;; (setq help-xref-following nil)
