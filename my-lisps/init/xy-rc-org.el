@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-15 Wed 21:49 by xin on p5q>
+;; Time-stamp: <2012-08-16 Thu 21:19 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -650,46 +650,51 @@ If html-file-name is not given, read it from minibuffer."
              entry (file+headline "~/emacs/org/gtd/Capture.org" "PhD")
              "** TODO %? %^g\n\
    :LOGBOOK:\n\
-   - State \"TODO\" from \"%i\" in \"%a\"    %U\n\
+   - Initial State           \"TODO\"       %U\n\
+   - Captured in \"%a\"
    :END:\n"
              :empty-lines 1 :prepend t :clock-keep t)
             ("w" "Capture a Work Wish"
              entry (file+headline "~/emacs/org/gtd/Capture" "Work")
              "** TODO %? %^g\n\
    :LOGBOOK:\n\
-   - State \"TODO\" from \"%i\" in \"%a\"    %U\n\
+   - Initial State           \"TODO\"       %U\n\
+   - Captured in \"%a\"
    :END:\n"
              :empty-lines 1 :prepend t :clock-keep t)
             ("l" "Capture a Life Wish"
              entry (file+headline "~/emacs/org/gtd/Capture" "Life")
              "** TODO %? %^g\n\
    :LOGBOOK:\n\
-   - State \"TODO\" from \"%i\" in \"%a\"    %U\n\
+   - Initial State           \"TODO \"      %U\n\
+   - Captured in \"%a\"
    :END:\n"
              :empty-lines 1 :prepend t :clock-keep t)
             ("g" "Capture a Geek Wish"
              entry (file+headline "~/emacs/org/gtd/Capture.org" "Geek")
              "** TODO %? %^g\n\
    :LOGBOOK:\n\
-   - State \"TODO\" from \"%i\" in \"%a\"    %U\n\
+   - Initial State           \"TODO\"       %U\n\
+   - Captured in \"%a\"
    :END:\n"
              :empty-lines 1 :prepend t :clock-keep t)
             ("n" "Take a Note"
              entry (file+headline "~/emacs/org/gtd/Capture.org" "Notes")
              "** %? %^G\n\
    :LOGBOOK:\n\
-   - Taken from \"%i\" in \"%a\"   %U\n\
-   - Last updated on   %U\n\
+   - Record time                            %U\n\
+   - Captured in \"%a\"
    :END:\n
 
 
 "
              :empty-lines 1 :prepend t :clock-keep t)
-            ("j" "Write my Journal"
-             entry (file+headline "~/emacs/org/source/myblogs/oblog-journal/blog-journal.org" "Journal")
+            ("j" "Write a Journal"
+             entry (file+headline "~/emacs/org/source/myblogs/oblog-journal/blog-journal.org" "Un-published")
              "** 【%?】 %^G\n\
    :LOGBOOK:\n\
-   - Begin this journal on                   %U\n\
+   - Record time                            %U\n\
+   - Captured in \"%a\"
    :END:\n
 
 
@@ -699,7 +704,8 @@ If html-file-name is not given, read it from minibuffer."
              entry (file+headline "~/emacs/org/gtd/Capture.org" "English")
              "** %? %^G\n\
    :LOGBOOK:\n\
-   - Captureed from \"%i\" in \"%a\"   %U\n\
+   - Record time                            %U\n\
+   - Captured in \"%a\"
    :END:\n
 
 
