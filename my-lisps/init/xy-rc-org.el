@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-16 Thu 21:19 by xin on XIN-PC>
+;; Time-stamp: <2012-08-17 Fri 09:34 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -646,41 +646,45 @@ If html-file-name is not given, read it from minibuffer."
 
   ;; cpature templates
   (setq org-capture-templates
-          '(("p" "Capture a PhD  Wish"
-             entry (file+headline "~/emacs/org/gtd/Capture.org" "PhD")
-             "** TODO %? %^g\n\
+        '(("p" "Capture a PhD  Wish"
+           entry (file+headline "~/emacs/org/gtd/Capture.org" "PhD")
+           "** TODO %? %^g\n\
    :LOGBOOK:\n\
    - Initial State           \"TODO\"       %U\n\
    - Captured in \"%a\"
    :END:\n"
-             :empty-lines 1 :prepend t :clock-keep t)
-            ("w" "Capture a Work Wish"
-             entry (file+headline "~/emacs/org/gtd/Capture" "Work")
-             "** TODO %? %^g\n\
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("w" "Capture a Work Wish"
+           entry (file+headline "~/emacs/org/gtd/Capture" "Work")
+           "** TODO %? %^g\n\
    :LOGBOOK:\n\
    - Initial State           \"TODO\"       %U\n\
    - Captured in \"%a\"
    :END:\n"
-             :empty-lines 1 :prepend t :clock-keep t)
-            ("l" "Capture a Life Wish"
-             entry (file+headline "~/emacs/org/gtd/Capture" "Life")
-             "** TODO %? %^g\n\
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("l" "Capture a Life Wish"
+           entry (file+headline "~/emacs/org/gtd/Capture" "Life")
+           "** TODO %? %^g\n\
    :LOGBOOK:\n\
    - Initial State           \"TODO \"      %U\n\
    - Captured in \"%a\"
    :END:\n"
-             :empty-lines 1 :prepend t :clock-keep t)
-            ("g" "Capture a Geek Wish"
-             entry (file+headline "~/emacs/org/gtd/Capture.org" "Geek")
-             "** TODO %? %^g\n\
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("g" "Capture a Geek Wish"
+           entry (file+headline "~/emacs/org/gtd/Capture.org" "Geek")
+           "** TODO %? %^g\n\
    :LOGBOOK:\n\
    - Initial State           \"TODO\"       %U\n\
    - Captured in \"%a\"
    :END:\n"
-             :empty-lines 1 :prepend t :clock-keep t)
-            ("n" "Take a Note"
-             entry (file+headline "~/emacs/org/gtd/Capture.org" "Notes")
-             "** %? %^G\n\
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("n" "Take a Note"
+           entry (file+headline "~/emacs/org/gtd/Capture.org" "Notes")
+           "** %? %^G\n\
    :LOGBOOK:\n\
    - Record time                            %U\n\
    - Captured in \"%a\"
@@ -688,10 +692,11 @@ If html-file-name is not given, read it from minibuffer."
 
 
 "
-             :empty-lines 1 :prepend t :clock-keep t)
-            ("j" "Write a Journal"
-             entry (file+headline "~/emacs/org/source/myblogs/oblog-journal/blog-journal.org" "Un-published")
-             "** 【%?】 %^G\n\
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("j" "Write a Journal"
+           entry (file+headline "~/emacs/org/source/myblogs/oblog-journal/blog-journal.org" "Un-published")
+           "** 【%?】 %^G\n\
    :LOGBOOK:\n\
    - Record time                            %U\n\
    - Captured in \"%a\"
@@ -699,10 +704,11 @@ If html-file-name is not given, read it from minibuffer."
 
 
 "
-             :empty-lines 1 :prepend t :clock-keep t)
-            ("e" "Add English new words/phrases/sentences"
-             entry (file+headline "~/emacs/org/gtd/Capture.org" "English")
-             "** %? %^G\n\
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("e" "Collect new words/phrases/sentences"
+           entry (file+headline "~/emacs/org/gtd/Capture.org" "English")
+           "** %? %^G\n\
    :LOGBOOK:\n\
    - Record time                            %U\n\
    - Captured in \"%a\"
@@ -710,8 +716,20 @@ If html-file-name is not given, read it from minibuffer."
 
 
 "
-             :empty-lines 1 :prepend t :clock-keep t)
-             ))
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("b" "Add a website to my bookmark"
+           entry (file+headline "~/emacs/org/gtd/Capture.org" "Bookmark")
+           "** %? %^G\n\
+   :LOGBOOK:\n\
+   - Record time                            %U\n\
+   - Captured in \"%a\"
+   :END:\n
+
+
+"
+           :empty-lines 1 :prepend t :clock-keep t)
+          ))
 
   ; Targets include this file and any file contributing to the agenda
   ; - up to 3 levels deep
