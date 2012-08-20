@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:12 by xin on p5q>
+;; Time-stamp: <2012-08-20 Mon 15:31 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-cc-mode.el'
 ;; Author:       Xin Yang
@@ -45,27 +45,27 @@
   (setq c-offsets-alist '((member-init-intro . ++)))
 
   ;; Create my personal style.
-  (defconst my-c-style
-    '((c-tab-always-indent        . t)
-      (c-comment-only-line-offset . 4)
-      (c-hanging-braces-alist     . ((substatement-open after)
-                                     (brace-list-open)))
-      (c-hanging-colons-alist     . ((member-init-intro before)
-                                     (inher-intro)
-                                     (case-label after)
-                                     (label after)
-                                     (access-label after)))
-      (c-cleanup-list             . (scope-operator
-                                     empty-defun-braces
-                                     defun-close-semi))
-      (c-offsets-alist            . ((arglist-close . c-lineup-arglist)
-                                     (substatement-open . 0)
-                                     (case-label        . 4)
-                                     (block-open        . 0)
-                                     (knr-argdecl-intro . -)))
-      (c-echo-syntactic-information-p . t))
-    "My C Programming Style")
-  (c-add-style "PERSONAL" my-c-style)
+  ;; (defconst my-c-style
+  ;;   '((c-tab-always-indent        . t)
+  ;;     (c-comment-only-line-offset . 4)
+  ;;     (c-hanging-braces-alist     . ((substatement-open after)
+  ;;                                    (brace-list-open)))
+  ;;     (c-hanging-colons-alist     . ((member-init-intro before)
+  ;;                                    (inher-intro)
+  ;;                                    (case-label after)
+  ;;                                    (label after)
+  ;;                                    (access-label after)))
+  ;;     (c-cleanup-list             . (scope-operator
+  ;;                                    empty-defun-braces
+  ;;                                    defun-close-semi))
+  ;;     (c-offsets-alist            . ((arglist-close . c-lineup-arglist)
+  ;;                                    (substatement-open . 0)
+  ;;                                    (case-label        . 4)
+  ;;                                    (block-open        . 0)
+  ;;                                    (knr-argdecl-intro . -)))
+  ;;     (c-echo-syntactic-information-p . t))
+  ;;   "My C Programming Style")
+  ;; (c-add-style "PERSONAL" my-c-style)
 
   (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
   (add-hook 'c-mode-hook 'my-c-mode-hook)
@@ -78,15 +78,23 @@
 ;;;###autoload
 (defun my-c-mode-common-hook ()
   ;; set my personal style for the current buffer
-  (c-set-style "PERSONAL")
+  ;; (c-set-style "PERSONAL")
+
+  ;; Use google style
+  (when (try-require 'google-c-style)
+    (add-hook 'c-mode-common-hook 'google-set-c-style)
+    ;; If you want the RETURN key to go to the next line and space over
+    ;; to the right place, add this to your .emacs right after the load-file:
+    (add-hook 'c-mode-common-hook 'google-make-newline-indent))
+
   ;; other customizations
-  (setq tab-width 8
+  (setq ;; tab-width 8
         ;; this will make sure spaces are used instead of tabs
         indent-tabs-mode -1)
   ;; (setq-default c-electric-flag nil) ;; for newbies to cc-mode
   (c-toggle-electric-state 1)
   ;; (auto-newline-mode 1)
-  (c-toggle-auto-newline 1)
+  ;; (c-toggle-auto-newline 1)
   ;; (hungry-delete-mode 1)
   (c-toggle-auto-hungry-state 1)
   (c-subword-mode 1)

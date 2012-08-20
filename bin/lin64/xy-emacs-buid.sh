@@ -29,4 +29,3 @@ git checkout master
 cd ~/.emacs.d
 git submodule sync
 cd ~/
-emacs -daemon
