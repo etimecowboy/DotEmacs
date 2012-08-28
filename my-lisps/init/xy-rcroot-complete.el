@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-15 Wed 22:21 by xin on p5q>
+;; Time-stamp: <2012-08-28 Tue 07:51 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -247,18 +247,18 @@
 
 
 ;** yasnippet
-(autoload 'yas/minor-mode "yasnippet" nil t)
+(autoload 'yas-minor-mode "yasnippet" nil t)
 (eval-after-load "yasnippet"
   '(progn
      (yasnippet-postload)
      ;; tab is widely-used by ido/icicles/org/indent/outline/hideshow
      (setq yas/trigger-key "C-c <tab>")
      (eal-define-keys
-      'yas/keymap
+      'yas-minor-mode-map
       `(("M-j"     yas/next-field-or-maybe-expand)
         ("M-k"     yas/prev-field)))
      (eal-define-keys
-      'yas/minor-mode-map
+      'yas-minor-mode-map
       `(("C-c C-f" yas/find-snippets)))))
 ;; NOTE: manually start it when required.
 ;; NOTE: use with `auto-complete' would be nice! (no need to remember

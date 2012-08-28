@@ -23,6 +23,12 @@ git checkout master
 git pull origin master
 cd ~/.emacs.d/lisps
 git checkout master
+cd ~/.emacs.d/git-lisps/anything-config
+git checkout master
+cd ~/.emacs.d/git-lisps/o-blog
+git checkout master
+cd ~/.emacs.d/git-lisps/org2blog
+git checkout master
 git pull origin master
 cd ~/.emacs.d/git-lisps/anything-config
 git pull origin master

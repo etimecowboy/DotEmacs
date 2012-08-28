@@ -3,7 +3,7 @@
 ;; Author: ahei <ahei0802@gmail.com>
 ;; Keywords: eval-after-load, autoload
 ;; URL: http://code.google.com/p/dea/source/browse/trunk/my-lisps/eval-after-load.el
-;; Time-stamp:<2012-01-05 Thu 01:43 xin on p6t>
+;; Time-stamp: <2012-08-28 Tue 07:47 by xin on p5q>
 
 ;; This  file is free  software; you  can redistribute  it and/or
 ;; modify it under the terms of the GNU General Public License as
@@ -116,7 +116,7 @@
     ("speedbar"        speedbar-mode          speedbar-key-map)
     ("speedbar"        speedbar-mode          speedbar-file-key-map)
     ("yasnippet"       nil                    yas/keymap)
-    ("yasnippet"       yas/minor-mode         yas/minor-mode-map)
+    ("yasnippet"       yas-minor-mode         yas-minor-mode-map)
     ("chart"           chart-mode             chart-map)
     ("recentf"         recentf-dialog-mode    recentf-dialog-mode-map)
     ("conf-mode"       conf-javaprop-mode     conf-javaprop-mode-map)

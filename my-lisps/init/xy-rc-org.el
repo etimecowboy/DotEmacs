@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-17 Fri 09:34 by xin on XIN-PC>
+;; Time-stamp: <2012-08-22 Wed 19:53 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -190,6 +190,9 @@ If html-file-name is not given, read it from minibuffer."
   (when (and (fboundp 'daemonp) (daemonp))
     (add-hook 'org-mode-hook
               'wl-org-column-view-uses-fixed-width-face))
+
+  ;; 让链结后的空格问题
+  (setq org-activate-links '(bracket angle radio tag date footnote))
 
   ;;------------------------------------------------------------------
   ;; (setq org-completion-use-iswitchb t)
@@ -695,7 +698,7 @@ If html-file-name is not given, read it from minibuffer."
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("j" "Write a Journal"
-           entry (file+headline "~/emacs/org/source/myblogs/oblog-journal/blog-journal.org" "Un-published")
+           entry (file+headline "~/emacs/org/source/myblogs/oblog-journal/oblog-journal.org" "Un-published")
            "** 【%?】 %^G\n\
    :LOGBOOK:\n\
    - Record time                            %U\n\
