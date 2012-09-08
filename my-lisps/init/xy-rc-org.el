@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-22 Wed 19:53 by xin on p5q>
+;; Time-stamp: <2012-09-08 Sat 14:07 by xin on XIN-PC>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -698,7 +698,7 @@ If html-file-name is not given, read it from minibuffer."
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("j" "Write a Journal"
-           entry (file+headline "~/emacs/org/source/myblogs/oblog-journal/oblog-journal.org" "Un-published")
+           entry (file+headline "~/emacs/org/source/myblogs/oblog/oblog-journal.org" "Un-published")
            "** 【%?】 %^G\n\
    :LOGBOOK:\n\
    - Record time                            %U\n\
@@ -1241,13 +1241,13 @@ colorlinks, linkcolor=RoyalBlue, urlcolor=blue" "hyperref" nil)))
 
 
   ;;------------------------------------------------------------------
-  ;; `org-google-weather'
+  ;; `org-google-weather' NOTE: google disabled its weather api recently
   ;; google-weather-el for org
   ;; Add the following in one of your Org file.
   ;;   * Weather
   ;;   %%(org-google-weather "New York" "en-gb")
-  (eval-after-load "org-google-weather" '(org-google-weather-postload))
-  (try-require 'org-google-weather)
+  ;; (eval-after-load "org-google-weather" '(org-google-weather-postload))
+  ;; (try-require 'org-google-weather)
 
   ;;------------------------------------------------------------------
   ;; `org-location-google-maps'
