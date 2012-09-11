@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-22 Wed 10:41 by xin on p5q>
+;; Time-stamp: <2012-09-11 Tue 09:01 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -17,6 +17,7 @@
 (require 'xy-rc-utils)
 
 
+
 ;;* Some basic edting settings
 
 ;; Emacs找不到合适的模式时，缺省使用text-mode
@@ -35,6 +36,7 @@
 (setq-default tab-always-indent t)
 
 
+
 ;;** ethan-wspace
 ;; REF: (@url :file-name "https://github.com/glasserc/ethan-wspace" :display "Source")
 ;; (autoload 'global-ethan-wspace-mode "ethan-wspace" nil t)
@@ -50,6 +52,7 @@
 (global-set-key (kbd "<f6> W") 'ethan-wspace-mode)
 
 
+
 ;;** ws-trim
 ;; automatically trims whitespace on edited lines. With a low
 ;; `ws-trim-level' it is complementary to `ethan-wspace', and may be
@@ -60,6 +63,7 @@
 (global-set-key (kbd "<f7> W") 'ws-trim-buffer)
 
 
+
 ;;* Fast point move
 
 ;;** recent-jump
@@ -80,6 +84,7 @@
 ;;    ("M-."   recent-jump-small-forward)))
 
 
+
 ;;** dot-mode
 ;; 模拟vi的点(.)命令
 ;; (try-require 'dot-mode)
@@ -90,6 +95,7 @@
 ;;                   (message "Dot mode activated.")))
 
 
+
 ;;** Incremental search
 (eval-after-load "isearch"
   '(progn
@@ -113,6 +119,7 @@
 (global-set-key (kbd "C-x M-s") 'isearch-forward-cur-word)
 
 
+
 ;;** ace-jump-mode
 ;; ace-jump-mode is an fast/direct cursor location minor mode.
 ;; (try-require 'ace-jump-mode)
@@ -125,10 +132,12 @@
 ;;      - "C-u C-u C-S-j" ==> ace-jump-line-mode
 
 
+
 ;;** my own replace face
 ;; (eval-after-load "replace" '(replace-postload))
 
 
+
 ;;* Fast select regions
 
 (transient-mark-mode 1)
@@ -156,6 +165,7 @@
 ;; (define-key global-map (kbd "C-x M-l") 'wcy-mark-some-thing-at-point)
 
 
+
 ;;** 矩形区域操作
 ;; (eal-define-keys-commonly
 ;;   global-map
@@ -165,12 +175,14 @@
 (am-def-active-fun rm-mark-active rm-mark-active)
 
 
+
 ;;** CUA model settings
 ;; CUA的矩阵区域操作特别方便
 ;; (setq use-cua t)
 ;; (eval-after-load "cua-base" '(cua-postload))
 
 
+
 
 ;; (eal-define-keys-commonly
 ;;  global-map
@@ -181,6 +193,7 @@
 ;;    ))
 
 
+
 ;;* Graphic text tools
 
 ;;** table
@@ -188,6 +201,7 @@
 ;; (if is-before-emacs-21 (require 'table "table-for-21"))
 
 
+
 ;;** artist
 ;; 非常强大的文本画图的工具
 (global-set-kbd "C-x A d" 'artist-mode)
@@ -203,6 +217,7 @@
         ("C-c M-p" artist-select-op-paste)))))
 
 
+
 ;;** palette
 ;; provides a general color palette that you can use to
 ;; examine color properties or choose colors.
@@ -210,6 +225,7 @@
 ;; REF: (@url :file-name "http://emacser.com/icicles-doremi-palette.htm" :display "emacser")
 
 
+
 ;;* My edit key bindings
 
 (eal-define-keys-commonly
@@ -281,4 +297,5 @@
    ))
 
 
+
 (provide 'xy-rcroot-edit)

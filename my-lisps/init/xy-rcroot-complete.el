@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-28 Tue 07:51 by xin on p5q>
+;; Time-stamp: <2012-09-11 Tue 09:01 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -16,6 +16,7 @@
 (require 'xy-rc-utils)
 
 
+
 ;;* Mini buffer auto complete
 
 ;; an do stuff like M-x q-r-r TAB, and it expands to
@@ -25,6 +26,7 @@
 ;; (partial-completion-mode 1) ;; BUG: Emacs24
 
 
+
 ;;** ido
 ;; interactively do things with buffers and files
 ;; NOTE: From Emacs-22 it is a part of Emacs
@@ -51,6 +53,7 @@
      ;;    ("C-p"   ido-prev-match)))))
 
 
+
 ;;** icomplete
 ;; minibuffer中输入部分命令就可以使用补全
 (eval-after-load "icomplete"
@@ -72,6 +75,7 @@
 ;; (icomplete-mode 1)
 
 
+
 ;;** smex
 ;; Smex is a M-x enhancement for Emacs. Built on top of Ido, it
 ;; provides a convenient interface to your recently and most
@@ -87,6 +91,7 @@
         ("C-c M-x" execute-extended-command)))))
 
 
+
 ;;** ido+smex
 ;; Use both ido and smex
 ;; NOTE: NEVER use both icy-mode and ido/smex. They are different in
@@ -112,6 +117,7 @@
 (add-hook 'after-init-hook 'xy/ido+smex-start)
 
 
+
 ;;** ido+icomplete
 ;; Use both ido and icomplete
 ;;;###autoload
@@ -127,6 +133,7 @@
 ;; (global-set-key (kbd "<f6> D") 'xy/ido+icomplete-start)
 
 
+
 ;;* Buffer auto complete
 
 ;;** Internal Emacs content auto complete system
@@ -134,6 +141,7 @@
 (setq save-abbrevs nil)
 
 
+
 ;;** hippie-expand
 (global-set-key (kbd "M-/") 'hippie-expand)
 (eval-after-load "hippie-exp"
@@ -141,6 +149,7 @@
      (hippie-expand-postload)))
 
 
+
 ;;** auto-complete settings
 ;; BUG: 不能与emacswiki上的`thingatpt+.el'同时使用，否则auto-complete
 ;; 不能正确工作。
@@ -168,6 +177,7 @@
 (global-set-key (kbd "<f6> a") 'xy/toggle-ac-mode-with-yas)
 
 
+
 ;;** company settings
 ;; It is a modular in-buffer completion mechanism.
 ;; (autoload 'company-mode "company" nil t)
@@ -179,6 +189,7 @@
 ;;   'company-mode)
 
 
+
 ;;** pabbrev
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/PredictiveAbbreviation" :display "Emacswiki page")
 ;; BUG: NOT work very well.
@@ -213,6 +224,7 @@
 ;; (define-key pabbrev-mode-map [tab] 'pabbrev-expand-maybe)
 
 
+
 ;;** predictive completion
 ;; A minor-mode exploits the redundancy inherent in languages in order
 ;; to complete words you are typing before you've finished typing them
@@ -228,6 +240,7 @@
 ;;     (predictive-mode 1)))
 
 
+
 ;;** template settings
 ;; (require 'template)
 ;; (eal-define-keys
@@ -240,12 +253,14 @@
 ;; (template-initialize)
 
 
+
 ;;** auto-insert
 ;; 用template, 自动插入一些文件模板
 ;; (eval-after-load "autoinsert" '(auto-insert-postload))
 ;; (auto-insert-mode 1)
 
 
+
 ;** yasnippet
 (autoload 'yas-minor-mode "yasnippet" nil t)
 (eval-after-load "yasnippet"
@@ -272,6 +287,7 @@
 ;;  '(lambda () (yas/minor-mode 1)))
 
 
+
 ;;* icicles
 ;; System-wide completion
 (eval-after-load "icicles" '(icicles-postload))
@@ -279,6 +295,7 @@
 (global-set-key (kbd "<f6> i") 'xy/icy-start)
 
 
+
 ;;** apropos-mode
 ;; (with icicles?) completion
 (eval-after-load "apropos"
@@ -292,10 +309,12 @@
         ("p" backward-button)))))
 
 
+
 ;;* anything
 ;; Quicksilver for Emacs
 (eval-after-load 'anything '(anything-postload))
 (global-set-key (kbd "C-c i") 'xy/my-anything)
 
 
+
 (provide 'xy-rcroot-complete)

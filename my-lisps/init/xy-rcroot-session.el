@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-11 Sat 17:39 by xin on p5q>
+;; Time-stamp: <2012-09-11 Tue 09:03 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-session.el'
 ;; Author:       Xin Yang
@@ -17,6 +17,7 @@
 (require 'xy-rc-utils)
 
 
+
 ;;* Save editing information
 
 ;;** Winpoint,
@@ -30,6 +31,7 @@
 (window-point-remember-mode 1)
 
 
+
 ;;** Bookmark
 ;; * ‘C-x r m’ – set a bookmark at the current location (e.g. in a file)
 ;; * ‘C-x r b’ – jump to a bookmark
@@ -75,6 +77,7 @@
    ("<left-fringe> <mouse-1>"   bm-toggle-mouse)))
 
 
+
 ;;* Save Emacs session information
 
 ;;** recentf
@@ -85,12 +88,14 @@
 ;; (global-set-key (kbd "C-x y") 'undo-kill-buffer) ;; BUG:
 
 
+
 ;;** save-place
 ;; Save point places in buffers
 (saveplace-preload)
 (eval-after-load "saveplace" '(saveplace-postload))
 
 
+
 ;;** savehist
 (savehist-preload)
 (eval-after-load "savehist" '(savehist-postload))
@@ -99,10 +104,12 @@
   (savehist-mode -1))
 
 
+
 ;;** filecache
 (eval-after-load "filecache" '(filecache-postload))
 
 
+
 ;;** windows and revive (heavy weight, cannot used with emacs daemon)
 ;; Workspace store and recover
 (revive-preload)
@@ -123,10 +130,12 @@
   (win:startup-with-window))
 
 
+
 ;;** `elscreen.el' based on APEL
 ;; (try-require 'elscreen)
 
 
+
 ;;** `winring.el'
 ;; ;; (eval-after-load "winring" '(winring-postload))
 ;; (when (try-require 'winring)
@@ -134,6 +143,7 @@
 ;;   (define-key winring-map "o" 'winring-next-configuration))
 
 
+
 ;;** session
 ;; session.el can remember more information.
 (eval-after-load "session" '(session-postload))
@@ -141,22 +151,26 @@
   (add-hook 'after-init-hook 'session-initialize))
 
 
+
 ;;** `desktop.el'
 ;; (desktop-preload)
 (eval-after-load "desktop" '(desktop-postload))
 ;; (desktop-save-mode 1)
 
 
+
 ;;** `wcy-desktop.el', light weight version `desktop.el'
 ;; (when (try-require 'wcy-desktop)
 ;;   (add-hook 'after-init-hook 'wcy-desktop-init))
 
 
+
 ;;** `wcy-escreen.el' by 王纯业(wcy), based on `session.el'
 ;; (when (try-require 'wcy-escreen)
 ;;   (add-hook 'after-init-hook 'wcy-escreen-install))
 
 
+
 (provide 'xy-rcroot-session)
 
 ;; NOTE: This is the last root configuration file to load

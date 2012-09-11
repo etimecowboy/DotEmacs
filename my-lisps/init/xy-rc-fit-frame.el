@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:19 by xin on p5q>
+;; Time-stamp: <2012-09-11 Tue 19:46 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-fit-frame.el'
 ;; Author:       Xin Yang
@@ -19,6 +19,7 @@
 ;;;###autoload
 (defun fit-frame-postload ()
   "Setting for `fit-frame' after it's been loaded."
+
   ;;  Add menu-bar items
   ;; (defvar menu-bar-frames-menu (make-sparse-keymap "Frames"))
   ;; (define-key global-map [menu-bar frames]
@@ -30,6 +31,7 @@
   ;;           'fit-frame-if-one-window 'append)
   ;; (global-set-key [vertical-line down-mouse-1]
   ;;                 'fit-frame-or-mouse-drag-vertical-line)
+
   (message "* ---[ fit-frame post-load configuration is complete ]---"))
 
 (provide 'xy-rc-fit-frame)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-14 Tue 00:03 by xin on XIN-PC>
+;; Time-stamp: <2012-09-11 Tue 09:04 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -17,10 +17,12 @@
 (require 'xy-rc-utils)
 
 
+
 ;;* muse
 ;; (eval-after-load "muse-mode" '(muse-postload))
 
 
+
 ;;* org
 (add-to-list 'auto-mode-alist
              '("\\.\\(org\\|org_archive\\)$" . org-mode))
@@ -71,6 +73,7 @@
 (eval-after-load "org2blog" '(org2blog-postload))
 
 
+
 ;;* auctex
 (eval-after-load "auctex"
   '(progn
@@ -83,6 +86,7 @@
 (global-set-key (kbd "<f6> t") 'xy/auctex-start)
 
 
+
 ;;** reftex
 ;; reference
 (eval-after-load "reftex" '(reftex-postload))
@@ -92,12 +96,14 @@
 (autoload 'reftex-index-phrase-mode "reftex-index" "Phrase mode" t)
 
 
+
 ;;** cdlatex, tex writing tools
 (eval-after-load "cdlatex" '(cdlatex-postload))
 (autoload 'cdlatex-mode "cdlatex" "CDLaTeX Mode" t)
 (autoload 'turn-on-cdlatex "cdlatex" "CDLaTeX Mode" nil)
 
 
+
 ;;** whizzytex-mode
 ;; A minor mode for incrementally viewing LATEX documents that you are
 ;; editing. It works under Unix with `gv' and `xdvi' viewers, but the
@@ -109,6 +115,7 @@
 ;; (global-set-key (kbd "<f6> w") 'xy/whizzytex-start)
 
 
+
 ;;** wysiwyg-tex
 ;; REF: (@url :file-name "https://github.com/laysakura/WYSIWYG-TeX-el" :display "Source")
 ;; WYSIWYG (What You See Is What You Get) tex writitng mode using
@@ -124,6 +131,7 @@
 ;;                          'wysiwyg-tex-show-whole-preview))
 
 
+
 ;;* txt2tags
 ;; convert plain text files to various formats
 (setq auto-mode-alist
@@ -132,6 +140,7 @@
 (autoload 't2t-mode "txt2tags-mode" "Txt2tags Mode" t)
 
 
+
 ;;* pdftools
 ;; Save current buffer as a pdf file
 ;; Should be used with `ps2pdf', which usually comes with a tex
@@ -146,6 +155,7 @@
   "Save region as a pdf file with faces." t)
 
 
+
 ;;* markdown-mode
 ;; major mode for editing [Markdown][]-formatted text files
 ;; REF: (@url :file-name "http://jblevins.org/projects/markdown-mode/" :display "Source")
@@ -159,4 +169,5 @@
       (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
 
+
 (provide 'xy-rcroot-write)

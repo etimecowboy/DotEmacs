@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-14 Tue 00:48 by xin on XIN-PC>
+;; Time-stamp: <2012-09-11 Tue 09:02 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -17,12 +17,14 @@
 (require 'xy-rc-utils) ;; `header' for all
 
 
+
 ;;* User information
 
 (setq user-full-name "Xin Yang")
 (setq user-mail-address "xin2.yang@gmail.com")
 
 
+
 ;;* Debug Emacs init
 
 ;; Set a large message log file for checking
@@ -57,6 +59,7 @@
 (setq initial-scratch-message "\
 ;;           Welcome to the Emacs Operating System!
 
+
 ;;                        CITATIONS
 ;;
 ;;- \"Show me your ~/.emacs and I'll tell you who you are.\"
@@ -70,8 +73,10 @@
 ;;   only Emacs can save your soul.\"
 ;;                                          [Per Abrahamsen]
 
+
 ")
 
+
 ;;- Emacs：    “只有你想不到，没有我做不到！”
 ;;- 我：       “太棒了！那就尽量多学一些吧！”
 ;;- Emacs：    “那交出你全部的时间吧！”
@@ -80,7 +85,9 @@
 ;;
 
 
+
 
+
 ;; * Local custom file
 ;; Emacs generated customization, which overwrites settings above
 (add-to-list 'load-path my-var-path)
@@ -92,6 +99,7 @@
 (load custom-file)
 
 
+
 ;;* Search pathes
 
 ;; load-path
@@ -134,6 +142,7 @@
 (delete-dups Info-default-directory-list)
 
 
+
 ;;* Install additional lisp packages
 ;; NOTE: There is a (@url :file-name "https://github.com/emacsmirror" :display "Github site")
 ;;       which has a lot of emacs git sources. You can always check it.
@@ -146,6 +155,7 @@
 (xy/load-autoloads my-emacswiki-lisp-path)
 
 
+
 ;;** Manually downloaded lisps
 ;; Packages with version numbers are stable releases, while
 ;; packages without version numbers are development versions
@@ -242,6 +252,7 @@
 ;; REF: (@url :file-name "https://github.com/mbunkus/mo-git-blame" :display "Git Source")
 (xy/load-autoloads (concat my-local-lisp-path "mo-git-blame"))
 
+
 ;;** Git submodules
 
 ;;*** anything-config
@@ -301,6 +312,7 @@
 
 ;;*** weibo (NOT used)
 
+
 ;; NOTE: NOT work
 ;; (xy/load-autoloads (concat my-local-lisp-path "/weibo"))
 
@@ -337,6 +349,7 @@
 ;; (xy/load-autoloads (concat my-local-lisp-path "/wanderlust")))
 
 
+
 ;;** ELPA packages
 
 ;; Packages installed via `package.el'.
@@ -346,6 +359,7 @@
 ;; compatible with Emacs 23 is at http://bit.ly/pkg-el23
 
 
+
 ;;** My own lisps
 ;; Include init files and my own hacks, make sure they are installed
 ;; at last to make my hacks work.
@@ -367,6 +381,7 @@
 ;; (xy/install-lisps  (concat my-own-lisp-path "/init"))
 
 
+
 ;; NOTE: Another scheme for managing Emacs configurations
 ;; REF: - (@url :file-name "http://www.emacswiki.org/emacs/DotEmacsModular" :display "emacswiki")
 ;;      - (@url :file-name "http://www.emacswiki.org/emacs/elinstall" :display "emacswiki")
@@ -376,6 +391,7 @@
 ;; NOTE: el-get is another apporach
 
 
+
 ;;* Emacs help system customisation
 
 ;;** Info
@@ -412,6 +428,7 @@
 (global-set-key (kbd "C-<f1>") 'info)
 
 
+
 ;;** Man
 (eval-after-load "man"
   '(progn
@@ -448,6 +465,7 @@
 (global-set-key (kbd "M-<f1>") 'woman)
 
 
+
 ;;** help
 (eval-after-load "help-mode"
   '(progn
@@ -515,6 +533,7 @@
 ;;    (,(if window-system "C-x C-/" "C-x C-_") describe-symbol-sb)))
 
 
+
 ;;** log
 ;;*** mwe-log-commands ;;NOTE: it is very old and I am using a fork
                        ;;      `command-log-mode.el' of it.
@@ -537,6 +556,7 @@ Toggle keyboard command logging of whole emacs.
 \(fn &optional ARG)" t nil)
 
 
+
 ;;* Language environment
 
 ;; Use clipboard with x-window system
@@ -554,6 +574,7 @@ Toggle keyboard command logging of whole emacs.
 (try-require 'ws)
 
 
+
 ;;** System encodings
 (set-language-environment 'UTF-8)
 (prefer-coding-system 'utf-8-unix)
@@ -604,6 +625,7 @@ Toggle keyboard command logging of whole emacs.
             'unicad-disable)) ;; fix conflict with ido, as unicad said
 
 
+
 ;;** Fonts
 ;; Use scalable fonts
 (setq scalable-fonts-allowed t)
@@ -661,6 +683,7 @@ Toggle keyboard command logging of whole emacs.
  (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease))
 
 
+
 ;;** Chinese input method
 ;; NOTE: 现在 Emacs 下没什么好的中文输入法，还是用操作系统自带的输入法。
 ;;       除非不在图形系统下，才用 Emacs 内置的输入法或 eim。
@@ -706,6 +729,7 @@ Toggle keyboard command logging of whole emacs.
    (setq ibus-cursor-color '("purple" "red" "blue"))))
 
 
+
 ;;* Emacs lisp management中文设置无问题
 
 ;;** ELPA packages
@@ -726,6 +750,7 @@ Toggle keyboard command logging of whole emacs.
 (require 'package)
 
 
+
 ;;** auto-install
 (eval-after-load "auto-install"
   '(progn
@@ -736,6 +761,7 @@ Toggle keyboard command logging of whole emacs.
 ;; (require 'auto-install) ;; NOTE: load it when you want to use it.
 
 
+
 ;;* Emacs server
 
 ;; Emacs-21 和以前的版本要用 gnuserv
@@ -750,6 +776,7 @@ Toggle keyboard command logging of whole emacs.
 ;;       (setenv "GNUSERV_SHOW_EMACS" "1")))
 
 
+
 ;; Emacs 22 or newer
 (server-preload)
 (eval-after-load "server" '(server-postload))
@@ -757,6 +784,7 @@ Toggle keyboard command logging of whole emacs.
 (server-start)
 
 
+
 ;; Emacs 23.2 以后还提供了 `Emacs --daemon' 模式，加快启动。
 ;; Windows 下使用我定义的 `xy/done' 函数也能达到类似的效果，
 ;; 用 `C-x C-c' 隐藏 Emacs frame
@@ -769,8 +797,10 @@ Toggle keyboard command logging of whole emacs.
   (define-key special-event-map [delete-frame] 'xy/done))
 
 
+
 ;;* Emacs key bindings
 (require 'xy-rc-kbd)
 
 
+
 (provide 'xy-rcroot-env)

@@ -1,0 +1,11 @@
+#!/bin/sh
+# 通过emacs -daemon启动之后
+# 我用emacsclient打开一个文件时
+# 让它自己判断是否有frame存在
+# 如果存在就在当前这个frame打开
+# 如果不存在就新建一个frame打开
+if ps | grep " emacsclient " | grep -v grep; then
+        emacsclient -f xy/gui-start "$@"
+else
+        emacsclient -nc -f xy/gui-start "$@"
+fi

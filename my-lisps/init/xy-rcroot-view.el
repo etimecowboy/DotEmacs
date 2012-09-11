@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-14 Tue 00:03 by xin on XIN-PC>
+;; Time-stamp: <2012-09-11 Tue 09:03 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-view.el'
 ;; Author:       Xin Yang
@@ -17,6 +17,7 @@
 (require 'xy-rc-utils)
 
 
+
 ;;* View files
 
 ;; Allow to view read-only files
@@ -24,6 +25,7 @@
 ;; (toggle-read-only t)
 
 
+
 ;;** view-mode settings
 (eval-after-load "view"
   '(progn
@@ -54,13 +56,16 @@
      ))
 
 
+
 ;;** doc-view
 (eval-after-load "doc-view" '(doc-view-postload))
 
 
+
 ;;** log-view
 
 
+
 ;;** Emaci
 ;; Emacs才是世界上最强大的IDE － 用Emaci阅读文件
 ;; REF: (@url :file-name "http://emacser.com/emaci.htm" :display "emacser")
@@ -84,11 +89,13 @@
 ;;    ))
 
 
+
 ;;** hexl-mode
 (add-to-list 'auto-mode-alist
              '("\\.\\(exe\\|vsd\\|so\\|dll\\)$" . hexl-mode))
 
 
+
 ;;* Compare buffers/files
 
 ;;** diff
@@ -109,6 +116,7 @@
      ))
 
 
+
 ;;** ediff
 ;; (global-set-key (kbd "<f6> d") 'ediff)
 (eval-after-load "ediff"
@@ -137,6 +145,7 @@
      ))
 
 
+
 ;;* Grep related settings
 
 ;;** Use grep in Emacs
@@ -165,6 +174,7 @@
 ;; (eval-after-load "grep" `(grep-postload))
 
 
+
 ;;** full-ack
 ;; ack is a tool like grep, designed for programmers with large trees
 ;; of heterogeneous source code.
@@ -190,6 +200,7 @@
 ;; (eval-after-load "full-ack" `(full-ack-postload))
 
 
+
 ;;** color-moccur
 ;; With color-moccur, you can search a regexp in all buffers. And you
 ;; can search files like grep(-find) without grep (and find) command.
@@ -208,6 +219,7 @@
 (eval-after-load "moccur-edit" '(moccur-edit-postload))
 
 
+
 ;;** ioccur
 ;; This package provide similar functionality as occur but is
 ;; incremental, (without `anything')
@@ -216,4 +228,5 @@
 (global-set-key (kbd "<f7> s") 'ioccur)
 
 
+
 (provide 'xy-rcroot-view)

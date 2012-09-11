@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-14 Tue 09:55 by xin on XIN-PC>
+;; Time-stamp: <2012-09-11 Tue 09:19 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -17,6 +17,7 @@
 (require 'xy-rc-utils)
 
 
+
 ;;* Emacs build-in functions
 
 ;;** Enable some hidden functions
@@ -36,6 +37,7 @@
 (setq save-interprogram-paste-before-kill t) ;; Save paster
 
 
+
 ;;** ffap, finding Files and URLs at point
 ;; REF: (@url :file-name "http://www.gnu.org/software/emacs/manual/html_node/emacs/FFAP.html#index-ffap-3860" :display "emacs manual")
 (eval-after-load "ffap" '(ffap-postload))
@@ -44,12 +46,14 @@
                 ;;      (Has been added to `ffap-postload')
 
 
+
 ;;** linum
 (eval-after-load 'linum '(linum-postload))
 (am-add-hooks
  `(lisp-mode-hook emacs-lisp-mode-hook ;; lisp-interaction-mode-hook
                   sh-mode-hook cperl-mode-hook c-common-mode-hook
-                  vhdl-mode-hook verilog-mode-hook matlab-mode-hook)
+                  vhdl-mode-hook verilog-mode-hook matlab-mode-hook
+                  haskell-mode-hook)
  '(lambda () (linum-mode 1)))
 (am-add-hooks
  `(lisp-interaction-mode-hook)
@@ -58,6 +62,7 @@
 (global-set-key (kbd "<f6> n") 'linum-mode)
 
 
+
 ;;** time-stamp
 ;; maintain last change time stamps
 ;; (`Time-stamp:<>' occurring within the first 8 lines)
@@ -70,6 +75,7 @@
 (eval-after-load "ispell" '(ispell-postload))
 
 
+
 ;;** flyspell
 (eval-after-load 'flyspell '(flyspell-postload))
 (am-add-hooks
@@ -84,6 +90,7 @@
     (flyspell-mode 1)))
 
 
+
 ;;** Calendar
 ;; Emacs 中有日历，而且可以称之为一个系统，因为其中除了最常用的日历之外，
 ;; 还有其他的近十种历法，其中有日记、约会提醒、纪念日提示以及节假日提示等
@@ -94,6 +101,7 @@
 ;; holiday-float m w n 浮动阳历节日， m 月的第 n 个星期 w%7
 ;;
 
+
 ;; .    跳回当前天
 ;; o    跳到某一个月
 ;; g d    跳到某年某月某日
@@ -108,12 +116,14 @@
 ;; i a    加入周年纪念（anniversary），比如生日等
 ;; d    察看当前日期的diary
 
+
 (eval-after-load "calendar" '(calendar-postload))
 (eval-after-load "diary-lib" '(diary-postload))
 (eval-after-load "appt" '(appt-postload))
 (try-require 'chinese-calendar) ;;中文日历 by wanson@newsmth
 
 
+
 ;;** tramp
 ;; 以另一用户编辑文件, 或者编辑远程主机文件
 (tramp-preload)
@@ -122,10 +132,12 @@
  (global-set-key (kbd "C-c C-R") 'sudo-edit-current-file))
 
 
+
 ;;** term-mode
 (eval-after-load "term" '(term-postload))
 
 
+
 ;;** Shell/eshell-mode
 ;;(define-key shell-mode-map "\M-m" 'shell-add-to-history)
 ;; Backgrounding a process in shell mode
@@ -140,24 +152,28 @@
 (global-set-key (kbd "<f9> e") 'eshell)
 
 
+
 ;;* undo-tree
 ;; (require 'undo-tree)
 (autoload 'global-undo-tree-mode "undo-tree" nil t)
 (global-undo-tree-mode 1)
 
 
+
 ;;* list-processes+
 ;; 查看Emacs内进程
 (autoload 'list-processes+ "list-processes+"
   "Enhanced `list-processes'" t)
 
 
+
 ;;* command-frequence
 ;; 统计命令使用频率
 ;; (autoload 'command-frequence "command-frequence"
 ;;   "Emacs command frequence statistics" t)
 
 
+
 ;;* todochiku
 ;; notification tool.
 ;; It started life interfacing with Growl (OS X, http://growl.info/),
@@ -167,6 +183,7 @@
 (eval-after-load "todochiku" '(todochiku-postload))
 
 
+
 ;;* browse-kill-ring
 (eval-after-load "browse-kill-ring"
   '(progn
@@ -190,6 +207,7 @@
 (global-set-key (kbd "<f6> k") 'browse-kill-ring)
 
 
+
 ;;* kill-ring-search
 ;; Search the kill ring in the minibuffer.
 ;; (autoload 'kill-ring-search "kill-ring-search"
@@ -198,6 +216,7 @@
 (global-set-key (kbd "C-M-y") 'kill-ring-search)
 
 
+
 ;;* copyright
 ;; (GNUEmacs
 ;;  ;; update the copyright notice in current buffer
@@ -206,6 +225,7 @@
 ;;    (add-hook 'write-file-hooks 'copyright-update)))
 
 
+
 ;;* Hanconvert
 ;; 自动在简体中文和繁体中文间转换.
 (autoload 'hanconvert-region "hanconvert"
@@ -213,11 +233,13 @@
 from tradition chinese to simple chinese" t)
 
 
+
 ;;* htmlize
 ;; 把文件或buffer彩色输出成html
 (eval-after-load "htmlize" '(htmlize-postload))
 
 
+
 ;;* inkd
 ;; 在各种 text 文档间提供链接
 (autoload 'linkd-mode
@@ -257,6 +279,7 @@ from tradition chinese to simple chinese" t)
 ;;  '(lambda () (linkd-mode -1)))
 
 
+
 ;;* ascii
 ;; ascii表查询
 ;; (autoload 'ascii-on        "ascii"
@@ -269,6 +292,7 @@ from tradition chinese to simple chinese" t)
 ;;   "Customize ASCII code display." t)
 
 
+
 ;;* multi-term
 ;; a mode based on term.el, for managing multiple terminal buffers
 (autoload 'multi-term "multi-term" nil t)
@@ -286,6 +310,7 @@ from tradition chinese to simple chinese" t)
 (global-set-key (kbd "C-x S-t") 'multi-term)
 
 
+
 ;;* shell-pop
 
 ;; pop up a window for shell
@@ -310,8 +335,11 @@ from tradition chinese to simple chinese" t)
  (require 'rw-hunspell))
 
 
+
 ;;* wcheck-mode
 ;; TODO: make wcheck-mode working
 ;; (eval-after-load "wcheck-mode" '(wcheck-mode-postload))
+
+
 
 (provide 'xy-rcroot-enhance)

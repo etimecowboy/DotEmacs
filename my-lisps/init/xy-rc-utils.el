@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-14 Tue 10:37 by xin on p5q>
+;; Time-stamp: <2012-08-30 Thu 08:42 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -844,6 +844,8 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
   (interactive)
   (when window-system
     ;; (xy/set-font-write)
+    (custom-set-faces
+     '(pp^L-highlight ((t (:overline t :weight extra-bold)))))
     (color-theme-solarized-dark)
     (xy/toggle-fullscreen)
     (try-require 'anything)
