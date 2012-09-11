@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-28 Tue 08:54 by xin on p5q>
+;; Time-stamp: <2012-09-11 Tue 20:08 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -1241,13 +1241,13 @@ colorlinks, linkcolor=RoyalBlue, urlcolor=blue" "hyperref" nil)))
 
 
   ;;------------------------------------------------------------------
-  ;; `org-google-weather'
+  ;; `org-google-weather' NOTE: google disabled its weather api recently
   ;; google-weather-el for org
   ;; Add the following in one of your Org file.
   ;;   * Weather
   ;;   %%(org-google-weather "New York" "en-gb")
-  (eval-after-load "org-google-weather" '(org-google-weather-postload))
-  (try-require 'org-google-weather)
+  ;; (eval-after-load "org-google-weather" '(org-google-weather-postload))
+  ;; (try-require 'org-google-weather)
 
   ;;------------------------------------------------------------------
   ;; `org-location-google-maps'
