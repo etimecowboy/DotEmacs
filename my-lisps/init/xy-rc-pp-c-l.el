@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-11 Tue 07:25 by xin on p5q>
+;; Time-stamp: <2012-09-13 Thu 09:52 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-pp-c-l.el'
 ;; Author:       Xin Yang
@@ -30,8 +30,8 @@
   "Settings of `pp-c-l.el' after it's been loaded."
 
   (setq pp^L-^L-string-function (lambda (win)
-				  (make-string
-				   (1- (+ (window-width win) -4)) ? )))
+                  (make-string
+                   (1- (+ (window-width win) -10)) ? )))
 
   (message "* ---[ pp-c-l post-load configuration is complete ]---"))
 

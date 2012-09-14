@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-11 Tue 09:03 by xin on p5q>
+;; Time-stamp: <2012-09-13 Thu 09:47 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-session.el'
 ;; Author:       Xin Yang
@@ -114,10 +114,16 @@
 ;; Workspace store and recover
 (revive-preload)
 (eval-after-load "revive" '(revive-postload))
-(try-require 'revive)
+(when (try-require 'revive)
+  (add-hook 'delete-frame-hook 'save-current-configuration)
+  (add-hook 'kill-emacs-hook 'save-current-configuration))
+
 (windows-preload)
 (eval-after-load "windows" '(windows-postload))
-(try-require 'windows)
+(when (try-require 'windows)
+  (when window-system
+    (win:startup-with-window)))
+
 (eal-define-keys-commonly
  global-map
  `(("C-c w q" see-you-again)
@@ -126,9 +132,6 @@
    ("C-c w s" save-current-configuration)
    ("C-c w r" resume)
    ("C-c w k" wipe)))
-(when window-system
-  (win:startup-with-window))
-
 
 
 ;;** `elscreen.el' based on APEL

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-06 Mon 11:31 by xin on p5q>
+;; Time-stamp: <2012-09-13 Thu 09:43 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-revive.el'
 ;; Author:       Xin Yang
@@ -39,9 +39,6 @@
                                           system-configuration))
   (unless (file-exists-p revive:configuration-file)
     (shell-command (concat "touch " revive:configuration-file)))
-
-  (add-hook 'delete-frame-hook 'save-current-configuration)
-  (add-hook 'kill-emacs-hook 'save-current-configuration)
 
   (message "* ---[ revive post-load configuration is complete ]---"))
 

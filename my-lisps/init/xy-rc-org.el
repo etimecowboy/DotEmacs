@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-11 Tue 20:08 by xin on p5q>
+;; Time-stamp: <2012-09-14 Fri 14:57 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -172,7 +172,7 @@ If html-file-name is not given, read it from minibuffer."
   ;; Loaded modules
   (setq org-modules
         '(org-bbdb org-bibtex org-crypt org-docview org-gnus
-                   org-info org-jsinfo org-mew org-w3m))
+                   org-info org-jsinfo org-mew org-w3m org-protocol))
 
   ;;------------------------------------------------------------------
   ;; Fix some other lisp packages
@@ -649,89 +649,111 @@ If html-file-name is not given, read it from minibuffer."
 
   ;; cpature templates
   (setq org-capture-templates
-        '(("p" "Capture a PhD  Wish"
-           entry (file+headline "~/emacs/org/gtd/Capture.org" "PhD")
-           "** TODO %? %^g\n\
+        '(("w" "Capture a New Wish from Emacs"
+           entry (file+headline "~/emacs/org/gtd/Capture.org" "Wish Inbox")
+           "** TODO %^{New Wish} %^g\n\
    :LOGBOOK:\n\
    - Initial State           \"TODO\"       %U\n\
-   - Captured in \"%a\"
-   :END:\n"
+   - Source\n\
+     + Emacs @ %a\n\
+   :END:\n\
+   :PROPERTIES:\n\
+   :DESCRIPTION: %?\n\
+   :END:\n\n"
            :empty-lines 1 :prepend t :clock-keep t)
 
-          ("w" "Capture a Work Wish"
-           entry (file+headline "~/emacs/org/gtd/Capture" "Work")
-           "** TODO %? %^g\n\
-   :LOGBOOK:\n\
-   - Initial State           \"TODO\"       %U\n\
-   - Captured in \"%a\"
-   :END:\n"
-           :empty-lines 1 :prepend t :clock-keep t)
-
-          ("l" "Capture a Life Wish"
-           entry (file+headline "~/emacs/org/gtd/Capture" "Life")
-           "** TODO %? %^g\n\
-   :LOGBOOK:\n\
-   - Initial State           \"TODO \"      %U\n\
-   - Captured in \"%a\"
-   :END:\n"
-           :empty-lines 1 :prepend t :clock-keep t)
-
-          ("g" "Capture a Geek Wish"
-           entry (file+headline "~/emacs/org/gtd/Capture.org" "Geek")
-           "** TODO %? %^g\n\
-   :LOGBOOK:\n\
-   - Initial State           \"TODO\"       %U\n\
-   - Captured in \"%a\"
-   :END:\n"
-           :empty-lines 1 :prepend t :clock-keep t)
-
-          ("n" "Take a Note"
+          ("n" "Take a Note from Emacs"
            entry (file+headline "~/emacs/org/gtd/Capture.org" "Notes")
-           "** %? %^G\n\
-   :LOGBOOK:\n\
-   - Record time                            %U\n\
-   - Captured in \"%a\"
-   :END:\n
+           "** %^{Title} %^G\n\n\
+*** Source\n\n\
+- Timestamp                                 %U\n\
+- Source\n\
+  + Emacs @ %a\n\n\
+*** Notes\n\n%?\n"
+           :empty-lines 1 :prepend t :clock-keep t)
 
-
-"
+          ("s" "Scrap Text from Emacs"
+           entry (file+headline "~/emacs/org/gtd/Capture.org" "Scrapbook")
+           "** %^{Title} %^G\n\n\
+*** Source\n\n\
+- Timestamp                                 %U\n\
+- Source\n\
+  + Emacs @ %a\n\n\
+*** Local clipboard\n\n\
+%x\n\n\
+*** Notes\n\n%?\n"
+           :empty-lines 1 :prepend t :clock-keep t)
+
+
+          ("b" "Add a bookmark"
+           entry (file+headline "~/emacs/org/gtd/Capture.org" "Bookmark")
+           "** %c %^G\n\
+   :LOGBOOK:\n\
+   - Visit on                               %U\n\
+   - Source
+     + URL: %
+   :END:\n\
+   :PROPERTIES:\n\
+   :Score: %?\n\
+   :DESCRIPTION:\n\
+   :END:\n\n"
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("j" "Write a Journal"
            entry (file+headline "~/emacs/org/source/myblogs/oblog/oblog-journal.org" "Un-published")
            "** 【%?】 %^G\n\
    :LOGBOOK:\n\
-   - Record time                            %U\n\
-   - Captured in \"%a\"
-   :END:\n
-
-
-"
+   - Source                            %U\n\
+     + Emacs @ %a\n\
+     + WWW   @ %c\n\
+   :END:\n\n\n"
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("e" "Collect new words/phrases/sentences"
            entry (file+headline "~/emacs/org/gtd/Capture.org" "English")
            "** %? %^G\n\
    :LOGBOOK:\n\
-   - Record time                            %U\n\
-   - Captured in \"%a\"
-   :END:\n
-
-
-"
+   - Source
+     + Timestamp                            %U\n\
+     + Emacs @ %a
+   :END:\n\n\n"
            :empty-lines 1 :prepend t :clock-keep t)
 
-          ("b" "Add a website to my bookmark"
-           entry (file+headline "~/emacs/org/gtd/Capture.org" "Bookmark")
-           "** %? %^G\n\
+          ("1" "Capture a New Wish from Web Browser"
+           entry (file+headline "~/emacs/org/gtd/Capture.org" "Wish Inbox")
+           "** TODO %^{New Wish} %^g\n\
    :LOGBOOK:\n\
-   - Record time                            %U\n\
-   - Captured in \"%a\"
-   :END:\n
-
-
-"
+   - Initial State           \"TODO\"       %U\n\
+   - Source\n\
+     + WWW @ %c\n\
+   :END:\n\
+   :PROPERTIES:\n\
+   :DESCRIPTION: %?\n\
+   :END:\n\n"
            :empty-lines 1 :prepend t :clock-keep t)
+
+          ("2" "Take a Note from Web Browser"
+           entry (file+headline "~/emacs/org/gtd/Capture.org" "Notes")
+           "** %^{Title} %^G\n\n\
+*** Source\n\n\
+- Timestamp                                 %U\n\
+- Source\n\
+  + WWW @ %c\n\n\
+*** Notes\n\n%?\n"
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("3" "Scrap Text from Web Browser"
+           entry (file+headline "~/emacs/org/gtd/Capture.org" "Scrapbook")
+           "** %^{Title} %^G\n\n\
+*** Source\n\n\
+- Timestamp                                 %U\n\
+- Source\n\
+  + WWW @ %c\n\n\
+*** Webpage highlights\n\n\
+%i\n\n\
+*** Notes\n\n%?\n"
+           :empty-lines 1 :prepend t :clock-keep t)
+
           ))
 
   ; Targets include this file and any file contributing to the agenda
@@ -1219,6 +1241,19 @@ colorlinks, linkcolor=RoyalBlue, urlcolor=blue" "hyperref" nil)))
               :components ("phd-org" "phd-img" "phd-src" "phd-bib")
               )
              )))
+
+  ;; NOTE: not in use
+  ;; (setq org-protocol-project-alist
+  ;;       '(;; ("Worg"
+  ;;         ;;  :base-url "http://orgmode.org/worg/"
+  ;;         ;;  :working-directory "/home/user/worg/"
+  ;;         ;;  :online-suffix ".html"
+  ;;         ;;  :working-suffix ".org")
+  ;;         ("My local Org-notes"
+  ;;          :base-url "http://localhost/org/"
+  ;;          :working-directory "~/emacs/org/source/"
+  ;;          :online-suffix ".php"
+  ;;          :working-suffix ".org")))
 
   ;;==================================================================
   ;; Contrib lisps

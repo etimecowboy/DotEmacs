@@ -1,9 +1,6 @@
 [submodule "git-lisps/anything-config"]
 	path = git-lisps/anything-config
 	url = http://repo.or.cz/r/anything-config.git
-[submodule "git-lisps/o-blog"]
-	path = git-lisps/o-blog
-	url = https://github.com/renard/o-blog.git
 [submodule "git-lisps/org2blog"]
 	path = git-lisps/org2blog
 	url = https://github.com/punchagan/org2blog.git

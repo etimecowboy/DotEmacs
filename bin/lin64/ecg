@@ -5,7 +5,7 @@
 # 如果存在就在当前这个frame打开
 # 如果不存在就新建一个frame打开
 if ps | grep " emacsclient " | grep -v grep; then
-        emacsclient -f xy/gui-start "$@"
+        emacsclient "$@"
 else
-        emacsclient -nc -f xy/gui-start "$@"
+        emacsclient -nc "$@"
 fi
