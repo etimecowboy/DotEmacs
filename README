@@ -11,5 +11,5 @@ account.
 1. Clone the repository to "~/.emacs.d/".
 2. Enter "~/.emacs.d/bin" folder, and then the sub-folder that matches
    the running operating system.
-3. Run the "xy-emacs-build" script in your Linux terminal or the MinGW
+3. Run the "make-my-emacs" script in your Linux terminal or the MinGW
    bash shell in Windows.

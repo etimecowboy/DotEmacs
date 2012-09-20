@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-13 Mon 21:10 by xin on XIN-PC>
+;; Time-stamp: <2012-09-19 Wed 08:24 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-yasnippet.el'
 ;; Author:       Xin Yang
@@ -25,12 +25,12 @@
 ;;   ;; `xy/yas-start' and `xy/ac-start' functions
 ;;   (yas/minor-mode 1))
 
-;;;###autoload
-(defun yasnippet-unbind-trigger-key ()
-  "Unbind `yas/trigger-key'."
-  (let ((key yas/trigger-key))
-    (setq yas/trigger-key nil)
-    (yas/trigger-key-reload key)))
+;; ;;;###autoload
+;; (defun yasnippet-unbind-trigger-key ()
+;;   "Unbind `yas-trigger-key'."
+;;   (let ((key yas-trigger-key))
+;;     (setq yas-trigger-key nil)
+;;     (yas-trigger-key-reload key)))
 
 ;; ;;;###autoload
 ;; (defun yasnippet-reload-after-save ()
@@ -62,15 +62,20 @@
   ;;                    (overlay-buffer yas/active-field-overlay))))
 
   ;; ;; (yasnippet-unbind-trigger-key)
-  ;; (add-hook 'after-save-hook 'yasnippet-reload-after-save)
-  ;; (yas/load-directory yas/root-directory)
 
-  (setq yas/also-auto-indent-first-line t
-        yas/choose-keys-first t
-        yas/snippet-dirs '("~/emacs/yasnippet/snippets")
-        yas/snippet-revival t
-        yas/trigger-symbol " =>"
-        yas/use-menu 'abbreviate)
+  (add-hook 'after-save-hook 'yasnippet-reload-after-save)
+
+  (setq yas-also-auto-indent-first-line t
+        yas-choose-keys-first t
+        yas-snippet-dirs '("~/emacs/yasnippet/snippets")
+        yas-snippet-revival t
+        yas-trigger-symbol " =>"
+        yas-use-menu 'abbreviate)
+
+  ;; (require 'dropdown-list)
+  (setq yas-prompt-functions '(yas-ido-prompt
+                               yas-dropdown-prompt
+                               yas-completing-prompt))
 
   ;; NOTE: seems no conflict now.
   ;; fix conflict with `ethan-wspace' snippet mode

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-11 Tue 19:42 by xin on p5q>
+;; Time-stamp: <2012-09-19 Wed 08:50 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-app.el'
 ;; Author:       Xin Yang
@@ -114,15 +114,15 @@
 ;;* Window settings
 
 ;;** window-number
-(autoload 'window-number-mode "window-number"
-  "A global minor mode that enables selection of windows according to
-numbers with the C-x C-j prefix.  Another mode,
-`window-number-meta-mode' enables the use of the M- prefix." t)
-(autoload 'window-number-meta-mode "window-number"
-  "A global minor mode that enables use of the M- prefix to select
-windows, use `window-number-mode' to display the window numbers in
-the mode-line." t)
-(window-number-meta-mode 1)
+;; (autoload 'window-number-mode "window-number"
+;;   "A global minor mode that enables selection of windows according to
+;; numbers with the C-x C-j prefix.  Another mode,
+;; `window-number-meta-mode' enables the use of the M- prefix." t)
+;; (autoload 'window-number-meta-mode "window-number"
+;;   "A global minor mode that enables use of the M- prefix to select
+;; windows, use `window-number-mode' to display the window numbers in
+;; the mode-line." t)
+;; (window-number-meta-mode 1)
 
 
 
@@ -134,10 +134,10 @@ the mode-line." t)
 
 (eal-define-keys-commonly
  global-map
- `(("C-S-<left>" windmove-left)
-   ("C-S-<right>" windmove-right)
-   ("C-S-<up>" windmove-up)
-   ("C-S-<down>" windmove-down)))
+ `(("C-S-j" windmove-left)
+   ("C-S-l" windmove-right)
+   ("C-S-i" windmove-up)
+   ("C-S-k" windmove-down)))
 
 
 
@@ -150,10 +150,10 @@ the mode-line." t)
 
 (eal-define-keys-commonly
  global-map
- `(("M-S-<up>"    buf-move-up)
-   ("M-S-<down>"  buf-move-down)
-   ("M-S-<left>"  buf-move-left)
-   ("M-S-<right>" buf-move-right)))
+ `(("M-S-i"  buf-move-up)
+   ("M-S-k"  buf-move-down)
+   ("M-S-j"  buf-move-left)
+   ("M-S-l"  buf-move-right)))
 
 
 

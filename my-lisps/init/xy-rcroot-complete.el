@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-11 Tue 09:01 by xin on p5q>
+;; Time-stamp: <2012-09-19 Wed 08:25 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -59,6 +59,7 @@
 (eval-after-load "icomplete"
   '(progn
     (icomplete-postload)))
+
 ;;     (eal-define-keys
 ;;      'completion-list-mode-map
 ;;      `(("SPC" scroll-up)
@@ -105,7 +106,9 @@
   (require 'ido)
   (require 'smex)
   (ido-mode 1)
+  (ido-ubiquitous-mode 1)
   (smex-initialize))
+
   ;; (smex-initialize-ido)) ;; BUG: `smex-initialize-ido' cause error
   ;;                        ;; in Emacs 23.2, but OK in 23.3
 (global-set-key (kbd "<f6> d") 'xy/ido+smex-start)
@@ -267,18 +270,28 @@
   '(progn
      (yasnippet-postload)
      ;; tab is widely-used by ido/icicles/org/indent/outline/hideshow
-     (setq yas/trigger-key "C-c <tab>")
+     (setq yas-trigger-key "C-c <tab>")
      (eal-define-keys
       'yas-minor-mode-map
-      `(("M-j"     yas/next-field-or-maybe-expand)
-        ("M-k"     yas/prev-field)))
+      `(;; ("<tab>"   nil)
+        ("M-j"     yas-next-field-or-maybe-expand)
+        ("M-k"     yas-prev-field)))
      (eal-define-keys
       'yas-minor-mode-map
-      `(("C-c C-f" yas/find-snippets)))))
+      `(("C-c C-f" yas-visit-snippet-file)
+        ("C-c C-t" yas-tryout-snippet)
+        ("C-c c-d" yas-describe-table)))))
 ;; NOTE: manually start it when required.
 ;; NOTE: use with `auto-complete' would be nice! (no need to remember
 ;; the trigger keys)
-(global-set-key (kbd "<f6> y") 'yas/minor-mode)
+
+(eal-define-keys-commonly
+ global-map
+ `(("<f6> y"         'yas-minor-mode)
+   ("C-x Y n"        'yas-new-snippet)
+   ))
+
+
 ;; (am-add-hooks
 ;;  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
 ;;                   c-common-mode-hook sh-mode-hook matlab-mode-hook

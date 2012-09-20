@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-11 Tue 09:02 by xin on p5q>
+;; Time-stamp: <2012-09-17 Mon 21:56 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -57,9 +57,7 @@
 
 ;; NOTE: a warnning message is nessary for emacs fans like me
 (setq initial-scratch-message "\
-;;           Welcome to the Emacs Operating System!
-
-
+;;           Welcome to the Emacs Operating System!
 ;;                        CITATIONS
 ;;
 ;;- \"Show me your ~/.emacs and I'll tell you who you are.\"
@@ -71,20 +69,15 @@
 ;;
 ;;- \"While any text editor can save your files,
 ;;   only Emacs can save your soul.\"
-;;                                          [Per Abrahamsen]
-
-
-")
-
-
-;;- Emacs：    “只有你想不到，没有我做不到！”
-;;- 我：       “太棒了！那就尽量多学一些吧！”
-;;- Emacs：    “那交出你全部的时间吧！”
-;;- 我：       “NO！那就只折腾我用的着的吧？”
-;;- Emacs：    “你能经得起诱惑吗？”
-;;
-
-
+;;                                          [Per Abrahamsen]
+"
+;;       ;;- Emacs：    “只有你想不到，没有我做不到！”
+;;       ;;- 我：       “太棒了！那就尽量多学一些吧！”
+;;       ;;- Emacs：    “那交出你全部的时间吧！”
+;;       ;;- 我：       “NO！那就只折腾我用的着的吧？”
+;;       ;;- Emacs：    “你能经得起诱惑吗？”
+;;       ;;
+)
 
 
 
@@ -670,9 +663,11 @@ Toggle keyboard command logging of whole emacs.
 (global-set-key (kbd "C-x F p") 'xy/set-font-prog)
 (global-set-key (kbd "C-x F D") 'xy/set-font-default-big)
 (global-set-key (kbd "C-x F W") 'xy/set-font-write-big)
-;; (global-set-key (kbd "C-x F M") 'xy/set-font-write-2)
 (global-set-key (kbd "C-x F P") 'xy/set-font-prog-big)
-(global-set-key (kbd "C-x F A") 'xy/gui-start)
+
+;; Some configurations after init
+(global-set-key (kbd "C-x S") 'xy/emacs-start)
+;; (add-hook 'after-init-hook 'xy/emacs-start)
 
 ;;*** Font scale by mouse wheel
 (GNULinux

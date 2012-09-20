@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-14 Fri 14:57 by xin on p5q>
+;; Time-stamp: <2012-09-19 Wed 08:54 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -423,15 +423,15 @@ If html-file-name is not given, read it from minibuffer."
   ;; Do not dim blocked tasks
   (setq org-agenda-dim-blocked-tasks nil)
 
-  ;; Display two windows in the current frame
-  (setq org-agenda-window-setup ;; 'other-frame)
-        'reorganize-frame)
-
   ;; Agenda window frame fractions
   (setq org-agenda-window-frame-fractions (quote (0.20 . 0.80)))
 
   ;; Restore window setup after quite
   (setq org-agenda-restore-windows-after-quit t)
+
+  ;; Show agenda in current window
+  (setq org-agenda-window-setup 'current-window)
+  (setq org-indirect-buffer-display 'current-window)
 
   ;; Set the default number of days displayed in the agenda (C-c a a)
   (setq org-agenda-span 'week)
@@ -475,12 +475,26 @@ If html-file-name is not given, read it from minibuffer."
           ("n" "Notes in the past 10 days" tags
            "+note+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-10d>\""
            ((org-agenda-overriding-header
-                       "Recent notes (refile ASAP)")
+                       "Recent notes (10d)")
                       (org-tags-match-list-sublevels nil)))
 
           ;;----------------------------------------------------------
-          ("e" "Review English new words/phrases/sentences" tags
-           "+english+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-60d>\""
+          ("b" "Bookmark in the past 30 days" tags
+           "+bookmark+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
+           ((org-agenda-overriding-header
+             "Recent bookmarks (30d)")
+            (org-tags-match-list-sublevels nil)))
+
+          ;;----------------------------------------------------------
+          ("b" "Scraps in the past 30 days" tags
+           "+scrap+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
+           ((org-agenda-overriding-header
+             "Recent scraps (30d)")
+            (org-tags-match-list-sublevels nil)))
+
+          ;;----------------------------------------------------------
+          ("l" "English study (30d)" tags
+           "+english+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
            ((org-agenda-overriding-header "Recent ideas (refile ASAP)")
             (org-tags-match-list-sublevels nil)))
 
@@ -680,23 +694,10 @@ If html-file-name is not given, read it from minibuffer."
 - Source\n\
   + Emacs @ %a\n\n\
 *** Local clipboard\n\n\
-%x\n\n\
+#+BEGIN_EXAMPLE\n\
+%x\n\
+#+END_EXAMPLE\n\n\
 *** Notes\n\n%?\n"
-           :empty-lines 1 :prepend t :clock-keep t)
-
-
-          ("b" "Add a bookmark"
-           entry (file+headline "~/emacs/org/gtd/Capture.org" "Bookmark")
-           "** %c %^G\n\
-   :LOGBOOK:\n\
-   - Visit on                               %U\n\
-   - Source
-     + URL: %
-   :END:\n\
-   :PROPERTIES:\n\
-   :Score: %?\n\
-   :DESCRIPTION:\n\
-   :END:\n\n"
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("j" "Write a Journal"
@@ -750,8 +751,24 @@ If html-file-name is not given, read it from minibuffer."
 - Source\n\
   + WWW @ %c\n\n\
 *** Webpage highlights\n\n\
-%i\n\n\
+#+BEGIN_EXAMPLE\n\
+%i\n\
+#+END_EXAMPLE\n\n\
 *** Notes\n\n%?\n"
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("4" "Add a bookmark"
+           entry (file+headline "~/emacs/org/gtd/Capture.org" "Bookmark")
+           "** %c %^G\n\
+   :LOGBOOK:\n\
+   - Visit on                               %U\n\
+   - Source
+     + URL: %
+   :END:\n\
+   :PROPERTIES:\n\
+   :Score: %?\n\
+   :DESCRIPTION:\n\
+   :END:\n\n"
            :empty-lines 1 :prepend t :clock-keep t)
 
           ))

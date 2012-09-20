@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-13 Thu 09:47 by xin on p5q>
+;; Time-stamp: <2012-09-19 Wed 08:40 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-session.el'
 ;; Author:       Xin Yang
@@ -129,7 +129,8 @@
  `(("C-c w q" see-you-again)
    ("C-c w a" win-save-all-configurations)
    ("C-c w f" resume-windows)
-   ("C-c w s" save-current-configuration)
+   ("C-c w s" save-current-configuration) ;; C-u (num) to specify the
+                                          ;; buffer name
    ("C-c w r" resume)
    ("C-c w k" wipe)))
 

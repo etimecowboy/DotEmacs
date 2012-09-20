@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-11 Tue 09:01 by xin on p5q>
+;; Time-stamp: <2012-09-20 Thu 15:21 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -125,7 +125,7 @@
 ;; (try-require 'ace-jump-mode)
 
 (define-key isearch-mode-map (kbd "M-a") 'sl-isearch-ace-jump)
-(define-key global-map (kbd "C-S-j") 'ace-jump-mode)
+(define-key global-map (kbd "C-S-s") 'ace-jump-mode)
 ;; NOTE:
 ;;      - "C-S-j"         ==> ace-jump-word-mode
 ;;      - "C-u C-S-j"     ==> ace-jump-char-mode
@@ -246,10 +246,11 @@
    ;;    ("C-k" smart-kill)
    ;;    ("C-\\" delete-indentation)
    ;; ("C-x M-m"             mark-invisible-region)
-   ("M-S-u"                 del-to-begin)
+   ("M-S-u"               del-to-begin)
    ("C-^"                 case-trans)
    ;;    ("C-6" case-trans)
    ("C-w"                 backward-kill-word-or-kill-region)
+   ("C-S-d"               backward-delete-char)
    ;;    ("C-x S" mark-whole-sexp)
    ;;    ("C-x W" kill-whole-sexp)
    ;;    ("C-x w" copy-sexp)

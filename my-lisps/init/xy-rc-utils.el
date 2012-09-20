@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-30 Thu 08:42 by xin on p5q>
+;; Time-stamp: <2012-09-15 Sat 21:55 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -838,18 +838,24 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
     (set-default-font "Monospace")))
 
 
+
 ;;;###autoload
-(defun xy/gui-start ()
+(defun xy/emacs-start ()
   "Tasks been done after emacsclient first start."
   (interactive)
   (when window-system
     ;; (xy/set-font-write)
     (custom-set-faces
      '(pp^L-highlight ((t (:overline t :weight extra-bold)))))
-    (color-theme-solarized-dark)
-    (xy/toggle-fullscreen)
-    (try-require 'anything)
-    (try-require 'org-agenda)))
+    (Windows ;; windows system should use the dark theme for eye protection
+     (color-theme-solarized-dark))
+    ;; (Linux ;; I am now using ~/.Xresources to set system-wide
+              ;; solarized-dark theme in Linux
+    ;;  (color-theme-solarized-dark))
+    ;; (xy/toggle-fullscreen)
+    )
+  (try-require 'anything)
+  (org-agenda 'nil "p"))
 
 
 ;;* 全屏控制
