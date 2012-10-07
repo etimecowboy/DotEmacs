@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-13 Thu 10:56 by xin on p5q>
+;; Time-stamp: <2012-10-02 Tue 16:57 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-filemgr.el'
 ;; Author:       Xin Yang
@@ -16,23 +16,27 @@
 (require 'xy-rc-utils)
 
 
+
 ;;* Buffer management
 
 ;; 按下C-x k立即关闭掉当前的buffer
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
 
+
 ;;** ibuffer
 (eval-after-load "ibuffer" '(ibuffer-postload))
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 
+
 ;;** uniquify
 ;; 可以为重名的 buffer 在前面加上其父目录的名字来让名字区分开来，
 (eval-after-load "uniquify" '(uniquify-postload))
 (require 'uniquify)
 
 
+
 ;;* File management
 
 ;;** dired
@@ -123,11 +127,13 @@
   (eval-after-load "thumbs" '(thumbs-postload)))
 
 
+
 ;; ** w32-browser
 (Windows
  (try-require 'w32-browser))
 
 
+
 ;;** Sunrise commander; file manager
 ;; BUG: NOT work properly with other dired lisps. Removed.
 ;; Check (@url :file-name "http://www.emacswiki.org/emacs/Sunrise_Commander_Tips" :display "emacswiki")
@@ -135,6 +141,7 @@
 (global-set-key (kbd "C-x J") 'sunrise)
 
 
+
 ;;* Version control settings
 
 ;;** Emacs internal version control
@@ -156,6 +163,7 @@
                       "-"))
 
 
+
 ;;** git settings
 
 ;;*** git.el
@@ -195,9 +203,12 @@
 (global-set-key (kbd "<f11> c") 'mo-git-blame-current)
 (global-set-key (kbd "<f11> f") 'mo-git-blame-file)
 
+
 ;;** diff-hl
 ;; Highlight vc diff section of current file
-(when (try-require 'diff-hl) (global-diff-hl-mode))
-
+;;BUG: strange error after update to latest ELPA package, use old
+;; package instead.
+(when (try-require 'diff-hl) (global-diff-hl-mode 1))
 
+
 (provide 'xy-rcroot-filemgr)

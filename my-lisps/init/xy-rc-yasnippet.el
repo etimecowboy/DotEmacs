@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-19 Wed 08:24 by xin on p5q>
+;; Time-stamp: <2012-10-02 Tue 16:22 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-yasnippet.el'
 ;; Author:       Xin Yang
@@ -63,7 +63,7 @@
 
   ;; ;; (yasnippet-unbind-trigger-key)
 
-  (add-hook 'after-save-hook 'yasnippet-reload-after-save)
+  ;; (add-hook 'after-save-hook 'yasnippet-reload-after-save)
 
   (setq yas-also-auto-indent-first-line t
         yas-choose-keys-first t

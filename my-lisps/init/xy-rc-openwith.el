@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-20 Thu 07:09 by xin on p5q>
+;; Time-stamp: <2012-09-28 Fri 22:46 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-openwith.el'
 ;; Author:       Xin Yang
@@ -22,8 +22,9 @@
 
   (setq openwith-associations
         '(("\\.pdf\\'" "okular" (file))
-          ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mkv\\|rm\\|rmvb\\|ogv\\|mov\\)\\'" 
-	   "vlc" (file))
+          ("\\.\\(?:zip\\|rar\\|7z\\|iso\\|tar\\)\\'" "file-roller" (file))
+          ("\\.\\(?:doc\\|docx\\|xls\\|xlsx\\|ppt\\|pptx\\|odt\\|ods\\|odp\\)\\'" "libreoffice" (file))
+          ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mkv\\|rm\\|rmvb\\|ogv\\|mov\\|mp4\\|mp3\\)\\'" "vlc" (file))
           ("\\.jar\\'" "java -jar" (file))))
 
   (setq openwith-confirm-invocation t)

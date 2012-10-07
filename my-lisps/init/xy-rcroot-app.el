@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-19 Wed 08:50 by xin on p5q>
+;; Time-stamp: <2012-09-20 Thu 16:03 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-app.el'
 ;; Author:       Xin Yang
@@ -166,6 +166,13 @@
 (eal-define-keys-commonly
  global-map
  `(("C-<f5>" windresize)))
+
+
+
+;;** popwin
+(when (try-require 'popwin)
+  (setq display-buffer-function 'popwin:display-buffer)
+  (global-set-key (kbd "C-z") popwin:keymap))
 
 
 

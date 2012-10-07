@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-19 Wed 08:54 by xin on p5q>
+;; Time-stamp: <2012-10-02 Tue 16:54 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -486,7 +486,7 @@ If html-file-name is not given, read it from minibuffer."
             (org-tags-match-list-sublevels nil)))
 
           ;;----------------------------------------------------------
-          ("b" "Scraps in the past 30 days" tags
+          ("s" "Scraps in the past 30 days" tags
            "+scrap+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
            ((org-agenda-overriding-header
              "Recent scraps (30d)")
@@ -968,6 +968,9 @@ colorlinks, linkcolor=RoyalBlue, urlcolor=blue" "hyperref" nil)))
   (setq xy:latexmk-flag t)
   (setq org-latex-to-pdf-process
     '("latexmk -xelatex -d -f -silent -c %b"))
+
+  ;; NOTE: fix the bug of current version
+  (setq org-latex-preview-ltxpng-directory "./")
 
   ;; load reftex
   (require 'reftex)
