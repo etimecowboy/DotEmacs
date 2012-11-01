@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-11 Tue 09:02 by xin on p5q>
+;; Time-stamp: <2012-10-11 Thu 09:03 by xin on p5q>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-net.el'
 ;; Author:       Xin Yang
@@ -178,8 +178,8 @@
      'emms-playlist-mode-map
       `(("<double-mouse-1>" emms-pause)))))
 
-(eal-define-keys-commonly
- dired-mode-map
+(eal-define-keys
+ 'dired-mode-map
  `(("C-x a"    emms-add-dired)
    ("C-x p"    emms-play-dired)))
 
