@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-11-06 Tue 09:31 by xin on S13>
+;; Time-stamp: <2012-11-18 Sun 23:55 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-filemgr.el'
 ;; Author:       Xin Yang
@@ -208,7 +208,7 @@
 ;; Highlight vc diff section of current file
 ;;BUG: strange error after update to latest ELPA package, use old
 ;; package instead.
-;; (when (try-require 'diff-hl) (global-diff-hl-mode 1))
+(when (try-require 'diff-hl) (global-diff-hl-mode 1))
 
 
 (provide 'xy-rcroot-filemgr)

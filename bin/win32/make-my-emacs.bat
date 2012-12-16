@@ -8,13 +8,13 @@ mv cedet-1.1 cedet
 cd ~/.emacs.d/lisps/cedet
 emacs -nw -Q -l "cedet-build.el" -f cedet-build -f save-buffers-kill-terminal
 cd ~/.emacs.d
-emacs -f xy/emacs-build -f xy/emacs-build -f save-buffers-kill-terminal
+cd ~/.emacs.d/git-lisps/anything-config/
+git checkout master
+cd ~/.emacs.d
+git submodule sync
+cd ~/
 emacs -f xy/emacs-build -f xy/emacs-build -f save-buffers-kill-terminal
 emacs -f xy/emacs-build -f xy/emacs-build -f save-buffers-kill-terminal
 cd ~/.emacs.d/git-lisps/anything-config/
 git checkout master
-cd ~/.emacs.d/git-lisps/org2blog/
-git checkout master
-cd ~/.emacs.d
-git submodule sync
 cd ~/

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-21 Tue 08:33 by xin on XIN-PC>
+;; Time-stamp: <2012-11-19 Mon 13:47 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -47,6 +47,7 @@
           ("gnu" . "http://elpa.gnu.org/packages/") ;; Add the official packages
           ("marmalade" . "http://marmalade-repo.org/packages/")
           ("melpa" . "http://melpa.milkbox.net/packages/")
+          ("org" . "http://orgmode.org/elpa/")
           ;; ("sunrise" .
           ;; "http://joseito.republika.pl/sunrise-commander/")
           ))
