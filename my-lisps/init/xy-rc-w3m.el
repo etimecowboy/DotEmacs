@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:54 by xin on p5q>
+;; Time-stamp: <2013-01-14 Mon 17:29 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-w3m.el'
 ;; Author:       Xin Yang
@@ -29,7 +29,8 @@
   (interactive)
   (save-excursion
     (mark-whole-buffer)
-    (call-interactively 'copy-region-as-kill-nomark))
+    (require 'pc-select)
+    (call-interactively 'copy-region-as-kill))
   (with-temp-buffer
     (call-interactively 'yank)
     (call-interactively 'write-file)))
@@ -81,7 +82,8 @@
       (with-current-buffer buffer
         (save-excursion
           (mark-whole-buffer)
-          (call-interactively 'copy-region-as-kill-nomark)))
+          (require 'pc-select)
+          (call-interactively 'copy-region-as-kill)))
       (let* ((new-name
               (concat
                w3m-buffer-name-prefix
@@ -200,6 +202,15 @@
 ;;;###autoload
 (defun w3m-postload ()
   "Settings for `w3m' after it's been loaded."
+
+  ;; (add-hook 'w3m-mode-hook
+  ;;           '(lambda ()
+  ;;              (Windows
+  ;;               ;; (setq default-terminal-coding-system 'utf-8-unix)
+  ;;               (setq default-process-coding-system
+  ;;                     '(gbk-dos . gbk-dos))
+  ;;               (setq w3m-command "E:\\xin\\.emacs.d\\bin\\win32\\w3m.exe"))))
+
   (setq w3m-command-arguments '("-cookie" "-F"))
   ;; Make this comment if you have no a proper proxy
   ;; (setq w3m-command-arguments-alist

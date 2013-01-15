@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-11 Tue 09:03 by xin on p5q>
+;; Time-stamp: <2013-01-15 Tue 00:50 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -129,6 +129,7 @@
 ;;* Code folding
 
 ;;** hide-region
+;; NOTE: very old, use `fold-this.el' instead, which is more powerful.
 ;; (eval-after-load "hide-region"
 ;;   '(progn
 ;;      (hide-region-postload)))
@@ -146,6 +147,14 @@
 ;;  `(("C-x M-r" hide-region-hide)
 ;;    ("C-x M-R" hide-region-unhide)))
 
+
+
+;;** fold-this
+(eal-define-keys-commonly
+ global-map
+ `(("C-x M-f" fold-this)
+   ("C-x M-F" fold-this-all)
+   ("C-x M-U" fold-this-unfold-all)))
 
 
 ;;** outline
@@ -298,6 +307,12 @@
 
 
 
+;;** projectile
+;; A project management mode
+(eval-after-load "projectile" '(projectile-postload))
+
+
+
 ;;* Shell script development settings
 (eval-after-load "sh-script" '(sh-mode-postload))
 ;; (eal-define-keys
@@ -323,7 +338,7 @@
       'emacs-lisp-mode-map
       `(;; ("C-c M-a"             beginning-of-defun)
         ;; ("C-c M-e"             end-of-defun)
-        ("C-M-h"               mark-function)
+        ("C-M-f"               mark-function)
         ;; ("C-c D"               edebug-defun)
         ("C-c C-d"             eval-defun)
         ;; ("C-c B"               eval-buffer)
@@ -332,6 +347,8 @@
         ;; ("C-c F"               kill-function)
         ;; ("C-c C-q"             indent-function)
         ;; ("C-c C"               comment-function)
+        ("C-M-f"               insert-sequence-symbol)
+        ("C-M-k"               insert-sequence-key)
         ))))
 
 (eval-after-load "lisp-mode"
@@ -352,9 +369,12 @@
         ))))
 
 ;; auto compile elisp files after save, do so only if there's exists
-;; a byte-compiled file ;; BUG: removed, it is cause resursive loading
-;; sometimes.
-;; (add-hook 'after-save-hook 'auto-recompile-el-buffer)
+;; a byte-compiled file
+;; BUG: removed, it is cause resursive loading sometimes.
+;; (add-hook 'after-save-hook 'xy/auto-recompile-el-buffer)
+
+;; auto delete elc files after changing a el file
+(add-hook 'after-save-hook 'xy/remove-elc-on-save)
 
 ;; BUG: lisp-interaction-mode error
 ;; Debugger entered--Lisp error: (error "Invalid function:

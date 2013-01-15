@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:13 by xin on p5q>
+;; Time-stamp: <2013-01-14 Mon 17:29 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-color-moccur.el'
 ;; Author:       Xin Yang
@@ -77,7 +77,7 @@
 ;;   (local-set-key (kbd "b") 'backward-word)
 ;;   (local-set-key (kbd "w") 'forward-word-or-to-word)
 ;;   (local-set-key (kbd "f") 'forward-word)
-;;   (local-set-key (kbd "y") 'copy-region-as-kill-nomark)
-;;   (local-set-key (kbd "c") 'copy-region-as-kill-nomark)
+;;   (local-set-key (kbd "y") 'copy-region-as-kill)
+;;   (local-set-key (kbd "c") 'copy-region-as-kill)
 ;;   (local-set-key (kbd ".") 'set-mark-command)
 ;;   (local-set-key (kbd "L") 'count-brf-lines))

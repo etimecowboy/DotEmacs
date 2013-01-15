@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-11 Tue 09:19 by xin on p5q>
+;; Time-stamp: <2013-01-13 Sun 18:54 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -29,13 +29,15 @@
 (put 'downcase-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 (global-subword-mode 1) ;; subword
-(when is-after-emacs-23 ;; Move deleted files to system trash
-  (setq delete-by-moving-to-trash t))
+;; (when is-after-emacs-23 ;; Move deleted files to system trash
+  (setq delete-by-moving-to-trash t);;)
 (auto-compression-mode 1) ;; put in front of `session.el'
 (setq kill-do-not-save-duplicates t) ;; Do not save same cut
 (setq kill-ring-max 500) ;; Set a large kill ring
 (setq save-interprogram-paste-before-kill t) ;; Save paster
-
+;; TODO: move to `w32' settings
+;; try to improve slow performance on windows.
+(Windows (setq w32-get-true-file-attributes nil))
 
 
 ;;** ffap, finding Files and URLs at point
@@ -80,14 +82,19 @@
 (eval-after-load 'flyspell '(flyspell-postload))
 (am-add-hooks
  `(;;text-mode-hook ;; BUG: cause error when start emacs daemon or
-                    ;;      emacs24
+                    ;;      Emacs24
      org-mode-hook latex-mode-hook
                    LaTeX-mode-hook
                    org-mode-hook
                    message-mode-hook
                    mew-draft-mode-hook)
- '(lambda ()
-    (flyspell-mode 1)))
+ '(lambda () (flyspell-mode 1)))
+;; BUG: error when uncomment the following code
+;; (am-add-hooks
+;;  `(lisp-mode-hook emacs-lisp-mode-hook c-common-mode-hook
+;;                   matlab-mode-hook)
+;;  '(lambda ()
+;;     (flyspell-prog-mode 1)))
 
 
 
@@ -319,7 +326,13 @@ from tradition chinese to simple chinese" t)
 (eval-after-load "shell-pop" '(shell-pop-postload))
 (global-set-key (kbd "<f9> p") 'shell-pop)
 
-(provide 'xy-rcroot-enhance)
+
+
+
+;;* shell-here
+(global-set-key (kbd "<f9> d") 'shell-here)
+
+
 ;;* hanspell
 ;; (eval-after-load "rw-hunspell" '(rw-hunspell-postload))
 ;; (eval-after-load "rw-ispell" '(rw-ispell-postload))

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:13 by xin on p5q>
+;; Time-stamp: <2013-01-14 Mon 16:58 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-cua.el'
 ;; Author:       Xin Yang
@@ -20,15 +20,17 @@
 (defun cua-postload ()
   "Settings for `cua' after it's been loaded."
 
-  (setq cua-rectangle-mark-key [C-RET]) ;; default is [C-RET]
+  ;; (setq cua-rectangle-mark-key [C-RET]) ;; default is [C-RET]
   (setq cua-keep-region-after-copy t)
   (setq cua-remap-control-z nil)
   (setq cua-remap-control-v nil)
   (define-key cua--cua-keys-keymap [(control z)] nil)
   (define-key cua--cua-keys-keymap [(control v)] nil)
   (define-key cua--cua-keys-keymap [(meta v)] nil)
-  (setq pc-select-selection-keys-only t)
-  (pc-selection-mode 1)
+  
+  ;; (require 'pc-select)
+  ;; (pc-selection-mode 1)
+  ;; (setq pc-select-selection-keys-only t)
 
 ;;   (apply-args-list-to-fun
 ;;    'def-mark-move-command

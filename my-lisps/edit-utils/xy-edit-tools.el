@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 28 Jan 2011
-;; Time-stamp: <2012-08-08 Wed 22:56 by xin on XIN-PC>
+;; Time-stamp: <2013-01-14 Mon 02:08 by xin on S13>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -40,6 +40,7 @@
 (defun major-mode-heuristic (symbol)
   (and (fboundp symbol)
        (string-match ".*-mode$" (symbol-name symbol))))
+
 ;;;###autoload
 (defun switch-major-mode (mode)
   "切换 major mode，可以记住上次的选择."
@@ -76,6 +77,7 @@
   (insert (if arg
               (format-time-string "%d.%m.%Y")
             (format-time-string "%Y-%m-%d"))))
+
 ;;;###autoload
 (defun timestamp ()
   (interactive)
@@ -143,6 +145,7 @@
           (error))
         (goto-char 1)
         (pop-to-buffer diff-buf)))))
+
 ;;;###autoload
 (defun ediff-with-original ()
   (interactive)
@@ -201,6 +204,7 @@
     (error "my-make-directory-yes-or-no: missing operand")))
 
 
+
 ;;* Programming tools
 
 ;;;###autoload
@@ -217,6 +221,7 @@
              (indent-region (progn (backward-sexp 1) (point)) pos nil))))))
 
 
+
 ;; NOTE: use meteor's goto-match-paren instead
 ;; ;;;###autoload
 ;; (defun goto-paren ()
@@ -229,6 +234,7 @@
 ;;    (t (message "找不到匹配的括号"))))
 
 
+
 ;;;###autoload
 (defun generate-tag-table ()
   "Generate tag tables under current directory(Linux)."
@@ -242,13 +248,14 @@
        (buffer-name)))))
 
 
+
 ;;;###autoload
 (defun copy-current-fun-name ()
   "Copy current function name."
   (interactive)
   (kill-new (which-function)))
-
 
+
 ;;;###autoload
 (defun skeleton-c-mode-left-brace (arg)
   (interactive "P")
@@ -318,6 +325,7 @@
 ;;      (message (concat "Wrote " (buffer-file-name))))))
 
 
+
 ;; Remove any extra spaces caused by indentation when killing the
 ;; newline between.
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/AutoIndentation" :display "Source")
@@ -334,6 +342,7 @@
     (kill-line arg)))
 
 
+
 ;; merge a line with the line before it.
 ;; REF: (@url :file-name "http://blog.jdhuntington.com/2011/01/emacs-elisp-snipped-jlhjoinlin.html" :display "Source")
 ;;;###autoload
@@ -347,6 +356,7 @@ to running 'delete-indentation (aka 'join-line)."
     (setq arg (- arg 1))))
 
 
+
 ;;* From pluskid (星黎殿)
 ;; REF: (@url :file-name "http://lifegoo.pluskid.org/wiki/index.html" :display "Source")
 
@@ -417,6 +427,7 @@ to running 'delete-indentation (aka 'join-line)."
            (goto-char (point-min))))))))
 
 
+
 (provide 'xy-edit-tools)
 
 ;;; xy-edit-tools.el ends here

@@ -1,7 +1,7 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
 ;;--------------------------------------------------------------------
 ;; File name:    `init.el'
-;; Time-stamp: <2012-08-14 Tue 09:14 by xin on XIN-PC>
+;; Time-stamp: <2013-01-15 Tue 00:41 by xin on S13>
 ;; Author:       Xin Yang
 ;; Email:        xin2.yang@gmail.com
 ;; Depend on:    None
@@ -13,21 +13,39 @@
 ;;
 ;;--------------------------------------------------------------------
 
-;; Enter debug mode on a error
-;; (setq debug-on-error t)      ; now you should get a backtrace
-;; Set max depth of dirctory
-;; (setq max-specpdl-size 5)  ; default is 1000, reduce the backtrace level
 
-(message "* ---[ Loading my Emacs init file ]---")
+(message "* ---[ Loading Emacs init file ...]---")
 
-;; measure the loading time
+;;* Debug Emacs
+
+;;** Debugging information
+(setq debug-on-error t)   ;; Enter debug mode on a error, now you should get a backtrace
+;; (setq debug-on-quit t) ;; Too annoying
+;; NOTE: M-x toggle-debug-on-quit使用这条命令后，每次卡住后，马上按C-g，
+;; 就会打出当前执行函数的调用栈，是哪个函数造成的卡住，也就一目了然了。
+;; 然后根据这个造成卡住的函数属于哪个扩展包，再分别想解决办法。
+
+;; (setq max-specpdl-size 5) ;; Set max depth of dirctory. Default is 1000, reduce the backtrace level
+(setq max-specpdl-size 80000)
+;; BUG: in -nw mode, Emacs 23.3 report a error in spite of how large
+;; the value is. It may related to an Emacs bug. Moreover, if the size
+;; set too large, it cause a error in Windows.
+
+(setq max-lisp-eval-depth 40000) ;; Set max depth of lisp evaluation
+(setq message-log-max 100000) ;; Set a large message log file for checking
+
+;;** Compilation message
+;; (setq compilation-auto-jump-to-first-error t)
+;; (setq compilation-scroll-output t)
+
+;;** Measure the loading time
 (defconst start-time (float-time))
 (defvar last-time start-time)
 
 (defun measure-time (txt)
   "Measures the loading time of the txt file."
-  (message "* @@@[ %s loaded in %1f seconds, \
-%1f seconds elapsed ]@@@"
+  (message "* @@@[ %s loaded in %2.3f seconds, \
+%2.3f seconds elapsed ]@@@"
            txt
            (- (float-time) last-time)
            (- (float-time) start-time))
@@ -38,9 +56,7 @@
       (insert txt)))
   (setq last-time (float-time)))
 
-(measure-time "init.el")
-
-;; Another way of measuring the loading time per file.
+;;*** Another way of measuring the loading time per file.
 ;; (defadvice load-time (around load-with-time-logging)
 ;;   "display the load time for each file."
 ;;   (let ((now (float-time)))
@@ -48,10 +64,14 @@
 ;;     (message "* @@@[ %2.3f seconds used ]@@@"
 ;;              (- (float-time) now))))
 ;; (ad-activate 'load-time)
+
 
-;; Add ~/.emacs.d/my-lisp to Emacs lisp load path
-;; (add-to-list 'load-path "~/.emacs.d/my-lisps")
-(add-to-list 'load-path "~/.emacs.d/my-lisps/init")
+;; Add `my-init-lisp-path' (defined in `xy-rc-util.el') to load-path
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/my-lisps/init"))
+
+;; NOTE: when using `require' in the init.el to load other setting files,
+;; you have to restart Emacs.
+;; When using `load', Emacs will load every setting files.
 
 ;; Load environment settings
 ;; (require 'xy-rcroot-env)
@@ -64,7 +84,7 @@
 (measure-time "xy-rcroot-app.el")
 
 ;; Some enhancements
-;;(require 'xy-rcroot-enhance)
+;; (require 'xy-rcroot-enhance)
 (load "xy-rcroot-enhance")
 (measure-time "xy-rcroot-enhance.el")
 
@@ -111,3 +131,4 @@
 (measure-time "xy-rcroot-session.el")
 
 (measure-time "init.el")
+(message "* ---[ Emacs is ready!]---" (getenv "USER"))

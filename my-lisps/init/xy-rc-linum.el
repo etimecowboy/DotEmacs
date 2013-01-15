@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:28 by xin on p5q>
+;; Time-stamp: <2013-01-13 Sun 18:52 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-linum.el'
 ;; Author:       Xin Yang
@@ -19,8 +19,9 @@
 ;;;###autoload
 (defun linum-postload ()
   "Settings for `linum' after it's been loaded."
-  (unless is-after-emacs-23
-    (require 'linum "linum-for-22"))
+  ;; (unless is-after-emacs-23
+  ;;   (require 'linum "linum-for-22"))
+
   ;; linum+
   ;; REF: (@url :file-name "http://emacser.com/linum-plus.htm" :display "emacser")
   (try-require 'linum+)

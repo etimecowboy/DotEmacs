@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:45 by xin on p5q>
+;; Time-stamp: <2013-01-15 Tue 00:05 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sunrise.el'
 ;; Author:       Xin Yang
@@ -20,6 +20,8 @@
 (defun sunrise-postload ()
   "Settings of `sunrise.el' after it's been loaded."
 
+  (require 'frame-cmds)
+  
   (setq ;; sr-avfs-root "~/"
         sr-history-length 100
         sr-show-file-attributes nil
@@ -28,23 +30,23 @@
         sr-window-split-style (quote horizontal))
 
   (setq sr-start-hook
-        (quote (xy/smart-maximize-frame
-                sr-tree-menu-init
-                sr-tabs-start-once
-                sr-modeline-start-once)))
+        '(maximize-frame
+          sr-tree-menu-init
+          sr-tabs-start-once
+          sr-modeline-start-once))
 
-  (try-require 'sunrise-commander)
-  (try-require 'sunrise-x-buttons) ;; cannot be used with popviewer
-  (try-require 'sunrise-x-popviewer) ;; cannot be used with buttons
+  (require 'sunrise-commander)
+  (require 'sunrise-x-buttons) ;; cannot be used with popviewer
+  (require 'sunrise-x-popviewer) ;; cannot be used with buttons
   (sr-popviewer-mode -1)
-  (try-require 'sunrise-x-checkpoints)
-  (try-require 'sunrise-x-loop)
-  (try-require 'sunrise-x-mirror)
-  (try-require 'sunrise-x-modeline)
-  (try-require 'sunrise-x-tabs)
-  (try-require 'sunrise-x-tree)
+  (require 'sunrise-x-checkpoints)
+  (require 'sunrise-x-loop)
+  (require 'sunrise-x-mirror)
+  (require 'sunrise-x-modeline)
+  (require 'sunrise-x-tabs)
+  (require 'sunrise-x-tree)
   (Windows
-   (try-require 'sunrise-x-w32-addons))
+   (require 'sunrise-x-w32-addons))
 
   (message "* ---[ sunrise post-load configuration is complete ]---"))
 

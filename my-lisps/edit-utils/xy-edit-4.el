@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2012-08-08 Wed 22:57 by xin on XIN-PC>
+;; Time-stamp: <2013-01-14 Mon 01:15 by xin on S13>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -17,6 +17,7 @@
 (eval-when-compile (require 'cl))
 
 
+
 ;;* From Meteor Liu (刘欣)
 ;; REF: (@url :file-name "https://github.com/meteor1113/dotemacs/blob/master/init-basic.el" :display "Source")
 
@@ -33,6 +34,7 @@
 ;;         (setq list (cdr list))))))
 
 
+
 ;; ;;;###autoload
 ;; (defun find-dotemacs-file ()
 ;;   "Open .emacs file"
@@ -50,6 +52,7 @@
 ;;                    "~/.emacs"))))
 
 
+
 ;;;###autoload
 (defun move-line-up (p)
   "Move current line up, copy from crazycool@smth"
@@ -64,6 +67,7 @@
     (move-to-column c)))
 
 
+
 ;;;###autoload
 (defun move-line-down (p)
   "Move current line down, copy from crazycool@smth"
@@ -78,6 +82,7 @@
     (move-to-column c)))
 
 
+
 ;;;###autoload
 (defun format-region ()
   "Format region, if no region actived, format current buffer.
@@ -103,6 +108,7 @@ Like eclipse's Ctrl+Alt+F."
         (indent-region start (point-max) nil)))))
 
 
+
 ;;;###autoload
 (defun cxx-file-p (file)
   (let ((file-extension (file-name-extension file)))
@@ -113,6 +119,7 @@ Like eclipse's Ctrl+Alt+F."
                :test 'string=))))
 
 
+
 ;;;###autoload
 (defun format-cxx-file (file)
   "Format a c/c++ file."
@@ -129,23 +136,27 @@ Like eclipse's Ctrl+Alt+F."
           (save-buffer)
           (kill-buffer)
           (message "Formated c++ file:%s" file)))
-    (message "%s isn't a c++ file" file)))
+    (progn
+      (format-region)
+      (message "%s isn't a c++ file" file))))
 
 
-;;;###autoload
-(defun format-cxx-directory (dirname)
-  "Format all c/c++ file in a directory."
-  (interactive "D")
-  ;; (message "directory:%s" dirname)
-  (let ((files (directory-files dirname t)))
-    (dolist (x files)
-      (if (not (string= "." (substring (file-name-nondirectory x) 0 1)))
-          (if (file-directory-p x)
-              (format-cxx-directory x)
-            (if (and (file-regular-p x)
-                     (not (file-symlink-p x))
-                     (cxx-file-p x))
-                (format-cxx-file x)))))))
+
+;; NOTE: dangerous!
+;; ;;;###autoload
+;; (defun format-cxx-directory (dirname)
+;;   "Format all c/c++ file in a directory."
+;;   (interactive "D")
+;;   ;; (message "directory:%s" dirname)
+;;   (let ((files (directory-files dirname t)))
+;;     (dolist (x files)
+;;       (if (not (string= "." (substring (file-name-nondirectory x) 0 1)))
+;;           (if (file-directory-p x)
+;;               (format-cxx-directory x)
+;;             (if (and (file-regular-p x)
+;;                      (not (file-symlink-p x))
+;;                      (cxx-file-p x))
+;;                 (format-cxx-file x)))))))
 
 
 ;; ;;;###autoload
@@ -168,13 +179,16 @@ Like eclipse's Ctrl+Alt+F."
 ;;         (grep cmd)))))
 
 
-;;;###autoload
-(defun grep-todo-current-dir ()
-  "Run `grep' to find 'TODO' in current directory."
-  (interactive)
-  (grep-current-dir nil "TODO|BUG|FIXME"))
+
+;; NOTE: use `color-moccur.el', `anything.el', or `helm.el' is better
+;; ;;;###autoload
+;; (defun grep-todo-current-dir ()
+;;   "Run `grep' to find 'TODO' in current directory."
+;;   (interactive)
+;;   (grep-current-dir nil "TODO|BUG|FIXME"))
 
 
+
 ;; ;;;###autoload
 ;; (defun moccur-word-all-buffers (regexp)
 ;;   "Run `multi-occur' to find regexp in all buffers."
@@ -188,6 +202,7 @@ Like eclipse's Ctrl+Alt+F."
 ;;       (multi-occur buffers regexp))))
 
 
+
 ;; ;;;###autoload
 ;; (defun moccur-all-buffers (&optional prompt)
 ;;   "Run `multi-occur' to find current word in all buffers."
@@ -198,14 +213,17 @@ Like eclipse's Ctrl+Alt+F."
 ;;     (moccur-word-all-buffers word)))
 
 
-;;;###autoload
-(defun moccur-todo-all-buffers ()
-  "Run `multi-occur' to find 'TODO' in all buffers."
-  (interactive)
-  (moccur-word-all-buffers
-   "\\<\\([Tt][Oo][Dd][Oo]\\|[Bb][Uu][Gg]\\|[Ff][Ii][Xx][Mm][Ee]\\)\\>"))
+
+;; NOTE: use `color-moccur.el', `anything.el', or `helm.el' is better
+;; ;;;###autoload
+;; (defun moccur-todo-all-buffers ()
+;;   "Run `multi-occur' to find 'TODO' in all buffers."
+;;   (interactive)
+;;   (moccur-word-all-buffers
+;;    "\\<\\([Tt][Oo][Dd][Oo]\\|[Bb][Uu][Gg]\\|[Ff][Ii][Xx][Mm][Ee]\\)\\>"))
 
 
+
 ;; ;;;###autoload
 ;; (defun switch-to-other-buffer ()
 ;;   "Switch to (other-buffer)."
@@ -219,23 +237,26 @@ Like eclipse's Ctrl+Alt+F."
 ;;     (pulse-momentary-highlight-one-line (point))))
 
 
-;;;###autoload
-(defun mark-current-line ()
-  "Put point at beginning of this line, mark at end."
-  (interactive)
-  (move-beginning-of-line 1)
-  (set-mark (point))
-  (move-end-of-line 1))
+
+;; ;;;###autoload
+;; (defun mark-current-line ()
+;;   "Put point at beginning of this line, mark at end."
+;;   (interactive)x
+;;   (move-beginning-of-line 1)
+;;   (set-mark (point))
+;;   (move-end-of-line 1))
 
 
-;;;###autoload
-(defun mark-current-line-mouse (ev)
-  "Mark current line with a mouse click. EV is the mouse event."
-  (interactive "e")
-  (mouse-set-point ev)
-  (mark-current-line))
+
+;; ;;;###autoload
+;; (defun mark-current-line-mouse (ev)
+;;   "Mark current line with a mouse click. EV is the mouse event."
+;;   (interactive "e")
+;;   (mouse-set-point ev)
+;;   (mark-current-line))
 
 
+
 ;; ;;;###autoload
 ;; (defun goto-match-paren (arg)
 ;; "Go to the matching parenthesis if on parenthesis, otherwise insert %.
@@ -246,6 +267,7 @@ Like eclipse's Ctrl+Alt+F."
 ;; (t (self-insert-command (or arg 1)))))
 
 
+
 ;;;###autoload
 ;; (defun goto-match-paren (arg)
 (defun goto-paren (arg)

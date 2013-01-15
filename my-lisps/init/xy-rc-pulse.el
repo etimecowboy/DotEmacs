@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-08 Wed 20:13 by xin on XIN-PC>
+;; Time-stamp: <2013-01-14 Mon 23:44 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-pulse.el'
 ;; Author:       Xin Yang
@@ -56,6 +56,10 @@
     (when (and pulse-command-advice-flag (interactive-p)
                (> (abs (- (point) (mark))) 400))
       (pulse-momentary-highlight-one-line (point))))
+  ;; (defadvice other-buffer (after pulse-advice activate)
+  ;;   "After going to another bugger, pulse the line the cursor lands on."
+  ;;   (when (and pulse-command-advice-flag (interactive-p))
+  ;;     (pulse-momentary-highlight-one-line (point))))
   (defadvice switch-to-buffer (after pulse-advice activate)
     "After switch-to-buffer, pulse the line the cursor lands on."
     (when (and pulse-command-advice-flag (interactive-p))
@@ -94,9 +98,7 @@
 ;; (defadvice switch-to-buffer (after pulse-advice activate)
 ;;   "After switch-to-buffer, pulse the line the cursor lands on."
 ;;   (when (and pulse-command-advice-flag (interactive-p))
-;;     (pulse-momentary-highlight-one-line (point))))
-
-;; (defadvice previous-buffer (after pulse-advice activate)
+;;     (pulse-momentary-highlight-one-line (point))));; (defadvice previous-buffer (after pulse-advice activate)
 ;;   "After previous-buffer, pulse the line the cursor lands on."
 ;;   (when (and pulse-command-advice-flag (interactive-p))
 ;;     (pulse-momentary-highlight-one-line (point))))

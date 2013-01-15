@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-11 Tue 09:03 by xin on p5q>
+;; Time-stamp: <2013-01-14 Mon 21:01 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-view.el'
 ;; Author:       Xin Yang
@@ -66,33 +66,18 @@
 
 
 
-;;** Emaci
-;; Emacs才是世界上最强大的IDE － 用Emaci阅读文件
-;; REF: (@url :file-name "http://emacser.com/emaci.htm" :display "emacser")
-(eval-after-load "emaci"
-  '(progn
-     (emaci-postload)
-     (eal-define-keys
-      'emaci-mode-map
-      `(("/" describe-symbol-at-point)
-        ("'" switch-to-other-buffer)
-        ("L" count-brf-lines)
-        ("]" goto-paren)))))
-
-;; (eal-define-keys-commonly
-;;  global-map
-;;  `(;; ("C-x q" switch-major-mode-with-emaci)
-;;    ("M-s"   xy/read-only)
-;;    ("M-S-s"   xy/normal-edit)
-;;    ;; ("M-s" emaci-mode-on)
-;;    ;; ("M-S-s" emaci-mode-off)
-;;    ))
-
-
-
 ;;** hexl-mode
 (add-to-list 'auto-mode-alist
              '("\\.\\(exe\\|vsd\\|so\\|dll\\)$" . hexl-mode))
+
+
+
+;;** centered-cursor-mode
+(autoload 'centered-cursor-mode "centered-cursor-mode" nil t)
+(autoload 'global-centered-cursor-mode "centered-cursor-mode" nil t)
+(eval-after-load "centered-cursor-mode" '(centered-cursor-mode-postload))
+(global-set-key (kbd "<f6> m") 'centered-cursor-mode)
+(global-set-key (kbd "<f6> M") 'global-centered-cursor-mode)
 
 
 
@@ -198,6 +183,20 @@
 ;;    ("'"   switch-to-other-buffer)
 ;;    ("Q"   kill-this-buffer)))
 ;; (eval-after-load "full-ack" `(full-ack-postload))
+
+
+
+;;** ack-and-a-half
+;; provides a simple compilation mode for the perl grep-a-like ack
+;; (http://petdance.com/ack/).
+;; (defalias 'ack 'ack-and-a-half)
+;; (defalias 'ack-same 'ack-and-a-half-same)
+;; (defalias 'ack-find-file 'ack-and-a-half-find-file)
+;; (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
+
+
+
+;;** ack-menu
 
 
 

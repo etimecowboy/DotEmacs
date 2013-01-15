@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:20 by xin on p5q>
+;; Time-stamp: <2013-01-13 Sun 18:51 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-grep.el'
 ;; Author:       Xin Yang
@@ -68,9 +68,10 @@ SYMBOL should be one of `grep-command', `grep-template',
 ;;;###autoload
 (defun set-grep-command (command)
   "Set `grep-command'."
-  (if is-after-emacs-23
+  ;; (if is-after-emacs-23
       (grep-apply-setting 'grep-find-command command)
-    (setq grep-find-command command)))
+    ;; (setq grep-find-command command)))
+)
 
 ;;;###autoload
 (defun set-default-grep-command ()
@@ -82,9 +83,10 @@ SYMBOL should be one of `grep-command', `grep-template',
   (set-default-grep-command)
   (defvar grep-ignore-case nil "When run `grep' ignore case or not.")
   (when grep-ignore-case
-    (if is-after-emacs-23
+    ;; (if is-after-emacs-23
         (grep-apply-setting 'grep-command "grep -inH -e ")
-      (setq grep-command "grep -inH -e ")))
+      ;; (setq grep-command "grep -inH -e ")))
+        )
   (message "* ---[ grep post-load configuration is complete ]---"))
 
 (provide 'xy-rc-grep)

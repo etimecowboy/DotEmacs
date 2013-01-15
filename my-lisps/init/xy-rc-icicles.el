@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-13 Mon 23:57 by xin on XIN-PC>
+;; Time-stamp: <2013-01-13 Sun 22:30 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-icicles.el'
 ;; Author:       Xin Yang
@@ -71,18 +71,18 @@
   (add-hook 'org-mode-hook
             '(setq org-completion-use-ido nil))
 
-  (defun icicle-keys ()
-    "icicle-mode key bindings."
-    (define-key minibuffer-local-completion-map
-      (kbd "SPC") 'minibuffer-complete-word)
-    (define-key minibuffer-local-completion-map
-      (kbd "C-w") 'backward-kill-word-or-kill-region)
-    (define-key minibuffer-local-completion-map
-      (kbd "C-k") 'kill-line)
-    ;; (define-key minibuffer-local-completion-map
-    ;;     [Tab] 'icicle-apropos)
-    )
-  (add-hook 'icicle-mode-hook 'icicle-keys t)
+  ;; (defun icicle-keys ()
+  ;;   "icicle-mode key bindings."
+  ;;   (define-key minibuffer-local-completion-map
+  ;;     (kbd "SPC") 'minibuffer-complete-word)
+  ;;   (define-key minibuffer-local-completion-map
+  ;;     (kbd "C-w") 'backward-kill-word-or-kill-region)
+  ;;   (define-key minibuffer-local-completion-map
+  ;;     (kbd "C-k") 'kill-line)
+  ;;   ;; (define-key minibuffer-local-completion-map
+  ;;   ;;     [Tab] 'icicle-apropos)
+  ;;   )
+  ;; (add-hook 'icicle-mode-hook 'icicle-keys t)
 
   (message "* ---[ icicles post-load configuration is complete ]---"))
 

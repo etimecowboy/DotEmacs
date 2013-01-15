@@ -1,11 +1,11 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-14 Mon 23:34 by xin on S13>
+;; Time-stamp: <2013-01-14 Mon 16:10 by xin on S13>
 ;;--------------------------------------------------------------------
-;; File name:    `xy-rc-maxframe.el'
+;; File name:    `xy-rc-rect-mark.el'
 ;; Author:       Xin Yang
 ;; Email:        xin2.yang@gmail.com
 ;; Depend on:    None
-;; Description:  My `maxframe.el' settings
+;; Description:  My `rect-mark.el' settings
 ;;    ___ _ __ ___   __ _  ___ ___
 ;;   / _ \ '_ ` _ \ / _` |/ __/ __|
 ;;  |  __/ | | | | | (_| | (__\__ \
@@ -15,14 +15,15 @@
 
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
+
+
 
 ;;;###autoload
-(defun maxframe-postload ()
-  "Settings of `maxframe.el' after it's been loaded."
-  ;; (Laptop
-  ;;  (setq mf-max-width 1366
-  ;;        mf-max-height 768))
+(defun rect-mark-postload ()
+  "Settings of `rect-mark.el' after it's been loaded."
 
-  (message "* ---[ maxframe post-load configuration is complete ]---"))
+  (am-def-active-fun rm-mark-active rm-mark-active)
 
-(provide 'xy-rc-maxframe)
+  (message "* ---[ rect-mark post-load configuration is complete ]---"))
+
+(provide 'xy-rc-rect-mark)

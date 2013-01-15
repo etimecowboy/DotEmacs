@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:16 by xin on p5q>
+;; Time-stamp: <2013-01-15 Tue 00:14 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ediff.el'
 ;; Author:       Xin Yang
@@ -20,24 +20,12 @@
 (defun ediff-startup-settings ()
   "Settings of ediff startup."
   (ediff-next-difference)
-  (xy/smart-maximize-frame))
+  (xy/fullscreen))
 
 ;;;###autoload
 (defun ediff-variable-settings ()
   (setq ediff-highlight-all-diffs nil
         ediff-highlighting-style 'face))
-
-;;;###autoload
-(defun xy/max-and-split-horizontally ()
-  "Maximize current frame and split the window horizontally."
-  (interactive)
-  (if window-system
-      (if (try-require 'maxframe)
-          (progn
-            (maximize-frame)
-            (split-window-horizontally))
-        (split-window-horizontally)
-    (split-window-horizontally))))
 
 ;;;###autoload
 (defun ediff-postload ()

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-11 Sat 17:39 by xin on p5q>
+;; Time-stamp: <2013-01-12 Sat 23:33 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-bookmark.el'
 ;; Author:       Xin Yang
@@ -20,10 +20,10 @@
 (defun bookmark-preload ()
   "Settings of `bookmark.el' before it's been loaded."
 
+  (setq bookmark-default-file
+        (concat my-var-path "/bookmark-" user-login-name "@"
+                system-name "@" system-configuration))
   (setq bookmark-save-flag 1)
-  ;; (setq bookmark-default-file
-  ;;       (concat my-var-path "/bookmark-" user-login-name "@"
-  ;;               system-name "@" system-configuration))
 
   (message "* ---[ bookmark pre-load configuration is complete ]---"))
 

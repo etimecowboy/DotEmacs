@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-20 Thu 16:03 by xin on p5q>
+;; Time-stamp: <2013-01-15 Tue 12:22 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-app.el'
 ;; Author:       Xin Yang
@@ -74,12 +74,13 @@
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/TransparentEmacs" :display "emacswiki")
 ;;; `alpha.el'
 ;; sample keybinding for transparency manipulation
-(global-set-key (kbd "M-?") 'transparency-set-value)
+;; (global-set-key (kbd "M-?") 'transparency-set-value)
 ;; the two below let for smooth transparency control
 (global-set-key (kbd "C->") 'transparency-increase)
 (global-set-key (kbd "C-<") 'transparency-decrease)
 
 
+
 ;;** Resize frame and window
 ;; BUG: there is a bug in `fit-frame.el' or `thumb-frm.el' which
 ;;      causes info-mode reports an error when following a link. Have
@@ -87,25 +88,28 @@
 ;;      in console mode or GUI mode.
 ;; NOTE: `autofit-frame.el' may be annoying and cause problem in
 ;;       terminal mode
-(eval-after-load "fit-frame" '(fit-frame-postload))
-(eval-after-load "maxframe"  '(maxframe-postload))
+;; BUG: `maxframe.el' doesn't work in my laptop Windows 7.(eval-after-load "fit-frame" '(fit-frame-postload))
+;; (eval-after-load "maxframe"  '(maxframe-postload))
 (eval-after-load "autofit-frame" '(autofit-frame-postload))
 (try-require 'fit-frame)
 (try-require 'maxframe) ;; NOTE: not stable with two or more monitors
-(try-require 'thumb-frm)
+;; (try-require 'frame-cmds)
+(try-require 'thumb-frm) ;; NOTE: not very useful
 (try-require 'autofit-frame)
 
 (eal-define-keys-commonly
  global-map
- `(("S-<f5>"  fit-frame) ;; `fit-frame.el'
-   ("M-<f5>"  xy/smart-toggle-maxframe) ;; `maxframe.el'
-   ("C-M-<f5>" xy/toggle-autofit-frame) ;; `autofit-frame.el'
-   ("C-<f5>"  windresize) ;; `windresize.el'
-   ("C-z"     thumfr-toggle-thumbnail-frame) ;; `thumb-frm.el'
-   ("C-S-z"   thumfr-thumbify-other-frames)
-   ("C-M-z"   thumfr-fisheye-next-frame)
-   ("C-M-S-z" thumfr-fisheye-previous-frame)))
-;; ;; avoid system maximize window icon conflict with `maxframe.el'
+ `(("S-<f5>"    fit-frame) ;; `fit-frame.el'
+   ("M-<f5>"    maximize-frame) ;; `maxframe.el'
+   ("M-S-<f5>"  restore-frame)  ;; `maxframe.el'
+   ;; ("M-<f5>"    toggle-max-frame)  ;; `frame-cmds.el'
+   ("C-M-<f5>"  xy/toggle-autofit-frame) ;; `autofit-frame.el'
+   ("C-<f5>"    windresize) ;; `windresize.el'
+   ;; ("C-z"     thumfr-toggle-thumbnail-frame) ;; `thumb-frm.el'
+   ;; ("C-S-z"   thumfr-thumbify-other-frames)
+   ;; ("C-M-z"   thumfr-fisheye-next-frame)
+   ;; ("C-M-S-z" thumfr-fisheye-previous-frame)
+   ));; ;; avoid system maximize window icon conflict with `maxframe.el'
 ;; (define-key special-event-map [iconify-frame]
 ;;   'thumfr-thumbify-frame-upon-event)
 
@@ -150,10 +154,10 @@
 
 (eal-define-keys-commonly
  global-map
- `(("M-S-i"  buf-move-up)
-   ("M-S-k"  buf-move-down)
-   ("M-S-j"  buf-move-left)
-   ("M-S-l"  buf-move-right)))
+ `(("M-I"  buf-move-up)
+   ("M-K"  buf-move-down)
+   ("M-J"  buf-move-left)
+   ("M-L"  buf-move-right)))
 
 
 
@@ -162,17 +166,42 @@
 
 
 
-;;** Windresize
+;;* Windsize
+(autoload 'windsize-left "windsize" nil t)
+(autoload 'windsize-right "windsize" nil t)
+(autoload 'windsize-up "windsize" nil t)
+(autoload 'windsize-down "windsize" nil t)
+
 (eal-define-keys-commonly
  global-map
- `(("C-<f5>" windresize)))
-
+ `(("C-M-<left>"  windsize-left)
+   ("C-M-<right>" windsize-right)
+   ("C-M-<up>"    windsize-up)
+   ("C-M-<down>"  windsize-down)))
 
 
 ;;** popwin
+;; NOTE: 
+;; Keymap:
+;; | Key    | Command                               |
+;; |--------+---------------------------------------|
+;; | b      | popwin:popup-buffer                   |
+;; | l      | popwin:popup-last-buffer              |
+;; | o      | popwin:display-buffer                 |
+;; | C-b    | popwin:switch-to-last-buffer          |
+;; | C-p    | popwin:original-pop-to-last-buffer    |
+;; | C-o    | popwin:original-display-last-buffer   |
+;; | SPC    | popwin:select-popup-window            |
+;; | s      | popwin:stick-popup-window             |
+;; | 0      | popwin:close-popup-window             |
+;; | f, C-f | popwin:find-file                      |
+;; | e      | popwin:messages                       |
+;; | C-u    | popwin:universal-display              |
+;; | 1      | popwin:one-window                     |
+
 (when (try-require 'popwin)
   (setq display-buffer-function 'popwin:display-buffer)
-  (global-set-key (kbd "C-z") popwin:keymap))
+  (global-set-key (kbd "C-z") 'popwin:keymap))
 
 
 
@@ -217,9 +246,9 @@
               (propertized-buffer-identification "%b"))
 (setq display-time-day-and-date t) ;; Display time and date
 (display-time-mode 1)
-(when is-after-emacs-23
-  (display-battery-mode -1)) ;; battery infomation is not necessary
-
+;; (when is-after-emacs-23
+  (display-battery-mode -1)
+;;) ;; battery infomation is not necessary
 
 
 ;;** diminish
@@ -260,7 +289,7 @@
 
 
 ;;** modeline-posn
-;; (require 'modeline-posn)  ;; Display number of characters in region
+;; (try-require 'modeline-posn)  ;; Display number of characters in region
 
 
 
@@ -313,6 +342,7 @@
 
 ;;** menu-bar
 (menu-bar-mode -1) ;; No menu bar as default
+(global-set-key (kbd "M-<f10>") 'menu-bar-mode)
 
 ;; ;;*** menua-bar+
 ;; (require 'menu-bar+)
@@ -329,6 +359,7 @@
 
 ;;** tool-bar
 (tool-bar-mode -1)
+(global-set-key (kbd "C-<f10>") 'tool-bar-mode)
 
 ;; ;;*** tool-bar+
 ;; (require 'tool-bar+)
@@ -347,14 +378,14 @@
 
 
 
-;;** tabbar
+;;** tabbar NOTE: not very useful
 ;; tab style buffer switch
 ;; (require 'tabbar)
 ;; (tabbar-mode 1)
 ;; (setq tabbar-cycling-scope (quote tabs))
 ;; (setq tabbar-cycling-scope nil)
 
-;;*** tabbar-ruler
+;;*** tabbar-ruler NOTE: not very useful
 ;; (setq tabbar-ruler-global-tabbar 't) ; If you want tabbar
 ;; (setq tabbar-ruler-global-ruler 't) ; if you want a global ruler
 ;; (setq tabbar-ruler-popup-menu 't) ; If you want a popup menu.
@@ -398,6 +429,10 @@
       mouse-throw-with-scroll-bar nil)
 (when (not window-system) (xterm-mouse-mode 1)) ;; Mouse in terminal
 
+(eal-define-keys-commonly
+ global-map
+ `(("<S-down-mouse-1>" mouse-drag-drag)
+   ("<down-mouse-1>"  mouse-drag-region)))
 
 
 ;;* Syntax highlighting
@@ -470,11 +505,11 @@
 ;; 实现Emacs的淡入淡出效果, is a part of cedet
 ;; REF: (@url :file-name "http://emacser.com/pulse.htm" :display "Emacser")
 ;; BUG: face-settings seem not working
-;; (eval-after-load "pulse"
-;;   '(progn
-;;      (pulse-face-settings)
-;;      (pulse-postload)))
-;; (try-require 'pulse)
+(eval-after-load "pulse"
+  '(progn
+     (pulse-face-settings)
+     (pulse-postload)))
+(try-require 'pulse)
 
 
 
@@ -487,7 +522,7 @@
 
 
 
-;;* Color settings
+;;* Color & face settings
 
 ;;** generic-x
 ;; 增加更丰富的高亮
@@ -503,6 +538,13 @@
 ;; (when window-system
 ;;   (color-theme-solarized-dark))
 ;; (global-set-key (kbd "<f6> t") 'xy/load-themes)
+
+;; (when window-system  
+;;   (Windows ;; windows system should use the dark theme for eye protection
+;;    (color-theme-solarized-dark))
+;;   ;; (Linux ;; I am now using ~/.Xresources to set system-wide theme in Linux
+;;   ;;  (color-theme-solarized-dark))
+;; )
 
 
 
@@ -580,6 +622,117 @@
 ;;                   sh-mode-hook cperl-mode-hook c-common-mode-hook
 ;;                   vhdl-mode-hook verilog-mode-hook matlab-mode-hook)
 ;;  'turn-on-page-break-mode)
+
+
+
+;;* *Scratch* buffer settings
+;; Change default major mode of *scratch* buffer
+;; (setq initial-major-mode 'text-mode)
+
+;; Change default text in the *scratch* buffer
+;; NOTE: a warnning message is nessary for emacs fans like me
+(setq-default initial-scratch-message "")
+
+
+
+;;* Font settings
+;;** Default font
+(setq scalable-fonts-allowed t)
+;; Use scalable fonts
+(when window-system (xy/set-font-prog))
+(eal-define-keys-commonly
+ global-map
+ `(("C-x F d" xy/set-font-default)
+   ("C-x F w" xy/set-font-write)
+   ("C-x F m" xy/set-font-mix)
+   ("C-x F p" xy/set-font-prog)
+   ("C-x F D" xy/set-font-default-big)
+   ("C-x F W" xy/set-font-write-big)
+   ("C-x F P" xy/set-font-prog-big)
+   ;;------------------------------------
+   ;; changing font size
+   ("C-+"    text-scale-increase)
+   ("C--"    text-scale-decrease)
+   ("C-0"    text-scale-normal-size)
+   ("C-M-="  increase-default-font-height)
+   ("C-M--"  decrease-default-font-height)
+   ))
+
+
+;;** Automatically set fonts for different modes
+;; NOTE: a pain to my eyes
+;; (am-add-hooks
+;;  `(lisp-mode-hook emacs-lisp-mode-hook cc-mode-hook c-mode-hook
+;;    c++-mode-hook sh-mode-hook vhdl-mode-hook verilog-mode-hook
+;;    matlab-mode-hook)
+;;  'xy/set-font-prog)
+;; (am-add-hooks
+;;  `(LaTeX-mode-hook latex-mode-hook tex-mode-hook
+;;    muse-mode-hook
+;;    w3m-mode-hook Info-mode-hook
+;;    ;; org-mode-hook ;; NOTE: not to bother me when capturing notes
+;;    gnus-startup-hook mew-summary-mode-hook)
+;;  'xy/set-font-write)
+
+
+
+;;** Scalable Chinese font settings
+;; REF: http://att.newsmth.net/nForum/#!article/Emacs/103607
+;; BUG: 汉字宽度和英文字符宽度不匹配，不成整倍数
+;; 
+;;;###autoload
+;; (defun my-font-scale (my-font-size my-font-scale)
+;;   (unless (eq nil window-system)
+;;     (message "%f.%f" my-font-size my-font-scale)
+;;     (qiang-set-font
+;;      '("Consolas" "Monaco" "DejaVu Sans Mono" "Monospace" "Courier New")
+;;      my-font-size;;      '("Microsoft Yahei" "微软雅黑" "文泉驿等宽微米黑" "黑体" "新宋体" "宋体"))
+;;     (setq face-font-rescale-alist
+;;           '(("微软雅黑" . my-font-scale)
+;;             ("Microsoft Yahei" . my-font-scale)
+;;             ("WenQuanYi Micro Hei Mono" . my-font-scale)
+;;             ("WenQuanYi Zen Hei" . my-font-scale)))
+;;     (set-face-attribute 'default nil :font (font-spec))))
+
+;; ;;;###autoload
+;; (defun my-font-settings ()
+;;   (cond ((eq window-system 'x)
+;;          (my-font-scale 10.5 1.2))
+;;         ((eq window-system 'w32)
+;;          (my-font-scale 11 1.1))))
+
+;; ;; Uncomment the following code if emacs daemon is in use
+;; (if (and (fboundp 'daemonp) (daemonp))
+;;     (add-hook 'after-make-frame-functions
+;;               (lambda (frame)
+;;                 (with-selected-frame frame
+;;                   (my-font-settings))))
+;;   (my-font-settings))
+
+
+
+;;** Another font setting
+;; REF: http://att.newsmth.net/nForum/#!article/Emacs/103607
+;; BUG: 汉字宽度和英文字符宽度不匹配，不成整倍数
+;; (set-face-attribute 'default nil :font "Monaco 10")
+
+;; ;; 中文字体
+;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;   (set-fontset-font t
+;;                     charset
+;;                     (font-spec :family "Microsoft Yahei")))
+;; (setq face-font-rescale-alist '(("Monaco" . 1.0) ("Microsoft Yahei" . 1.2)))
+
+
+
+;;** Zoom fonts by mouse wheel
+(GNULinux 
+ (global-set-key (kbd "<C-mouse-4>") 'text-scale-increase) 
+ (global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease))
+
+(Windows
+ (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase) 
+ (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease))
 
 
 

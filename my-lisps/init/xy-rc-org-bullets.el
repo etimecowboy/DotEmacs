@@ -1,11 +1,11 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-14 Mon 23:34 by xin on S13>
+;; Time-stamp: <2013-01-03 Thu 17:51 by xin on S13>
 ;;--------------------------------------------------------------------
-;; File name:    `xy-rc-maxframe.el'
+;; File name:    `xy-rc-org-bullets.el'
 ;; Author:       Xin Yang
 ;; Email:        xin2.yang@gmail.com
 ;; Depend on:    None
-;; Description:  My `maxframe.el' settings
+;; Description:  My `org-bullets.el' settings
 ;;    ___ _ __ ___   __ _  ___ ___
 ;;   / _ \ '_ ` _ \ / _` |/ __/ __|
 ;;  |  __/ | | | | | (_| | (__\__ \
@@ -17,12 +17,11 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun maxframe-postload ()
-  "Settings of `maxframe.el' after it's been loaded."
-  ;; (Laptop
-  ;;  (setq mf-max-width 1366
-  ;;        mf-max-height 768))
+(defun org-bullets-postload ()
+  "Settings of `org-bullets.el' after it's been loaded."
 
-  (message "* ---[ maxframe post-load configuration is complete ]---"))
+  (setq org-bullets-bullet-list '("◉" "○" "✸" "✿"))
 
-(provide 'xy-rc-maxframe)
+  (message "* ---[ org-bullets post-load configuration is complete ]---"))
+
+(provide 'xy-rc-org-bullets)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:32 by xin on p5q>
+;; Time-stamp: <2013-01-13 Sun 19:14 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-palette.el'
 ;; Author:       Xin Yang
@@ -109,12 +109,13 @@
        (interactive)
        (,(symbol-function (intern move-command)) ,speed)))
 
-  (apply-args-list-to-fun
-   'def-palette-move-command
-   `(("palette-down"  7)
-     ("palette-up"    7)
-     ("palette-left"  7)
-     ("palette-right" 7)))
+  ;; NOTE: don't use ahei's function now.
+  ;; (apply-args-list-to-fun
+  ;;  'def-palette-move-command
+  ;;  `(("palette-down"  7)
+  ;;    ("palette-up"    7)
+  ;;    ("palette-left"  7)
+  ;;    ("palette-right" 7)))
   (add-to-list 'delete-frame-functions 'kill-palette-buffers)
   (message "* ---[ palette post-load configuration is complete ]---"))
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-20 Thu 15:21 by xin on p5q>
+;; Time-stamp: <2013-01-15 Tue 00:22 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -21,14 +21,15 @@
 ;;* Some basic edting settings
 
 ;; Emacs找不到合适的模式时，缺省使用text-mode
-(setq default-major-mode 'text-mode)
+;; (setq default-major-mode 'text-mode) ;;  obsolete variable
+(setq-default major-mode 'text-mode)
 
 ;; 自动的在文件末增加一新行
 (setq require-final-newline t)
 
 ;; 不用TAB字符来缩进，使用空格
-(setq default-tab-width 4)
-(setq tab-width 4)
+;; (setq default-tab-width 4) ;;  obsolete variable
+(setq-default tab-width 4)
 (loop for x downfrom 50 to 1 do
       (setq tab-stop-list (cons (* x tab-width) tab-stop-list)))
 (setq-default indent-tabs-mode nil)
@@ -40,9 +41,9 @@
 ;;** ethan-wspace
 ;; REF: (@url :file-name "https://github.com/glasserc/ethan-wspace" :display "Source")
 ;; (autoload 'global-ethan-wspace-mode "ethan-wspace" nil t)
-(when (try-require 'ethan-wspace)
-  (global-ethan-wspace-mode 1))
-
+;; (when (try-require 'ethan-wspace)
+;;   (global-ethan-wspace-mode 1))
+;
 ;; NOTE: seems no conflict now.
 ;; fix conflict with `yasnippet' snippet mode
 ;; (am-add-hooks
@@ -72,16 +73,17 @@
 ;; (require 'recent-jump-small)
 ;; (setq rj-mode-line-format nil)
 ;; (setq rjs-mode-line-format nil)
-;;(recent-jump-mode 1)
-(recent-jump-small-mode 1)
-;; (eal-define-keys-commonly
-;;  global-map
-;;  `(;; ("M-,"   recent-jump-backward)
-;;    ;; ("M-."   recent-jump-forward)
-;;    ;; ("C-x M-," recent-jump-small-backward)
-;;    ;; ("C-x M-." recent-jump-small-forward)))
-;;    ("M-,"   recent-jump-small-backward)
-;;    ("M-."   recent-jump-small-forward)))
+;; (recent-jump-mode 1)
+;; (when (try-require 'recent-jump-small)
+;;   (progn
+;;     (recent-jump-small-mode 1)
+;;     (eal-define-keys-commonly
+;;      global-map
+;;      `(;; ("M-,"   recent-jump-backward)
+;;        ;; ("M-."   recent-jump-forward)
+;;        ;; ("M-,"   recent-jump-small-backward)
+;;        ;; ("M-."   recent-jump-small-forward)
+;;        ))))
 
 
 
@@ -123,13 +125,15 @@
 ;;** ace-jump-mode
 ;; ace-jump-mode is an fast/direct cursor location minor mode.
 ;; (try-require 'ace-jump-mode)
-
 (define-key isearch-mode-map (kbd "M-a") 'sl-isearch-ace-jump)
 (define-key global-map (kbd "C-S-s") 'ace-jump-mode)
-;; NOTE:
-;;      - "C-S-j"         ==> ace-jump-word-mode
-;;      - "C-u C-S-j"     ==> ace-jump-char-mode
-;;      - "C-u C-u C-S-j" ==> ace-jump-line-mode
+;; NOTE: For my key binding
+;;      - "C-S-s"         ==> ace-jump-word-mode
+;;      - "C-u C-S-s"     ==> ace-jump-char-mode
+;;      - "C-u C-u C-S-s" ==> ace-jump-line-mode
+;;      - tricks to use ace-jump
+;;        1) C-s ----- normal isearch
+;;        2) M-a ----- use ace-jump-mode to locate your point
 
 
 
@@ -142,11 +146,11 @@
 
 (transient-mark-mode 1)
 (delete-selection-mode 1)
-(apply-args-list-to-fun
- 'def-remember-command
- `("previous-line" "next-line"
-   "am-forward-word-or-to-word" "forward-word" "backward-word"
-   "forward-char" "backward-char"))
+;; (apply-args-list-to-fun
+;;  'def-remember-command
+;;  `("previous-line" "next-line"
+;;    "am-forward-word-or-to-word" "forward-word" "backward-word"
+;;    "forward-char" "backward-char"))
 ;; (define-key-list
 ;;   global-map
 ;;   `(("C-n"     next-line-remember)
@@ -172,14 +176,16 @@
 ;;   `(("C-x \\"  rm-mark-command)
 ;;     ("M-w"      copy-region)
 ;;     ))
-(am-def-active-fun rm-mark-active rm-mark-active)
+;; (am-def-active-fun rm-mark-active rm-mark-active)
 
+(eval-after-load "rect-mark" '(rect-mark-postload))
+(try-require 'rect-mark)
 
 
 ;;** CUA model settings
 ;; CUA的矩阵区域操作特别方便
 ;; (setq use-cua t)
-;; (eval-after-load "cua-base" '(cua-postload))
+(eval-after-load "cua-base" '(cua-postload))
 
 
 
@@ -204,7 +210,7 @@
 
 ;;** artist
 ;; 非常强大的文本画图的工具
-(global-set-kbd "C-x A d" 'artist-mode)
+;; (global-set-key (kbd "C-x A d") 'artist-mode)
 (eval-after-load "artist"
   '(progn
      (artist-postload)
@@ -226,77 +232,56 @@
 
 
 
-;;* My edit key bindings
+;;* Global key bindings
+
+;; (global-set-key (kbd "M-;") 'qiang-comment-dwim-line)
 
 (eal-define-keys-commonly
  global-map
- `(
-   ;;    ("M-k" kill-whole-paragraph)
-   ;;    ("M-C-k" kill-paragraph)
-   ;;    ("M-C" copy-whole-paragraph)
-   ;;    ("C-x c" copy-whole-buffer)
-   ;;    ("C-x C" kill-whole-buffer)
-   ;;    ("M-S-w" which-copy)
-   ;;    ("M-w" smart-copy)
-   ;;    ("C-x M-w" insert-cur-line)
-   ;;    ("C-x M-W" insert-cur-sexp)
-   ("C-M-w"               copy-sentence)
-   ;;    ;; 删除整行
-   ;;    ("M-S-k" kill-line)
-   ;;    ("C-k" smart-kill)
-   ;;    ("C-\\" delete-indentation)
-   ;; ("C-x M-m"             mark-invisible-region)
-   ("M-S-u"               del-to-begin)
-   ("C-^"                 case-trans)
-   ;;    ("C-6" case-trans)
-   ("C-w"                 backward-kill-word-or-kill-region)
-   ("C-S-d"               backward-delete-char)
-   ;;    ("C-x S" mark-whole-sexp)
-   ;;    ("C-x W" kill-whole-sexp)
-   ;;    ("C-x w" copy-sexp)
-   ("M-d"                 my-kill-word)
-   ;;    ("C-x TAB" indent-whole-buffer)
-   ;;    ("C-h" c-electric-backspace-kill)
-   ;;    ("M-m" beginning-of-line-text)
-   ("C-M-\\"              smart-indent)
-   ;; ("M-q"                 fill-paragraph)
-   ;; ("<escape> SPC"        just-one-space)
-   ("C-a"                 smart-home)
-   ;; ("C-M-a"               mark-whole-buffer)
-   ("C-k"                 kill-and-join-forward)
-   ("C-M-6"               jlh-join-lines)
-   ("C-]"                 goto-paren)
-   ("C-M-]"               ywb-indent-accoding-to-paren)
-   ;; ("C-c F f"             iy-go-to-char) ;; use `ace-jump'
-   ;; ("C-c F b"             iy-go-to-char-backward)
-   ("M-,"                 recent-jump-backward)
-   ("M-."                 recent-jump-forward)
-   ("C-x M-s"             isearch-forward-cur-word)
-   ("C-'"                 wcy-mark-some-thing-at-point)
-   ;; ("C-x \\"              rm-mark-command)
-   ;; ("M-w"                 copy-region)
-   ("M-|"                 ywb-hippie-expand-filename)
-   ;; ("C-x M-M"             switch-major-mode)
-   ("M-;"                 qiang-comment-dwim-line)
-   ("M-k"                 qiang-copy-line)
-   ;; Meteor Liu's functions
-   ("C-S-p"               move-line-up)
-   ("C-S-n"               move-line-down)
-   ("C-c C-x f"           format-region)
-   ("C-c C-x F"           format-cxx-file)
-   ("C-x M-l"             mark-current-line)
-   ("C-x M-a"             mark-function)
-   ("C-c <f5>"            revert-buffer)
-   ("C-x <f5>"            gbk-revert)
-   ("M-<f10>"             menu-bar-mode)
-   ("C-<f10>"             tool-bar-mode)
-   ("C-+"                 text-scale-increase)
-   ("C--"                 text-scale-decrease)
-   ("C-0"                 text-scale-normal-size)
-   ("C-M-="               increase-default-font-height)
-   ("C-M--"               decrease-default-font-height)
+ `(("C-c <f5>" revert-buffer)
+   ("C-x <f5>" gbk-revert)
+   ("C-x C-m"  execute-extended-command)
+   ("C-c C-m"  execute-extended-command)
+   ("C-w"      backward-kill-word-or-kill-region)
+   ("M-w"      smart-copy)
+   ("M-W"      which-copy)
+   ("C-S-d"    backward-delete-char)
+   ("M-D"      my-kill-word)
+   ("C-k"      smart-kill)
+   ;; ("M-k"      kill-sentence)
+   ("C-M-6"    jlh-join-lines)
+   ("C-c ["    goto-paren) ;; NOTE: C-[ is Esc
+   ("C-c ]"    goto-paren) ;; NOTE: C-] is `abort-recursive-edit'
+   ;; ("C-M-]"    ywb-indent-accoding-to-paren)
+   ;; ("C-c F f"  iy-go-to-char) ;; use `ace-jump'
+   ;; ("C-c F b"  iy-go-to-char-backward)
+   ("C-^"      case-trans)
+   ("C-6"      case-trans)
+   ("C-@"      mark-command)
+   ("C-x \\"   rm-mark-command)
+   ("C-x M-s"  isearch-forward-cur-word)
+   ("C-'"      wcy-mark-some-thing-at-point)
+   ("M-|"      ywb-hippie-expand-filename)
+   ("M-;"      qiang-comment-dwim-line)
+   ("M-K"      qiang-copy-line)
+   ("C-S-p"    move-line-up)  ;; NOTE: cannot use "C-P"
+   ("C-S-n"    move-line-down);; NOTE: cannot use "C-N"
+   ("C-M-f"    format-cxx-file)
+   ("C-*"      insert-prior-line-char)
+   ("S-<f4>"   name-last-kbd-marco)
+   ("C-<f4>"   insert-kbd-marco)
    ))
 
+
+
+;;* Global keybindings for visiting some files/directory
+
+;; ("C-x G i" open-init-dot-el-file)))
+
+(global-set-key (kbd "C-x K") (lambda ()
+                                (interactive)
+                                (kill-buffer)
+                                (delete-window)))
 
 
 (provide 'xy-rcroot-edit)

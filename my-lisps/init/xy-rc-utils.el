@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-15 Sat 21:55 by xin on p5q>
+;; Time-stamp: <2013-01-15 Tue 00:01 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -16,67 +16,75 @@
 (eval-when-compile (require 'cl))
 
 
+
 ;;* Definitions
-
 ;;** System variables
-
-;;*** Important path
-(defvar my-git-lisp-path (expand-file-name "~/.emacs.d/git-lisps")
+;;*** Important pathes
+(defvar my-emacs-sys-path (expand-file-name "~/.emacs.d")
+  "Name of root directory where all user configuration files reside.")
+(defvar my-git-lisp-path (expand-file-name "git-lisps" my-emacs-sys-path)
   "Name of directory where Emacs Lisp files of git submodules reside.")
-(defvar my-local-lisp-path (expand-file-name "~/.emacs.d/lisps")
+(defvar my-local-lisp-path (expand-file-name "lisps" my-emacs-sys-path)
   "Name of directory where manually installed Emacs Lisp files reside.")
-(defvar my-elpa-lisp-path (expand-file-name "~/.emacs.d/elpa")
+(defvar my-elpa-lisp-path (expand-file-name "elpa" my-emacs-sys-path)
   "Name of directory where ELPA Emacs Lisp files reside.")
-(defvar my-emacswiki-lisp-path (expand-file-name "~/.emacs.d/emacswiki")
+(defvar my-emacswiki-lisp-path (expand-file-name "emacswiki" my-emacs-sys-path)
   "Name of directory where lisps downloaded from EmacsWiki.")
-(defvar my-own-lisp-path (expand-file-name "~/.emacs.d/my-lisps")
+(defvar my-own-lisp-path (expand-file-name "my-lisps" my-emacs-sys-path)
   "Name of directory where my own Emacs Lisp files reside.")
-(defvar my-init-lisp-path (expand-file-name "~/.emacs.d/my-lisps/init")
+(defvar my-init-lisp-path (expand-file-name "init" my-own-lisp-path)
   "Name of diretory where my init Emacs Lisp files reside.")
-(defvar my-local-image-path (expand-file-name "~/.emacs.d/icons")
+(defvar my-local-image-path (expand-file-name "icons" my-emacs-sys-path)
   "Name of diretory where my local icon files reside.")
-(defvar my-local-exec-path (expand-file-name "~/.emacs.d/bin")
+(defvar my-local-exec-path (expand-file-name "bin" my-emacs-sys-path)
   "Name of diretory where my local executive binaries reside.")
-(defvar my-local-info-path (expand-file-name "~/.emacs.d/info")
+(defvar my-local-info-path (expand-file-name "info" my-emacs-sys-path)
   "Name of diretory where my local info files reside.")
-(defvar my-local-man-path (expand-file-name "~/.emacs.d/man")
+(defvar my-local-man-path (expand-file-name "man" my-emacs-sys-path)
   "Name of diretory where my local man files reside.")
-(defvar my-emacs-path (expand-file-name "~/emacs")
+(defvar my-emacs-path (expand-file-name "~/Dropbox/emacs")
   "Name of directory where my working files reside.")
-(defvar my-var-path (expand-file-name "~/emacs/var")
+(defvar my-var-path (expand-file-name "var" my-emacs-path)
   "Name of directory where my various Emacs log/record files reside.")
 
 ;;*** Machine names --- which machine are we using?
 (defvar using-office-pc
   (string-match "brl" (prin1-to-string (downcase system-name))))
 (defvar using-home-desktop
-  (string-match "p6t" (prin1-to-string (downcase system-name))))
+  (string-match "p5q" (prin1-to-string (downcase system-name))))
 (defvar using-laptop
-  (string-match "t42" (prin1-to-string (downcase system-name))))
+  (string-match "s13" (prin1-to-string (downcase system-name))))
 ;; OS type --- are we running Microsoft Windows?
 (defvar running-ms-windows
   (string-match "windows" (prin1-to-string system-type)))
 (defvar running-gnu-linux
   (string-match "linux" (prin1-to-string system-type)))
-
 
-;;** System marcos
 
+;;** System marcos
 ;;*** Machine name --- which machine are we using?
 (defmacro OfficePC (&rest body)
   (list
    'if (string-match
         "brl" (prin1-to-string (downcase system-name)))
    (cons 'progn body)))
+
+(defmacro HomeDesktop (&rest body)
+  (list
+   'if (string-match
+        "p5q" (prin1-to-string (downcase system-name)))
+   (cons 'progn body)))
+
 (defmacro UKDesktop (&rest body)
   (list
    'if (string-match
         "p6t" (prin1-to-string (downcase system-name)))
    (cons 'progn body)))
+
 (defmacro Laptop (&rest body)
   (list
    'if (string-match
-        "t42" (prin1-to-string (downcase system-name)))
+        "s13" (prin1-to-string (downcase system-name)))
    (cons 'progn body)))
 
 ;;*** OS type --- are we running GNU Linux?
@@ -85,6 +93,7 @@
    'if (string-match
         "linux" (prin1-to-string system-type))
    (cons 'progn body)))
+
 (defmacro Windows (&rest body)
   (list
    'if (string-match
@@ -100,18 +109,23 @@
   "Execute any number of forms if running under GNU Emacs."
   (list 'if (string-match "GNU Emacs" (version))
         (cons 'progn body)))
+
 (defmacro GNUEmacs24 (&rest body)
   (list 'if (string-match "GNU Emacs 24" (version))
         (cons 'progn body)))
+
 (defmacro GNUEmacs23 (&rest body)
   (list 'if (string-match "GNU Emacs 23" (version))
         (cons 'progn body)))
+
 (defmacro GNUEmacs22 (&rest body)
   (list 'if (string-match "GNU Emacs 22" (version))
         (cons 'progn body)))
+
 (defmacro GNUEmacs21 (&rest body)
   (list 'if (string-match "GNU Emacs 21" (version))
         (cons 'progn body)))
+
 (GNUEmacs
  (list emacs-version emacs-major-version emacs-minor-version
        system-type system-name system-configuration
@@ -119,8 +133,12 @@
        (when (boundp 'aquamacs-version) aquamacs-version)))
 
 
+
 ;;** c/c++ include dir
 (Windows
+ (defvar my-mingw-path (expand-file-name "E:/program/MinGW")
+   "MinGW installation path in the Windows system.")
+
  (defvar user-include-dirs
    '(;; User header files
      "." "./include" "./inc" "./common" "./public"
@@ -150,13 +168,15 @@
      ;; "D:/WpdPack/Include"
      )
    "User include dirs for c/c++ mode")
- (defvar c-preprocessor-symbol-files
-   '(;; "E:/program/MinGW/lib/gcc/mingw32/4.5.2/include/c++/bits/c++0x_warning.h"
-     ;; "D:/Microsoft Visual Studio/VC98/Include/xstddef"
-     ;; "C:/Program Files/Microsoft Visual Studio 10.0/VC/include/yvals.h"
-     ;; "C:/Program Files/Microsoft Visual Studio 10.0/VC/include/crtdefs.h"
-     )
-   "Preprocessor symbol files for cedet"))
+
+ ;; (defvar c-preprocessor-symbol-files
+ ;;   '(;; "E:/program/MinGW/lib/gcc/mingw32/4.5.2/include/c++/bits/c++0x_warning.h"
+ ;;     ;; "D:/Microsoft Visual Studio/VC98/Include/xstddef"
+ ;;     ;; "C:/Program Files/Microsoft Visual Studio 10.0/VC/include/yvals.h"
+ ;;     ;; "C:/Program Files/Microsoft Visual Studio 10.0/VC/include/crtdefs.h"
+ ;;     )
+ ;;   "Preprocessor symbol files for cedet")
+ )
 
 (GNULinux
  (defvar user-include-dirs
@@ -166,28 +186,13 @@
      "../.." "../../include" "../../inc" "../../common" "../../public"
      "/usr/include" "/usr/local/include")
    "User include dirs for c/c++ mode")
- (defvar c-preprocessor-symbol-files
-   '(
-     )
-   "Preprocessor symbol files for cedet"))
+
+ ;; (defvar c-preprocessor-symbol-files '()
+ ;;   "Preprocessor symbol files for cedet")
+ )
 
 
-;;**  Reload init file
-;; Note: when using `require' in the init.el to load other setting files,
-;; you have to restart Emacs.
-;; When using `load', Emacs will load every setting files.
-;;;###autoload
-(defun load-dot-emacs-file ()
-  (interactive)
-  (load "init" 'noerror t t))
 
-;; ;; Open init file
-;; ;;;###autoload
-;; (defun open-init-dot-el-file ()
-;;   (interactive)
-;;   (find-file "~/.emacs.d/init.el"))
-
-
 ;;* F.Niessen's utilities in his .emacs
 ;; REF: (@url :file-name "http://www.mygooglest.com/fni/dot-emacs.html" :display "Website")
 
@@ -239,7 +244,6 @@ argument is not nil."
 ;;         (normal-top-level-add-subdirs-to-load-path)))
 ;;   (delete-dups load-path))
 
-
 ;;;###autoload
 (defun fni/add-to-image-load-path
   (this-directory &optional with-subdirs recursive)
@@ -272,8 +276,10 @@ third argument is not nil."
           (setq files (cdr files)))))))
 
 
+
 (defvar missing-packages-list nil
   "List of packages that `try-require' can't find.")
+
 ;;;###autoload
 (defun try-require (feature)
   "Attempt to load a library or module. Return true if the library
@@ -296,33 +302,33 @@ just add the package to a list of missing packages."
                 feature)
        (add-to-list 'missing-packages-list feature 'append)) nil)))
 
+;; ;;;###autoload
+;; (defun my-make-directory-yes-or-no (dir)
+;;   "Ask user to create the DIR, if it does not already exist."
+
+;;   (if dir
+;;       (if (not (file-directory-p dir))
+;;           (if (yes-or-no-p
+;;                (concat "The directory `" dir
+;;                        "' does not exist currently. Create it? "))
+;;               (make-directory dir t)
+;;             (error
+;;              (concat "Cannot continue without directory `" dir "'"))))
+;;     (error "my-make-directory-yes-or-no: missing operand")))
+
+;; ;;;###autoload
+;; (defun my-file-executable-p (file)
+;;   "Make sure the file FILE exists and is executable."
+;;   (if file
+;;       (if (file-executable-p file)
+;;           file
+;;         (message "* ---[ WARNING: Can't find executable `%s' ]---" file)
+;;         ;; sleep 1 s so that you can read the warning
+;;         (sit-for 1))
+;;     (error "my-file-executable-p: missing operand")))
+
 
-;;;###autoload
-(defun my-make-directory-yes-or-no (dir)
-  "Ask user to create the DIR, if it does not already exist."
 
-  (if dir
-      (if (not (file-directory-p dir))
-          (if (yes-or-no-p
-               (concat "The directory `" dir
-                       "' does not exist currently. Create it? "))
-              (make-directory dir t)
-            (error
-             (concat "Cannot continue without directory `" dir "'"))))
-    (error "my-make-directory-yes-or-no: missing operand")))
-
-;;;###autoload
-(defun my-file-executable-p (file)
-  "Make sure the file FILE exists and is executable."
-  (if file
-      (if (file-executable-p file)
-          file
-        (message "* ---[ WARNING: Can't find executable `%s' ]---" file)
-        ;; sleep 1 s so that you can read the warning
-        (sit-for 1))
-    (error "my-file-executable-p: missing operand")))
-
-
 ;;* From ahei-misc.el
 
 ;;;###autoload
@@ -337,7 +343,6 @@ LOCAL. HOOKS can be one list or just a hook."
        hooks)
     (add-hook hooks function append local)))
 
-
 ;;;###autoload
 (defun am-intern (&rest strings)
   "`intern' use STRINGS."
@@ -349,13 +354,11 @@ LOCAL. HOOKS can be one list or just a hook."
        (if (stringp element) element (symbol-name element)))
      strings))))
 
-
 ;;;###autoload
 (defun am-variable-is-t (symbol)
   "Return SYMBOL's value is t or not."
   (and (boundp symbol) (symbol-value symbol)))
 
-
 ;;;###autoload
 (defmacro am-def-active-fun (symbol &optional fun-name)
   "Make definition of function judge variable is active or not."
@@ -363,22 +366,6 @@ LOCAL. HOOKS can be one list or just a hook."
      ,(concat "`" (symbol-name symbol) "' is t or not.")
      (am-variable-is-t ',symbol)))
 
-
-;;;###autoload
-(defun am-forward-word-or-to-word ()
-  "`forward-word' or `forward-to-word'.
-If after excute `forward-to-word', current position
-is at next line, then rollback and excute `forward-word'"
-  (interactive)
-  (let ((noo (line-number-at-pos)) no)
-    (save-excursion
-      (forward-to-word 1)
-      (setq no (line-number-at-pos)))
-    (if (> no noo)
-        (forward-word)
-      (forward-to-word 1))))
-
-
 ;;;###autoload
 (defmacro am-with-temp-mode (mode &rest body)
   "Create a temporary buffer with mode MODE, and evaluate BODY there
@@ -387,262 +374,12 @@ like `progn'. See also `with-temp-buffer'."
      (funcall ,mode)
      ,@body))
 
-
 ;;;###autoload
 (defun am-equal-ignore-case (str1 str2)
   "STR1 equal ignore case to STR2 or not."
   (string= (downcase str1) (downcase str2)))
-
 
-;;* From util.el used by ahei, written by taoshanwen
 
-(defvar mswin  (equal window-system 'w32)
-  "Non-nil means windows system.")
-(defvar cygwin (equal system-type 'cygwin)
-  "Non-nil means cygwin system.")
-
-(defvar use-cua nil "Use CUA mode or not.")
-
-(defvar last-region-beg     nil "Beginning of last region.")
-(defvar last-region-end     nil "End of last region.")
-(defvar last-region-is-rect nil "Last region is rectangle or not.")
-(defvar last-region-use-cua nil "Last region use CUA mode or not.")
-
-(defconst system-head-file-dir
-  (list "/usr/include" "/usr/local/include" "/usr/include/sys")
-  "系统头文件目录")
-(defconst user-head-file-dir
-  (list "." "../hdr" "../include")
-  "用户头文件目录")
-
-(defconst is-before-emacs-21 (>= 21 emacs-major-version)
-  "是否是emacs 21或以前的版本")
-(defconst is-after-emacs-23  (<= 23 emacs-major-version)
-  "是否是emacs 23或以后的版本")
-
-(defvar c-modes '(c-mode c++-mode awk-mode java-mode) "*C modes.")
-(defvar dev-modes (append c-modes
-                          '(python-mode perl-mode
-                                        makefile-gmake-mode))
-  "*Modes for develop.")
-
-
-;;;###autoload
-(defun execute-command-on-file (file command)
-  "对FILE执行命令COMMAND"
-  (interactive
-   (list (read-file-name "File execute command on: ")
-         (let* ((input ""))
-           (while (string= input "")
-             (setq input (read-string "命令: ")))
-           input)))
-  (if file
-      (when (yes-or-no-p (concat command " file `" file "'?"))
-        (shell-command (concat command " \"" file "\"")))
-    (message "* ---[ Executing command `%s'... ]---" command)
-    (shell-command command)))
-
-
-;;;###autoload
-(defun execute-command-on-current-file (command)
-  "对当前buffer执行命令COMMAND, 如果该buffer对应文件的话, 再执行
-`revert-buffer-no-confirm'"
-  (interactive
-   (list (let* ((input ""))
-           (while (string= input "")
-             (setq input (read-string "命令: ")))
-           input)))
-  (let* ((file (buffer-file-name)))
-    (execute-command-on-file file command)
-    (if file
-        (revert-buffer-no-confirm))))
-
-
-;;;###autoload
-(defun execute-command-on-current-dir (command)
-  "对当前目录执行命令COMMAND."
-  (interactive
-   (list (let* ((input ""))
-           (while (string= input "")
-             (setq input (read-string "命令: ")))
-           input)))
-  (let* ((file (buffer-file-name)))
-    (execute-command-on-file default-directory command)
-    (if file
-        (revert-buffer-no-confirm))))
-
-
-;;;###autoload
-(defmacro def-execute-command-on-file-command (command)
-  "Make definition of command which execute command on file."
-  `(defun ,(intern (subst-char-in-string ?\ ?- command)) (file)
-     ,(concat "Run command `" command "' on file FILE.")
-     (interactive
-      (list (read-file-name (concat "File to " ,command ": "))))
-     (execute-command-on-file file ,command)))
-
-
-;;;###autoload
-(defmacro def-execute-command-on-current-file-command (command)
-  "Make definition of command which execute command on current file."
-  `(defun ,(am-intern (subst-char-in-string ?\ ?- command)
-                      "-current-file") ()
-     ,(concat "Execute command `" command "' on current file.")
-     (interactive)
-     (execute-command-on-current-file ,command)))
-
-
-;;;###autoload
-(defmacro def-execute-command-on-current-dir-command (command)
-  "Make definition of command which execute command on current
-directory."
-  `(defun ,(am-intern (subst-char-in-string ?\ ?- command)
-                      "-current-dir") ()
-     ,(concat "Execute command `" command "' on current directory.")
-     (interactive)
-     (execute-command-on-current-dir ,command)))
-
-
-;;;###autoload
-(defmacro define-kbd (keymap key def)
-  `(define-key ,keymap (kbd ,key) ,def))
-;;;###autoload
-(defmacro local-set-kbd (key command)
-  `(local-set-key (kbd ,key) ,command))
-;;;###autoload
-(defmacro global-set-kbd (key command)
-  `(global-set-key (kbd ,key) ,command))
-
-;; ;;;###autoload
-;; (defalias 'apply-define-key 'eal-define-keys-commonly)
-;; ;;;###autoload
-;; (defalias 'define-key-list 'eal-define-keys-commonly)
-
-
-;;;###autoload
-(defun apply-args-list-to-fun (fun-list args-list)
-  "Apply args list to function FUN-LIST.
-FUN-LIST can be a symbol, also can be a list whose element is a
-symbol."
-  (let ((is-list (and (listp fun-list) (not (functionp fun-list)))))
-    (dolist (args args-list)
-      (if is-list
-          (dolist (fun fun-list)
-            (apply-args-to-fun fun args))
-        (apply-args-to-fun fun-list args)))))
-
-
-;;;###autoload
-(defun apply-args-to-fun (fun args)
-  "Apply args to function FUN."
-  (if (listp args)
-      (eval `(,fun ,@args))
-    (eval `(,fun ,args))))
-
-
-;;;###autoload
-(defun kill-buffer-when-shell-command-exit ()
-  "Close current buffer when `shell-command' exit."
-  (let ((process (ignore-errors
-                   (get-buffer-process (current-buffer)))))
-    (when process
-      (set-process-sentinel
-       process
-       (lambda (proc change)
-         (when (string-match "\\(finished\\|exited\\)" change)
-           (kill-buffer (process-buffer proc))))))))
-
-
-;;;###autoload
-(defun list-colors-display-htm (&optional list)
-  "Create HTML page which lists all the defined colors."
-  (interactive)
-  (if (and (null list) window-system)
-      (progn
-        (setq list (x-defined-colors))
-        ;; Delete duplicate colors.
-        (let ((l list))
-          (while (cdr l)
-            (if (facemenu-color-equal (car l) (car (cdr l)))
-                (setcdr l (cdr (cdr l)))
-              (setq l (cdr l)))))))
-  (with-output-to-temp-buffer "*Colors*"
-    (save-excursion
-      (set-buffer standard-output)
-      (insert "<html>\n"
-              "<head>\n"
-              "<meta http-equiv=\"Content-Style-Type\" content=\"text/css\">\n"
-              "<title>Colors</title>\n"
-              "</head>\n"
-              "<body>\n"
-              "<h1>Colors</h1>\n"
-              "<p>\n"
-              "<pre>\n")
-      (let (s)
-        (while list
-          (insert (format (concat "<span style=\"background-color:%s\">%-20s</span>"
-                                  "  "
-                                  "<span style=\"color:%s\">%s</span>"
-                                  "\n")
-                          (html-color (car list)) (car list)
-                          (html-color (car list)) (car list)))
-          (setq list (cdr list))))
-      (insert "</pre>"
-              "</body>"
-              "</html>"))))
-
-
-;;;###autoload
-(defun html-color (string)
-  "Convert colors names to rgb(n1,n2,n3) strings."
-  (format "rgb(%d,%d,%d)"
-          (/ (nth 0 (x-color-values string)) 256)
-          (/ (nth 1 (x-color-values string)) 256)
-          (/ (nth 2 (x-color-values string)) 256)))
-
-
-;;;###autoload
-(defmacro def-command-max-window (command)
-  "Make definition of command which after execute command COMMAND
-execute `delete-other-windows'."
-  `(defun ,(am-intern command "-max-window") ()
-     ,(concat "After run command `" command
-              "' execute command `delete-other-windows'.")
-     (interactive)
-     (call-interactively ',(intern command))
-     (delete-other-windows)))
-
-
-;;;###autoload
-(defun delete-current-window (&optional frame)
-  "Delete window which showing current buffer."
-  (interactive
-   (list (and current-prefix-arg
-              (or (natnump (prefix-numeric-value current-prefix-arg))
-                  'visible))))
-  (if (one-window-p)
-      (bury-buffer)
-    (delete-windows-on (current-buffer) frame)))
-
-
-;;;###autoload
-(defmacro def-turn-on (command &optional is-on)
-  "Make definition of command whose name is COMMAND-on when IS-ON is t
-and COMMAND-off when IS-ON is nil."
-  (let ((on (if is-on "on" "off")))
-    `(defun ,(am-intern command "-" on) ()
-       ,(concat "Turn " on " `" command "'.")
-       (interactive)
-       (funcall ',(intern command) ,(if is-on 1 -1)))))
-
-
-;;;###autoload
-(defun unset-key (keymap key)
-  "Remove binding of KEY in map KEYMAP.
-KEY is a string or vector representing a sequence of keystrokes."
-  (define-key keymap key nil))
-
-
 ;;* Emacs auto font selection for different OS
 ;; REF: (@url :file-name "http://emacser.com/torture-emacs.htm" :display "emacser")
 
@@ -658,7 +395,6 @@ KEY is a string or vector representing a sequence of keystrokes."
 ;; ;; (require 'cl) ;; find-if is in common list package
 ;; (find-if #'qiang-font-existsp font-list)
 
-
 ;;;###autoload
 (defun qiang-make-font-string (font-name font-size)
   "产生带上 font size 信息的 font 描述文本"
@@ -667,7 +403,6 @@ KEY is a string or vector representing a sequence of keystrokes."
       (format "%s%s" font-name font-size)
     (format "%s %s" font-name font-size)))
 
-
 ;;;###autoload
 (defun qiang-set-font (english-fonts
                        english-font-size
@@ -717,6 +452,148 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;       1l0oO
 
 
+
+;;* For compatibility among different version of Emacs
+
+;; NOTE: the following 3 functions are used in `template.el', and
+;; `session.el'
+
+;; ;; General Emacs/XEmacs-compatibility compile-time macros
+;; ;;;###autoload
+;; (defmacro cond-emacs-xemacs (&rest args)
+;;   (cond-emacs-xemacs-macfn
+;;    args "`cond-emacs-xemacs' must return exactly one element"))
+
+;; ;;;###autoload
+;; (defun cond-emacs-xemacs-macfn (args &optional msg)
+;;   (if (atom args) args
+;;     (and (eq (car args) :@) (null msg) ; (:@ ...spliced...)
+;;          (setq args (cdr args)
+;;                msg "(:@ ....) must return exactly one element"))
+;;     (let ((ignore
+;;            (if (string-match "XEmacs" emacs-version) :EMACS :XEMACS))
+;;           (mode :BOTH) code)
+;;       (while (consp args)
+;;         (if (memq (car args)
+;;                   '(:EMACS :XEMACS :BOTH)) (setq mode (pop args)))
+;;         (if (atom args)
+;;             (or args (error "Used selector %s without elements" mode))
+;;           (or (eq ignore mode)
+;;               (push (cond-emacs-xemacs-macfn (car args)) code))
+;;           (pop args)))
+;;       (cond (msg (if (or args (cdr code)) (error msg) (car code)))
+;;             ((or (null args) (eq ignore mode)) (nreverse code))
+;;             (t (nconc (nreverse code) args))))))
+
+;; ;; Emacs/XEmacs-compatibility `defun': remove interactive "_" for
+;; ;; Emacs, use existing functions when they are `fboundp', provide
+;; ;; shortcuts if they are known to be defined in a specific Emacs
+;; ;; branch (for short .elc)
+;; ;;;###autoload
+;; (defmacro defunx (name arglist &rest definition)
+;;   (let ((xemacsp (string-match "XEmacs" emacs-version)) reuses first)
+;;     (while (memq (setq first (car definition))
+;;                  '(:try :emacs-and-try :xemacs-and-try
+;;                         :emacs-only :xemacs-only))
+;;       (if (memq first (if xemacsp
+;;                           '(:xemacs-and-try :xemacs-only)
+;;                         '(:emacs-and-try :emacs-only)))
+;;           (setq reuses (cadr definition)
+;;                 definition nil)
+;;         (unless (memq first '(:emacs-only :xemacs-only))
+;;           (push (cadr definition) reuses)))
+;;       (setq definition (cddr definition)))
+;;     (if (and reuses (symbolp reuses))
+;;         `(defalias ',name ',reuses)
+;;       (let* ((docstring
+;;               (if (stringp (car definition)) (pop definition)))
+;;              (spec (and (not xemacsp)
+;;                         (eq (car-safe (car definition))
+;;                             'interactive)
+;;                         (null (cddar definition))
+;;                         (cadar definition))))
+;;         (if (and (stringp spec)
+;;                  (not (string-equal spec ""))
+;;                  (eq (aref spec 0) ?_))
+;;             (setq definition
+;;                   (cons (if (string-equal spec "_")
+;;                             '(interactive)
+;;                           `(interactive ,(substring spec 1)))
+;;                         (cdr definition))))
+;;         (if (null reuses)
+;;             `(defun ,name ,arglist ,docstring
+;;                ,@(cond-emacs-xemacs-macfn definition))
+;;           ;; no dynamic docstring in this case
+;;           `(eval-and-compile        ; no warnings in Emacs
+;;              (defalias ',name
+;;                (cond ,@(mapcar
+;;                         (lambda (func) `((fboundp ',func) ',func))
+;;                         (nreverse reuses))
+;;                      (t ,(if definition
+;;                              `(lambda ,arglist ,docstring
+;;                                 ,@(cond-emacs-xemacs-macfn
+;;                                    definition))
+;;                            'ignore))))))))))
+
+;; (when (>= 21 emacs-major-version)
+;;   (defalias 'move-beginning-of-line 'beginning-of-line)
+;;   (defalias 'move-end-of-line       'end-of-line))
+
+
+;; ;;** 定义一些emacs 21没有的函数
+;; (when is-before-emacs-21
+;;     '(progn
+;;        (defun line-number-at-pos (&optional pos)
+;;      "Return (narrowed) buffer line number at position POS.
+;; If POS is nil, use current buffer location. Counting starts
+;; at (point-min), so the value refers to the contents of the
+;; accessible portion of the buffer."
+
+;;      (let ((opoint (or pos (point))) start)
+;;        (save-excursion
+;;          (goto-char (point-min))
+;;          (setq start (point))
+;;          (goto-char opoint)
+;;          (forward-line 0)
+;;          (1+ (count-lines start (point))))))
+
+
+;;        (defun looking-back (regexp &optional limit greedy)
+;;      "Return non-nil if text before point matches regular
+;; expression REGEXP. Like `looking-at' except matches before point,
+;; and is slower. LIMIT if non-nil speeds up the search by
+;; specifying a minimum starting position, to avoid checking matches
+;; that would start before LIMIT.
+
+;; If GREEDY is non-nil, extend the match backwards as far as possible,
+;; stopping when a single additional previous character cannot be part
+;; of a match for REGEXP."
+;;      (let ((start (point))
+;;            (pos
+;;         (save-excursion
+;;           (and (re-search-backward
+;;             (concat "\\(?:" regexp "\\)\\=") limit t)
+;;                (point)))))
+;;        (if (and greedy pos)
+;;            (save-restriction
+;;          (narrow-to-region (point-min) start)
+;;          (while (and (> pos (point-min))
+;;                  (save-excursion
+;;                    (goto-char pos)
+;;                    (backward-char 1)
+;;                    (looking-at (concat
+;;                         "\\(?:"
+;;                         regexp
+;;                         "\\)\\'"))))
+;;            (setq pos (1- pos)))
+;;          (save-excursion
+;;            (goto-char pos)
+;;            (looking-at (concat "\\(?:"  regexp "\\)\\'")))))
+;;        (not (null pos))))
+;;        ))
+
+;;* My own functions
+;;** Different font settings
 ;;;###autoload
 (defun xy/set-font-default ()
   "My default Emacs font setting."
@@ -743,7 +620,6 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
     ;; 默认字体，term 下的字体
     (set-default-font "Monospace 16")))
 
-
 ;;;###autoload
 (defun xy/set-font-prog ()
   "My default Emacs font setting."
@@ -770,7 +646,6 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
     ;; 默认字体，term 下的字体
     (set-default-font "Monospace 14")))
 
-
 ;;;###autoload
 (defun xy/set-font-write ()
   "My Emacs font setting for writing articles."
@@ -807,75 +682,90 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;            "黑体"))
 ;;     (set-default-font "Monospace 16")))
 
-
+;; Monofur+STHeiti字体组合，可以一齐缩放
 ;;;###autoload
 (defun xy/set-font-mix ()
   "My Emacs font setting for writing articles."
   (interactive)
   (if window-system
-      (qiang-set-font '("Monofur") 15 '("STHeiti"))
-    (set-default-font "Monospace 15")))
+      (qiang-set-font '("Monofur") 11 '("STHeiti"))
+    (set-default-font "Monospace 11")))
+
+;; NOTE: 和上面一样，但不需要qiang的函数
+;; ;;;###autoload
+;; (defun xy/set-font-default-mix ()
+;;   "My Emacs font setting for writing articles."
+;;   (interactive)
+;;   (if window-system
+;;       (progn
+;;         ;; Setting default Font
+;;         (set-frame-font "Monofur 11")
+;;         ;; Setting English Font
+;;         (set-face-attribute 'default nil :font "Monofur")
+;;         ;; (setq default-frame-list (append '((font . "Monofur"))
+;;         ;;                                  default-frame-alist))
+;;         ;; Chinese Font
+;;         (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;           (set-fontset-font (frame-parameter nil 'font)
+;;                             charset
+;;                             (font-spec :family "STHeiti"))))
+;;     (set-default-font "Monospace")))
 
 
-;; 配合的比较好的字体组合，可以一齐缩放
-;;;###autoload
-(defun xy/set-font-default-mix ()
-  "My Emacs font setting for writing articles."
-  (interactive)
-  (if window-system
-      (progn
-        ;; Setting default Font
-        (set-frame-font "Monofur 14")
-        ;; Setting English Font
-        (set-face-attribute 'default nil :font "Monofur")
-        ;; (setq default-frame-list (append '((font . "Monofur"))
-        ;;                                  default-frame-alist))
-        ;; Chinese Font
-        (dolist (charset '(kana han symbol cjk-misc bopomofo))
-          (set-fontset-font (frame-parameter nil 'font)
-                            charset
-                            (font-spec :family "STHeiti"))))
-    (set-default-font "Monospace")))
 
+
+;;** Automatically set Emacs after it starts (for terminal-mode (daemon) and GUI-mode)
+;; ;;;###autoload
+;; (defun xy/emacs-start ()
+;;   "Tasks been done after emacsclient first start."
+;;   (interactive)
+;;   (when window-system
+;;     (xy/set-font-prog)
+;;     ;; (custom-set-faces
+;;     ;;  '(pp^L-highlight ((t (:overline t :weight extra-bold)))))
+;;     (Windows ;; windows system should use the dark theme for eye protection
+;;      (color-theme-solarized-dark))
+;;     ;; (Linux ;; I am now using ~/.Xresources to set system-wide
+;;               ;; solarized-dark theme in Linux
+;;     ;;  (color-theme-solarized-dark))
+;;     ;; (xy/toggle-fullscreen)
+;;     )
+
+;;   ;; (try-require 'anything) ;; BUG: `anything' or my settings cause
+;;   ;; error when loading `emacs-w3m' (exe file `w3m' cannot be found in
+;;   ;; /usr/bin) in Windows 7
+
+;;   ;;(org-agenda 'nil "p")
+;;   )
 
 
+;;** Smart fullscreen and maximize
+
+(defvar xy:fullscreen-flag nil)
+
 ;;;###autoload
-(defun xy/emacs-start ()
-  "Tasks been done after emacsclient first start."
+(defun xy/fullscreen ()
+  "Enter fullscreen mode."
   (interactive)
   (when window-system
-    ;; (xy/set-font-write)
-    (custom-set-faces
-     '(pp^L-highlight ((t (:overline t :weight extra-bold)))))
-    (Windows ;; windows system should use the dark theme for eye protection
-     (color-theme-solarized-dark))
-    ;; (Linux ;; I am now using ~/.Xresources to set system-wide
-              ;; solarized-dark theme in Linux
-    ;;  (color-theme-solarized-dark))
-    ;; (xy/toggle-fullscreen)
-    )
-  (try-require 'anything)
-  (org-agenda 'nil "p"))
-
-
-;;* 全屏控制
-;; fullscreen
-(defvar xy:full-screen-flag nil)
+    ;; From: xiaoxuan@newsmth.net-SPAM.no (小轩)
+    (setq xy:fullscreen-flag t)
+    (set-frame-parameter nil 'fullscreen 'fullscreen)))
 
 ;;;###autoload
 (defun xy/toggle-fullscreen ()
-  "Toggle full-screen mode."
+  "Toggle fullscreen mode."
   (interactive)
   (when window-system
     (progn
       (GNULinux
        ;; From: xiaoxuan@newsmth.net-SPAM.no (小轩)
-       (if xy:full-screen-flag
+       (if xy:fullscreen-flag
            (progn
-             (setq xy:full-screen-flag nil)
+             (setq xy:fullscreen-flag nil)
              (set-frame-parameter nil 'fullscreen nil))
          (progn
-           (setq xy:full-screen-flag t)
+           (setq xy:fullscreen-flag t)
            (set-frame-parameter nil 'fullscreen 'fullscreen))))
 
       (Windows ;; NOTE: Put `emacs_fullscreen.exe' in your $PATH, such as
@@ -885,189 +775,62 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
        ;; ;; (setq autofit-frame-flag nil)
        ;; (shell-command "%HOME%/.emacs.d/bin/win32/emacs_fullscreen.exe")))))
        ;; Use patched fullscreen version Emacs
-       (if xy:full-screen-flag
+       (if xy:fullscreen-flag
            (progn
-             (setq xy:full-screen-flag nil)
+             (setq xy:fullscreen-flag nil)
              (set-frame-parameter nil 'fullscreen nil))
          (progn
-           (setq xy:full-screen-flag t)
+           (setq xy:fullscreen-flag t)
            (set-frame-parameter nil 'fullscreen 'fullscreen)))))))
 
-;; maximize frame
-(defvar xy:maxframe-flag nil)
+;; (defvar xy:maxframe-flag nil)
 
+;; ;;;###autoload
+;; (defun xy/smart-maximize-frame ()
+;;   "Fix the `maximize-frame' function of `maxframe.el'. \
+;; If the current emacs frame is in full screen mode, then give up \
+;; the `maximize-frame command' of `maxframe.el'."
+
+;;   (interactive)
+;;   (when (try-require 'maxframe)
+;;     (when (and window-system (not xy:fullscreen-flag))
+;;       (progn
+;;         (maximize-frame)
+;;         (setq xy:maxframe-flag t)))))
+
+;; ;;;###autoload
+;; (defun xy/smart-toggle-maxframe ()
+;;   "Smart maximize and restore the size of the frame.\
+;; Also makes `maxframe.el' works with `xy/toggle-fullscreen' function."
+
+;;   (interactive)
+;;   (when (try-require 'maxframe)
+;;     (when (and window-system (not xy:fullscreen-flag))
+;;       (progn
+;;         (if xy:maxframe-flag
+;;             (progn
+;;               (setq xy:maxframe-flag nil)
+;;               (restore-frame))
+;;           (progn
+;;             (setq xy:maxframe-flag t)
+;;             (maximize-frame)))))))
+
+
+
+;; Setup Emacs
+
+;;** Reload init file
 ;;;###autoload
-(defun xy/smart-maximize-frame ()
-  "Fix the `maximize-frame' function of `maxframe.el'.\
-If the current emacs frame is in full screen mode, then give up\
-the `maximize-frame command' of `maxframe.el'."
-
+(defun load-dot-emacs-file ()
   (interactive)
-  (when (try-require 'maxframe)
-    (when (and window-system (not xy:full-screen-flag))
-      (progn
-        (maximize-frame)
-        (setq xy:maxframe-flag t)))))
+  (load "init" 'noerror t t))
 
-;;;###autoload
-(defun xy/smart-toggle-maxframe ()
-  "Smart maximize and restore the size of the frame.\
-Also makes `maxframe.el' works with `xy/toggle-fullscreen' function."
+;;** Open init file
+;; ;;;###autoload
+;; (defun open-init-dot-el-file ()
+;;   (interactive)
+;;   (find-file "~/.emacs.d/init.el"))
 
-  (interactive)
-  (when (try-require 'maxframe)
-    (when (and window-system (not xy:full-screen-flag))
-      (progn
-        (if xy:maxframe-flag
-            (progn
-              (setq xy:maxframe-flag nil)
-              (restore-frame))
-          (progn
-            (setq xy:maxframe-flag t)
-            (maximize-frame)))))))
-
-
-;;* For compatibility among different version of Emacs
-
-;; General Emacs/XEmacs-compatibility compile-time macros
-;;;###autoload
-(defmacro cond-emacs-xemacs (&rest args)
-  (cond-emacs-xemacs-macfn
-   args "`cond-emacs-xemacs' must return exactly one element"))
-
-
-;;;###autoload
-(defun cond-emacs-xemacs-macfn (args &optional msg)
-  (if (atom args) args
-    (and (eq (car args) :@) (null msg) ; (:@ ...spliced...)
-         (setq args (cdr args)
-               msg "(:@ ....) must return exactly one element"))
-    (let ((ignore
-           (if (string-match "XEmacs" emacs-version) :EMACS :XEMACS))
-          (mode :BOTH) code)
-      (while (consp args)
-        (if (memq (car args)
-                  '(:EMACS :XEMACS :BOTH)) (setq mode (pop args)))
-        (if (atom args)
-            (or args (error "Used selector %s without elements" mode))
-          (or (eq ignore mode)
-              (push (cond-emacs-xemacs-macfn (car args)) code))
-          (pop args)))
-      (cond (msg (if (or args (cdr code)) (error msg) (car code)))
-            ((or (null args) (eq ignore mode)) (nreverse code))
-            (t (nconc (nreverse code) args))))))
-
-
-;; Emacs/XEmacs-compatibility `defun': remove interactive "_" for
-;; Emacs, use existing functions when they are `fboundp', provide
-;; shortcuts if they are known to be defined in a specific Emacs
-;; branch (for short .elc)
-;;;###autoload
-(defmacro defunx (name arglist &rest definition)
-  (let ((xemacsp (string-match "XEmacs" emacs-version)) reuses first)
-    (while (memq (setq first (car definition))
-                 '(:try :emacs-and-try :xemacs-and-try
-                        :emacs-only :xemacs-only))
-      (if (memq first (if xemacsp
-                          '(:xemacs-and-try :xemacs-only)
-                        '(:emacs-and-try :emacs-only)))
-          (setq reuses (cadr definition)
-                definition nil)
-        (unless (memq first '(:emacs-only :xemacs-only))
-          (push (cadr definition) reuses)))
-      (setq definition (cddr definition)))
-    (if (and reuses (symbolp reuses))
-        `(defalias ',name ',reuses)
-      (let* ((docstring
-              (if (stringp (car definition)) (pop definition)))
-             (spec (and (not xemacsp)
-                        (eq (car-safe (car definition))
-                            'interactive)
-                        (null (cddar definition))
-                        (cadar definition))))
-        (if (and (stringp spec)
-                 (not (string-equal spec ""))
-                 (eq (aref spec 0) ?_))
-            (setq definition
-                  (cons (if (string-equal spec "_")
-                            '(interactive)
-                          `(interactive ,(substring spec 1)))
-                        (cdr definition))))
-        (if (null reuses)
-            `(defun ,name ,arglist ,docstring
-               ,@(cond-emacs-xemacs-macfn definition))
-          ;; no dynamic docstring in this case
-          `(eval-and-compile        ; no warnings in Emacs
-             (defalias ',name
-               (cond ,@(mapcar
-                        (lambda (func) `((fboundp ',func) ',func))
-                        (nreverse reuses))
-                     (t ,(if definition
-                             `(lambda ,arglist ,docstring
-                                ,@(cond-emacs-xemacs-macfn
-                                   definition))
-                           'ignore))))))))))
-
-
-(when (>= 21 emacs-major-version)
-  (defalias 'move-beginning-of-line 'beginning-of-line)
-  (defalias 'move-end-of-line       'end-of-line))
-
-
-;; 定义一些emacs 21没有的函数
-(when is-before-emacs-21
-    '(progn
-       (defun line-number-at-pos (&optional pos)
-     "Return (narrowed) buffer line number at position POS.
-If POS is nil, use current buffer location. Counting starts
-at (point-min), so the value refers to the contents of the
-accessible portion of the buffer."
-
-     (let ((opoint (or pos (point))) start)
-       (save-excursion
-         (goto-char (point-min))
-         (setq start (point))
-         (goto-char opoint)
-         (forward-line 0)
-         (1+ (count-lines start (point))))))
-
-
-       (defun looking-back (regexp &optional limit greedy)
-     "Return non-nil if text before point matches regular
-expression REGEXP. Like `looking-at' except matches before point,
-and is slower. LIMIT if non-nil speeds up the search by
-specifying a minimum starting position, to avoid checking matches
-that would start before LIMIT.
-
-If GREEDY is non-nil, extend the match backwards as far as possible,
-stopping when a single additional previous character cannot be part
-of a match for REGEXP."
-     (let ((start (point))
-           (pos
-        (save-excursion
-          (and (re-search-backward
-            (concat "\\(?:" regexp "\\)\\=") limit t)
-               (point)))))
-       (if (and greedy pos)
-           (save-restriction
-         (narrow-to-region (point-min) start)
-         (while (and (> pos (point-min))
-                 (save-excursion
-                   (goto-char pos)
-                   (backward-char 1)
-                   (looking-at (concat
-                        "\\(?:"
-                        regexp
-                        "\\)\\'"))))
-           (setq pos (1- pos)))
-         (save-excursion
-           (goto-char pos)
-           (looking-at (concat "\\(?:"  regexp "\\)\\'")))))
-       (not (null pos))))
-       ))
-
-
-;;* My own functions
 
 ;;;###autoload
 (defun xy/recompile-dir
@@ -1115,8 +878,6 @@ directories starting with a `.'."
                                   'with-subdirs 'recursive)
               (xy/recompile-dir dir-or-file)))
           (setq files (cdr files)))))))
-
-;; 
 
 ;;;###autoload
 (defun xy/install-lisps
@@ -1207,9 +968,8 @@ directories starting with a `.'."
               (xy/install-lisps dir-or-file)))
           (setq files (cdr files)))))))
 
-
+;; NOTE: too heavy when running recursively
 ;;;###autoload
-;; NOTE: load is too heavy when running recursively
 (defun xy/load-autoloads
   (this-directory &optional with-subdirs recursive)
   "Install all the lisps in THIS-DIRECTORY.
@@ -1243,40 +1003,6 @@ The process is:
         (message "* ---[ Error: `%s' does not exist]"
                  generated-autoload-file)))))
 
-
-;;;###autoload
-(defun xy/done ()
-  "Close a buffer and make Emacs frame invisible.\
-Improved C-x C-c."
-  (interactive)
-  (save-some-buffers)
-  ;; (kill-this-buffer)
-  (server-edit)
-  (if window-system
-     (make-frame-invisible nil t)
-    ;; else block (terminal mode and emacs daemon is running)
-    (delete-frame)))
-
-
-;; NOTE: With this macro, `server-start', `server-force-delete', and
-;; `emacs --daemon' works properly even when there is an emacs server
-;; running, when you set `delete-by-moving-to-trash' to true.
-;; REF: (@url :file-name "http://superuser.com/questions/176207/emacs-daemon-not-deleting-socket" :display "Post")
-
-(defmacro bypass-trash-in-function (fun)
-  "Set FUN to always use normal deletion, and never trash.
-
-Specifically, the value of `delete-by-moving-to-trash' will be
-set to nil inside FUN, so any deletions that happen inside FUN or
-any functions called by it will bypass the trash."
-  `(defadvice ,fun (around no-trash activate)
-     "Ignore `delete-by-moving-to-trash' inside this function.
-
-See `bypass-trash-in-function' for more information."
-     (let (delete-by-moving-to-trash)
-       ad-do-it)))
-
-
 ;; ;;;###autoload
 ;; (defun xy/unload-all ()
 ;;   "unload all my customizations."
@@ -1301,7 +1027,7 @@ See `bypass-trash-in-function' for more information."
 ;;   ;;   (unload-feature 'xy-rcroot-app t))
 ;;   (load "~/.emacs.d/my-lisps/init/xy-rc-utils.el")
 ;;   (load "~/.emacs.d/my-lisps/init/xy-rcroot-env.el"))
-
+
 ;;;###autoload
 (defun xy/emacs-build ()
   "Compile my Emacs configurations, local lisps, and generate
@@ -1309,22 +1035,26 @@ See `bypass-trash-in-function' for more information."
 
   (interactive)
   (setq debug-on-error t)
+
+  ;; NOTE: not necessary after use a `after-save-file-hook' to delete
+  ;; old elc files
+  ;; ;; Delete old elc files
+  ;; (let* ((file-el (concat my-init-lisp-path "/xy-rc-utils.el"))
+  ;;        (file-elc (concat file-el "c")))
+  ;;   (when (file-newer-than-file-p file-el file-elc)
+  ;;     (delete-file file-elc nil)))
+  ;; ;; (unload-feature 'xy-rc-utils t)
+  ;; ;; (load file-el)))
+
+  ;; (let* ((file-el (concat my-init-lisp-path "/xy-rcroot-env.el"))
+  ;;        (file-elc (concat file-el "c")))
+  ;;   (when (file-newer-than-file-p file-el file-elc)
+  ;;     (delete-file file-elc nil)))
+  ;; ;; (unload-feature 'xy-rcroot-env t)
+  ;; ;; (load file-el)))
+
   (load "~/.emacs.d/my-lisps/init/xy-rc-utils.el")
   (load "~/.emacs.d/my-lisps/init/xy-rcroot-env.el")
-
-  (let* ((file-el (concat my-init-lisp-path "/xy-rc-utils.el"))
-         (file-elc (concat file-el "c")))
-    (when (file-newer-than-file-p file-el file-elc)
-      (delete-file file-elc nil)))
-      ;; (unload-feature 'xy-rc-utils t)
-      ;; (load file-el)))
-
-  (let* ((file-el (concat my-init-lisp-path "/xy-rcroot-env.el"))
-         (file-elc (concat file-el "c")))
-    (when (file-newer-than-file-p file-el file-elc)
-      (delete-file file-elc nil)))
-      ;; (unload-feature 'xy-rcroot-env t)
-      ;; (load file-el)))
 
   ;; NOTE: ecb and cedet are closely related, ecb must be byte-compiled
   ;; with cedet. Just activate ecb without byte-compiled lisps, then
@@ -1358,11 +1088,9 @@ See `bypass-trash-in-function' for more information."
   (xy/install-lisps (concat my-local-lisp-path "/mo-git-blame"))
 
   ;; git submodules
-  (xy/install-lisps (concat my-git-lisp-path "/anything-config"))
-  (xy/install-lisps (concat my-git-lisp-path "/anything-config/extensions"))
-  (xy/install-lisps (concat my-git-lisp-path "/anything-config/contrib"))
-  (xy/install-lisps (concat my-git-lisp-path "/o-blog"))
-  (xy/install-lisps (concat my-git-lisp-path "/org2blog"))
+  ;; (xy/install-lisps (concat my-git-lisp-path "/anything-config"))
+  ;; (xy/install-lisps (concat my-git-lisp-path "/anything-config/extensions"))
+  ;; (xy/install-lisps (concat my-git-lisp-path "/anything-config/contrib"))
 
   ;; ELPA lisps
   (xy/recompile-dir my-elpa-lisp-path 'with-subdirs 'recursive)
@@ -1373,4 +1101,42 @@ See `bypass-trash-in-function' for more information."
   (load-dot-emacs-file))
 
 
+
+;;** A fake of closing Emacs in Windows
+;;;###autoload
+(defun xy/done ()
+  "Close a buffer and make Emacs frame invisible.\
+Improved C-x C-c."
+  (interactive)
+  (save-some-buffers)
+  ;; (kill-this-buffer)
+  (server-edit)
+  (if window-system
+     (make-frame-invisible nil t)
+    ;; else block (terminal mode and emacs daemon is running)
+    (delete-frame)))
+
+
+;; NOTE: With this macro, `server-start', `server-force-delete', and
+;; `emacs --daemon' works properly even when there is an emacs server
+;; running, when you set `delete-by-moving-to-trash' to true.
+;; REF: (@url :file-name "http://superuser.com/questions/176207/emacs-daemon-not-deleting-socket" :display "Post")
+;;;###autoload
+(defmacro bypass-trash-in-function (fun)
+  "Set FUN to always use normal deletion, and never trash.
+
+Specifically, the value of `delete-by-moving-to-trash' will be
+set to nil inside FUN, so any deletions that happen inside FUN or
+any functions called by it will bypass the trash."
+
+  `(defadvice ,fun (around no-trash activate)
+     "Ignore `delete-by-moving-to-trash' inside this function.
+
+See `bypass-trash-in-function' for more information."
+
+     (let (delete-by-moving-to-trash)
+       ad-do-it)))
+
+
+
 (provide 'xy-rc-utils)

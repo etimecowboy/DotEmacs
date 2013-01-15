@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2012-08-08 Wed 22:52 by xin on XIN-PC>
+;; Time-stamp: <2013-01-14 Mon 01:40 by xin on S13>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -18,13 +18,14 @@
 
 ;;* ErgoEmacs's functions
 
-;;;###autoload
-(defun text-scale-normal-size ()
-  "Set the height of the default face in the current buffer to its default value."
-  (interactive)
-  (text-scale-increase 0))
+;; ;;;###autoload
+;; (defun text-scale-normal-size ()
+;;   "Set the height of the default face in the current buffer to its default value."
+;;   (interactive)
+;;   (text-scale-increase 0))
 
 
+
 ;;;###autoload
 (defun toggle-line-move-visual ()
   "Toggle behavior of up/down arrow key, by visual line vs logical line."
@@ -35,6 +36,7 @@
   )
 
 
+
 ;;;###autoload
 (defun cmd-shell (&optional arg)
   "Run cmd.exe (WinNT) or command.com shell. A numeric prefix
@@ -51,6 +53,7 @@ arg switches to the specified session, creating it if necessary."
     (shell buf-name)))
 
 
+
 ;;;###autoload
 (defun msys-shell (&optional arg)
   "Run MSYS shell (sh.exe).  It's like a Unix Shell in Windows.
@@ -67,36 +70,28 @@ it if necessary."
     (shell buf-name)))
 
 
-;;;###autoload
-(defun soft-wrap-lines ()
-  "Make lines wrap at window edge and on word boundary,
-in current buffer."
-  (interactive)
-  (setq truncate-lines nil)
-  (setq word-wrap t)
-  )
+
+;; ;;;###autoload
+;; (defun soft-wrap-lines ()
+;;   "Make lines wrap at window edge and on word boundary,
+;; in current buffer."
+;;   (interactive)
+;;   (setq truncate-lines nil)
+;;   (setq word-wrap t))
 
 
-;;;###autoload
-(defun close-frame ()
-  "Closes the current frame or kill emacs if there are just one
-frame. It simulates the same functionality of the Close button in
-the frame title bar."
-  (interactive)
-  (if multiple-frames
-      (delete-frame)
-    (save-buffers-kill-terminal)))
+
+;; NOTE: use my own function `xy/done'
+;; ;;;###autoload
+;; (defun close-frame ()
+;;   "Closes the current frame or kill emacs if there are just one
+;; frame. It simulates the same functionality of the Close button in
+;; the frame title bar."
+;;   (interactive)
+;;   (if multiple-frames
+;;       (delete-frame)
+;;     (save-buffers-kill-terminal)))
 
 
-;; auto compile elisp files after save, do so only if there's exists a
-;; byte-compiled file
-;;;###autoload
-(defun auto-recompile-el-buffer ()
-  (interactive)
-  (when (and (eq major-mode 'emacs-lisp-mode)
-             (file-exists-p (byte-compile-dest-file buffer-file-name)))
-    (byte-compile-file buffer-file-name)))
-;; (add-hook 'after-save-hook 'auto-recompile-el-buffer)
 
-
 (provide 'xy-edit-5)

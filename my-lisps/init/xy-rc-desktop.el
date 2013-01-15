@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-06 Mon 10:50 by xin on p5q>
+;; Time-stamp: <2013-01-12 Sat 23:23 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-desktop.el'
 ;; Author:       Xin Yang
@@ -20,7 +20,7 @@
 (defun desktop-preload ()
   "Settings of `desktop' before it's been loaded."
 
-  (setq desktop-path '("~/emacs/var")
+  (setq desktop-path '(my-var-path)
 
         desktop-base-file-name (concat ".emacs.desktop-"
                                        user-login-name "@"
@@ -38,7 +38,7 @@
 (defun desktop-postload ()
   "Settings of `desktop' after it's been loaded."
 
-  (setq-default desktop-path '("~/emacs/var")
+  (setq-default desktop-path '(my-var-path)
 
                 desktop-base-file-name (concat "desktop-"
                                                user-login-name "@"

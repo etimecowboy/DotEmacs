@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-19 Wed 08:25 by xin on p5q>
+;; Time-stamp: <2013-01-14 Mon 11:22 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -14,7 +14,7 @@
 ;;--------------------------------------------------------------------
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
-
+(require 'eval-after-load)
 
 
 ;;* Mini buffer auto complete
@@ -85,11 +85,12 @@
 (eval-after-load 'smex
   '(progn
      (smex-postload)
-     (eal-define-keys-commonly
-      global-map
-      `(("M-x" smex)
-        ("M-S-x" smex-major-mode-commands)
-        ("C-c M-x" execute-extended-command)))))
+     ;; (eal-define-keys-commonly
+     ;;  global-map
+     ;;  `(("M-x" smex)
+     ;;    ("M-S-x" smex-major-mode-commands)
+     ;;    ("C-c M-x" execute-extended-command)))
+      ))
 
 
 
@@ -146,7 +147,7 @@
 
 
 ;;** hippie-expand
-(global-set-key (kbd "M-/") 'hippie-expand)
+;; (global-set-key (kbd "M-/") 'hippie-expand)
 (eval-after-load "hippie-exp"
   '(progn
      (hippie-expand-postload)))
@@ -270,7 +271,8 @@
   '(progn
      (yasnippet-postload)
      ;; tab is widely-used by ido/icicles/org/indent/outline/hideshow
-     (setq yas-trigger-key "C-c <tab>")
+     (setq yas-trigger-key "C-c <tab>") ;; NOTE: seems changed in
+     ;; recent version
      (eal-define-keys
       'yas-minor-mode-map
       `(;; ("<tab>"   nil)
@@ -303,9 +305,10 @@
 
 ;;* icicles
 ;; System-wide completion
-(eval-after-load "icicles" '(icicles-postload))
-;; (add-hook 'after-init-hook 'icy-mode)
-(global-set-key (kbd "<f6> i") 'xy/icy-start)
+;; NOTE: too heavy for Emacs
+;; (eval-after-load "icicles" '(icicles-postload))
+;; ;; (add-hook 'after-init-hook 'icy-mode)
+;; (global-set-key (kbd "<f6> i") 'xy/icy-start)
 
 
 
@@ -325,9 +328,14 @@
 
 ;;* anything
 ;; Quicksilver for Emacs
-(eval-after-load 'anything '(anything-postload))
-(global-set-key (kbd "C-c i") 'xy/my-anything)
+;; (eval-after-load 'anything '(anything-postload))
+;; (global-set-key (kbd "C-c i") 'xy/my-anything)
 
+
+
+;;* helm
+(eval-after-load 'helm '(helm-postload))
+(global-set-key (kbd "C-c i") 'helm-mini)
 
 
 (provide 'xy-rcroot-complete)

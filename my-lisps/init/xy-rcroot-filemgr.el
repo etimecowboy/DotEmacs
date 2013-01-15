@@ -1,10 +1,10 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-11-18 Sun 23:55 by xin on S13>
+;; time-stamp: <2012-11-18 sun 23:55 by xin on s13>
 ;;--------------------------------------------------------------------
-;; File name:    `xy-rcroot-filemgr.el'
-;; Author:       Xin Yang
-;; Email:        xin2.yang@gmail.com
-;; Description:  File management packages settings
+;; file name:    `xy-rcroot-filemgr.el'
+;; author:       xin yang
+;; email:        xin2.yang@gmail.com
+;; description:  file management packages settings
 ;;    ___ _ __ ___   __ _  ___ ___
 ;;   / _ \ '_ ` _ \ / _` |/ __/ __|
 ;;  |  __/ | | | | | (_| | (__\__ \
@@ -142,6 +142,25 @@
 
 
 
+;;* File searching
+
+;;** Use `everything.el' with `everything.exe' in Windows
+;; NOTE: `everything' exe file must be `everything.exe', not
+;; `everthing.1.2.xxx.exe'
+;; (autoload 'everything "everything" "" t)
+(eval-after-load "everything"
+  '(progn
+     (everything-postload)
+     (Windows
+      (eal-define-keys-commonly
+       global-map
+       `(("C-c e c" everything-toggle-case)
+         ("C-c e w" everything-toggle-wholeword)
+         ("C-c e p" everything-toggle-path))))))
+(global-set-key (kbd "C-c e e") 'everything)
+(global-set-key (kbd "<f7> e") 'everything)
+
+
 ;;* Version control settings
 
 ;;** Emacs internal version control
@@ -179,29 +198,32 @@
       magit-mode-map
       `(("M-n"   magit-show-commit-forward)
         ("M-p"   magit-show-commit-backward)
-        ("q"     delete-window)
+        ("q"     xy/magit-q)
+        ("C-x 0" xy/magit-q)
+        ("C-x K" xy/magit-q)
         ))))
 (global-set-key (kbd "<f11> g") 'magit-status)
 (global-set-key (kbd "<f11> w") 'xy/magit-wip-start)
 
 ;;*** diff-git
-(eval-after-load "diff-git"
-  '(progn
-     (diff-git-postload)
-     (eal-define-keys 'vc-prefix-map
-                      `(("[" diff-git-diff-unstaged)
-                        ("]" diff-git-diff-staged)))
-     (eal-define-keys 'diff-mode-map
-                      `(("C-c M-v" diff-git-buffer-stage)
-                        ("C-c C-v" diff-git-diff-staged)))
-     (define-key diff-mode-shared-map "g" 'diff-git-update-current-buffer)))
-(global-set-key (kbd "<f11> u") 'diff-git-diff-unstaged)
-(global-set-key (kbd "<f11> s") 'diff-git-diff-staged)
+;; NOTE: magit is good enough
+;; (eval-after-load "diff-git"
+;;   '(progn
+;;      (diff-git-postload)
+;;      (eal-define-keys 'vc-prefix-map
+;;                       `(("[" diff-git-diff-unstaged)
+;;                         ("]" diff-git-diff-staged)))
+;;      (eal-define-keys 'diff-mode-map
+;;                       `(("C-c M-v" diff-git-buffer-stage)
+;;                         ("C-c C-v" diff-git-diff-staged)))
+;;      (define-key diff-mode-shared-map "g" 'diff-git-update-current-buffer)))
+;; (global-set-key (kbd "<f11> u") 'diff-git-diff-unstaged)
+;; (global-set-key (kbd "<f11> s") 'diff-git-diff-staged)
 
 ;;;*** mo-git-blame
-(eval-after-load "diff-git" '(diff-git-postload))
-(global-set-key (kbd "<f11> c") 'mo-git-blame-current)
-(global-set-key (kbd "<f11> f") 'mo-git-blame-file)
+;; (eval-after-load "mo-git-blame" '(mo-git-blame-postload))
+;; (global-set-key (kbd "<f11> c") 'mo-git-blame-current)
+;; (global-set-key (kbd "<f11> f") 'mo-git-blame-file)
 
 
 ;;** diff-hl

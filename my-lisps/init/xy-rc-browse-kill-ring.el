@@ -16,16 +16,16 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
-;; browse-kill-ring navigation have bug when linum-mode is on
-;;;###autoload
-(defmacro def-without-linum-mode (command)
-  `(defun ,(am-intern command "-without-linum-mode") ()
-     ,(concat "Before call " command " , turn off `linum-mode' first.")
-     (interactive)
-     (let ((displn linum-mode))
-       (linum-mode -1)
-       (call-interactively ',(am-intern command))
-       (linum-mode (if displn 1 -1)))))
+;; ;; browse-kill-ring navigation have bug when linum-mode is on
+;; ;;;###autoload
+;; (defmacro def-without-linum-mode (command)
+;;   `(defun ,(am-intern command "-without-linum-mode") ()
+;;      ,(concat "Before call " command " , turn off `linum-mode' first.")
+;;      (interactive)
+;;      (let ((displn linum-mode))
+;;        (linum-mode -1)
+;;        (call-interactively ',(am-intern command))
+;;        (linum-mode (if displn 1 -1)))))
 
 ;;;###autoload
 (defun browse-kill-ring-postload ()

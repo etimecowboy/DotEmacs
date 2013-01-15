@@ -28,8 +28,8 @@
 ;;;###autoload
 (defun help-mode-postload ()
   "Settings of `help-mode' after it's been loaded."
-  (def-turn-on "view-mode" nil)
-  (am-add-hooks 'help-mode-hook 'view-mode-off)
+  ;; (def-turn-on "view-mode" nil)
+  ;; (am-add-hooks 'help-mode-hook 'view-mode-off)
   (message "* ---[ help post-load configuration is complete ]---"))
 
 ;; ;;;###autoload

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-12 Sun 21:20 by xin on p5q>
+;; Time-stamp: <2013-01-06 Sun 17:50 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-anything.el'
 ;; Author:       Xin Yang
@@ -76,8 +76,8 @@
 
   (setq anything-c-adaptive-history-file
         (concat my-var-path "/anything-c-adaptive-history"))
-  (unless (file-exists-p anything-c-adaptive-history-file)
-    (shell-command (concat "touch " anything-c-adaptive-history-file)))
+  ;; (unless (file-exists-p anything-c-adaptive-history-file)
+  ;;   (shell-command (concat "touch " anything-c-adaptive-history-file)))
 
   ;; (setq anything-grep-alist
   ;;     '(("buffers" ("egrep -Hin %s $buffers" "/"))

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-14 Tue 09:46 by xin on XIN-PC>
+;; Time-stamp: <2012-12-28 Fri 01:33 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-magit.el'
 ;; Author:       Xin Yang
@@ -15,6 +15,16 @@
 
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
+
+;;;###autoload
+(defun xy/magit-q ()
+  "Quit magit buffer, and recover windows system coding system."
+
+  (interactive)
+  (Windows
+   (setq default-process-coding-system
+         '(gbk-dos . gbk-dos)))   ;; ==> `emms' and `everything.el' work! `magit' fails.
+  (delete-window))
 
 ;; `magit-wip.el' need support of git-wip,
 ;; which uses WIP branches to save every edit
@@ -70,6 +80,14 @@
                ;; which seems better than stgit.
                ;; REF: (@url :file-name "http://repo.or.cz/w/topgit.git" :display "official website")
                ;; (magit-topgit-mode 1)
+
+  (add-hook 'magit-mode-hook
+            '(lambda ()
+               (Windows
+                ;; (setq default-terminal-coding-system 'utf-8-unix)
+                (setq default-process-coding-system
+                      '(utf-8-unix . gbk-dos))))) ;; ==> `emms' and `magit' work! `everything' fails.
+
 
   ;; NOTE: current version of `magit' don't need this patch
   ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/Magit#toc3" :display "emacswiki")
