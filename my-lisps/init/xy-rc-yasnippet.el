@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-10-02 Tue 16:22 by xin on p5q>
+;; Time-stamp: <2013-01-16 Wed 05:06 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-yasnippet.el'
 ;; Author:       Xin Yang
@@ -65,9 +65,11 @@
 
   ;; (add-hook 'after-save-hook 'yasnippet-reload-after-save)
 
+  ;; (defvar my-yas-snippet-dir (concat my-emacs-path "/yasnippet/snippets"))
+  
   (setq yas-also-auto-indent-first-line t
         yas-choose-keys-first t
-        yas-snippet-dirs '("~/emacs/yasnippet/snippets")
+        yas-snippet-dirs (concat my-emacs-path "/yasnippet/snippets")
         yas-snippet-revival t
         yas-trigger-symbol " =>"
         yas-use-menu 'abbreviate)
@@ -84,6 +86,7 @@
   ;;              (when (featurep 'ethan-wspace)
   ;;                (ethan-wspace-mode -1))))
 
+  (yas-reload-all)
   (message "* ---[ yasnippet post-load configuration is complete ]---"))
 
 (provide 'xy-rc-yasnippet)

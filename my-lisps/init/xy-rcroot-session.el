@@ -177,4 +177,4 @@
 
 (provide 'xy-rcroot-session)
 
-;; NOTE: This is the last root configuration file to load
+;; NOTE: This is the last root configuration file loaded

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-15 Tue 00:05 by xin on S13>
+;; Time-stamp: <2013-01-15 Tue 17:39 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sunrise.el'
 ;; Author:       Xin Yang
@@ -20,8 +20,6 @@
 (defun sunrise-postload ()
   "Settings of `sunrise.el' after it's been loaded."
 
-  (require 'frame-cmds)
-  
   (setq ;; sr-avfs-root "~/"
         sr-history-length 100
         sr-show-file-attributes nil
@@ -30,7 +28,7 @@
         sr-window-split-style (quote horizontal))
 
   (setq sr-start-hook
-        '(maximize-frame
+        '(xy/smart-maximize-frame
           sr-tree-menu-init
           sr-tabs-start-once
           sr-modeline-start-once))

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-14 Mon 11:22 by xin on S13>
+;; Time-stamp: <2013-01-15 Tue 18:05 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -148,9 +148,7 @@
 
 ;;** hippie-expand
 ;; (global-set-key (kbd "M-/") 'hippie-expand)
-(eval-after-load "hippie-exp"
-  '(progn
-     (hippie-expand-postload)))
+(eval-after-load "hippie-exp" '(hippie-expand-postload))
 
 
 
@@ -175,10 +173,8 @@
         ("M-n"        ac-next)
         ("C-p"        ac-previous)
         ("M-p"        ac-previous)
-        ("<tab>"      nil)
+        ("<tab>"      auto-complete)
         ("C-<tab>"    auto-complete)))))
-;; (autoload 'auto-complete-mode "auto-complete" "AutoComplete mode" t nil)
-(global-set-key (kbd "<f6> a") 'xy/toggle-ac-mode-with-yas)
 
 
 
@@ -293,13 +289,27 @@
    ("C-x Y n"        'yas-new-snippet)
    ))
 
-
 ;; (am-add-hooks
 ;;  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
 ;;                   c-common-mode-hook sh-mode-hook matlab-mode-hook
 ;;                   vhdl-mode-hook verilog-mode-hook
 ;;                   org-mode-hook LaTeX-mode-hook)
-;;  '(lambda () (yas/minor-mode 1)))
+;;  '(lambda () (yas-minor-mode 1)))
+
+
+
+;;** Start auto-complete and yasnippet together
+(defun xy/toggle-ac-mode-with-yas ()
+  "Start auto-complete"
+  (interactive)
+  (when (try-require 'yasnippet)
+    (yas-minor-mode))
+  (when (try-require 'auto-complete)
+    ;; (require 'patch_yas0.7+ac1.4) ;; old patch
+    ;; (ac-config-default)
+    (auto-complete-mode)))
+
+(global-set-key (kbd "<f6> a") 'xy/toggle-ac-mode-with-yas)
 
 
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-15 Tue 00:01 by xin on S13>
+;; Time-stamp: <2013-01-15 Tue 17:39 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -782,38 +782,6 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
          (progn
            (setq xy:fullscreen-flag t)
            (set-frame-parameter nil 'fullscreen 'fullscreen)))))))
-
-;; (defvar xy:maxframe-flag nil)
-
-;; ;;;###autoload
-;; (defun xy/smart-maximize-frame ()
-;;   "Fix the `maximize-frame' function of `maxframe.el'. \
-;; If the current emacs frame is in full screen mode, then give up \
-;; the `maximize-frame command' of `maxframe.el'."
-
-;;   (interactive)
-;;   (when (try-require 'maxframe)
-;;     (when (and window-system (not xy:fullscreen-flag))
-;;       (progn
-;;         (maximize-frame)
-;;         (setq xy:maxframe-flag t)))))
-
-;; ;;;###autoload
-;; (defun xy/smart-toggle-maxframe ()
-;;   "Smart maximize and restore the size of the frame.\
-;; Also makes `maxframe.el' works with `xy/toggle-fullscreen' function."
-
-;;   (interactive)
-;;   (when (try-require 'maxframe)
-;;     (when (and window-system (not xy:fullscreen-flag))
-;;       (progn
-;;         (if xy:maxframe-flag
-;;             (progn
-;;               (setq xy:maxframe-flag nil)
-;;               (restore-frame))
-;;           (progn
-;;             (setq xy:maxframe-flag t)
-;;             (maximize-frame)))))))
 
 
 

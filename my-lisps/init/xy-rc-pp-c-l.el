@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-13 Thu 09:52 by xin on p5q>
+;; Time-stamp: <2013-01-15 Tue 17:20 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-pp-c-l.el'
 ;; Author:       Xin Yang
@@ -17,12 +17,19 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
+(defun turn-on-pretty-control-l-mode ()
+  "Turn on pretty-control-l-mode."
+  (interactive)
+  (require 'pp-c-l)
+  (pretty-control-l-mode 1))
+
+;;;###autoload
 (defun pp-c-l-face ()
   "Face setttings of `pp-c-l.el'."
   (interactive)
   (if window-system
       (custom-set-faces
-       '(pp^L-highlight ((t (:underline t :weight bold)))))
+        '(pp^L-highlight ((t (:strike-through t)))))
     (custom-set-faces '(pp^L-highlight ((t (:background "cyan")))))))
 
 ;;;###autoload

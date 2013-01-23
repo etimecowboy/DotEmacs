@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-13 Sun 11:58 by xin on S13>
+;; Time-stamp: <2013-01-15 Tue 23:11 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm.el'
 ;; Author:       Xin Yang
@@ -63,6 +63,9 @@
         helm-split-window-in-side-p           nil
         helm-split-window-preferred-function 'helm-split-window-default-fn)
 
+  (Windows
+    (setq helm-c-default-external-file-browser "explorer.exe"))
+  
   ;; (require 'helm-projectile)
 
   ;; (require 'helm-c-moccur)

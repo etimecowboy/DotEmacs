@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:15 by xin on p5q>
+;; Time-stamp: <2013-01-16 Wed 00:22 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired.el'
 ;; Author:       Xin Yang
@@ -94,10 +94,14 @@ will remain open and unsaved."
 
   ;;------------------------------------------------------------------
   (try-require 'dired+)
-  (try-require 'dired-sort-menu) ;; NOT work.
-  (try-require 'dired-tar) ;; Press `T' in dired mode to compress a
-                           ;; dir or decompress a .tar.gz file
+  ;; (try-require 'dired-sort-menu) ;; NOT work.
+
+  ;; Press `T' in dired mode to compress a dir or decompress a .tar.gz
+  ;; NOTE: not work in Windows
+  (try-require 'dired-tar)
+
   (try-require 'thumb)
+
   (message "* ---[ dired post-load configuration is complete ]---"))
 
 (provide 'xy-rc-dired)

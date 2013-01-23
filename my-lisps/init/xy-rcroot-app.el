@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-15 Tue 12:22 by xin on S13>
+;; Time-stamp: <2013-01-15 Tue 18:22 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-app.el'
 ;; Author:       Xin Yang
@@ -89,13 +89,16 @@
 ;; NOTE: `autofit-frame.el' may be annoying and cause problem in
 ;;       terminal mode
 ;; BUG: `maxframe.el' doesn't work in my laptop Windows 7.(eval-after-load "fit-frame" '(fit-frame-postload))
-;; (eval-after-load "maxframe"  '(maxframe-postload))
-(eval-after-load "autofit-frame" '(autofit-frame-postload))
-(try-require 'fit-frame)
-(try-require 'maxframe) ;; NOTE: not stable with two or more monitors
-;; (try-require 'frame-cmds)
-(try-require 'thumb-frm) ;; NOTE: not very useful
-(try-require 'autofit-frame)
+
+(eval-after-load "maxframe"  '(maxframe-postload))
+;; (eval-after-load "autofit-frame" '(autofit-frame-postload))
+;; (try-require 'fit-frame)
+;; (try-require 'maxframe) ;; NOTE: not stable with two or more monitors
+;; ;; (try-require 'frame-cmds)
+;; (try-require 'thumb-frm) ;; NOTE: not very useful
+;; (try-require 'autofit-frame)
+
+(autoload 'fit-frame "fit-frame" nil t)
 
 (eal-define-keys-commonly
  global-map
@@ -103,7 +106,7 @@
    ("M-<f5>"    maximize-frame) ;; `maxframe.el'
    ("M-S-<f5>"  restore-frame)  ;; `maxframe.el'
    ;; ("M-<f5>"    toggle-max-frame)  ;; `frame-cmds.el'
-   ("C-M-<f5>"  xy/toggle-autofit-frame) ;; `autofit-frame.el'
+   ;; ("C-M-<f5>"  xy/toggle-autofit-frame) ;; `autofit-frame.el'
    ("C-<f5>"    windresize) ;; `windresize.el'
    ;; ("C-z"     thumfr-toggle-thumbnail-frame) ;; `thumb-frm.el'
    ;; ("C-S-z"   thumfr-thumbify-other-frames)
@@ -246,9 +249,8 @@
               (propertized-buffer-identification "%b"))
 (setq display-time-day-and-date t) ;; Display time and date
 (display-time-mode 1)
-;; (when is-after-emacs-23
-  (display-battery-mode -1)
-;;) ;; battery infomation is not necessary
+(Laptop (display-battery-mode 1)) ;; when is-after-emacs-23
+
 
 
 ;;** diminish
@@ -531,6 +533,7 @@
 
 
 ;;** color-theme
+;; NOTE: too old, too bugy. >emacs24.2 has built-in theme support.
 ;; fancy themes for emacs
 ;; REF: (@url :file-name "http://emacser.com/color-theme.htm" :display "emacser")
 (eval-after-load "color-theme" '(color-theme-postload))
@@ -546,6 +549,12 @@
 ;;   ;;  (color-theme-solarized-dark))
 ;; )
 
+
+
+;;** Emacs built-in theme
+(Windows
+ (when (try-require 'color-theme-sanityinc-solarized)
+   (load-theme 'sanityinc-solarized-dark)))
 
 
 ;;** doremi
@@ -608,7 +617,13 @@
 (eval-after-load "pp-c-l" '(progn
                              (pp-c-l-postload)
                              (pp-c-l-face)))
-(when (try-require 'pp-c-l) (pretty-control-l-mode 1))
+(autoload 'pretty-control-l-mode "pp-c-l" nil t)
+(am-add-hooks
+ `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
+                  sh-mode-hook cperl-mode-hook c-common-mode-hook
+                  vhdl-mode-hook verilog-mode-hook matlab-mode-hook
+                  org-mode-hook LaTeX-mode-hook)
+ 'turn-on-pretty-control-l-mode)
 
 
 

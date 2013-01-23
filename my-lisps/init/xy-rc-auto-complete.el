@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-15 Wed 08:40 by xin on p5q>
+;; Time-stamp: <2013-01-15 Tue 18:00 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auto-complete.el'
 ;; Author:       Xin Yang
@@ -15,17 +15,6 @@
 
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
-
-;;;###autoload
-(defun xy/toggle-ac-mode-with-yas ()
-  "Start auto-complete"
-  (interactive)
-  (when (try-require 'yasnippet)
-    (yas/minor-mode))
-  (when (try-require 'auto-complete)
-    ;; (require 'patch_yas0.7+ac1.4) ;; old patch
-    ;; (ac-config-default)
-    (auto-complete-mode)))
 
 ;;;###autoload
 (defun auto-complete-postload ()

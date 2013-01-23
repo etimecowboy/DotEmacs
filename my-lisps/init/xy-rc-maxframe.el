@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-14 Mon 23:34 by xin on S13>
+;; Time-stamp: <2013-01-15 Tue 17:39 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-maxframe.el'
 ;; Author:       Xin Yang
@@ -15,6 +15,16 @@
 
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
+
+;;;###autoload
+(defun xy/smart-maximize-frame ()
+  "Improve the `maximize-frame' function of `maxframe.el'. \
+If the current emacs frame is in full screen mode, then give up \
+the `maximize-frame command."
+
+  (interactive)
+  (when (and window-system (try-require 'maxframe) (not xy:fullscreen-flag))
+    (maximize-frame)))
 
 ;;;###autoload
 (defun maxframe-postload ()
