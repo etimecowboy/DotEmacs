@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-15 Tue 18:22 by xin on S13>
+;; Time-stamp: <2013-02-12 Tue 13:00 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-app.el'
 ;; Author:       Xin Yang
@@ -76,8 +76,8 @@
 ;; sample keybinding for transparency manipulation
 ;; (global-set-key (kbd "M-?") 'transparency-set-value)
 ;; the two below let for smooth transparency control
-(global-set-key (kbd "C->") 'transparency-increase)
-(global-set-key (kbd "C-<") 'transparency-decrease)
+(global-set-key (kbd "C-<f11>") 'transparency-increase)
+(global-set-key (kbd "C-<f12>") 'transparency-decrease)
 
 
 
@@ -107,7 +107,6 @@
    ("M-S-<f5>"  restore-frame)  ;; `maxframe.el'
    ;; ("M-<f5>"    toggle-max-frame)  ;; `frame-cmds.el'
    ;; ("C-M-<f5>"  xy/toggle-autofit-frame) ;; `autofit-frame.el'
-   ("C-<f5>"    windresize) ;; `windresize.el'
    ;; ("C-z"     thumfr-toggle-thumbnail-frame) ;; `thumb-frm.el'
    ;; ("C-S-z"   thumfr-thumbify-other-frames)
    ;; ("C-M-z"   thumfr-fisheye-next-frame)
@@ -157,10 +156,10 @@
 
 (eal-define-keys-commonly
  global-map
- `(("M-I"  buf-move-up)
-   ("M-K"  buf-move-down)
-   ("M-J"  buf-move-left)
-   ("M-L"  buf-move-right)))
+ `(("C-M-<up>"    buf-move-up)
+   ("C-M-<down>"  buf-move-down)
+   ("C-M-<left>"  buf-move-left)
+   ("C-M-<right>" buf-move-right)))
 
 
 
@@ -177,10 +176,10 @@
 
 (eal-define-keys-commonly
  global-map
- `(("C-M-<left>"  windsize-left)
-   ("C-M-<right>" windsize-right)
-   ("C-M-<up>"    windsize-up)
-   ("C-M-<down>"  windsize-down)))
+ `(("M-J" windsize-left)
+   ("M-L" windsize-right)
+   ("M-I" windsize-up)
+   ("M-K" windsize-down)))
 
 
 ;;** popwin
@@ -274,19 +273,6 @@
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 (eval-after-load "ethan-wspace" '(diminish 'ethan-wspace-mode))
 (eval-after-load "ws-trim" '(diminish 'ws-trim-mode))
-
-;; An function get from newsgroup cn.bbs.comp.emacs
-(setq my-default-mode-line-modes mode-line-modes)
-(defun my-modeline-format-toggle-minor-modes ()
-  "toggle minor modes display on mode-line"
-  (interactive)
-  (setq my-modeline-format-toggle-minor-modes 'mode-name)
-  (if (not (equal mode-line-modes 'mode-name))
-      (setq mode-line-modes 'mode-name)
-    (setq mode-line-modes my-default-mode-line-modes))
-  (force-mode-line-update))
-;; (my-modeline-format-toggle-minor-modes)
-;; (global-set-key (kbd "<f6> h") 'my-modeline-format-toggle-minor-modes)
 
 
 
@@ -414,7 +400,7 @@
 ;; 智能的改变光标形状
 ;; REF: (@url :file-name "http://emacser.com/cursor-change.htm" :display "emacser")
 (autoload 'cursor-change-mode "cursor-change" nil t)
-(cursor-change-mode 1)
+;; (cursor-change-mode 1) ;; 细细的找不着
 
 
 

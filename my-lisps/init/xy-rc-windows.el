@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-06 Mon 11:56 by xin on p5q>
+;; Time-stamp: <2013-01-29 Tue 08:16 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-windows.el'
 ;; Author:       Xin Yang
@@ -25,8 +25,8 @@
                                        user-login-name "@"
                                        system-name "@"
                                        system-configuration))
-  (unless (file-exists-p win:configuration-file)
-    (shell-command (concat "touch " win:configuration-file)))
+  ;; (unless (file-exists-p win:configuration-file)
+  ;;   (shell-command (concat "touch " win:configuration-file)))
 
   (setq win:switch-prefix "\C-cw")
   (define-key global-map win:switch-prefix nil)
@@ -46,8 +46,8 @@
                                        user-login-name "@"
                                        system-name "@"
                                        system-configuration))
-  (unless (file-exists-p win:configuration-file)
-    (shell-command (concat "touch " win:configuration-file)))
+  ;; (unless (file-exists-p win:configuration-file)
+  ;;   (shell-command (concat "touch " win:configuration-file)))
 
   (setq win:switch-prefix "\C-cw")
   (define-key global-map win:switch-prefix nil)

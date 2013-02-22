@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-15 Tue 00:22 by xin on S13>
+;; Time-stamp: <2013-02-23 Sat 00:39 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -125,12 +125,12 @@
 ;;** ace-jump-mode
 ;; ace-jump-mode is an fast/direct cursor location minor mode.
 ;; (try-require 'ace-jump-mode)
-(define-key isearch-mode-map (kbd "M-a") 'sl-isearch-ace-jump)
-(define-key global-map (kbd "C-S-s") 'ace-jump-mode)
+(define-key isearch-mode-map (kbd "M-s") 'sl-isearch-ace-jump)
+(define-key global-map (kbd "M-a") 'ace-jump-mode)
 ;; NOTE: For my key binding
-;;      - "C-S-s"         ==> ace-jump-word-mode
-;;      - "C-u C-S-s"     ==> ace-jump-char-mode
-;;      - "C-u C-u C-S-s" ==> ace-jump-line-mode
+;;      - "M-s"         ==> ace-jump-word-mode
+;;      - "C-u M-s"     ==> ace-jump-char-mode
+;;      - "C-u C-u M-s" ==> ace-jump-line-mode
 ;;      - tricks to use ace-jump
 ;;        1) C-s ----- normal isearch
 ;;        2) M-a ----- use ace-jump-mode to locate your point
@@ -200,6 +200,12 @@
 
 
 
+;;** multiple-cursor
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
 ;;* Graphic text tools
 
 ;;** table
@@ -263,7 +269,7 @@
    ("C-'"      wcy-mark-some-thing-at-point)
    ("M-|"      ywb-hippie-expand-filename)
    ("M-;"      qiang-comment-dwim-line)
-   ("M-K"      qiang-copy-line)
+   ;; ("M-K"      qiang-copy-line)
    ("C-S-p"    move-line-up)  ;; NOTE: cannot use "C-P"
    ("C-S-n"    move-line-down);; NOTE: cannot use "C-N"
    ("C-M-f"    format-cxx-file)

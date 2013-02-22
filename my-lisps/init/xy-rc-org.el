@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-14 Mon 16:17 by xin on S13>
+;; Time-stamp: <2013-01-30 Wed 10:13 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -126,16 +126,16 @@ If html-file-name is not given, read it from minibuffer."
                           "  |\n" )) contents ""))
     (org-table-align)))
 
-(defvar xy:latexmk-flag t)
+(defvar xy:org-latexmk-flag nil)
 ;;;###autoload
 (defun xy/toggle-latex-to-pdf-process ()
   "Toggle the commands (latexmk/xelatex) to generate PDF file."
   (interactive)
-  (if xy:latexmk-flag
+  (if xy:org-latexmk-flag
       (progn
         (setq org-latex-to-pdf-process
-              '("latexmk -xelatex -d -f -silent -c %b"))
-        (setq xy:latexmk-flag nil)
+              '("latexmk -xelatex -f -silent -c %b")) ;; no -d
+        (setq xy:org-latexmk-flag nil)
         (message "* ---[ Using `latexmk' as the LaTeX PDF exporter now ]---"))
     (progn
       (setq org-latex-to-pdf-process
@@ -143,7 +143,7 @@ If html-file-name is not given, read it from minibuffer."
               "bibtex %b"
               "xelatex -interaction nonstopmode -output-directory %o %f"
               "xelatex -interaction nonstopmode -output-directory %o %f"))
-      (setq xy:latexmk-flag t)
+      (setq xy:org-latexmk-flag t)
       (message "* ---[ Using `xelatex' as the LaTeX PDF exporter now ]---"))))
 
 ;;;###autoload
@@ -204,9 +204,11 @@ If html-file-name is not given, read it from minibuffer."
 
   ;; Enable inline image display.
   ;; But may breaks access to emacs from an Android phone
-  (if window-system
-      (setq org-startup-with-inline-images t)
-    (setq org-startup-with-inline-images nil))
+  ;; (if window-system
+  ;;     (setq org-startup-with-inline-images t)
+  ;;   (setq org-startup-with-inline-images nil))
+  (setq org-startup-with-inline-images nil)
+
   (setq org-startup-folded nil)
   (setq org-cycle-include-plain-lists t)
 
@@ -665,7 +667,7 @@ If html-file-name is not given, read it from minibuffer."
   ;; cpature templates
   (setq org-capture-templates
         '(("w" "Capture a New Wish from Emacs"
-           entry (file+headline "~/emacs/org/gtd/Capture.org" "Wish Inbox")
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Wish Inbox")
            "** TODO %^{New Wish} %^g\n\
    :LOGBOOK:\n\
    - Initial State           \"TODO\"       %U\n\
@@ -678,7 +680,7 @@ If html-file-name is not given, read it from minibuffer."
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("n" "Take a Note from Emacs"
-           entry (file+headline "~/emacs/org/gtd/Capture.org" "Notes")
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
            "** %^{Title} %^G\n\n\
 *** Source\n\n\
 - Timestamp                                 %U\n\
@@ -688,7 +690,7 @@ If html-file-name is not given, read it from minibuffer."
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("s" "Scrap Text from Emacs"
-           entry (file+headline "~/emacs/org/gtd/Capture.org" "Scrapbook")
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
            "** %^{Title} %^G\n\n\
 *** Source\n\n\
 - Timestamp                                 %U\n\
@@ -702,7 +704,7 @@ If html-file-name is not given, read it from minibuffer."
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("j" "Write a Journal"
-           entry (file+headline "~/emacs/org/source/myblogs/oblog/oblog-journal.org" "Un-published")
+           entry (file+headline "~/Dropbox/emacs/org/source/myblogs/oblog/oblog-journal.org" "Un-published")
            "** 【%?】 %^G\n\
    :LOGBOOK:\n\
    - Source                            %U\n\
@@ -712,7 +714,7 @@ If html-file-name is not given, read it from minibuffer."
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("e" "Collect new words/phrases/sentences"
-           entry (file+headline "~/emacs/org/gtd/Capture.org" "English")
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "English")
            "** %? %^G\n\
    :LOGBOOK:\n\
    - Source
@@ -722,7 +724,7 @@ If html-file-name is not given, read it from minibuffer."
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("1" "Capture a New Wish from Web Browser"
-           entry (file+headline "~/emacs/org/gtd/Capture.org" "Wish Inbox")
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Wish Inbox")
            "** TODO %^{New Wish} %^g\n\
    :LOGBOOK:\n\
    - Initial State           \"TODO\"       %U\n\
@@ -735,7 +737,7 @@ If html-file-name is not given, read it from minibuffer."
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("2" "Take a Note from Web Browser"
-           entry (file+headline "~/emacs/org/gtd/Capture.org" "Notes")
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
            "** %^{Title} %^G\n\n\
 *** Source\n\n\
 - Timestamp                                 %U\n\
@@ -745,7 +747,7 @@ If html-file-name is not given, read it from minibuffer."
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("3" "Scrap Text from Web Browser"
-           entry (file+headline "~/emacs/org/gtd/Capture.org" "Scrapbook")
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
            "** %^{Title} %^G\n\n\
 *** Source\n\n\
 - Timestamp                                 %U\n\
@@ -759,7 +761,7 @@ If html-file-name is not given, read it from minibuffer."
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("4" "Add a bookmark"
-           entry (file+headline "~/emacs/org/gtd/Capture.org" "Bookmark")
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Bookmark")
            "** %c %^G\n\
    :LOGBOOK:\n\
    - Visit on                               %U\n\
@@ -928,8 +930,11 @@ a4paper, cap, punct, nospace, indent, fancyhdr, hypperref, fntef]\
           ("" "soul" t) ("" "textcomp" t)
           ("" "marvosym" t) ("" "wasysym" t)
           ("" "latexsym" t) ("" "amssymb" t)
-          ("bookmarksnumbered, pdfencoding=auto, breaklinks, \
-colorlinks, linkcolor=RoyalBlue, urlcolor=blue" "hyperref" nil)))
+          ("bookmarks, bookmarksopen, bookmarksnumbered, \
+breaklinks, linktocpage, pagebackref, colorlinks, \
+pdfencoding=auto, breaklinks, linkcolor=blue, urlcolor=blue,\
+citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
+           "hyperref" nil)))
 
   ;; code listing settings, new `minted' is also supported
   (setq org-export-latex-listings t)
@@ -966,7 +971,7 @@ colorlinks, linkcolor=RoyalBlue, urlcolor=blue" "hyperref" nil)))
   ;; Better solution: use latexmk, but cause error when using tikz
   ;; (setq org-latex-to-pdf-process
   ;;   '("latexmk -c -bm DRAFT -pdf -pdflatex=\"xelatex -synctex=1 %O %S\" -silent -pvc -f %b"))
-  (setq xy:latexmk-flag nil)
+  (setq xy:org-latexmk-flag nil)
   ;; (setq org-latex-to-pdf-process
   ;;   '("latexmk -xelatex -d -f -silent -c %b"))
 

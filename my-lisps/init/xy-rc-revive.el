@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-13 Thu 09:43 by xin on p5q>
+;; Time-stamp: <2013-01-29 Tue 08:16 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-revive.el'
 ;; Author:       Xin Yang
@@ -24,8 +24,8 @@
                                           user-login-name "@"
                                           system-name "@"
                                           system-configuration))
-  (unless (file-exists-p revive:configuration-file)
-    (shell-command (concat "touch " revive:configuration-file)))
+  ;; (unless (file-exists-p revive:configuration-file)
+  ;;   (shell-command (concat "touch " revive:configuration-file)))
 
   (message "* ---[ revive pre-load configuration is complete ]---"))
 
@@ -37,8 +37,8 @@
                                           user-login-name "@"
                                           system-name "@"
                                           system-configuration))
-  (unless (file-exists-p revive:configuration-file)
-    (shell-command (concat "touch " revive:configuration-file)))
+  ;; (unless (file-exists-p revive:configuration-file)
+  ;;   (shell-command (concat "touch " revive:configuration-file)))
 
   (message "* ---[ revive post-load configuration is complete ]---"))
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:11 by xin on p5q>
+;; Time-stamp: <2013-01-31 Thu 14:26 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-browse-kill-ring.el'
 ;; Author:       Xin Yang
@@ -53,8 +53,8 @@
   ;;        (call-interactively ',(am-intern command))
   ;;        (linum-mode (if displn 1 -1)))))
 
-  (def-without-linum-mode "browse-kill-ring-forward")
-  (def-without-linum-mode "browse-kill-ring-previous")
+  ;; (def-without-linum-mode "browse-kill-ring-forward")
+  ;; (def-without-linum-mode "browse-kill-ring-previous")
   (message "* ---[ browse-kill-ring post-load configuration is complete ]---"))
 
 ;;;###autoload

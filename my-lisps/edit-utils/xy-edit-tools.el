@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 28 Jan 2011
-;; Time-stamp: <2013-01-14 Mon 02:08 by xin on S13>
+;; Time-stamp: <2013-01-29 Tue 08:02 by xin on S13>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -425,6 +425,24 @@ to running 'delete-indentation (aka 'join-line)."
                                   (null (cdr (window-list)))
                                 (delete-window)))))
            (goto-char (point-min))))))))
+
+
+
+;; An function get from newsgroup cn.bbs.comp.emacs
+
+(defvar my-default-mode-line-modes mode-line-modes)
+
+;;;###autoload
+(defun my-modeline-format-toggle-minor-modes ()
+  "toggle minor modes display on mode-line"
+  (interactive)
+  (setq my-modeline-format-toggle-minor-modes 'mode-name)
+  (if (not (equal mode-line-modes 'mode-name))
+      (setq mode-line-modes 'mode-name)
+    (setq mode-line-modes my-default-mode-line-modes))
+  (force-mode-line-update))
+;; (my-modeline-format-toggle-minor-modes)
+;; (global-set-key (kbd "<f6> h") 'my-modeline-format-toggle-minor-modes)
 
 
 

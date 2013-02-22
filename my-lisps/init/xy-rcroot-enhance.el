@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-13 Sun 18:54 by xin on S13>
+;; Time-stamp: <2013-01-27 Sun 15:46 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -171,7 +171,10 @@
 ;; 查看Emacs内进程
 (autoload 'list-processes+ "list-processes+"
   "Enhanced `list-processes'" t)
-
+(autoload 'list-processes-sort "list-processes+" nil t)
+(autoload 'list-processes-kill-process "list-processes+" nil t)
+(autoload 'list-processes-goto-buffer "list-processes+" nil t)
+(defalias 'list-processes+ 'list-processes)
 
 
 ;;* command-frequence
