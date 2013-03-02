@@ -1,6 +1,3 @@
-[submodule "git-lisps/anything-config"]
-	path = git-lisps/anything-config
-	url = http://repo.or.cz/r/anything-config.git
 [submodule "emacswiki"]
 	path = emacswiki
 	url = git@github.com:etimecowboy/emacswiki.git

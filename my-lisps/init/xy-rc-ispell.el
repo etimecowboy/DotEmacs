@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:27 by xin on p5q>
+;; Time-stamp: <2013-03-01 Fri 01:29 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ispell.el'
 ;; Author:       Xin Yang
@@ -39,7 +39,7 @@
         ispell-keep-choices-win nil
         ispell-help-in-bufferp t
         ispell-local-dictionary nil
-        ispell-personal-dictionary "~/emacs/ispell/personal.dict"
+        ispell-personal-dictionary (concat my-emacs-path "/ispell/personal.dict")
         ispell-query-replace-choices t
         ispell-silently-savep t
         ispell-skip-html (quote use-mode-name)
