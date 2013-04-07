@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:40 by xin on p5q>
+;; Time-stamp: <2013-03-29 Fri 14:58 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-server.el'
 ;; Author:       Xin Yang
@@ -86,7 +86,7 @@ leave it alone."
 (defun server-preload ()
   "Settings of `server.el' before it's been loaded."
 
-  (setq-default server-auth-dir (concat my-var-path "/server"))
+  ;; (setq-default server-auth-dir (concat my-var-path "/server"))
 
   (message "* ---[ server pre-load configuration is complete ]---"))
 

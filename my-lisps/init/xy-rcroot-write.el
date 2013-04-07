@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-14 Mon 11:26 by xin on S13>
+;; Time-stamp: <2013-03-29 Fri 10:46 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -72,6 +72,12 @@
 ;;** org2blog
 ;; use publish org to HTML then use xml-rpc to blog
 (eval-after-load "org2blog" '(org2blog-postload))
+
+
+
+;;* deft
+(eval-after-load "deft" '(deft-postload))
+(global-set-key (kbd "<f6> d") 'deft)
 
 
 

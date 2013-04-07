@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-27 Sun 15:46 by xin on S13>
+;; Time-stamp: <2013-03-24 Sun 18:14 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -38,6 +38,7 @@
 ;; TODO: move to `w32' settings
 ;; try to improve slow performance on windows.
 (Windows (setq w32-get-true-file-attributes nil))
+
 
 
 ;;** ffap, finding Files and URLs at point
@@ -88,13 +89,15 @@
                    org-mode-hook
                    message-mode-hook
                    mew-draft-mode-hook)
- '(lambda () (flyspell-mode 1)))
+ '(lambda ()
+    (flyspell-mode 1)))
 ;; BUG: error when uncomment the following code
 ;; (am-add-hooks
 ;;  `(lisp-mode-hook emacs-lisp-mode-hook c-common-mode-hook
 ;;                   matlab-mode-hook)
 ;;  '(lambda ()
 ;;     (flyspell-prog-mode 1)))
+(global-set-key (kbd "M-Q") 'flyspell-correct-word-before-point)
 
 
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-02-12 Tue 13:00 by xin on S13>
+;; Time-stamp: <2013-04-07 Sun 10:07 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-app.el'
 ;; Author:       Xin Yang
@@ -168,7 +168,7 @@
 
 
 
-;;* Windsize
+;;** Windsize
 (autoload 'windsize-left "windsize" nil t)
 (autoload 'windsize-right "windsize" nil t)
 (autoload 'windsize-up "windsize" nil t)
@@ -180,6 +180,27 @@
    ("M-L" windsize-right)
    ("M-I" windsize-up)
    ("M-K" windsize-down)))
+
+
+
+;;** win-switch
+;; NOTE: the idle time makes it not good
+;; (eval-after-load "windmove" '(windmove-postload))
+;; (when (try-require 'win-switch)
+;;   (global-set-key "\C-xo" 'win-switch-dispatch))
+;; ;;    + i window above the current window.
+;; ;;    + k window below the current window.
+;; ;;    + j window left of the current window.
+;; ;;    + l window right of the current window.
+;; ;;    + o cycle forward through the window list in the current frame.
+;; ;;    + p cycle backward through the window list in the current frame.
+;; ;;    + SPACE cycles among existing frames.
+;; ;;    + u (and RETURN) exit window switching mode.
+;; ;;    + I and K vertically enlarge and shrink the current window, respectively.
+;; ;;    + L and J horizontally enlarge and shrink the current window, respectively.
+;; ;;    + h and ; split the current window, horizontally and vertically, respectively.
+;; ;;    + ESCAPE acts as an "emergency" exit
+
 
 
 ;;** popwin
@@ -604,12 +625,12 @@
                              (pp-c-l-postload)
                              (pp-c-l-face)))
 (autoload 'pretty-control-l-mode "pp-c-l" nil t)
-(am-add-hooks
- `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
-                  sh-mode-hook cperl-mode-hook c-common-mode-hook
-                  vhdl-mode-hook verilog-mode-hook matlab-mode-hook
-                  org-mode-hook LaTeX-mode-hook)
- 'turn-on-pretty-control-l-mode)
+;; (am-add-hooks
+;;  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
+;;                   sh-mode-hook cperl-mode-hook c-common-mode-hook
+;;                   vhdl-mode-hook verilog-mode-hook matlab-mode-hook
+;;                   org-mode-hook LaTeX-mode-hook)
+;;  'turn-on-pretty-control-l-mode)
 
 
 
@@ -628,7 +649,7 @@
 
 ;;* *Scratch* buffer settings
 ;; Change default major mode of *scratch* buffer
-;; (setq initial-major-mode 'text-mode)
+(setq initial-major-mode 'text-mode)
 
 ;; Change default text in the *scratch* buffer
 ;; NOTE: a warnning message is nessary for emacs fans like me

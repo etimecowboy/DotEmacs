@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-15 Tue 17:24 by xin on S13>
+;; Time-stamp: <2013-04-04 Thu 14:39 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -418,6 +418,13 @@ Toggle keyboard command logging of current buffer.
 Toggle keyboard command logging of whole emacs.
 
 \(fn &optional ARG)" t nil)
+
+;; ;;** alert ;; NOTE: not very useful
+;; (when (try-require 'alert)
+;;   (alert-install-aliases)
+;;   (alert "important message")
+;;   (with-message-logonly
+;;    (do-something-noisy)))
 
 
 
