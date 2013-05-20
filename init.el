@@ -1,7 +1,7 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
 ;;--------------------------------------------------------------------
 ;; File name:    `init.el'
-;; Time-stamp: <2013-01-15 Tue 00:41 by xin on S13>
+;; Time-stamp: <2013-05-14 Tue 09:44 by xin on S13>
 ;; Author:       Xin Yang
 ;; Email:        xin2.yang@gmail.com
 ;; Depend on:    None
@@ -57,13 +57,13 @@
   (setq last-time (float-time)))
 
 ;;*** Another way of measuring the loading time per file.
-;; (defadvice load-time (around load-with-time-logging)
-;;   "display the load time for each file."
-;;   (let ((now (float-time)))
-;;     ad-do-it
-;;     (message "* @@@[ %2.3f seconds used ]@@@"
-;;              (- (float-time) now))))
-;; (ad-activate 'load-time)
+(defadvice load-time (around load-with-time-logging)
+  "display the load time for each file."
+  (let ((now (float-time)))
+    ad-do-it
+    (message "* @@@[ %2.3f seconds used ]@@@"
+             (- (float-time) now))))
+(ad-activate 'load-time)
 
 
 ;; Add `my-init-lisp-path' (defined in `xy-rc-util.el') to load-path
@@ -79,9 +79,9 @@
 (measure-time "xy-rcroot-env.el")
 
 ;; Emacs apparence
-;; (require 'xy-rcroot-app)
-(load "xy-rcroot-app")
-(measure-time "xy-rcroot-app.el")
+;; (require 'xy-rcroot-look)
+(load "xy-rcroot-look")
+(measure-time "xy-rcroot-look.el")
 
 ;; Some enhancements
 ;; (require 'xy-rcroot-enhance)
@@ -124,11 +124,10 @@
 (load "xy-rcroot-write")
 (measure-time "xy-rcroot-write.el")
 
-;; Save editor information between emacs sessions
+;; Save history information between emacs sessions
 ;; Must be put at last to avoid failing
-;; (require 'xy-rcroot-session)
-(load "xy-rcroot-session")
-(measure-time "xy-rcroot-session.el")
+(load "xy-rcroot-history")
+(measure-time "xy-rcroot-history.el")
 
 (measure-time "init.el")
 (message "* ---[ Emacs is ready!]---" (getenv "USER"))

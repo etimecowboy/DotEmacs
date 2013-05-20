@@ -1,10 +1,10 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-04-07 Sun 10:07 by xin on S13>
+;; Time-stamp: <2013-05-18 Sat 00:37 by xin on S13>
 ;;--------------------------------------------------------------------
-;; File name:    `xy-rcroot-app.el'
+;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
 ;; Email:        xin2.yang@gmail.com
-;; Description:  Emacs apparence
+;; Description:  Emacs look
 ;;    ___ _ __ ___   __ _  ___ ___
 ;;   / _ \ '_ ` _ \ / _` |/ __/ __|
 ;;  |  __/ | | | | | (_| | (__\__ \
@@ -104,7 +104,7 @@
  global-map
  `(("S-<f5>"    fit-frame) ;; `fit-frame.el'
    ("M-<f5>"    maximize-frame) ;; `maxframe.el'
-   ("M-S-<f5>"  restore-frame)  ;; `maxframe.el'
+   ("C-<f5>"  restore-frame)  ;; `maxframe.el'
    ;; ("M-<f5>"    toggle-max-frame)  ;; `frame-cmds.el'
    ;; ("C-M-<f5>"  xy/toggle-autofit-frame) ;; `autofit-frame.el'
    ;; ("C-z"     thumfr-toggle-thumbnail-frame) ;; `thumb-frm.el'
@@ -221,10 +221,10 @@
 ;; | e      | popwin:messages                       |
 ;; | C-u    | popwin:universal-display              |
 ;; | 1      | popwin:one-window                     |
-
 (when (try-require 'popwin)
   (setq display-buffer-function 'popwin:display-buffer)
-  (global-set-key (kbd "C-z") 'popwin:keymap))
+  (popwin-mode 1)
+  (global-set-key (kbd "C-S-z") popwin:keymap))
 
 
 
@@ -294,7 +294,8 @@
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 (eval-after-load "ethan-wspace" '(diminish 'ethan-wspace-mode))
 (eval-after-load "ws-trim" '(diminish 'ws-trim-mode))
-
+(eval-after-load "skeleton-complete" '(diminish 'skeleton-complete-mode))
+(eval-after-load "auto-dim-other-buffers" '(diminish 'auto-dim-other-buffers-mode))
 
 
 ;;** modeline-posn
@@ -404,7 +405,7 @@
 
 
 ;;* Point (cursor) settings
-(blink-cursor-mode 1)
+(blink-cursor-mode -1)
 (setq x-stretch-cursor t)
 
 
@@ -522,7 +523,7 @@
 
 
 
-;;** zjl-hl
+;;** Zjl-hl
 ;; use CEDET semantic to highlight function calls
 (eval-after-load "zjl-hl"
   '(progn
@@ -543,11 +544,11 @@
 ;; NOTE: too old, too bugy. >emacs24.2 has built-in theme support.
 ;; fancy themes for emacs
 ;; REF: (@url :file-name "http://emacser.com/color-theme.htm" :display "emacser")
-(eval-after-load "color-theme" '(color-theme-postload))
+;; (eval-after-load "color-theme" '(color-theme-postload))
 ;; (require 'color-theme)
 ;; (when window-system
 ;;   (color-theme-solarized-dark))
-;; (global-set-key (kbd "<f6> t") 'xy/load-themes)
+;; (global-set-key (kbd "<f2> t") 'xy/load-themes)
 
 ;; (when window-system  
 ;;   (Windows ;; windows system should use the dark theme for eye protection
@@ -559,9 +560,20 @@
 
 
 ;;** Emacs built-in theme
-(Windows
- (when (try-require 'color-theme-sanityinc-solarized)
-   (load-theme 'sanityinc-solarized-dark)))
+;; (Windows
+;;  (when (try-require 'color-theme-sanityinc-solarized)
+;;    (load-theme 'sanityinc-solarized-dark t)))
+;; (when (and window-system (try-require 'nzenburn-theme))
+;;    (load-theme 'nzenburn t))
+(when (and window-system (try-require 'color-theme-sanityinc-tomorrow))
+   (load-theme 'sanityinc-tomorrow-night t))
+(global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
+
+
+
+;;** auto-dim-other-buffers
+(when (try-require 'auto-dim-other-buffers)
+  (auto-dim-other-buffers-mode 1))
 
 
 ;;** doremi
@@ -625,12 +637,13 @@
                              (pp-c-l-postload)
                              (pp-c-l-face)))
 (autoload 'pretty-control-l-mode "pp-c-l" nil t)
-;; (am-add-hooks
-;;  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
-;;                   sh-mode-hook cperl-mode-hook c-common-mode-hook
-;;                   vhdl-mode-hook verilog-mode-hook matlab-mode-hook
-;;                   org-mode-hook LaTeX-mode-hook)
-;;  'turn-on-pretty-control-l-mode)
+(global-set-key (kbd "<f6> p") 'turn-on-pretty-control-l-mode)
+(am-add-hooks
+ `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
+                  sh-mode-hook cperl-mode-hook c-common-mode-hook
+                  vhdl-mode-hook verilog-mode-hook matlab-mode-hook
+                  org-mode-hook LaTeX-mode-hook)
+ 'turn-on-pretty-control-l-mode)
 
 
 
@@ -658,28 +671,40 @@
 
 
 ;;* Font settings
-;;** Default font
-(setq scalable-fonts-allowed t)
-;; Use scalable fonts
-(when window-system (xy/set-font-prog))
-(eal-define-keys-commonly
- global-map
- `(("C-x F d" xy/set-font-default)
-   ("C-x F w" xy/set-font-write)
-   ("C-x F m" xy/set-font-mix)
-   ("C-x F p" xy/set-font-prog)
-   ("C-x F D" xy/set-font-default-big)
-   ("C-x F W" xy/set-font-write-big)
-   ("C-x F P" xy/set-font-prog-big)
-   ;;------------------------------------
-   ;; changing font size
-   ("C-+"    text-scale-increase)
-   ("C--"    text-scale-decrease)
-   ("C-0"    text-scale-normal-size)
-   ("C-M-="  increase-default-font-height)
-   ("C-M--"  decrease-default-font-height)
-   ))
-
+
+;; (defun xy/set-font-default ()
+;;   "Set Emacs font."
+;;   (interactive)
+;;   (GNULinux
+;;    (xy/set-font-and-scale 10.5 1.2))
+;;   (Windows
+;;    (xy/set-font-and-scale 10 1.22)))
+
+;; Uncomment the following code if emacs daemon is in use
+(if (and (fboundp 'daemonp) (daemonp))
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (xy/set-font-default))))
+  (xy/set-font-default))
+
+;; (eal-define-keys-commonly
+;;  global-map
+;;  `(;; ("C-x F d" xy/set-font-default)
+;;    ;; ("C-x F m" xy/set-font-Monofur-STHeiti)
+;;    ;; ("C-x F w" xy/set-font-write)
+;;    ;; ("C-x F p" xy/set-font-prog)
+;;    ;; ("C-x F D" xy/set-font-default-big)
+;;    ;; ("C-x F W" xy/set-font-write-big)
+;;    ;; ("C-x F P" xy/set-font-prog-big)
+;;    ;;------------------------------------
+;;    ;; changing font size
+;;    ;; ("C-+"    bhj-text-scale-increase)
+;;    ;; ("C--"    bhj-text-scale-decrease)
+;;    ;; NOTE: default text scaling ("C-x C-=" and "C-x C--")
+;;    ;; ("C-M-="  increase-default-font-height)
+;;    ;; ("C-M--"  decrease-default-font-height)
+;;    ))
 
 ;;** Automatically set fonts for different modes
 ;; NOTE: a pain to my eyes
@@ -698,64 +723,26 @@
 
 
 
-;;** Scalable Chinese font settings
-;; REF: http://att.newsmth.net/nForum/#!article/Emacs/103607
-;; BUG: 汉字宽度和英文字符宽度不匹配，不成整倍数
-;; 
-;;;###autoload
-;; (defun my-font-scale (my-font-size my-font-scale)
-;;   (unless (eq nil window-system)
-;;     (message "%f.%f" my-font-size my-font-scale)
-;;     (qiang-set-font
-;;      '("Consolas" "Monaco" "DejaVu Sans Mono" "Monospace" "Courier New")
-;;      my-font-size;;      '("Microsoft Yahei" "微软雅黑" "文泉驿等宽微米黑" "黑体" "新宋体" "宋体"))
-;;     (setq face-font-rescale-alist
-;;           '(("微软雅黑" . my-font-scale)
-;;             ("Microsoft Yahei" . my-font-scale)
-;;             ("WenQuanYi Micro Hei Mono" . my-font-scale)
-;;             ("WenQuanYi Zen Hei" . my-font-scale)))
-;;     (set-face-attribute 'default nil :font (font-spec))))
-
-;; ;;;###autoload
-;; (defun my-font-settings ()
-;;   (cond ((eq window-system 'x)
-;;          (my-font-scale 10.5 1.2))
-;;         ((eq window-system 'w32)
-;;          (my-font-scale 11 1.1))))
-
-;; ;; Uncomment the following code if emacs daemon is in use
-;; (if (and (fboundp 'daemonp) (daemonp))
-;;     (add-hook 'after-make-frame-functions
-;;               (lambda (frame)
-;;                 (with-selected-frame frame
-;;                   (my-font-settings))))
-;;   (my-font-settings))
-
-
-
-;;** Another font setting
-;; REF: http://att.newsmth.net/nForum/#!article/Emacs/103607
-;; BUG: 汉字宽度和英文字符宽度不匹配，不成整倍数
-;; (set-face-attribute 'default nil :font "Monaco 10")
-
-;; ;; 中文字体
-;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
-;;   (set-fontset-font t
-;;                     charset
-;;                     (font-spec :family "Microsoft Yahei")))
-;; (setq face-font-rescale-alist '(("Monaco" . 1.0) ("Microsoft Yahei" . 1.2)))
-
-
-
 ;;** Zoom fonts by mouse wheel
+
+;;*** Use emacs internal functions
 (GNULinux 
  (global-set-key (kbd "<C-mouse-4>") 'text-scale-increase) 
  (global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease))
-
 (Windows
  (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase) 
  (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease))
 
+;;*** Use bhj's list of font sizes that lead to nicely alignment of Latin
+;; and Chinese characters.
+;; NOTE: Cannot use other fonts
+;; (GNULinux 
+;;  (global-set-key (kbd "<C-mouse-4>") 'bhj-text-scale-increase) 
+;;  (global-set-key (kbd "<C-mouse-5>") 'bhj-text-scale-decrease))
+;; (Windows
+;;  (global-set-key (kbd "<C-wheel-up>")   'bhj-text-scale-increase) 
+;;  (global-set-key (kbd "<C-wheel-down>") 'bhj-text-scale-decrease))
+
 
 
-(provide 'xy-rcroot-app)
+(provide 'xy-rcroot-look)

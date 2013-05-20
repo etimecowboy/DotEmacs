@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:19 by xin on p5q>
+;; Time-stamp: <2013-05-20 Mon 11:07 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-font-lock.el'
 ;; Author:       Xin Yang

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-02-23 Sat 00:39 by xin on S13>
+;; Time-stamp: <2013-05-18 Sat 12:06 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -36,6 +36,10 @@
 ;; tab补全的模式
 (setq-default tab-always-indent t)
 
+;;** no-easy-keys
+;; be a Emacser!
+(when (try-require 'no-easy-keys)
+  (no-easy-keys 1))
 
 
 ;;** ethan-wspace
@@ -244,8 +248,8 @@
 
 (eal-define-keys-commonly
  global-map
- `(("C-c <f5>" revert-buffer)
-   ("C-x <f5>" gbk-revert)
+ `(("C-x <f5>" revert-buffer)
+   ("C-c <f5>" gbk-revert)
    ("C-x C-m"  execute-extended-command)
    ("C-c C-m"  execute-extended-command)
    ("C-w"      backward-kill-word-or-kill-region)
@@ -274,8 +278,8 @@
    ("C-S-n"    move-line-down);; NOTE: cannot use "C-N"
    ("C-M-f"    format-cxx-file)
    ("C-*"      insert-prior-line-char)
-   ("S-<f4>"   name-last-kbd-marco)
-   ("C-<f4>"   insert-kbd-marco)
+   ("M-<f4>"   name-last-kbd-marco)
+   ("S-<f4>"   insert-kbd-marco)
    ))
 
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-03-24 Sun 18:14 by xin on S13>
+;; Time-stamp: <2013-05-14 Tue 09:48 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -130,7 +130,7 @@
 (eval-after-load "calendar" '(calendar-postload))
 (eval-after-load "diary-lib" '(diary-postload))
 (eval-after-load "appt" '(appt-postload))
-(try-require 'chinese-calendar) ;;中文日历 by wanson@newsmth
+;; (try-require 'chinese-calendar) ;;中文日历 by wanson@newsmth
 
 
 
@@ -217,7 +217,7 @@
         ("U"   scroll-down)
         ("u"   View-scroll-half-page-backward)
         ("o"   other-window)))))
-(global-set-key (kbd "<f6> k") 'browse-kill-ring)
+(global-set-key (kbd "<f2> k") 'browse-kill-ring)
 
 
 
@@ -279,17 +279,17 @@ from tradition chinese to simple chinese" t)
 (global-set-key (kbd "<f6> l") 'linkd-mode)
 
 ;; NOTE: it is better to turn on linkd-mode manually
-;; (am-add-hooks
-;;  `(lisp-mode-hook emacs-lisp-mode-hook
-;;                   c-common-mode-hook
-;;                   sh-mode-hook matlab-mode-hook
-;;                   vhdl-mode-hook verilog-mode-hook
-;;                   ;; org-mode-hook ;; NOTE: C-c ' conflicts with linkd
-;;                   LaTeX-mode-hook)
-;;  '(lambda () (linkd-mode 1)))
-;; (am-add-hooks
-;;  `(lisp-interaction-mode-hook org-mode-hook)
-;;  '(lambda () (linkd-mode -1)))
+(am-add-hooks
+ `(lisp-mode-hook emacs-lisp-mode-hook
+                  c-common-mode-hook
+                  sh-mode-hook matlab-mode-hook
+                  vhdl-mode-hook verilog-mode-hook
+                  ;; org-mode-hook ;; NOTE: C-c ' conflicts with linkd
+                  LaTeX-mode-hook)
+ '(lambda () (linkd-mode 1)))
+(am-add-hooks
+ `(lisp-interaction-mode-hook org-mode-hook)
+ '(lambda () (linkd-mode -1)))
 
 
 

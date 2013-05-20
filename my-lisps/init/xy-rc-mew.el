@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:29 by xin on p5q>
+;; Time-stamp: <2013-05-16 Thu 21:45 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-mew.el'
 ;; Author:       Xin Yang
@@ -163,10 +163,23 @@
   ;;------------------------------------------------------------
   ;; Switch account command --- capital `C'
   (setq mew-config-alist
-      '(
-        ;; Default fetch mailbox is uwe staff mail
-        ;; UWE xin2.yang@uwe.ac.uk
-        ("default"
+      '(("default"
+         ("mailbox-type"         . imap)
+         ("proto"                . "%")
+         ("name"                 . "Xin Yang")
+         ("user"                 . "xin2.yang")
+         ("reply-to"             . "xin2.yang@gmail.com")
+         ("signature-file"       . "~/emacs/mew/sig/grad")
+         ("mail-domain"          . "gmail.com")
+         ("imap-server"          . "imap.gmail.com")
+         ("imap-ssl"             . t)
+         ("imap-ssl-port"        . "993")
+         ("imap-auth"            . pass)
+         ("imap-user"            . "xin2.yang")
+         ("imap-size"            . 0)
+         ("imap-delete"          . t))
+        
+        ("uwe"
          ("mailbox-type"         . imap)
          ("proto"                . "%")
          ("name"                 . "Xin Yang")
@@ -185,23 +198,6 @@
          ("imap-trash-folder"    . "%Deleted Items")
          ("imap-queue-folder"    . "%Outbox")
          ("imap-spam-folder"     . "%Junk E-mail"))
-
-        ;; Gmail xin2.yang@gmail.com
-        ("gx2"
-         ("mailbox-type"         . imap)
-         ("proto"                . "%")
-         ("name"                 . "Xin Yang")
-         ("user"                 . "xin2.yang")
-         ("reply-to"             . "xin2.yang@gmail.com")
-         ("signature-file"       . "~/emacs/mew/sig/grad")
-         ("mail-domain"          . "gmail.com")
-         ("imap-server"          . "imap.gmail.com")
-         ("imap-ssl"             . t)
-         ("imap-ssl-port"        . "993")
-         ("imap-auth"            . pass)
-         ("imap-user"            . "xin2.yang")
-         ("imap-size"            . 0)
-         ("imap-delete"          . t))
 
         ;; Gmail etimecowboy@gmail.com
         ("ge"

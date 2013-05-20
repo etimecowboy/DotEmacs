@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 28 Jan 2011
-;; Time-stamp: <2013-01-29 Tue 08:02 by xin on S13>
+;; Time-stamp: <2013-05-13 Mon 18:57 by xin on S13>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 

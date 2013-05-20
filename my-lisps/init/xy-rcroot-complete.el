@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-15 Tue 18:05 by xin on S13>
+;; Time-stamp: <2013-05-15 Wed 14:30 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -149,6 +149,22 @@
 ;;** hippie-expand
 ;; (global-set-key (kbd "M-/") 'hippie-expand)
 (eval-after-load "hippie-exp" '(hippie-expand-postload))
+
+
+
+;;** skeleton-complete-mode
+;; SOURCE: (@url :file-name "https://github.com/baohaojun/skeleton-complete" :display "GitHub")
+;; NOTE:
+;; (define-key skeleton-complete-mode-map (kbd "M-g <return>") 'skeleton-expand-symbols)
+;; (define-key skeleton-complete-mode-map (kbd "M-s <return>") 'skeleton-expand-partial-lines)
+;; (define-key skeleton-complete-mode-map (kbd "M-g x") 'skeleton-expand-partial-lines)
+;; (define-key skeleton-complete-mode-map (kbd "M-s l") 'skeleton-expand-lines)
+;; (define-key skeleton-complete-mode-map (kbd "M-s s") 'skeleton-expand-sexp)
+;; (define-key skeleton-complete-mode-map (kbd "M-s p") 'skeleton-expand-paragraph)
+;; TODO: add a submodule for this project when it is stable.
+;; BUG: minor mode is not registered.
+;; (when (try-require 'skeleton-complete)
+;;   (skeleton-complete-global-mode 1))
 
 
 
@@ -318,7 +334,7 @@
 ;; NOTE: too heavy for Emacs
 ;; (eval-after-load "icicles" '(icicles-postload))
 ;; ;; (add-hook 'after-init-hook 'icy-mode)
-;; (global-set-key (kbd "<f6> i") 'xy/icy-start)
+;; (global-set-key (kbd "<f2> i") 'xy/icy-start)
 
 
 
@@ -346,6 +362,7 @@
 ;;* helm
 (eval-after-load 'helm '(helm-postload))
 (global-set-key (kbd "C-c i") 'helm-mini)
+
 
 
 (provide 'xy-rcroot-complete)

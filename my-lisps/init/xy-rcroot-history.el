@@ -1,7 +1,7 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-19 Wed 08:40 by xin on p5q>
+;; Time-stamp: <2013-05-18 Sat 11:56 by xin on S13>
 ;;--------------------------------------------------------------------
-;; File name:    `xy-rcroot-session.el'
+;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
 ;; Email:        xin2.yang@gmail.com
 ;; Depend on:    None
@@ -20,7 +20,7 @@
 
 ;;* Save editing information
 
-;;** Winpoint,
+;;** Winpoint
 ;; When two windows view the same buffer at the same time, and one
 ;; window is switched to another buffer and back, point is now the
 ;; same as in the other window, not as it was before we switched away.
@@ -65,9 +65,9 @@
 (eal-define-keys-commonly
  global-map
  `(;; M$ Visual Studio key setup.
-   ("<f2> m"   bm-toggle)
-   ("<f2> n"   bm-next)
-   ("<f2> p"   bm-previous)
+   ("S-<f2>"   bm-toggle)
+   ("C-<f2>"   bm-next)
+   ("M-<f2>"   bm-previous)
    ;; Click on fringe to toggle bookmarks, and use mouse wheel to move
    ;; between them. If you would like the markers on the right fringe
    ;; instead of the left, add the following to line:
@@ -110,33 +110,35 @@
 
 
 
-;;** windows and revive (heavy weight, cannot used with emacs daemon)
-;; Workspace store and recover
+;;** windows and revive
+;; NOTE: ;; Workspace store and recover. Heavy weight, cannot used with emacs daemon
 (revive-preload)
 (eval-after-load "revive" '(revive-postload))
 (when (try-require 'revive)
   (add-hook 'delete-frame-hook 'save-current-configuration)
   (add-hook 'kill-emacs-hook 'save-current-configuration))
 
-(windows-preload)
-(eval-after-load "windows" '(windows-postload))
-(when (try-require 'windows)
-  (when window-system
-    (win:startup-with-window)))
+;; (windows-preload)
+;; (eval-after-load "windows" '(windows-postload))
+;; (when (try-require 'windows)
+;;   (when window-system
+;;     (win:startup-with-window)))
 
 (eal-define-keys-commonly
  global-map
- `(("C-c w q" see-you-again)
-   ("C-c w a" win-save-all-configurations)
-   ("C-c w f" resume-windows)
-   ("C-c w s" save-current-configuration) ;; C-u (num) to specify the
-                                          ;; buffer name
+ `(;; ("C-c w q" see-you-again)
+   ;; ("C-c w a" win-save-all-configurations)
+   ;; ("C-c w f" resume-windows)
+   ;; NOTE: C-u (num) to specify the window name
+   ("C-c w s" save-current-configuration)
    ("C-c w r" resume)
    ("C-c w k" wipe)))
-
 
-;;** `elscreen.el' based on APEL
-;; (try-require 'elscreen)
+;;** `elscreen.el'
+;; NOTE: old versions are based on APEL, current version is not.
+(eval-after-load "elscreen" '(elscreen-postload))
+;; (elscreen-start)
+(global-set-key (kbd "<f2> s") 'elscreen-start)
 
 
 
@@ -150,6 +152,7 @@
 
 ;;** session
 ;; session.el can remember more information.
+;; NOTE: C-x C-/ 'session-jump-to-last-change
 (eval-after-load "session" '(session-postload))
 (when (try-require 'session)
   (add-hook 'after-init-hook 'session-initialize))
@@ -175,6 +178,6 @@
 
 
 
-(provide 'xy-rcroot-session)
+(provide 'xy-rcroot-history)
 
 ;; NOTE: This is the last root configuration file loaded

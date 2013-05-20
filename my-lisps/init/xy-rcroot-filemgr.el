@@ -159,6 +159,7 @@
          ("C-c e p" everything-toggle-path))))))
 (global-set-key (kbd "C-c e e") 'everything)
 (global-set-key (kbd "<f7> e") 'everything)
+
 
 
 ;;* Version control settings
@@ -168,7 +169,7 @@
 (setq version-control t)
 (setq backup-by-copying t)
 (setq backup-directory-alist '(("." . "~/.emacs-backup")))
-(setq kept-old-versions 2)
+(setq kept-old-versions 5)
 (setq kept-new-versions 5)
 (setq delete-old-versions t)
 (setq vc-make-backup-files t)

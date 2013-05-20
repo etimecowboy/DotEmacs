@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-30 Wed 10:13 by xin on S13>
+;; Time-stamp: <2013-05-15 Wed 14:51 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -133,7 +133,7 @@ If html-file-name is not given, read it from minibuffer."
   (interactive)
   (if xy:org-latexmk-flag
       (progn
-        (setq org-latex-to-pdf-process
+        (setq org-latex-pdf-process
               '("latexmk -xelatex -f -silent -c %b")) ;; no -d
         (setq xy:org-latexmk-flag nil)
         (message "* ---[ Using `latexmk' as the LaTeX PDF exporter now ]---"))
@@ -851,12 +851,13 @@ If html-file-name is not given, read it from minibuffer."
 
   ;;----------------------------------------------------------------
   ;; LaTeX export settings
-  (require 'org-exp)
-  (require 'org-latex)
-  (setq org-export-latex-coding-system 'utf-8-unix)
-  (setq org-export-latex-table-caption-above nil)
-  (setq org-export-latex-tables-column-borders t)
-  (setq org-export-latex-classes
+  (require 'ox)
+  (require 'ox-latex)
+  (require 'ox-beamer)
+  (setq org-latex-coding-system 'utf-8-unix)
+  (setq org-latex-table-caption-above nil)
+  (setq org-latex-tables-column-borders t)
+  (setq org-latex-classes
    (quote (("article" "\\documentclass[11pt]{article}"
             ("\\section{%s}" . "\\section*{%s}")
             ("\\subsection{%s}" . "\\subsection*{%s}")
@@ -923,7 +924,7 @@ a4paper, cap, punct, nospace, indent, fancyhdr, hypperref, fntef]\
   ;; `inputenc' and `fontenc' packages conflicts with `xecjk' and
   ;; `ctex'. The encoding of the input latex files don't need to be
   ;; set.
-  (setq org-export-latex-default-packages-alist
+  (setq org-latex-default-packages-alist
         '(("" "fixltx2e" nil)
           ("" "graphicx" t) ("" "longtable" nil)
           ("" "float" nil) ("" "wrapfig" nil)
@@ -937,12 +938,12 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
            "hyperref" nil)))
 
   ;; code listing settings, new `minted' is also supported
-  (setq org-export-latex-listings t)
+  (setq org-latex-listings t)
 
   ;; NOTE: Alist of packages to be inserted in every LaTeX header.
   ;; These will be inserted after
   ;; `org-export-latex-default-packages-alist'.
-  (setq org-export-latex-packages-alist
+  (setq org-latex-packages-alist
         '(;; The following 3 packages are required if using `listings'
           ("svgnames, table" "xcolor" t) ("" "listings" t) ("" "setspace" nil)
           ;; Display various latex-related logos
@@ -1066,7 +1067,15 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
 
   ;;==================================================================
   ;; Publishing settings
-
+  ;; NOTE:
+  ;; Org-mode 8.0 发布网页时要:
+  ;; (require 'ox-publish)
+  ;; 千万不要用:
+  ;; (require 'org-publish)!
+  ;; 由于 Emacs 内置的 Org-mode 为 7.x 版本，自带有一个 org-publish, 而
+  ;; 在 8.0 中已经改名为 ox-publish. 这样 require 两个都能够正常加载，但
+  ;; 在执行 M-x org-publish 时则会出错。
+  (require 'ox-publish)
   (setq org-publish-timestamp-directory
         (concat org-directory "/timestamps"))
   (setq org-publish-use-timestamps-flag t)
@@ -1329,7 +1338,8 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
 
   ;;------------------------------------------------------------------
   ;; `org2blog'
-  (try-require 'org2blog)
+  ;; NOTE: waiting for its upgrade for org version 8.0
+  ;; (try-require 'org2blog)
 
   ;;------------------------------------------------------------------
   ;; `org-bullets.el'
@@ -1340,8 +1350,8 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
 
   ;;------------------------------------------------------------------
   ;; `org-presie.el'
-  ;; NOTE: not very useful
-  (when window-system (try-require 'org-presie))
+  ;; NOTE: not very useful, waiting for a upgrade for org version 8.0
+  ;; (when window-system (try-require 'org-presie))
 
   (message "* ---[ org post-load configuration is complete ]---"))
 

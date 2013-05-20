@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-04-04 Thu 14:39 by xin on S13>
+;; Time-stamp: <2013-05-12 Sun 10:21 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -290,12 +290,11 @@
 
 
 ;;** ELPA packages
-
 ;; Packages installed via `package.el'.
-
 ;; `package.el' is now part of GNU Emacs 24. You can get the
 ;; latest at http://bit.ly/pkg-el while the last version that's
 ;; compatible with Emacs 23 is at http://bit.ly/pkg-el23
+(global-set-key (kbd "S-<f1>") 'list-packages)
 
 
 
@@ -335,7 +334,7 @@
   '(progn
      (man-postload)
      ))
-(global-set-key (kbd "S-<f1>") 'man-follow)
+(global-set-key (kbd "M-<f3>") 'man-follow)
 ;; (eal-define-keys
 ;;  `(c-mode-base-map sh-mode-map)
 ;;  `(("C-c /" man-current-word)))
@@ -378,7 +377,7 @@
    ;; ("C-c M-v" describe-variable-at-point)
    ;; ("C-c M-f" describe-function-at-point)
    ;; ("C-M-<f3>" describe-face-at-point)
-   ("M-<f3>"   find-symbol-at-point)
+   ("S-<f3>"   find-symbol-at-point)
    ;; ("C-c C-h" find-symbol-go-back)
    ;; ("C-c M-V" find-symbol-var-at-point)
    ;; ("C-c M-F" find-symbol-fun-at-point)
@@ -557,6 +556,8 @@ Toggle keyboard command logging of whole emacs.
 ;; The list is displayed in a buffer named `*Packages*'." nil t)
 (eval-after-load "package" '(package-postload))
 (require 'package)
+(global-set-key (kbd "<f2> p") 'list-packages)
+;; (package-initialize)  ;; Activate all packages
 
 
 
