@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-18 Sat 00:37 by xin on S13>
+;; Time-stamp: <2013-05-25 Sat 22:54 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -104,7 +104,7 @@
  global-map
  `(("S-<f5>"    fit-frame) ;; `fit-frame.el'
    ("M-<f5>"    maximize-frame) ;; `maxframe.el'
-   ("C-<f5>"  restore-frame)  ;; `maxframe.el'
+   ("C-<f5>"    restore-frame)  ;; `maxframe.el'
    ;; ("M-<f5>"    toggle-max-frame)  ;; `frame-cmds.el'
    ;; ("C-M-<f5>"  xy/toggle-autofit-frame) ;; `autofit-frame.el'
    ;; ("C-z"     thumfr-toggle-thumbnail-frame) ;; `thumb-frm.el'
@@ -223,6 +223,9 @@
 ;; | 1      | popwin:one-window                     |
 (when (try-require 'popwin)
   (setq display-buffer-function 'popwin:display-buffer)
+  ;; NOTE:
+  ;; `display-buffer-function' should be replaced by
+  ;; `display-buffer-alist' after Emacs 24.3
   (popwin-mode 1)
   (global-set-key (kbd "C-S-z") popwin:keymap))
 
@@ -296,6 +299,9 @@
 (eval-after-load "ws-trim" '(diminish 'ws-trim-mode))
 (eval-after-load "skeleton-complete" '(diminish 'skeleton-complete-mode))
 (eval-after-load "auto-dim-other-buffers" '(diminish 'auto-dim-other-buffers-mode))
+(eval-after-load "fic-ext-mode" '(diminish 'fic-ext-mode))
+(eval-after-load "face-remap" '(diminish 'buffer-face-mode))
+
 
 
 ;;** modeline-posn
@@ -443,6 +449,7 @@
  global-map
  `(("<S-down-mouse-1>" mouse-drag-drag)
    ("<down-mouse-1>"  mouse-drag-region)))
+
 
 
 ;;* Syntax highlighting
@@ -459,6 +466,15 @@
 ;;                   vhdl-mode-hook verilog-mode-hook matlab-mode-hook
 ;;                   org-mode-hook)
 ;;  '(lambda () (font-lock-mode 1)))
+
+;;** fic-ext-mode
+(eval-after-load "fic-ext-mode" '(fic-ext-mode-postload))
+(am-add-hooks
+ `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
+                  sh-mode-hook cperl-mode-hook c-common-mode-hook
+                  vhdl-mode-hook verilog-mode-hook matlab-mode-hook
+                  LaTeX-mode-hook)
+ 'xy/turn-on-fic-ext-mode)
 
 
 
@@ -563,15 +579,17 @@
 ;; (Windows
 ;;  (when (try-require 'color-theme-sanityinc-solarized)
 ;;    (load-theme 'sanityinc-solarized-dark t)))
-;; (when (and window-system (try-require 'nzenburn-theme))
-;;    (load-theme 'nzenburn t))
-(when (and window-system (try-require 'color-theme-sanityinc-tomorrow))
-   (load-theme 'sanityinc-tomorrow-night t))
+(when (and window-system (try-require 'nzenburn-theme))
+   (load-theme 'nzenburn t))
+;; (when (and window-system (try-require 'color-theme-sanityinc-tomorrow))
+;;    (load-theme 'sanityinc-tomorrow-night t))
 (global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
 
 
 
 ;;** auto-dim-other-buffers
+(eval-after-load "auto-dim-other-buffers"
+  '(auto-dim-other-buffers-postload))
 (when (try-require 'auto-dim-other-buffers)
   (auto-dim-other-buffers-mode 1))
 
@@ -633,17 +651,15 @@
 
 ;;** pp-c-l
 ;; Display Vontrol-l characters in a pretty way
-(eval-after-load "pp-c-l" '(progn
-                             (pp-c-l-postload)
-                             (pp-c-l-face)))
+(eval-after-load "pp-c-l" '(pp-c-l-postload))
 (autoload 'pretty-control-l-mode "pp-c-l" nil t)
-(global-set-key (kbd "<f6> p") 'turn-on-pretty-control-l-mode)
+(global-set-key (kbd "<f6> p") 'xy/turn-on-pretty-control-l-mode)
 (am-add-hooks
  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
                   sh-mode-hook cperl-mode-hook c-common-mode-hook
                   vhdl-mode-hook verilog-mode-hook matlab-mode-hook
                   org-mode-hook LaTeX-mode-hook)
- 'turn-on-pretty-control-l-mode)
+ 'xy/turn-on-pretty-control-l-mode)
 
 
 

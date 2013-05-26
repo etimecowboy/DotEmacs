@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-18 Sat 12:06 by xin on S13>
+;; Time-stamp: <2013-05-26 Sun 16:07 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -53,7 +53,6 @@
 ;; (am-add-hooks
 ;;  `(snippet-mode)
 ;;  '(lambda () (ethan-wspace-mode -1)))
-
 (global-set-key (kbd "<f6> W") 'ethan-wspace-mode)
 
 
@@ -130,14 +129,14 @@
 ;; ace-jump-mode is an fast/direct cursor location minor mode.
 ;; (try-require 'ace-jump-mode)
 (define-key isearch-mode-map (kbd "M-s") 'sl-isearch-ace-jump)
-(define-key global-map (kbd "M-a") 'ace-jump-mode)
+(define-key global-map (kbd "<f11>") 'ace-jump-mode)
 ;; NOTE: For my key binding
 ;;      - "M-s"         ==> ace-jump-word-mode
 ;;      - "C-u M-s"     ==> ace-jump-char-mode
 ;;      - "C-u C-u M-s" ==> ace-jump-line-mode
 ;;      - tricks to use ace-jump
 ;;        1) C-s ----- normal isearch
-;;        2) M-a ----- use ace-jump-mode to locate your point
+;;        2) <f11> ----- use ace-jump-mode to locate your point
 
 
 

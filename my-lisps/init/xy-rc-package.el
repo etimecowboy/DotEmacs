@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-20 Mon 11:19 by xin on S13>
+;; Time-stamp: <2013-05-26 Sun 16:41 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -106,7 +106,7 @@ re-downloaded in order to locate PACKAGE."
           ("marmalade" . "http://marmalade-repo.org/packages/")
           ("melpa" . "http://melpa.milkbox.net/packages/")
           ("org" . "http://orgmode.org/elpa/")
-          ("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
+          ;; ("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
           ))
 
   ;; ;; NOTE: there is an enhancement lisp `melpa.el' for the
@@ -156,8 +156,8 @@ re-downloaded in order to locate PACKAGE."
 
   (require-package 'ac-dabbrev)
   (require-package 'ace-jump-mode)
-  (require-package 'ack-menu)
-  (require-package 'ansi)
+  ;; (require-package 'ack-menu)  ;; ack is not used
+  ;; (require-package 'ansi)  ;; never used
   (require-package 'anti-zenburn-theme)
   (require-package 'ascii)
   (require-package 'auto-complete)
@@ -166,11 +166,11 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'bash-completion)
   (require-package 'bm)
   (require-package 'bookmark+)
-  (require-package 'boxquote)
+  ;; (require-package 'boxquote)  ;; rarely used
   (require-package 'browse-kill-ring)
   (require-package 'buffer-move)
   (require-package 'c-eldoc)
-  (require-package 'cal-china-x)
+  ;; (require-package 'cal-china-x) ;; fixed, moved to my-lisps
   (require-package 'cdlatex)
   (require-package 'centered-cursor-mode)
   (require-package 'cl-lib)
@@ -178,29 +178,31 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'col-highlight)
   (require-package 'color-moccur)
   (require-package 'color-theme-sanityinc-solarized)
-  (require-package 'color-theme-sanityinc-tomorrow)
+  ;; (require-package 'color-theme-sanityinc-tomorrow) ;; don't like it
   (require-package 'columnify)
   (require-package 'cperl-mode)
   (require-package 'css-mode)
   (require-package 'ctags)
   (require-package 'ctags-update)
-  (require-package 'cursor-chg)
+  ;; (require-package 'cursor-chg)  ;; not very useful
   (require-package 'dash)
   (require-package 'deft)
-  (require-package 'desktop)
+  ;; (require-package 'desktop)
   (require-package 'dictionary)
   (require-package 'diff-git)
   (require-package 'diff-hl)
   (require-package 'diminish)
   (require-package 'dired+)
   (require-package 'doc-mode)
-  (require-package 'dropbox)
+  ;; (require-package 'dropbox)    ;; never used
   (require-package 'edit-server)
   (require-package 'eimp)
   (require-package 'elscreen)
   (require-package 'emms)
   (require-package 'ess)
+  (require-package 'ethan-wspace)
   (require-package 'everything)
+  (require-package 'fic-ext-mode)
   (require-package 'fold-this)
   (require-package 'framesize)
   (require-package 'furl)
@@ -210,7 +212,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'google-c-style)
   (require-package 'google-maps)
   (require-package 'graphviz-dot-mode)
-  (require-package 'haskell-mode)
+  ;; (require-package 'haskell-mode)  ;; don't want to learn haskell now
   (require-package 'helm)
   (require-package 'helm-R)
   (require-package 'helm-c-moccur)
@@ -220,7 +222,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'helm-git)
   (require-package 'helm-gtags)
   (require-package 'helm-ls-git)
-  (require-package 'helm-migemo)
+  ;; (require-package 'helm-migemo)
   (require-package 'helm-projectile)
   (require-package 'helm-themes)
   (require-package 'highlight)
@@ -239,9 +241,11 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'json)
   (require-package 'key-chord)
   (require-package 'kill-ring-search)
+  (require-package 'hlinum)
   (require-package 'list-utils)
   (require-package 'logito)
-  (require-package 'mag-menu)
+  ;; (require-package 'mag-menu)
+  ;; (require-package 'splitter) ;; just use basic split functions
   (require-package 'magit)
   (require-package 'magithub)
   (require-package 'markdown-mode)
@@ -252,18 +256,18 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'mic-paren)
   (require-package 'mo-git-blame)
   (require-package 'modeline-posn)
-  (require-package 'mouse+)
+  ;; (require-package 'mouse+)  ;; don't want to use mouse
   (require-package 'multi-term)
   (require-package 'multiple-cursors)
   (require-package 'nzenburn-theme)
   (require-package 'o-blog)
   (require-package 'oauth)
   (require-package 'openwith)
-  (require-package 'org)
-  (require-package 'org-cua-dwim)
-  (require-package 'org-mime)
-  (require-package 'org-plus-contrib)
-  (require-package 'org-table-comment)
+  (require-package 'org '(8)) ;; NOTE: install the latest version
+  ;; (require-package 'org-cua-dwim)
+  ;; (require-package 'org-mime)
+  ;; (require-package 'org-plus-contrib) ;; too heavy for me
+  ;; (require-package 'org-table-comment)  ;; nerver used by now
   (require-package 'outline-magic)
   (require-package 'pcache)
   (require-package 'persistent-soft)
@@ -281,15 +285,25 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'shell-here)
   (require-package 'smarter-compile)
   (require-package 'smex)
-  (require-package 'splitter)
   (require-package 'string-utils)
   (require-package 'sunrise-commander)
-  (require-package 'texdrive)
+  ;; (require-package 'sunrise-x-buttons)
+  (require-package 'sunrise-x-checkpoints)
+  (require-package 'sunrise-x-loop)
+  (require-package 'sunrise-x-mirror)
+  (require-package 'sunrise-x-modeline)
+  ;; (require-package 'sunrise-x-popviewer)
+  (require-package 'sunrise-x-tabs)
+  ;; (require-package 'sunrise-x-tree)
+  (require-package 'sunrise-x-w32-addons)
+  ;; (require-package 'texdrive)
   (require-package 'ucs-utils)
   (require-package 'undo-tree)
   (require-package 'vline)
   (require-package 'w32-browser)
+  (require-package 'w3m)
   (require-package 'weblogger)
+  (require-package 'weather-metno)
   (require-package 'wgrep)
   (require-package 'wgrep-helm)
   (require-package 'whole-line-or-region)

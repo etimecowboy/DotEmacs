@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:28 by xin on p5q>
+;; Time-stamp: <2013-05-26 Sun 17:07 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-matlab.el'
 ;; Author:       Xin Yang
@@ -87,7 +87,7 @@
         matlab-verify-on-save-flag nil
         matlab-vers-on-startup nil)
   
-  (matlab-cedet-setup)
+  ;; (matlab-cedet-setup) ;; NOTE: outdated!
   (message "* ---[ matlab post-load configuration is complete ]---"))
 
 ;; ;;;###autoload

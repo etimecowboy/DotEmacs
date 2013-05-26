@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-15 Wed 14:30 by xin on S13>
+;; Time-stamp: <2013-05-22 Wed 11:37 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -353,6 +353,7 @@
 
 
 ;;* anything
+;; NOTE: replaced by helm
 ;; Quicksilver for Emacs
 ;; (eval-after-load 'anything '(anything-postload))
 ;; (global-set-key (kbd "C-c i") 'xy/my-anything)
@@ -361,7 +362,9 @@
 
 ;;* helm
 (eval-after-load 'helm '(helm-postload))
-(global-set-key (kbd "C-c i") 'helm-mini)
+;; TODO: make my own helm setup and bind it to C-c i
+;; (global-set-key (kbd "C-c i") 'helm-mini)
+(global-set-key (kbd "<f6> A") 'helm-mode)
 
 
 

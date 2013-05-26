@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-18 Sat 11:20 by xin on S13>
+;; Time-stamp: <2013-05-25 Sat 23:26 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sunrise.el'
 ;; Author:       Xin Yang
@@ -16,35 +16,57 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
+;; ;;;###autoload
+;; (defun xy/sunrise ()
+;;   "Start sunrise-commander in a maximized frame."
+
+;;   (interactive)
+;;   (xy/smart-maximize-frame)
+;;   (sunrise))
+
 ;;;###autoload
 (defun sunrise-postload ()
   "Settings of `sunrise.el' after it's been loaded."
 
   (setq ;; sr-avfs-root "~/"
+        sr-autoload-extensions t
+        sr-confirm-kill-viewer nil
+        sr-fast-backup-extension ".bak"
         sr-history-length 100
-        sr-show-file-attributes nil
+        sr-kill-unused-buffers t
+        sr-loop-debug nil
+        sr-loop-timeout 20
+        sr-loop-use-popups t
+        sr-mirror-keep-backups t
+        sr-modeline-use-utf8-marks t
+        ;; sr-popviewer-enabled nil
+        ;; sr-popviewer-mode nil
+        ;; sr-popviewer-style 'single-dedicated-frame
+        sr-show-file-attributes t
         sr-show-hidden-files t
+        sr-tabs-follow-panes t
+        sr-tabs-max-tabsize 30
+        sr-traditional-other-window nil
+        sr-terminal-kill-buffer-on-exit t
+        sr-terminal-program "eshell"
+        ;; sr-tree-explosion-ratio 3
+        ;; sr-tree-isearch-always-sticky nil
+        sr-w32-follow-shortcuts t
         sr-windows-default-ratio 60
-        sr-window-split-style (quote horizontal))
+        sr-windows-locked t
+        sr-window-split-style 'horizontal
+        sr-use-commander-keys nil)
 
+
+  ;; NOTE: extensions are auto-installed in ELPA autoloads
+  
   (setq sr-start-hook
-        '(xy/smart-maximize-frame
-          sr-tree-menu-init
-          sr-tabs-start-once
-          sr-modeline-start-once))
-
-  (require 'sunrise-commander)
-  (require 'sunrise-x-buttons) ;; cannot be used with popviewer
-  (require 'sunrise-x-popviewer) ;; cannot be used with buttons
-  (sr-popviewer-mode -1)
-  (require 'sunrise-x-checkpoints)
-  (require 'sunrise-x-loop)
-  (require 'sunrise-x-mirror)
-  (require 'sunrise-x-modeline)
-  (require 'sunrise-x-tabs)
-  (require 'sunrise-x-tree)
-  (Windows
-   (require 'sunrise-x-w32-addons))
+        'xy/smart-maximize-frame
+        ;; NOTE: the following codes has been added in autoloads
+        ;;   sr-tree-menu-init  
+        ;;   sr-tabs-start-once
+        ;;   sr-modeline-start-once
+  )
 
   (message "* ---[ sunrise post-load configuration is complete ]---"))
 

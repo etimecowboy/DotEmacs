@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-20 Mon 11:07 by xin on S13>
+;; Time-stamp: <2013-05-25 Sat 21:20 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-font-lock.el'
 ;; Author:       Xin Yang
@@ -29,24 +29,25 @@
 
   (setq-default font-lock-multiline t)
 
-  ;; 增加自定义关键字
-  (dolist (mode '(c-mode c++-mode java-mode lisp-mode emacs-lisp-mode
-                         lisp-interaction-mode sh-mode sgml-mode
-                         sh-mode vhdl-mode verilog-mode latex-mode
-                         LaTeX-mode tex-mode TeX-mode c-mode cc-mode
-                         perl-mode))
-    (font-lock-add-keywords
-     mode
-     '(("\\<\\(BUG\\|TODO\\|HACK\\|NOTE\\|REF\\|DEBUG\\|FIXME\\):"
-        1 font-lock-warning-face prepend)
-       ;; BUG: 这里引起语法高亮失效
-       ;; ("\\<\\(and\\|or\\|not\\)\\>" . font-lock-keyword-face)
-       ;; ("(\\|)" . beautiful-blue-face)
-       ;; ("\\[\\|]" . yellow-face)
-       ;; ("<\\|>" . cyan-face)
-       ;; ("{\\|}" . green-face)
-       )
-     ))
+  ;; ;; 增加自定义关键字
+  ;; ;; NOTE: use fic-ext-mode instead
+  ;; (dolist (mode '(c-mode c++-mode java-mode lisp-mode emacs-lisp-mode
+  ;;                        lisp-interaction-mode sh-mode sgml-mode
+  ;;                        sh-mode vhdl-mode verilog-mode latex-mode
+  ;;                        LaTeX-mode tex-mode TeX-mode c-mode cc-mode
+  ;;                        perl-mode))
+  ;;   (font-lock-add-keywords
+  ;;    mode
+  ;;    '(("\\<\\(BUG\\|TODO\\|HACK\\|NOTE\\|REF\\|DEBUG\\|FIXME\\):"
+  ;;       1 font-lock-warning-face prepend)
+  ;;      ;; BUG: 这里引起语法高亮失效
+  ;;      ;; ("\\<\\(and\\|or\\|not\\)\\>" . font-lock-keyword-face)
+  ;;      ;; ("(\\|)" . beautiful-blue-face)
+  ;;      ;; ("\\[\\|]" . yellow-face)
+  ;;      ;; ("<\\|>" . cyan-face)
+  ;;      ;; ("{\\|}" . green-face)
+  ;;      )
+  ;;    ))
   (message "* ---[ font-lock post-load configuration is complete ]---"))
 
 ;; NOTE: moved to my `color-theme-xy.el'

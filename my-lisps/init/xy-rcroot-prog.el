@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-15 Tue 00:50 by xin on S13>
+;; Time-stamp: <2013-05-22 Wed 12:03 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -310,7 +310,7 @@
 ;;** projectile
 ;; A project management mode
 (eval-after-load "projectile" '(projectile-postload))
-
+(global-set-key (kbd "<f6> P") 'projectile-mode)
 
 
 ;;* Shell script development settings
@@ -772,14 +772,15 @@
 ;;* IDE settings
 
 ;;** CEDET settings
+;; FIXME: cedet need to be updated and reconfigured.
 (eval-after-load "cedet" '(cedet-postload))
-(global-set-key (kbd "<f6> c") 'xy/cedet-start)
+(global-set-key (kbd "<f6> C") 'xy/cedet-start)
 
 
 
 ;;** ECB settings
 (eval-after-load "ecb-autoloads" '(ecb-postload))
-(global-set-key (kbd "<f6> b") 'xy/ecb-start)
+(global-set-key (kbd "<f6> B") 'xy/ecb-start)
 
 
 

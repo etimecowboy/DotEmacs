@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:11 by xin on p5q>
+;; Time-stamp: <2013-05-20 Mon 17:06 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-calendar.el'
 ;; Author:       Xin Yang
@@ -17,7 +17,7 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun animals(birthyear)
+(defun chinese-animal-birthyear(birthyear)
   "Calculate the Chinese aninal by year"
   (let ((x (% (- 1997 birthyear) 12)))
     (cond ((or (= x 1) (= x -11))  "鼠")
@@ -49,11 +49,6 @@
   ;; week in the calendar begins on Monday
   (setq calendar-week-start-day 1)
 
-  (setq calendar-chinese-celestial-stem
-        ["甲" "乙" "丙" "丁" "戊" "己" "庚" "辛" "壬" "癸"])
-  (setq calendar-chinese-terrestrial-branch
-        ["子" "丑" "寅" "卯" "辰" "巳" "午" "未" "申" "酉" "戌" "亥"])
-
   ;; mark all visible dates that have diary entries
   (setq calendar-mark-diary-entries-flag t)
   ;; (add-hook 'initial-calendar-window-hook 'mark-diary-entries)
@@ -69,7 +64,8 @@
   (setq holiday-general-holidays nil)     ; get rid of too U.S.-centric holidays
   (setq holiday-hebrew-holidays nil)      ; get rid of religious holidays
   (setq holiday-islamic-holidays nil)     ; get rid of religious holidays
-  (setq holiday-oriental-holidays t)    ; get rid of Oriental holidays
+  (setq holiday-oriental-holidays nil)    ; get rid of Oriental holidays
+  (setq calendar-chinese-all-holidays-flag t)
   (setq holiday-solar-holidays t)
   (setq holiday-christian-holidays nil)
   (setq calendar-christian-all-holidays-flag nil)
@@ -79,51 +75,77 @@
   ;;         ))
 
   (setq calendar-holidays ;;直接覆盖
-        '(;;公历节日
-          (holiday-fixed 1 1 "元旦")
-          (holiday-fixed 2 14 "情人节")
-          (holiday-fixed 4 1 "愚人节")
-          (holiday-float 5 0 2 "母亲节")
-          (holiday-float 6 0 3 "父亲节")
-          ;; 英国节日
-          (holiday-float 4 5 1 "Good Friday")
-          (holiday-float 4 1 2 "Easter Bank Holiday")
-          (holiday-float 5 1 1 "Early May Bank Holiday")
-          (holiday-float 6 1 1 "Spring Bank Holiday")
-          (holiday-float 8 1 4 "Summer Bank Holiday")
-          (holiday-fixed 12 25 "Christmas")
-          (holiday-fixed 12 26 "Boxing Day")
-          ;; 中国节日
-          (holiday-chinese 1 1 "春节")
-          (holiday-chinese 1 2 "春节")
-          (holiday-chinese 1 3 "春节")
-          (holiday-chinese 1 15 "元宵节")
-          (holiday-chinese 7 7 "七夕")
-          (holiday-chinese 8 15 "中秋节")
-          (holiday-chinese 5 5 "端午节")
-          ;; Need `cal-china-x.el'
-          ;; (holiday-solar-term "清明" "清明节")
-          (holiday-fixed 3 8 "妇女节")
-          (holiday-fixed 5 1 "劳动节")
-          (holiday-fixed 6 1 "儿童节")
-          (holiday-fixed 9 10 "教师节")
-          (holiday-fixed 10 1 "国庆节")
-          (holiday-fixed 10 2 "国庆节")
-          (holiday-fixed 10 3 "国庆节")
-          ;; 生日纪念日 -- 家人,朋友
-          (holiday-fixed 2 13 "我的生日")
-          (holiday-fixed 12 05 "老婆生日")
-          (holiday-fixed 7 28 "牛牛生日")
-          (holiday-fixed 10 10 "爸爸生日")
-          (holiday-fixed 6 9 "妈妈生日")
-          (holiday-fixed 1 20 "岳父生日")
-          (holiday-fixed 1 19 "岳母生日")
-          (holiday-fixed 1 8 "结婚纪念日")
-          ))
+        '(;;中国法定休息日
+          (holiday-fixed  1  1  "元旦")
+          (holiday-fixed  5  1  "劳动节")
+          (holiday-fixed 10  1  "国庆节")
+          (holiday-chinese  1  1  "春节")
+          (holiday-chinese  1 15  "元宵节")
+          ;; (holiday-chinese  3 24  "清明节") ;; need solar-term
+          (holiday-chinese  5  5  "端午节")
+          (holiday-chinese  8 15  "中秋节")
+  
+          ;; 中国传统纪念日
+          (holiday-fixed  3  8  "妇女节")
+          ;; (holiday-fixed  5  4  "青年节")
+          (holiday-fixed  6  1  "儿童节")
+          (holiday-fixed  9 10  "教师节")
+          (holiday-chinese  7  7  "七夕节")
+          (holiday-chinese  9  9  "重阳节")
 
-  ;;------------------------------------------------------------------
-  ;; cal-china-x ;; 农历扩展 BUG: 使用后calendar崩溃
-  ;; (require 'cal-china-x)
+          ;; 中国节日
+          ;; (holiday-chinese 1 1 "春节")
+          ;; (holiday-chinese 1 15 "元宵节")
+          ;; (holiday-chinese 7 7 "七夕")
+          ;; (holiday-chinese 8 15 "中秋节")
+          ;; (holiday-chinese 5 5 "端午节")
+          ;; ;; need `cal-china-x.el'
+          ;; ;; (holiday-solar-term "清明" "清明节")
+          ;; (holiday-fixed 3 8 "妇女节")
+          ;; (holiday-fixed 5 1 "劳动节")
+          ;; (holiday-fixed 6 1 "儿童节")
+          ;; (holiday-fixed 9 10 "教师节")
+          ;; (holiday-fixed 10 1 "国庆节")
+
+          ;; 英国法定休息日
+          ;; (holiday-float  4  5  1 "Good Friday")
+          ;; (holiday-float  4  1  2 "Easter Bank Holiday")
+          ;; (holiday-float  5  1  1 "Early May Bank Holiday")
+          ;; (holiday-float  6  1  1 "Spring Bank Holiday")
+          ;; (holiday-float  8  1  4 "Summer Bank Holiday")
+          ;; (holiday-fixed 12 25    "Christmas")
+          ;; (holiday-fixed 12 26    "Boxing Day")
+          
+          ;; 西方传统纪念日
+          (holiday-fixed  2 14    "情人节")
+          (holiday-fixed  4  1    "愚人节")
+          (holiday-float  5  0  2 "母亲节")
+          (holiday-float  6  0  3 "父亲节")
+
+          ;; 生日纪念日 -- 家人,朋友
+          (holiday-fixed  2 13  "我的生日")
+          (holiday-fixed 12  5  "老婆生日")
+          (holiday-fixed  7 28  "儿子生日")
+          (holiday-fixed 10 10  "爸爸生日")
+          (holiday-fixed  6  9  "妈妈生日")
+          ;; (holiday-fixed 1 20 "岳父生日")
+          ;; (holiday-fixed 1 19 "岳母生日")
+          (holiday-fixed  1   8 "结婚纪念日")
+          ))
+  ;;------------------------------------------------------
+  ;; Chinese calendar
+
+  (require 'cal-china)
+  (setq calendar-chinese-celestial-stem
+        ["甲" "乙" "丙" "丁" "戊" "己" "庚" "辛" "壬" "癸"])
+  (setq calendar-chinese-terrestrial-branch
+        ["子" "丑" "寅" "卯" "辰" "巳" "午" "未" "申" "酉" "戌" "亥"])
+
+  ;; cal-china-x
+  ;; BUG: need to be fixed
+  ;; (when (try-require 'cal-china-x)
+  ;;   (cal-china-x-setup))
+    
   ;; (setq holiday-xy-holidays
   ;;       '(;;公历节日
   ;;         (holiday-fixed 1 1 "元旦")

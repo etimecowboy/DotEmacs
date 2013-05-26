@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-16 Wed 00:22 by xin on S13>
+;; Time-stamp: <2013-05-26 Sun 15:59 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired.el'
 ;; Author:       Xin Yang
@@ -98,9 +98,10 @@ will remain open and unsaved."
 
   ;; Press `T' in dired mode to compress a dir or decompress a .tar.gz
   ;; NOTE: not work in Windows
-  (try-require 'dired-tar)
+  ;; BUG: strange compile error.
+  ;; (try-require 'dired-tar)
 
-  (try-require 'thumb)
+  ;; (try-require 'thumb)
 
   (message "* ---[ dired post-load configuration is complete ]---"))
 

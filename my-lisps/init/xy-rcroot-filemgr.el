@@ -135,7 +135,7 @@
 
 
 ;;** Sunrise commander; file manager
-;; BUG: NOT work properly with other dired lisps. Removed.
+;; FIXME: wrong color display
 ;; Check (@url :file-name "http://www.emacswiki.org/emacs/Sunrise_Commander_Tips" :display "emacswiki")
 (eval-after-load "sunrise-commander" '(sunrise-postload))
 (global-set-key (kbd "C-x J") 'sunrise)
@@ -203,28 +203,28 @@
         ("C-x 0" xy/magit-q)
         ("C-x K" xy/magit-q)
         ))))
-(global-set-key (kbd "<f11> g") 'magit-status)
-(global-set-key (kbd "<f11> w") 'xy/magit-wip-start)
+(global-set-key (kbd "<f12> g") 'magit-status)
+(global-set-key (kbd "<f12> w") 'xy/magit-wip-start)
 
 ;;*** diff-git
 ;; NOTE: magit is good enough
-;; (eval-after-load "diff-git"
-;;   '(progn
-;;      (diff-git-postload)
-;;      (eal-define-keys 'vc-prefix-map
-;;                       `(("[" diff-git-diff-unstaged)
-;;                         ("]" diff-git-diff-staged)))
-;;      (eal-define-keys 'diff-mode-map
-;;                       `(("C-c M-v" diff-git-buffer-stage)
-;;                         ("C-c C-v" diff-git-diff-staged)))
-;;      (define-key diff-mode-shared-map "g" 'diff-git-update-current-buffer)))
-;; (global-set-key (kbd "<f11> u") 'diff-git-diff-unstaged)
-;; (global-set-key (kbd "<f11> s") 'diff-git-diff-staged)
+(eval-after-load "diff-git"
+  '(progn
+     (diff-git-postload)
+     (eal-define-keys 'vc-prefix-map
+                      `(("[" diff-git-diff-unstaged)
+                        ("]" diff-git-diff-staged)))
+     (eal-define-keys 'diff-mode-map
+                      `(("C-c M-v" diff-git-buffer-stage)
+                        ("C-c C-v" diff-git-diff-staged)))
+     (define-key diff-mode-shared-map "g" 'diff-git-update-current-buffer)))
+(global-set-key (kbd "<f12> u") 'diff-git-diff-unstaged)
+(global-set-key (kbd "<f12> s") 'diff-git-diff-staged)
 
-;;;*** mo-git-blame
-;; (eval-after-load "mo-git-blame" '(mo-git-blame-postload))
-;; (global-set-key (kbd "<f11> c") 'mo-git-blame-current)
-;; (global-set-key (kbd "<f11> f") 'mo-git-blame-file)
+;;*** mo-git-blame
+(eval-after-load "mo-git-blame" '(mo-git-blame-postload))
+(global-set-key (kbd "<f12> c") 'mo-git-blame-current)
+(global-set-key (kbd "<f12> f") 'mo-git-blame-file)
 
 
 ;;** diff-hl

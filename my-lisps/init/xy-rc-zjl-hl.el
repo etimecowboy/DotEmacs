@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 21:01 by xin on p5q>
+;; Time-stamp: <2013-05-25 Sat 22:11 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-zjl-hl.el'
 ;; Author:       Xin Yang
@@ -23,11 +23,6 @@
   (setq zjl-hl-c++-mode-enable-flag t)
   (zjl-hl-enable-global-all-modes)
 
-  (message "* ---[ zjl-hl post-load configuration is complete ]---"))
-
-;;;###autoload
-(defun zjl-hl-face-settings ()
-  "Face settings for `zjl-hl'."
   (custom-set-faces
    ;; '(zjl-elisp-hl-function-call-face
    ;;      ((((class grayscale) (background light))
@@ -76,7 +71,7 @@
        (:foreground "Green" :weight bold))))
    '(zjl-hl-parameters-reference-face
      ((((class color) (background dark))
-       (:foreground "Yellow" :weight bold))))))
+       (:foreground "Yellow" :weight bold)))))
 
   ;; (custom-set-faces
   ;;  '(zjl-hl-function-call-face
@@ -146,5 +141,7 @@
   ;;       zjl-hl-parameters-reference-face 'font-lock-variable-name-face
   ;;       zjl-hl-member-reference-face 'font-lock-variable-name-face
   ;;       zjl-elisp-hl-setq-face 'font-lock-keyword-face))
+
+  (message "* ---[ zjl-hl post-load configuration is complete ]---"))
 
 (provide 'xy-rc-zjl-hl)

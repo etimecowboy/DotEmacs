@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-17 Fri 22:23 by xin on S13>
+;; Time-stamp: <2013-05-26 Sun 15:25 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -379,6 +379,16 @@ like `progn'. See also `with-temp-buffer'."
   "STR1 equal ignore case to STR2 or not."
   (string= (downcase str1) (downcase str2)))
 
+
+
+;; REF: (@url :file-name "http://milkbox.net/note/single-file-master-emacs-configuration/" :display "By Donald Curtis (Milkypostman, the proprietor of the Melpa archive)")
+
+;;;###autoload
+(defmacro After (mode &rest body)
+  "`eval-after-load' MODE evaluate BODY."
+  (declare (indent defun))
+  `(eval-after-load ,mode
+     '(progn ,@body)))
 
 
 ;;* Emacs auto font selection for different OS
@@ -1307,21 +1317,19 @@ The process is:
   ;; (xy/install-lisps (concat my-local-lisp-path "/apel"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/flim"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/semi"))
-  (xy/install-lisps (concat my-local-lisp-path "/cc-mode-5.32.3"))
+  ;; (xy/install-lisps (concat my-local-lisp-path "/cc-mode-5.32.3"))
   (xy/install-lisps (concat my-local-lisp-path "/command-log-mode"))
   (xy/install-lisps (concat my-local-lisp-path "/dea"))
-  (xy/install-lisps (concat my-local-lisp-path "/eim-2.4"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/elib-1.0"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/mule-ucs-20061127-1/lisp"))
-  (xy/install-lisps (concat my-local-lisp-path "/emacs-w3m/shimbun"))
-  (xy/install-lisps (concat my-local-lisp-path "/emacs-w3m"))
+  ;; (xy/install-lisps (concat my-local-lisp-path "/emacs-w3m/shimbun"))
+  ;; (xy/install-lisps (concat my-local-lisp-path "/emacs-w3m"))
   (xy/install-lisps (concat my-local-lisp-path "/eim-2.4"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/google-weather-el"))
   (xy/install-lisps (concat my-local-lisp-path "/ibus-el-0.3.2"))
   (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
   (xy/install-lisps (concat my-local-lisp-path "/matlab-emacs"))
   (xy/install-lisps (concat my-local-lisp-path "/mew-6.5"))
-  (xy/install-lisps (concat my-local-lisp-path "/mo-git-blame"))
 
   ;; git submodules
   ;; (xy/install-lisps (concat my-git-lisp-path "/anything-config"))

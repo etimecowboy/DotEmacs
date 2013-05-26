@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-12 Sun 10:21 by xin on S13>
+;; Time-stamp: <2013-05-26 Sun 15:26 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -117,7 +117,7 @@
 
 ;;*** cc-mode
 ;; REF:  (@url :file-name "http://cc-mode.sourceforge.net/" :display "Source")
-(xy/load-autoloads (concat my-local-lisp-path "/cc-mode-5.32.3"))
+;; (xy/load-autoloads (concat my-local-lisp-path "/cc-mode-5.32.3"))
 
 ;;*** cedet
 ;; REF: (@url :file-name "http://cedet.sourceforge.net/" :display "CVS Source")
@@ -147,10 +147,11 @@
 ;; REF: (@url :file-name "http://emacs-w3m.namazu.org/index-en.html" :display "CVS Source")
 ;; NOTE: w3m can work better on CJK encodings with these lisp libs.
 ;; Current CVS lisp `w3m-ucs.el' cause error when byte compiled.
+;; NOTE: use ELPA package instead, remember to remove `w3m-ucs.el'
 ;; (xy/load-autoloads (concat my-local-lisp-path "/elib-1.0"))
 ;; (xy/load-autoloads (concat my-local-lisp-path "/mule-ucs-20061127-1/lisp"))
-(xy/load-autoloads (concat my-local-lisp-path "/emacs-w3m/shimbun"))
-(xy/load-autoloads (concat my-local-lisp-path "/emacs-w3m"))
+;; (xy/load-autoloads (concat my-local-lisp-path "/emacs-w3m/shimbun"))
+;; (xy/load-autoloads (concat my-local-lisp-path "/emacs-w3m"))
 
 ;;*** google-weather-el (Inactive git source)
 ;; REF: (@url :file-name "http://git.naquadah.org/?p=google-weather-el.git;a=summary" :display "Git Source")

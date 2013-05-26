@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-14 Tue 09:47 by xin on S13>
+;; Time-stamp: <2013-05-21 Tue 01:08 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-net.el'
 ;; Author:       Xin Yang
@@ -90,18 +90,18 @@
 
 ;;* babel
 ;; 网络翻译接口
-(autoload 'babel "babel"
-   "Use a web translation service to translate the message MSG." t)
-(autoload 'babel-region "babel"
-  "Use a web translation service to translate the current region." t)
-(autoload 'babel-as-string "babel"
-  "Use a web translation service to translate MSG, returning a string." t)
-(autoload 'babel-buffer "babel"
-  "Use a web translation service to translate the current buffer." t)
-(eval-after-load "babel" '(babel-postload))
-;; (global-set-key [f12] 'babel)
-(global-set-key (kbd "<f12> r") 'babel-region)
-;; (global-set-key (kbd "S-<f12>") 'babel-buffer)
+;; (autoload 'babel "babel"
+;;    "Use a web translation service to translate the message MSG." t)
+;; (autoload 'babel-region "babel"
+;;   "Use a web translation service to translate the current region." t)
+;; (autoload 'babel-as-string "babel"
+;;   "Use a web translation service to translate MSG, returning a string." t)
+;; (autoload 'babel-buffer "babel"
+;;   "Use a web translation service to translate the current buffer." t)
+;; (eval-after-load "babel" '(babel-postload))
+;; ;; (global-set-key [f12] 'babel)
+;; (global-set-key (kbd "<f12> r") 'babel-region)
+;; ;; (global-set-key (kbd "S-<f12>") 'babel-buffer)
 
 
 

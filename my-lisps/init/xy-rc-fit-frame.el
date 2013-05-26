@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-11 Tue 19:46 by xin on p5q>
+;; Time-stamp: <2013-05-25 Sat 23:05 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-fit-frame.el'
 ;; Author:       Xin Yang
@@ -32,6 +32,13 @@
   ;; (global-set-key [vertical-line down-mouse-1]
   ;;                 'fit-frame-or-mouse-drag-vertical-line)
 
+  (when window-system
+    (add-hook 'after-make-frame-functions 'fit-frame)
+    (add-hook 'temp-buffer-show-hook
+              'fit-frame-if-one-window 'append)
+    (add-hook 'vc-find-file-hook 'fit-frame)
+    (add-hook 'epa-file-find-file-hook 'fit-frame))
+  
   (message "* ---[ fit-frame post-load configuration is complete ]---"))
 
 (provide 'xy-rc-fit-frame)

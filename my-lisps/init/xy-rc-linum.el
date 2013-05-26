@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-13 Sun 18:52 by xin on S13>
+;; Time-stamp: <2013-05-25 Sat 22:20 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-linum.el'
 ;; Author:       Xin Yang
@@ -25,15 +25,12 @@
   ;; linum+
   ;; REF: (@url :file-name "http://emacser.com/linum-plus.htm" :display "emacser")
   (try-require 'linum+)
-  (message "* ---[ linum post-load configuration is complete ]---"))
+  ;; hlinum
+  (try-require 'hlinum)
 
-;; ;;;###autoload
-;; (defun linum-face-settings ()
-;;   "Face settings for `linum'."
-;;   (custom-set-faces
-;;    '(linum
-;;      ((((background dark))
-;;        :foreground "cyan")
-;;       (t :foreground "gray")))))
+  (custom-set-faces
+   '(linum ((t (:height 0.7)))))
+
+  (message "* ---[ linum post-load configuration is complete ]---"))
 
 (provide 'xy-rc-linum)
