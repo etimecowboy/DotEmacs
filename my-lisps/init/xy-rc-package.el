@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-06-05 Wed 08:03 by xin on S13>
+;; Time-stamp: <2013-06-25 Tue 04:00 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -106,7 +106,7 @@ re-downloaded in order to locate PACKAGE."
           ("marmalade" . "http://marmalade-repo.org/packages/")
           ("melpa" . "http://melpa.milkbox.net/packages/")
           ("org" . "http://orgmode.org/elpa/")
-          ;; ("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
+          ("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
           ))
 
   ;; ;; NOTE: there is an enhancement lisp `melpa.el' for the
