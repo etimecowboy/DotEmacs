@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-06-25 Tue 05:29 by xin on S13>
+;; Time-stamp: <2013-06-25 Tue 07:52 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -248,7 +248,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'mag-menu)
   ;; (require-package 'splitter) ;; just use basic split functions
   (require-package 'magit)
-  (require-package 'magithub)
+  ;; (require-package 'magithub) ;; not useful
   (require-package 'markdown-mode)
   (require-package 'marmalade)
   (require-package 'marmalade-test)
