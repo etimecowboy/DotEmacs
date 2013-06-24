@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-06-25 Tue 02:33 by xin on S13>
+;; Time-stamp: <2013-06-25 Tue 05:33 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -920,7 +920,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
              ("WenQuanYi Micro Hei Mono" . 1.2)
              ("文泉驿正黑" . 1.2)
              ("WenQuanYi Zen Hei" . 1.2)))
-     (qiang-set-font xy:english-fonts 10.5 xy:chinese-fonts))
+     (qiang-set-font xy:english-fonts 9 xy:chinese-fonts))
     (Windows ;; good (Monaco/DejaVu Sans Mono, Yahei, 9/11, 1.22/0.6)
      (setq face-font-rescale-alist
            '(("微软雅黑" . 1.2)
@@ -1330,7 +1330,8 @@ The process is:
   (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
   (xy/install-lisps (concat my-local-lisp-path "/matlab-emacs"))
   (xy/install-lisps (concat my-local-lisp-path "/mew-6.5"))
-  (xy/install-lisps (concat my-local-lisp-path "/auctex"))
+  (xy/install-lisps (concat my-local-lisp-path "/auctex-11.87"))
+  (xy/install-lisps (concat my-local-lisp-path "/elscreen"))
 
   ;; git submodules
 

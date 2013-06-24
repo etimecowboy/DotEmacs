@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-06-25 Tue 04:00 by xin on S13>
+;; Time-stamp: <2013-06-25 Tue 05:29 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -198,7 +198,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'edit-server);; I use firefox not chrome
   (require-package 'eimp)
   (require-package 'elpy)
-  (require-package 'elscreen)
+  ;; (require-package 'elscreen)   ;; outdated, new version moved to lisps folder
   (require-package 'emms)
   (require-package 'ess)
   (require-package 'ethan-wspace)

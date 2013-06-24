@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-06-25 Tue 02:30 by xin on S13>
+;; Time-stamp: <2013-06-25 Tue 05:38 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -185,6 +185,11 @@
 ;;;*** mo-git-blame
 ;; REF: (@url :file-name "https://github.com/mbunkus/mo-git-blame" :display "Git Source")
 ;; (xy/load-autoloads (concat my-local-lisp-path "mo-git-blame"))
+
+;;*** elscreen
+;; REF: (@url :file-name "https://github.com/knu/elscreen" :display "Git Source")
+;; NOTE: `elscreen-gf.el' and `elscreen-wl.el' are removed
+(xy/load-autoloads (concat my-local-lisp-path "elscreen"))
 
 ;;** Rebuild Emacs configuration
 (global-set-key (kbd "C-x B") 'xy/emacs-build)
