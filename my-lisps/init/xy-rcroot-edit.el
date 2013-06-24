@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-26 Sun 16:07 by xin on S13>
+;; Time-stamp: <2013-06-22 Sat 15:38 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -147,7 +147,7 @@
 
 ;;* Fast select regions
 
-(transient-mark-mode 1)
+(transient-mark-mode 1)   ;; Reqired when using org-mode
 (delete-selection-mode 1)
 ;; (apply-args-list-to-fun
 ;;  'def-remember-command

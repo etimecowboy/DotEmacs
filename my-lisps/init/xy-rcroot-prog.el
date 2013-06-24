@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-22 Wed 12:03 by xin on S13>
+;; Time-stamp: <2013-06-05 Wed 09:43 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -767,6 +767,12 @@
      ))
 ;; (eval-after-load "gdb-mi" '(gud-postload))
 
+
+
+;;* Python development settings
+
+(eval-after-load "elpy" '(elpy-postload))
+(global-set-key (kbd "<f6> P") 'xy/elpy-start)
 
 
 ;;* IDE settings

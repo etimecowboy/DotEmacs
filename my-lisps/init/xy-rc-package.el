@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-26 Sun 16:41 by xin on S13>
+;; Time-stamp: <2013-06-05 Wed 08:03 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -179,7 +179,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'color-moccur)
   (require-package 'color-theme-sanityinc-solarized)
   ;; (require-package 'color-theme-sanityinc-tomorrow) ;; don't like it
-  (require-package 'columnify)
+  ;; (require-package 'columnify) ;; never used
   (require-package 'cperl-mode)
   (require-package 'css-mode)
   (require-package 'ctags)
@@ -193,10 +193,11 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'diff-hl)
   (require-package 'diminish)
   (require-package 'dired+)
-  (require-package 'doc-mode)
+  ;; (require-package 'doc-mode)   ;; never used
   ;; (require-package 'dropbox)    ;; never used
-  (require-package 'edit-server)
+  ;; (require-package 'edit-server);; I use firefox not chrome
   (require-package 'eimp)
+  (require-package 'elpy)
   (require-package 'elscreen)
   (require-package 'emms)
   (require-package 'ess)

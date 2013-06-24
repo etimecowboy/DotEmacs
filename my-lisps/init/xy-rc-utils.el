@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-26 Sun 15:25 by xin on S13>
+;; Time-stamp: <2013-06-25 Tue 02:33 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1312,8 +1312,8 @@ The process is:
   ;; downloaded lisps
   (xy/install-lisps my-local-lisp-path)
   (xy/install-lisps (concat my-local-lisp-path "/ac-math"))
-  (xy/recompile-dir
-   (concat my-local-lisp-path "/auctex") 'with-subdirs 'recursive)
+  ;; (xy/recompile-dir
+  ;;  (concat my-local-lisp-path "/auctex-11.87") 'with-subdirs 'recursive)
   ;; (xy/install-lisps (concat my-local-lisp-path "/apel"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/flim"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/semi"))
@@ -1330,11 +1330,9 @@ The process is:
   (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
   (xy/install-lisps (concat my-local-lisp-path "/matlab-emacs"))
   (xy/install-lisps (concat my-local-lisp-path "/mew-6.5"))
+  (xy/install-lisps (concat my-local-lisp-path "/auctex"))
 
   ;; git submodules
-  ;; (xy/install-lisps (concat my-git-lisp-path "/anything-config"))
-  ;; (xy/install-lisps (concat my-git-lisp-path "/anything-config/extensions"))
-  ;; (xy/install-lisps (concat my-git-lisp-path "/anything-config/contrib"))
 
   ;; ELPA lisps
   (xy/recompile-dir my-elpa-lisp-path 'with-subdirs 'recursive)
@@ -1349,7 +1347,7 @@ The process is:
 ;;** A fake of closing Emacs in Windows
 ;;;###autoload
 (defun xy/done ()
-  "Close a buffer and make Emacs frame invisible.\
+  "Save buffers and make Emacs frame invisible.\
 Improved C-x C-c."
   (interactive)
   (save-some-buffers)

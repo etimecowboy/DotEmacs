@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-25 Sat 22:54 by xin on S13>
+;; Time-stamp: <2013-05-29 Wed 07:55 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -295,8 +295,8 @@
 (eval-after-load "outline" '(diminish 'outline-minor-mode))
 (eval-after-load "eldoc" '(diminish 'eldoc-mode))
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
-(eval-after-load "ethan-wspace" '(diminish 'ethan-wspace-mode))
-(eval-after-load "ws-trim" '(diminish 'ws-trim-mode))
+;; (eval-after-load "ethan-wspace" '(diminish 'ethan-wspace-mode))
+;; (eval-after-load "ws-trim" '(diminish 'ws-trim-mode))
 (eval-after-load "skeleton-complete" '(diminish 'skeleton-complete-mode))
 (eval-after-load "auto-dim-other-buffers" '(diminish 'auto-dim-other-buffers-mode))
 (eval-after-load "fic-ext-mode" '(diminish 'fic-ext-mode))

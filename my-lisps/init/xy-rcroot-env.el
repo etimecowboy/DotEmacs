@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-26 Sun 15:26 by xin on S13>
+;; Time-stamp: <2013-06-25 Tue 02:30 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -112,7 +112,7 @@
 ;;            `~/.emacs.d/lisps/auctex/style/url.el'
 ;;          conflicts with the standard `url.el'.
 (setq load-path (remove
-                 (expand-file-name "~/.emacs.d/lisps/auctex/style")
+                 (expand-file-name "~/.emacs.d/lisps/auctex-11.87/style")
                  load-path))
 
 ;;*** cc-mode
