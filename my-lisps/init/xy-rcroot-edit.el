@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-06-22 Sat 15:38 by xin on S13>
+;; Time-stamp: <2013-06-30 Sun 17:37 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -38,8 +38,9 @@
 
 ;;** no-easy-keys
 ;; be a Emacser!
-(when (try-require 'no-easy-keys)
-  (no-easy-keys 1))
+;; NOTE: may cause problem in some modes, such as org-mode
+;; (when (try-require 'no-easy-keys)
+;;   (no-easy-keys 1))
 
 
 ;;** ethan-wspace

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-06-24 Mon 23:53 by xin on S13>
+;; Time-stamp: <2013-06-30 Sun 17:30 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -212,6 +212,9 @@ If html-file-name is not given, read it from minibuffer."
   (setq org-startup-folded nil)
   (setq org-cycle-include-plain-lists t)
 
+  ;;    Check if in invisible region before inserting or deleting a character
+  (setq org-catch-invisible-edits 'show-and-error)
+  
   ;;==================================================================
   ;; GTD system settings
   ;; NOTE: set in local custom file for my privacy
