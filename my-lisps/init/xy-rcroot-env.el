@@ -183,7 +183,7 @@
 ;; REF: (@url :file-name "https://gist.github.com/509761" :display "kinjo's original Git Source")
 
 ;;;*** mo-git-blame
-p;; REF: (@url :file-name "https://github.com/mbunkus/mo-git-blame" :display "Git Source")
+;; REF: (@url :file-name "https://github.com/mbunkus/mo-git-blame" :display "Git Source")
 ;; (xy/load-autoloads (concat my-local-lisp-path "mo-git-blame"))
 
 ;;*** elscreen
