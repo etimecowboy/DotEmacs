@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-06-25 Tue 07:52 by xin on S13>
+;; Time-stamp: <2013-07-01 Mon 16:19 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -188,7 +188,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'dash)
   (require-package 'deft)
   ;; (require-package 'desktop)
-  (require-package 'dictionary)
+  ;; (require-package 'dictionary)  ;; outdated, use github version
   (require-package 'diff-git)
   (require-package 'diff-hl)
   (require-package 'diminish)
