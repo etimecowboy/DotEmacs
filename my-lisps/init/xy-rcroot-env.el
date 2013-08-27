@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-07-05 Fri 10:14 by xin on vmlmde>
+;; Time-stamp: <2013-08-26 Mon 15:25 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -124,8 +124,8 @@
 ;; NOTE: CEDET can be installed by its `cedet-built.el' script, and
 ;; will be load when `M-x xy/cedet-start' which is a function write
 ;; by myself.
-;; ;; 绂佹����emacs24.1鍐呴儴鑷����甫鐨刢edet
-;; ;; C-h v load-path 妫�鏌ユ槸鍚﹀幓鎺塭macs鍐呯疆cedet
+;; ;; 禁止emacs24.1内部自带的cedet
+;; ;; C-h v load-path 检查是否去掉emacs内置cedet 
 ;; (setq load-path (remove "/usr/local/share/emacs/cedet" load-path))
 ;; (setq load-path (remove "/usr/local/share/emacs/24.1/lisp/cedet"
 ;;                         load-path))
@@ -378,8 +378,8 @@
 ;; (global-set-key (kbd "<f1>") 'help-on-click/key)
 
 ;;*** describe-symbol
-;; ahei 闈炲父鏂逛究鐨勬煡鐪媏macs甯����姪鐨勬彃浠�, 娌℃湁 `help+' 鏂逛究浣嗘槸鏈変簺寰堝ソ鐨�
-;; 鍔熻兘
+;; ahei 非常方便的查看emacs帮助的插件, 没有 `help+' 方便但是有些很好的
+;; 功能 
 (eal-define-keys `(emacs-lisp-mode-map
 		   lisp-interaction-mode-map
 		   completion-list-mode-map
@@ -447,12 +447,12 @@ Toggle keyboard command logging of whole emacs.
 ;; Time string format
 (setq system-time-locale "C")
 
-;; 璁剧疆 sentence-end 鍙����互璇嗗埆涓����枃鏂����彞銆�
+;; 设置 sentence-end 可以识别中文断句。
 (setq sentence-end
-      "\\([銆傦紒锛焆\\|鈥︹�����\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
+      "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*") 
 (setq sentence-end-double-space nil)
 
-;; 鏀����寔涓����枃鍒嗚瘝鐨凪-f涓嶮-b
+;; 支持中文分词的M-f与M-b
 (try-require 'ws)
 
 
@@ -476,13 +476,13 @@ Toggle keyboard command logging of whole emacs.
 
 (Windows
 
- ;; NOTE: gbk-dos 鏄����腑鏂囩増 Windows 涓嬫枃浠跺悕锛屽懡浠よ����鍜屽師鐢� Windows 绋嬪簭
- ;; 鍐呯爜鐨勯粯璁ょ紪鐮併�俙default-file-name-coding-system',
- ;; `default-terminal-coding-system' 鍜�
- ;; `default-process-coding-system' 搴旇����閮借����缃����垚 gbk-dos銆備絾鏄����粯璁ゅ����鐞�
- ;; utf-8 缂栫爜鏂囦欢鐨勫寘濡� `magit', `diff-git' 绛夎皟鐢� Windows 鐗堟湰鐨� git锛�
- ;; 涓����枃鏄剧ず浼氫贡鐮併�備负浜嗗拰 Linux 缁熶竴浣跨敤 utf-8-unix 缂栫爜锛屽氨寮哄埗璁剧疆浜嗐��
- ;; magit 鍏蜂綋瑙ｅ喅鏂规硶鍙傝���� magit 閰嶇疆銆�
+ ;; NOTE: gbk-dos 是中文版 Windows 下文件名，命令行和原生 Windows 程序
+ ;; 内码的默认编码。`default-file-name-coding-system',
+ ;; `default-terminal-coding-system' 和
+ ;; `default-process-coding-system' 应该都设置成 gbk-dos。但是默认处理
+ ;; utf-8 编码文件的包如 `magit', `diff-git' 等调用 Windows 版本的 git，
+ ;; 中文显示会乱码。为了和 Linux 统一使用 utf-8-unix 编码，就强制设置了。
+ ;; magit 具体解决方法参见 magit 配置。
 
  (setq default-file-name-coding-system 'gbk-dos)
  (setq default-terminal-coding-system 'utf-8-unix)
@@ -505,8 +505,9 @@ Toggle keyboard command logging of whole emacs.
 
 
 ;;** Chinese input method
-;; NOTE: 鐜板湪 Emacs 涓嬫病浠�涔堝ソ鐨勪腑鏂囪緭鍏ユ硶锛岃繕鏄����敤鎿嶄綔绯荤粺鑷����甫鐨勮緭鍏ユ硶銆�
-;;       闄ら潪涓嶅湪鍥惧舰绯荤粺涓嬶紝鎵嶇敤 Emacs 鍐呯疆鐨勮緭鍏ユ硶鎴� eim銆�
+;; NOTE: 现在 Emacs 下没什么好的中文输入法，还是用操作系统自带的输入法。
+;;       除非不在图形系统下，才用 Emacs 内置的输入法或 eim。
+
 ;;*** eim
 ;; another Emacs input-method
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/InputMethods" :display "emacswiki")
@@ -522,10 +523,10 @@ Toggle keyboard command logging of whole emacs.
 ;;   2. Then put the following line at the beginning of a file:
 ;;       -*- input-activate: t -*-
 ;;   3. The input method will be activated for this file as soon loaded.
-;;   濡備綍杓稿叆绻侀珨:
-;;      鎶� py.txt, otherpy.txt,  pychr.txt 鐢ㄨ粺浠惰綁鎴愪簡绻侀珨锛岀劧寰岄噸鏂�
-;;   鎵撻枊 emacs銆傞�欐ǎ浣跨敤杌熶欢鑷����嫊杞夋彌鑲����畾鏄����笉绮剧⒑鐨勶紝鏈変簺鍦版柟鏈冨嚭鐝鹃尟
-;;   瑾ゃ�傛瘮濡�"纰艰〃"琚����悶鎴愪簡"纰奸尪"銆�
+;;   如何輸入繁體:
+;;      把 py.txt, otherpy.txt,  pychr.txt 用軟件轉成了繁體，然後重新
+;;   打開 emacs。這樣使用軟件自動轉換肯定是不精確的，有些地方會出現錯
+;;   誤。比如"碼表"被搞成了"碼錶"。 
 (eval-after-load "eim"
   '(progn
      (eim-postload)
@@ -586,15 +587,15 @@ Toggle keyboard command logging of whole emacs.
 
 ;;* Emacs server
 
-;; Emacs-21 鍜屼互鍓嶇殑鐗堟湰瑕佺敤 gnuserv
+;; Emacs-21 和以前的版本要用 gnuserv 
 ;; (if is-before-emacs-21
 ;;     (progn
 ;;       ;; gnuserv
 ;;       (require 'gnuserv-compat)
 ;;       (gnuserv-start)
-;;       ;; 鍦ㄥ綋鍓峟rame鎵撳紑
+;;       ;; 在当前frame打开
 ;;       (setq gnuserv-frame (selected-frame))
-;;       ;; 鎵撳紑鍚庤����emacs璺冲埌鍓嶉潰鏉�
+;;       ;; 打开后让emacs跳到前面来
 ;;       (setenv "GNUSERV_SHOW_EMACS" "1")))
 
 
@@ -607,9 +608,9 @@ Toggle keyboard command logging of whole emacs.
 
 
 
-;; Emacs 23.2 浠ュ悗杩樻彁渚涗簡 `Emacs --daemon' 妯″紡锛屽姞蹇����惎鍔ㄣ��
-;; Windows 涓嬩娇鐢ㄦ垜瀹氫箟鐨� `xy/done' 鍑芥暟涔熻兘杈惧埌绫讳技鐨勬晥鏋滐紝
-;; 鐢� `C-x C-c' 闅愯棌 Emacs frame
+;; Emacs 23.2 以后还提供了 `Emacs --daemon' 模式，加快启动。
+;; Windows 下使用我定义的 `xy/done' 函数也能达到类似的效果，
+;; 用 `C-x C-c' 隐藏 Emacs frame
 ;; Define real exit-emacs
 (global-set-key (kbd "C-x M-c") 'save-buffers-kill-emacs)
 ;; Redefine `C-x C-c'

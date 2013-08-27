@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-07-05 Fri 10:16 by xin on vmlmde>
+;; Time-stamp: <2013-08-26 Mon 15:13 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -777,7 +777,20 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;            (looking-at (concat "\\(?:"  regexp "\\)\\'")))))
 ;;        (not (null pos))))
 ;;        ))
+
+;;** `make-local-hook' for `dictionary' and etc. packages
+
+;; REF: (@url :file-name "http://lists.gnu.org/archive/html/bug-gnu-emacs/2012-03/msg00806.html" :display "Post1")
+;; REF: (@url :file-name "http://lists.gnu.org/archive/html/bug-gnu-emacs/2012-03/msg00806.html" :display "Post2")
+;; (defalias 'make-local-hook
+;;   (if (featurep 'xemacs)
+;;       'make-local-hook
+;;     'ignore))
+;; REF: (@url :file-name "http://lists.gnu.org/archive/html/bug-gnu-emacs/2012-03/msg00861.html" :display "Post3")
+(defalias 'make-local-hook 'identity)
+
 
+
 ;;* My own functions
 ;;** Different font settings
 ;;   NOTE: cannot rescale text font size.
