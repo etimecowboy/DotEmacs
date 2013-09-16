@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-18 Sat 11:56 by xin on S13>
+;; Time-stamp: <2013-09-13 Fri 01:49 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -115,8 +115,12 @@
 (revive-preload)
 (eval-after-load "revive" '(revive-postload))
 (when (try-require 'revive)
-  (add-hook 'delete-frame-hook 'save-current-configuration)
-  (add-hook 'kill-emacs-hook 'save-current-configuration))
+  (add-hook 'delete-frame-functions 'save-current-configuration)
+  (add-hook 'kill-emacs-hook 'save-current-configuration)
+  (global-set-key (kbd "C-c w s") 'save-current-configuration)
+  (global-set-key (kbd "C-c w r") 'resume)
+  (global-set-key (kbd "C-c w k") 'wipe))
+  ;; NOTE: C-u (num) to specify the window name
 
 ;; (windows-preload)
 ;; (eval-after-load "windows" '(windows-postload))
@@ -124,21 +128,11 @@
 ;;   (when window-system
 ;;     (win:startup-with-window)))
 
-(eal-define-keys-commonly
- global-map
- `(;; ("C-c w q" see-you-again)
-   ;; ("C-c w a" win-save-all-configurations)
-   ;; ("C-c w f" resume-windows)
-   ;; NOTE: C-u (num) to specify the window name
-   ("C-c w s" save-current-configuration)
-   ("C-c w r" resume)
-   ("C-c w k" wipe)))
-
 ;;** `elscreen.el'
 ;; NOTE: old versions are based on APEL, current version is not.
 (eval-after-load "elscreen" '(elscreen-postload))
-;; (elscreen-start)
-(global-set-key (kbd "<f2> s") 'elscreen-start)
+(elscreen-start)
+;; (global-set-key (kbd "<f2> s") 'elscreen-start)
 
 
 
@@ -160,10 +154,9 @@
 
 
 ;;** `desktop.el'
-;; (desktop-preload)
-(eval-after-load "desktop" '(desktop-postload))
+;; (eval-after-load "desktop" '(desktop-postload))
 ;; (desktop-save-mode 1)
-
+;; NOTE: Cannot remember window layout
 
 
 ;;** `wcy-desktop.el', light weight version `desktop.el'

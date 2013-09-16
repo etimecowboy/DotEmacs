@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-18 Sat 14:45 by xin on S13>
+;; Time-stamp: <2013-09-13 Fri 01:49 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elscreen.el'
 ;; Author:       Xin Yang
@@ -26,6 +26,10 @@
        elscreen-tab-display-control nil
        elscreen-tab-display-kill-screen t)
 
-  (message "* ---[ elscreen post-load configuration is complete ]---"))
+ ;; TODO: Keep settings in different frames
+ ;; (remove-hook 'after-make-frame-functions 'elscreen-make-frame-confs)
+ ;; (remove-hook 'delete-frame-functions 'elscreen-delete-frame-confs)
+
+ (message "* ---[ elscreen post-load configuration is complete ]---"))
 
 (provide 'xy-rc-elscreen)

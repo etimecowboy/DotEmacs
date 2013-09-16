@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-12 Sat 23:23 by xin on S13>
+;; Time-stamp: <2013-09-13 Fri 00:56 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-desktop.el'
 ;; Author:       Xin Yang
@@ -17,38 +17,20 @@
 (require 'xy-rc-utils)
 
 ;;;###autoload
-(defun desktop-preload ()
-  "Settings of `desktop' before it's been loaded."
+(defun desktop-postload ()
+  "Settings of `desktop' after it's been loaded."
 
-  (setq desktop-path '(my-var-path)
+  (setq desktop-path '("~/Dropbox/emacs/var/")
 
-        desktop-base-file-name (concat ".emacs.desktop-"
+        desktop-base-file-name (concat "desktop-"
                                        user-login-name "@"
                                        system-name "@"
                                        system-configuration)
 
-        desktop-base-lock-name (concat ".emacs.desktop.lock-"
+        desktop-base-lock-name (concat "desktop.lock-"
                                        user-login-name "@"
                                        system-name "@"
                                        system-configuration))
-
-  (message "* ---[ desktop pre-load configuration is complete ]---"))
-
-;;;###autoload
-(defun desktop-postload ()
-  "Settings of `desktop' after it's been loaded."
-
-  (setq-default desktop-path '(my-var-path)
-
-                desktop-base-file-name (concat "desktop-"
-                                               user-login-name "@"
-                                               system-name "@"
-                                               system-configuration)
-
-                desktop-base-lock-name (concat "desktop.lock-"
-                                               user-login-name "@"
-                                               system-name "@"
-                                               system-configuration))
 
   (setq desktop-buffers-not-to-save nil
         desktop-load-locked-desktop 'ask

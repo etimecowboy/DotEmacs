@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-08-26 Mon 15:13 by xin on S13>
+;; Time-stamp: <2013-09-13 Fri 02:07 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1370,11 +1370,9 @@ Improved C-x C-c."
   (save-some-buffers)
   ;; (kill-this-buffer)
   (server-edit)
-  (if window-system
-     (make-frame-invisible nil t)
-    ;; else block (terminal mode and emacs daemon is running)
-    (delete-frame)))
-
+  (when window-system (make-frame-invisible nil t))
+  ;; else block (terminal mode and emacs daemon is running)
+  (delete-frame))
 
 ;; NOTE: With this macro, `server-start', `server-force-delete', and
 ;; `emacs --daemon' works properly even when there is an emacs server

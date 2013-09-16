@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-06-30 Sun 17:30 by xin on S13>
+;; Time-stamp: <2013-09-08 Sun 23:22 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -17,6 +17,8 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
+
+
 ;; REF: (@url :file-name "http://www.mfasold.net/blog/2009/02/using-emacs-org-mode-to-draft-papers/" :display "Post")
 ;;;###autoload
 (defun org-mode-reftex-setup ()
@@ -25,6 +27,8 @@
   (and (buffer-file-name)
        (file-exists-p (buffer-file-name))
        (reftex-parse-all)))
+
+
 
 ;; REF: (@url :file-name "http://permalink.gmane.org/gmane.emacs.gnus.general/78422" :display "auto-format code block for org")
 ;;;###autoload
@@ -47,8 +51,10 @@
       (require 'pc-select)
       (copy-region-as-kill (point-min) (point-max)))))
 
+
+
 ;; 处理html输出时auto-fill带来的多余空格
-;; NOTE: It makes html file less readable
+;; NOTE: It makes html source less readable
 ;;;###autoload
 (defun xy/org-html-chinese-no-extra-space
   (&optional html-file-name)
@@ -108,6 +114,8 @@ If html-file-name is not given, read it from minibuffer."
                     (next-logical-line))))
             (save-buffer)))))))
 
+
+
 ;; REF: (@url :file-name "http://orgmode.org/worg/org-hacks.html#sec-1-3-1" :display "worg")
 ;;;###autoload
 (defun org-transpose-table-at-point ()
@@ -125,6 +133,8 @@ If html-file-name is not given, read it from minibuffer."
                   (concat "| " (mapconcat 'identity x " | " )
                           "  |\n" )) contents ""))
     (org-table-align)))
+
+
 
 (defvar xy:org-latexmk-flag nil)
 ;;;###autoload
@@ -146,14 +156,54 @@ If html-file-name is not given, read it from minibuffer."
       (setq xy:org-latexmk-flag t)
       (message "* ---[ Using `xelatex' as the LaTeX PDF exporter now ]---"))))
 
+
+
+;; REF: http://doc.norang.ca/org-mode.html
+;;;###autoload
+(defun bh/hide-other ()
+  "Hide other org trees."
+  (interactive)
+  (save-excursion
+    (org-back-to-heading 'invisible-ok)
+    (hide-other)
+    (org-cycle)
+    (org-cycle)
+    (org-cycle)))
+
+
 ;;;###autoload
 (defun org-postload ()
   "Settings of `org' after it's been loaded."
 
-  ;;==================================================================
-  ;; Some basic settings and some confliction fixes
+  ;;* Fix org and other lisp packages
 
-  ;; Locate some files
+  ;;** For Emacs daemon mode
+  ;; 为了column view能够在emacs daemon模式下正常显示
+  (defun wl-org-column-view-uses-fixed-width-face ()
+    ;; copy from org-faces.el
+    (when (fboundp 'set-face-attribute)
+      ;; Make sure that a fixed-width face is used when we have a
+      ;; column table.
+      (set-face-attribute 'org-column nil
+                          :height (face-attribute 'default :height)
+                          :family (face-attribute 'default :family))))
+  (when (and (fboundp 'daemonp) (daemonp))
+    (add-hook 'org-mode-hook
+              'wl-org-column-view-uses-fixed-width-face))
+
+  ;;** `seesion.el'
+  ;; Don't recursively display gtd files in session list
+  (add-to-list 'session-globals-exclude 'org-mark-ring)
+  ;; Don't display org agenda files
+  (add-to-list 'session-globals-exclude 'org-agenda-files)
+
+  ;;** 让链结后的空格问题
+  (setq org-activate-links '(bracket angle radio tag date footnote))
+  
+
+  
+  ;;* Locate some files
+
   (setq org-directory
         (concat my-emacs-path "/org"))
   (setq org-default-notes-file
@@ -168,34 +218,21 @@ If html-file-name is not given, read it from minibuffer."
         (concat org-directory "/org-id-locations"))
   (unless (file-exists-p org-id-locations-file)
     (shell-command (concat "touch " org-id-locations-file)))
+  (setq org-clock-persist-file
+        (concat org-directory "/org-clock-save"))
+  (unless (file-exists-p org-clock-persist-file)
+    (shell-command (concat "touch " org-clock-persist-file)))
 
-  ;;------------------------------------------------------------------
-  ;; Loaded modules
+
+
+  ;;* Some global settings
+  
+  ;;** Loaded modules
   (setq org-modules
-        '(org-bbdb org-bibtex org-crypt org-docview org-gnus
-                   org-info org-jsinfo org-mew org-w3m org-protocol))
+        '(org-bbdb org-bibtex org-crypt org-ctags org-docview org-gnus
+                   org-habit org-id org-info org-protocol org-w3m
+                   org-bookmark org-mew org-w3m org-protocol))
 
-  ;;------------------------------------------------------------------
-  ;; Fix some other lisp packages
-
-  ;; For Emacs daemon mode
-  ;; 为了column view能够在emacs daemon模式下正常显示
-  (defun wl-org-column-view-uses-fixed-width-face ()
-    ;; copy from org-faces.el
-    (when (fboundp 'set-face-attribute)
-      ;; Make sure that a fixed-width face is used when we have a
-      ;; column table.
-      (set-face-attribute 'org-column nil
-                          :height (face-attribute 'default :height)
-                          :family (face-attribute 'default :family))))
-  (when (and (fboundp 'daemonp) (daemonp))
-    (add-hook 'org-mode-hook
-              'wl-org-column-view-uses-fixed-width-face))
-
-  ;; 让链结后的空格问题
-  (setq org-activate-links '(bracket angle radio tag date footnote))
-
-  ;;------------------------------------------------------------------
   ;; (setq org-completion-use-iswitchb t)
   (setq org-completion-use-ido t)
 
@@ -215,91 +252,34 @@ If html-file-name is not given, read it from minibuffer."
   ;;    Check if in invisible region before inserting or deleting a character
   (setq org-catch-invisible-edits 'show-and-error)
   
-  ;;==================================================================
-  ;; GTD system settings
-  ;; NOTE: set in local custom file for my privacy
-  ;; agenda files
-  ;; (setq org-agenda-files '(".org" ".org"))
+
 
-  ;; For `seesion.el'
-  ;; BUG: error when load this two lines
-  ;; Don't recursively display gtd files in session list
-  (add-to-list 'session-globals-exclude 'org-mark-ring)
-  ;; Don't display org agenda files
-  (add-to-list 'session-globals-exclude 'org-agenda-files)
+  ;;* todo items
 
-  ;;------------------------------------------------------------------
-  ;; GTD contexts & tags
-  (setq org-tag-persistent-alist
-        '(;; GTD contexts
-          (:startgroup)
-          ("@campus" . ?C) ("@BRL" . ?B) ("@library" . ?L)
-          ("@home" . ?H) ("@street" . ?S)
-          (:endgroup)
-          ("@online" . ?O) ("@post" . ?M) ("@email" . ?E)
-          ("@phone" . ?F) ("@people" . ?Z)
-          ;; special tags
-          ("appt" . ?A) ("proj" . ?P) ("repeat" . ?R)
-          ("delegated" . ?D) ("noexport" . ?N)))
-
-  ;; Inherit tags in most of cases
-  (setq org-use-tag-inheritance t)
-  ;; Exclusions of tag inheritance
-  (setq org-tags-exclude-from-inheritance '("proj"))
-
-  ;;------------------------------------------------------------------
-  ;; Properties
-  (setq org-use-property-inheritance
-        nil)  ;; Don't inheritant property for sub-items,
-              ;; since it slows down property searchings.
-
-  ;; NOTE: a task should not takes more than 4 hours, otherwise it
-  ;; MUST be a project and can be broken into smaller tasks.
-  (setq org-global-properties   ;; Additional properties
-        '(("Effort_ALL" .
-           "0:10 0:20 0:30 1:00 1:30 2:00 2:30 3:00 4:00")
-          ("Importance_ALL" .
-           "A B C")
-          ("Score_ALL" .
-           "0 1 2 3 4 5 6 7 8 9 10")
-          ))
-
-  ;;------------------------------------------------------------------
-  ;; Priority
-  (setq org-enable-priority-commands t)
-  (setq org-highest-priority ?A)
-  (setq org-lowest-priority ?C)
-  (setq org-default-priority ?B)
-  (setq org-priority-start-cycle-with-default t)
-
-  ;;------------------------------------------------------------------
-  ;; Column view
-  ; Set default column view headings: Task Effort Clock_Summary
-  (setq org-columns-default-format
-        "%CATEGORY(Cat.) %PRIORITY(Pri.) %Importance(Imp.) %6TODO(State) %35ITEM(Details) %ALLTAGS(Tags) %5Effort(Plan){:} %6CLOCKSUM(Clock){Total} %Score(Score)")
-
-  ;;------------------------------------------------------------------
-  ;; TODO item keywords
-  (setq org-use-fast-todo-selection t) ;; C-c C-t key
+  ;;** General settings
   (setq org-todo-keywords
           '((sequence "TODO(t)" "NEXT(n!)" "STARTED(s)" "|"
                     "DONE(d!)")
             (sequence "SOMEDAY(x)" "WAITING(w!)" "|"
                     "CANCELLED(c@/!)")))
+  ;;NOTE: it may be better to define todo keywords in seperate files(?)
 
-  ;; (setq org-todo-keyword-faces
-  ;;         (quote (("TODO" :foreground "red" :weight bold)
-  ;;                 ("NEXT" :foreground "blue" :weight bold)
-  ;;                 ("STARTED" :foreground "blue" :weight bold)
-  ;;                 ("DONE" :foreground "forest green" :weight bold)
-  ;;                 ("WAITING" :foreground "orange" :weight bold)
-  ;;                 ("SOMEDAY" :foreground "magenta" :weight bold)
-  ;;                 ("CANCELLED" :foreground "forest green" :weight bold)
-  ;;                 ("OPEN" :foreground "blue" :weight bold)
-  ;;                 ("CLOSED" :foreground "forest green" :weight bold)
-  ;;                 ("PHONE" :foreground "forest green" :weight bold))))
+  (setq org-use-fast-todo-selection t) ;; C-c C-t key
+  (setq org-treat-insert-todo-heading-as-state-change t)
+  (setq org-treat-S-cursor-todo-selection-as-state-change nil)
+  (setq org-enforce-todo-checkbox-dependencies
+        t) ;; Block checkbox entries from CHECKED while they have
+           ;; children that are not CHECKED
+  (setq org-enforce-todo-dependencies
+        nil)   ;; Block todo items from changing state to DONE while
+               ;; they have children that are not DONE
 
-  ;; Tag change triggers
+  ;;** Define stuck projects
+  (setq org-stuck-projects
+        '("+proj/!-TODO-SOMEDAY"
+          ("\\<NEXT\\>" "\\<STARTED\\>")))
+  
+  ;;** Tag change triggers
   ;; (setq org-todo-state-tags-triggers
   ;;         '(("TODO"      ("new"))
   ;;           ("NEXT"      ("new"))
@@ -309,7 +289,7 @@ If html-file-name is not given, read it from minibuffer."
   ;;           ("SOMEDAY"   ("new"))
   ;;           ("CANCELLED" ("new") ("important") ("old" . t))))
 
-  ;; Add some hook functions to assist my system
+  ;;** Add some hook functions to assist my system
   ;; See list of: (@url :file-name "http://orgmode.org/worg/org-configs/org-hooks.html" :display "org-mode hooks")
   ;; REF: (@url :file-name "http://thread.gmane.org/gmane.emacs.orgmode/21402/focus=21413" :display "orgmode mail-list")
   ;; BUG: `state' variable is not recognised
@@ -329,22 +309,7 @@ If html-file-name is not given, read it from minibuffer."
                                           "Task DONE, Great Work!"
                                           (todochiku-icon 'check))))))
 
-  ;; Treat adding item as state change
-  (setq org-treat-insert-todo-heading-as-state-change t)
-
-  (setq org-enforce-todo-checkbox-dependencies
-        t) ;; Block checkbox entries from CHECKED while they have
-           ;; children that are not CHECKED
-
-  (setq org-enforce-todo-dependencies
-        nil)   ;; Block TODO items from changing state to DONE while
-               ;; they have children that are not DONE
-
-  (setq org-stuck-projects ;; Define stuck projects
-        '("+proj/!-TODO-SOMEDAY"
-          ("\\<NEXT\\>" "\\<STARTED\\>")))
-
-  ;; TODO entry automatically changes to DONE
+  ;; todo entry automatically changes to DONE
   ;; when all children are done
   ;; (defun org-summary-todo (n-done n-not-done)
   ;;   "Switch entry to DONE when all subentries are done, to TODO
@@ -353,49 +318,95 @@ If html-file-name is not given, read it from minibuffer."
   ;;     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
   ;; (add-hook ('org-after-todo-statistics-hook 'org-summary-todo)
 
-  ;;------------------------------------------------------------------
-  ;; Log settings
+
+  
+  ;;* Tags
 
-  (setq org-log-done        'time)
-  (setq org-log-done-with-time  t)
-  (setq org-log-into-drawer     t)
-  (setq org-log-redeadline  'note)
-  (setq org-log-reschedule  'time)
-  (setq org-log-refile      'time)
-  (setq org-log-state-notes-insert-after-drawers t)
-  (setq org-agenda-log-mode-items '(closed state))
+  ;;** Global tags
+  ;; (setq org-tag-persistent-alist
+  ;;       '(;; GTD contexts
+  ;;         (:startgroup)
+  ;;         ("@campus" . ?C) ("@BRL" . ?B) ("@library" . ?L)
+  ;;         ("@home" . ?H) ("@street" . ?S)
+  ;;         (:endgroup)
+  ;;         ("@online" . ?O) ("@post" . ?M) ("@email" . ?E)
+  ;;         ("@phone" . ?F) ("@people" . ?Z)
+  ;;         ;; special tags
+  ;;         ("appt" . ?A) ("proj" . ?P) ("repeat" . ?R)
+  ;;         ("delegated" . ?D) ("noexport" . ?N)))
+  ;; NOTE: it is better to define all the tags in seperate files. 
 
-  ;;------------------------------------------------------------------
-  ;; Clock settings
+  (setq org-use-tag-inheritance t)   ;; Inherit tags in most of cases
+  (setq org-tags-exclude-from-inheritance '("proj"))   ;; Exclusions
 
-  (setq org-clock-history-length 10)
-  (setq org-clock-idle-time 15)
-  (setq org-clock-in-resume t)
-  (setq org-clock-in-switch-to-state "STARTED")
-  (setq org-clock-out-switch-to-state "WAITING")
-  ;; Separate drawers for clocking and logs
-  ;; (setq org-drawers '("LOGBOOK" "PROPERTIES"))
-  (setq org-clock-into-drawer t)
-  (setq org-clock-out-remove-zero-time-clocks t)
-  (setq org-clock-out-when-done t)
-  (setq org-clock-persist t)
-  (setq org-clock-persist-file
-        (concat org-directory "/org-clock-save"))
-  (unless (file-exists-p org-clock-persist-file)
-    (shell-command (concat "touch " org-clock-persist-file)))
-  (setq org-clock-auto-clock-resolution 'when-no-clock-is-running)
-  (setq org-clock-report-include-clocking-task t)
-  (setq org-clock-persist-query-save t)
-  (setq org-clock-sound t)
+  
+  
+  ;;* Properties
+
+  ;;** Global settings
+  (setq org-use-property-inheritance
+        nil)  ;; Don't inheritant property for sub-items,
+              ;; since it slows down property searchings.
+
+  (setq org-global-properties   ;; Additional properties
+        '(("Effort_ALL" .
+           "0:10 0:20 0:30 1:00 1:30 2:00 2:30 3:00 4:00")
+          ("Importance_ALL" .
+           "A B C")
+          ("Score_ALL" .
+           "0 1 2 3 4 5 6 7 8 9 10")
+          ))
+  ;; NOTE: a task should not takes more than 4 hours, otherwise it
+  ;; MUST be a project and can be broken into smaller tasks.
+
+  ;;** Priority settings
+  (setq org-enable-priority-commands           t
+        org-highest-priority                  ?A
+        org-lowest-priority                   ?C
+        org-default-priority                  ?B
+        org-priority-start-cycle-with-default  t)
+
+  ;;** Column view
+  (setq org-columns-default-format ; Set default column view headings
+        "%CATEGORY(Cat.) %PRIORITY(Pri.) %Importance(Imp.) %6TODO(State) %35ITEM(Details) %ALLTAGS(Tags) %5Effort(Plan){:} %6CLOCKSUM(Clock){Total} %Score(Score)")
+
+    
+  
+  ;;* Timing settings
+
+  ;;** Log settings
+  (setq org-log-done            'time
+        org-log-done-with-time   t
+        org-log-into-drawer      t
+        org-log-redeadline      'note
+        org-log-reschedule      'time
+        org-log-refile          'time
+        org-log-state-notes-insert-after-drawers t
+        org-agenda-log-mode-items '(closed state))
+
+  ;;** Clock settings
+  (setq org-clock-history-length 10
+        org-clock-idle-time      15
+        org-clock-in-resume      t
+        org-clock-into-drawer    t
+        org-clock-in-switch-to-state    "STARTED"
+        org-clock-out-switch-to-state   "WAITING"
+        org-clock-out-remove-zero-time-clocks t
+        org-clock-out-when-done  t
+        org-clock-persist        t
+        org-clock-auto-clock-resolution 'when-no-clock-is-running
+        org-clock-report-include-clocking-task t
+        org-clock-persist-query-save t
+        org-clock-sound t)
   (org-clock-persistence-insinuate)
 
-  ;;------------------------------------------------------------------
-  ;; Alarm
+  ;;** Alarm
 
-  ;; `appt' alarm
+  ;;*** `appt' alarm
   ;; (require 'appt)
   (setq org-agenda-include-diary t)
-  ;; update appt each time agenda opened
+
+  ;;**** update appt each time agenda opened
   (add-hook 'org-finalize-agenda-hook 'org-agenda-to-appt)
   (defadvice  org-agenda-redo (after org-agenda-redo-add-appts)
     "Pressing `r' on the agenda will also add appointments."
@@ -404,7 +415,7 @@ If html-file-name is not given, read it from minibuffer."
       (org-agenda-to-appt)))
   (ad-activate 'org-agenda-redo)
 
-  ;; Python script alarm
+  ;;*** Python script alarm
   ;; (progn
   ;;   (appt-activate 1)
   ;;   (setq appt-display-format 'window)
@@ -413,7 +424,7 @@ If html-file-name is not given, read it from minibuffer."
   ;;     (call-process "~/script/popup.py" nil 0 nil min-to-app msg
   ;;   new-time)))
 
-  ;; `todochiku' display pop-up notification in window-system
+  ;;*** `todochiku' display pop-up notification in window-system
   ;; NOTE: May do the job twice with (@file :file-name "xy-rc-appt.el" :to "appt-disp-window-function" :display "`appt-disp-window-function'")
   ;;       May be deleted to use just one
   ;; (when window-system
@@ -423,9 +434,157 @@ If html-file-name is not given, read it from minibuffer."
   ;;              (todochiku-message "org-mode notification" notification
   ;;                                 (todochiku-icon 'emacs))))))
 
-  ;;------------------------------------------------------------------
-  ;; Custom ageda views
+
 
+  ;;* Capture, refile & archive settings
+
+
+  ;;** Capture settings
+  
+  ;; ;;*** For `remember.el'
+  ;; (setq org-remember-default-headline "Tasks")
+  ;; (org-remember-insinuate)
+  ;; (define-key global-map "\C-cr" 'org-remember)
+  ;; New capture system org-capture since version 7.01g
+  ;; (define-key global-map "\C-cc" 'org-capture)
+  ;; NOTE: Swithed from `remember' to `org-capture'
+
+  ;;*** For `org-cpature.el'
+  (setq org-capture-templates
+        '(("w" "Capture a New Wish from Emacs"
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Wish Inbox")
+           "** TODO %^{New Wish} %^g\n\
+   :LOGBOOK:\n\
+   - Initial State           \"TODO\"       %U\n\
+   - Source\n\
+     + Emacs @ %a\n\
+   :END:\n\
+   :PROPERTIES:\n\
+   :DESCRIPTION: %?\n\
+   :END:\n\n"
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("n" "Take a Note from Emacs"
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
+           "** %^{Title} %^G\n\n\
+*** Source\n\n\
+- Timestamp                                 %U\n\
+- Source\n\
+  + Emacs @ %a\n\n\
+*** Notes\n\n%?\n"
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("s" "Scrap Text from Emacs"
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
+           "** %^{Title} %^G\n\n\
+*** Source\n\n\
+- Timestamp                                 %U\n\
+- Source\n\
+  + Emacs @ %a\n\n\
+*** Local clipboard\n\n\
+#+BEGIN_EXAMPLE\n\
+%x\n\
+#+END_EXAMPLE\n\n\
+*** Notes\n\n%?\n"
+           :empty-lines 1 :prepend t :clock-keep t)
+
+
+          ("e" "Collect new words/phrases/sentences"
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "English")
+           "** %? %^G\n\
+   :LOGBOOK:\n\
+   - Source
+     + Timestamp                            %U\n\
+     + Emacs @ %a
+   :END:\n\n\n"
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("1" "Capture a New Wish from Web Browser"
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Wish Inbox")
+           "** TODO %^{New Wish} %^g\n\
+   :LOGBOOK:\n\
+   - Initial State           \"TODO\"       %U\n\
+   - Source\n\
+     + WWW @ %c\n\
+   :END:\n\
+   :PROPERTIES:\n\
+   :DESCRIPTION: %?\n\
+   :END:\n\n"
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("2" "Take a Note from Web Browser"
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
+           "** %^{Title} %^G\n\n\
+*** Source\n\n\
+- Timestamp                                 %U\n\
+- Source\n\
+  + WWW @ %c\n\n\
+*** Notes\n\n%?\n"
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("3" "Scrap Text from Web Browser"
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
+           "** %^{Title} %^G\n\n\
+*** Source\n\n\
+- Timestamp                                 %U\n\
+- Source\n\
+  + WWW @ %c\n\n\
+*** Webpage highlights\n\n\
+#+BEGIN_EXAMPLE\n\
+%i\n\
+#+END_EXAMPLE\n\n\
+*** Notes\n\n%?\n"
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ("4" "Add a bookmark"
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Bookmark")
+           "** %c %^G\n\
+   :LOGBOOK:\n\
+   - Visit on                               %U\n\
+   - Source
+     + URL: %
+   :END:\n\
+   :PROPERTIES:\n\
+   :Score: %?\n\
+   :DESCRIPTION:\n\
+   :END:\n\n"
+           :empty-lines 1 :prepend t :clock-keep t)
+
+          ))
+
+  ;;** Refile settings
+  
+  ;; Targets include this file and any file contributing to the agenda
+  ;; - up to 3 levels deep
+  (setq org-refile-targets '((nil :maxlevel . 3)
+                             (org-agenda-files :maxlevel . 3)))
+
+  ;; Put the newest item on the top
+  (setq org-reverse-note-order t)
+
+  ;; Use paths for refile targets
+  (setq org-refile-use-outline-path t)
+  (setq org-outline-path-complete-in-steps t)
+
+  ;; Allow refile to create parent tasks with confirmation
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
+
+  ;; Infomation saved in archives
+  (setq org-archive-save-context-info
+        '(time file category todo priority itags olpath ltags))
+
+  ;; makes it possible to archive tasks that are not marked DONE
+  (setq org-archive-mark-done nil)
+
+
+  
+  ;;* Agenda
+
+  ;;** Agenda files
+  ;; (setq org-agenda-files '())
+  ;; NOTE: files are set in my local custom file to keep privacy
+
+  ;;** Agenda look
   ;; Do not dim blocked tasks
   (setq org-agenda-dim-blocked-tasks nil)
 
@@ -436,19 +595,19 @@ If html-file-name is not given, read it from minibuffer."
   (setq org-agenda-restore-windows-after-quit t)
 
   ;; Show agenda in current window
-  (setq org-agenda-window-setup 'current-window)
-  (setq org-indirect-buffer-display 'current-window)
+  (setq org-agenda-window-setup     'current-window
+        org-indirect-buffer-display 'current-window)
 
   ;; Set the default number of days displayed in the agenda (C-c a a)
   (setq org-agenda-span 'week)
 
   ;; Include/exclude some special items globally
-  (setq org-agenda-todo-ignore-scheduled t)
-  (setq org-agenda-todo-ignore-deadlines nil)
-  (setq org-agenda-todo-ignore-timestamp nil)
-  (setq org-agenda-todo-ignore-with-date nil)
+  (setq org-agenda-todo-ignore-scheduled t
+        org-agenda-todo-ignore-deadlines nil
+        org-agenda-todo-ignore-timestamp nil
+        org-agenda-todo-ignore-with-date nil)
 
-  ;; Show all items when do a tag-todo search (C-c a M)
+  ;; ;; Show all items when do a tag-todo search (C-c a M)
   ;; (org-agenda-tags-todo-honor-ignore-options nil)
 
   ;; Do not display sublevels
@@ -472,11 +631,11 @@ If html-file-name is not given, read it from minibuffer."
           (tags time-up category-keep priority-down todo-state-up)
           (search time-up category-keep priority-down todo-state-up)))
 
-  ;; custom agenda commands
-  ;; Custom agenda command definitions
+  ;; Custom agenda commands
   (setq org-agenda-custom-commands
         '(
           ("f" "Grep FIXME" occur-tree "\\<FIXME\\>")
+
           ;;----------------------------------------------------------
           ("n" "Notes in the past 10 days" tags
            "+note+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-10d>\""
@@ -616,22 +775,7 @@ If html-file-name is not given, read it from minibuffer."
                        (org-tags-match-list-sublevels t)))))
           ))
 
-  ;;------------------------------------------------------------------
-  ;; MobileOrg settings
-  ;; NOTE: I use Dropbox serveice
-  (setq org-mobile-directory "~/Dropbox/MobileOrg")
-  (setq org-mobile-encryption-tempfile
-        (concat org-directory "/orgtmpcrypt"))
-  (unless (file-exists-p org-mobile-encryption-tempfile)
-    (shell-command (concat "touch " org-mobile-encryption-tempfile)))
-  (setq org-mobile-files org-agenda-files)
-  (setq org-mobile-inbox-for-pull
-        (concat org-directory "/gtd/from-mobile.org"))
-  (unless (file-exists-p org-mobile-inbox-for-pull)
-    (shell-command (concat "touch " org-mobile-inbox-for-pull)))
-
- ;;-------------------------------------------------------------------
-  ;; Agenda view export C-x C-w
+  ;;** Agenda view export C-x C-w
   (setq org-agenda-exporter-settings
         '((ps-number-of-columns 2)
           (ps-landscape-mode t)
@@ -640,7 +784,7 @@ If html-file-name is not given, read it from minibuffer."
           ;; (org-agenda-remove-tags t)
           (org-agenda-add-entry-text-maxlines 5)
           (htmlize-output-type 'css)))
-
+  ;; ;; Add to custom command dispatcher
   ;; (setq org-agenda-custom-commands
   ;;       '(("X" agenda "" nil ("~/emacs/org/gtd/agenda.html" "~/emacs/org/gtd/agenda.pdf"))
   ;;         ("Y" alltodo "" nil ("~/emacs/org/gtd/todo.html" "~/emacs/org/gtd/todo.txt" "~/emacs/org/gtd/todo.pdf"))
@@ -657,150 +801,37 @@ If html-file-name is not given, read it from minibuffer."
   ;;          nil
   ;;          ("~/emacs/org/gtd/geek.html"))))
 
-  ;;==================================================================
-  ;; Capture, refile & archive settings
+  ;;** MobileOrg settings
+  ;; NOTE: I use Dropbox serveice
+  (setq org-mobile-directory "~/Dropbox/MobileOrg")
+  (setq org-mobile-encryption-tempfile
+        (concat org-directory "/orgtmpcrypt"))
+  (unless (file-exists-p org-mobile-encryption-tempfile)
+    (shell-command (concat "touch " org-mobile-encryption-tempfile)))
+  (setq org-mobile-files org-agenda-files)
+  (setq org-mobile-inbox-for-pull
+        (concat org-directory "/gtd/from-mobile.org"))
+  (unless (file-exists-p org-mobile-inbox-for-pull)
+    (shell-command (concat "touch " org-mobile-inbox-for-pull)))
 
-  ;; NOTE: Swithed from 'remember' to 'org-capture'
-  ;; (setq org-remember-default-headline "Tasks")
-  ;; (org-remember-insinuate)
-  ;; (define-key global-map "\C-cr" 'org-remember)
-  ;; New capture system org-capture since version 7.01g
-  ;; (define-key global-map "\C-cc" 'org-capture)
+
 
-  ;; cpature templates
-  (setq org-capture-templates
-        '(("w" "Capture a New Wish from Emacs"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Wish Inbox")
-           "** TODO %^{New Wish} %^g\n\
-   :LOGBOOK:\n\
-   - Initial State           \"TODO\"       %U\n\
-   - Source\n\
-     + Emacs @ %a\n\
-   :END:\n\
-   :PROPERTIES:\n\
-   :DESCRIPTION: %?\n\
-   :END:\n\n"
-           :empty-lines 1 :prepend t :clock-keep t)
+  ;;* Org Babel settings
 
-          ("n" "Take a Note from Emacs"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
-           "** %^{Title} %^G\n\n\
-*** Source\n\n\
-- Timestamp                                 %U\n\
-- Source\n\
-  + Emacs @ %a\n\n\
-*** Notes\n\n%?\n"
-           :empty-lines 1 :prepend t :clock-keep t)
-
-          ("s" "Scrap Text from Emacs"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
-           "** %^{Title} %^G\n\n\
-*** Source\n\n\
-- Timestamp                                 %U\n\
-- Source\n\
-  + Emacs @ %a\n\n\
-*** Local clipboard\n\n\
-#+BEGIN_EXAMPLE\n\
-%x\n\
-#+END_EXAMPLE\n\n\
-*** Notes\n\n%?\n"
-           :empty-lines 1 :prepend t :clock-keep t)
-
-
-          ("e" "Collect new words/phrases/sentences"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "English")
-           "** %? %^G\n\
-   :LOGBOOK:\n\
-   - Source
-     + Timestamp                            %U\n\
-     + Emacs @ %a
-   :END:\n\n\n"
-           :empty-lines 1 :prepend t :clock-keep t)
-
-          ("1" "Capture a New Wish from Web Browser"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Wish Inbox")
-           "** TODO %^{New Wish} %^g\n\
-   :LOGBOOK:\n\
-   - Initial State           \"TODO\"       %U\n\
-   - Source\n\
-     + WWW @ %c\n\
-   :END:\n\
-   :PROPERTIES:\n\
-   :DESCRIPTION: %?\n\
-   :END:\n\n"
-           :empty-lines 1 :prepend t :clock-keep t)
-
-          ("2" "Take a Note from Web Browser"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
-           "** %^{Title} %^G\n\n\
-*** Source\n\n\
-- Timestamp                                 %U\n\
-- Source\n\
-  + WWW @ %c\n\n\
-*** Notes\n\n%?\n"
-           :empty-lines 1 :prepend t :clock-keep t)
-
-          ("3" "Scrap Text from Web Browser"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
-           "** %^{Title} %^G\n\n\
-*** Source\n\n\
-- Timestamp                                 %U\n\
-- Source\n\
-  + WWW @ %c\n\n\
-*** Webpage highlights\n\n\
-#+BEGIN_EXAMPLE\n\
-%i\n\
-#+END_EXAMPLE\n\n\
-*** Notes\n\n%?\n"
-           :empty-lines 1 :prepend t :clock-keep t)
-
-          ("4" "Add a bookmark"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Bookmark")
-           "** %c %^G\n\
-   :LOGBOOK:\n\
-   - Visit on                               %U\n\
-   - Source
-     + URL: %
-   :END:\n\
-   :PROPERTIES:\n\
-   :Score: %?\n\
-   :DESCRIPTION:\n\
-   :END:\n\n"
-           :empty-lines 1 :prepend t :clock-keep t)
-
-          ))
-
-  ; Targets include this file and any file contributing to the agenda
-  ; - up to 3 levels deep
-  (setq org-refile-targets '((nil :maxlevel . 3)
-                             (org-agenda-files :maxlevel . 3)))
-
-  ;; Put the newest item on the top
-  (setq org-reverse-note-order t)
-
-  ; Stop using paths for refile targets - we file directly with Icicles
-  (setq org-refile-use-outline-path t)
-
-  ; Targets complete directly with Icicles
-  (setq org-outline-path-complete-in-steps t)
-
-  ; Allow refile to create parent tasks with confirmation
-  (setq org-refile-allow-creating-parent-nodes 'confirm)
-
-  ;; Infomation saved in archives
-  (setq org-archive-save-context-info
-        '(time file category todo priority itags olpath ltags))
-
-  ;; makes it possible to archive tasks that are not marked DONE
-  (setq org-archive-mark-done nil)
-
-  ;;==================================================================
-  ;; Babel settings
+  ;;** babel evaluation languages
+  (setq org-babel-load-languages
+        '((C . t) ;; (R . t) (asymptote . t)
+                (ditaa . t) (dot . t) (emacs-lisp . t)
+                (latex . t) (org . t)
+                (matlab . t) (octave . t)
+                (python . t) ;; (perl . t) (ruby . t)
+                (sh . t)
+                ))
 
   (require 'ob-C)
   ;; BUG: cannot find this library on Windows 7, strange bug.
   ;;      cause emacs error on Linux, may related with my c-mode settings.
-  (require 'ob-R)
+  ;; (require 'ob-R)
   ;; (require 'asymptote)
   (require 'ob-ditaa)
   (require 'ob-dot)
@@ -809,18 +840,11 @@ If html-file-name is not given, read it from minibuffer."
   (require 'ob-matlab)
   (require 'ob-octave)
   (require 'ob-org)
-  (require 'ob-perl)
+  ;; (require 'ob-perl)
   (require 'ob-python)
-  (require 'ob-ruby)
+  ;; (require 'ob-ruby)
   (require 'ob-sh)
-
-  ;; babel evaluation languages
-  (setq org-babel-load-languages
-        (quote ((C . t) (R . t) (asymptote . t)
-                (ditaa . t) (dot . t) (emacs-lisp . t) (latex . t)
-                (matlab . t) (octave . t) (org . t) (perl . t)
-                (python . t) (ruby . t) (sh . t))))
-
+  
   ;; Custom library of babel file. Add code blocks to the library from
   ;; any Org-mode file using the `org-babel-lob-ingest' (bound to C-c
   ;; C-v i).
@@ -828,9 +852,9 @@ If html-file-name is not given, read it from minibuffer."
   ;; (setq org-babel-lob-files
   ;;       '("~/emacs/org/babel/library-of-babel.org"))
 
-;;   (defvar org-babel-octave-wrapper-method
-;;     "%s
-;; save -ascii %s ans")
+  ;;   (defvar org-babel-octave-wrapper-method
+  ;;     "%s
+  ;; save -ascii %s ans")
 
   (setq org-src-fontify-natively t
         org-confirm-babel-evaluate nil
@@ -843,16 +867,51 @@ If html-file-name is not given, read it from minibuffer."
   (mapc (lambda (fun) (eval `(bypass-trash-in-function ,fun)))
         '(org-babel-remove-temporary-directory))
 
-  ;;----------------------------------------------------------------
-  ;; LaTeX export settings
-  (require 'ox)
-  (require 'ox-latex)
-  (require 'ox-beamer)
+
+  
+  ;;* Org export settings
+
+  ;;** General settings
+  (setq org-export-backends
+        '(ascii beamer html icalendar latex md org freemind rss))
+  (setq org-file-apps ;; set default viewer for exported files
+        '((auto-mode       . emacsclient)
+          ("\\.odc\\'"     . system)
+          ("\\.odf\\'"     . system)
+          ("\\.odi\\'"     . system)
+          ("\\.otp\\'"     . system)
+          ("\\.odp\\'"     . system)
+          ("\\.otg\\'"     . system)
+          ("\\.odg\\'"     . system)
+          ("\\.ots\\'"     . system)
+          ("\\.ods\\'"     . system)
+          ("\\.odm\\'"     . system)
+          ("\\.ott\\'"     . system)
+          ("\\.odt\\'"     . system)
+          ("\\.mm\\'"      . system)
+          ("\\.pdf\\'"     . system)
+          ("\\.x?html?\\'" . system)
+          ("\\.png\\'"     . system)
+          ("\\.jpg\\'"     . system)
+          ("\\.bmp\\'"     . system)
+          ("\\.gif\\'"     . system)
+          ))
+
+  ;;** LaTeX export settings
+  ;; (require 'ox)
+  ;; (require 'ox-latex)
+  ;; (require 'ox-beamer)
   (setq org-latex-coding-system 'utf-8-unix)
   (setq org-latex-table-caption-above nil)
   (setq org-latex-tables-column-borders t)
   (setq org-latex-classes
-   (quote (("article" "\\documentclass[11pt]{article}"
+   (quote (("beamer" "\\documentclass[presentation,9pt]{beamer}\n\
+                      [DEFAULT-PACKAGES]\n[PACKAGES]\n[EXTRA]"
+            ("\\section{%s}" . "\\section*{%s}")
+            ("\\subsection{%s}" . "\\subsection*{%s}")
+            ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+           ;;-----------------------------------------------
+           ("article" "\\documentclass[11pt]{article}"
             ("\\section{%s}" . "\\section*{%s}")
             ("\\subsection{%s}" . "\\subsection*{%s}")
             ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
@@ -880,8 +939,8 @@ If html-file-name is not given, read it from minibuffer."
             ("\\paragraph{%s}" . "\\paragraph*{%s}")
             ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
            ;;--------------------------------------------------
-           ("beamer" "\\documentclass{beamer}"
-            org-beamer-sectioning)
+           ;; ("beamer" "\\documentclass{beamer}"
+           ;;  org-beamer-sectioning)
            ;;--------------------------------------------------
            ;; NOTE: ctex documentclasses, no need to use ctex package
            ("ctexart" "\\documentclass[UTF8, winfonts, cs4size, \
@@ -998,9 +1057,7 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
                ;; (xy/set-font-write)
                ))
 
-  ;;==================================================================
-
-  ;; Use ditaa/graphviz to generate png pictures.
+  ;;** Use ditaa/graphviz to generate png pictures.
   ;;  *  Use artist mode to draw ascii picutre,
   ;;  *  then convert to png pictures using ditaa.
   ;; Now ditta is included in org, but I use the
@@ -1022,6 +1079,7 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
   ;;     in the block.
 
   (setq org-ditaa-jar-path (concat my-local-exec-path "/ditaa.jar"))
+
   ;; (try-require 'org-babel-init)
   ;; (try-require 'org-babel-ditaa)
   ;; (try-require 'org-babel-dot)
@@ -1034,33 +1092,9 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
   ;;                                    (kill-buffer (current-buffer)))
   ;;                                  (delete-frame)))
 
-  ;;==================================================================
-  ;; set default viewer for exported files
-  (setq org-file-apps
-        (quote ((auto-mode       . emacs)
-                ("\\.odc\\'"     . system)
-                ("\\.odf\\'"     . system)
-                ("\\.odi\\'"     . system)
-                ("\\.otp\\'"     . system)
-                ("\\.odp\\'"     . system)
-                ("\\.otg\\'"     . system)
-                ("\\.odg\\'"     . system)
-                ("\\.ots\\'"     . system)
-                ("\\.ods\\'"     . system)
-                ("\\.odm\\'"     . system)
-                ("\\.ott\\'"     . system)
-                ("\\.odt\\'"     . system)
-                ("\\.mm\\'"      . system)
-                ("\\.pdf\\'"     . system)
-                ("\\.x?html?\\'" . system)
-                ("\\.png\\'"     . system)
-                ("\\.jpg\\'"     . system)
-                ("\\.bmp\\'"     . system)
-                ("\\.gif\\'"     . system)
-                )))
-
-  ;;==================================================================
-  ;; Publishing settings
+
+  
+  ;;* Org publish settings
   ;; NOTE:
   ;; Org-mode 8.0 发布网页时要:
   ;; (require 'ox-publish)
@@ -1074,12 +1108,12 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
         (concat org-directory "/timestamps"))
   (setq org-publish-use-timestamps-flag t)
 
-;; NOTE: not in use
-;; List of projects
-;; http://127.0.0.1/  (localhost)
-;; local-org are the org-files that generate the content
-;; local-extra are images and css files that need to be included
-;; local is the top-level project that gets published
+  ;; NOTE: not in use
+  ;; List of projects
+  ;; http://127.0.0.1/  (localhost)
+  ;; local-org are the org-files that generate the content
+  ;; local-extra are images and css files that need to be included
+  ;; local is the top-level project that gets published
   ;; (setq org-publish-project-alist
   ;;     (quote(
   ;;            ("local-org"
@@ -1285,27 +1319,27 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
   ;;          :online-suffix ".php"
   ;;          :working-suffix ".org")))
 
-  ;;==================================================================
-  ;; Contrib lisps
+
+  
+  ;;* Contributed lisps
 
-  ;; org-mime
-  ;; REF: (@url :file-name "http://orgmode.org/worg/org-contrib/org-mime.html" :display "worg")
-  (when (try-require 'org-mime)
-    ;; (setq org-mime-library 'mml)
-    (add-hook 'org-mode-hook
-              (lambda ()
-                (local-set-key "\C-c\M-o"
-                               'org-mime-org-buffer-htmlize)))
-    (add-hook 'org-mime-html-hook
-              (lambda ()
-                (org-mime-change-element-style
-                 "pre" (format "color: %s; background-color: %s; padding: 0.5em;"
-                               "#E6E1DC" "#232323"))
-                (org-mime-change-element-style
-                 "blockquote" "border-left: 2px solid gray; padding-left: 4px;"))))
+  ;; ;;** org-mime
+  ;; ;; REF: (@url :file-name "http://orgmode.org/worg/org-contrib/org-mime.html" :display "worg")
+  ;; (when (try-require 'org-mime)
+  ;;   ;; (setq org-mime-library 'mml)
+  ;;   (add-hook 'org-mode-hook
+  ;;             (lambda ()
+  ;;               (local-set-key "\C-c\M-o"
+  ;;                              'org-mime-org-buffer-htmlize)))
+  ;;   (add-hook 'org-mime-html-hook
+  ;;             (lambda ()
+  ;;               (org-mime-change-element-style
+  ;;                "pre" (format "color: %s; background-color: %s; padding: 0.5em;"
+  ;;                              "#E6E1DC" "#232323"))
+  ;;               (org-mime-change-element-style
+  ;;                "blockquote" "border-left: 2px solid gray; padding-left: 4px;"))))
 
-  ;;------------------------------------------------------------------
-  ;; `org-google-weather'
+  ;;** `org-google-weather'
   ;; NOTE: google disabled its weather api recently
   ;; google-weather-el for org
   ;; Add the following in one of your Org file.
@@ -1314,171 +1348,33 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
   ;; (eval-after-load "org-google-weather" '(org-google-weather-postload))
   ;; (try-require 'org-google-weather)
 
-  ;;------------------------------------------------------------------
-  ;; `org-location-google-maps'
+  ;;** `org-location-google-maps'
   ;; google-maps API for org
   (try-require 'org-location-google-maps)
 
-  ;;------------------------------------------------------------------
-  ;; `org-html5presentation'
+  ;;** `org-html5presentation'
   ;; NOTE: not very useful now
   ;; HTML5 Presentation export for Org-mode
   ;; (try-require 'org-html5presentation)
 
-  ;;------------------------------------------------------------------
-  ;; `o-blog'
+  ;;** `o-blog'
   ;; A stand-alone blog and publication tool for org-mode.
   (try-require 'o-blog)
 
-  ;;------------------------------------------------------------------
-  ;; `org2blog'
+  ;;** `org2blog'
   ;; NOTE: waiting for its upgrade for org version 8.0
   ;; (try-require 'org2blog)
 
-  ;;------------------------------------------------------------------
-  ;; `org-bullets.el'
+  ;;** `org-bullets.el'
   ;; NOTE: not very useful.
   ;; (when window-system
   ;;   (try-require 'org-bullets)
   ;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-  ;;------------------------------------------------------------------
-  ;; `org-presie.el'
+  ;;** `org-presie.el'
   ;; NOTE: not very useful, waiting for a upgrade for org version 8.0
   ;; (when window-system (try-require 'org-presie))
 
   (message "* ---[ org post-load configuration is complete ]---"))
 
 (provide 'xy-rc-org)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; ahei's settings
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; (require 'org-install)
-
-;; (defun org-settings ()
-;;   "Settings for `org'."
-
-;;   (setq org-startup-folded nil
-;;         org-cycle-include-plain-lists t)
-;;   (setq org-log-done 'time)
-
-;;   (defun org-hook-settings ()
-;;     "Hook settings for `org'."
-;;     (setq truncate-lines nil)
-;;     (eval-after-load "hideshow"
-;;       '(progn
-;;         (setq fold-all-fun 'org-toggle-display-content
-;;               fold-fun 'org-toggle-fold-subtree)))
-;;     (org-literal-links))
-;;   (add-hook 'org-mode-hook 'org-hook-settings)
-
-;;   (defun org-kill-whole-line (&optional arg)
-;;     "Kill line, to tags or end of line."
-;;     (interactive "P")
-;;     (cond
-;;      ((or (not org-special-ctrl-k)
-;;           (bolp)
-;;           (not (org-on-heading-p)))
-;;       (call-interactively 'kill-whole-line))
-;;      ((looking-at (org-re ".*?\\S-\\([ \t]+\\(:[[:alnum:]_@:]+:\\)\\)[ \t]*$"))
-;;       (kill-region (point) (match-beginning 1))
-;;       (org-set-tags nil t))
-;;      (t (kill-region (point) (point-at-eol)))))
-
-;;   (defun org-literal-links ()
-;;     "Show literal links."
-;;     (interactive)
-;;     (org-remove-from-invisibility-spec '(org-link)) (org-restart-font-lock))
-
-;;   (defun org-descriptive-links ()
-;;     "Show descriptive links."
-;;     (interactive)
-;;     (org-add-to-invisibility-spec '(org-link)) (org-restart-font-lock))
-
-;;   (defun org-display-content ()
-;;     "Display content in `org-mode'."
-;;     (interactive)
-;;     (org-overview)
-;;     (org-content))
-
-;;   (defvar org-display-content nil "Display content or not now.")
-;;   (make-variable-buffer-local 'org-display-content)
-
-;;   (defvar org-fold-subtree nil "Fold subtree or not now.")
-;;   (make-variable-buffer-local 'org-fold-subtree)
-
-;;   (defun org-toggle-display-content ()
-;;     "Toggle display content."
-;;     (interactive)
-;;     (setq org-display-content (not org-display-content))
-;;     (if org-display-content
-;;         (org-display-content)
-;;       (show-all)))
-
-;;   (defun org-toggle-fold-subtree ()
-;;     "Toggle fold subtree."
-;;     (interactive)
-;;     (setq org-fold-subtree (not org-fold-subtree))
-;;     (if org-fold-subtree
-;;         (hide-subtree)
-;;       (show-subtree)))
-
-;;   (defun org-settings-4-emaci ()
-;;     "`org-mode' settings for `emaci'."
-;;     (emaci-add-key-definition "N" 'outline-next-visible-heading
-;;                               '(eq major-mode 'org-mode))
-;;     (emaci-add-key-definition "P" 'outline-previous-visible-heading
-;;                               '(eq major-mode 'org-mode)))
-
-;;   (eval-after-load "emaci"
-;;     '(progn
-;;       (org-settings-4-emaci)))
-
-;;   (eal-define-keys
-;;    'emaci-mode-map
-;;    `(("N" emaci-N)
-;;      ("P" emaci-P)))
-
-;;   (defun org-jsinfo-settings ()
-;;     "Settings for `org-jsinfo'."
-;;     (setcdr (assoc 'view org-infojs-options) "showall"))
-
-;;   (eval-after-load "org-jsinfo"
-;;     '(progn
-;;       (org-jsinfo-settings))))
-
-;; (eal-define-keys
-;;  'org-mode-map
-;;  `(("C-c e"   org-table-edit-field)
-;;    ("C-k"     org-kill-whole-line)
-;;    ("C-c M-b" org-export-as-html-and-open)
-;;    ("C-c M-h" org-export-as-html)
-;;    ("<tab>"   nil)
-;;    ("C-j"     nil)
-;;    ("C-c n"   org-forward-same-level)
-;;    ("C-c p"   org-backward-same-level)
-;;    ("C-c M-l" org-shiftright)
-;;    ("C-c ,"   org-priority-sb)))
-
-;; (eal-define-keys
-;;  'org-agenda-mode-map
-;;  `(("'" switch-to-other-buffer)
-;;    ("1" delete-other-windows)
-;;    ("2" split-window-vertically)
-;;    ("3" split-window-horizontally)
-;;    ("o" other-window)))
-
-;; (defun org-colview-settings ()
-;;   "Settings for `org-colview'."
-;;   (org-defkey org-columns-map "e" 'org-columns-edit-value-sb)
-;;   (org-defkey org-columns-map "h" 'backward-char)
-;;   (org-defkey org-columns-map "l" 'forward-char)
-;;   (org-defkey org-columns-map "j" 'next-line)
-;;   (org-defkey org-columns-map "k" 'previous-line)
-;;   (define-key org-columns-map "f" (key-binding (kbd "M-f")))
-;;   (define-key org-columns-map "b" (key-binding (kbd "M-b"))))

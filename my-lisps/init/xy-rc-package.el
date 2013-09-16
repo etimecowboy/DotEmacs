@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-07-01 Mon 16:19 by xin on vmlmde>
+;; Time-stamp: <2013-09-12 Thu 14:55 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-25 Sat 22:23 by xin on S13>
+;; Time-stamp: <2013-09-08 Sun 21:46 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-fic-ext-mode.el'
 ;; Author:       Xin Yang
@@ -32,8 +32,8 @@
   '("BUG" "DEBUG" "FIXME" "HACK" "TODO" "NOTE" "REF"))
 
   (custom-set-faces
-   '(font-lock-fic-author-face ((t (:background "white" :foreground "orangered" :underline t :weight bold))))
-   '(font-lock-fic-face ((t (:background "white" :foreground "red" :slant italic :weight bold)))))
+   '(font-lock-fic-author-face ((t (:foreground "orangered" :underline t :weight bold))))
+   '(font-lock-fic-face ((t (:foreground "red" :slant italic :weight bold)))))
 
   (message "* ---[ fic-ext-mode post-load configuration is complete ]---"))
 
