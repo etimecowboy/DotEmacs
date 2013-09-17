@@ -1393,7 +1393,7 @@ The process is:
   (xy/install-lisps (concat my-local-lisp-path "/elscreen"))
 
   ;; git repository lisps
-  (xy/install-lisps (concat my-git-lisp-path "/dictionary"))
+  (xy/install-lisps (concat my-git-lisp-path "/dictionary-el"))
   
   ;; git submodules
 
