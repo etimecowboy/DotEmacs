@@ -6,4 +6,4 @@
 	url = git@github.com:etimecowboy/lisps.git
 [submodule "git-lisps/dictionary"]
 	path = git-lisps/dictionary
-	url = https://github.com/myrkr/dictionary-el.git
+	url = git@github.com:myrkr/dictionary-el.git
