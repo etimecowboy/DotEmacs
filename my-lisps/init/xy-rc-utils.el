@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-13 Fri 02:07 by xin on S13>
+;; Time-stamp: <2013-09-17 Tue 10:58 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -49,7 +49,7 @@
 
 ;;*** Machine names --- which machine are we using?
 (defvar using-office-pc
-  (string-match "brl" (prin1-to-string (downcase system-name))))
+  (string-match "uos" (prin1-to-string (downcase system-name))))
 (defvar using-home-desktop
   (string-match "p5q" (prin1-to-string (downcase system-name))))
 (defvar using-laptop
@@ -66,7 +66,7 @@
 (defmacro OfficePC (&rest body)
   (list
    'if (string-match
-        "brl" (prin1-to-string (downcase system-name)))
+        "uos" (prin1-to-string (downcase system-name)))
    (cons 'progn body)))
 
 (defmacro HomeDesktop (&rest body)
@@ -136,46 +136,92 @@
 
 ;;** c/c++ include dir
 (Windows
- (defvar my-mingw-path (expand-file-name "E:/program/MinGW")
-   "MinGW installation path in the Windows system.")
 
- (defvar user-include-dirs
-   '(;; User header files
-     "." "./include" "./inc" "./common" "./public"
-     ".." "../include" "../inc" "../common" "../public"
-     "../.." "../../include" "../../inc" "../../common" "../../public"
-     ;; GCC header files
-     "E:/program/MinGW/include"
-     "E:/program/MinGW/include/sys"
-     "E:/program/MinGW/include/ddk"
-     "E:/program/MinGW/include/gdiplus"
-     "E:/program/MinGW/include/GL"
-     "E:/program/MinGW/include/libltdl"
-     "E:/program/MinGW/include/sys"
-     "E:/program/MinGW/lib/gcc/mingw32/4.5.2/include"
-     "E:/program/MinGW/lib/gcc/mingw32/4.5.2/include/c++"
-     "E:/program/MinGW/lib/gcc/mingw32/4.5.2/include/c++/backward"
-     "E:/program/MinGW/lib/gcc/mingw32/4.5.2/include-fixed"
-     "E:/program/MinGW/lib/gcc/mingw32/4.5.2/finclude"
-     ;; MSYS header files
-     ;; "E:/program/MinGW/msys/1.0/include"
-     ;; VC 6 header files
-     ;; "D:/Microsoft Visual Studio/VC98/Include"
-     ;; "D:/Microsoft Visual Studio/VC98/MFC/Include"
-     ;; VC 10 header files
-     ;; "D:/Microsoft Visual Studio 10.0/VC/include"
-     ;; Winpcap headers, better to be copied to project directory
-     ;; "D:/WpdPack/Include"
-     )
-   "User include dirs for c/c++ mode")
+ (Laptop
+  (defvar my-mingw-path (expand-file-name "E:/program/MinGW")
+    "MinGW installation path in the Windows system.")
 
- ;; (defvar c-preprocessor-symbol-files
- ;;   '(;; "E:/program/MinGW/lib/gcc/mingw32/4.5.2/include/c++/bits/c++0x_warning.h"
- ;;     ;; "D:/Microsoft Visual Studio/VC98/Include/xstddef"
- ;;     ;; "C:/Program Files/Microsoft Visual Studio 10.0/VC/include/yvals.h"
- ;;     ;; "C:/Program Files/Microsoft Visual Studio 10.0/VC/include/crtdefs.h"
- ;;     )
- ;;   "Preprocessor symbol files for cedet")
+  (defvar user-include-dirs
+    '(;; User header files
+      "." "./include" "./inc" "./common" "./public"
+      ".." "../include" "../inc" "../common" "../public"
+      "../.." "../../include" "../../inc" "../../common" "../../public"
+      ;; GCC header files
+      "E:/program/MinGW/include"
+      "E:/program/MinGW/include/sys"
+      "E:/program/MinGW/include/ddk"
+      "E:/program/MinGW/include/gdiplus"
+      "E:/program/MinGW/include/GL"
+      "E:/program/MinGW/include/libltdl"
+      "E:/program/MinGW/include/sys"
+      "E:/program/MinGW/lib/gcc/mingw32/4.5.2/include"
+      "E:/program/MinGW/lib/gcc/mingw32/4.5.2/include/c++"
+      "E:/program/MinGW/lib/gcc/mingw32/4.5.2/include/c++/backward"
+      "E:/program/MinGW/lib/gcc/mingw32/4.5.2/include-fixed"
+      "E:/program/MinGW/lib/gcc/mingw32/4.5.2/finclude"
+      ;; MSYS header files
+      ;; "E:/program/MinGW/msys/1.0/include"
+      ;; VC 6 header files
+      ;; "D:/Microsoft Visual Studio/VC98/Include"
+      ;; "D:/Microsoft Visual Studio/VC98/MFC/Include"
+      ;; VC 10 header files
+      ;; "D:/Microsoft Visual Studio 10.0/VC/include"
+      ;; Winpcap headers, better to be copied to project directory
+      ;; "D:/WpdPack/Include"
+      )
+    "User include dirs for c/c++ mode")
+
+  ;; (defvar c-preprocessor-symbol-files
+  ;;   '(;; "E:/program/MinGW/lib/gcc/mingw32/4.5.2/include/c++/bits/c++0x_warning.h"
+  ;;     ;; "D:/Microsoft Visual Studio/VC98/Include/xstddef"
+  ;;     ;; "C:/Program Files/Microsoft Visual Studio 10.0/VC/include/yvals.h"
+  ;;     ;; "C:/Program Files/Microsoft Visual Studio 10.0/VC/include/crtdefs.h"
+  ;;     )
+  ;;   "Preprocessor symbol files for cedet")
+  )
+ 
+ (OfficePC
+  (defvar my-mingw-path (expand-file-name "C:/Protable/MinGW")
+    "MinGW installation path in the Windows system.")
+
+  (defvar user-include-dirs
+    '(;; User header files
+      "." "./include" "./inc" "./common" "./public"
+      ".." "../include" "../inc" "../common" "../public"
+      "../.." "../../include" "../../inc" "../../common" "../../public"
+      ;; GCC header files
+      "C:/Protable/MinGW/include"
+      "C:/Protable/MinGW/include/sys"
+      "C:/Protable/MinGW/include/ddk"
+      "C:/Protable/MinGW/include/gdiplus"
+      "C:/Protable/MinGW/include/GL"
+      "C:/Protable/MinGW/include/libltdl"
+      "C:/Protable/MinGW/include/sys"
+      "C:/Protable/MinGW/lib/gcc/mingw32/4.8.1/include"
+      "C:/Protable/MinGW/lib/gcc/mingw32/4.8.1/include/c++"
+      "C:/Protable/MinGW/lib/gcc/mingw32/4.8.1/include/c++/backward"
+      "C:/Protable/MinGW/lib/gcc/mingw32/4.8.1/include-fixed"
+      "C:/Protable/MinGW/lib/gcc/mingw32/4.8.1/finclude"
+      ;; MSYS header files
+      ;; "C:/Protable/MinGW/msys/1.0/include"
+      ;; VC 6 header files
+      ;; "D:/Microsoft Visual Studio/VC98/Include"
+      ;; "D:/Microsoft Visual Studio/VC98/MFC/Include"
+      ;; VC 10 header files
+      ;; "D:/Microsoft Visual Studio 10.0/VC/include"
+      ;; Winpcap headers, better to be copied to project directory
+      ;; "D:/WpdPack/Include"
+      )
+    "User include dirs for c/c++ mode")
+
+  ;; (defvar c-preprocessor-symbol-files
+  ;;   '(;; "C:/Protable/MinGW/lib/gcc/mingw32/4.8.1/include/c++/bits/c++0x_warning.h"
+  ;;     ;; "D:/Microsoft Visual Studio/VC98/Include/xstddef"
+  ;;     ;; "C:/Program Files/Microsoft Visual Studio 10.0/VC/include/yvals.h"
+  ;;     ;; "C:/Program Files/Microsoft Visual Studio 10.0/VC/include/crtdefs.h"
+  ;;     )
+  ;;   "Preprocessor symbol files for cedet")
+  )
  )
 
 (GNULinux
