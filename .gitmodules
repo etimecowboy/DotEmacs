@@ -4,6 +4,3 @@
 [submodule "lisps"]
 	path = lisps
 	url = git@github.com:etimecowboy/lisps.git
-[submodule "git-lisps/dictionary"]
-	path = git-lisps/dictionary
-	url = git@github.com:myrkr/dictionary-el.git
