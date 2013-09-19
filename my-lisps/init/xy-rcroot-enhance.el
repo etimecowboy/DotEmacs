@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-14 Tue 09:48 by xin on S13>
+;; Time-stamp: <2013-09-18 Wed 14:28 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -306,22 +306,22 @@ from tradition chinese to simple chinese" t)
 
 
 
-;;* multi-term
-;; a mode based on term.el, for managing multiple terminal buffers
-(autoload 'multi-term "multi-term" nil t)
-(eval-after-load "multi-term"
-  '(progn
-     (multi-term-postload)
-     (eal-define-keys-commonly
-      global-map
-      `(("C-c T n" multi-term-next)
-        ("C-c T p" multi-term-prev)))))
-     ;; (eal-define-keys
-     ;;  'text-mode-map
-     ;;  `(("M-S-j"   switch-term-and-text)
-     ;;    ("M-S-l"   enter-term-mode)))))
-(global-set-key (kbd "C-x S-t") 'multi-term)
-
+;; ;;* multi-term
+;; ;; a mode based on term.el, for managing multiple terminal buffers
+;; (autoload 'multi-term "multi-term" nil t)
+;; (eval-after-load "multi-term"
+;;   '(progn
+;;      (multi-term-postload)
+;;      (eal-define-keys-commonly
+;;       global-map
+;;       `(("C-c T n" multi-term-next)
+;;         ("C-c T p" multi-term-prev)))))
+;;      ;; (eal-define-keys
+;;      ;;  'text-mode-map
+;;      ;;  `(("M-S-j"   switch-term-and-text)
+;;      ;;    ("M-S-l"   enter-term-mode)))))
+;; (global-set-key (kbd "C-x S-t") 'multi-term)
+;; NOTE: not very useful
 
 
 ;;* shell-pop

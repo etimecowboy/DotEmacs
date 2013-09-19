@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:50 by xin on p5q>
+;; Time-stamp: <2013-09-19 Thu 12:07 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-todochiku.el'
 ;; Author:       Xin Yang
@@ -20,10 +20,27 @@
 (defun todochiku-postload ()
   "Settings of `todochiku' after it's been loaded."
   (setq-default todochiku-command
-        (case system-type
-          (windows-nt "D:/Growl for Windows/growlnotify.exe")
-          (darwin "/usr/local/bin/growlnotify")
-          (t "notify-send")))
+                (case system-type
+                  (windows-nt
+                   "D:/Growl for Windows/growlnotify.exe")
+                  (darwin "/usr/local/bin/growlnotify")
+                  (t "notify-send")))
+  (OfficePC
+   (setq-default todochiku-command
+                 (case system-type
+                   (windows-nt
+                    "C:/Program Files (x86)/Growl for Windows/growlnotify.exe")
+                   (darwin "/usr/local/bin/growlnotify")
+                   (t "notify-send"))))
+  ;; (setq-default todochiku-command
+  ;;   (Windows
+  ;;     (OfficePC
+  ;;      "C:/Program Files (x86)/Growl for Windows/growlnotify.exe")
+  ;;     (Laptop
+  ;;      "D:/Growl for Windows/growlnotify.exe"))
+  ;;   (GNULinux
+  ;;    "/usr/local/bin/growlnotify")
+  ;;   (t "notify-send"))
   ;; (setq todochiku-command "D:/Growl/growlnotify.exe")
   ;; (let ((non-exist (not (file-exists-p todochiku-command))))
   ;;   (setq todochiku-tooltip-too (and non-exist window-system))
