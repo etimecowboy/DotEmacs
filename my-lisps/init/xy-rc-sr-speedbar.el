@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-19 Thu 14:48 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-09-19 Thu 21:43 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sr-speedbar.el'
 ;; Author:       Xin Yang
@@ -24,8 +24,8 @@
         sr-speedbar-delete-windows nil
         sr-speedbar-max-width 50
         sr-speedbar-right-side t
-        sr-speedbar-skip-other-window-p t
-        sr-speedbar-width-console 30
+        sr-speedbar-skip-other-window-p nil 
+        sr-speedbar-width-console 40
         sr-speedbar-width-x 40)
 
   (message "* ---[ sr-speedbar post-load configuration is complete ]---"))

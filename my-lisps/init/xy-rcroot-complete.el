@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-22 Wed 11:37 by xin on S13>
+;; Time-stamp: <2013-09-19 Thu 21:13 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -282,14 +282,12 @@
 (eval-after-load "yasnippet"
   '(progn
      (yasnippet-postload)
-     ;; tab is widely-used by ido/icicles/org/indent/outline/hideshow
-     (setq yas-trigger-key "C-c <tab>") ;; NOTE: seems changed in
-     ;; recent version
-     (eal-define-keys
-      'yas-minor-mode-map
-      `(;; ("<tab>"   nil)
-        ("M-j"     yas-next-field-or-maybe-expand)
-        ("M-k"     yas-prev-field)))
+     ;; NOTE: tab is widely-used by ido/icicles/org/indent/outline/hideshow
+     ;; (eal-define-keys
+     ;;  'yas-minor-mode-map
+     ;;  `(;; ("<tab>"   nil)
+     ;;    ("M-j"     yas-next-field-or-maybe-expand)
+     ;;    ("M-k"     yas-prev-field)))
      (eal-define-keys
       'yas-minor-mode-map
       `(("C-c C-f" yas-visit-snippet-file)
@@ -340,15 +338,15 @@
 
 ;;** apropos-mode
 ;; (with icicles?) completion
-(eval-after-load "apropos"
-  '(progn
-     ;; (apropos-postload)
-     (eal-define-keys
-      'apropos-mode-map
-      `(("u" scroll-down)
-        ("1" delete-other-windows)
-        ("n" forward-button)
-        ("p" backward-button)))))
+;; (eval-after-load "apropos"
+;;   '(progn
+;;      ;; (apropos-postload)
+;;      (eal-define-keys
+;;       'apropos-mode-map
+;;       `(("u" scroll-down)
+;;         ("1" delete-other-windows)
+;;         ("n" forward-button)
+;;         ("p" backward-button)))))
 
 
 
