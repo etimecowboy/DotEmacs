@@ -142,6 +142,14 @@
 
 
 
+;;** Speedbar and sr-speedbar
+(eval-after-load "sr-speedbar" '(sr-speedbar-postload))
+(autoload 'sr-speedbar-toggle "sr-speedbar"
+  "Toggle sr-speedbar window." t)
+(global-set-key (kbd "C-x S") 'sr-speedbar-toggle)
+;; BUG: It seems cause error when using with `elscreen.el'
+
+
 ;;* File searching
 
 ;;** Use `everything.el' with `everything.exe' in Windows

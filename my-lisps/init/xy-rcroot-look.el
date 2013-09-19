@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-29 Wed 07:55 by xin on S13>
+;; Time-stamp: <2013-09-19 Thu 15:45 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -98,11 +98,12 @@
 ;; (try-require 'thumb-frm) ;; NOTE: not very useful
 ;; (try-require 'autofit-frame)
 
-(autoload 'fit-frame "fit-frame" nil t)
+;; (autoload 'fit-frame "fit-frame" nil t)
+;; NOTE: not very useful
 
 (eal-define-keys-commonly
  global-map
- `(("S-<f5>"    fit-frame) ;; `fit-frame.el'
+ `(;; ("S-<f5>"    fit-frame) ;; `fit-frame.el'
    ("M-<f5>"    maximize-frame) ;; `maxframe.el'
    ("C-<f5>"    restore-frame)  ;; `maxframe.el'
    ;; ("M-<f5>"    toggle-max-frame)  ;; `frame-cmds.el'

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-06-05 Wed 09:43 by xin on S13>
+;; Time-stamp: <2013-09-19 Thu 15:27 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -779,14 +779,15 @@
 
 ;;** CEDET settings
 ;; FIXME: cedet need to be updated and reconfigured.
-(eval-after-load "cedet" '(cedet-postload))
-(global-set-key (kbd "<f6> C") 'xy/cedet-start)
+;; (eval-after-load "cedet" '(cedet-postload))
+;; (global-set-key (kbd "<f6> C") 'xy/cedet-start)
 
 
 
 ;;** ECB settings
-(eval-after-load "ecb-autoloads" '(ecb-postload))
-(global-set-key (kbd "<f6> B") 'xy/ecb-start)
+;; FIXME: ecb also need to be updated and reconfigured
+;; (eval-after-load "ecb-autoloads" '(ecb-postload))
+;; (global-set-key (kbd "<f6> B") 'xy/ecb-start)
 
 
 
