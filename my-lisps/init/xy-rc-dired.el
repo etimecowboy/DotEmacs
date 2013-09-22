@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-26 Sun 15:59 by xin on S13>
+;; Time-stamp: <2013-09-22 Sun 20:03 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired.el'
 ;; Author:       Xin Yang
@@ -90,6 +90,8 @@ will remain open and unsaved."
 
   (add-hook 'dired-after-readin-hook 'his-dired-sort)
   (add-hook 'dired-lood-hook 'his-dired-sort)
+  ;; Auto-refresh dired on file change
+  (add-hook 'dired-mode-hook 'auto-revert-mode)
   ;; (def-redo-command dired-redo 'dired-redo 'dired-undo)
 
   ;;------------------------------------------------------------------
