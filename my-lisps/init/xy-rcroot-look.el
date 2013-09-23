@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-19 Thu 15:45 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-09-22 Sun 20:57 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -37,8 +37,10 @@
 ;;   (add-to-list 'default-frame-alist '(height . 40))
 ;;   (add-to-list 'default-frame-alist '(width . 95)))
 
-(global-set-key (kbd "C-x C-0") 'xy/toggle-fullscreen)
-
+;; (global-set-key (kbd "C-x C-0") 'xy/toggle-fullscreen)
+(global-set-key (kbd "C-M-o") 'other-frame)
+(global-set-key (kbd "C-M-c") 'new-frame)
+(global-set-key (kbd "C-M-k") 'delete-frame)
 
 
 ;;** Frame title
