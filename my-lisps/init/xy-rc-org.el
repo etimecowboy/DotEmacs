@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-08 Sun 23:22 by xin on S13>
+;; Time-stamp: <2013-10-01 Tue 21:36 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -39,14 +39,14 @@
     (with-temp-buffer
       (insert text)
       (goto-char (point-min))
-      (insert "#+begin_src"
+      (insert "#+BEGIN_SRC"
               (if (string-match "\\(.+\\)-mode" mode)
                   (concat " " (match-string 1 mode))
                 "")
               "\n")
       (goto-char (point-max))
       (insert "\n"
-              "#+end_src"
+              "#+END_SRC"
               "\n")
       (require 'pc-select)
       (copy-region-as-kill (point-min) (point-max)))))

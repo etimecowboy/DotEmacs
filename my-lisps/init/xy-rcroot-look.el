@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-22 Sun 20:57 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-10-01 Tue 21:30 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -105,7 +105,7 @@
 
 (eal-define-keys-commonly
  global-map
- `(;; ("S-<f5>"    fit-frame) ;; `fit-frame.el'
+ `(("S-<f5>"    fit-frame) ;; `fit-frame.el'
    ("M-<f5>"    maximize-frame) ;; `maxframe.el'
    ("C-<f5>"    restore-frame)  ;; `maxframe.el'
    ;; ("M-<f5>"    toggle-max-frame)  ;; `frame-cmds.el'
@@ -360,7 +360,7 @@
 ;;* Vaious bar settings
 
 ;;** menu-bar
-(menu-bar-mode -1) ;; No menu bar as default
+(menu-bar-mode 1) ;; Show menu bar as default
 (global-set-key (kbd "M-<f10>") 'menu-bar-mode)
 
 ;; ;;*** menua-bar+
@@ -685,7 +685,24 @@
 
 ;; Change default text in the *scratch* buffer
 ;; NOTE: a warnning message is nessary for emacs fans like me
-(setq-default initial-scratch-message "")
+(setq-default initial-scratch-message
+  "  If this is the first time you start Emacs with my configuration,
+Please follow the following steps:
+
+  1. Close this Emacs session (C-x M-c or M-x 'save-buffers-kill-emacs)
+     NOTE: NOT the standard C-x C-c
+  2. Restart Emacs
+  3. Compile emacs lisp packages (C-x B or M-x xy/emacs-build)
+  4. Restat Emacs again
+
+  If there is any problem with starting Emacs, you can always run
+Emacs in debug mode to check settings. If you are using Windows,
+you must delete the ~/.emacs.d/my-lisps/init/xy-rcroot-env.elc file
+manually first.  
+
+  Happy Emacsing!
+
+")
 
 
 

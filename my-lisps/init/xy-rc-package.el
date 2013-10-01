@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-12 Thu 14:55 by xin on S13>
+;; Time-stamp: <2013-10-01 Tue 20:38 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -204,6 +204,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'ethan-wspace)
   (require-package 'everything)
   (require-package 'fic-ext-mode)
+  (require-package 'fit-frame)
   (require-package 'fold-this)
   (require-package 'framesize)
   (require-package 'furl)
