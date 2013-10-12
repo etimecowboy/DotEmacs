@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-06 Sun 20:46 by xin on S13>
+;; Time-stamp: <2013-10-11 Fri 21:48 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -925,6 +925,8 @@
   (setq org-latex-coding-system 'utf-8-unix)
   (setq org-latex-table-caption-above nil)
   (setq org-latex-tables-column-borders t)
+  ;; NOTE: Use org to write the draft of the document, and you can
+  ;; fine-tuning of the latex template for the final version.
   (setq org-latex-classes
    (quote (("beamer" "\\documentclass[presentation,9pt]{beamer}\n\
                       [DEFAULT-PACKAGES]\n[PACKAGES]\n[EXTRA]"
@@ -1005,6 +1007,7 @@ a4paper, cap, punct, nospace, indent, fancyhdr, hypperref, fntef]\
           ("" "soul" t) ("" "textcomp" t)
           ("" "marvosym" t) ("" "wasysym" t)
           ("" "latexsym" t) ("" "amssymb" t)
+          ("" "amsmath" t)
           ("bookmarks, bookmarksopen, bookmarksnumbered, \
 breaklinks, linktocpage, pagebackref, colorlinks, \
 pdfencoding=auto, breaklinks, linkcolor=blue, urlcolor=blue,\

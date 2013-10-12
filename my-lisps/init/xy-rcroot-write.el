@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-08-23 Fri 13:33 by xin on S13>
+;; Time-stamp: <2013-10-11 Fri 10:40 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -46,6 +46,7 @@
         ("C-c p"       xy/toggle-latex-to-pdf-process)
         ("C-c L"       org-toggle-link-display)
         ("C-c t"       timestamp)
+        ("C-c <tab>"   bh/hide-other)
         ))))
 (eval-after-load "org-agenda" '(org-postload))
 (eval-after-load "org-capture" '(org-postload))

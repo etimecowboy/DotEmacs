@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-19 Thu 21:13 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-10-10 Thu 22:33 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -112,7 +112,7 @@
 
   ;; (smex-initialize-ido)) ;; BUG: `smex-initialize-ido' cause error
   ;;                        ;; in Emacs 23.2, but OK in 23.3
-(global-set-key (kbd "<f6> d") 'xy/ido+smex-start)
+(global-set-key (kbd "<f6> D") 'xy/ido+smex-start)
 ;; (Windows ;; BUG: not work in Linux. Why? --Answer: The
 ;;          ;;      `smex-save-file' cannot be automatically created in
 ;;          ;;      Linux. Fixed by manually create it.
