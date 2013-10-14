@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-11 Fri 21:48 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-10-14 Mon 11:36 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -157,16 +157,16 @@
 
 
 
-(defvar xy:org-latexmk-flag nil)
+(defvar xy:org-nolatexmk-flag t)
 ;;;###autoload
 (defun xy/toggle-latex-to-pdf-process ()
   "Toggle the commands (latexmk/xelatex) to generate PDF file."
   (interactive)
-  (if xy:org-latexmk-flag
+  (if xy:org-nolatexmk-flag
       (progn
         (setq org-latex-pdf-process
               '("latexmk -xelatex -f -silent -c %b")) ;; no -d
-        (setq xy:org-latexmk-flag nil)
+        (setq xy:org-nolatexmk-flag nil)
         (message "* ---[ Using `latexmk' as the LaTeX PDF exporter now ]---"))
     (progn
       (setq org-latex-to-pdf-process
@@ -174,7 +174,7 @@
               "bibtex %b"
               "xelatex -interaction nonstopmode -output-directory %o %f"
               "xelatex -interaction nonstopmode -output-directory %o %f"))
-      (setq xy:org-latexmk-flag t)
+      (setq xy:org-nolatexmk-flag t)
       (message "* ---[ Using `xelatex' as the LaTeX PDF exporter now ]---"))))
 
 
@@ -925,11 +925,19 @@
   (setq org-latex-coding-system 'utf-8-unix)
   (setq org-latex-table-caption-above nil)
   (setq org-latex-tables-column-borders t)
+  ;; code listing settings, new `minted' is also supported
+  (setq org-latex-listings t)
+  (setq org-latex-preview-ltxpng-directory
+        "./") ;; fix the bug of current version
+  
   ;; NOTE: Use org to write the draft of the document, and you can
   ;; fine-tuning of the latex template for the final version.
   (setq org-latex-classes
-   (quote (("beamer" "\\documentclass[presentation,9pt]{beamer}\n\
-                      [DEFAULT-PACKAGES]\n[PACKAGES]\n[EXTRA]"
+   (quote (("beamer"
+            "\\documentclass[presentation,9pt]{beamer}\n\
+             [DEFAULT-PACKAGES]\n\
+             [PACKAGES]\n\
+             [EXTRA]"
             ("\\section{%s}" . "\\section*{%s}")
             ("\\subsection{%s}" . "\\subsection*{%s}")
             ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
@@ -962,6 +970,16 @@
             ("\\paragraph{%s}" . "\\paragraph*{%s}")
             ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
            ;;--------------------------------------------------
+           ("koma-article"
+             "\\documentclass{scrartcl}
+             [NO-DEFAULT-PACKAGES]
+             [EXTRA]"
+             ("\\section{%s}" . "\\section*{%s}")
+             ("\\subsection{%s}" . "\\subsection*{%s}")
+             ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+             ("\\paragraph{%s}" . "\\paragraph*{%s}")
+             ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+           ;;--------------------------------------------------
            ;; ("beamer" "\\documentclass{beamer}"
            ;;  org-beamer-sectioning)
            ;;--------------------------------------------------
@@ -993,7 +1011,7 @@ a4paper, cap, punct, nospace, indent, fancyhdr, hypperref, fntef]\
             ("\\subsection{%s}" . "\\subsection*{%s}")
             ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
            )))
-
+  
   ;; NOTE: "Alist of default packages to be inserted in the header.
   ;; Change this only if one of the packages here causes an
   ;; incompatibility with another package you are using." The default
@@ -1014,12 +1032,8 @@ pdfencoding=auto, breaklinks, linkcolor=blue, urlcolor=blue,\
 citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
            "hyperref" nil)))
 
-  ;; code listing settings, new `minted' is also supported
-  (setq org-latex-listings t)
-
   ;; NOTE: Alist of packages to be inserted in every LaTeX header.
-  ;; These will be inserted after
-  ;; `org-export-latex-default-packages-alist'.
+  ;; These will be inserted after `org-latex-default-packages-alist'.
   (setq org-latex-packages-alist
         '(;; The following 3 packages are required if using `listings'
           ("svgnames, table" "xcolor" t) ("" "listings" t) ("" "setspace" nil)
@@ -1045,17 +1059,90 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
           "bibtex %b"
           "xelatex -interaction nonstopmode -output-directory %o %f"
           "xelatex -interaction nonstopmode -output-directory %o %f"))
+  (setq xy:org-nolatexmk-flag t)
 
   ;; Better solution: use latexmk, but cause error when using tikz
   ;; (setq org-latex-to-pdf-process
   ;;   '("latexmk -c -bm DRAFT -pdf -pdflatex=\"xelatex -synctex=1 %O %S\" -silent -pvc -f %b"))
-  (setq xy:org-latexmk-flag nil)
   ;; (setq org-latex-to-pdf-process
   ;;   '("latexmk -xelatex -d -f -silent -c %b"))
 
-  ;; NOTE: fix the bug of current version
-  (setq org-latex-preview-ltxpng-directory "./")
+  ;; ;; FIXME: not working on version 8.0 or later
+  ;; ;; Use XeLaTeX for LaTeX export instead of pdfLaTeX
+  ;; ;; REF: (@url :file-name "http://orgmode.org/worg/org-tutorials/org-latex-export.html" :display "Worg:org-latex-export")
+  ;; ;;      (@url :file-name "http://orgmode.org/worg/org-faq.html#using-xelatex-for-pdf-export" :display "Worg:faq:using-xelatex-for-pdf-export")
+  ;; ;;      (@url :file-name "http://comments.gmane.org/gmane.emacs.orgmode/71847" :display "xelatex-and-the-new-exporter@orgmode-mail-list")
+  ;; ;; NOTE: latexmc can be configured globally in `~/.latexmkrc' file
+  
+  ;; ;; Originally taken from Bruno Tavernier:
+  ;; ;; http://thread.gmane.org/gmane.emacs.orgmode/31150/focus=31432
+  ;; ;; but adapted to use latexmk 4.20 or higher.
+  ;; (defun my-auto-tex-cmd ()
+  ;;   "When exporting from .org with latex, automatically run latex,
+  ;;    pdflatex, or xelatex as appropriate, using latexmk."
+  ;;   (let ((texcmd)))
+  ;;   ;; default command: oldstyle latex via dvi
+  ;;   (setq texcmd "latexmk -dvi -pdfps -silent %b")
+  ;;   ;; pdflatex -> .pdf
+  ;;   (if (string-match "LATEX_CMD: pdflatex" (buffer-string))
+  ;;       (setq texcmd "latexmk -pdf -silent %b"))
+  ;;   ;; xelatex -> .pdf
+  ;;   (if (string-match "LATEX_CMD: xelatex" (buffer-string))
+  ;;       (setq texcmd "latexmk -xelatex -silent %b"))
+  ;;   ;; LaTeX compilation command
+  ;;   (setq org-latex-to-pdf-process (list texcmd)))
 
+  ;; ;; (add-hook 'org-export-latex-after-initial-vars-hook 'my-auto-tex-cmd)
+  ;; (add-hook 'org-export-before-parsing-hook 'my-auto-tex-cmd)
+  
+  ;; ;; ;; Specify default packages to be included in every tex file, whether pdflatex or xelatex
+  ;; ;; (setq org-latex-packages-alist
+  ;; ;;       '(("" "graphicx" t)
+  ;; ;;         ("" "longtable" nil)
+  ;; ;;         ("" "float" nil)))
+
+  ;; ;; (defun my-auto-tex-parameters ()
+  ;; ;;   "Automatically select the tex packages to include."
+  ;; ;;   ;; default packages for ordinary latex or pdflatex export
+  ;; ;;   (setq org-latex-default-packages-alist
+  ;; ;;         '(("AUTO" "inputenc" t)
+  ;; ;;           ("T1"   "fontenc"   t)
+  ;; ;;           (""     "fixltx2e"  nil)
+  ;; ;;           (""     "wrapfig"   nil)
+  ;; ;;           (""     "soul"      t)
+  ;; ;;           (""     "textcomp"  t)
+  ;; ;;           (""     "marvosym"  t)
+  ;; ;;           (""     "wasysym"   t)
+  ;; ;;           (""     "latexsym"  t)
+  ;; ;;           (""     "amssymb"   t)
+  ;; ;;           (""     "hyperref"  nil)))
+  ;; ;;   ;; Packages to include when xelatex is used
+  ;; ;;   (if (string-match "LATEX_CMD: xelatex" (buffer-string))
+  ;; ;;       (setq org-latex-default-packages-alist
+  ;; ;;             '(("" "fontspec" t)
+  ;; ;;               ("" "xunicode" t)
+  ;; ;;               ("" "url" t)
+  ;; ;;               ;; ("" "rotating" t)
+  ;; ;;               ;; ("american" "babel" t)
+  ;; ;;               ;; ("babel" "csquotes" t)
+  ;; ;;               ("" "soul" t)
+  ;; ;;               ("xetex" "hyperref" nil)
+  ;; ;;               )))
+  ;; ;;   ;; (if (string-match "LATEX_CMD: xelatex" (buffer-string))
+  ;; ;;   ;;     (setq org-latex-classes
+  ;; ;;   ;;           (cons '("article"
+  ;; ;;   ;;                   "\\documentclass[11pt,article,oneside]{memoir}"
+  ;; ;;   ;;                   ("\\section{%s}" . "\\section*{%s}")
+  ;; ;;   ;;                   ("\\subsection{%s}" . "\\subsection*{%s}")
+  ;; ;;   ;;                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+  ;; ;;   ;;                   ("\\paragraph{%s}" . "\\paragraph*{%s}")
+  ;; ;;   ;;                   ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+  ;; ;;   ;;                 org-latex-classes)))
+  ;; ;;   )
+
+  ;; ;; ;; (add-hook 'org-export-latex-after-initial-vars-hook 'my-auto-tex-parameters)
+  ;; ;; (add-hook 'org-export-before-parsing-hook 'my-auto-tex-parameters)
+  
   ;; load reftex
   (require 'reftex)
   ;; load cd-latex
