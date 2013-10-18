@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-17 Thu 23:05 by xin on S13>
+;; Time-stamp: <2013-10-18 Fri 06:20 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -189,10 +189,14 @@
 ;; (xy/load-autoloads (concat my-local-lisp-path "mo-git-blame"))
 
 ;;*** elscreen
-;; REF: 
-;; (@url :file-name "https://github.com/knu/elscreen" :display "Git Source")
+;; REF:  (@url :file-name "https://github.com/knu/elscreen" :display "Git Source")
 ;; NOTE: `elscreen-gf.el' and `elscreen-wl.el' are removed
 (xy/load-autoloads (concat my-local-lisp-path "/elscreen"))
+
+;;*** ido-ubiquitous
+;; REF:  (@url :file-name "https://github.com/DarwinAwardWinner/ido-ubiquitous" :display "Git Source")
+;; NOTE: ELPA package is not stable now
+(xy/load-autoloads (concat my-local-lisp-path "/ido-ubiquitous-2.2"))
 
 ;;** Rebuild Emacs configuration
 (global-set-key (kbd "C-x B") 'xy/emacs-build)
