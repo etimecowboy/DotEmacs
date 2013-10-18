@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-26 Sun 17:07 by xin on S13>
+;; Time-stamp: <2013-10-18 Fri 04:15 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-matlab.el'
 ;; Author:       Xin Yang
@@ -35,12 +35,13 @@
 ;;;###autoload
 (defun matlab-postload ()
   "Settings of `matlab-emacs' after it's been loaded."
-
-  ;; `matlab-emacs'
-  ;; NOTE: matlab-emcs has not been updated for more than 2 years, so
-  ;; some parts of the code are out-dated, and may not works well with
+  
+  ;; NOTE: `matlab-emcs' has not been updated for some time, so ;; some
+  ;; parts of the code are out-dated, and may not works well with ;;
   ;; the latest `CEDET'.
+  
   (require 'matlab-load)
+  (require 'cedet)
   
   ;; load files of recent version `CEDET' in ~/.emacs.d/lisps
   ;; instead of the old version shipped with GNU Emacs.
@@ -49,12 +50,31 @@
   ;; (server-start) ;; server must be started for backtracing errors
                     ;; BUG: backtrace does not work
 
-  (setq matlab-shell-ask-MATLAB-for-completions t
-        matlab-shell-command "matlab"
-        matlab-shell-enable-gud-flag t
-        matlab-shell-input-ring-size 100)
+  ;; Change path
+  (Windows
+   (setq matlab-shell-command "matlabshell.exe")
 
-  (setq matlab-arg1-max-indent-length 15
+   ;; NOTE: use one of the following 
+   ;; 1. Have `%MATLAB_ROOT%\extern\lib\win64\microsoft\libeng.dll'
+   ;;    in your system variable `PATH'
+   ;; 2. Add the following to your Emacs configuration  
+   ;;    (setenv "PATH" (concat
+   ;;      "C:/PROGRA~1/MATLAB/R2011a/bin/win64;" (getenv "PATH")))
+   ;; 3. Put `matlabshell.exe' and `matlabshell.cmd' in
+   ;;    `%MATLAB_ROOT%\bin' or `%MATLAB_ROOT%\bin\win64'
+   ;;    which has been added to `PATH' when MATLAB was installed   
+     (setq matlab-shell-command-switches '("10000" "20000")))
+  
+  (GNULinux
+   (setq matlab-shell-command "matlab")
+   (setq matlab-shell-command-switches '("-nodesktop -nosplash")))
+  
+  (setq matlab-shell-ask-MATLAB-for-completions t
+        matlab-shell-enable-gud-flag t
+        matlab-shell-input-ring-size 100
+        matlab-shell-logo (concat my-local-image-path "/matlab/matlab.png")
+        ;; matlab-shell-echoes nil
+        matlab-arg1-max-indent-length 15
         matlab-auto-fill t
         matlab-block-indent-tic-toc-flag nil
         matlab-block-verify-max-buffer-size 50000

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-19 Thu 15:27 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-10-18 Fri 03:20 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -583,10 +583,12 @@
 
 ;;* Matlab development settings
 (eval-after-load "matlab" '(matlab-postload))
-(autoload 'matlab-mode "matlab" "Enter MATLAB mode." t)
-(setq auto-mode-alist (cons '("\\.m\\'" . matlab-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.M\\'" . matlab-mode) auto-mode-alist))
-(autoload 'matlab-shell "matlab" "Interactive MATLAB mode." t)
+(autoload 'matlab-mode "matlab" "MATLAB editing mode" t)
+(autoload 'matlab-shell "matlab" "Interactive MATLAB mode" t)
+;; (setq auto-mode-alist (cons '("\\.m\\'" . matlab-mode) auto-mode-alist))
+;; (setq auto-mode-alist (cons '("\\.M\\'" . matlab-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.m$" . matlab-mode))
+(add-to-list 'auto-mode-alist '("\\.M$" . matlab-mode))
 ;; (global-set-key (kbd "<f6> m") 'xy/matlab-cedet-start)
 ;; (global-set-key (kbd "<f6> m") 'xy/matlab-ecb-start)
 

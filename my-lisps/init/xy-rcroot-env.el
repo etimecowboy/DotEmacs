@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-12 Thu 15:03 by xin on S13>
+;; Time-stamp: <2013-10-17 Thu 23:05 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -52,6 +52,8 @@
 (Windows
  (add-to-list 'exec-path (expand-file-name
                           (concat my-local-exec-path "/win32")))
+ (add-to-list 'exec-path (expand-file-name
+                          (concat my-local-exec-path "/win64")))
  ;; (add-to-list 'exec-path (concat my-local-exec-path
  ;;                                 "/win32/aspell/bin"))
  (add-to-list 'exec-path (expand-file-name

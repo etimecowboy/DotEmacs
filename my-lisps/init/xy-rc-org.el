@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-14 Mon 11:36 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-10-18 Fri 02:46 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -859,6 +859,10 @@
   (require 'ob-latex)
   (require 'ob-emacs-lisp)
   (require 'ob-matlab)
+  (Windows
+   (setq org-babel-matlab-shell-command "matlabshell.cmd"))
+  (setq org-babel-default-header-args:matlab
+  '((:results . "output") (:session . "*MATLAB*")))
   (require 'ob-octave)
   (require 'ob-org)
   ;; (require 'ob-perl)
