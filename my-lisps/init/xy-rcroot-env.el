@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-19 Sat 15:36 by xin on S13>
+;; Time-stamp: <2013-10-19 Sat 09:50 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -62,6 +62,9 @@
                           (concat my-local-exec-path "/win32/stunnel"))))
 ;; NOTE: Linux don't need it
 (GNULinux
+  ;; (setenv "PATH" (concat
+  ;;      "C:/PROGRA~1/MATLAB/R2011a/bin/win64;" (getenv "PATH")))
+  (add-to-list 'exec-path (getenv "PATH"))
   (add-to-list 'exec-path (expand-file-name
                            (concat my-local-exec-path "/lin64"))))
 (delete-dups exec-path)

@@ -266,8 +266,8 @@ value of the last statement in BODY, as elisp."
 		(org-babel-comint-with-output
 		    (session
 		     (if matlabp
-			 org-babel-octave-eoe-indicator
-             ;; org-babel-matlab-eoe-output
+			 ;; org-babel-octave-eoe-indicator
+             org-babel-matlab-eoe-output
 		       org-babel-octave-eoe-output)
 		     t full-body)
 		  (insert full-body) (comint-send-input nil t)))) results)

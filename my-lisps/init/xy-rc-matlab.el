@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-18 Fri 04:15 by xin on S13>
+;; Time-stamp: <2013-10-19 Sat 10:10 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-matlab.el'
 ;; Author:       Xin Yang
@@ -57,7 +57,7 @@
    ;; NOTE: use one of the following 
    ;; 1. Have `%MATLAB_ROOT%\extern\lib\win64\microsoft\libeng.dll'
    ;;    in your system variable `PATH'
-   ;; 2. Add the following to your Emacs configuration  
+   ;; 2. Add the following to your Emacs configuration (Linux as well)  
    ;;    (setenv "PATH" (concat
    ;;      "C:/PROGRA~1/MATLAB/R2011a/bin/win64;" (getenv "PATH")))
    ;; 3. Put `matlabshell.exe' and `matlabshell.cmd' in
@@ -66,7 +66,7 @@
      (setq matlab-shell-command-switches '("10000" "20000")))
   
   (GNULinux
-   (setq matlab-shell-command "matlab")
+   (setq matlab-shell-command "/opt/MATLAB/R2011b/bin/matlab")
    (setq matlab-shell-command-switches '("-nodesktop -nosplash")))
   
   (setq matlab-shell-ask-MATLAB-for-completions t
