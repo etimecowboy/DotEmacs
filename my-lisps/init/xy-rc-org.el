@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-19 Sat 09:37 by xin on vmlmde>
+;; Time-stamp: <2013-10-19 Sat 21:06 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -212,11 +212,11 @@
     (add-hook 'org-mode-hook
               'wl-org-column-view-uses-fixed-width-face))
 
-  ;;** `seesion.el'
-  ;; Don't recursively display gtd files in session list
-  (add-to-list 'session-globals-exclude 'org-mark-ring)
-  ;; Don't display org agenda files
-  (add-to-list 'session-globals-exclude 'org-agenda-files)
+  ;; ;;** `seesion.el'
+  ;; ;; Don't recursively display gtd files in session list
+  ;; (add-to-list 'session-globals-exclude 'org-mark-ring)
+  ;; ;; Don't display org agenda files
+  ;; (add-to-list 'session-globals-exclude 'org-agenda-files)
 
   ;;** 让链结后的空格问题
   (setq org-activate-links '(bracket angle radio tag date footnote))

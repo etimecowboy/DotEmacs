@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 23:39 by xin on p5q>
+;; Time-stamp: <2013-10-19 Sat 21:06 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-session.el'
 ;; Author:       Xin Yang
@@ -53,6 +53,12 @@
   (setq session-globals-max-size 100
         session-globals-max-string 40960
         session-registers-max-string 2048)
+
+  ;; org-mode
+  ;; Don't recursively display gtd files in session list
+  (add-to-list 'session-globals-exclude 'org-mark-ring)
+  ;; Don't display org agenda files
+  (add-to-list 'session-globals-exclude 'org-agenda-files)
 
   (message "* ---[ session post-load configuration is complete ]---"))
 
