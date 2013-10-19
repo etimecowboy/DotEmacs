@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-19 Sat 15:36 by xin on S13>
+;; Time-stamp: <2013-10-19 Sat 21:39 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1394,7 +1394,7 @@ The process is:
   (xy/install-lisps (concat my-local-lisp-path "/ido-ubiquitous-1.7"))
 
   ;; git repository lisps
-  (xy/install-lisps (concat my-git-lisp-path "/dictionary-el"))
+  ;; (xy/install-lisps (concat my-git-lisp-path "/dictionary-el"))
   
   ;; git submodules
 
