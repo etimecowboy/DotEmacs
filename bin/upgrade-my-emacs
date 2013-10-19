@@ -14,3 +14,10 @@ git submodule update
 cd ~/.emacs.d/emacswiki
 git checkout master
 git pull origin master
+cd ~/.emacs.d/elpa
+rm -rf org-2*/
+emacs &
+cd org-2*/
+rm ob-octave.el*
+cp ~/.emacs.d/backup/org-fixed/ob-octave.el .
+cd
