@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-10 Thu 22:33 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-10-20 Sun 17:29 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -291,7 +291,7 @@
      (eal-define-keys
       'yas-minor-mode-map
       `(("C-c C-f" yas-visit-snippet-file)
-        ("C-c C-t" yas-tryout-snippet)
+        ("C-c C-r" yas-tryout-snippet)
         ("C-c c-d" yas-describe-table)))))
 ;; NOTE: manually start it when required.
 ;; NOTE: use with `auto-complete' would be nice! (no need to remember

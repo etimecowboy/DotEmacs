@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-20 Sun 04:07 by xin on S13>
+;; Time-stamp: <2013-10-20 Sun 15:21 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -165,7 +165,9 @@
   (if xy:org-nolatexmk-flag
       (progn
         (setq org-latex-pdf-process
-              '("latexmk -xelatex -f -silent -c %b")) ;; no -d
+              ;; '("latexmk -xelatex -f -silent -c %b")) ;; no -d
+              '("latexmk %b"))
+
         (setq xy:org-nolatexmk-flag nil)
         (message "* ---[ Using `latexmk' as the LaTeX PDF exporter now ]---"))
     (progn
@@ -271,7 +273,7 @@
   (setq org-cycle-include-plain-lists t)
 
   ;;    Check if in invisible region before inserting or deleting a character
-  (setq org-catch-invisible-edits 'show-and-error)
+  (setq org-catch-invisible-edits 'smart)
   
 
 
