@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-19 Sat 21:06 by xin on S13>
+;; Time-stamp: <2013-10-19 Sat 23:45 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -887,7 +887,15 @@
   (setq org-src-fontify-natively t
         org-confirm-babel-evaluate nil
         org-export-babel-evaluate nil
-        org-src-tab-acts-natively t)
+        org-src-tab-acts-natively t
+        org-edit-src-turn-on-auto-save t
+        org-adapt-indentation nil ;; it is not good for my snippets
+        org-edit-src-content-indentation 2
+        org-enable-fixed-width-editor t
+        org-special-ctrl-o t
+        org-src-preserve-indentation t
+        org-src-window-setup 'current-window
+        org-src-ask-before-returning-to-edit-buffer nil)
 
   ;; Delete babel temporary diretory instead of trash it.
   ;; macro `bypass-trash-in-function(fun)' sets FUN to always use

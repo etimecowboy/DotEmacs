@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-18 Wed 14:28 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-10-19 Sat 22:11 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -269,7 +269,8 @@ from tradition chinese to simple chinese" t)
      (eal-define-keys
       'linkd-map
       `(("<mouse-4>" nil)
-        ("C-c ," nil)))
+        ("C-c ," nil)
+        ("C-c '" nil)))
      (eal-define-keys-commonly
       global-map
       `(("C-x L t" linkd-insert-tag)
