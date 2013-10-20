@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-19 Sat 23:45 by xin on S13>
+;; Time-stamp: <2013-10-20 Sun 04:07 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -1040,7 +1040,7 @@ a4paper, cap, punct, nospace, indent, fancyhdr, hypperref, fntef]\
           ("" "soul" t) ("" "textcomp" t)
           ("" "marvosym" t) ("" "wasysym" t)
           ("" "latexsym" t) ("" "amssymb" t)
-          ("" "amsmath" t)
+          ;; ("" "amsmath" t) ;; this package cause error, no need
           ("bookmarks, bookmarksopen, bookmarksnumbered, \
 breaklinks, linktocpage, pagebackref, colorlinks, \
 pdfencoding=auto, breaklinks, linkcolor=blue, urlcolor=blue,\
