@@ -2,7 +2,7 @@
 *#
 _*
 *.db
-*.elc
+*.elc*
 *.bak
 *.log
 *.backup
