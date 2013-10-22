@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-20 Sun 10:55 by xin on S13>
+;; Time-stamp: <2013-10-22 Tue 02:00 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -582,6 +582,7 @@
 ;; (Windows
 ;;  (when (try-require 'color-theme-sanityinc-solarized)
 ;;    (load-theme 'sanityinc-solarized-dark t)))
+(setq custom-safe-themes t)
 (when (and window-system (try-require 'nzenburn-theme))
    (load-theme 'nzenburn t))
 ;; (when (and window-system (try-require 'color-theme-sanityinc-tomorrow))
