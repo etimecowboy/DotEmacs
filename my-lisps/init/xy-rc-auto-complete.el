@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-10 Thu 22:03 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-10-24 Thu 15:00 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auto-complete.el'
 ;; Author:       Xin Yang
@@ -100,13 +100,14 @@
   ;; The AC sources for Clang. Combine the power of AC, `Clang' and
   ;; `Yasnippet'.
   (require 'auto-complete-clang)
-  (defun my-ac-cc-mode-setup ()
-    (setq ac-sources
-          (append 'ac-source-clang
-                  ac-sources)))
+  ;; FIXME: error when visiting c source files
+  ;; (defun my-ac-cc-mode-setup ()
+  ;;   (setq ac-sources
+  ;;         (append 'ac-source-clang
+  ;;                 ac-sources)))
 
-  (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
-  (add-hook 'cc-mode-hook 'my-ac-cc-mode-setup)
+  ;; (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
+  ;; (add-hook 'cc-mode-hook 'my-ac-cc-mode-setup)
 
   ;;------------------------------------------------------------------
   ;; text mode settings
