@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-20 Sun 15:21 by xin on S13>
+;; Time-stamp: <2013-10-22 Tue 20:29 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -22,6 +22,7 @@
 ;; REF: (@url :file-name "http://www.mfasold.net/blog/2009/02/using-emacs-org-mode-to-draft-papers/" :display "Post")
 ;;;###autoload
 (defun org-mode-reftex-setup ()
+  (interactive)
   (require 'reftex)
   (turn-on-reftex)
   (and (buffer-file-name)
@@ -1172,7 +1173,7 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
             '(lambda ()
                ;; BUG: org-mobile
                (turn-on-auto-fill)
-               ;; (org-mode-reftex-setup)
+               (org-mode-reftex-setup)
                ;; (turn-on-reftex) ;; start it manually is better.
                ;; (turn-on-org-cdlatex) ;; start it manually is better.
                ;;;; change default math-symbol prefix
