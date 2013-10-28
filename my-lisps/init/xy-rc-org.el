@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-22 Tue 20:29 by xin on S13>
+;; Time-stamp: <2013-10-27 Sun 13:34 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -1044,6 +1044,7 @@ a4paper, cap, punct, nospace, indent, fancyhdr, hypperref, fntef]\
           ("" "marvosym" t) ("" "wasysym" t)
           ("" "latexsym" t) ("" "amssymb" t)
           ;; ("" "amsmath" t) ;; this package cause error, no need
+          ;; ("" "tikz" nil)
           ("bookmarks, bookmarksopen, bookmarksnumbered, \
 breaklinks, linktocpage, pagebackref, colorlinks, \
 pdfencoding=auto, breaklinks, linkcolor=blue, urlcolor=blue,\
@@ -1057,6 +1058,8 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
           ("svgnames, table" "xcolor" t) ("" "listings" t) ("" "setspace" nil)
           ;; Display various latex-related logos
           ("" "metalogo" t) ("" "mflogo" t) ("" "texnames" t)
+          ("" "amsmath" nil) ;; this package cause error, no need
+          ("" "tikz" nil)
           ;; xelatex font adjustment (by default)
           ;; ("" "fontspec" nil)
           ;; Some extra text markups
@@ -1071,6 +1074,44 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
           ;; ("" "titlesec" nil)
           ))
 
+  ;; NOTE: LaTeX header that will be used when processing a fragment
+  (setq org-format-latex-header
+"\\documentclass{article}
+\\usepackage[usenames]{color}
+[PACKAGES]
+[DEFAULT-PACKAGES]
+\\pagestyle{empty}             % do not remove
+% The settings below are copied from fullpage.sty
+\\setlength{\\textwidth}{\\paperwidth}
+\\addtolength{\\textwidth}{-3cm}
+\\setlength{\\oddsidemargin}{1.5cm}
+\\addtolength{\\oddsidemargin}{-2.54cm}
+\\setlength{\\evensidemargin}{\\oddsidemargin}
+\\setlength{\\textheight}{\\paperheight}
+\\addtolength{\\textheight}{-\\headheight}
+\\addtolength{\\textheight}{-\\headsep}
+\\addtolength{\\textheight}{-\\footskip}
+\\addtolength{\\textheight}{-3cm}
+\\setlength{\\topmargin}{1.5cm}
+\\addtolength{\\topmargin}{-2.54cm}")
+
+  (setq org-format-latex-options
+      '(:foreground default :background
+                    default :scale 1.0
+                    :html-foreground
+                    "Black"
+                    :html-background
+                    "Transparent"
+                    :html-scale 1.0
+                    :matchers ("begin"
+                               "$1" "$"
+                               "$$"
+                               "\\("
+                               "\\[")))
+
+  (setq org-format-latex-signal-error t)
+  (setq org-latex-create-formula-image-program 'imagemagick)
+  
   ;; Use xelatex instead of pdflatex for better font supports.
   (setq org-latex-to-pdf-process
         '("xelatex -interaction nonstopmode -output-directory %o %f"
@@ -1173,8 +1214,8 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
             '(lambda ()
                ;; BUG: org-mobile
                (turn-on-auto-fill)
-               (org-mode-reftex-setup)
-               ;; (turn-on-reftex) ;; start it manually is better.
+               ;; BUG: start `reftex' manually, or there will be an error
+               ;; (org-mode-reftex-setup)
                ;; (turn-on-org-cdlatex) ;; start it manually is better.
                ;;;; change default math-symbol prefix
                ;; (org-defkey org-cdlatex-mode-map "`" 'nil)
