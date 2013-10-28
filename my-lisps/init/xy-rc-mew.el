@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-28 Mon 15:53 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-10-28 Mon 21:32 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-mew.el'
 ;; Author:       Xin Yang
@@ -91,11 +91,11 @@
 
   ;; html邮件相关设置（使用w3m）
   (setq mew-mime-multipart-alternative-list '("text/html" "text/plain" "*."))
-  (setq mew-prog-text/html         'mew-mime-text/html-w3m) ;; See w3m.el
-  ;; (setq mew-prog-text/html-ext     "/usr/bin/firefox")
-  (setq mew-prog-text/xml         'mew-mime-text/html-w3m) ;; See w3m.el
-  ;; (setq mew-prog-text/xml-ext     "/usr/bin/firefox")
-  (setq mew-prog-application/xml         'mew-mime-text/html-w3m)
+  (setq mew-prog-text/html 'mew-mime-text/html-w3m) ;; See w3m.el
+  ;; (setq mew-prog-text/html-ext "/usr/bin/firefox")
+  (setq mew-prog-text/xml 'mew-mime-text/html-w3m) ;; See w3m.el
+  ;; (setq mew-prog-text/xml-ext "/usr/bin/firefox")
+  (setq mew-prog-application/xml 'mew-mime-text/html-w3m)
   ;; (setq mew-prog-application/xml-ext     "/usr/bin/firefox")
   ;; (setq mew-prog-application/X-Dvi         "/usr/bin/xdvi")
   (when (try-require 'mew-w3m)

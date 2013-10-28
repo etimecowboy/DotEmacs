@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-28 Mon 11:54 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-10-28 Mon 22:00 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -322,7 +322,7 @@
   (add-hook 'org-after-todo-state-change-hook
             '(lambda ()
                ;; change the state to SOMEDAY
-               (if (string= org-state "SOMEDAY") (org-schedule t))
+               ;; (if (string= org-state "SOMEDAY") (org-schedule t))
                ;; Automatically schedule the task to today after change
                ;; the state to NEXT
                (if (string= org-state "NEXT") (org-schedule nil "+0"))
