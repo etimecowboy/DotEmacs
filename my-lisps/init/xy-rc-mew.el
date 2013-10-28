@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-05-16 Thu 21:45 by xin on S13>
+;; Time-stamp: <2013-10-28 Mon 15:53 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-mew.el'
 ;; Author:       Xin Yang
@@ -137,13 +137,22 @@
           mew-smtp-ssl-port  465
           mew-smtp-user      "xin2.yang")
 
-  ;; UWE smtp
+  ;; ;; UWE smtp
+  ;; (OfficePC
+  ;;  (setq mew-smtp-server    "staf-smtp.uwe.ac.uk"
+  ;;        mew-smtp-port      25
+  ;;        mew-use-smtp-auth  nil
+  ;;        mew-smtp-auth-list nil
+  ;;        mew-smtp-ssl       nil))
+
+  ;; Soton smtp
   (OfficePC
-   (setq mew-smtp-server "staf-smtp.uwe.ac.uk"
+   (setq mew-smtp-server    "smtp.soton.ac.uk" ;; "staf-smtp.uwe.ac.uk"
+         mew-smtp-auth-list '("PLAIN" "LOGIN" "CRAM-MD5")
+         mew-smtp-ssl       nil
          mew-smtp-port      25
-         mew-use-smtp-auth  nil
-         mew-smtp-auth-list nil
-         mew-smtp-ssl       nil))
+         mew-use-smtp-auth  t
+         mew-smtp-user      "xy12g13"))
 
   ;; Virgin Media smtp
   (UKDesktop
@@ -169,7 +178,7 @@
          ("name"                 . "Xin Yang")
          ("user"                 . "xin2.yang")
          ("reply-to"             . "xin2.yang@gmail.com")
-         ("signature-file"       . "~/emacs/mew/sig/grad")
+         ("signature-file"       . "~/Dropbox/emacs/mew/sig/grad")
          ("mail-domain"          . "gmail.com")
          ("imap-server"          . "imap.gmail.com")
          ("imap-ssl"             . t)
@@ -178,15 +187,57 @@
          ("imap-user"            . "xin2.yang")
          ("imap-size"            . 0)
          ("imap-delete"          . t))
+
+        ("soton-staff"
+         ("mailbox-type"         . imap)
+         ("proto"                . "%")
+         ("name"                 . "Xin Yang")
+         ("user"                 . "xy12g13")
+         ("reply-to"             . "xin.yang@soton.ac.uk")
+         ("mail-domain"          . "soton.ac.uk")
+         ("signature-file"       . "~/Dropbox/emacs/mew/sig/sigsoton")
+         ("imap-server"          . "imap.exchange.soton.ac.uk")
+         ("imap-ssl"             . t)
+         ("imap-ssl-port"        . "993")
+         ("imap-auth"            . pass)
+         ("imap-user"            . "xy12g13")
+         ("imap-size"            . 0)
+         ("imap-delete"          . t)
+         ("imap-inbox-folder"    . "%inbox")
+         ("imap-trash-folder"    . "%Deleted")
+         ;; ("imap-queue-folder"    . "%Outbox")
+         ;; ("imap-spam-folder"     . "%Junk E-mail")
+         )
         
+        ("soton-student"
+         ("mailbox-type"         . imap)
+         ("proto"                . "%")
+         ("name"                 . "Xin Yang")
+         ("user"                 . "xy2c13")
+         ("reply-to"             . "xy2c13@soton.ac.uk")
+         ("mail-domain"          . "soton.ac.uk")
+         ("signature-file"       . "~/Dropbox/emacs/mew/sig/sigsoton")
+         ("imap-server"          . "imap.exchange.soton.ac.uk")
+         ("imap-ssl"             . t)
+         ("imap-ssl-port"        . "993")
+         ("imap-auth"            . pass)
+         ("imap-user"            . "xy2c13")
+         ("imap-size"            . 0)
+         ("imap-delete"          . t)
+         ("imap-inbox-folder"    . "%inbox")
+         ("imap-trash-folder"    . "%Deleted")
+         ;; ("imap-queue-folder"    . "%Outbox")
+         ;; ("imap-spam-folder"     . "%Junk E-mail")
+         )
+
         ("uwe"
          ("mailbox-type"         . imap)
          ("proto"                . "%")
          ("name"                 . "Xin Yang")
-         ("user"                 . "xin2.yang")
+         ("user"                 . "x4-yang")
          ("reply-to"             . "xin2.yang@uwe.ac.uk")
          ("mail-domain"          . "uwe.ac.uk")
-         ("signature-file"       . "~/emacs/mew/sig/siguwe")
+         ("signature-file"       . "~/Dropbox/emacs/mew/sig/siguwe")
          ("imap-server"          . "ses-imap.uwe.ac.uk")
          ("imap-ssl"             . t)
          ("imap-ssl-port"        . "993")
@@ -206,7 +257,7 @@
          ("name"                 . "etimecowboy")
          ("user"                 . "etimecowboy")
          ("reply-to"             . "etimecowboy@gmail.com")
-         ("signature-file"       . "~/emacs/mew/sig/bulb")
+         ("signature-file"       . "~/Dropbox/emacs/mew/sig/bulb")
          ("mail-domain"          . "gmail.com")
          ("imap-server"          . "imap.gmail.com")
          ("imap-ssl"             . t)
@@ -222,7 +273,7 @@
         ;;  ("proto"                 . "-")
         ;;  ("nntp-server"           . "news.virginmedia.com")
         ;;  ("nntp-user"             . "etimecowboy")
-        ;;  ("signature-file"        . "~/emacs/mew/sig/bulb")
+        ;;  ("signature-file"        . "~/Dropbox/emacs/mew/sig/bulb")
         ;;  ("name"                  . "etimecowboy")
         ;;  ("mew-nntp-msgid-user"   . "etimecowboy")
         ;;  ("mew-nntp-msgid-domain" . "gmail.com")

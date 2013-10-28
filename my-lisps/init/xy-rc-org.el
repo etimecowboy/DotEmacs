@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-27 Sun 13:34 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-10-28 Mon 11:54 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -561,7 +561,7 @@
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("4" "Add a bookmark"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Bookmark")
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Bookmarks")
            "** %c %^G\n\
    :LOGBOOK:\n\
    - Visit on                               %U\n\
@@ -668,7 +668,7 @@
                       (org-tags-match-list-sublevels nil)))
 
           ;;----------------------------------------------------------
-          ("b" "Bookmark in the past 30 days" tags
+          ("b" "Bookmarks in the past 30 days" tags
            "+bookmark+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
            ((org-agenda-overriding-header
              "Recent bookmarks (30d)")
