@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-11 Fri 10:40 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-10-30 Wed 22:00 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -37,15 +37,16 @@
         ("C-c o m"     org2blog/wp-mode)
         ("C-c o l"     org2blog/wp-login)
         ("C-c o t"     org2blog/wp-post-subtree)
-        ("C-c s"       org-export-as-html5presentation-and-open)
+        ("C-c S"       org-export-as-html5presentation-and-open)
         ("C-c M-c"     org-coordinates-google-geocode-set)
         ("C-c M-L"     org-address-google-geocode-set)
         ("C-c M-A"     org-address-google-geocode-set)
         ("C-c M-l"     org-location-google-maps)
-        ("C-c g"       org-publish-blog)
-        ("C-c p"       xy/toggle-latex-to-pdf-process)
+        ("C-c G"       org-publish-blog)
+        ("C-c P"       xy/toggle-latex-to-pdf-process)
+        ("C-c R"       xy/org-mode-reftex-setup)
         ("C-c L"       org-toggle-link-display)
-        ("C-c t"       timestamp)
+        ("C-c T"       timestamp)
         ("C-c <tab>"   bh/hide-other)
         ))))
 (eval-after-load "org-agenda" '(org-postload))
@@ -58,7 +59,6 @@
    ("C-c b"   org-ido-switchb)
    ("C-c c"   org-capture)
    ("C-c n"   org2blog/wp-new-entry)
-   ("C-c u e" xy/browse-my-emacs-blog)
    ;; ("M-S-w"   tzz-copy-region-with-mode-property)
    ))
 
