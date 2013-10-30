@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-28 Mon 22:00 by xin on S13>
+;; Time-stamp: <2013-10-30 Wed 16:52 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -21,7 +21,7 @@
 
 ;; REF: (@url :file-name "http://www.mfasold.net/blog/2009/02/using-emacs-org-mode-to-draft-papers/" :display "Post")
 ;;;###autoload
-(defun org-mode-reftex-setup ()
+(defun xy/org-mode-reftex-setup ()
   (interactive)
   (require 'reftex)
   (turn-on-reftex)
@@ -1058,7 +1058,7 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
           ("svgnames, table" "xcolor" t) ("" "listings" t) ("" "setspace" nil)
           ;; Display various latex-related logos
           ("" "metalogo" t) ("" "mflogo" t) ("" "texnames" t)
-          ("" "amsmath" nil) ;; this package cause error, no need
+          ;; ("" "amsmath" nil) ;; this package cause error, no need
           ("" "tikz" nil)
           ;; xelatex font adjustment (by default)
           ;; ("" "fontspec" nil)
@@ -1080,6 +1080,16 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
 \\usepackage[usenames]{color}
 [PACKAGES]
 [DEFAULT-PACKAGES]
+\\usepackage{tikz}
+\\usetikzlibrary{
+  arrows, calc, fit, patterns, plotmarks, shapes,
+  datavisualization, er, automata, backgrounds,
+  chains, topaths, trees, matrix, fadings, shadings,
+  through, positioning, scopes, decorations,
+  shadows, intersections, fixedpointarithmetic}
+
+\\usepackage{pgfgantt}
+
 \\pagestyle{empty}             % do not remove
 % The settings below are copied from fullpage.sty
 \\setlength{\\textwidth}{\\paperwidth}
@@ -1215,7 +1225,7 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
                ;; BUG: org-mobile
                (turn-on-auto-fill)
                ;; BUG: start `reftex' manually, or there will be an error
-               ;; (org-mode-reftex-setup)
+               ;; (xy/org-mode-reftex-setup)
                ;; (turn-on-org-cdlatex) ;; start it manually is better.
                ;;;; change default math-symbol prefix
                ;; (org-defkey org-cdlatex-mode-map "`" 'nil)
