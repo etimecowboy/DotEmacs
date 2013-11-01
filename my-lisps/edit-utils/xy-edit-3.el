@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2013-01-14 Mon 14:48 by xin on S13>
+;; Time-stamp: <2013-10-31 Thu 15:33 by xy12g13 on UOS-208326>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -100,39 +100,39 @@ the end of the line."
 
 ;; NOTE: 不用的理由同上。这种拷贝模式会和模板工具如 `yasnippet' 冲突。
 
-;; ;;* 拷贝代码自动格式化
-;; ;; Emacs 里对代码的格式化支持的非常好，不但可以在编辑的时候自动帮你格式
-;; ;; 化， 还可以选中一块代码，按 Ctrl-Alt-\ 对这块代码重新进行格式化。如
-;; ;; 果要粘贴一块代码的话，粘贴完了紧接着按 Ctrl-Alt-\ ，就可以把新加入的
-;; ;; 代码格式化好。下面的代码能实现这些机械操作。你可以加入或删除一些
-;; ;; mode 名称来定制上面的配置。
-;; ;;;###autoload
-;; (dolist (command '(yank yank-pop))
-;;   (eval
-;;    `(defadvice ,command (after indent-region activate)
-;;       (and (not current-prefix-arg)
-;;            (member major-mode
-;;                    '(emacs-lisp-mode
-;;                      lisp-mode
-;;                      ;; clojure-mode
-;;                      ;; scheme-mode
-;;                      ;; haskell-mode
-;;                      ;; ruby-mode
-;;                      ;; rspec-mode
-;;                      ;; python-mode
-;;                      sh-mode
-;;                      c-mode
-;;                      c++-mode
-;;                      ;; objc-mode
-;;                      latex-mode
-;;                      ;; js-mode
-;;                      vhdl-mode
-;;                      verilog-mode
-;;                      ;; plain-tex-mode
-;;                      ;; org-mode
-;;                      ))
-;;            (let ((mark-even-if-inactive transient-mark-mode))
-;;              (indent-region (region-beginning) (region-end) nil))))))
+;;* 拷贝代码自动格式化
+;; Emacs 里对代码的格式化支持的非常好，不但可以在编辑的时候自动帮你格式
+;; 化， 还可以选中一块代码，按 Ctrl-Alt-\ 对这块代码重新进行格式化。如
+;; 果要粘贴一块代码的话，粘贴完了紧接着按 Ctrl-Alt-\ ，就可以把新加入的
+;; 代码格式化好。下面的代码能实现这些机械操作。你可以加入或删除一些
+;; mode 名称来定制上面的配置。
+;;;###autoload
+(dolist (command '(yank yank-pop))
+  (eval
+   `(defadvice ,command (after indent-region activate)
+      (and (not current-prefix-arg)
+           (member major-mode
+                   '(emacs-lisp-mode
+                     lisp-mode
+                     ;; clojure-mode
+                     ;; scheme-mode
+                     ;; haskell-mode
+                     ;; ruby-mode
+                     ;; rspec-mode
+                     ;; python-mode
+                     sh-mode
+                     c-mode
+                     c++-mode
+                     ;; objc-mode
+                     latex-mode
+                     ;; js-mode
+                     vhdl-mode
+                     verilog-mode
+                     ;; plain-tex-mode
+                     ;; org-mode
+                     ))
+           (let ((mark-even-if-inactive transient-mark-mode))
+             (indent-region (region-beginning) (region-end) nil))))))
 
 
 

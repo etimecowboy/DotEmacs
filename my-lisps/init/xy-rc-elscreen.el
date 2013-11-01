@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-13 Fri 01:49 by xin on S13>
+;; Time-stamp: <2013-10-31 Thu 22:31 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elscreen.el'
 ;; Author:       Xin Yang
@@ -22,7 +22,7 @@
 
  (setq elscreen-display-screen-number t
        elscreen-display-tab t
-       elscreen-prefix-key (kbd "<f5>")
+       elscreen-prefix-key (kbd "C-z")
        elscreen-tab-display-control nil
        elscreen-tab-display-kill-screen t)
 

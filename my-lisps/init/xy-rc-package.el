@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-30 Wed 22:01 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-10-31 Thu 10:51 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -171,7 +171,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'buffer-move)
   (require-package 'c-eldoc)
   ;; (require-package 'cal-china-x) ;; fixed, moved to my-lisps
-  (require-package 'cdlatex)
+  ;; (require-package 'cdlatex) ;; elpa package is too old
   (require-package 'centered-cursor-mode)
   (require-package 'cl-lib)
   (require-package 'cmake-mode)

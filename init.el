@@ -1,7 +1,7 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
 ;;--------------------------------------------------------------------
 ;; File name:    `init.el'
-;; Time-stamp: <2013-05-14 Tue 09:44 by xin on S13>
+;; Time-stamp: <2013-10-31 Thu 12:19 by xy12g13 on UOS-208326>
 ;; Author:       Xin Yang
 ;; Email:        xin2.yang@gmail.com
 ;; Depend on:    None
@@ -35,8 +35,8 @@
 (setq message-log-max 100000) ;; Set a large message log file for checking
 
 ;;** Compilation message
-;; (setq compilation-auto-jump-to-first-error t)
-;; (setq compilation-scroll-output t)
+(setq compilation-auto-jump-to-first-error t)
+(setq compilation-scroll-output t)
 
 ;;** Measure the loading time
 (defconst start-time (float-time))
