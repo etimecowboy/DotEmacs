@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-30 Wed 16:52 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-11-03 Sun 05:30 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -1082,12 +1082,12 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
 [DEFAULT-PACKAGES]
 \\usepackage{tikz}
 \\usetikzlibrary{
-  arrows, calc, fit, patterns, plotmarks, shapes,
-  datavisualization, er, automata, backgrounds,
-  chains, topaths, trees, matrix, fadings, shadings,
-  through, positioning, scopes, decorations,
-  shadows, intersections, fixedpointarithmetic}
-
+arrows, calc, fit, patterns, plotmarks, shapes, shadows,
+datavisualization, er, automata, backgrounds, chains, topaths,
+trees, matrix, fadings, shadings, through, positioning, scopes,
+intersections, fixedpointarithmetic, petri,
+decorations.pathreplacing, decorations.pathmorphing,
+decorations.markings}
 \\usepackage{pgfgantt}
 
 \\pagestyle{empty}             % do not remove

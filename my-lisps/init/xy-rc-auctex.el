@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-02-03 Sun 15:31 by xin on S13>
+;; Time-stamp: <2013-11-03 Sun 05:59 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auctex.el'
 ;; Author:       Xin Yang
@@ -246,6 +246,9 @@
         preview-transparent-color "white")
         ;; preview-fast-dvips-command "pdftops -origpagesizes %s.pdf %m/preview.ps")
 
+  (Windows
+   (setq preview-gs-command "gswin64c.exe"))
+  
   (message "* ---[ preview-latex post-load configuration is complete ]---"))
 
 (provide 'xy-rc-auctex)
