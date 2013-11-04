@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-22 Tue 02:00 by xin on S13>
+;; Time-stamp: <2013-11-04 Mon 10:14 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -513,10 +513,10 @@
    c-mode-base-map c++-mode-map perl-mode-map
    org-mode-map text-mode-map ruby-mode-map html-mode-map)
  `(("C-c H m" highlight-symbol-at-point)
-   ("C-c H d" highlight-symbol-remove-all)
+   ("C-c H k" highlight-symbol-remove-all)
    ("C-c H n" highlidght-symbol-next)
    ("C-c H p" highldight-symbol-prev)
-   ("C-c H r" highlight-symbol-query-replace)
+   ("C-c H %" highlight-symbol-query-replace)
    ("C-c H N" highlight-symbol-next-in-defun)
    ("C-c H P" highlight-symbol-prev-in-defun)))
 
