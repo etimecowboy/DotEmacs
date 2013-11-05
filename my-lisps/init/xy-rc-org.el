@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-04 Mon 16:53 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-11-05 Tue 11:45 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -1057,7 +1057,7 @@ citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
         '(;; The following 3 packages are required if using `listings'
           ("svgnames, table" "xcolor" t) ("" "listings" t) ("" "setspace" nil)
           ;; Display various latex-related logos
-          ("" "metalogo" t) ("" "mflogo" t) ("" "texnames" t)
+          ;; ("" "metalogo" t) ("" "mflogo" t) ("" "texnames" t)
           ;; ("" "amsmath" nil) ;; this package cause error, no need
           ("" "tikz" nil)
           ;; xelatex font adjustment (by default)
