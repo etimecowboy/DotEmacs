@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-31 Thu 10:51 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-11-10 Sun 21:22 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -289,16 +289,16 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'smarter-compile)
   (require-package 'smex)
   (require-package 'string-utils)
-  (require-package 'sunrise-commander)
-  ;; (require-package 'sunrise-x-buttons)
-  (require-package 'sunrise-x-checkpoints)
-  (require-package 'sunrise-x-loop)
-  (require-package 'sunrise-x-mirror)
-  (require-package 'sunrise-x-modeline)
-  ;; (require-package 'sunrise-x-popviewer)
-  (require-package 'sunrise-x-tabs)
-  ;; (require-package 'sunrise-x-tree)
-  (require-package 'sunrise-x-w32-addons)
+  ;; (require-package 'sunrise-commander)
+  ;; ;; (require-package 'sunrise-x-buttons)
+  ;; (require-package 'sunrise-x-checkpoints)
+  ;; (require-package 'sunrise-x-loop)
+  ;; (require-package 'sunrise-x-mirror)
+  ;; (require-package 'sunrise-x-modeline)
+  ;; ;; (require-package 'sunrise-x-popviewer)
+  ;; (require-package 'sunrise-x-tabs)
+  ;; ;; (require-package 'sunrise-x-tree)
+  ;; (require-package 'sunrise-x-w32-addons)
   ;; (require-package 'texdrive)
   (require-package 'ucs-utils)
   (require-package 'undo-tree)
