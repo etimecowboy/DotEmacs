@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-05 Tue 11:45 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-11-15 Fri 19:03 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -282,12 +282,8 @@
 
   ;;** General settings
   (setq org-todo-keywords
-          '((sequence "TODO(t)" "NEXT(n!)" "STARTED(s)" "|"
-                    "DONE(d!)")
-            (sequence "SOMEDAY(x)" "WAITING(w!)" "|"
-                    "CANCELLED(c@/!)")))
-  ;;NOTE: it may be better to define todo keywords in seperate files(?)
-
+        '((sequence "TODO(t)" "NEXT(n!)" "STARTED(s)" "WAITING(w!)" "|" "DONE(d!)")
+          (sequence "SOMEDAY(x)" "|" "CANCELLED(c@/!)")))
   (setq org-use-fast-todo-selection t) ;; C-c C-t key
   (setq org-treat-insert-todo-heading-as-state-change t)
   (setq org-treat-S-cursor-todo-selection-as-state-change nil)
