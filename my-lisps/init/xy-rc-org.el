@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-15 Fri 19:03 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-11-16 Sat 14:12 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -291,13 +291,13 @@
         t) ;; Block checkbox entries from CHECKED while they have
            ;; children that are not CHECKED
   (setq org-enforce-todo-dependencies
-        nil)   ;; Block todo items from changing state to DONE while
-               ;; they have children that are not DONE
+        t) ;; Block todo items from changing state to DONE while
+           ;; they have children that are not DONE
 
   ;;** Define stuck projects
   (setq org-stuck-projects
-        '("+proj/!-TODO-SOMEDAY"
-          ("\\<NEXT\\>" "\\<STARTED\\>")))
+        '("+proj/!-TODO-SOMEDAY-NEXT"
+          ("\\<STARTED\\>" "\\<WAITING\\>")))
   
   ;;** Tag change triggers
   ;; (setq org-todo-state-tags-triggers
@@ -317,11 +317,11 @@
   ;; Automaticaly remove the scheduled date/time after
   (add-hook 'org-after-todo-state-change-hook
             '(lambda ()
-               ;; change the state to SOMEDAY
+               ;; ;; change the state to SOMEDAY
                ;; (if (string= org-state "SOMEDAY") (org-schedule t))
-               ;; Automatically schedule the task to today after change
-               ;; the state to NEXT
-               (if (string= org-state "NEXT") (org-schedule nil "+0"))
+               ;; ;; Automatically schedule the task to today after change
+               ;; ;; the state to NEXT
+               ;; (if (string= org-state "NEXT") (org-schedule nil "+0"))
                ;; (when window-system ;; also useful in console
                  (when (try-require 'todochiku)
                    (if (string= org-state "DONE")
@@ -494,22 +494,22 @@
 *** Notes\n\n%?\n"
            :empty-lines 1 :prepend t :clock-keep t)
 
-          ("s" "Scrap Text from Emacs"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
-           "** %^{Title} %^G\n\n\
-*** Source\n\n\
-- Timestamp                                 %U\n\
-- Source\n\
-  + Emacs @ %a\n\n\
-*** Local clipboard\n\n\
-#+BEGIN_EXAMPLE\n\
-%x\n\
-#+END_EXAMPLE\n\n\
-*** Notes\n\n%?\n"
-           :empty-lines 1 :prepend t :clock-keep t)
+;;           ("s" "Scrap Text from Emacs"
+;;            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
+;;            "** %^{Title} %^G\n\n\
+;; *** Source\n\n\
+;; - Timestamp                                 %U\n\
+;; - Source\n\
+;;   + Emacs @ %a\n\n\
+;; *** Local clipboard\n\n\
+;; #+BEGIN_EXAMPLE\n\
+;; %x\n\
+;; #+END_EXAMPLE\n\n\
+;; *** Notes\n\n%?\n"
+;;            :empty-lines 1 :prepend t :clock-keep t)
 
 
-          ("e" "Collect new words/phrases/sentences"
+          ("e" "English language study: words/phrases/sentences"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "English")
            "** %? %^G\n\
    :LOGBOOK:\n\
@@ -542,19 +542,19 @@
 *** Notes\n\n%?\n"
            :empty-lines 1 :prepend t :clock-keep t)
 
-          ("3" "Scrap Text from Web Browser"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
-           "** %^{Title} %^G\n\n\
-*** Source\n\n\
-- Timestamp                                 %U\n\
-- Source\n\
-  + WWW @ %c\n\n\
-*** Webpage highlights\n\n\
-#+BEGIN_EXAMPLE\n\
-%i\n\
-#+END_EXAMPLE\n\n\
-*** Notes\n\n%?\n"
-           :empty-lines 1 :prepend t :clock-keep t)
+;;           ("3" "Scrap Text from Web Browser"
+;;            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
+;;            "** %^{Title} %^G\n\n\
+;; *** Source\n\n\
+;; - Timestamp                                 %U\n\
+;; - Source\n\
+;;   + WWW @ %c\n\n\
+;; *** Webpage highlights\n\n\
+;; #+BEGIN_EXAMPLE\n\
+;; %i\n\
+;; #+END_EXAMPLE\n\n\
+;; *** Notes\n\n%?\n"
+;;            :empty-lines 1 :prepend t :clock-keep t)
 
           ("4" "Add a bookmark"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Bookmarks")
@@ -687,7 +687,7 @@
           ("p" "Day Planner"
            ((tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"+SCHEDULED<\"<today>\"-repeat"
                        ((org-agenda-overriding-header
-                         "Yesterday Next Actions")
+                         "Pending Next Actions")
                         (org-tags-match-list-sublevels t)))
 
             ;; (tags-todo "TODO=\"TODO\"+TIMESTAMP_IA<\"<today>\"-repeat"
@@ -717,9 +717,9 @@
                      (org-agenda-todo-list-sublevel t)
                      (org-agenda-timeline-show-empty-dates nil)))
 
-            (tags-todo "TODO=\"NEXT\"+SCHEDULED>=\"<tomorrow>\"+SCHEDULED<=\"<+3d>\""
+            (tags-todo "TODO=\"NEXT\"|TODO=\"TODO\"+SCHEDULED>=\"<tomorrow>\"+SCHEDULED<=\"<+3d>\""
                        ((org-agenda-overriding-header
-                         "Next Actions in the next 3 days")
+                         "Scheduled tasks in the next 3 days")
                         (org-tags-match-list-sublevels nil)))
 
             (tags-todo "TODO=\"SOMEDAY\""
