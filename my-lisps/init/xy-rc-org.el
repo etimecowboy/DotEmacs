@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-16 Sat 14:12 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-11-16 Sat 18:02 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -296,7 +296,7 @@
 
   ;;** Define stuck projects
   (setq org-stuck-projects
-        '("+proj/!-TODO-SOMEDAY-NEXT"
+        '("+prj/!-TODO-SOMEDAY-NEXT"
           ("\\<STARTED\\>" "\\<WAITING\\>")))
   
   ;;** Tag change triggers
@@ -352,12 +352,12 @@
   ;;         ("@online" . ?O) ("@post" . ?M) ("@email" . ?E)
   ;;         ("@phone" . ?F) ("@people" . ?Z)
   ;;         ;; special tags
-  ;;         ("appt" . ?A) ("proj" . ?P) ("repeat" . ?R)
+  ;;         ("appt" . ?A) ("prj" . ?P) ("repeat" . ?R)
   ;;         ("delegated" . ?D) ("noexport" . ?N)))
   ;; NOTE: it is better to define all the tags in seperate files. 
 
   (setq org-use-tag-inheritance t)   ;; Inherit tags in most of cases
-  (setq org-tags-exclude-from-inheritance '("proj"))   ;; Exclusions
+  (setq org-tags-exclude-from-inheritance '("prj"))   ;; Exclusions
 
   
   
@@ -685,7 +685,7 @@
 
           ;;----------------------------------------------------------
           ("p" "Day Planner"
-           ((tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"+SCHEDULED<\"<today>\"-repeat"
+           ((tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-repeat-sub"
                        ((org-agenda-overriding-header
                          "Pending Next Actions")
                         (org-tags-match-list-sublevels t)))
@@ -717,12 +717,12 @@
                      (org-agenda-todo-list-sublevel t)
                      (org-agenda-timeline-show-empty-dates nil)))
 
-            (tags-todo "TODO=\"NEXT\"|TODO=\"TODO\"+SCHEDULED>=\"<tomorrow>\"+SCHEDULED<=\"<+3d>\""
+            (tags-todo "SCHEDULED>=\"<tomorrow>\"+SCHEDULED<=\"<+3d>\"-repeat"
                        ((org-agenda-overriding-header
                          "Scheduled tasks in the next 3 days")
                         (org-tags-match-list-sublevels nil)))
 
-            (tags-todo "TODO=\"SOMEDAY\""
+            (tags-todo "TODO=\"SOMEDAY\"-sub"
                        ((org-agenda-overriding-header
                          "Someday/Maybe Items")
                         (org-tags-match-list-sublevels nil)))))
@@ -770,7 +770,7 @@
                      (org-agenda-todo-list-sublevel t)
                      (org-agenda-timeline-show-empty-dates t)))
 
-            (tags     "CLOSED<\"<tomorrow>\"+CLOSED>=\"<-1w>\""
+            (tags     "CLOSED<\"<tomorrow>\"+CLOSED>=\"<-1w>\"-repeat-sub"
                      ((org-agenda-overriding-header
                        "Archieve Closed Next Actions in this week")
                       (org-tags-match-list-sublevels t)
@@ -779,9 +779,9 @@
                       (org-agenda-skip-timestamp-if-done nil)
                       (org-agenda-skip-archived-trees nil)))
 
-           (tags-todo "TODO<>\"TODO\"+SCHEDULED<\"<tomorrow>\"+SCHEDULED>=\"<-1w>\""
+           (tags-todo "TODO<>\"TODO\"+SCHEDULED<\"<tomorrow>\"+SCHEDULED>=\"<-1w>\"-repeat-prj"
                        ((org-agenda-overriding-header
-                         "Re-schedule Openning Next Actions")
+                         "Re-schedule Pending Next Actions")
                         (org-tags-match-list-sublevels t)))
 
            (tags-todo "TODO=\"TODO\"-repeat"
@@ -789,7 +789,7 @@
                         "Process Old Wishes")
                        (org-tags-match-list-sublevels t)))
 
-           (tags      "proj/!-TODO-SOMEDAY"
+           (tags      "prj/!-TODO-SOMEDAY-sub"
                       ((org-agenda-overriding-header
                         "Projects Review")
                        (org-tags-match-list-sublevels t)))))
