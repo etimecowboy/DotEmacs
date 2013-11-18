@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-14 Fri 21:58 by xin on p5q>
+;; Time-stamp: <2013-11-17 Sun 17:15 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ido.el'
 ;; Author:       Xin Yang
@@ -109,21 +109,7 @@
   (add-hook 'org-mode-hook
             '(lambda ()
                (setq org-completion-use-ido t)))
-
-  ;;------------------------------------------------------------------
-  ;; Other ido plugins
-
-  ;; `ido-ubiquitous.el'
-  ;; (@url :file-name "https://github.com/DarwinAwardWinner/ido-ubiquitous" :display "Source")
-  (try-require 'ido-ubiquitous)
-
-  ;; `idomenu.el'
-  (autoload 'idomenu "idomenu" nil t)
-  ;; (global-set-key (kbd "C-c g") 'idomenu)
-
-  ;; `ido-yes-or-no.el'
-  (try-require 'ido-yes-or-no)
-
+  
   (message "* ---[ ido post-load configuration is complete ]---"))
 
 (provide 'xy-rc-ido)

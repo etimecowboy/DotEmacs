@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-16 Sat 18:02 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-11-18 Mon 10:03 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -183,6 +183,7 @@
 
 
 ;; REF: http://doc.norang.ca/org-mode.html
+;; FIXME: not work
 ;;;###autoload
 (defun bh/hide-other ()
   "Hide other org trees."

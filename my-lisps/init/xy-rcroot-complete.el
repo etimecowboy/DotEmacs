@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-20 Sun 17:29 by xin on S13>
+;; Time-stamp: <2013-11-17 Sun 17:19 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -105,9 +105,19 @@
   (when (featurep 'icicles)
     (icy-mode -1))
   (require 'ido)
-  (require 'smex)
   (ido-mode 1)
-  (ido-ubiquitous-mode 1)
+  ;; `ido-ubiquitous.el'
+  (when (try-require 'ido-ubiquitous)
+    (ido-ubiquitous-mode 1))
+  ;; `idomenu.el'
+  (autoload 'idomenu "idomenu" nil t)
+  ;; (global-set-key (kbd "C-c g") 'idomenu)
+  ;; `ido-yes-or-no.el'
+  (try-require 'ido-yes-or-no)
+  ;; `fix-ido'
+  (when (try-require 'flx-ido)
+    (flx-ido-mode 1))
+  (require 'smex)
   (smex-initialize))
 
   ;; (smex-initialize-ido)) ;; BUG: `smex-initialize-ido' cause error

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-06-30 Sun 17:37 by xin on S13>
+;; Time-stamp: <2013-11-17 Sun 20:31 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -78,16 +78,39 @@
 ;; (setq rj-mode-line-format nil)
 ;; (setq rjs-mode-line-format nil)
 ;; (recent-jump-mode 1)
-;; (when (try-require 'recent-jump-small)
-;;   (progn
-;;     (recent-jump-small-mode 1)
-;;     (eal-define-keys-commonly
-;;      global-map
-;;      `(;; ("M-,"   recent-jump-backward)
-;;        ;; ("M-."   recent-jump-forward)
-;;        ;; ("M-,"   recent-jump-small-backward)
-;;        ;; ("M-."   recent-jump-small-forward)
-;;        ))))
+(when (try-require 'recent-jump-small)
+  (progn
+    (recent-jump-small-mode 1)
+    (eal-define-keys-commonly
+     global-map
+     `(;; ("M-,"   recent-jump-backward)
+       ;; ("M-."   recent-jump-forward)
+       ("M-,"   recent-jump-small-backward)
+       ("M-."   recent-jump-small-forward)
+       ))))
+
+;; ;;** visible-mark
+;; (when (try-require 'visible-mark)
+;;   (setq visible-mark-max 10)
+;;   (global-visible-mark-mode 1))
+;; ;; color
+;; '(visible-mark-face ((t (:box (:line-width 2 :color "red" :style released-button))))))
+
+;;** back-button
+(when (try-require 'back-button)
+  (back-button-mode 1)
+  ;; (setq back-button-smartrep-prefix "C-x")
+  ;;       back-button-global-backward-keystrokes '("C-x <M-left>")
+  ;;       back-button-global-forward-keystrokes '("C-x <M-right>")
+  ;;       back-button-global-keystrokes '("C-x <M-SPC>")
+  ;;       back-button-local-backward-keystrokes '("C-x <left>")
+  ;;       back-button-local-forward-keystrokes '("C-x <right>")
+  ;;       back-button-local-keystrokes '("C-x <SPC>")
+)
+
+;;** nav-flash
+(when (try-require 'nav-flash)
+  (setq nav-flash-use-pulse 'gui-only))
 
 
 
@@ -270,7 +293,7 @@
    ("C-@"      mark-command)
    ("C-x \\"   rm-mark-command)
    ("C-x M-s"  isearch-forward-cur-word)
-   ("C-'"      wcy-mark-some-thing-at-point)
+   ("C-\""     wcy-mark-some-thing-at-point)
    ("M-|"      ywb-hippie-expand-filename)
    ("M-;"      qiang-comment-dwim-line)
    ;; ("M-K"      qiang-copy-line)

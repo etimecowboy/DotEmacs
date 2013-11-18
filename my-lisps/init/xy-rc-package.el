@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-10 Sun 21:22 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-11-18 Mon 10:56 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -163,6 +163,15 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'auto-complete)
   (require-package 'auto-dim-other-buffers)
   (require-package 'autopair)
+  
+  (require-package 'back-button)
+  ;; (require-package 'visible-mark) ;; clear install required
+  (require-package 'nav-flash)
+  (require-package 'smartrep)
+  (require-package 'ucs-utils)
+  (require-package 'persistent-soft)
+  (require-package 'pcache)
+  
   (require-package 'bash-completion)
   (require-package 'bm)
   (require-package 'bookmark+)
@@ -205,6 +214,8 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'everything)
   (require-package 'fic-ext-mode)
   (require-package 'fit-frame)
+  (require-package 'flx-ido)
+  (require-package 'flx)
   (require-package 'fold-this)
   (require-package 'framesize)
   (require-package 'furl)
@@ -261,7 +272,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'mouse+)  ;; don't want to use mouse
   (require-package 'multi-term)
   (require-package 'multiple-cursors)
-  (require-package 'nzenburn-theme)
+  ;; (require-package 'nzenburn-theme) ;; use my my hacked version
   (require-package 'o-blog)
   (require-package 'oauth)
   (require-package 'openwith)
@@ -272,8 +283,6 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'org-table-comment)  ;; nerver used by now
   (require-package 'org2blog)
   (require-package 'outline-magic)
-  (require-package 'pcache)
-  (require-package 'persistent-soft)
   (require-package 'popup)
   (require-package 'popwin)
   (require-package 'pp-c-l)
@@ -300,7 +309,7 @@ re-downloaded in order to locate PACKAGE."
   ;; ;; (require-package 'sunrise-x-tree)
   ;; (require-package 'sunrise-x-w32-addons)
   ;; (require-package 'texdrive)
-  (require-package 'ucs-utils)
+  ;; (require-package 'ucs-utils)
   (require-package 'undo-tree)
   (require-package 'vline)
   (require-package 'w32-browser)

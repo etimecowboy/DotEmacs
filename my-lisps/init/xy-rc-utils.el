@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-19 Sat 21:39 by xin on S13>
+;; Time-stamp: <2013-11-18 Mon 11:00 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1399,7 +1399,8 @@ The process is:
   ;; git submodules
 
   ;; ELPA lisps
-  (xy/recompile-dir my-elpa-lisp-path 'with-subdirs 'recursive)
+  ;; NOTE: ELPA lisps need clean installation
+  ;; (xy/recompile-dir my-elpa-lisp-path 'with-subdirs 'recursive)
 
   ;; my own lisps
   (xy/install-lisps my-own-lisp-path 'with-subdirs 'recursive)

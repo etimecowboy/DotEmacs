@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-04 Mon 10:14 by xin on S13>
+;; Time-stamp: <2013-11-17 Sun 03:30 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -304,6 +304,7 @@
 (eval-after-load "auto-dim-other-buffers" '(diminish 'auto-dim-other-buffers-mode))
 (eval-after-load "fic-ext-mode" '(diminish 'fic-ext-mode))
 (eval-after-load "face-remap" '(diminish 'buffer-face-mode))
+(eval-after-load "back-button" '(diminish 'back-button-mode))
 
 
 
