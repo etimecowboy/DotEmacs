@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-03 Sun 05:59 by xin on S13>
+;; Time-stamp: <2013-11-18 Mon 23:33 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auctex.el'
 ;; Author:       Xin Yang
@@ -183,7 +183,9 @@
         TeX-source-correlate-start-server t)
 
   (setq TeX-view-program-list
-        '(("SumatraPDF" "SumatraPDF.exe -reuse-instance %o")
+        '(("SumatraPDF" ("\"SumatraPDF.exe\" -reuse-instance" 
+                          (mode-io-correlate " -forward-search %b %n ") " %o"))
+          ;; ("SumatraPDF" "SumatraPDF.exe -reuse-instance %o")
           ("Gsview" "gsview32.exe %o")
           ("Dviout" "dviout.exe %o")
           ("Okular" "okular --unique %o#src:%n%b")
