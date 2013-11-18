@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-18 Mon 10:03 by xin on S13>
+;; Time-stamp: <2013-11-18 Mon 20:38 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -477,8 +477,7 @@
            "** TODO %^{New Wish} %^g\n\
    :LOGBOOK:\n\
    - Initial State           \"TODO\"       %U\n\
-   - Source\n\
-     + Emacs @ %a\n\
+   - Link %a\n\
    :END:\n\
    :PROPERTIES:\n\
    :DESCRIPTION: %?\n\
@@ -488,11 +487,12 @@
           ("n" "Take a Note from Emacs"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
            "** %^{Title} %^G\n\n\
-*** Source\n\n\
-- Timestamp                                 %U\n\
-- Source\n\
-  + Emacs @ %a\n\n\
-*** Notes\n\n%?\n"
+   :LOGBOOK:\n\
+   - Timestamp                              %U\n\
+   - Link %a\n\
+   :END:\n\n
+%?
+\n"
            :empty-lines 1 :prepend t :clock-keep t)
 
 ;;           ("s" "Scrap Text from Emacs"
@@ -512,12 +512,11 @@
 
           ("e" "English language study: words/phrases/sentences"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "English")
-           "** %? %^G\n\
+           "** %? %^g\n\
    :LOGBOOK:\n\
-   - Source
-     + Timestamp                            %U\n\
-     + Emacs @ %a
-   :END:\n\n\n"
+   - Timestamp                              %U\n\
+   - Link %a\n\
+   :END:\n\n"
            :empty-lines 1 :prepend t :clock-keep t)
 
           ("1" "Capture a New Wish from Web Browser"
@@ -525,8 +524,7 @@
            "** TODO %^{New Wish} %^g\n\
    :LOGBOOK:\n\
    - Initial State           \"TODO\"       %U\n\
-   - Source\n\
-     + WWW @ %c\n\
+   - Link %c\n\
    :END:\n\
    :PROPERTIES:\n\
    :DESCRIPTION: %?\n\
@@ -535,12 +533,13 @@
 
           ("2" "Take a Note from Web Browser"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
-           "** %^{Title} %^G\n\n\
-*** Source\n\n\
-- Timestamp                                 %U\n\
-- Source\n\
-  + WWW @ %c\n\n\
-*** Notes\n\n%?\n"
+           "** %^{Title} %^g\n\n\
+   :LOGBOOK:\n\
+   - Timestamp                              %U\n\
+   - Link %c\n\
+   :END:\n\n
+%?
+\n"
            :empty-lines 1 :prepend t :clock-keep t)
 
 ;;           ("3" "Scrap Text from Web Browser"
@@ -561,9 +560,7 @@
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Bookmarks")
            "** %c %^G\n\
    :LOGBOOK:\n\
-   - Visit on                               %U\n\
-   - Source
-     + URL: %
+   - Timestamp                              %U\n\
    :END:\n\
    :PROPERTIES:\n\
    :Score: %?\n\
@@ -1222,7 +1219,7 @@ decorations.markings}
                ;; BUG: org-mobile
                (turn-on-auto-fill)
                ;; BUG: start `reftex' manually, or there will be an error
-               ;; (xy/org-mode-reftex-setup)
+               (xy/org-mode-reftex-setup)
                ;; (turn-on-org-cdlatex) ;; start it manually is better.
                ;;;; change default math-symbol prefix
                ;; (org-defkey org-cdlatex-mode-map "`" 'nil)
