@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-18 Mon 20:38 by xin on S13>
+;; Time-stamp: <2013-11-18 Mon 23:24 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -474,7 +474,7 @@
   (setq org-capture-templates
         '(("w" "Capture a New Wish from Emacs"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Wish Inbox")
-           "** TODO %^{New Wish} %^g\n\
+           "** TODO %^{New Wish} %^G\n\
    :LOGBOOK:\n\
    - Initial State           \"TODO\"       %U\n\
    - Link %a\n\
@@ -521,7 +521,7 @@
 
           ("1" "Capture a New Wish from Web Browser"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Wish Inbox")
-           "** TODO %^{New Wish} %^g\n\
+           "** TODO %^{New Wish} %^G\n\
    :LOGBOOK:\n\
    - Initial State           \"TODO\"       %U\n\
    - Link %c\n\
@@ -533,7 +533,7 @@
 
           ("2" "Take a Note from Web Browser"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
-           "** %^{Title} %^g\n\n\
+           "** %^{Title} %^G\n\n\
    :LOGBOOK:\n\
    - Timestamp                              %U\n\
    - Link %c\n\
