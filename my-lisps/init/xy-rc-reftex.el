@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:35 by xin on p5q>
+;; Time-stamp: <2013-11-19 Tue 09:48 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-reftex.el'
 ;; Author:       Xin Yang
@@ -20,12 +20,12 @@
 (defun reftex-postload ()
   "Settings of `reftex.el' after it's been loaded."
 
-  (setq reftex-default-bibliography
-        (list "~/emacs/org/source/phd/bib/bio"
-              "~/emacs/org/source/phd/bib/lyon"
-              "~/emacs/org/source/phd/bib/meddis"
-              "~/emacs/org/source/phd/bib/patterson"
-              "~/emacs/org/source/phd/bib/manuals"))
+  ;; (setq reftex-default-bibliography
+  ;;       (list "~/emacs/org/source/phd/bib/bio"
+  ;;             "~/emacs/org/source/phd/bib/lyon"
+  ;;             "~/emacs/org/source/phd/bib/meddis"
+  ;;             "~/emacs/org/source/phd/bib/patterson"
+  ;;             "~/emacs/org/source/phd/bib/manuals"))
 
   ;;;;;;设置更深层的目录;;;;;;;;;;;;;
   (setq reftex-section-levels
