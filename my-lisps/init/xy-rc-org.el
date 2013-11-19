@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-19 Tue 00:13 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-11-19 Tue 00:40 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -1119,7 +1119,7 @@ decorations.markings}
   ;; Use xelatex instead of pdflatex for better font supports.
   (setq org-latex-to-pdf-process
         '("xelatex -interaction nonstopmode -output-directory %o %f"
-          "bibtex %b"
+          "biber %b" ;; use biber instead of bibtex
           "xelatex -interaction nonstopmode -output-directory %o %f"
           "xelatex -interaction nonstopmode -output-directory %o %f"))
   (setq xy:org-nolatexmk-flag t)
