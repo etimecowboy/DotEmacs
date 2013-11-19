@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-19 Tue 00:40 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-11-19 Tue 11:17 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -1024,49 +1024,40 @@ a4paper, cap, punct, nospace, indent, fancyhdr, hypperref, fntef]\
             ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
            )))
   
-  ;; NOTE: "Alist of default packages to be inserted in the header.
-  ;; Change this only if one of the packages here causes an
-  ;; incompatibility with another package you are using." The default
-  ;; `inputenc' and `fontenc' packages conflicts with `xecjk' and
-  ;; `ctex'. The encoding of the input latex files don't need to be
-  ;; set.
+  ;; NOTE: The default `inputenc' and `fontenc' packages conflicts
+  ;; with `xecjk' and `ctex'. The encoding of the input latex files
+  ;; don't need to be set.
   (setq org-latex-default-packages-alist
-        '(("" "fixltx2e" nil)
-          ("" "graphicx" t) ("" "longtable" nil)
-          ("" "float" nil) ("" "wrapfig" nil)
-          ("" "soul" t) ("" "textcomp" t)
-          ("" "marvosym" t) ("" "wasysym" t)
-          ("" "latexsym" t) ("" "amssymb" t)
-          ;; ("" "amsmath" t) ;; this package cause error, no need
-          ;; ("" "tikz" nil)
-          ("bookmarks, bookmarksopen, bookmarksnumbered, \
-breaklinks, linktocpage, pagebackref, colorlinks, \
-pdfencoding=auto, linkcolor=blue, urlcolor=blue,\
-citecolor=red, anchorcolor=green, hyperindex, hyperfigures, xetex"
-           "hyperref" nil)))
-
-  ;; NOTE: Alist of packages to be inserted in every LaTeX header.
-  ;; These will be inserted after `org-latex-default-packages-alist'.
-  (setq org-latex-packages-alist
-        '(;; The following 3 packages are required if using `listings'
-          ("svgnames, table" "xcolor" t) ("" "listings" t) ("" "setspace" nil)
-          ;; Display various latex-related logos
-          ;; ("" "metalogo" t) ("" "mflogo" t) ("" "texnames" t)
-          ;; ("" "amsmath" nil) ;; this package cause error, no need
-          ("" "tikz" nil)
-          ;; xelatex font adjustment (by default)
-          ;; ("" "fontspec" nil)
-          ;; Some extra text markups
-          ;; ("normalem" "ulem" t)
-          ;; Some figure-related packages
-          ;; ("" "rotating" t) ("" "subfig" t)
-          ;; Some table-related packages
-          ;; ("" "booktabs" t) ("" "longtable" nil) ("" "multirow" t)
-          ;; ("" "tabularx" t) ("" "warpcol" t)
-          ;; Some document layout/structure-related packages
-          ;; ("" "etex" nil) ("" "multicol" nil) ("" "multind" nil)
-          ;; ("" "titlesec" nil)
+        '(("" "fixltx2e" nil) ("" "graphicx" t) ("" "longtable" nil)
+          ("" "float" nil) ("" "wrapfig" nil) ("" "rotating" nil)
+          ("normalem" "ulem" t) ("" "amsmath" t) ("" "textcomp" t)
+          ("" "marvosym" t) ("" "wasysym" t) ("" "amssymb" t)
+          ("" "hyperref" nil) "\\tolerance=1000"
+          ;;("" "amsmath" t) ;; this package cause error, no need
           ))
+
+  ;; ;; NOTE: Alist of packages to be inserted in every LaTeX header.
+  ;; ;; These will be inserted after `org-latex-default-packages-alist'.
+  ;; (setq org-latex-packages-alist
+  ;;       '(;; ;; The following 3 packages are required if using `listings'
+  ;;         ;; ("svgnames, table" "xcolor" t) ("" "listings" t) ("" "setspace" nil)
+  ;;         ;; ;; Display various latex-related logos
+  ;;         ;; ("" "metalogo" t) ("" "mflogo" t) ("" "texnames" t)
+  ;;         ;; ("" "amsmath" nil) ;; this package cause error, no need
+  ;;         ;; ("" "tikz" nil)
+  ;;         ;; xelatex font adjustment (by default)
+  ;;         ;; ("" "fontspec" nil)
+  ;;         ;; Some extra text markups
+  ;;         ;; ("normalem" "ulem" t)
+  ;;         ;; Some figure-related packages
+  ;;         ;; ("" "rotating" t) ("" "subfig" t)
+  ;;         ;; Some table-related packages
+  ;;         ;; ("" "booktabs" t) ("" "longtable" nil) ("" "multirow" t)
+  ;;         ;; ("" "tabularx" t) ("" "warpcol" t)
+  ;;         ;; Some document layout/structure-related packages
+  ;;         ;; ("" "etex" nil) ("" "multicol" nil) ("" "multind" nil)
+  ;;         ;; ("" "titlesec" nil)
+  ;;         ))
 
   ;; NOTE: LaTeX header that will be used when processing a fragment
   (setq org-format-latex-header
