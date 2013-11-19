@@ -1,5 +1,4 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-19 Tue 11:17 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
 ;; Author:       Xin Yang
@@ -158,27 +157,28 @@
 
 
 
-(defvar xy:org-nolatexmk-flag t)
-;;;###autoload
-(defun xy/toggle-latex-to-pdf-process ()
-  "Toggle the commands (latexmk/xelatex) to generate PDF file."
-  (interactive)
-  (if xy:org-nolatexmk-flag
-      (progn
-        (setq org-latex-pdf-process
-              ;; '("latexmk -xelatex -f -silent -c %b")) ;; no -d
-              '("latexmk %b"))
+;; NOTE: always use latexmk
+;; (defvar xy:org-nolatexmk-flag t)
+;; ;;;###autoload
+;; (defun xy/toggle-latex-to-pdf-process ()
+;;   "Toggle the commands (latexmk/xelatex) to generate PDF file."
+;;   (interactive)
+;;   (if xy:org-nolatexmk-flag
+;;       (progn
+;;         (setq org-latex-pdf-process
+;;               ;; '("latexmk -xelatex -f -silent -c %b")) ;; no -d
+;;               '("latexmk %b"))
 
-        (setq xy:org-nolatexmk-flag nil)
-        (message "* ---[ Using `latexmk' as the LaTeX PDF exporter now ]---"))
-    (progn
-      (setq org-latex-to-pdf-process
-            '("xelatex -interaction nonstopmode -output-directory %o %f"
-              "bibtex %b"
-              "xelatex -interaction nonstopmode -output-directory %o %f"
-              "xelatex -interaction nonstopmode -output-directory %o %f"))
-      (setq xy:org-nolatexmk-flag t)
-      (message "* ---[ Using `xelatex' as the LaTeX PDF exporter now ]---"))))
+;;         (setq xy:org-nolatexmk-flag nil)
+;;         (message "* ---[ Using `latexmk' as the LaTeX PDF exporter now ]---"))
+;;     (progn
+;;       (setq org-latex-to-pdf-process
+;;             '("xelatex -interaction nonstopmode -output-directory %o %f"
+;;               "bibtex %b"
+;;               "xelatex -interaction nonstopmode -output-directory %o %f"
+;;               "xelatex -interaction nonstopmode -output-directory %o %f"))
+;;       (setq xy:org-nolatexmk-flag t)
+;;       (message "* ---[ Using `xelatex' as the LaTeX PDF exporter now ]---"))))
 
 
 
@@ -1106,28 +1106,25 @@ decorations.markings}
 
   (setq org-format-latex-signal-error t)
   (setq org-latex-create-formula-image-program 'imagemagick)
-  
-  ;; Use xelatex instead of pdflatex for better font supports.
-  (setq org-latex-to-pdf-process
-        '("xelatex -interaction nonstopmode -output-directory %o %f"
-          "biber %b" ;; use biber instead of bibtex
-          "xelatex -interaction nonstopmode -output-directory %o %f"
-          "xelatex -interaction nonstopmode -output-directory %o %f"))
-  (setq xy:org-nolatexmk-flag t)
+  ;; ;; Use xelatex instead of pdflatex for better font supports.
+  ;; ;; REF: (@url :file-name "http://orgmode.org/worg/org-tutorials/org-latex-export.html" :display "Worg:org-latex-export")
+  ;; ;;      (@url :file-name "http://orgmode.org/worg/org-faq.html#using-xelatex-for-pdf-export" :display "Worg:faq:using-xelatex-for-pdf-export")
+  ;; ;;      (@url :file-name "http://comments.gmane.org/gmane.emacs.orgmode/71847" :display "xelatex-and-the-new-exporter@orgmode-mail-list")
+  ;; (setq org-latex-to-pdf-process
+  ;;       '("xelatex -interaction nonstopmode -output-directory %o %f"
+  ;;         "biber %b" ;; use biber instead of bibtex
+  ;;         "xelatex -interaction nonstopmode -output-directory %o %f"
+  ;;         "xelatex -interaction nonstopmode -output-directory %o %f"))
+  ;; (setq xy:org-nolatexmk-flag t)
 
-  ;; Better solution: use latexmk, but cause error when using tikz
+  ;; Better solution: use latexmk which is globally configured by `.latexmkrc' file
   ;; (setq org-latex-to-pdf-process
   ;;   '("latexmk -c -bm DRAFT -pdf -pdflatex=\"xelatex -synctex=1 %O %S\" -silent -pvc -f %b"))
   ;; (setq org-latex-to-pdf-process
   ;;   '("latexmk -xelatex -d -f -silent -c %b"))
+  (setq org-latex-to-pdf-process '("latexmk %b"))
 
-  ;; ;; FIXME: not working on version 8.0 or later
-  ;; ;; Use XeLaTeX for LaTeX export instead of pdfLaTeX
-  ;; ;; REF: (@url :file-name "http://orgmode.org/worg/org-tutorials/org-latex-export.html" :display "Worg:org-latex-export")
-  ;; ;;      (@url :file-name "http://orgmode.org/worg/org-faq.html#using-xelatex-for-pdf-export" :display "Worg:faq:using-xelatex-for-pdf-export")
-  ;; ;;      (@url :file-name "http://comments.gmane.org/gmane.emacs.orgmode/71847" :display "xelatex-and-the-new-exporter@orgmode-mail-list")
-  ;; ;; NOTE: latexmc can be configured globally in `~/.latexmkrc' file
-  
+  ;; ;; Choose pdf engine by custom key words
   ;; ;; Originally taken from Bruno Tavernier:
   ;; ;; http://thread.gmane.org/gmane.emacs.orgmode/31150/focus=31432
   ;; ;; but adapted to use latexmk 4.20 or higher.

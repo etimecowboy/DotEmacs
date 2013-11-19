@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-30 Wed 22:00 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-11-19 Tue 09:46 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -185,11 +185,12 @@
 ;; (add-hook 'text-mode-hook 'turn-on-artbollocks-mode)
 ;; (add-hook 'org-mode-hook 'turn-on-artbollocks-mode)
 ;; NOTE: artbollecks-mode uses key binding `C-c /' which blocks
-;; org-mode sparse-tree-mode command.
+;; org-mode sparse-tree-mode command, `C-c [' and `C-c ]' which block
+;; reftex key bindings.
 (autoload 'turn-on-artbollocks-mode "artbollocks-mode" nil t)
-(am-add-hooks
- `(LaTeX-mode-hook latex-mode-hook)
- 'turn-on-artbollocks-mode)
+;; (am-add-hooks
+;;  `(LaTeX-mode-hook latex-mode-hook)
+;;  'turn-on-artbollocks-mode)
 
 ;; (require 'words-to-avoid-mode)
 ;; (add-hook 'text-mode-hook 'turn-on-words-to-avoid-mode)
