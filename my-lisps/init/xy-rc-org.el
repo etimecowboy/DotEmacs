@@ -1207,7 +1207,7 @@ decorations.markings}
                ;; BUG: org-mobile
                (turn-on-auto-fill)
                ;; BUG: start `reftex' manually, or there will be an error
-               (xy/org-mode-reftex-setup)
+               ;; (xy/org-mode-reftex-setup)
                ;; (turn-on-org-cdlatex) ;; start it manually is better.
                ;;;; change default math-symbol prefix
                ;; (org-defkey org-cdlatex-mode-map "`" 'nil)
