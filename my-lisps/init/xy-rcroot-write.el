@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-19 Tue 09:46 by xin on S13>
+;; Time-stamp: <2013-11-21 Thu 20:42 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -34,9 +34,9 @@
      (eal-define-keys
       'org-mode-map
       `(("C-c C"       xy/org-html-chinese-no-extra-space)
-        ("C-c o m"     org2blog/wp-mode)
-        ("C-c o l"     org2blog/wp-login)
-        ("C-c o t"     org2blog/wp-post-subtree)
+        ;; ("C-c o m"     org2blog/wp-mode)
+        ;; ("C-c o l"     org2blog/wp-login)
+        ;; ("c-c o t"     org2blog/wp-post-subtree)
         ("C-c S"       org-export-as-html5presentation-and-open)
         ("C-c M-c"     org-coordinates-google-geocode-set)
         ("C-c M-L"     org-address-google-geocode-set)
