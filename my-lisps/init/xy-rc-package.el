@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-18 Mon 10:56 by xin on S13>
+;; Time-stamp: <2013-11-21 Thu 20:23 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -281,7 +281,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'org-mime)
   ;; (require-package 'org-plus-contrib) ;; too heavy for me
   ;; (require-package 'org-table-comment)  ;; nerver used by now
-  (require-package 'org2blog)
+  ;; (require-package 'org2blog) ;; NOTE: outdated
   (require-package 'outline-magic)
   (require-package 'popup)
   (require-package 'popwin)
