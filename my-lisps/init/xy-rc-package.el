@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-21 Thu 20:23 by xin on S13>
+;; Time-stamp: <2013-11-23 Sat 14:36 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -226,18 +226,19 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'google-maps)
   (require-package 'graphviz-dot-mode)
   ;; (require-package 'haskell-mode)  ;; don't want to learn haskell now
-  (require-package 'helm)
-  (require-package 'helm-R)
-  (require-package 'helm-c-moccur)
-  (require-package 'helm-c-yasnippet)
-  (require-package 'helm-descbinds)
-  (require-package 'helm-gist)
-  (require-package 'helm-git)
-  (require-package 'helm-gtags)
-  (require-package 'helm-ls-git)
-  ;; (require-package 'helm-migemo)
-  (require-package 'helm-projectile)
-  (require-package 'helm-themes)
+  ;; NOTE: don't use helm
+  ;; (require-package 'helm)
+  ;; (require-package 'helm-R)
+  ;; (require-package 'helm-c-moccur)
+  ;; (require-package 'helm-c-yasnippet)
+  ;; (require-package 'helm-descbinds)
+  ;; (require-package 'helm-gist)
+  ;; (require-package 'helm-git)
+  ;; (require-package 'helm-gtags)
+  ;; (require-package 'helm-ls-git)
+  ;; ;; (require-package 'helm-migemo)
+  ;; (require-package 'helm-projectile)
+  ;; (require-package 'helm-themes)
   (require-package 'highlight)
   (require-package 'highlight-parentheses)
   (require-package 'highlight-symbol)
@@ -317,7 +318,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'weblogger)
   (require-package 'weather-metno)
   (require-package 'wgrep)
-  (require-package 'wgrep-helm)
+  ;; (require-package 'wgrep-helm) ;; don't use helm
   (require-package 'whole-line-or-region)
   (require-package 'windsize)
   (require-package 'winpoint)

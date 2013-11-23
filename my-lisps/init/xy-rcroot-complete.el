@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-17 Sun 17:19 by xin on S13>
+;; Time-stamp: <2013-11-23 Sat 14:38 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -369,10 +369,11 @@
 
 
 ;;* helm
-(eval-after-load 'helm '(helm-postload))
-;; TODO: make my own helm setup and bind it to C-c i
-;; (global-set-key (kbd "C-c i") 'helm-mini)
-(global-set-key (kbd "<f6> A") 'helm-mode)
+;; NOTE: helm is not used
+;; (eval-after-load 'helm '(helm-postload))
+;; ;; TODO: make my own helm setup and bind it to C-c i
+;; ;; (global-set-key (kbd "C-c i") 'helm-mini)
+;; (global-set-key (kbd "<f6> A") 'helm-mode)
 
 
 
