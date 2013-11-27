@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-23 Sat 14:36 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-11-26 Tue 23:48 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -245,7 +245,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'htmlize)
   (require-package 'hungry-delete)
   (require-package 'ibuffer-vc)
-  ;; (require-package 'ido-ubiquitous) ;; elpa package is not stable now
+  (require-package 'ido-ubiquitous) ;; elpa package is not stable now
   (require-package 'ido-yes-or-no)
   (require-package 'info+)
   (require-package 'ioccur)
