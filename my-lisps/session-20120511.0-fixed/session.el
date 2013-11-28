@@ -1749,8 +1749,9 @@ Setup hooks and load `session-save-file', see variable `session-initialize'.  At
 best, this function is called at the end of the Emacs startup, i.e., add
 this function to `after-init-hook'."
   (interactive)
-  (put 'session-initialize :initilized-with nil)
-  (custom-set-variables '(session-use-package t nil (session))))
+  (put 'session-initialize :initilized-with nil))
+; HACK: don't add this to emacs-custom-file
+  ;; (custom-set-variables '(session-use-package t nil (session))))
 
 ;;; Local IspellPersDict: .ispell_session
 ;;; session.el ends here

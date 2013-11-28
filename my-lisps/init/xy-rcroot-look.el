@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-17 Sun 03:30 by xin on S13>
+;; Time-stamp: <2013-11-28 Thu 15:05 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -361,7 +361,7 @@
 ;;* Vaious bar settings
 
 ;;** menu-bar
-(menu-bar-mode 1) ;; Show menu bar as default
+(menu-bar-mode -1) ;; don't need menu very much
 (global-set-key (kbd "M-<f10>") 'menu-bar-mode)
 
 ;; ;;*** menua-bar+

@@ -158,27 +158,33 @@
 
 
 ;; NOTE: always use latexmk
-;; (defvar xy:org-nolatexmk-flag t)
-;; ;;;###autoload
-;; (defun xy/toggle-latex-to-pdf-process ()
-;;   "Toggle the commands (latexmk/xelatex) to generate PDF file."
-;;   (interactive)
-;;   (if xy:org-nolatexmk-flag
-;;       (progn
-;;         (setq org-latex-pdf-process
-;;               ;; '("latexmk -xelatex -f -silent -c %b")) ;; no -d
-;;               '("latexmk %b"))
+(defvar xy:org-xelatex-flag t)
+;;;###autoload
+(defun xy/org-toggle-xelatex ()
+  "Toggle the commands (latexmk/xelatex) to generate PDF file."
+  (interactive)
+  (if xy:org-xelatex-flag
+      (progn
+        (setq org-latex-pdf-process
+              ;; '("latexmk -xelatex -f -silent -c %b")) ;; no -d
+              '("latexmk %b"))
 
-;;         (setq xy:org-nolatexmk-flag nil)
-;;         (message "* ---[ Using `latexmk' as the LaTeX PDF exporter now ]---"))
-;;     (progn
-;;       (setq org-latex-to-pdf-process
-;;             '("xelatex -interaction nonstopmode -output-directory %o %f"
-;;               "bibtex %b"
-;;               "xelatex -interaction nonstopmode -output-directory %o %f"
-;;               "xelatex -interaction nonstopmode -output-directory %o %f"))
-;;       (setq xy:org-nolatexmk-flag t)
-;;       (message "* ---[ Using `xelatex' as the LaTeX PDF exporter now ]---"))))
+        (setq xy:org-xelatex-flag nil)
+        (message "* ---[ Using `latexmk' as the LaTeX PDF exporter now ]---"))
+    (progn
+      ;; (setq org-latex-to-pdf-process
+      ;;       '("xelatex -interaction nonstopmode -output-directory %o %f"
+      ;;         "bibtex %b"
+      ;;         "xelatex -interaction nonstopmode -output-directory %o %f"
+      ;;         "xelatex -interaction nonstopmode -output-directory
+      ;;         %o %f"))
+      (setq org-latex-to-pdf-process
+            '("xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"
+              "bibtex %b"
+              "xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"
+              "xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"))
+      (setq xy:org-xelatex-flag t)
+      (message "* ---[ Using `xelatex' as the LaTeX PDF exporter now ]---"))))
 
 
 
@@ -1106,23 +1112,24 @@ decorations.markings}
 
   (setq org-format-latex-signal-error t)
   (setq org-latex-create-formula-image-program 'imagemagick)
+
   ;; ;; Use xelatex instead of pdflatex for better font supports.
   ;; ;; REF: (@url :file-name "http://orgmode.org/worg/org-tutorials/org-latex-export.html" :display "Worg:org-latex-export")
   ;; ;;      (@url :file-name "http://orgmode.org/worg/org-faq.html#using-xelatex-for-pdf-export" :display "Worg:faq:using-xelatex-for-pdf-export")
   ;; ;;      (@url :file-name "http://comments.gmane.org/gmane.emacs.orgmode/71847" :display "xelatex-and-the-new-exporter@orgmode-mail-list")
-  ;; (setq org-latex-to-pdf-process
-  ;;       '("xelatex -interaction nonstopmode -output-directory %o %f"
-  ;;         "biber %b" ;; use biber instead of bibtex
-  ;;         "xelatex -interaction nonstopmode -output-directory %o %f"
-  ;;         "xelatex -interaction nonstopmode -output-directory %o %f"))
-  ;; (setq xy:org-nolatexmk-flag t)
+  (setq org-latex-to-pdf-process
+        '("xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"
+          "bibtex %b"
+          "xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"
+          "xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"))
+  (setq xy:xelatex-flag t)
 
   ;; Better solution: use latexmk which is globally configured by `.latexmkrc' file
   ;; (setq org-latex-to-pdf-process
   ;;   '("latexmk -c -bm DRAFT -pdf -pdflatex=\"xelatex -synctex=1 %O %S\" -silent -pvc -f %b"))
   ;; (setq org-latex-to-pdf-process
   ;;   '("latexmk -xelatex -d -f -silent -c %b"))
-  (setq org-latex-to-pdf-process '("latexmk %b"))
+  ;; (setq org-latex-to-pdf-process '("latexmk %b"))
 
   ;; ;; Choose pdf engine by custom key words
   ;; ;; Originally taken from Bruno Tavernier:
