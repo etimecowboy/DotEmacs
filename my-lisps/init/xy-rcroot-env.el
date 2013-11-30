@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-19 Sat 09:50 by xin on vmlmde>
+;; Time-stamp: <2013-11-30 Sat 01:47 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -198,8 +198,8 @@
 
 ;;*** ido-ubiquitous
 ;; REF:  (@url :file-name "https://github.com/DarwinAwardWinner/ido-ubiquitous" :display "Git Source")
-;; NOTE: ELPA package is not stable now
-(xy/load-autoloads (concat my-local-lisp-path "/ido-ubiquitous-1.7"))
+;; NOTE: Use ELPA package now
+;; (xy/load-autoloads (concat my-local-lisp-path "/ido-ubiquitous-1.7"))
 
 ;;** Rebuild Emacs configuration
 (global-set-key (kbd "C-x B") 'xy/emacs-build)

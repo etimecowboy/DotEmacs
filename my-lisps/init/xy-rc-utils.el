@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-18 Mon 11:00 by xin on S13>
+;; Time-stamp: <2013-11-30 Sat 01:46 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1391,7 +1391,6 @@ The process is:
   (xy/install-lisps (concat my-local-lisp-path "/mew-6.5"))
   (xy/install-lisps (concat my-local-lisp-path "/auctex-11.87"))
   (xy/install-lisps (concat my-local-lisp-path "/elscreen"))
-  (xy/install-lisps (concat my-local-lisp-path "/ido-ubiquitous-1.7"))
 
   ;; git repository lisps
   ;; (xy/install-lisps (concat my-git-lisp-path "/dictionary-el"))
