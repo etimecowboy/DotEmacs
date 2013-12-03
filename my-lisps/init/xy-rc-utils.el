@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-30 Sat 01:46 by xin on vmlmde>
+;; Time-stamp: <2013-12-03 Tue 23:05 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-28 Thu 15:05 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-12-03 Tue 22:58 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -273,8 +273,8 @@
 (size-indication-mode 1) ;; Display the current location in the file
 ;; (setq-default mode-line-buffer-identification
 ;;               (propertized-buffer-identification "%b"))
-;; (setq display-time-day-and-date t) ;; Display time and date
-;; (display-time-mode 1)
+(setq display-time-day-and-date nil) ;; Display only time but not date
+(display-time-mode 1)
 ;; (Laptop (display-battery-mode 1)) ;; when is-after-emacs-23
 
 

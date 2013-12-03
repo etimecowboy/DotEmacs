@@ -1042,28 +1042,28 @@ a4paper, cap, punct, nospace, indent, fancyhdr, hypperref, fntef]\
           ;;("" "amsmath" t) ;; this package cause error, no need
           ))
 
-  ;; ;; NOTE: Alist of packages to be inserted in every LaTeX header.
-  ;; ;; These will be inserted after `org-latex-default-packages-alist'.
-  ;; (setq org-latex-packages-alist
-  ;;       '(;; ;; The following 3 packages are required if using `listings'
-  ;;         ;; ("svgnames, table" "xcolor" t) ("" "listings" t) ("" "setspace" nil)
-  ;;         ;; ;; Display various latex-related logos
-  ;;         ;; ("" "metalogo" t) ("" "mflogo" t) ("" "texnames" t)
-  ;;         ;; ("" "amsmath" nil) ;; this package cause error, no need
-  ;;         ;; ("" "tikz" nil)
-  ;;         ;; xelatex font adjustment (by default)
-  ;;         ;; ("" "fontspec" nil)
-  ;;         ;; Some extra text markups
-  ;;         ;; ("normalem" "ulem" t)
-  ;;         ;; Some figure-related packages
-  ;;         ;; ("" "rotating" t) ("" "subfig" t)
-  ;;         ;; Some table-related packages
-  ;;         ;; ("" "booktabs" t) ("" "longtable" nil) ("" "multirow" t)
-  ;;         ;; ("" "tabularx" t) ("" "warpcol" t)
-  ;;         ;; Some document layout/structure-related packages
-  ;;         ;; ("" "etex" nil) ("" "multicol" nil) ("" "multind" nil)
-  ;;         ;; ("" "titlesec" nil)
-  ;;         ))
+  ;; NOTE: Alist of packages to be inserted in every LaTeX header.
+  ;; These will be inserted after `org-latex-default-packages-alist'.
+  (setq org-latex-packages-alist
+        '(;; The following 3 packages are required if using `listings'
+          ("svgnames, table" "xcolor" t) ("" "listings" t) ("" "setspace" nil)
+          ;; Display various latex-related logos
+          ("" "metalogo" t) ("" "mflogo" t) ("" "texnames" t)
+          ;; ("" "amsmath" nil) ;; this package cause error, no need
+          ;; ("" "tikz" nil)
+          ;; xelatex font adjustment (by default)
+          ;; ("" "fontspec" nil)
+          ;; Some extra text markups
+          ;; ("normalem" "ulem" t)
+          ;; Some figure-related packages
+          ;; ("" "rotating" t) ("" "subfig" t)
+          ;; Some table-related packages
+          ;; ("" "booktabs" t) ("" "longtable" nil) ("" "multirow" t)
+          ;; ("" "tabularx" t) ("" "warpcol" t)
+          ;; Some document layout/structure-related packages
+          ;; ("" "etex" nil) ("" "multicol" nil) ("" "multind" nil)
+          ;; ("" "titlesec" nil)
+          ))
 
   ;; NOTE: LaTeX header that will be used when processing a fragment
   (setq org-format-latex-header
