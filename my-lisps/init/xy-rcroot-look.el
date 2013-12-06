@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-12-03 Tue 22:58 by xin on S13>
+;; Time-stamp: <2013-12-06 Fri 23:07 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -780,6 +780,21 @@ manually first.
 ;; (Windows
 ;;  (global-set-key (kbd "<C-wheel-up>")   'bhj-text-scale-increase) 
 ;;  (global-set-key (kbd "<C-wheel-down>") 'bhj-text-scale-decrease))
+
+;;*** Global font size scale
+;; REF: (@url :file-name "http://www.emacswiki.org/emacs/GlobalTextScaleMode" :display "GlobalTextScaleMode")
+;; NOTE: Only for exsiting buffers.
+;;       The font size of new buffers is not changed.
+(defadvice text-scale-increase
+  (around all-buffers (arg) activate)
+  (dolist (buffer (buffer-list))
+    (with-current-buffer buffer
+      ad-do-it)))
+(defadvice text-scale-decrease
+  (around all-buffers (arg) activate)
+  (dolist (buffer (buffer-list))
+    (with-current-buffer buffer
+      ad-do-it)))
 
 
 
