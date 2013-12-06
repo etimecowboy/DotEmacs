@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-24 Thu 15:00 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-12-05 Thu 14:06 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auto-complete.el'
 ;; Author:       Xin Yang
@@ -38,12 +38,12 @@
   (unless (file-exists-p ac-comphist-file)
     (shell-command (concat "touch " ac-comphist-file)))
 
-  (setq ac-auto-show-menu 5.0
+  (setq ac-auto-show-menu 1.0
         ac-auto-start t
         ac-dwim t
         ac-candidate-limit ac-menu-height
         ac-use-quick-help t
-        ac-quick-help-delay 8.0
+        ac-quick-help-delay 2.0
         ac-disable-faces nil)
 
   ;; (setq help-xref-following nil)

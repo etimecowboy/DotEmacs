@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-12-03 Tue 22:30 by xin on S13>
+;; Time-stamp: <2013-12-05 Thu 17:26 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -33,7 +33,7 @@
      ;; (org-google-agenda-maps-key-bindings)
      (eal-define-keys
       'org-mode-map
-      `(("C-c C"       xy/org-html-chinese-no-extra-space)
+      `(;; ("C-c C"       xy/org-html-chinese-no-extra-space)
         ;; ("C-c o m"     org2blog/wp-mode)
         ;; ("C-c o l"     org2blog/wp-login)
         ;; ("c-c o t"     org2blog/wp-post-subtree)
@@ -54,11 +54,11 @@
 
 (eal-define-keys-commonly
  global-map
- `(("C-c l"   org-store-link)
-   ("C-c a"   org-agenda)
-   ("C-c b"   org-ido-switchb)
-   ("C-c c"   org-capture)
-   ("C-c n"   org2blog/wp-new-entry)
+ `(("<f12> l"   org-store-link)
+   ("<f12> a"   org-agenda)
+   ("<f12> b"   org-ido-switchb)
+   ("<f12> c"   org-capture)
+   ;; ("C-c n"   org2blog/wp-new-entry)
    ;; ("M-S-w"   tzz-copy-region-with-mode-property)
    ))
 

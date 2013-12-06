@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-30 Sat 01:47 by xin on vmlmde>
+;; Time-stamp: <2013-12-05 Thu 06:47 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -492,10 +492,10 @@ Toggle keyboard command logging of whole emacs.
  ;; `default-process-coding-system' 应该都设置成 gbk-dos。但是默认处理
  ;; utf-8 编码文件的包如 `magit', `diff-git' 等调用 Windows 版本的 git，
  ;; 中文显示会乱码。为了和 Linux 统一使用 utf-8-unix 编码，就强制设置了。
- ;; magit 具体解决方法参见 magit 配置。
+ ;; magit 具体解决方法参见 magit 。
 
  (setq default-file-name-coding-system 'gbk-dos)
- (setq default-terminal-coding-system 'utf-8-unix)
+ (setq default-terminal-coding-system 'gbk-dos) ;; 'utf-8-unix)
  (setq default-process-coding-system '(gbk-dos . gbk-dos)))
 
 (GNULinux

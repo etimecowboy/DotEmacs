@@ -640,6 +640,9 @@
   ;; Display items within their dealine periods
   (setq org-agenda-include-deadlines t)
 
+  ;; Agenda block separator
+  (setq org-agenda-block-separator "========================================")
+  
   ;; Use grid style timeline
   (setq org-agenda-use-time-grid t)
   (setq org-agenda-time-grid

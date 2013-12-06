@@ -232,7 +232,7 @@
 
 ;;*** mo-git-blame
 (eval-after-load "mo-git-blame" '(mo-git-blame-postload))
-(global-set-key (kbd "<f12> c") 'mo-git-blame-current)
+(global-set-key (kbd "<f12> r") 'mo-git-blame-current)
 (global-set-key (kbd "<f12> f") 'mo-git-blame-file)
 
 
