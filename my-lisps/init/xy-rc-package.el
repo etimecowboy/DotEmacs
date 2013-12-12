@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-28 Thu 15:12 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-12-12 Thu 14:56 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -158,6 +158,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'ace-jump-mode)
   ;; (require-package 'ack-menu)  ;; ack is not used
   ;; (require-package 'ansi)  ;; never used
+  (require-package 'ahg)
   (require-package 'anti-zenburn-theme)
   (require-package 'ascii)
   (require-package 'auto-complete)
@@ -312,7 +313,9 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'sunrise-x-w32-addons)
   ;; (require-package 'texdrive)
   ;; (require-package 'ucs-utils)
-  (require-package 'undo-tree)
+  
+  ;; (require-package 'undo-tree) ;; cause some problem with menu
+  (require-package 'redo+)
   (require-package 'vline)
   (require-package 'w32-browser)
   (require-package 'w3m)

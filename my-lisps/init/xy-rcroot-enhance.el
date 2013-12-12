@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-19 Sat 22:11 by xin on S13>
+;; Time-stamp: <2013-12-12 Thu 15:11 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -164,9 +164,20 @@
 
 
 ;;* undo-tree
+;; NOTE: temperal disabled because of the conflict between undo-tree
+;; and menu-bar(?)
 ;; (require 'undo-tree)
-(autoload 'global-undo-tree-mode "undo-tree" nil t)
-(global-undo-tree-mode 1)
+;; (autoload 'global-undo-tree-mode "undo-tree" nil t)
+;; (global-undo-tree-mode 1)
+;; (global-set-key (kbd "<f6> u") 'global-undo-tree-mode)
+
+
+
+;;* redo+
+(autoload 'undo "redo+" "Undo some previous changes." t)
+(autoload 'redo "redo+" "Redo the the most recent undo." t)
+(global-set-key (kbd "C-/") 'undo)
+(global-set-key (kbd "C-?") 'redo)
 
 
 
