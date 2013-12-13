@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-12-12 Thu 15:11 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-12-13 Fri 01:54 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -174,10 +174,11 @@
 
 
 ;;* redo+
-(autoload 'undo "redo+" "Undo some previous changes." t)
-(autoload 'redo "redo+" "Redo the the most recent undo." t)
-(global-set-key (kbd "C-/") 'undo)
-(global-set-key (kbd "C-?") 'redo)
+;; (autoload 'undo "redo+" "Undo some previous changes." t)
+;; (autoload 'redo "redo+" "Redo the the most recent undo." t)
+(when (try-require 'redo+)
+  (global-set-key (kbd "C-/") 'undo)
+  (global-set-key (kbd "C-?") 'redo))
 
 
 
