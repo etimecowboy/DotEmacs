@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-12-12 Thu 14:56 by xy12g13 on UOS-208326>
+;; Time-stamp: <2013-12-17 Tue 22:24 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -166,6 +166,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'autopair)
   
   (require-package 'back-button)
+  (require-package 'batch-mode)
   ;; (require-package 'visible-mark) ;; clear install required
   (require-package 'nav-flash)
   (require-package 'smartrep)
@@ -259,6 +260,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'kill-ring-search)
   (require-package 'hlinum)
   (require-package 'list-utils)
+  (require-package 'list-processes+)
   (require-package 'logito)
   ;; (require-package 'mag-menu)
   ;; (require-package 'splitter) ;; just use basic split functions
@@ -298,6 +300,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 's)
   (require-package 'shell-command)
   (require-package 'shell-here)
+  (require-package 'shell-pop)
   (require-package 'smarter-compile)
   (require-package 'smex)
   (require-package 'string-utils)
@@ -313,6 +316,9 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'sunrise-x-w32-addons)
   ;; (require-package 'texdrive)
   ;; (require-package 'ucs-utils)
+
+  (require-package 'sr-speedbar)
+  (require-package 'strings)
   
   ;; (require-package 'undo-tree) ;; cause some problem with menu
   (require-package 'redo+)
@@ -327,6 +333,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'windsize)
   (require-package 'winpoint)
   (require-package 'ws-trim)
+  (require-package 'xcscope)
   (require-package 'xml-rpc)
   (require-package 'yasnippet)
   (require-package 'zjl-hl)
