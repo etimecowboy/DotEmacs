@@ -289,8 +289,9 @@
 
   ;;** General settings
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "NEXT(n!)" "STARTED(s)" "WAITING(w!)" "|" "DONE(d!)")
-          (sequence "SOMEDAY(x)" "|" "CANCELLED(c@/!)")))
+        '((sequence "TODO(t)" "SOMEDAY(x!)" "NEXT(n!)" "STARTED(s)" "WAITING(w!)"
+                    "|" "DONE(d!)" "CANCELLED(c@/!)")          
+          (sequence "NEW(a)" "REVIEW(r)" "|" "MARK(m!)" "USELESS(u!)")))
   (setq org-use-fast-todo-selection t) ;; C-c C-t key
   (setq org-treat-insert-todo-heading-as-state-change t)
   (setq org-treat-S-cursor-todo-selection-as-state-change nil)
@@ -492,9 +493,9 @@
 
           ("n" "Take a Note from Emacs"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
-           "** %^{Title} %^G\n\n\
+           "** NEW %^{Title} %^G\n\n\
    :LOGBOOK:\n\
-   - Timestamp                              %U\n\
+   - Timestamp               \"NEW\"        %U\n\
    - Link %a\n\
    :END:\n\n
 %?
@@ -539,9 +540,9 @@
 
           ("2" "Take a Note from Web Browser"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
-           "** %^{Title} %^G\n\
+           "** NEW %^{Title} %^G\n\
    :LOGBOOK:\n\
-   - Timestamp                              %U\n\
+   - Timestamp               \"NEW\"        %U\n\
    - Link %c\n\
    :END:\n\n
 %?
@@ -564,9 +565,9 @@
 
           ("4" "Add a bookmark"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Bookmarks")
-           "** %c %^G\n\
+           "** NEW %c %^G\n\
    :LOGBOOK:\n\
-   - Timestamp                              %U\n\
+   - Timestamp               \"NEW\"        %U\n\
    :END:\n\
    :PROPERTIES:\n\
    :Score: %?\n\
@@ -692,7 +693,7 @@
 
           ;;----------------------------------------------------------
           ("p" "Day Planner"
-           ((tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-repeat-sub"
+           ((tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-repeat-sub-bookmark"
                        ((org-agenda-overriding-header
                          "Pending Next Actions")
                         (org-tags-match-list-sublevels t)))
