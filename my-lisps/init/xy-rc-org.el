@@ -482,31 +482,31 @@
         '(("w" "Capture a New Wish from Emacs"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Wish Inbox")
            "** TODO %^{New Wish} %^G\n\
-   :LOGBOOK:\n\
-   - Initial State           \"TODO\"       %U\n\
-   - Link %a\n\
-   :END:\n\
-   :PROPERTIES:\n\
-   :DESCRIPTION: %?\n\
-   :END:\n\n"
-           :empty-lines 1 :prepend t :clock-keep t)
+:LOGBOOK:\n\
+- Initial State           \"TODO\"       %U\n\
+- Link %a\n\
+:END:\n\
+:PROPERTIES:\n\
+:DESCRIPTION: %?\n\
+:END:\n\n"
+:empty-lines 1 :prepend t :clock-keep t)
 
           ("n" "Take a Note from Emacs"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
            "** NEW %^{Title} %^G\n\n\
-   :LOGBOOK:\n\
-   - Timestamp               \"NEW\"        %U\n\
-   - Link %a\n\
-   :END:\n\n
+:LOGBOOK:\n\
+- Timestamp               \"NEW\"        %U\n\
+- Link %a\n\
+:END:\n\n
 %?
 \n"
-           :empty-lines 1 :prepend t :clock-keep t)
+:empty-lines 1 :prepend t :clock-keep t)
 
 ;;           ("s" "Scrap Text from Emacs"
 ;;            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
 ;;            "** %^{Title} %^G\n\n\
 ;; *** Source\n\n\
-;; - Timestamp                                 %U\n\
+;; - Timestamp                               %U\n\
 ;; - Source\n\
 ;;   + Emacs @ %a\n\n\
 ;; *** Local clipboard\n\n\
@@ -520,40 +520,40 @@
           ("e" "English language study: words/phrases/sentences"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "English")
            "** %? %^g\n\
-   :LOGBOOK:\n\
-   - Timestamp                              %U\n\
-   - Link %a\n\
-   :END:\n\n"
-           :empty-lines 1 :prepend t :clock-keep t)
+:LOGBOOK:\n\
+- Timestamp                              %U\n\
+- Link %a\n\
+:END:\n\n"
+:empty-lines 1 :prepend t :clock-keep t)
 
           ("1" "Capture a New Wish from Web Browser"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Wish Inbox")
            "** TODO %^{New Wish} %^G\n\
-   :LOGBOOK:\n\
-   - Initial State           \"TODO\"       %U\n\
-   - Link %c\n\
-   :END:\n\
-   :PROPERTIES:\n\
-   :DESCRIPTION: %?\n\
-   :END:\n\n"
-           :empty-lines 1 :prepend t :clock-keep t)
+:LOGBOOK:\n\
+- Initial State           \"TODO\"       %U\n\
+- Link %c\n\
+:END:\n\
+:PROPERTIES:\n\
+:DESCRIPTION: %?\n\
+:END:\n\n"
+:empty-lines 1 :prepend t :clock-keep t)
 
           ("2" "Take a Note from Web Browser"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
            "** NEW %^{Title} %^G\n\
-   :LOGBOOK:\n\
-   - Timestamp               \"NEW\"        %U\n\
-   - Link %c\n\
-   :END:\n\n
+:LOGBOOK:\n\
+- Timestamp               \"NEW\"        %U\n\
+- Link %c\n\
+:END:\n\n
 %?
 \n"
-           :empty-lines 1 :prepend t :clock-keep t)
+:empty-lines 1 :prepend t :clock-keep t)
 
 ;;           ("3" "Scrap Text from Web Browser"
 ;;            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
 ;;            "** %^{Title} %^G\n\n\
 ;; *** Source\n\n\
-;; - Timestamp                                 %U\n\
+;; - Timestamp                               %U\n\
 ;; - Source\n\
 ;;   + WWW @ %c\n\n\
 ;; *** Webpage highlights\n\n\
@@ -566,15 +566,14 @@
           ("4" "Add a bookmark"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Bookmarks")
            "** NEW %c %^G\n\
-   :LOGBOOK:\n\
-   - Timestamp               \"NEW\"        %U\n\
-   :END:\n\
-   :PROPERTIES:\n\
-   :Score: %?\n\
-   :DESCRIPTION:\n\
-   :END:\n\n"
-           :empty-lines 1 :prepend t :clock-keep t)
-
+:LOGBOOK:\n\
+- Timestamp               \"NEW\"        %U\n\
+:END:\n\
+:PROPERTIES:\n\
+:Score: %?\n\
+:DESCRIPTION:\n\
+:END:\n\n"
+:empty-lines 1 :prepend t :clock-keep t)
           ))
 
   ;;** Refile settings
