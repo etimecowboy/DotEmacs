@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-12-12 Thu 14:43 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-01-02 Thu 16:02 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -595,8 +595,9 @@
 ;;** auto-dim-other-buffers
 (eval-after-load "auto-dim-other-buffers"
   '(auto-dim-other-buffers-postload))
-(when (try-require 'auto-dim-other-buffers)
-  (auto-dim-other-buffers-mode 1))
+(when window-system
+  (when (try-require 'auto-dim-other-buffers)
+    (auto-dim-other-buffers-mode 1)))
 
 
 ;;** doremi
