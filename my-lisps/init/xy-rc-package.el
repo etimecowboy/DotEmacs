@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-12-17 Tue 22:24 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-01-02 Thu 14:57 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -264,7 +264,13 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'logito)
   ;; (require-package 'mag-menu)
   ;; (require-package 'splitter) ;; just use basic split functions
+
+  ;; magit groups
+  ;; (require-package 'cl-lib)
+  (require-package 'git-commit-mode)
+  (require-package 'git-rebase-mode)
   (require-package 'magit)
+  
   ;; (require-package 'magithub) ;; not useful
   (require-package 'markdown-mode)
   (require-package 'marmalade)
