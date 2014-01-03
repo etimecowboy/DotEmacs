@@ -546,7 +546,7 @@
 - Link %c\n\
 :END:\n\n
 %?
-\n"
+\n"
 :empty-lines 1 :prepend t :clock-keep t)
 
 ;;           ("3" "Scrap Text from Web Browser"
@@ -560,7 +560,8 @@
 ;; #+BEGIN_EXAMPLE\n\
 ;; %i\n\
 ;; #+END_EXAMPLE\n\n\
-;; *** Notes\n\n%?\n"
+;; *** Notes\n\n%?
+;; \n"
 ;;            :empty-lines 1 :prepend t :clock-keep t)
 
           ("4" "Add a bookmark"
