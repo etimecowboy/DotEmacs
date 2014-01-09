@@ -325,8 +325,9 @@
   ;; Automaticaly remove the scheduled date/time after
   (add-hook 'org-after-todo-state-change-hook
             '(lambda ()
-               ;; ;; change the state to SOMEDAY
-               ;; (if (string= org-state "SOMEDAY") (org-schedule t))
+               ;; change the state to SOMEDAY
+               (if (string= org-state "SOMEDAY")
+                   (org-remove-timestamp-with-keyword org-scheduled-string))
                ;; ;; Automatically schedule the task to today after change
                ;; ;; the state to NEXT
                ;; (if (string= org-state "NEXT") (org-schedule nil "+0"))
@@ -662,38 +663,8 @@
   ;; Custom agenda commands
   (setq org-agenda-custom-commands
         '(
-          ("f" "Grep FIXME" occur-tree "\\<FIXME\\>")
-
-          ;;----------------------------------------------------------
-          ("n" "Notes in the past 10 days" tags
-           "+note+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-10d>\""
-           ((org-agenda-overriding-header
-                       "Recent notes (10d)")
-                      (org-tags-match-list-sublevels nil)))
-
-          ;;----------------------------------------------------------
-          ("b" "Bookmarks in the past 30 days" tags
-           "+bookmark+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
-           ((org-agenda-overriding-header
-             "Recent bookmarks (30d)")
-            (org-tags-match-list-sublevels nil)))
-
-          ;;----------------------------------------------------------
-          ("s" "Scraps in the past 30 days" tags
-           "+scrap+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
-           ((org-agenda-overriding-header
-             "Recent scraps (30d)")
-            (org-tags-match-list-sublevels nil)))
-
-          ;;----------------------------------------------------------
-          ("l" "English study (30d)" tags
-           "+english+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
-           ((org-agenda-overriding-header "Recent ideas (refile ASAP)")
-            (org-tags-match-list-sublevels nil)))
-
-          ;;----------------------------------------------------------
           ("p" "Day Planner"
-           ((tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-repeat-sub-bookmark"
+           ((tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-repeat-sub-bookmark-appt-note"
                        ((org-agenda-overriding-header
                          "Pending Next Actions")
                         (org-tags-match-list-sublevels t)))
@@ -708,7 +679,7 @@
             ;;              "Wish Inbox")
             ;;             (org-tags-match-list-sublevels t)))
 
-            (tags-todo "TODO=\"TODO\"-repeat"
+            (tags-todo "TODO=\"TODO\"-repeat-note"
                        ((org-agenda-overriding-header
                          "Wish Inbox")
                         (org-tags-match-list-sublevels t)))
@@ -725,12 +696,12 @@
                      (org-agenda-todo-list-sublevel t)
                      (org-agenda-timeline-show-empty-dates nil)))
 
-            (tags-todo "SCHEDULED>=\"<tomorrow>\"+SCHEDULED<=\"<+3d>\"-repeat"
+            (tags-todo "SCHEDULED>=\"<tomorrow>\"+SCHEDULED<=\"<+3d>\"-repeat-note"
                        ((org-agenda-overriding-header
                          "Scheduled tasks in the next 3 days")
                         (org-tags-match-list-sublevels nil)))
 
-            (tags-todo "TODO=\"SOMEDAY\"-sub"
+            (tags-todo "TODO=\"SOMEDAY\"-sub-note"
                        ((org-agenda-overriding-header
                          "Someday/Maybe Items")
                         (org-tags-match-list-sublevels nil)))))
@@ -779,29 +750,61 @@
                      (org-agenda-timeline-show-empty-dates t)))
 
             (tags     "CLOSED<\"<tomorrow>\"+CLOSED>=\"<-1w>\"-repeat-sub"
-                     ((org-agenda-overriding-header
-                       "Archieve Closed Next Actions in this week")
-                      (org-tags-match-list-sublevels t)
-                      (org-agenda-skip-scheduled-if-done nil)
-                      (org-agenda-skip-deadline-if-done nil)
-                      (org-agenda-skip-timestamp-if-done nil)
-                      (org-agenda-skip-archived-trees nil)))
+                      ((org-agenda-overriding-header
+                        "Archieve Closed Next Actions in this week")
+                       (org-tags-match-list-sublevels t)
+                       (org-agenda-skip-scheduled-if-done nil)
+                       (org-agenda-skip-deadline-if-done nil)
+                       (org-agenda-skip-timestamp-if-done nil)
+                       (org-agenda-skip-archived-trees nil)))
 
-           (tags-todo "TODO<>\"TODO\"+SCHEDULED<\"<tomorrow>\"+SCHEDULED>=\"<-1w>\"-repeat-prj"
+            (tags-todo "TODO<>\"TODO\"+SCHEDULED<\"<tomorrow>\"+SCHEDULED>=\"<-1w>\"-repeat-prj"
                        ((org-agenda-overriding-header
                          "Re-schedule Pending Next Actions")
                         (org-tags-match-list-sublevels t)))
 
-           (tags-todo "TODO=\"TODO\"-repeat"
-                      ((org-agenda-overriding-header
-                        "Process Old Wishes")
-                       (org-tags-match-list-sublevels t)))
+            (tags-todo "TODO=\"TODO\"-repeat"
+                       ((org-agenda-overriding-header
+                         "Process Old Wishes")
+                        (org-tags-match-list-sublevels t)))
 
-           (tags      "prj/!-TODO-SOMEDAY-sub"
-                      ((org-agenda-overriding-header
-                        "Projects Review")
-                       (org-tags-match-list-sublevels t)))))
-          ))
+            (tags      "prj/!-TODO-SOMEDAY-sub"
+                       ((org-agenda-overriding-header
+                         "Projects Review")
+                        (org-tags-match-list-sublevels t)))))
+          ;;----------------------------------------------------------
+          
+          ;; ("f" "Grep FIXME" occur-tree "\\<FIXME\\>")
+
+          ;;----------------------------------------------------------
+          ("n" "Notes in the past 10 days" tags
+           "+note+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-10d>\""
+           ((org-agenda-overriding-header
+                       "Recent notes (10d)")
+                      (org-tags-match-list-sublevels nil)))
+
+          ;;----------------------------------------------------------
+          ("b" "Bookmarks in the past 30 days" tags
+           "+bookmark+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
+           ((org-agenda-overriding-header
+             "Recent bookmarks (30d)")
+            (org-tags-match-list-sublevels nil)))
+
+          ;;----------------------------------------------------------
+          ("s" "Scraps in the past 30 days" tags
+           "+scrap+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
+           ((org-agenda-overriding-header
+             "Recent scraps (30d)")
+            (org-tags-match-list-sublevels nil)))
+
+          ;;----------------------------------------------------------
+          ("l" "English study (30d)" tags
+           "+english+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
+           ((org-agenda-overriding-header "Recent ideas (refile ASAP)")
+            (org-tags-match-list-sublevels nil)))
+
+          ;;----------------------------------------------------------
+                    ))
 
   ;;** Agenda view export C-x C-w
   (setq org-agenda-exporter-settings
