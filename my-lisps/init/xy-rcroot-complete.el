@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-30 Sat 11:17 by xin on S13>
+;; Time-stamp: <2014-01-09 Thu 17:13 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -160,6 +160,8 @@
 
 ;;** hippie-expand
 ;; (global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "M-/") 'my-ido-hippie-expand)
+(global-set-key (kbd "M-|") 'my-ido-hippie-expand-filename) ;;ywb-hippie-expand-filename)
 (eval-after-load "hippie-exp" '(hippie-expand-postload))
 
 

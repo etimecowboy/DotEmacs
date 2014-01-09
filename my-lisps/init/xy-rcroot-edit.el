@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-17 Sun 20:31 by xin on S13>
+;; Time-stamp: <2014-01-09 Thu 17:12 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -294,7 +294,6 @@
    ("C-x \\"   rm-mark-command)
    ("C-x M-s"  isearch-forward-cur-word)
    ("C-\""     wcy-mark-some-thing-at-point)
-   ("M-|"      ywb-hippie-expand-filename)
    ("M-;"      qiang-comment-dwim-line)
    ;; ("M-K"      qiang-copy-line)
    ("C-S-p"    move-line-up)  ;; NOTE: cannot use "C-P"
