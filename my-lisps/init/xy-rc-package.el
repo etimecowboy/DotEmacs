@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-01-02 Thu 14:57 by xin on S13>
+;; Time-stamp: <2014-01-15 Wed 03:23 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -277,6 +277,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'marmalade-test)
   (require-package 'maxframe)
   (require-package 'melpa)
+  (require-package 'mew)
   (require-package 'mic-paren)
   (require-package 'mo-git-blame)
   (require-package 'modeline-posn)
