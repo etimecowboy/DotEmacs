@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-01-15 Wed 03:23 by xin on S13>
+;; Time-stamp: <2014-02-18 Tue 10:19 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -333,7 +333,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'w32-browser)
   (require-package 'w3m)
   (require-package 'weblogger)
-  (require-package 'weather-metno)
+  ;; (require-package 'weather-metno) ;; not working
   (require-package 'wgrep)
   ;; (require-package 'wgrep-helm) ;; don't use helm
   (require-package 'whole-line-or-region)
