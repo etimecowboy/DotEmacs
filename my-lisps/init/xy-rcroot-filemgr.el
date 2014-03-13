@@ -93,10 +93,11 @@
 
 ;; open-with, open files in external applications
 ;; NOTE: it need to be patched in order to run on windows
-;; NOTE: semms not work in Linux, `dired+' is better.
-(eval-after-load "openwith" '(openwith-postload))
-(GNULinux
- (when (try-require 'openwith) (openwith-mode 1)))
+;; NOTE: works in Linux but give a error message.
+;; NOTE: not very useful
+;; (eval-after-load "openwith" '(openwith-postload))
+;; (GNULinux
+;;  (when (try-require 'openwith) (openwith-mode 1)))
 
 ;; dired-details
 ;; 简略文件列表信息, BUG: not working properly

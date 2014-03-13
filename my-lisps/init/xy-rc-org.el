@@ -1053,7 +1053,10 @@ a4paper, cap, punct, nospace, indent, fancyhdr, hypperref, fntef]\
   ;; These will be inserted after `org-latex-default-packages-alist'.
   (setq org-latex-packages-alist
         '(;; The following 3 packages are required if using `listings'
-          ("svgnames, table" "xcolor" t) ("" "listings" t) ("" "setspace" nil)
+          ;; ("svgnames, table" "xcolor" t)
+          ("" "xcolor" t)
+          ("" "listings" t)
+          ("" "setspace" nil)
           ;; Display various latex-related logos
           ("" "metalogo" t) ("" "mflogo" t) ("" "texnames" t)
           ;; ("" "amsmath" nil) ;; this package cause error, no need

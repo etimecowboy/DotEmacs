@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-09-28 Fri 22:46 by xin on p5q>
+;; Time-stamp: <2014-02-27 Thu 11:03 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-openwith.el'
 ;; Author:       Xin Yang
@@ -21,7 +21,7 @@
   "Settings of `openwith.el' after it's been loaded."
 
   (setq openwith-associations
-        '(("\\.pdf\\'" "okular" (file))
+        '(("\\.pdf\\'" "okular --unique" (file))
           ("\\.\\(?:zip\\|rar\\|7z\\|iso\\|tar\\)\\'" "file-roller" (file))
           ("\\.\\(?:doc\\|docx\\|xls\\|xlsx\\|ppt\\|pptx\\|odt\\|ods\\|odp\\)\\'" "libreoffice" (file))
           ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mkv\\|rm\\|rmvb\\|ogv\\|mov\\|mp4\\|mp3\\)\\'" "vlc" (file))
