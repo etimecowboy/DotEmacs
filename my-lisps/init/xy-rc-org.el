@@ -494,13 +494,11 @@
 
           ("n" "Take a Note from Emacs"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
-           "** NEW %^{Title} %^G\n\n\
+           "** NEW %^{Title} %^G\n\
 :LOGBOOK:\n\
 - Timestamp               \"NEW\"        %U\n\
 - Link %a\n\
-:END:\n\n
-%?
-\n"
+:END:\n\n"
 :empty-lines 1 :prepend t :clock-keep t)
 
 ;;           ("s" "Scrap Text from Emacs"
@@ -545,9 +543,7 @@
 :LOGBOOK:\n\
 - Timestamp               \"NEW\"        %U\n\
 - Link %c\n\
-:END:\n\n
-%?
-\n"
+:END:\n\n"
 :empty-lines 1 :prepend t :clock-keep t)
 
 ;;           ("3" "Scrap Text from Web Browser"
@@ -679,36 +675,12 @@
             ;;              "Wish Inbox")
             ;;             (org-tags-match-list-sublevels t)))
 
-            (tags-todo "TODO=\"TODO\"-repeat-note"
+            (tags-todo "TODO=\"TODO\"-repeat"
                        ((org-agenda-overriding-header
                          "Wish Inbox")
                         (org-tags-match-list-sublevels t)))
 
             (agenda ""
-                    ((org-agenda-ndays 1)
-                     (org-agenda-deadline-warning-days 30)
-                     (org-agenda-use-time-grid t)
-                     (org-agenda-skip-scheduled-if-done t)
-                     (org-agenda-skip-deadline-if-done t)
-                     (org-agenda-skip-timestamp-if-done t)
-                     (org-agenda-skip-archived-trees t)
-                     (org-agenda-skip-comment-trees t)
-                     (org-agenda-todo-list-sublevel t)
-                     (org-agenda-timeline-show-empty-dates nil)))
-
-            (tags-todo "SCHEDULED>=\"<tomorrow>\"+SCHEDULED<=\"<+3d>\"-repeat-note"
-                       ((org-agenda-overriding-header
-                         "Scheduled tasks in the next 3 days")
-                        (org-tags-match-list-sublevels nil)))
-
-            (tags-todo "TODO=\"SOMEDAY\"-sub-note"
-                       ((org-agenda-overriding-header
-                         "Someday/Maybe Items")
-                        (org-tags-match-list-sublevels nil)))))
-
-          ;;----------------------------------------------------------
-          ("d" "Agenda Today"
-           ((agenda ""
                     ((org-agenda-ndays 1)
                      (org-agenda-deadline-warning-days 14)
                      (org-agenda-use-time-grid t)
@@ -720,36 +692,60 @@
                      (org-agenda-todo-list-sublevel t)
                      (org-agenda-timeline-show-empty-dates nil)))
 
-            (tags-todo "TODO=\"STARTED\"|TODO=\"WAITING\""
+            (tags-todo "SCHEDULED>=\"<tomorrow>\"+SCHEDULED<=\"<+3d>\"-repeat-note-bookmark"
                        ((org-agenda-overriding-header
-                         "Current Next Actions")
-                        (org-tags-match-list-sublevels t)))
+                         "Scheduled tasks in the next 3 days")
+                        (org-tags-match-list-sublevels nil)))
 
-            (tags      "CLOSED<\"<tomorrow>\"+CLOSED>=\"<today>\""
+            (tags-todo "TODO=\"SOMEDAY\"-sub"
                        ((org-agenda-overriding-header
-                         "Finished Next Actions")
-                        (org-tags-match-list-sublevels nil)
-                        (org-agenda-skip-scheduled-if-done nil)
-                        (org-agenda-skip-deadline-if-done nil)
-                        (org-agenda-skip-timestamp-if-done nil)
-                        (org-agenda-skip-archived-trees nil)))))
+                         "Someday/Maybe Items")
+                        (org-tags-match-list-sublevels nil)))))
+
+          ;;----------------------------------------------------------
+          ;; ("d" "Agenda Today"
+          ;;  ((agenda ""
+          ;;           ((org-agenda-ndays 1)
+          ;;            (org-agenda-deadline-warning-days 7)
+          ;;            (org-agenda-use-time-grid t)
+          ;;            (org-agenda-skip-scheduled-if-done t)
+          ;;            (org-agenda-skip-deadline-if-done t)
+          ;;            (org-agenda-skip-timestamp-if-done t)
+          ;;            (org-agenda-skip-archived-trees t)
+          ;;            (org-agenda-skip-comment-trees t)
+          ;;            (org-agenda-todo-list-sublevel t)
+          ;;            (org-agenda-timeline-show-empty-dates nil)))
+
+          ;;   (tags-todo "TODO=\"STARTED\"|TODO=\"WAITING\""
+          ;;              ((org-agenda-overriding-header
+          ;;                "Current Next Actions")
+          ;;               (org-tags-match-list-sublevels t)))
+
+          ;;   (tags      "CLOSED<\"<tomorrow>\"+CLOSED>=\"<today>\"-note-bookmark"
+          ;;              ((org-agenda-overriding-header
+          ;;                "Finished Next Actions")
+          ;;               (org-tags-match-list-sublevels nil)
+          ;;               (org-agenda-skip-scheduled-if-done nil)
+          ;;               (org-agenda-skip-deadline-if-done nil)
+          ;;               (org-agenda-skip-timestamp-if-done nil)
+          ;;               (org-agenda-skip-archived-trees nil)))))
 
           ;;----------------------------------------------------------
           ("w" "Weekly Review"
            ((agenda ""
                     ((org-agenda-span 'week)
                      (org-agenda-ndays 7)
-                     (org-agenda-deadline-warning-days 60)
-                     (org-agenda-use-time-grid t)
+                     (org-agenda-deadline-warning-days 30)
+                     (org-agenda-use-time-grid nil)
                      (org-agenda-skip-scheduled-if-done nil)
                      (org-agenda-skip-deadline-if-done nil)
                      (org-agenda-skip-timestamp-if-done nil)
-                     (org-agenda-skip-archived-trees nil)
-                     (org-agenda-skip-comment-trees nil)
+                     (org-agenda-skip-archived-trees t)
+                     (org-agenda-skip-comment-trees t)
                      (org-agenda-todo-list-sublevel t)
                      (org-agenda-timeline-show-empty-dates t)))
 
-            (tags     "CLOSED<\"<tomorrow>\"+CLOSED>=\"<-1w>\"-repeat-sub"
+            (tags     "CLOSED<\"<tomorrow>\"+CLOSED>=\"<-1w>\"-repeat-sub-note-bookmark"
                       ((org-agenda-overriding-header
                         "Archieve Closed Next Actions in this week")
                        (org-tags-match-list-sublevels t)
@@ -757,10 +753,21 @@
                        (org-agenda-skip-deadline-if-done nil)
                        (org-agenda-skip-timestamp-if-done nil)
                        (org-agenda-skip-archived-trees nil)))
-
-            (tags-todo "TODO<>\"TODO\"+SCHEDULED<\"<tomorrow>\"+SCHEDULED>=\"<-1w>\"-repeat-prj"
+            
+            (tags      "+note+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-7d>\""
                        ((org-agenda-overriding-header
-                         "Re-schedule Pending Next Actions")
+                         "Review and Refile Notes in this week")
+                        (org-tags-match-list-sublevels nil)))
+
+            (tags      "+bookmark+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-7d>\""
+                       ((org-agenda-overriding-header
+                         "Review and Refile bookmarks in this week")
+                        (org-tags-match-list-sublevels nil)))
+ 
+            (tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-repeat-sub-bookmark-appt-note"
+                       ;;"TODO<>\"TODO\"+SCHEDULED<\"<tomorrow>\"+SCHEDULED>=\"<-1w>\"-repeat-prj"
+                       ((org-agenda-overriding-header
+                         "Process Pending Next Actions")
                         (org-tags-match-list-sublevels t)))
 
             (tags-todo "TODO=\"TODO\"-repeat"
@@ -777,8 +784,8 @@
           ;; ("f" "Grep FIXME" occur-tree "\\<FIXME\\>")
 
           ;;----------------------------------------------------------
-          ("n" "Notes in the past 10 days" tags
-           "+note+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-10d>\""
+          ("n" "Notes in the past 30 days" tags
+           "+note+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
            ((org-agenda-overriding-header
                        "Recent notes (10d)")
                       (org-tags-match-list-sublevels nil)))
