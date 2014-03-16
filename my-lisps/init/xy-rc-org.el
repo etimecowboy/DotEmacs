@@ -512,11 +512,11 @@
 ;; #+BEGIN_EXAMPLE\n\
 ;; %x\n\
 ;; #+END_EXAMPLE\n\n\
-;; *** Notes\n\n%?\n"
+;; *** Notes\n\n"
 ;;            :empty-lines 1 :prepend t :clock-keep t)
 
 
-          ("e" "English language study: words/phrases/sentences"
+          ("e" "English language study: phrases/sentences"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "English")
            "** %? %^g\n\
 :LOGBOOK:\n\
@@ -798,11 +798,11 @@
             (org-tags-match-list-sublevels nil)))
 
           ;;----------------------------------------------------------
-          ("s" "Scraps in the past 30 days" tags
-           "+scrap+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
-           ((org-agenda-overriding-header
-             "Recent scraps (30d)")
-            (org-tags-match-list-sublevels nil)))
+          ;; ("s" "Scraps in the past 30 days" tags
+          ;;  "+scrap+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
+          ;;  ((org-agenda-overriding-header
+          ;;    "Recent scraps (30d)")
+          ;;   (org-tags-match-list-sublevels nil)))
 
           ;;----------------------------------------------------------
           ("l" "English study (30d)" tags
