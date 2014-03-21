@@ -660,12 +660,7 @@
   (setq org-agenda-custom-commands
         '(
           ("p" "Day Planner"
-           ((tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-repeat-sub-bookmark-appt-note"
-                       ((org-agenda-overriding-header
-                         "Pending Next Actions")
-                        (org-tags-match-list-sublevels t)))
-
-            ;; (tags-todo "TODO=\"TODO\"+TIMESTAMP_IA<\"<today>\"-repeat"
+           (;; (tags-todo "TODO=\"TODO\"+TIMESTAMP_IA<\"<today>\"-repeat"
             ;;            ((org-agenda-overriding-header
             ;;              "Old Wishes")
             ;;             (org-tags-match-list-sublevels t)))
@@ -674,11 +669,6 @@
             ;;            ((org-agenda-overriding-header
             ;;              "Wish Inbox")
             ;;             (org-tags-match-list-sublevels t)))
-
-            (tags-todo "TODO=\"TODO\"-repeat"
-                       ((org-agenda-overriding-header
-                         "Wish Inbox")
-                        (org-tags-match-list-sublevels t)))
 
             (agenda ""
                     ((org-agenda-ndays 1)
@@ -692,14 +682,24 @@
                      (org-agenda-todo-list-sublevel t)
                      (org-agenda-timeline-show-empty-dates nil)))
 
-            (tags-todo "SCHEDULED>=\"<tomorrow>\"+SCHEDULED<=\"<+3d>\"-repeat-note-bookmark"
+            (tags-todo "SCHEDULED>=\"<today>\"+SCHEDULED<=\"<+7d>\"-repeat-note-bookmark"
                        ((org-agenda-overriding-header
-                         "Scheduled tasks in the next 3 days")
+                         "Scheduled Tasks in 7 Days")
                         (org-tags-match-list-sublevels nil)))
 
+            (tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-repeat-sub-bookmark-appt-note"
+                       ((org-agenda-overriding-header
+                         "Pending Next Actions")
+                        (org-tags-match-list-sublevels t)))
+
+            (tags-todo "TODO=\"TODO\"-repeat"
+                       ((org-agenda-overriding-header
+                         "Wish Inbox")
+                        (org-tags-match-list-sublevels t)))
+            
             (tags-todo "TODO=\"SOMEDAY\"-sub"
                        ((org-agenda-overriding-header
-                         "Someday/Maybe Items")
+                         "Future Work")
                         (org-tags-match-list-sublevels nil)))))
 
           ;;----------------------------------------------------------

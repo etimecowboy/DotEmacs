@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-12-10 Tue 17:54 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-03-20 Thu 11:24 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -54,10 +54,10 @@
 
 (eal-define-keys-commonly
  global-map
- `(("<f12> l"   org-store-link)
-   ("<f12> a"   org-agenda)
-   ("<f12> b"   org-ido-switchb)
-   ("<f12> c"   org-capture)
+ `(("<f12> <f10>"   org-store-link)
+   ("<f12> <f12>"   org-agenda)
+   ("<f12> <f11>"   org-capture)
+   ("<f12> b"       org-ido-switchb)
    ;; ("C-c n"   org2blog/wp-new-entry)
    ;; ("M-S-w"   tzz-copy-region-with-mode-property)
    ))
