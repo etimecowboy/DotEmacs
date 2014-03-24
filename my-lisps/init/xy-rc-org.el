@@ -659,7 +659,7 @@
   ;; Custom agenda commands
   (setq org-agenda-custom-commands
         '(
-          ("p" "Day Planner"
+          ("d" "Day Planner"
            (;; (tags-todo "TODO=\"TODO\"+TIMESTAMP_IA<\"<today>\"-repeat"
             ;;            ((org-agenda-overriding-header
             ;;              "Old Wishes")
@@ -879,10 +879,11 @@
   (require 'ob-octave)
 
   (Windows
+   (setq org-babel-matlab-shell-command "D:/MATLAB/R2014a/bin/win64/matlabshell.exe")
    (Laptop
     (setq org-babel-matlab-shell-command "D:/MATLAB/R2014a/bin/win64/matlabshell.exe"))
    (OfficePC
-    (setq org-babel-matlab-shell-command "C:/Program\ Files/MATLAB/R2014a/bin/win64/matlabshell.exe")))
+    (setq org-babel-matlab-shell-command "C:/PROGRA~1/MATLAB/R2014a/bin/win64/matlabshell.exe")))
   
   (GNULinux
    (setq org-babel-matlab-shell-command "MATLAB"))
