@@ -877,13 +877,19 @@
   (require 'ob-emacs-lisp)
   (require 'ob-matlab)
   (require 'ob-octave)
+
   (Windows
-   (setq org-babel-matlab-shell-command "matlabshell.cmd"))
+   (Laptop
+    (setq org-babel-matlab-shell-command "D:/MATLAB/R2014a/bin/win64/matlabshell.exe"))
+   (OfficePC
+    (setq org-babel-matlab-shell-command "C:/Program\ Files/MATLAB/R2014a/bin/win64/matlabshell.exe")))
+  
   (GNULinux
    (setq org-babel-matlab-shell-command "MATLAB"))
+  
   (setq org-babel-default-header-args:matlab
   '((:results . "output") (:session . "*MATLAB*")))
-  (require 'ob-octave)
+
   (require 'ob-org)
   ;; (require 'ob-perl)
   (require 'ob-python)
