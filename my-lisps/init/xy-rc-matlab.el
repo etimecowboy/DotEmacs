@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-03-24 Mon 06:58 by xin on S13>
+;; Time-stamp: <2014-03-25 Tue 14:27 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-matlab.el'
 ;; Author:       Xin Yang
@@ -80,13 +80,14 @@
         ;; matlab-shell-echoes nil
         matlab-arg1-max-indent-length 15
         matlab-auto-fill t
+        fill-column 76 ;; same as matlab default
         matlab-block-indent-tic-toc-flag nil
         matlab-block-verify-max-buffer-size 50000
         matlab-comment-anti-indent 0
         matlab-comment-column 40
         matlab-comment-line-s "% "
         matlab-comment-on-line-s "% "
-        matlab-comment-region-s "% $$$ "
+        matlab-comment-region-s "%%%% "
         matlab-completion-technique 'increment
         matlab-cont-level 4
         matlab-cont-requires-ellipsis t
