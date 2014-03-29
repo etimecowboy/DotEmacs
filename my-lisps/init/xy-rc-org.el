@@ -745,9 +745,9 @@
                      (org-agenda-todo-list-sublevel t)
                      (org-agenda-timeline-show-empty-dates t)))
 
-            (tags     "CLOSED<\"<tomorrow>\"+CLOSED>=\"<-1w>\"-repeat-sub-note-bookmark"
+            (tags     "CLOSED<\"<tomorrow>\"-repeat-sub-note-bookmark"
                       ((org-agenda-overriding-header
-                        "Archieve Closed Next Actions in this week")
+                        "Archieve Closed Next Actions")
                        (org-tags-match-list-sublevels t)
                        (org-agenda-skip-scheduled-if-done nil)
                        (org-agenda-skip-deadline-if-done nil)
@@ -784,11 +784,18 @@
           ;; ("f" "Grep FIXME" occur-tree "\\<FIXME\\>")
 
           ;;----------------------------------------------------------
-          ("n" "Notes in the past 30 days" tags
+          ("n" "Notes and in the Past 30 days" tags
            "+note+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
            ((org-agenda-overriding-header
-                       "Recent notes (10d)")
-                      (org-tags-match-list-sublevels nil)))
+             "Recent notes (30d)")
+            (org-tags-match-list-sublevels nil)))
+
+          ;;----------------------------------------------------------
+          ;; ("N" "All Notes" tags
+          ;;  "+note"
+          ;;  ((org-agenda-overriding-header
+          ;;    "All Notes")
+          ;;   (org-tags-match-list-sublevels nil)))
 
           ;;----------------------------------------------------------
           ("b" "Bookmarks in the past 30 days" tags
@@ -796,6 +803,13 @@
            ((org-agenda-overriding-header
              "Recent bookmarks (30d)")
             (org-tags-match-list-sublevels nil)))
+
+          ;;----------------------------------------------------------
+          ;; ("B" "All Bookmarks" tags
+          ;;  "+bookmark"
+          ;;  ((org-agenda-overriding-header
+          ;;    "All Bookmarks")
+          ;;   (org-tags-match-list-sublevels nil)))
 
           ;;----------------------------------------------------------
           ;; ("s" "Scraps in the past 30 days" tags
