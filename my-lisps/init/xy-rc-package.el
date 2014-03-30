@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-03-13 Thu 01:12 by xin on vmlmde>
+;; Time-stamp: <2014-03-30 Sun 17:37 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -159,7 +159,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'ack-menu)  ;; ack is not used
   ;; (require-package 'ansi)  ;; never used
   (require-package 'ahg)
-  (require-package 'anti-zenburn-theme)
+  ;; (require-package 'anti-zenburn-theme) ;; not pretty
   (require-package 'ascii)
   (require-package 'auto-complete)
   (require-package 'auto-dim-other-buffers)
@@ -197,7 +197,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'ctags-update)
   ;; (require-package 'cursor-chg)  ;; not very useful
   (require-package 'dash)
-  (require-package 'deft)
+  ;; (require-package 'deft)        ;; nerver used
   ;; (require-package 'desktop)
   (require-package 'dictionary)
   (require-package 'diff-git)
@@ -210,8 +210,8 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'eimp)
   (require-package 'elpy)
   ;; (require-package 'elscreen)   ;; outdated, new version moved to lisps folder
-  (require-package 'emms)
-  (require-package 'ess)
+  ;; (require-package 'emms)       ;; not very useful
+  ;; (require-package 'ess)        ;; not very useful
   (require-package 'ethan-wspace)
   (require-package 'everything)
   (require-package 'fic-ext-mode)
@@ -344,6 +344,10 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'xml-rpc)
   (require-package 'yasnippet)
   (require-package 'zjl-hl)
+
+  ;; New packages
+  (require-package '2048-game)
+  (require-package 'iedit)
   
   (message "* ---[ package post-load configuration is complete ]---"))
 
