@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-03-30 Sun 17:47 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-04-01 Tue 11:10 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -132,11 +132,17 @@
 ;; (autoload 'iedit-mode "iedit" nil t)
 ;; ;; (eval-after-load "iedit" '(iedit-postload))
 ;; (am-add-hooks
-;;  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
-;;                   sh-mode-hook cperl-mode-hook c-common-mode-hook
+;;  `(lisp-mode-hook ;; emacs-lisp-mode-hook
+;;                   ;; lisp-interaction-mode-hook
+;;                   ;; sh-mode-hook
+;;                   ;; cperl-mode-hook
+;;                   c-common-mode-hook
 ;;                   ;; vhdl-mode-hook
-;;                   verilog-mode-hook matlab-mode-hook)
-;;  '(lambda () (iedit-mode 1)))
+;;                   ;; verilog-mode-hook
+;;                   matlab-mode-hook)
+;;  '(lambda ()
+;;     (when (try-require 'iedit)
+;;       (iedit-mode 1))))
 
 
 

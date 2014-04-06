@@ -325,18 +325,22 @@
   ;; Automaticaly remove the scheduled date/time after
   (add-hook 'org-after-todo-state-change-hook
             '(lambda ()
-               ;; change the state to SOMEDAY
-               (if (string= org-state "SOMEDAY")
-                   (org-remove-timestamp-with-keyword org-scheduled-string))
+               ;; ;; NOTE: current workflow don't need to do this
+               ;; ;; Delete scheduled time after changing the state to SOMEDAY
+               ;; (if (string= org-state "SOMEDAY")
+               ;;     (org-remove-timestamp-with-keyword
+               ;;     org-scheduled-string))
+               
                ;; ;; Automatically schedule the task to today after change
                ;; ;; the state to NEXT
                ;; (if (string= org-state "NEXT") (org-schedule nil "+0"))
                ;; (when window-system ;; also useful in console
-                 (when (try-require 'todochiku)
-                   (if (string= org-state "DONE")
-                       (todochiku-message "Emacs Org"
-                                          "Task DONE, Great Work!"
-                                          (todochiku-icon 'check))))))
+
+               (when (try-require 'todochiku)
+                 (if (string= org-state "DONE")
+                     (todochiku-message "Emacs Org"
+                                        "Task DONE, Great Work!"
+                                        (todochiku-icon 'check))))))
 
   ;; todo entry automatically changes to DONE
   ;; when all children are done
