@@ -280,9 +280,16 @@
   (setq org-startup-folded nil)
   (setq org-cycle-include-plain-lists t)
 
-  ;;    Check if in invisible region before inserting or deleting a character
+  ;; Check if in invisible region before inserting or deleting a character
   (setq org-catch-invisible-edits 'smart)
-  
+
+  ;; Encrypting entries in an org file
+  (require 'org-crypt)
+  (org-crypt-use-before-save-magic)
+  (setq org-tags-exclude-from-inheritance (quote ("crypt" "prj")))
+  ;; GPG key to use for encryption
+  ;; Either the Key ID or set to nil to use symmetric encryption.
+  (setq org-crypt-key nil)
 
 
   ;;* todo items
@@ -370,7 +377,7 @@
   ;; NOTE: it is better to define all the tags in seperate files. 
 
   (setq org-use-tag-inheritance t)   ;; Inherit tags in most of cases
-  (setq org-tags-exclude-from-inheritance '("prj"))   ;; Exclusions
+  (setq org-tags-exclude-from-inheritance '("prj" "crypt"))   ;; Exclusions
 
   
   
