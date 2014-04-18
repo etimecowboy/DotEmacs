@@ -238,7 +238,7 @@
   (setq org-directory
         (concat my-emacs-path "/org"))
   (setq org-default-notes-file
-        (concat org-directory "/gtd/Capture.org"))
+        (concat org-directory "/gtd/Note.org"))
   (unless (file-exists-p org-default-notes-file)
     (shell-command (concat "touch " org-default-notes-file)))
   (setq org-combined-agenda-icalendar-file
@@ -491,9 +491,9 @@
 
   ;;*** For `org-cpature.el'
   (setq org-capture-templates
-        '(("w" "Capture a New Wish from Emacs"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Wish Inbox")
-           "** TODO %^{New Wish} %^G\n\
+        '(("w" "Capture a New Task from Emacs"
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Gtd.org" "Task Inbox")
+           "** TODO %^{New Task} %^G\n\
 :LOGBOOK:\n\
 - Initial State           \"TODO\"       %U\n\
 - Link %a\n\
@@ -504,7 +504,7 @@
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("n" "Take a Note from Emacs"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Note.org" "Note Inbox")
            "** NEW %^{Title} %^G\n\
 :LOGBOOK:\n\
 - Timestamp               \"NEW\"        %U\n\
@@ -528,7 +528,7 @@
 
 
           ("e" "English language study: phrases/sentences"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "English")
+           entry (file+headline "~/Dropbox/emacs/org/gtd/English.org" "English Inbox")
            "** %? %^g\n\
 :LOGBOOK:\n\
 - Timestamp                              %U\n\
@@ -536,9 +536,9 @@
 :END:\n\n"
 :empty-lines 1 :prepend t :clock-keep t)
 
-          ("1" "Capture a New Wish from Web Browser"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Wish Inbox")
-           "** TODO %^{New Wish} %^G\n\
+          ("1" "Capture a New Task from Web Browser"
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Gtd.org" "Task Inbox")
+           "** TODO %^{New Task} %^G\n\
 :LOGBOOK:\n\
 - Initial State           \"TODO\"       %U\n\
 - Link %c\n\
@@ -549,7 +549,7 @@
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("2" "Take a Note from Web Browser"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Notes")
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Note.org" "Note Inbox")
            "** NEW %^{Title} %^G\n\
 :LOGBOOK:\n\
 - Timestamp               \"NEW\"        %U\n\
@@ -573,7 +573,7 @@
 ;;            :empty-lines 1 :prepend t :clock-keep t)
 
           ("4" "Add a bookmark"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Bookmarks")
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Bookmark.org" "Bookmark Inbox")
            "** NEW %c %^G\n\
 :LOGBOOK:\n\
 - Timestamp               \"NEW\"        %U\n\
@@ -698,14 +698,14 @@
                          "Scheduled Tasks in 7 Days")
                         (org-tags-match-list-sublevels nil)))
 
-            (tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-repeat-sub-bookmark-appt-note"
+            (tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-repeat-sub-bookmark-appt-note-english"
                        ((org-agenda-overriding-header
                          "Pending Next Actions")
                         (org-tags-match-list-sublevels t)))
 
             (tags-todo "TODO=\"TODO\"-repeat"
                        ((org-agenda-overriding-header
-                         "Wish Inbox")
+                         "Task Inbox")
                         (org-tags-match-list-sublevels t)))
             
             (tags-todo "TODO=\"SOMEDAY\"-sub"
@@ -783,7 +783,7 @@
 
             (tags-todo "TODO=\"TODO\"-repeat"
                        ((org-agenda-overriding-header
-                         "Process Old Wishes")
+                         "Schedule Tasks")
                         (org-tags-match-list-sublevels t)))
 
             (tags      "prj/!-TODO-SOMEDAY-sub"
