@@ -3,7 +3,7 @@
 This is my Emacs configuration with various collected lisps.
 
 All the files should be placed in "~/.emacs.d/", where "~" means your
-HOME. For Windows users, please set an environmental vairable for your
+HOME. For Windows users, please set an environmental variable for your
 account.
 
 * Installation
