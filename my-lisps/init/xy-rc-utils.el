@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-02-16 Sun 13:03 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-04-23 Wed 15:55 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -971,7 +971,15 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
   (when window-system
     (setq scalable-fonts-allowed t    ;; Use scalable fonts
           text-scale-mode-step   1.2) ;; default
-    ;; (GNULinux ;; not tested
+    (GNULinux
+     (setq face-font-rescale-alist
+           '(("微软雅黑" . 1.2)
+             ("Microsoft Yahei" . 1.2)
+             ("文泉驿等宽微米黑" . 1.2)
+             ("WenQuanYi Micro Hei Mono" . 1.2)
+             ("文泉驿正黑" . 1.2)
+             ("WenQuanYi Zen Hei" . 1.2)))
+     (qiang-set-font xy:english-fonts 9 xy:chinese-fonts))
     (Laptop
      (setq face-font-rescale-alist
            '(("微软雅黑" . 1.2)
@@ -1390,7 +1398,7 @@ The process is:
   (xy/install-lisps (concat my-local-lisp-path "/ibus-el-0.3.2"))
   (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
   (xy/install-lisps (concat my-local-lisp-path "/matlab-emacs"))
-  (xy/install-lisps (concat my-local-lisp-path "/mew-6.5"))
+  ;; (xy/install-lisps (concat my-local-lisp-path "/mew-6.5"))
   (xy/install-lisps (concat my-local-lisp-path "/auctex-11.87"))
   (xy/install-lisps (concat my-local-lisp-path "/elscreen"))
 
