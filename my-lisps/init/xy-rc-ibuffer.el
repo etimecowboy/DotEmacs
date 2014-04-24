@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:22 by xin on p5q>
+;; Time-stamp: <2014-04-23 Wed 11:45 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ibuffer.el'
 ;; Author:       Xin Yang
@@ -63,16 +63,15 @@
 
   (setq ibuffer-saved-filter-groups
         '(("default"
-           ("dired" (mode . dired-mode))
-           ("lisp" (or
-                    (mode . emacs-lisp-mode)
-                    (mode . lisp-interaction-mode)))
-           ("c"   (or
+           ("src" (or
+                   (mode . matlab-mode)
                    (mode . c-mode)
-                   (mode . cc-mode)))
-           ("hdl" (or
+                   (mode . cc-mode)
+                   (mode . emacs-lisp-mode)
+                   (mode . lisp-interaction-mode)
                    (mode . vhdl-mode)
                    (mode . verilog-mode)))
+
            ("org" (or
                    (mode . org-mode)
                    (name . "^\\*Org Agenda\\*$")
@@ -81,15 +80,45 @@
                    (name . "^\\*Calendar\\*$")
                    (name . "^diary$")
                    ))
+           
            ("tex" (or
                    (mode . latex-mode)
                    (mode . LaTeX-mode)
                    (mode . tex-mode)
                    (mode . TeX-mode)))
-           ;; ("vc"  (or
-           ;;            (mode . egg-status)
-           ;;            (mode . egg-log-msg-mode)
-           ;;            (name .  "^\\*Egg:Select Action\\*$")))
+
+           ("messages" (or
+                   (mode . mew-addrbook-mode)
+                   (mode . mew-summary-mode)
+                   (mode . mew-message-mode)
+                   (mode . mew-draft-mode)
+                   (mode . mew-header-mode)
+                   (mode . mew-goto-msg-mode)
+                   (mode . mew-visual-mode)
+                   ;; gnus
+                   (mode . message-mode)
+                   ;; (mode . bbdb-mode)
+                   (mode . mail-mode)
+                   (mode . gnus-group-mode)
+                   (mode . gnus-summary-mode)
+                   (mode . gnus-article-mode)
+                   (mode . gnus-article-edit-mode)
+                   (mode . gnus-binary-mode)
+                   (mode . gnus-browse-mode)
+                   (mode . gnus-carpal-mode)
+                   (mode . gnus-category-mode)
+                   (mode . gnus-dead-summary-mode)
+                   (mode . gnus-draft-mode)
+                   (mode . gnus-mailing-list-mode)
+                   (mode . gnus-message-citation-mode)
+                   (mode . gnus-pick-mode)
+                   (mode . gnus-score-mode)
+                   (mode . gnus-sticky-article-mode)
+                   (mode . gnus-topic-mode)
+                   (mode . gnus-tree-mode)
+                   (mode . gnus-undo-mode)
+                   (name . "^\\.bbdb$")
+                   (name . "^newsrc-dribble$")))
            ("emacs" (or
                      (name . "^\\*scratch\\*$")
                      (name . "^\\*Messages\\*$")
@@ -101,42 +130,15 @@
                      (mode . help-mode)
                      (mode . Info-mode)
                      (mode . woman-mode)
-                     (mode . apropos-mode)))
-           ("gnus"  (or
-                     (mode . message-mode)
-                     (mode . bbdb-mode)
-                     (mode . mail-mode)
-                     (mode . gnus-group-mode)
-                     (mode . gnus-summary-mode)
-                     (mode . gnus-article-mode)
-                     (mode . gnus-article-edit-mode)
-                     (mode . gnus-binary-mode)
-                     (mode . gnus-browse-mode)
-                     (mode . gnus-carpal-mode)
-                     (mode . gnus-category-mode)
-                     (mode . gnus-dead-summary-mode)
-                     (mode . gnus-draft-mode)
-                     (mode . gnus-mailing-list-mode)
-                     (mode . gnus-message-citation-mode)
-                     (mode . gnus-pick-mode)
-                     (mode . gnus-score-mode)
-                     (mode . gnus-sticky-article-mode)
-                     (mode . gnus-topic-mode)
-                     (mode . gnus-tree-mode)
-                     (mode . gnus-undo-mode)
-                     (name . "^\\.bbdb$")
-                     (name . "^newsrc-dribble$")))
-           ("mew" (or
-                   (mode . mew-addrbook-mode)
-                   (mode . mew-summary-mode)
-                   (mode . mew-message-mode)
-                   (mode . mew-draft-mode)
-                   (mode . mew-header-mode)
-                   (mode . mew-goto-msg-mode)
-                   (mode . mew-visual-mode)))
-           ("emms" (or
-                    (mode . emms-playlist-mode)
-                    (mode . emms-browser-mode)))
+                     (mode . apropos-mode)
+                     (mode . dired-mode)))
+           ;; ("emms" (or
+           ;;          (mode . emms-playlist-mode)
+           ;;          (mode . emms-browser-mode)))
+           ;; ("vc"  (or
+           ;;            (mode . egg-status)
+           ;;            (mode . egg-log-msg-mode)
+           ;;            (name .  "^\\*Egg:Select Action\\*$")))
            )))
 
   (add-hook 'ibuffer-mode-hook
