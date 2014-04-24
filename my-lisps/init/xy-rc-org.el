@@ -491,7 +491,7 @@
 
   ;;*** For `org-cpature.el'
   (setq org-capture-templates
-        '(("w" "Capture a New Task from Emacs"
+        '(("t" "Capture a New Task from Emacs"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Gtd.org" "Task Inbox")
            "** TODO %^{New Task} %^G\n\
 :LOGBOOK:\n\
@@ -511,21 +511,6 @@
 - Link %a\n\
 :END:\n\n"
 :empty-lines 1 :prepend t :clock-keep t)
-
-;;           ("s" "Scrap Text from Emacs"
-;;            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
-;;            "** %^{Title} %^G\n\n\
-;; *** Source\n\n\
-;; - Timestamp                               %U\n\
-;; - Source\n\
-;;   + Emacs @ %a\n\n\
-;; *** Local clipboard\n\n\
-;; #+BEGIN_EXAMPLE\n\
-;; %x\n\
-;; #+END_EXAMPLE\n\n\
-;; *** Notes\n\n"
-;;            :empty-lines 1 :prepend t :clock-keep t)
-
 
           ("e" "English language study: phrases/sentences"
            entry (file+headline "~/Dropbox/emacs/org/gtd/English.org" "English Inbox")
@@ -557,21 +542,6 @@
 :END:\n\n"
 :empty-lines 1 :prepend t :clock-keep t)
 
-;;           ("3" "Scrap Text from Web Browser"
-;;            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
-;;            "** %^{Title} %^G\n\n\
-;; *** Source\n\n\
-;; - Timestamp                               %U\n\
-;; - Source\n\
-;;   + WWW @ %c\n\n\
-;; *** Webpage highlights\n\n\
-;; #+BEGIN_EXAMPLE\n\
-;; %i\n\
-;; #+END_EXAMPLE\n\n\
-;; *** Notes\n\n%?
-;; \n"
-;;            :empty-lines 1 :prepend t :clock-keep t)
-
           ("4" "Add a bookmark"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Bookmark.org" "Bookmark Inbox")
            "** NEW %c %^G\n\
@@ -583,6 +553,37 @@
 :DESCRIPTION:\n\
 :END:\n\n"
 :empty-lines 1 :prepend t :clock-keep t)
+
+          ;;           ("s" "Scrap Text from Emacs"
+          ;;            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
+          ;;            "** %^{Title} %^G\n\n\
+          ;; *** Source\n\n\
+          ;; - Timestamp                               %U\n\
+          ;; - Source\n\
+          ;;   + Emacs @ %a\n\n\
+          ;; *** Local clipboard\n\n\
+          ;; #+BEGIN_EXAMPLE\n\
+          ;; %x\n\
+          ;; #+END_EXAMPLE\n\n\
+          ;; *** Notes\n\n"
+          ;;            :empty-lines 1 :prepend t :clock-keep t)
+
+          
+          ;;           ("3" "Scrap Text from Web Browser"
+          ;;            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
+          ;;            "** %^{Title} %^G\n\n\
+          ;; *** Source\n\n\
+          ;; - Timestamp                               %U\n\
+          ;; - Source\n\
+          ;;   + WWW @ %c\n\n\
+          ;; *** Webpage highlights\n\n\
+          ;; #+BEGIN_EXAMPLE\n\
+          ;; %i\n\
+          ;; #+END_EXAMPLE\n\n\
+          ;; *** Notes\n\n%?
+          ;; \n"
+          ;;            :empty-lines 1 :prepend t :clock-keep t)
+          
           ))
 
   ;;** Refile settings
