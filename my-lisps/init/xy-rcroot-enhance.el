@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-12-13 Fri 01:54 by xin on S13>
+;; Time-stamp: <2014-04-07 Mon 12:37 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -98,6 +98,12 @@
 ;;  '(lambda ()
 ;;     (flyspell-prog-mode 1)))
 (global-set-key (kbd "M-Q") 'flyspell-correct-word-before-point)
+
+;; ;; NOTE: not necssary when using a single language
+;; ;;** auto-dictionary
+;; (when (try-require 'auto-dictionary)
+;;   (add-hook 'flyspell-mode-hook
+;;             (lambda () (auto-dictionary-mode 1))))
 
 
 
