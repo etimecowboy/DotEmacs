@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-12-05 Thu 14:06 by xin on S13>
+;; Time-stamp: <2014-04-19 Sat 22:17 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auto-complete.el'
 ;; Author:       Xin Yang
@@ -34,7 +34,10 @@
 
   (setq ac-use-comphist t)
   (setq ac-comphist-file
-        (concat my-var-path "/ac-comphist"))
+        (concat my-var-path "/ac-comphist"
+                user-login-name "@"
+                system-name "@"
+                system-configuration))
   (unless (file-exists-p ac-comphist-file)
     (shell-command (concat "touch " ac-comphist-file)))
 

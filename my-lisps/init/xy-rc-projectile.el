@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-12 Sat 14:32 by xin on S13>
+;; Time-stamp: <2014-04-19 Sat 22:25 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-projectile.el'
 ;; Author:       Xin Yang
@@ -28,7 +28,11 @@
         projectile-require-project-root t
         projectile-tags-command         "ctags -Re %s")
 
-  (setq projectile-cache-file (expand-file-name  "projectile.cache" my-var-path))
+  (setq projectile-cache-file (concat my-var-path "/projectile-"
+                                      user-login-name "@"
+                                      system-name "@"
+                                      system-configuration))
+        ;; (expand-file-name  "projectile.cache" my-var-path))
 
   (message "* ---[ projectile post-load configuration is complete ]---"))
 

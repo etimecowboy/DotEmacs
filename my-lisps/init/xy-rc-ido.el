@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-17 Sun 17:15 by xin on S13>
+;; Time-stamp: <2014-04-19 Sat 22:20 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ido.el'
 ;; Author:       Xin Yang
@@ -75,7 +75,10 @@
   ;; NOTE: no need to have different ido-last files on different
   ;;       machines.
   (setq ido-save-directory-list-file
-        (concat my-var-path "/ido-last"))
+        (concat my-var-path "/ido-last-"
+                user-login-name "@"
+                system-name "@"
+                system-configuration))
   (unless (file-exists-p ido-save-directory-list-file)
     (shell-command (concat "touch " ido-save-directory-list-file)))
   (setq ido-everywhere t)
