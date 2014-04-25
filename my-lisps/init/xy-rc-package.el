@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-03-30 Sun 17:37 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-04-24 Thu 23:38 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -288,10 +288,10 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'o-blog)
   (require-package 'oauth)
   ;; (require-package 'openwith)
-  (require-package 'org '(8)) ;; NOTE: install the latest version
+  ;; (require-package 'org '(8)) ;; NOTE: install the latest version
   ;; (require-package 'org-cua-dwim)
   ;; (require-package 'org-mime)
-  ;; (require-package 'org-plus-contrib) ;; too heavy for me
+  (require-package 'org-plus-contrib)
   ;; (require-package 'org-table-comment)  ;; nerver used by now
   ;; (require-package 'org2blog) ;; NOTE: outdated
   (require-package 'outline-magic)

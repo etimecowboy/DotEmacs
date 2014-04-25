@@ -493,94 +493,109 @@
   (setq org-capture-templates
         '(("t" "Capture a New Task from Emacs"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Gtd.org" "Task Inbox")
-           "** TODO %^{New Task} %^G\n\
-:LOGBOOK:\n\
-- Initial State           \"TODO\"       %U\n\
-- Link %a\n\
-:END:\n\
-:PROPERTIES:\n\
-:DESCRIPTION: %?\n\
-:END:\n\n"
+           "** TODO %^{New Task} %^G
+:LOGBOOK:
+- Initial State           \"TODO\"       %U
+- Link %a
+:END:
+:PROPERTIES:
+:DESCRIPTION: %?
+:END:"
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("n" "Take a Note from Emacs"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Note.org" "Note Inbox")
-           "** NEW %^{Title} %^G\n\
-:LOGBOOK:\n\
-- Timestamp               \"NEW\"        %U\n\
-- Link %a\n\
-:END:\n\n"
+           "** NEW %^{Title} %^G
+:LOGBOOK:
+- Timestamp               \"NEW\"        %U
+- Link %a
+:END:"
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("e" "English language study: phrases/sentences"
            entry (file+headline "~/Dropbox/emacs/org/gtd/English.org" "English Inbox")
-           "** %? %^g\n\
-:LOGBOOK:\n\
-- Timestamp                              %U\n\
-- Link %a\n\
-:END:\n\n"
+           "** %? %^g
+:LOGBOOK:
+- Timestamp                              %U
+- Link %a
+:END:"
+:empty-lines 1 :prepend t :clock-keep t)
+
+          ("c" "Contacts"
+           entry (file+headline "~/Dropbox/emacs/org/gtd/Contacts.org" "New Contacts")
+           "** %(org-contacts-template-name)
+:PROPERTIES:%(org-contacts-template-email)
+:OCCUPATION:
+:WEBPAGE:
+:PHONE:
+:MOBILE:
+:QQ/IRC:
+:SKYPE:
+:ADDRESS:
+:NOTE:
+:END:"
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("1" "Capture a New Task from Web Browser"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Gtd.org" "Task Inbox")
-           "** TODO %^{New Task} %^G\n\
-:LOGBOOK:\n\
-- Initial State           \"TODO\"       %U\n\
-- Link %c\n\
-:END:\n\
-:PROPERTIES:\n\
-:DESCRIPTION: %?\n\
-:END:\n\n"
+           "** TODO %^{New Task} %^G
+:LOGBOOK:
+- Initial State           \"TODO\"       %U
+- Link %c
+:END:
+:PROPERTIES:
+:DESCRIPTION: %?
+:END:"
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("2" "Take a Note from Web Browser"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Note.org" "Note Inbox")
-           "** NEW %^{Title} %^G\n\
-:LOGBOOK:\n\
-- Timestamp               \"NEW\"        %U\n\
-- Link %c\n\
-:END:\n\n"
+           "** NEW %^{Title} %^G
+:LOGBOOK:
+- Timestamp               \"NEW\"        %U
+- Link %c
+:END:"
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("4" "Add a bookmark"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Bookmark.org" "Bookmark Inbox")
-           "** NEW %c %^G\n\
-:LOGBOOK:\n\
-- Timestamp               \"NEW\"        %U\n\
-:END:\n\
-:PROPERTIES:\n\
-:Score: %?\n\
-:DESCRIPTION:\n\
-:END:\n\n"
+           "** NEW %c %^G
+:LOGBOOK:
+- Timestamp               \"NEW\"        %U
+:END:
+:PROPERTIES:
+:Score: %?
+:DESCRIPTION:
+:END:"
 :empty-lines 1 :prepend t :clock-keep t)
 
           ;;           ("s" "Scrap Text from Emacs"
           ;;            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
-          ;;            "** %^{Title} %^G\n\n\
-          ;; *** Source\n\n\
-          ;; - Timestamp                               %U\n\
-          ;; - Source\n\
-          ;;   + Emacs @ %a\n\n\
-          ;; *** Local clipboard\n\n\
-          ;; #+BEGIN_EXAMPLE\n\
-          ;; %x\n\
-          ;; #+END_EXAMPLE\n\n\
-          ;; *** Notes\n\n"
+          ;;            "** %^{Title} %^G
+          ;; *** Source
+          ;; - Timestamp                               %U
+          ;; - Source
+          ;;   + Emacs @ %a
+          ;; *** Local clipboard
+          ;; #+BEGIN_EXAMPLE
+          ;; %x
+          ;; #+END_EXAMPLE
+          ;; *** Notesn"
           ;;            :empty-lines 1 :prepend t :clock-keep t)
 
           
           ;;           ("3" "Scrap Text from Web Browser"
           ;;            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
-          ;;            "** %^{Title} %^G\n\n\
-          ;; *** Source\n\n\
-          ;; - Timestamp                               %U\n\
-          ;; - Source\n\
-          ;;   + WWW @ %c\n\n\
-          ;; *** Webpage highlights\n\n\
-          ;; #+BEGIN_EXAMPLE\n\
-          ;; %i\n\
-          ;; #+END_EXAMPLE\n\n\
-          ;; *** Notes\n\n%?
+          ;;            "** %^{Title} %^G
+          ;; *** Source
+          ;; - Timestamp                               %U
+          ;; - Source
+          ;;   + WWW @ %c
+          ;; *** Webpage highlights
+          ;; #+BEGIN_EXAMPLE
+          ;; %i
+          ;; #+END_EXAMPLE
+          ;; *** Notesn%?
           ;; \n"
           ;;            :empty-lines 1 :prepend t :clock-keep t)
           
@@ -999,10 +1014,10 @@
   ;; fine-tuning of the latex template for the final version.
   (setq org-latex-classes
    (quote (("beamer"
-            "\\documentclass[presentation,9pt]{beamer}\n\
-             [DEFAULT-PACKAGES]\n\
-             [PACKAGES]\n\
-             [EXTRA]"
+            "\\documentclass[presentation,9pt]{beamer}
+[DEFAULT-PACKAGES]
+[PACKAGES]
+[EXTRA]"
             ("\\section{%s}" . "\\section*{%s}")
             ("\\subsection{%s}" . "\\subsection*{%s}")
             ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
@@ -1407,6 +1422,9 @@ decorations.markings}
   ;; NOTE: not very useful, waiting for a upgrade for org version 8.0
   ;; (when window-system (try-require 'org-presie))
 
+  ;;** `org-contacts'
+  (try-require 'org-contacts)
+  
   (message "* ---[ org post-load configuration is complete ]---"))
 
 (provide 'xy-rc-org)
