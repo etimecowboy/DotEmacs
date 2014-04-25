@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-28 Mon 21:32 by xin on S13>
+;; Time-stamp: <2014-04-25 Fri 10:03 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-mew.el'
 ;; Author:       Xin Yang
@@ -155,12 +155,12 @@
          mew-smtp-user      "xy12g13"))
 
   ;; Virgin Media smtp
-  (UKDesktop
-   (setq mew-smtp-server "smtp.blueyonder.co.uk"
-         mew-smtp-port      25
-         mew-use-smtp-auth  nil
-         mew-smtp-auth-list nil
-         mew-smtp-ssl       nil))
+  ;; (UKDesktop
+  ;;  (setq mew-smtp-server "smtp.blueyonder.co.uk"
+  ;;        mew-smtp-port      25
+  ;;        mew-use-smtp-auth  nil
+  ;;        mew-smtp-auth-list nil
+  ;;        mew-smtp-ssl       nil))
 
   ;; (Laptop
   ;;  (setq mew-smtp-server "smtp.gmail.com"
@@ -178,7 +178,7 @@
          ("name"                 . "Xin Yang")
          ("user"                 . "xin2.yang")
          ("reply-to"             . "xin2.yang@gmail.com")
-         ("signature-file"       . "~/Dropbox/emacs/mew/sig/grad")
+         ("signature-file"       . "~/Dropbox/emacs/mew/sig/sigsimple")
          ("mail-domain"          . "gmail.com")
          ("imap-server"          . "imap.gmail.com")
          ("imap-ssl"             . t)
@@ -216,7 +216,7 @@
          ("user"                 . "xy2c13")
          ("reply-to"             . "xy2c13@soton.ac.uk")
          ("mail-domain"          . "soton.ac.uk")
-         ("signature-file"       . "~/Dropbox/emacs/mew/sig/sigsoton")
+         ("signature-file"       . "~/Dropbox/emacs/mew/sig/sigsimple")
          ("imap-server"          . "imap.exchange.soton.ac.uk")
          ("imap-ssl"             . t)
          ("imap-ssl-port"        . "993")
@@ -230,26 +230,6 @@
          ;; ("imap-spam-folder"     . "%Junk E-mail")
          )
 
-        ("uwe"
-         ("mailbox-type"         . imap)
-         ("proto"                . "%")
-         ("name"                 . "Xin Yang")
-         ("user"                 . "x4-yang")
-         ("reply-to"             . "xin2.yang@uwe.ac.uk")
-         ("mail-domain"          . "uwe.ac.uk")
-         ("signature-file"       . "~/Dropbox/emacs/mew/sig/siguwe")
-         ("imap-server"          . "ses-imap.uwe.ac.uk")
-         ("imap-ssl"             . t)
-         ("imap-ssl-port"        . "993")
-         ("imap-auth"            . pass)
-         ("imap-user"            . "x4-yang")
-         ("imap-size"            . 0)
-         ("imap-delete"          . t)
-         ("imap-inbox-folder"    . "%inbox")
-         ("imap-trash-folder"    . "%Deleted Items")
-         ("imap-queue-folder"    . "%Outbox")
-         ("imap-spam-folder"     . "%Junk E-mail"))
-
         ;; Gmail etimecowboy@gmail.com
         ("ge"
          ("mailbox-type"         . imap)
@@ -257,7 +237,7 @@
          ("name"                 . "etimecowboy")
          ("user"                 . "etimecowboy")
          ("reply-to"             . "etimecowboy@gmail.com")
-         ("signature-file"       . "~/Dropbox/emacs/mew/sig/bulb")
+         ("signature-file"       . "~/Dropbox/emacs/mew/sig/sigbulb")
          ("mail-domain"          . "gmail.com")
          ("imap-server"          . "imap.gmail.com")
          ("imap-ssl"             . t)
@@ -267,6 +247,26 @@
          ("imap-size"            . 0)
          ("imap-delete"          . t))
 
+        ;; ("uwe"
+        ;;  ("mailbox-type"         . imap)
+        ;;  ("proto"                . "%")
+        ;;  ("name"                 . "Xin Yang")
+        ;;  ("user"                 . "x4-yang")
+        ;;  ("reply-to"             . "xin2.yang@uwe.ac.uk")
+        ;;  ("mail-domain"          . "uwe.ac.uk")
+        ;;  ("signature-file"       . "~/Dropbox/emacs/mew/sig/siguwe")
+        ;;  ("imap-server"          . "ses-imap.uwe.ac.uk")
+        ;;  ("imap-ssl"             . t)
+        ;;  ("imap-ssl-port"        . "993")
+        ;;  ("imap-auth"            . pass)
+        ;;  ("imap-user"            . "x4-yang")
+        ;;  ("imap-size"            . 0)
+        ;;  ("imap-delete"          . t)
+        ;;  ("imap-inbox-folder"    . "%inbox")
+        ;;  ("imap-trash-folder"    . "%Deleted Items")
+        ;;  ("imap-queue-folder"    . "%Outbox")
+        ;;  ("imap-spam-folder"     . "%Junk E-mail"))
+        
         ;; newsgroup
         ;; ("news"
         ;;  ("mailbox-type"          . nntp)
