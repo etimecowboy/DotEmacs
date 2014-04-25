@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-01-02 Thu 15:27 by xin on vmlmde>
+;; Time-stamp: <2014-04-25 Fri 15:35 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-magit.el'
 ;; Author:       Xin Yang
@@ -37,7 +37,6 @@
 
   (interactive)
   (when (try-require 'magit-wip)
-    ;; (magit-wip-mode 1)
     (magit-wip-save-mode 1) ;; don't use the global mode.
   ))
 

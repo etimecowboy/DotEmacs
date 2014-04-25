@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-24 Thu 21:40 by xin on vmlmde>
+;; Time-stamp: <2014-04-25 Fri 14:41 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-matlab.el'
 ;; Author:       Xin Yang
@@ -70,7 +70,7 @@
      (setq matlab-shell-command-switches '("10000" "20000")))
   
   (GNULinux
-   (setq matlab-shell-command "/opt/MATLAB/R2014b/bin/matlab")
+   (setq matlab-shell-command "/opt/MATLAB/R2014a/bin/matlab")
    (setq matlab-shell-command-switches '("-nodesktop -nosplash")))
   
   (setq matlab-shell-ask-MATLAB-for-completions t
