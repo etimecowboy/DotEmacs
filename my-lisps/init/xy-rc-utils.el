@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-23 Wed 15:55 by xin on vmlmde>
+;; Time-stamp: <2014-04-25 Fri 21:00 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -971,36 +971,46 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
   (when window-system
     (setq scalable-fonts-allowed t    ;; Use scalable fonts
           text-scale-mode-step   1.2) ;; default
-    (GNULinux
-     (setq face-font-rescale-alist
-           '(("微软雅黑" . 1.2)
-             ("Microsoft Yahei" . 1.2)
-             ("文泉驿等宽微米黑" . 1.2)
-             ("WenQuanYi Micro Hei Mono" . 1.2)
-             ("文泉驿正黑" . 1.2)
-             ("WenQuanYi Zen Hei" . 1.2)))
-     (qiang-set-font xy:english-fonts 9 xy:chinese-fonts))
-    (Laptop
-     (setq face-font-rescale-alist
-           '(("微软雅黑" . 1.2)
-             ("Microsoft Yahei" . 1.2)
-             ("文泉驿等宽微米黑" . 1.2)
-             ("WenQuanYi Micro Hei Mono" . 1.2)
-             ("文泉驿正黑" . 1.2)
-             ("WenQuanYi Zen Hei" . 1.2)))
-     (qiang-set-font xy:english-fonts 9 xy:chinese-fonts))
-    ;; (Windows ;; good (Monaco/DejaVu Sans Mono, Yahei, 9/11, 1.22/0.6)
-    (OfficePC
-     (setq face-font-rescale-alist
-           '(("微软雅黑" . 1.22)
-             ("Microsoft Yahei" . 1.22)
-             ("文泉驿等宽微米黑" . 1.22)  ;; not tested
-             ("WenQuanYi Micro Hei Mono" . 1.22) ;; not tested
-             ("文泉驿正黑" . 1.22) ;; not tested
-             ("WenQuanYi Zen Hei" . 1.22))) ;; not tested
-     (qiang-set-font xy:english-fonts 11 xy:chinese-fonts))
-    ;; (set-face-attribute 'default nil :font (font-spec))
-    ))
+    (setq face-font-rescale-alist
+          '(("微软雅黑" . 1.2)
+            ("Microsoft Yahei" . 1.2)
+            ("文泉驿等宽微米黑" . 1.2)
+            ("WenQuanYi Micro Hei Mono" . 1.2)
+            ("文泉驿正黑" . 1.2)
+            ("WenQuanYi Zen Hei" . 1.2)))
+    (qiang-set-font xy:english-fonts 11 xy:chinese-fonts))
+    
+    ;; (GNULinux
+    ;;  (setq face-font-rescale-alist
+    ;;        '(("微软雅黑" . 1.2)
+    ;;          ("Microsoft Yahei" . 1.2)
+    ;;          ("文泉驿等宽微米黑" . 1.2)
+    ;;          ("WenQuanYi Micro Hei Mono" . 1.2)
+    ;;          ("文泉驿正黑" . 1.2)
+    ;;          ("WenQuanYi Zen Hei" . 1.2)))
+    ;;  (qiang-set-font xy:english-fonts 11 xy:chinese-fonts))
+    ;; (Laptop
+    ;;  (setq face-font-rescale-alist
+    ;;        '(("微软雅黑" . 1.2)
+    ;;          ("Microsoft Yahei" . 1.2)
+    ;;          ("文泉驿等宽微米黑" . 1.2)
+    ;;          ("WenQuanYi Micro Hei Mono" . 1.2)
+    ;;          ("文泉驿正黑" . 1.2)
+    ;;          ("WenQuanYi Zen Hei" . 1.2)))
+    ;;  (qiang-set-font xy:english-fonts 9 xy:chinese-fonts))
+    ;; ;; (Windows ;; good (Monaco/DejaVu Sans Mono, Yahei, 9/11, 1.22/0.6)
+    ;; (OfficePC
+    ;;  (setq face-font-rescale-alist
+    ;;        '(("微软雅黑" . 1.22)
+    ;;          ("Microsoft Yahei" . 1.22)
+    ;;          ("文泉驿等宽微米黑" . 1.22)  ;; not tested
+    ;;          ("WenQuanYi Micro Hei Mono" . 1.22) ;; not tested
+    ;;          ("文泉驿正黑" . 1.22) ;; not tested
+    ;;          ("WenQuanYi Zen Hei" . 1.22))) ;; not tested
+    ;;  (qiang-set-font xy:english-fonts 11 xy:chinese-fonts))
+    ;; ;; (set-face-attribute 'default nil :font (font-spec))
+
+  )
 
 ;; ;; NOTE: simplified version of the above function
 ;; ;; BUG: not working, why?
