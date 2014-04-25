@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-24 Thu 23:38 by xin on vmlmde>
+;; Time-stamp: <2014-04-25 Fri 23:36 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -346,7 +346,6 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'zjl-hl)
 
   ;; New packages
-  (require-package '2048-game)
   (require-package 'iedit)
   
   (message "* ---[ package post-load configuration is complete ]---"))
