@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-01-09 Thu 17:12 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-04-25 Fri 21:36 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -71,23 +71,24 @@
 
 ;;* Fast point move
 
-;;** recent-jump
-;; 返回到最近去过的地方
-;; (require 'recent-jump)
-;; (require 'recent-jump-small)
-;; (setq rj-mode-line-format nil)
-;; (setq rjs-mode-line-format nil)
-;; (recent-jump-mode 1)
-(when (try-require 'recent-jump-small)
-  (progn
-    (recent-jump-small-mode 1)
-    (eal-define-keys-commonly
-     global-map
-     `(;; ("M-,"   recent-jump-backward)
-       ;; ("M-."   recent-jump-forward)
-       ("M-,"   recent-jump-small-backward)
-       ("M-."   recent-jump-small-forward)
-       ))))
+;; NOTE: use back-button instead
+;; ;;** recent-jump
+;; ;; 返回到最近去过的地方
+;; ;; (require 'recent-jump)
+;; ;; (require 'recent-jump-small)
+;; ;; (setq rj-mode-line-format nil)
+;; ;; (setq rjs-mode-line-format nil)
+;; ;; (recent-jump-mode 1)
+;; (when (try-require 'recent-jump-small)
+;;   (progn
+;;     (recent-jump-small-mode 1)
+;;     (eal-define-keys-commonly
+;;      global-map
+;;      `(;; ("M-,"   recent-jump-backward)
+;;        ;; ("M-."   recent-jump-forward)
+;;        ("M-,"   recent-jump-small-backward)
+;;        ("M-."   recent-jump-small-forward)
+;;        ))))
 
 ;; ;;** visible-mark
 ;; (when (try-require 'visible-mark)
@@ -97,16 +98,17 @@
 ;; '(visible-mark-face ((t (:box (:line-width 2 :color "red" :style released-button))))))
 
 ;;** back-button
+;; Default key bindings:
+;;
+;;     C-x C-<SPC>    go back in `global-mark-ring', respects prefix arg
+;;     C-x C-<left>   go back in `global-mark-ring'
+;;     C-x C-<right>  go forward in `global-mark-ring'
+;;
+;;     C-x <SPC>      go back in (buffer-local) `mark-ring', respects prefix arg
+;;     C-x <left>     go back in (buffer-local) `mark-ring'
+;;     C-x <right>    go forward in (buffer-local) `mark-ring'
 (when (try-require 'back-button)
-  (back-button-mode 1)
-  ;; (setq back-button-smartrep-prefix "C-x")
-  ;;       back-button-global-backward-keystrokes '("C-x <M-left>")
-  ;;       back-button-global-forward-keystrokes '("C-x <M-right>")
-  ;;       back-button-global-keystrokes '("C-x <M-SPC>")
-  ;;       back-button-local-backward-keystrokes '("C-x <left>")
-  ;;       back-button-local-forward-keystrokes '("C-x <right>")
-  ;;       back-button-local-keystrokes '("C-x <SPC>")
-)
+  (back-button-mode 1))
 
 ;;** nav-flash
 (when (try-require 'nav-flash)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-22 Sun 20:03 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-04-25 Fri 21:44 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired.el'
 ;; Author:       Xin Yang
@@ -99,9 +99,9 @@ will remain open and unsaved."
   ;; (try-require 'dired-sort-menu) ;; NOT work.
 
   ;; Press `T' in dired mode to compress a dir or decompress a .tar.gz
-  ;; NOTE: not work in Windows
-  ;; BUG: strange compile error.
-  ;; (try-require 'dired-tar)
+  ;; FIXME: not work in Windows nor Linux
+  ;; (GNULinux
+  ;;  (try-require 'dired-tar))
 
   ;; (try-require 'thumb)
 
