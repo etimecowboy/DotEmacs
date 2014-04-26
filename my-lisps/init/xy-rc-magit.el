@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-26 Sat 17:59 by xin on vmlmde>
+;; Time-stamp: <2014-04-26 Sat 18:52 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-magit.el'
 ;; Author:       Xin Yang
@@ -43,11 +43,17 @@
 
 ;; TODO: write this function
 ;; Recover changes from wip shadow branch
+;; ;;;###autoload
+;; (defun xy/magit-wip-quick-recover (&optional file depth)
+;;   (interactive)
+;;   (shell-command (concat "git checkout wip/"
+;;                          (magit-get-current-branch)
+;;                          "@{%d}")))
 ;;;###autoload
 (defun xy/magit-wip-quick-recover (&optional file depth)
   (interactive)
   (shell-command (concat "git checkout wip/"
-                         magit--branch-name-at-point
+                         (magit-get-current-branch)
                          "@{%d}")))
 
 ;;;###autoload
