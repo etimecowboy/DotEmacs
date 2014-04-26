@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-26 Sat 18:52 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-04-26 Sat 19:39 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-magit.el'
 ;; Author:       Xin Yang
@@ -41,6 +41,15 @@
     (global-magit-wip-save-mode 1) ;; don't use the global mode.
   ))
 
+;; Recover from a previous version
+;; 1. git reflog show wip/master   or
+;;    git log -g -p wip/master
+;; 2. git checkout ref -- .
+;;    ref could be a SHA1 or wip/master
+;;    dot the file path
+;; To review the differences between the last commit
+;; git diff --cached
+
 ;; TODO: write this function
 ;; Recover changes from wip shadow branch
 ;; ;;;###autoload
@@ -49,13 +58,21 @@
 ;;   (shell-command (concat "git checkout wip/"
 ;;                          (magit-get-current-branch)
 ;;                          "@{%d}")))
-;;;###autoload
-(defun xy/magit-wip-quick-recover (&optional file depth)
-  (interactive)
-  (shell-command (concat "git checkout wip/"
-                         (magit-get-current-branch)
-                         "@{%d}")))
 
+;;;###autoload
+(defun xy/magit-wip-check-changes ()
+  (interactive)
+  (shell-command "git reflog show wip/master"))
+
+;; FIXME: problem
+;; ;;;###autoload
+;; (defun xy/magit-wip-quick-recover (&optional depth)
+;;   (interactive)
+;;   (shell-command (concat "git checkout wip/"
+;;                          (magit-get-current-branch)
+;;                          "@{%d}"
+;;                          buffer-file-truename
+;;                          )))
 ;;;###autoload
 (defun magit-postload ()
   "Settings of `magit' after it's been loaded."
