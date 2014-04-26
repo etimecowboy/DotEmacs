@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-12-05 Thu 06:47 by xin on S13>
+;; Time-stamp: <2014-04-26 Sat 16:47 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -181,7 +181,7 @@
 
 ;;*** mew
 ;; REF: (@url :file-name "http://www.mew.org/en/" :display "Source")
-(xy/load-autoloads (concat my-local-lisp-path "/mew-6.5"))
+;; (xy/load-autoloads (concat my-local-lisp-path "/mew-6.5"))
 
 ;;*** org-html5presentation (Inactive git source. Many forks avaliable for tests)
 ;; HTML5 Presentation export for Org-mode
@@ -200,6 +200,11 @@
 ;; REF:  (@url :file-name "https://github.com/DarwinAwardWinner/ido-ubiquitous" :display "Git Source")
 ;; NOTE: Use ELPA package now
 ;; (xy/load-autoloads (concat my-local-lisp-path "/ido-ubiquitous-1.7"))
+
+;;*** git-wip
+;; REF: (@url :file-name "https://github.com/bartman/git-wip" :display "Git Source")
+;; NOTE: git-wip vs magit-wip
+(xy/load-autoloads (concat my-local-lisp-path "/git-wip"))
 
 ;;** Rebuild Emacs configuration
 (global-set-key (kbd "C-x B") 'xy/emacs-build)

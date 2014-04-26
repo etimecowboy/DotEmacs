@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-25 Fri 15:35 by xin on vmlmde>
+;; Time-stamp: <2014-04-26 Sat 17:59 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-magit.el'
 ;; Author:       Xin Yang
@@ -31,23 +31,24 @@
 ;; REF: (@url :file-name "https://github.com/bartman/git-wip" :display "official website")
 ;; REF: (@url :file-name "http://www.jukie.net/~bart/blog/save-everything-with-git-wip" :display "author's blog post")
 ;;
+;; NOTE: elpa package have its autoload
 ;;;###autoload
 (defun xy/magit-wip-start ()
   "Start using magit-wip to record every changes."
-
   (interactive)
   (when (try-require 'magit-wip)
-    (magit-wip-save-mode 1) ;; don't use the global mode.
+    (shell-command "git wip")
+    (global-magit-wip-save-mode 1) ;; don't use the global mode.
   ))
 
 ;; TODO: write this function
 ;; Recover changes from wip shadow branch
-;; ;;;###autoload
-;; (defun xy/magit-wip-quick-recover (&optional file depth)
-;;   (interactive)
-;;   (shell-command (concat "git checkout wip/"
-;;                          magit--branch-name-at-point
-;;                          "@{%d}")))
+;;;###autoload
+(defun xy/magit-wip-quick-recover (&optional file depth)
+  (interactive)
+  (shell-command (concat "git checkout wip/"
+                         magit--branch-name-at-point
+                         "@{%d}")))
 
 ;;;###autoload
 (defun magit-postload ()

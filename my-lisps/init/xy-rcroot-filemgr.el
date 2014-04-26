@@ -255,7 +255,14 @@
         ("C-x K" xy/magit-q)
         ))))
 (global-set-key (kbd "<f12> g") 'magit-status)
+;; NOTE: `magit-wip.el' not working,
+;; use original `git-wip.el' and `git-wip-mode.el'
 (global-set-key (kbd "<f12> w") 'xy/magit-wip-start)
+(global-set-key (kbd "<f12> v") 'xy/magit-wip-quick-recover)
+
+;;*** git-wip
+;; (try-require 'git-wip)
+;; (try-require 'git-wip-mode)
 
 ;;*** diff-git
 ;; NOTE: magit is good enough

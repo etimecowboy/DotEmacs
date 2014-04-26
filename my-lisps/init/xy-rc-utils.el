@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-25 Fri 21:00 by xin on vmlmde>
+;; Time-stamp: <2014-04-26 Sat 16:44 by xin on vmlmde>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -438,10 +438,7 @@ like `progn'. See also `with-temp-buffer'."
 
 
 ;;* Emacs auto font selection for different OS
-
-;;** qiang's font setting utilities
 ;; REF: (@url :file-name "http://emacser.com/torture-emacs.htm" :display "emacser")
-;; NOTE: use bhj's refined font setting.
 
 ;;;###autoload
 (defun qiang-font-existsp (font)
@@ -514,7 +511,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;       一二三四五
 ;;       1l0oO
 
-;;** bhj's refined font setting
+;;* bhj's font setting
 ;; REF: (@url :file-name "https://raw.github.com/baohaojun/system-config/master/.emacs_d/lisp/bhj-fonts.el" :display "baohaojun's font setting")
 ;;      (@url :file-name "http://att.newsmth.net/nForum/#!article/Emacs/104729" :display "article by flonk@newsmth")
 ;;      (@url :file-name "http://att.newsmth.net/nForum/#!article/Emacs/104728" :display "article by flonk@newsmth")
@@ -631,11 +628,10 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ; /aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/
 ; {%/org-mode%}
-
 
 
+;;* Scalable Chinese font settings
 ;; NOTE: not working
-;; Scalable Chinese font settings
 ;; REF: http://att.newsmth.net/nForum/#!article/Emacs/103607
 ;; BUG: 汉字宽度和英文字符宽度不匹配，不成整倍数
 ;;
@@ -670,8 +666,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 
 
-;; NOTE: working, but too simple.
-;; Another font setting
+;; Another simple font
 ;; REF: http://att.newsmth.net/nForum/#!article/Emacs/103607
 ;; BUG: 汉字宽度和英文字符宽度不匹配，不成整倍数
 ;; (set-face-attribute 'default nil :font "Monaco 10")
@@ -683,6 +678,219 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;                     (font-spec :family "Microsoft Yahei")))
 ;; (setq face-font-rescale-alist '(("Monaco" . 1.0) ("Microsoft Yahei" . 1.2)))
 
+
+
+;;* My font functions
+;;** Use qiang's font setting, fixed font size
+;; ;;;###autoload
+;; (defun xy/set-font-default ()
+;;   "My default Emacs font setting."
+;;   (interactive)
+;;   (if window-system
+;;       (qiang-set-font
+;;        '("Consolas" "Monaco" ;; NOTE: "DejaVu Sans Mon" = "Monospace"
+;;          "DejaVu Sans Mono" "Monospace" "Courier") ":pixelsize=14"
+;;          '("Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
+;;            "黑体") 16)
+;;     ;; 默认字体，term 下的字体
+;;     (set-default-font "Monospace 12")))
+
+;; ;;;###autoload
+;; (defun xy/set-font-default-big ()
+;;   "My default Emacs font setting."
+;;   (interactive)
+;;   (if window-system
+;;       (qiang-set-font
+;;        '("Consolas" "Monaco" ;; NOTE: "DejaVu Sans Mon" = "Monospace"
+;;          "DejaVu Sans Mono" "Monospace" "Courier") ":pixelsize=18"
+;;          '("Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
+;;            "黑体") 20)
+;;     ;; 默认字体，term 下的字体
+;;     (set-default-font "Monospace 16")))
+
+;;;###autoload
+(defun xy/set-font-prog ()
+  "My default Emacs font setting."
+  (interactive)
+  (if window-system
+      (qiang-set-font
+       '("DejaVu Sans Mono" "Consolas" "Monospace"
+         "Monaco" "Courier") ":pixelsize=12"
+         '("STHeiti" "Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
+           "黑体") 14)
+    ;; 默认字体，term 下的字体
+    (set-default-font "Monospace 9")))
+
+;;;###autoload
+(defun xy/set-font-prog-big ()
+  "My default Emacs font setting."
+  (interactive)
+  (if window-system
+      (qiang-set-font
+       '("DejaVu Sans Mono" "Consolas" "Monospace"
+         "Monaco" "Courier") ":pixelsize=16"
+         '("STHeiti" "Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
+           "黑体") 20)
+    ;; 默认字体，term 下的字体
+    (set-default-font "Monospace 14")))
+
+;;;###autoload
+(defun xy/set-font-write ()
+  "My Emacs font setting for writing articles."
+  (interactive)
+  (if window-system
+      (qiang-set-font
+       '("Monaco" "Monospace" "Consolas"
+         "Courier" "DejaVu Sans Mono") ":pixelsize=14"
+         '("Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
+           "黑体") 16)
+    (set-default-font "Monospace 12")))
+
+;;;###autoload
+(defun xy/set-font-write-big ()
+  "My Emacs font setting for writing articles."
+  (interactive)
+  (if window-system
+      (qiang-set-font
+       '("Monaco" "Monospace" "Consolas"
+         "Courier" "DejaVu Sans Mono") ":pixelsize=17"
+         '("Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
+           "黑体") 20)
+    (set-default-font "Monospace 16")))
+
+;; ;;;###autoload
+;; (defun xy/set-font-write-big ()
+;;   "My Emacs font setting for writing articles."
+;;   (interactive)
+;;   (if window-system
+;;       (qiang-set-font
+;;        '("Monaco" "Monospace" "Consolas"
+;;          "Courier" "DejaVu Sans Mono") 16
+;;          '("Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
+;;            "黑体"))
+;;     (set-default-font "Monospace 16")))
+
+;; Monofur+STHeiti字体组合，可以一齐缩放
+;;;###autoload
+(defun xy/set-font-Monofur-STHeiti ()
+  "My Emacs font setting for writing articles."
+  (interactive)
+  (when window-system
+      (bhj-set-font '("Monofur") 11 '("华文黑体"))
+    ;; (set-default-font "Monospace 11")
+    ))
+
+;;** Use bhj's font setting
+;; ;;;###autoload
+;; (defun xy/set-font-default()
+;;   "My Emacs default font setting."
+;;   (interactive)
+;;   (setq bhj-english-fonts '("Monaco" "Consolas" "DejaVu Sans Mono" "Monospace" "Courier New"))
+;;   ;; (setq bhj-english-fonts '("Consolas" "Monaco" "DejaVu Sans Mono" "Monospace" "Courier New"))
+;;   (setq bhj-chinese-fonts '("Microsoft Yahei" "文泉驿等宽微米黑" "黑体" "新宋体" "宋体"))
+;;   (when window-system
+;;     (setq scalable-fonts-allowed t) ;; Use scalable fonts
+;;     (set-face-attribute 'default nil :font (font-spec))
+;;     (GNULinux
+;;      (setq face-font-rescale-alist '(("Microsoft Yahei" . 1.2)
+;; 				     ("WenQuanYi Zen Hei" . 1.2)))
+;;      (bhj-set-font bhj-english-fonts 10.5 bhj-chinese-fonts))
+;;     (Windows
+;;      (setq face-font-rescale-alist '(("Microsoft Yahei" . 1.2)
+;; 				     ("WenQuanYi Zen Hei" . 1.2)))
+;;       (bhj-set-font bhj-english-fonts 9 bhj-chinese-fonts))))
+
+;;;###autoload
+(defun xy/set-font-default()
+  "My Emacs default font setting. Tips: use scale-down only."
+  (interactive)
+  (setq xy:english-fonts '("DejaVu Sans Mono" "Consolas" "Monaco"
+                           "Monospace" "Courier New"))
+  (setq xy:chinese-fonts '("Microsoft Yahei" "微软雅黑"
+                           "WenQuanyi Micro Hei Mono" "文泉驿等宽微米黑"
+                           "WenQuanyi Zen Hei" "文泉驿正黑"
+                           "黑体" "新宋体" "宋体"))
+  (when window-system
+    (GNULinux
+     (setq scalable-fonts-allowed t    ;; Use scalable fonts
+           text-scale-mode-step   1.2) ;; default
+     (setq face-font-rescale-alist
+           '(("微软雅黑" . 1.2)
+             ("Microsoft Yahei" . 1.2)
+             ("文泉驿等宽微米黑" . 1.2)
+             ("WenQuanYi Micro Hei Mono" . 1.2)
+             ("文泉驿正黑" . 1.2)
+             ("WenQuanYi Zen Hei" . 1.2)))
+     (qiang-set-font xy:english-fonts 11 xy:chinese-fonts))
+
+    (Windows
+     (setq scalable-fonts-allowed t    ;; Use scalable fonts
+           text-scale-mode-step   1.22) ;; default
+     (setq face-font-rescale-alist
+           '(("微软雅黑" . 1.22)
+             ("Microsoft Yahei" . 1.22)
+             ("文泉驿等宽微米黑" . 1.22)
+             ("WenQuanYi Micro Hei Mono" . 1.22)
+             ("文泉驿正黑" . 1.22)
+             ("WenQuanYi Zen Hei" . 1.22)))
+     (qiang-set-font xy:english-fonts 11 xy:chinese-fonts))))
+
+;; ;; NOTE: simplified version of the above function
+;; ;; BUG: not working, why?
+;; ;;;###autoload
+;; (defun xy/set-font-and-scale (xy:font-size xy:chinese-font-scale)
+;;   "Set Emacs font, font size, and Chinese font scale factor under \\
+;; window system."
+;;   (when window-system
+;;     (setq xy:english-fonts '("DejaVu Sans Mono" "Consolas" "Monaco"
+;;                              "Monospace" "Courier New"))
+;;     (setq xy:chinese-fonts '("Microsoft Yahei" "微软雅黑"
+;;                              "WenQuanyi Micro Hei Mono" "文泉驿等宽微米黑"
+;;                              "WenQuanyi Zen Hei" "文泉驿正黑"
+;;                              "黑体" "新宋体" "宋体"))
+;;     (setq face-font-rescale-alist
+;;           '(("微软雅黑" . xy:chinese-font-scale)
+;;             ("Microsoft Yahei" . xy:chinese-font-scale)
+;;             ("文泉驿等宽微米黑" . xy:chinese-font-scale)
+;;             ("WenQuanYi Micro Hei Mono" . xy:chinese-font-scale)
+;;             ("文泉驿正黑" . xy:chinese-font-scale)
+;;             ("WenQuanYi Zen Hei" . xy:chinese-font-scale)))
+;;     (qiang-set-font xy:english-fonts xy:font-size xy:chinese-fonts)
+;;     ;; (set-face-attribute 'default nil :font (font-spec))
+;;     (message "Set font size to %f. Scale Chinese font size by %f."
+;;              xy:font-size xy:chinese-font-scale)))
+
+;;** Simple font setting
+;; ;;;###autoload
+;; (defun xy/set-font-default ()
+;;   "Set Emacs font."
+;;   (interactive)
+;;   (setq scalable-fonts-allowed t    ;; Use scalable fonts
+;;         text-scale-mode-step   1.2) ;; default
+;;   (GNULinux
+;;    (xy/set-font-and-scale 10.5 1.2))
+;;   (Windows
+;;    (xy/set-font-and-scale 9 1.2)))
+
+;; NOTE: 不需要qiang的函数
+;; ;;;###autoload
+;; (defun xy/set-font-default-mix ()
+;;   "My Emacs font setting for writing articles."
+;;   (interactive)
+;;   (if window-system
+;;       (progn
+;;         ;; Setting default Font
+;;         (set-frame-font "Monofur 11")
+;;         ;; Setting English Font
+;;         (set-face-attribute 'default nil :font "Monofur")
+;;         ;; (setq default-frame-list (append '((font . "Monofur"))
+;;         ;;                                  default-frame-alist))
+;;         ;; Chinese Font
+;;         (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;           (set-fontset-font (frame-parameter nil 'font)
+;;                             charset
+;;                             (font-spec :family "STHeiti"))))
+;;     (set-default-font "Monospace")))
 
 
 ;;* For compatibility among different version of Emacs
@@ -837,238 +1045,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 
 
-;;* My own functions
-;;** Different font settings
-;;   NOTE: cannot rescale text font size.
-;;   Use bhj's refined font settings instead 
-;; ;;;###autoload
-;; (defun xy/set-font-default ()
-;;   "My default Emacs font setting."
-;;   (interactive)
-;;   (if window-system
-;;       (qiang-set-font
-;;        '("Consolas" "Monaco" ;; NOTE: "DejaVu Sans Mon" = "Monospace"
-;;          "DejaVu Sans Mono" "Monospace" "Courier") ":pixelsize=14"
-;;          '("Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
-;;            "黑体") 16)
-;;     ;; 默认字体，term 下的字体
-;;     (set-default-font "Monospace 12")))
-
-;; ;;;###autoload
-;; (defun xy/set-font-default-big ()
-;;   "My default Emacs font setting."
-;;   (interactive)
-;;   (if window-system
-;;       (qiang-set-font
-;;        '("Consolas" "Monaco" ;; NOTE: "DejaVu Sans Mon" = "Monospace"
-;;          "DejaVu Sans Mono" "Monospace" "Courier") ":pixelsize=18"
-;;          '("Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
-;;            "黑体") 20)
-;;     ;; 默认字体，term 下的字体
-;;     (set-default-font "Monospace 16")))
-
-;; ;;;###autoload
-;; (defun xy/set-font-prog ()
-;;   "My default Emacs font setting."
-;;   (interactive)
-;;   (if window-system
-;;       (qiang-set-font
-;;        '("DejaVu Sans Mono" "Consolas" "Monospace"
-;;          "Monaco" "Courier") ":pixelsize=12"
-;;          '("STHeiti" "Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
-;;            "黑体") 14)
-;;     ;; 默认字体，term 下的字体
-;;     (set-default-font "Monospace 9")))
-
-;; ;;;###autoload
-;; (defun xy/set-font-prog-big ()
-;;   "My default Emacs font setting."
-;;   (interactive)
-;;   (if window-system
-;;       (qiang-set-font
-;;        '("DejaVu Sans Mono" "Consolas" "Monospace"
-;;          "Monaco" "Courier") ":pixelsize=16"
-;;          '("STHeiti" "Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
-;;            "黑体") 20)
-;;     ;; 默认字体，term 下的字体
-;;     (set-default-font "Monospace 14")))
-
-;; ;;;###autoload
-;; (defun xy/set-font-write ()
-;;   "My Emacs font setting for writing articles."
-;;   (interactive)
-;;   (if window-system
-;;       (qiang-set-font
-;;        '("Monaco" "Monospace" "Consolas"
-;;          "Courier" "DejaVu Sans Mono") ":pixelsize=14"
-;;          '("Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
-;;            "黑体") 16)
-;;     (set-default-font "Monospace 12")))
-
-;; ;;;###autoload
-;; (defun xy/set-font-write-big ()
-;;   "My Emacs font setting for writing articles."
-;;   (interactive)
-;;   (if window-system
-;;       (qiang-set-font
-;;        '("Monaco" "Monospace" "Consolas"
-;;          "Courier" "DejaVu Sans Mono") ":pixelsize=17"
-;;          '("Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
-;;            "黑体") 20)
-;;     (set-default-font "Monospace 16")))
-
-;; ;;;###autoload
-;; (defun xy/set-font-write-big ()
-;;   "My Emacs font setting for writing articles."
-;;   (interactive)
-;;   (if window-system
-;;       (qiang-set-font
-;;        '("Monaco" "Monospace" "Consolas"
-;;          "Courier" "DejaVu Sans Mono") 16
-;;          '("Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
-;;            "黑体"))
-;;     (set-default-font "Monospace 16")))
-
-;; ;; Monofur+STHeiti字体组合，可以一齐缩放
-;; ;;;###autoload
-;; (defun xy/set-font-Monofur-STHeiti ()
-;;   "My Emacs font setting for writing articles."
-;;   (interactive)
-;;   (when window-system
-;;       (bhj-set-font '("Monofur") 11 '("华文黑体"))
-;;     ;; (set-default-font "Monospace 11")
-;;     ))
-    
-;; ;;;###autoload
-;; (defun xy/set-font-default()
-;;   "My Emacs default font setting."
-;;   (interactive)
-;;   (setq bhj-english-fonts '("Monaco" "Consolas" "DejaVu Sans Mono" "Monospace" "Courier New"))
-;;   ;; (setq bhj-english-fonts '("Consolas" "Monaco" "DejaVu Sans Mono" "Monospace" "Courier New"))
-;;   (setq bhj-chinese-fonts '("Microsoft Yahei" "文泉驿等宽微米黑" "黑体" "新宋体" "宋体"))
-;;   (when window-system
-;;     (setq scalable-fonts-allowed t) ;; Use scalable fonts
-;;     (set-face-attribute 'default nil :font (font-spec))
-;;     (GNULinux
-;;      (setq face-font-rescale-alist '(("Microsoft Yahei" . 1.2)
-;; 				     ("WenQuanYi Zen Hei" . 1.2)))
-;;      (bhj-set-font bhj-english-fonts 10.5 bhj-chinese-fonts))
-;;     (Windows
-;;      (setq face-font-rescale-alist '(("Microsoft Yahei" . 1.2)
-;; 				     ("WenQuanYi Zen Hei" . 1.2)))
-;;       (bhj-set-font bhj-english-fonts 9 bhj-chinese-fonts))))
-
-;;;###autoload
-(defun xy/set-font-default()
-  "My Emacs default font setting."
-  (interactive)
-  (setq xy:english-fonts '("DejaVu Sans Mono" "Consolas" "Monaco"
-                           "Monospace" "Courier New"))
-  (setq xy:chinese-fonts '("Microsoft Yahei" "微软雅黑"
-                           "WenQuanyi Micro Hei Mono" "文泉驿等宽微米黑"
-                           "WenQuanyi Zen Hei" "文泉驿正黑"
-                           "黑体" "新宋体" "宋体"))
-  (when window-system
-    (setq scalable-fonts-allowed t    ;; Use scalable fonts
-          text-scale-mode-step   1.2) ;; default
-    (setq face-font-rescale-alist
-          '(("微软雅黑" . 1.2)
-            ("Microsoft Yahei" . 1.2)
-            ("文泉驿等宽微米黑" . 1.2)
-            ("WenQuanYi Micro Hei Mono" . 1.2)
-            ("文泉驿正黑" . 1.2)
-            ("WenQuanYi Zen Hei" . 1.2)))
-    (qiang-set-font xy:english-fonts 11 xy:chinese-fonts))
-    
-    ;; (GNULinux
-    ;;  (setq face-font-rescale-alist
-    ;;        '(("微软雅黑" . 1.2)
-    ;;          ("Microsoft Yahei" . 1.2)
-    ;;          ("文泉驿等宽微米黑" . 1.2)
-    ;;          ("WenQuanYi Micro Hei Mono" . 1.2)
-    ;;          ("文泉驿正黑" . 1.2)
-    ;;          ("WenQuanYi Zen Hei" . 1.2)))
-    ;;  (qiang-set-font xy:english-fonts 11 xy:chinese-fonts))
-    ;; (Laptop
-    ;;  (setq face-font-rescale-alist
-    ;;        '(("微软雅黑" . 1.2)
-    ;;          ("Microsoft Yahei" . 1.2)
-    ;;          ("文泉驿等宽微米黑" . 1.2)
-    ;;          ("WenQuanYi Micro Hei Mono" . 1.2)
-    ;;          ("文泉驿正黑" . 1.2)
-    ;;          ("WenQuanYi Zen Hei" . 1.2)))
-    ;;  (qiang-set-font xy:english-fonts 9 xy:chinese-fonts))
-    ;; ;; (Windows ;; good (Monaco/DejaVu Sans Mono, Yahei, 9/11, 1.22/0.6)
-    ;; (OfficePC
-    ;;  (setq face-font-rescale-alist
-    ;;        '(("微软雅黑" . 1.22)
-    ;;          ("Microsoft Yahei" . 1.22)
-    ;;          ("文泉驿等宽微米黑" . 1.22)  ;; not tested
-    ;;          ("WenQuanYi Micro Hei Mono" . 1.22) ;; not tested
-    ;;          ("文泉驿正黑" . 1.22) ;; not tested
-    ;;          ("WenQuanYi Zen Hei" . 1.22))) ;; not tested
-    ;;  (qiang-set-font xy:english-fonts 11 xy:chinese-fonts))
-    ;; ;; (set-face-attribute 'default nil :font (font-spec))
-
-  )
-
-;; ;; NOTE: simplified version of the above function
-;; ;; BUG: not working, why?
-;; ;;;###autoload
-;; (defun xy/set-font-and-scale (xy:font-size xy:chinese-font-scale)
-;;   "Set Emacs font, font size, and Chinese font scale factor under \\
-;; window system."
-;;   (when window-system
-;;     (setq xy:english-fonts '("DejaVu Sans Mono" "Consolas" "Monaco"
-;;                              "Monospace" "Courier New"))
-;;     (setq xy:chinese-fonts '("Microsoft Yahei" "微软雅黑"
-;;                              "WenQuanyi Micro Hei Mono" "文泉驿等宽微米黑"
-;;                              "WenQuanyi Zen Hei" "文泉驿正黑"
-;;                              "黑体" "新宋体" "宋体"))
-;;     (setq face-font-rescale-alist
-;;           '(("微软雅黑" . xy:chinese-font-scale)
-;;             ("Microsoft Yahei" . xy:chinese-font-scale)
-;;             ("文泉驿等宽微米黑" . xy:chinese-font-scale)
-;;             ("WenQuanYi Micro Hei Mono" . xy:chinese-font-scale)
-;;             ("文泉驿正黑" . xy:chinese-font-scale)
-;;             ("WenQuanYi Zen Hei" . xy:chinese-font-scale)))
-;;     (qiang-set-font xy:english-fonts xy:font-size xy:chinese-fonts)
-;;     ;; (set-face-attribute 'default nil :font (font-spec))
-;;     (message "Set font size to %f. Scale Chinese font size by %f."
-;;              xy:font-size xy:chinese-font-scale)))
-
-;; ;; Example usage
-;; ;;;###autoload
-;; (defun xy/set-font-default ()
-;;   "Set Emacs font."
-;;   (interactive)
-;;   (setq scalable-fonts-allowed t    ;; Use scalable fonts
-;;         text-scale-mode-step   1.2) ;; default
-;;   (GNULinux
-;;    (xy/set-font-and-scale 10.5 1.2))
-;;   (Windows
-;;    (xy/set-font-and-scale 9 1.2)))
-
-;; NOTE: 不需要qiang的函数
-;; ;;;###autoload
-;; (defun xy/set-font-default-mix ()
-;;   "My Emacs font setting for writing articles."
-;;   (interactive)
-;;   (if window-system
-;;       (progn
-;;         ;; Setting default Font
-;;         (set-frame-font "Monofur 11")
-;;         ;; Setting English Font
-;;         (set-face-attribute 'default nil :font "Monofur")
-;;         ;; (setq default-frame-list (append '((font . "Monofur"))
-;;         ;;                                  default-frame-alist))
-;;         ;; Chinese Font
-;;         (dolist (charset '(kana han symbol cjk-misc bopomofo))
-;;           (set-fontset-font (frame-parameter nil 'font)
-;;                             charset
-;;                             (font-spec :family "STHeiti"))))
-;;     (set-default-font "Monospace")))
-
+;;* My functions
 
 
 ;;** Automatically set Emacs after it starts (for terminal-mode (daemon) and GUI-mode)
@@ -1411,6 +1388,7 @@ The process is:
   ;; (xy/install-lisps (concat my-local-lisp-path "/mew-6.5"))
   (xy/install-lisps (concat my-local-lisp-path "/auctex-11.87"))
   (xy/install-lisps (concat my-local-lisp-path "/elscreen"))
+  (xy/install-lisps (concat my-local-lisp-path "/git-wip"))
 
   ;; git repository lisps
   ;; (xy/install-lisps (concat my-git-lisp-path "/dictionary-el"))
@@ -1428,7 +1406,7 @@ The process is:
 
 
 
-;;** A fake of closing Emacs in Windows
+;;** A fake of emacs --daemon in Windows
 ;;;###autoload
 (defun xy/done ()
   "Save buffers and make Emacs frame invisible.\
