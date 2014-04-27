@@ -276,7 +276,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'marmalade)
   (require-package 'marmalade-test)
   (require-package 'maxframe)
-  (require-package 'melpa)
+  ;; (require-package 'melpa) ;; not avaliable any more
   (require-package 'mew)
   (require-package 'mic-paren)
   (require-package 'mo-git-blame)
