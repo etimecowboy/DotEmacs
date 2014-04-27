@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-03-20 Thu 11:24 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-04-27 Sun 19:15 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -76,9 +76,10 @@
 
 
 
-;;* deft
-(eval-after-load "deft" '(deft-postload))
-(global-set-key (kbd "<f6> d") 'deft)
+;; NOTE: not very useful
+;; ;;* deft
+;; (eval-after-load "deft" '(deft-postload))
+;; (global-set-key (kbd "<f6> d") 'deft)
 
 
 
@@ -90,7 +91,7 @@
      ;;  'latex-mode-map
      ;;  `(("C-x `" TeX-next-error)))
      )) ;; default C-c ` conflict with icy-mode
-(eval-after-load "preview-latex" '(preview-latex-postload))
+;; (eval-after-load "preview-latex" '(preview-latex-postload))
 (global-set-key (kbd "<f6> t") 'xy/auctex-start)
 
 

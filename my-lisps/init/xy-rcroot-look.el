@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-24 Thu 15:01 by xin on vmlmde>
+;; Time-stamp: <2014-04-27 Sun 19:38 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -362,7 +362,7 @@
 ;;* Vaious bar settings
 
 ;;** menu-bar
-(menu-bar-mode 1)
+(menu-bar-mode -1)
 (global-set-key (kbd "M-<f10>") 'menu-bar-mode)
 
 ;; ;;*** menua-bar+

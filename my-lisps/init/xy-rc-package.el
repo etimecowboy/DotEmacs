@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-25 Fri 23:36 by xin on vmlmde>
+;; Time-stamp: <2014-04-27 Sun 19:22 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -347,6 +347,8 @@ re-downloaded in order to locate PACKAGE."
 
   ;; New packages
   (require-package 'iedit)
+  (require-package 'auctex)
+  (require-package 'auctex-latexmk)
   
   (message "* ---[ package post-load configuration is complete ]---"))
 

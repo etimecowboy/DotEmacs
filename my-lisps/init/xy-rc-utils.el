@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-26 Sat 16:44 by xin on vmlmde>
+;; Time-stamp: <2014-04-27 Sun 17:59 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1386,7 +1386,7 @@ The process is:
   (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
   (xy/install-lisps (concat my-local-lisp-path "/matlab-emacs"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/mew-6.5"))
-  (xy/install-lisps (concat my-local-lisp-path "/auctex-11.87"))
+  ;; (xy/install-lisps (concat my-local-lisp-path "/auctex-11.87"))
   (xy/install-lisps (concat my-local-lisp-path "/elscreen"))
   (xy/install-lisps (concat my-local-lisp-path "/git-wip"))
 

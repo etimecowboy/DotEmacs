@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-30 Sat 11:02 by xin on S13>
+;; Time-stamp: <2014-04-27 Sun 19:44 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auctex.el'
 ;; Author:       Xin Yang
@@ -24,8 +24,10 @@
 (defun xy/auctex-start ()
   "Settings of `auctex'."
   (interactive)
-  (load "auctex.el" nil t t)
-  (load "preview-latex.el" nil t t)
+  ;; (load "auctex.el" nil t t)
+  (auctex-postload)
+  ;; (load "preview-latex.el" nil t t)
+  ;; (preview-latex-postload)
   ;; (color-theme-solarized-light)
   (revert-buffer)
   ;; (menu-bar-mode 1)
@@ -54,6 +56,19 @@
         (message "TeX master document: %s" (file-name-nondirectory candidate)))
     candidate))
 
+;; (defun okular-make-url ()
+;;   (concat
+;;    "\"file://"
+;;    (expand-file-name (funcall file "pdf" t) (file-name-directory
+;;                                              (TeX-master-file)))
+;;    "#src:"
+;;    (TeX-current-line) (buffer-file-name) "\""))
+
+;; (add-hook 'LaTeX-mode-hook
+;;           '(lambda ()
+;;              (add-to-list 'TeX-expand-list
+;;                           '("%u" okular-make-url))))
+
 ;;;###autoload
 (defun auctex-postload ()
   "Settings of `auctex' after it's been loaded."
@@ -62,6 +77,7 @@
   (require 'font-latex)
   (require 'reftex)
   (require 'cdlatex)
+  (require 'tex)
   ;; (require 'wysiwyg-tex) ;; BUG: not working properly
 
   ;; (Windows ;; Use texlive instead of miktex in Windows now.
@@ -220,8 +236,8 @@
                (turn-on-cdlatex)
                (turn-on-reftex)
                ;; (imenu-add-menubar-index)
-               (local-set-key "\C-c\C-t" ; Displays a page around cursor.
-                              'wysiwyg-tex-show-preview)
+               ;; (local-set-key "\C-c\C-t" ; Displays a page around cursor.
+               ;;                'wysiwyg-tex-show-preview)
                ;; (local-set-key "\C-c\C-T" ; Displays the whole page.
                               ;; 'wysiwyg-tex-show-whole-preview)
                ;; (define-key LaTeX-mode-map
@@ -235,23 +251,38 @@
           LaTeX-section-section
           LaTeX-section-label))
 
-  (message "* ---[ auctex post-load configuration is complete ]---"))
-
-;;;###autoload
-(defun preview-latex-postload ()
-  "Settings of `preview-latex' after it's been loaded."
+  ;; preview-latex, preview latex output in Emacs
   (require 'preview)
   ;; preview-latex, preview latex output in Emacs
   (LaTeX-preview-setup)
-  (setq preview-image-type 'dvipng
+  (setq preview-auto-cache-preamble nil
+        preview-image-type 'dvipng
         preview-scale-function 1.5
         preview-prefer-TeX-bb t
         preview-transparent-color "white")
-        ;; preview-fast-dvips-command "pdftops -origpagesizes %s.pdf %m/preview.ps")
+  ;; preview-fast-dvips-command "pdftops -origpagesizes %s.pdf %m/preview.ps")
 
   (Windows
    (setq preview-gs-command "gswin64c.exe"))
   
-  (message "* ---[ preview-latex post-load configuration is complete ]---"))
+  (message "* ---[ auctex post-load configuration is complete ]---"))
+
+;; ;;;###autoload
+;; (defun preview-latex-postload ()
+;;   "Settings of `preview-latex' after it's been loaded."
+;;   (require 'preview)
+;;   ;; preview-latex, preview latex output in Emacs
+;;   (LaTeX-preview-setup)
+;;   (setq preview-auto-cache-preamble nil
+;;         preview-image-type 'dvipng
+;;         preview-scale-function 1.5
+;;         preview-prefer-TeX-bb t
+;;         preview-transparent-color "white")
+;;         ;; preview-fast-dvips-command "pdftops -origpagesizes %s.pdf %m/preview.ps")
+
+;;   (Windows
+;;    (setq preview-gs-command "gswin64c.exe"))
+  
+  ;; (message "* ---[ preview-latex post-load configuration is complete ]---"))
 
 (provide 'xy-rc-auctex)

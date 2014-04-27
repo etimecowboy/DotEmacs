@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 23:59 by xin on p5q>
+;; Time-stamp: <2014-04-27 Sun 18:49 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-recentf.el'
 ;; Author:       Xin Yang
@@ -28,23 +28,23 @@
     (shell-command (concat "touch " recentf-save-file)))
   (message "* ---[ recentf pre-load configuration is complete ]---"))
 
-;;;###autoload
 ;; BUG: NOT working
-(defun undo-kill-buffer (arg)
-  "Re-open the last buffer killed. With ARG, re-open the nth buffer."
-  (interactive)
-  (let ((recently-killed-list (copy-sequence recentf-list))
-        (buffer-files-list
-         (delq nil (mapcar (lambda (buf)
-                             (when (buffer-file-name buf)
-                               (expand-file-name (buffer-file-name buf))))
-                           (buffer-list)))))
-    (mapc
-     (lambda (buf-file)
-       (setq recently-killed-list
-             (delete buf-file recently-killed-list)))
-     buffer-files-list)
-    (find-file (nth (- arg 1) recently-killed-list))))
+;; ;;;###autoload
+;; (defun undo-kill-buffer (arg)
+;;   "Re-open the last buffer killed. With ARG, re-open the nth buffer."
+;;   (interactive)
+;;   (let ((recently-killed-list (copy-sequence recentf-list))
+;;         (buffer-files-list
+;;          (delq nil (mapcar (lambda (buf)
+;;                              (when (buffer-file-name buf)
+;;                                (expand-file-name (buffer-file-name buf))))
+;;                            (buffer-list)))))
+;;     (mapc
+;;      (lambda (buf-file)
+;;        (setq recently-killed-list
+;;              (delete buf-file recently-killed-list)))
+;;      buffer-files-list)
+;;     (find-file (nth (- arg 1) recently-killed-list))))
 
 ;;;###autoload
 (defun recentf-postload ()

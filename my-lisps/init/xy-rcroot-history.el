@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-13 Fri 01:49 by xin on S13>
+;; Time-stamp: <2014-04-27 Sun 18:51 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -86,6 +86,7 @@
 (eval-after-load "recentf" '(recentf-postload))
 (recentf-mode 1)
 ;; (global-set-key (kbd "C-x y") 'undo-kill-buffer) ;; BUG:
+(global-set-key (kbd "C-x C-l") 'recentf-open-files)
 
 
 
