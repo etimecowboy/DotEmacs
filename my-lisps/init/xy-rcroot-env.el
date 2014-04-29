@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-27 Sun 17:58 by xin on ubuntu>
+;; Time-stamp: <2014-04-29 Tue 01:51 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -169,7 +169,7 @@
 
 ;;*** ibus-el
 ;; REF: (@url :file-name "https://launchpad.net/ibus.el" :display "Brz Source")
-(xy/load-autoloads (concat my-local-lisp-path "/ibus-el-0.3.2"))
+;; (xy/load-autoloads (concat my-local-lisp-path "/ibus-el-0.3.2"))
 
 ;;*** mailcrypt
 ;; ;; REF: (@url :file-name "http://mailcrypt.sourceforge.net/" :display "Source")
@@ -553,16 +553,26 @@ Toggle keyboard command logging of whole emacs.
 ;;*** ibus-el
 ;; IBus client for GNU Emacs
 ;; REF:  (@url :file-name "http://www11.atwiki.jp/s-irie/pages/21.html" :display "Source")
-(GNULinux
- (when (try-require 'ibus)
-   ;; Turn on ibus-mode automatically after loading .emacs
-   (add-hook 'after-init-hook 'ibus-mode-on)
-   ;; Use C-SPC for Set Mark command
-   ;; (ibus-define-common-key ?\C-\s nil)
-   ;; Use C-/ for Undo command
-   (ibus-define-common-key ?\C-/ nil)
-   ;; Change cursor color depending on IBus status
-   (setq ibus-cursor-color '("purple" "red" "blue"))))
+;; NOTE: Dead :-(
+;; (GNULinux
+;;  (when (try-require 'ibus)
+;;    ;; ;; Turn on ibus-mode automatically after loading .emacs
+;;    (add-hook 'after-init-hook 'ibus-mode-on)
+;;    ;; ;; If you use the client-server mode of emacs, replace the
+;;    ;; after-init-hook line by this:
+;;    ;; (add-hook 'after-make-frame-functions
+;;    ;;           (lambda (new-frame)
+;;    ;;             (select-frame new-frame)
+;;    ;;             (or ibus-mode (ibus-mode-on))))
+;;    ;; Use C-SPC for Set Mark command
+;;    ;; (ibus-define-common-key ?\C-\s nil)
+;;    ;; Use C-/ for Undo command
+;;    (ibus-define-common-key ?\C-/ nil)
+;;    ;; Change cursor color depending on IBus status
+;;    (setq ibus-cursor-color '("purple" "red" "blue"))
+;;    (setq ibus-python-shell-command-name "python2.7")
+;;    (setq ibus-agent-file-name "~/.emacs.d/bin/lin64/ibus-el-agent")
+;;    ))
 
 
 

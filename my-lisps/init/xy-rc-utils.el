@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-27 Sun 17:59 by xin on ubuntu>
+;; Time-stamp: <2014-04-29 Tue 01:54 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1382,7 +1382,7 @@ The process is:
   ;; (xy/install-lisps (concat my-local-lisp-path "/emacs-w3m"))
   (xy/install-lisps (concat my-local-lisp-path "/eim-2.4"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/google-weather-el"))
-  (xy/install-lisps (concat my-local-lisp-path "/ibus-el-0.3.2"))
+  ;; (xy/install-lisps (concat my-local-lisp-path "/ibus-el-0.3.2"))
   (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
   (xy/install-lisps (concat my-local-lisp-path "/matlab-emacs"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/mew-6.5"))

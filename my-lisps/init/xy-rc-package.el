@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-27 Sun 19:22 by xin on ubuntu>
+;; Time-stamp: <2014-04-28 Mon 17:14 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -288,10 +288,10 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'o-blog)
   (require-package 'oauth)
   ;; (require-package 'openwith)
-  ;; (require-package 'org '(8)) ;; NOTE: install the latest version
+  (require-package 'org '(8)) ;; NOTE: install the latest version
   ;; (require-package 'org-cua-dwim)
   ;; (require-package 'org-mime)
-  (require-package 'org-plus-contrib)
+  ;; (require-package 'org-plus-contrib)
   ;; (require-package 'org-table-comment)  ;; nerver used by now
   ;; (require-package 'org2blog) ;; NOTE: outdated
   (require-package 'outline-magic)
@@ -349,6 +349,8 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'iedit)
   (require-package 'auctex)
   (require-package 'auctex-latexmk)
+  ;; (require-package 'fold-dwim)
+  ;; (require-pacakge 'folder-dwim-org)
   
   (message "* ---[ package post-load configuration is complete ]---"))
 
