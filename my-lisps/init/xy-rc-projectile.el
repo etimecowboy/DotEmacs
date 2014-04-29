@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-19 Sat 22:25 by xin on S13>
+;; Time-stamp: <2014-04-29 Tue 12:04 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-projectile.el'
 ;; Author:       Xin Yang
@@ -31,8 +31,7 @@
   (setq projectile-cache-file (concat my-var-path "/projectile-"
                                       user-login-name "@"
                                       system-name "@"
-                                      system-configuration))
-        ;; (expand-file-name  "projectile.cache" my-var-path))
+                                      system-configuration ".cache"))
 
   (message "* ---[ projectile post-load configuration is complete ]---"))
 

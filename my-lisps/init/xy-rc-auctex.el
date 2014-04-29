@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-27 Sun 19:44 by xin on ubuntu>
+;; Time-stamp: <2014-04-29 Tue 11:23 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auctex.el'
 ;; Author:       Xin Yang
@@ -79,7 +79,7 @@
   (require 'cdlatex)
   (require 'tex)
   ;; (require 'wysiwyg-tex) ;; BUG: not working properly
-
+  (require 'bib-cite)
   ;; (Windows ;; Use texlive instead of miktex in Windows now.
   ;;  (require 'tex-mik))
 
@@ -115,15 +115,15 @@
                 ("[shell]"("shell")))))
 
   (setq TeX-command-list
-        (quote
-         (("latexmk" "latexmk %s"  ;; NOTE: you would need to set
-           ;; configuration in your `$HOME/.latexmkrc' file, so that
-           ;; it may create pdf or/and dvi file.
-           TeX-run-command nil t
-           :help "Run latexmk script")
-          ("latexmk -pvc" "latexmk -pvc %s"
-           TeX-run-command nil t
-           :help "Run latexmk script with switch -pvc")
+        (quote (
+          ;; ("latexmk" "latexmk %s"  ;; NOTE: you would need to set
+          ;;  ;; configuration in your `$HOME/.latexmkrc' file, so that
+          ;;  ;; it may create pdf or/and dvi file.
+          ;;  TeX-run-command nil t
+          ;;  :help "Run latexmk script")
+          ;; ("latexmk -pvc" "latexmk -pvc %s"
+          ;;  TeX-run-command nil t
+          ;;  :help "Run latexmk script with switch -pvc")
           ("TeX" "%(PDF)%(tex) %`%S%(PDFout)%(mode)%' %t"
            TeX-run-TeX nil (plain-tex-mode texinfo-mode ams-tex-mode)
            :help "Run plain TeX")
@@ -152,6 +152,9 @@
           ("BibTeX" "bibtex %s"
            TeX-run-BibTeX nil t
            :help "Run BibTeX")
+          ("Biber" "biber %s"
+           TeX-run-Biber nil t
+           :help "Run Biber")
           ("Dvipdfmx" "dvipdfmx %s"
            TeX-run-command nil t
            :help "Run dvipdfmx")
@@ -202,7 +205,6 @@
   (setq TeX-view-program-list
         '(("SumatraPDF" ("\"SumatraPDF.exe\" -reuse-instance" 
                           (mode-io-correlate " -forward-search %b %n ") " %o"))
-          ;; ("SumatraPDF" "SumatraPDF.exe -reuse-instance %o")
           ("Gsview" "gsview32.exe %o")
           ("Dviout" "dviout.exe %o")
           ("Okular" "okular --unique %o#src:%n%b")
@@ -242,6 +244,7 @@
                               ;; 'wysiwyg-tex-show-whole-preview)
                ;; (define-key LaTeX-mode-map
                ;;   (kbd "C-c r") 'reftex-parse-all)
+               (turn-on-bib-cite)
                ))
 
   (setq LaTeX-section-hook
@@ -265,8 +268,6 @@
   (Windows
    (setq preview-gs-command "gswin64c.exe"))
   
-  (message "* ---[ auctex post-load configuration is complete ]---"))
-
 ;; ;;;###autoload
 ;; (defun preview-latex-postload ()
 ;;   "Settings of `preview-latex' after it's been loaded."
@@ -284,5 +285,11 @@
 ;;    (setq preview-gs-command "gswin64c.exe"))
   
   ;; (message "* ---[ preview-latex post-load configuration is complete ]---"))
+
+  ;; auctex-latexmk
+  (when (try-require 'auctex-latexmk)
+    (auctex-latexmk-setup))
+
+  (message "* ---[ auctex post-load configuration is complete ]---"))
 
 (provide 'xy-rc-auctex)

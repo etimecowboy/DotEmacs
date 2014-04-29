@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-10 Fri 21:47 by xin on XIN-PC>
+;; Time-stamp: <2014-04-29 Tue 12:01 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-bookmark+.el'
 ;; Author:       Xin Yang
@@ -21,9 +21,15 @@
   "Settings of `bookmark.el' before it's been loaded."
 
   (setq-default bmkp-bmenu-commands-file
-                (concat my-var-path "/emacs-bmk-bmenu-commands.el"))
+                (concat my-var-path "/bmenu-commands"
+                        user-login-name "@"
+                        system-name "@"
+                        system-configuration ".el"))
   (setq-default bmkp-bmenu-state-file
-                (concat my-var-path "/emacs-bmk-bmenu-state.el"))
+                (concat my-var-path "/bmenu-state"
+                        user-login-name "@"
+                        system-name "@"
+                        system-configuration ".el"))
   ;; BUG: bmkp auto write fail
   ;; NOTE: always uses the value of `bookmark-default-file' as the
   ;; initial bookmark file.
@@ -35,9 +41,15 @@
 (defun bookmark+-postload ()
   "Settings of `bookmark+.el' after it's been loaded."
   (setq bmkp-bmenu-commands-file
-        (concat my-var-path "/emacs-bmk-bmenu-commands.el"))
+        (concat my-var-path "/bmenu-commands"
+                user-login-name "@"
+                system-name "@"
+                system-configuration ".el"))
   (setq bmkp-bmenu-state-file
-        (concat my-var-path "/emacs-bmk-bmenu-state.el"))
+        (concat my-var-path "/bmenu-state"
+                user-login-name "@"
+                system-name "@"
+                system-configuration ".el"))
   ;; BUG: bmkp auto write fail
   ;; NOTE: always uses the value of `bookmark-default-file' as the
   ;; initial bookmark file.

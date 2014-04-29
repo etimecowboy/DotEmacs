@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-27 Sun 19:15 by xin on ubuntu>
+;; Time-stamp: <2014-04-29 Tue 11:15 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -84,15 +84,14 @@
 
 
 ;;* auctex
-(eval-after-load "auctex"
+(eval-after-load "latex"
   '(progn
      (auctex-postload)
      ;; (eal-define-keys ;; BUG: not working
      ;;  'latex-mode-map
      ;;  `(("C-x `" TeX-next-error)))
      )) ;; default C-c ` conflict with icy-mode
-;; (eval-after-load "preview-latex" '(preview-latex-postload))
-(global-set-key (kbd "<f6> t") 'xy/auctex-start)
+;; (global-set-key (kbd "<f6> t") 'xy/auctex-start)
 
 
 
