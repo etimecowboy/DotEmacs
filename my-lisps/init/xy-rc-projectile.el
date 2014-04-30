@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-29 Tue 12:04 by xin on ubuntu>
+;; Time-stamp: <2014-04-30 Wed 00:32 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-projectile.el'
 ;; Author:       Xin Yang
@@ -20,7 +20,7 @@
 (defun projectile-postload ()
   "Settings of `projectile.el' after it's been loaded."
 
-  (setq projectile-ack-function         'ack-and-a-half
+  (setq ;; projectile-ack-function         'ack-and-a-half
         projectile-completion-system    'ido
         projectile-enable-caching       t
         projectile-global-mode          nil

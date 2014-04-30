@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-01 Tue 11:10 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-04-30 Wed 00:34 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -330,7 +330,7 @@
 ;;** projectile
 ;; A project management mode
 (eval-after-load "projectile" '(projectile-postload))
-(global-set-key (kbd "<f6> P") 'projectile-mode)
+(global-set-key (kbd "<f6> <f6>") 'projectile-mode)
 
 
 ;;* Shell script development settings
