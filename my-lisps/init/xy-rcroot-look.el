@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-27 Sun 19:38 by xin on ubuntu>
+;; Time-stamp: <2014-05-07 Wed 09:04 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -728,23 +728,22 @@ manually first.
                   (xy/set-font-default))))
   (xy/set-font-default))
 
-;; (eal-define-keys-commonly
-;;  global-map
-;;  `(;; ("C-x F d" xy/set-font-default)
-;;    ;; ("C-x F m" xy/set-font-Monofur-STHeiti)
-;;    ;; ("C-x F w" xy/set-font-write)
-;;    ;; ("C-x F p" xy/set-font-prog)
-;;    ;; ("C-x F D" xy/set-font-default-big)
-;;    ;; ("C-x F W" xy/set-font-write-big)
-;;    ;; ("C-x F P" xy/set-font-prog-big)
-;;    ;;------------------------------------
+(eal-define-keys-commonly
+ global-map
+ `(("C-x F d" xy/set-font-default)
+   ("C-x F m" xy/set-font-Monofur-STHeiti)
+   ("C-x F w" xy/set-font-write)
+   ("C-x F p" xy/set-font-prog)
+   ("C-x F W" xy/set-font-write-big)
+   ("C-x F P" xy/set-font-prog-big)
+   ;;------------------------------------
 ;;    ;; changing font size
 ;;    ;; ("C-+"    bhj-text-scale-increase)
 ;;    ;; ("C--"    bhj-text-scale-decrease)
 ;;    ;; NOTE: default text scaling ("C-x C-=" and "C-x C--")
 ;;    ;; ("C-M-="  increase-default-font-height)
 ;;    ;; ("C-M--"  decrease-default-font-height)
-;;    ))
+   ))
 
 ;;** Automatically set fonts for different modes
 ;; NOTE: a pain to my eyes
