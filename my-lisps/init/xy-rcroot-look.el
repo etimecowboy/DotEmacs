@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-05-07 Wed 09:04 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-06-02 Mon 09:37 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -512,7 +512,7 @@
 ;; NOTE: C-x H has been binded to `goto-help-buffer'
 (eal-define-keys
  `(emacs-lisp-mode-map lisp-interaction-mode-map java-mode-map
-   c-mode-base-map c++-mode-map perl-mode-map
+   c-mode-base-map c++-mode-map perl-mode-map matlab-mode-map
    org-mode-map text-mode-map ruby-mode-map html-mode-map)
  `(("C-c H m" highlight-symbol-at-point)
    ("C-c H k" highlight-symbol-remove-all)
@@ -520,7 +520,8 @@
    ("C-c H p" highldight-symbol-prev)
    ("C-c H %" highlight-symbol-query-replace)
    ("C-c H N" highlight-symbol-next-in-defun)
-   ("C-c H P" highlight-symbol-prev-in-defun)))
+   ("C-c H P" highlig
+    ht-symbol-prev-in-defun)))
 
 
 
