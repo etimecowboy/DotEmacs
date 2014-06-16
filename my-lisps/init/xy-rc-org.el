@@ -1445,7 +1445,7 @@ decorations.markings}
 
 (provide 'xy-rc-org)
 
-;; NOTE: not in use
+;; NOTE: not in use, use o-blog instead
 ;; List of projects
 ;; http://127.0.0.1/  (localhost)
 ;; local-org are the org-files that generate the content
