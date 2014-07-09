@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 28 Jan 2011
-;; Time-stamp: <2013-05-13 Mon 18:57 by xin on S13>
+;; Time-stamp: <2014-07-03 Thu 09:27 by xy12g13 on UOS-208326>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -443,6 +443,44 @@ to running 'delete-indentation (aka 'join-line)."
   (force-mode-line-update))
 ;; (my-modeline-format-toggle-minor-modes)
 ;; (global-set-key (kbd "<f6> h") 'my-modeline-format-toggle-minor-modes)
+
+
+;; Emacs Lisp Scripting Quirk: Relative Paths
+;; (@url :file-name "http://ergoemacs.org/emacs/elisp_relative_path.html" :display "Source")
+
+(defun fullpath-relative-to-current-file (file-relative-path)
+  "Returns the full path of FILE-RELATIVE-PATH, relative to file location where this function is called.
+
+Example: If you have this line
+ (fullpath-relative-to-current-file \"../xyz.el\")
+in the file at
+ /home/mary/emacs/emacs_lib.el
+then the return value is
+ /home/mary/xyz.el
+Regardless how or where emacs_lib.el is called.
+
+This function solves 2 problems.
+
+ ① If you have file A, that calls the `load' on a file at B, and
+B calls “load” on file C using a relative path, then Emacs will
+complain about unable to find C. Because, emacs does not switch
+current directory with “load”.
+
+ To solve this problem, when your code only knows the relative
+path of another file C, you can use the variable `load-file-name'
+to get the current file's full path, then use that with the
+relative path to get a full path of the file you are interested.
+
+ ② To know the current file's full path, emacs has 2 ways:
+`load-file-name' and `buffer-file-name'. If the file is loaded
+by “load”, then load-file-name works but buffer-file-name
+doesn't. If the file is called by `eval-buffer', then
+load-file-name is nil. You want to be able to get the current
+file's full path regardless the file is run by “load” or
+interactively by “eval-buffer”."
+  (concat (file-name-directory
+           (or load-file-name buffer-file-name))
+          file-relative-path))
 
 
 
