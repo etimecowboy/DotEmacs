@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-19 Thu 12:07 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-07-26 Sat 22:12 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-todochiku.el'
 ;; Author:       Xin Yang
@@ -22,16 +22,16 @@
   (setq-default todochiku-command
                 (case system-type
                   (windows-nt
-                   "D:/Growl for Windows/growlnotify.exe")
+                   "C:/Program Files (x86)/Growl for Windows/growlnotify.exe")
                   (darwin "/usr/local/bin/growlnotify")
                   (t "notify-send")))
-  (OfficePC
-   (setq-default todochiku-command
-                 (case system-type
-                   (windows-nt
-                    "C:/Program Files (x86)/Growl for Windows/growlnotify.exe")
-                   (darwin "/usr/local/bin/growlnotify")
-                   (t "notify-send"))))
+  ;; (OfficePC
+  ;;  (setq-default todochiku-command
+  ;;                (case system-type
+  ;;                  (windows-nt
+  ;;                   "C:/Program Files (x86)/Growl for Windows/growlnotify.exe")
+  ;;                  (darwin "/usr/local/bin/growlnotify")
+  ;;                  (t "notify-send"))))
   ;; (setq-default todochiku-command
   ;;   (Windows
   ;;     (OfficePC
