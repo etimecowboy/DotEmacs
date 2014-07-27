@@ -219,7 +219,7 @@
 (setq make-backup-files t)
 (setq version-control t)
 (setq backup-by-copying t)
-(setq backup-directory-alist '(("." . "~/.emacs-backup")))
+;; (setq backup-directory-alist '(("." . "~/.emacs-backup")))
 (setq kept-old-versions 5)
 (setq kept-new-versions 5)
 (setq delete-old-versions t)

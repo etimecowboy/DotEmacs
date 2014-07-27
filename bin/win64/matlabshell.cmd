@@ -1,3 +1,3 @@
 @echo off
-SET PATH=D:\MATLAB\R2012a\bin\win64
+SET PATH=C:\MATLAB\R2014a\bin\win64
 %~dp0\matlabShell.exe %*

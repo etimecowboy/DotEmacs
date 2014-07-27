@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-10 Fri 23:36 by xin on XIN-PC>
+;; Time-stamp: <2014-07-26 Sat 22:54 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-tramp.el'
 ;; Author:       Xin Yang
@@ -42,7 +42,7 @@
                         system-configuration))
   ;; (unless (file-exists-p tramp-persistency-file-name)
   ;;   (shell-command (concat "touch " tramp-persistency-file-name)))
-  (setq tramp-backup-directory-alist '(("." . "~/.emacs-backup")))
+  ;; (setq tramp-backup-directory-alist '(("." . "~/.emacs-backup")))
 
   (message "* ---[ tramp post-load configuration is complete ]---"))
 

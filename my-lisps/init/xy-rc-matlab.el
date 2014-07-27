@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-30 Wed 18:18 by xin on ubuntu>
+;; Time-stamp: <2014-07-27 Sun 00:16 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-matlab.el'
 ;; Author:       Xin Yang
@@ -52,9 +52,9 @@
 
   ;; Change path
   (Windows
-   (setq matlab-shell-command "D:/MATLAB/R2014a/bin/win64/matlabshell.exe")
+   (setq matlab-shell-command "C:/MATLAB/R2014a/bin/win64/matlabshell.exe")
    (Laptop
-    (setq matlab-shell-command "D:/MATLAB/R2014a/bin/win64/matlabshell.exe"))
+    (setq matlab-shell-command "C:/MATLAB/R2014a/bin/win64/matlabshell.exe"))
    (OfficePC
     (setq matlab-shell-command "C:/PROGRA~1/MATLAB/R2014a/bin/win64/matlabshell.exe"))
    

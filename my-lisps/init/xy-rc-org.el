@@ -920,9 +920,9 @@
   (require 'ob-octave)
 
   (Windows
-   (setq org-babel-matlab-shell-command "D:/MATLAB/R2014a/bin/win64/matlabshell.exe")
+   (setq org-babel-matlab-shell-command "C:/MATLAB/R2014a/bin/win64/matlabshell.exe")
    (Laptop
-    (setq org-babel-matlab-shell-command "D:/MATLAB/R2014a/bin/win64/matlabshell.exe"))
+    (setq org-babel-matlab-shell-command "C:/MATLAB/R2014a/bin/win64/matlabshell.exe"))
    (OfficePC
     (setq org-babel-matlab-shell-command "C:/PROGRA~1/MATLAB/R2014a/bin/win64/matlabshell.exe")))
   
