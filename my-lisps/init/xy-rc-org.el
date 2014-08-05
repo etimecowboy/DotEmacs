@@ -168,7 +168,6 @@
         (setq org-latex-pdf-process
               ;; '("latexmk -xelatex -f -silent -c %b")) ;; no -d
               '("latexmk -c %b"))
-
         (setq xy:org-xelatex-flag nil)
         (message "* ---[ Using `latexmk' as the LaTeX PDF exporter now ]---"))
     (progn
@@ -1194,16 +1193,21 @@ decorations.markings}
   (setq org-format-latex-signal-error t)
   (setq org-latex-create-formula-image-program 'imagemagick)
 
-  ;; ;; Use xelatex instead of pdflatex for better font supports.
-  ;; ;; REF: (@url :file-name "http://orgmode.org/worg/org-tutorials/org-latex-export.html" :display "Worg:org-latex-export")
-  ;; ;;      (@url :file-name "http://orgmode.org/worg/org-faq.html#using-xelatex-for-pdf-export" :display "Worg:faq:using-xelatex-for-pdf-export")
-  ;; ;;      (@url :file-name "http://comments.gmane.org/gmane.emacs.orgmode/71847" :display "xelatex-and-the-new-exporter@orgmode-mail-list")
-  (setq org-latex-to-pdf-process
-        '("xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"
-          "bibtex %b"
-          "xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"
-          "xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"))
-  (setq xy:xelatex-flag t)
+  ;; Use xelatex instead of pdflatex for better font supports.
+  ;; REF: (@url :file-name "http://orgmode.org/worg/org-tutorials/org-latex-export.html" :display "Worg:org-latex-export")
+  ;;      (@url :file-name "http://orgmode.org/worg/org-faq.html#using-xelatex-for-pdf-export" :display "Worg:faq:using-xelatex-for-pdf-export")
+  ;;      (@url :file-name "http://comments.gmane.org/gmane.emacs.orgmode/71847" :display "xelatex-and-the-new-exporter@orgmode-mail-list")
+  ;; (setq org-latex-to-pdf-process
+  ;;       '("xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"
+  ;;         "bibtex %b"
+  ;;         "xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"
+  ;;         "xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"))
+  ;; (setq xy:xelatex-flag t)
+
+  ;; Use latexmk instead of xelatex
+  (setq org-latex-pdf-process
+        '("latexmk -c %b"))
+  (setq xy:org-xelatex-flag nil)
 
   ;; Better solution: use latexmk which is globally configured by `.latexmkrc' file
   ;; (setq org-latex-to-pdf-process
