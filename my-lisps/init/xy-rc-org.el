@@ -176,8 +176,7 @@
       ;;       '("xelatex -interaction nonstopmode -output-directory %o %f"
       ;;         "bibtex %b"
       ;;         "xelatex -interaction nonstopmode -output-directory %o %f"
-      ;;         "xelatex -interaction nonstopmode -output-directory
-      ;;         %o %f"))
+      ;;         "xelatex -interaction nonstopmode -output-directory %o %f"))
       (setq org-latex-to-pdf-process
             '("xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"
               "bibtex %b"
@@ -1207,7 +1206,8 @@ decorations.markings}
 
   ;; Use latexmk instead of xelatex
   (setq org-latex-pdf-process
-        '("latexmk -c %b"))
+        '("latexmk -pdf -bibtex -f -silent %b"
+          "latexmk -c"))
   (setq xy:org-xelatex-flag nil)
 
   ;; Better solution: use latexmk which is globally configured by `.latexmkrc' file
