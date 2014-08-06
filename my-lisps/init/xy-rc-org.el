@@ -167,7 +167,8 @@
       (progn
         (setq org-latex-pdf-process
               ;; '("latexmk -xelatex -f -silent -c %b")) ;; no -d
-              '("latexmk -c %b"))
+              '("latexmk -pdf -bibtex -f -silent %b"
+                "latexmk -c"))
         (setq xy:org-xelatex-flag nil)
         (message "* ---[ Using `latexmk' as the LaTeX PDF exporter now ]---"))
     (progn
