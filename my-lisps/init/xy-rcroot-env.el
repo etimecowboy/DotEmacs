@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-29 Tue 01:51 by xin on ubuntu>
+;; Time-stamp: <2014-08-07 Thu 22:36 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -205,6 +205,12 @@
 ;; REF: (@url :file-name "https://github.com/bartman/git-wip" :display "Git Source")
 ;; NOTE: git-wip vs magit-wip
 (xy/load-autoloads (concat my-local-lisp-path "/git-wip"))
+
+;;*** o-blog
+;; REF: (@url :file-name "https://github.com/renard/o-blog" :display "Git Source")
+;;      (@url :file-name "http://renard.github.com/o-blog/index.html" :display "Website")
+;; NOTE: ELPA package does not work now
+(xy/load-autoloads (concat my-local-lisp-path "/o-blog-1.2"))
 
 ;;** Rebuild Emacs configuration
 (global-set-key (kbd "C-x B") 'xy/emacs-build)

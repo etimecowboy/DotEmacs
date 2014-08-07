@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-09-19 Thu 22:46 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-08-07 Thu 18:14 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-o-blog.el'
 ;; Author:       Xin Yang
@@ -16,14 +16,14 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
-;;;###autoload
-(defun xy/browse-my-emacs-blog ()
-  "Open the my Emacs blog using `browse-url'."
-  (interactive)
-  (browse-url
-   (concat "file://"
-           (expand-file-name
-            "~/Dropbox/emacs/org/html/myblogs/oblog-emacs/index.html"))))
+;; ;;;###autoload
+;; (defun xy/browse-my-emacs-blog ()
+;;   "Open the my Emacs blog using `browse-url'."
+;;   (interactive)
+;;   (browse-url
+;;    (concat "file://"
+;;            (expand-file-name
+;;             "~/Dropbox/emacs/org/html/myblogs/oblog-emacs/index.html"))))
 
 ;;;###autoload
 (defun o-blog-postload ()

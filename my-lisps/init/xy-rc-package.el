@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-05-18 Sun 11:17 by xin on S13>
+;; Time-stamp: <2014-08-07 Thu 22:23 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -285,7 +285,6 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'multi-term)
   (require-package 'multiple-cursors)
   ;; (require-package 'nzenburn-theme) ;; use my my hacked version
-  (require-package 'o-blog)
   (require-package 'oauth)
   ;; (require-package 'openwith)
   (require-package 'org '(8)) ;; NOTE: install the latest version
@@ -293,7 +292,8 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'org-mime)
   ;; (require-package 'org-plus-contrib)
   ;; (require-package 'org-table-comment)  ;; nerver used by now
-  ;; (require-package 'org2blog) ;; NOTE: outdated
+  (require-package 'org2blog)
+  ;; (require-package 'o-blog) ;; NOTE: o-blog package is not stable right now
   (require-package 'outline-magic)
   (require-package 'popup)
   (require-package 'popwin)

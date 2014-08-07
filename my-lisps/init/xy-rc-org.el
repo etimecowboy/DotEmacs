@@ -1428,6 +1428,14 @@ decorations.markings}
   ;;** `o-blog'
   ;; A stand-alone blog and publication tool for org-mode.
   (try-require 'o-blog)
+  ;; NOTE: o-blog v2.0 or later
+  ;; (try-require 'o-blog-utils)
+  ;; (try-require 'o-blog-tag)
+  ;; (try-require 'o-blog-entry)
+  ;; (try-require 'o-blog-i18n)
+  ;; (try-require 'o-blog-backend)
+  ;; (try-require 'o-blog-framework)
+  ;; (try-require 'o-blog-obsolete)
 
   ;;** `org2blog'
   ;; NOTE: waiting for its upgrade for org version 8.0
