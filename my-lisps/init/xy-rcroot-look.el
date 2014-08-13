@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-06-02 Mon 09:37 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-08-12 Tue 16:35 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -691,22 +691,37 @@
 ;; Change default text in the *scratch* buffer
 ;; NOTE: a warnning message is nessary for emacs fans like me
 (setq-default initial-scratch-message
-  "  If this is the first time you start Emacs with my configuration,
-Please follow the following steps:
+  "=====================================================================
+NOTE:
 
-  1. Close this Emacs session (C-x M-c or M-x 'save-buffers-kill-emacs)
-     NOTE: NOT the standard C-x C-c
-  2. Restart Emacs
-  3. Compile emacs lisp packages (C-x B or M-x xy/emacs-build)
-  4. Restat Emacs again
+1. Change of default key bindings
+   - Close current Emacs frame (C-x C-c or M-x xy/done)
+   - Close this Emacs session (C-x M-c or M-x save-buffers-kill-emacs)
 
-  If there is any problem with starting Emacs, you can always run
-Emacs in debug mode to check settings. If you are using Windows,
-you must delete the ~/.emacs.d/my-lisps/init/xy-rcroot-env.elc file
-manually first.  
+2. Installation and reconfiguration
+   1) Delete ~/.emacs.d/my-lisps/init/xy-rcroot-env.elc 
+   2) Start Emacs
+   3) Compile emacs lisp packages (C-x B or M-x xy/emacs-build)
+   4) Run 3) several times
+   5) Restart Emacs
 
-  Happy Emacsing!
+======================================================================
+Bookmarks:
 
+- ~/Dropbox/emacs/org/gtd
+- ~/Dropbox/emacs/org/source/myblogs/oblog
+- ~/Dropbox/emacs/org/html/myblogs/oblog/oblog-work/index.html
+- ~/Dropbox/emacs/org/html/myblogs/oblog/oblog-life/index.html
+- ~/Dropbox/emacs/org/html/myblogs/oblog/oblog-emacs/index.html
+- ~/Dropbox/emacs/org/html/myblogs/oblog/oblog-software/index.html
+- ~/Dropbox/emacs/org/xy-rc-custom.el
+
+-----------------------------------------------------------------------
+
+- ~/.emacs.d/my-lisps/init/
+- ~/.emacs.d/my-lisps/init/xy-rcroot-env.el
+
+======================================================================
 ")
 
 
