@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-10 Fri 17:38 by xin on XIN-PC>
+;; Time-stamp: <2014-08-18 Mon 11:40 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org2blog.el'
 ;; Author:       Xin Yang
@@ -42,24 +42,69 @@
            )
           ))
 
-  (setq org2blog/wp-buffer-template "# -*- mode: org -*-
+  (setq org2blog/wp-buffer-template "#   -*- mode: org; coding: utf-8-unix  -*-
 # Time-stamp:<>
-#
-#+OPTIONS: toc:nil num:nil todo:nil pri:nil tags:nil ^:nil
-#+OPTIONS: TeX:nil LaTeX:nil
-#+STARTUP: content showstars oddeven align indent
-#+STARTUP: lognotestate hideblocks
-#+DATE:    %s
+#+DATE:     %s
 #+CATEGORY: %s
 #+TAGS:
 #+PERMALINK:
 #+PARENT:
-#
 #+TITLE:  %s
-#+AUTHOR: Xin Yang
-#+EMAIL:  xin2.yang@gmail.com
+#+AUTHOR: etimecowboy
+#+EMAIL:  etimecowboy@gmail.com
 #+DESCRIPTION:
+* COMMENT Org mode settings
+** COMMENT General options
+#+OPTIONS: ,:t *:t -:t ::t <:t :nil ^:{} |:t
+#+OPTIONS: arch:nil author:t c:nil creator:nil d:nil e:t email:nil
+#+OPTIONS: f:t H:7 inline:nil num:nil p:nil pri:nil stat:nil
+#+OPTIONS: tags:nil tasks:t timestamp:t toc:t todo:nil
+#+OPTIONS: tex:imagemagick latex:t
+#+STARTUP: overview noindent align noinlineimages nolatexpreview
+#+STARTUP: showstars oddeven showblocks entitiesplain
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
 ")
+
+  (setq org2blog/wp-buffer-format-function 'org2blog/wp-format-buffer
+        org2blog/wp-confirm-post t
+        org2blog/wp-default-categories '("Uncategorized" "Hello")
+        org2blog/wp-default-title "Hello, World"
+        org2blog/wp-keep-new-lines nil
+        org2blog/wp-keymap-prefix "C-c M-p"
+        org2blog/wp-show-post-in-browser t
+        org2blog/wp-use-tags-as-categories nil)
+  
+  (setq org2blog/wp-sourcecode-default-params "light=\"true\""
+        org2blog/wp-sourcecode-langs
+        '(;; "actionscript3"
+          "bash"
+          ;; "coldfusion"
+          "cpp" "csharp"
+          "css"
+          ;; "delphi"
+          ;; "erlang"
+          ;; "fsharp"
+          "diff"
+          ;; "groovy"
+          "javascript"
+          "java"
+          ;; "javafx"
+          "matlab"
+          "objc"
+          "perl"
+          "php"
+          "text"
+          "powershell"
+          "python"
+          "ruby"
+          ;; "scala"
+          "sql"
+          "vb"
+          "xml")
+        org2blog/wp-use-sourcecode-shortcode t)
+  
+  (setq org2blog/wp-use-wp-latex t)
 
   ;; fix original function
   (defun ob-get-entry-text ()
