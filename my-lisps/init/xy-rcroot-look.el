@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-12 Tue 16:35 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-08-21 Thu 00:27 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -287,7 +287,7 @@
 (eval-after-load "highlight-symbol" '(diminish 'highlight-symbol-mode))
 (eval-after-load "highlight-parentheses" '(diminish 'highlight-parentheses-mode))
 ;; (eval-after-load "linkd" '(diminish 'linkd-mode))
-(eval-after-load "simple" '(diminish 'global-visual-line-mode))
+;; (eval-after-load "simple" '(diminish 'global-visual-line-mode))
 (eval-after-load "simple" '(diminish 'visual-line-mode))
 (eval-after-load "abbrev" '(diminish 'abbrev-mode))
 (eval-after-load "flyspell" '(diminish 'flyspell-mode))
@@ -388,8 +388,9 @@
 
 
 ;;** scroll related
-;; No scroll bar as default
-(scroll-bar-mode -1)
+(scroll-bar-mode -1) ;; No vertical scroll bar
+(when (fboundp 'horizontal-scroll-bar-mode)
+  (horizontal-scroll-bar-mode -1)) ;; Never show horizontal scroll bar
 (setq scroll-step 1
       scroll-margin 3
       scroll-up-aggressively 0.01

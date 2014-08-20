@@ -1438,8 +1438,7 @@ decorations.markings}
   ;; (try-require 'o-blog-obsolete)
 
   ;;** `org2blog'
-  ;; NOTE: waiting for its upgrade for org version 8.0
-  ;; (try-require 'org2blog)
+  (try-require 'org2blog)
 
   ;;** `org-bullets.el'
   ;; NOTE: not very useful.
@@ -1452,7 +1451,7 @@ decorations.markings}
   ;; (when window-system (try-require 'org-presie))
 
   ;;** `org-contacts'
-  (try-require 'org-contacts)
+  ;; (try-require 'org-contacts)
   
   (message "* ---[ org post-load configuration is complete ]---"))
 
