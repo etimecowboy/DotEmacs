@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 02:54 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 23:56 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -171,6 +171,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'nav-flash)
   (require-package 'smartrep)
   (require-package 'ucs-utils)
+  (require-package 'ucs-cmds)
   (require-package 'persistent-soft)
   (require-package 'pcache)
   
@@ -182,7 +183,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'buffer-move)
   (require-package 'c-eldoc)
   ;; (require-package 'cal-china-x) ;; fixed, moved to my-lisps
-  ;; (require-package 'cdlatex) ;; elpa package is too old
+  (require-package 'cdlatex)
   (require-package 'centered-cursor-mode)
   (require-package 'cl-lib)
   (require-package 'cmake-mode)
@@ -209,7 +210,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'edit-server);; I use firefox not chrome
   (require-package 'eimp)
   (require-package 'elpy)
-  ;; (require-package 'elscreen)   ;; outdated, new version moved to lisps folder
+  (require-package 'elscreen)
   ;; (require-package 'emms)       ;; not very useful
   ;; (require-package 'ess)        ;; not very useful
   (require-package 'ethan-wspace)
@@ -277,7 +278,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'marmalade-test)
   (require-package 'maxframe)
   ;; (require-package 'melpa) ;; not avaliable any more
-  ;; (require-package 'mew)
+  (require-package 'mew)
   (require-package 'mic-paren)
   (require-package 'mo-git-blame)
   (require-package 'modeline-posn)
@@ -350,7 +351,11 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'auctex)
   (require-package 'auctex-latexmk)
   ;; (require-package 'fold-dwim)
-  ;; (require-pacakge 'folder-dwim-org)
+  ;; (require-package 'folder-dwim-org)
+
+  (require-package 'command-log-mode)
+  (require-package 'hideshow-org)
+  (require-package 'psvn)
   
   (message "* ---[ package post-load configuration is complete ]---"))
 

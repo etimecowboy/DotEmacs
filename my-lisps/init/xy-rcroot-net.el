@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 02:43 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 22:55 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-net.el'
 ;; Author:       Xin Yang
@@ -42,34 +42,34 @@
 
 ;;* w3m
 ;; NOTE: Commented due to use of emacs-w64
-;; (eval-after-load "w3m"
-;;   '(progn
-;;      (w3m-postload)
-;;      (eal-define-keys
-;;       'w3m-mode-map
-;;       `(("C-x W f"      w3m-external-view-current-url)
-;;         ("C-x W F"      w3m-external-view-this-url)
-;;         ("C-x W o"      org-w3m-copy-for-org-mode) ;; copy region as org format
-;;         ("S-<mouse-1>"  w3m-mouse-view-this-url-new-session)
-;;         ("<mouse-3>"    w3m-mouse-major-mode-menu)
-;;         ("C-x W s"      w3m-save-current-buffer)
-;;         ("C-x W w"      w3m-weather)
-;;         ("C-x W l"      w3m-copy-current-url)))))
+(eval-after-load "w3m"
+  '(progn
+     (w3m-postload)
+     (eal-define-keys
+      'w3m-mode-map
+      `(("C-x W f"      w3m-external-view-current-url)
+        ("C-x W F"      w3m-external-view-this-url)
+        ("C-x W o"      org-w3m-copy-for-org-mode) ;; copy region as org format
+        ("S-<mouse-1>"  w3m-mouse-view-this-url-new-session)
+        ("<mouse-3>"    w3m-mouse-major-mode-menu)
+        ("C-x W s"      w3m-save-current-buffer)
+        ("C-x W w"      w3m-weather)
+        ("C-x W l"      w3m-copy-current-url)))))
 
-;; (eal-define-keys-commonly
-;;  global-map
-;;  `(("C-x W n"     w3m-goto-url-new-session)
-;;    ("C-x W b"     view-w3m-bookmark)
-;;    ("C-x W w"     switch-to-w3m)
-;;    ("<f8> u"      browse-url)
-;;    ;; ("<f8> d"      lookup-word-definition)
-;;    ;; ("<f8> w"      lookup-wikipedia) ;; not very useful
-;;    ;; ("<f8> s"      google-region)
-;;    ))
+(eal-define-keys-commonly
+ global-map
+ `(("C-x W n"     w3m-goto-url-new-session)
+   ("C-x W b"     view-w3m-bookmark)
+   ("C-x W w"     switch-to-w3m)
+   ("<f8> u"      browse-url)
+   ;; ("<f8> d"      lookup-word-definition)
+   ;; ("<f8> w"      lookup-wikipedia) ;; not very useful
+   ;; ("<f8> s"      google-region)
+   ))
 
-;; (setq browse-url-generic-program "w3m") ;; It won't affect emacs
-;;                                         ;; default browser
-;; (global-set-key (kbd "<f8> w") 'w3m)
+(setq browse-url-generic-program "w3m") ;; It won't affect emacs
+                                        ;; default browser
+(global-set-key (kbd "<f8> w") 'w3m)
 
 
 
@@ -231,24 +231,24 @@
 ;;* gnus
 ;; 新闻组阅读
 ;; NOTE: Commented due to lack of news server
-;; (eval-after-load "gnus"
-;;   '(progn
-;;      (gnus-postload)
-;;      (define-key gnus-summary-mode-map (kbd "C-c C-x C-s")
-;;        'my-archive-article)))
-;; (global-set-key (kbd "<f8> g") 'gnus)
+(eval-after-load "gnus"
+  '(progn
+     (gnus-postload)
+     (define-key gnus-summary-mode-map (kbd "C-c C-x C-s")
+       'my-archive-article)))
+(global-set-key (kbd "<f8> g") 'gnus)
 
 
 
 ;;* mew
 ;; email client
 ;; NOTE: Commented due to use of emacs-w64
-;; (eval-after-load "mew" '(mew-postload))
-;; (setq mail-user-agent 'mew-user-agent) ;; set mew as emacs email agent
-;; (autoload 'mew "mew" nil t)
-;; (autoload 'mew-send "mew" nil t)
-;; (autoload 'mew-user-agent-compose "mew" nil t)
-;; (global-set-key (kbd "<f8> m") 'mew)
+(eval-after-load "mew" '(mew-postload))
+(setq mail-user-agent 'mew-user-agent) ;; set mew as emacs email agent
+(autoload 'mew "mew" nil t)
+(autoload 'mew-send "mew" nil t)
+(autoload 'mew-user-agent-compose "mew" nil t)
+(global-set-key (kbd "<f8> m") 'mew)
 
 
 

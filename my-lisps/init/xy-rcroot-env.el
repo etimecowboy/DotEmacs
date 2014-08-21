@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 01:30 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 23:42 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -104,7 +104,7 @@
 
 ;;*** ac-math
 ;; REF: (@url :file-name "http://code.google.com/p/ac-math/" :display "SVN Source")
-(xy/load-autoloads (concat my-local-lisp-path "/ac-math"))
+;; (xy/load-autoloads (concat my-local-lisp-path "/ac-math"))
 
 ;;*** auctex
 ;; REF: (@url :file-name "http://www.gnu.org/s/auctex/" :display "CVS Source")
@@ -138,7 +138,7 @@
 
 ;;*** command-log-mode (Inactive git source)
 ;; REF: (@url :file-name "https://github.com/lewang/command-log-mode" :display "Git Source")
-(xy/load-autoloads (concat my-local-lisp-path "/command-log-mode"))
+;; (xy/load-autoloads (concat my-local-lisp-path "/command-log-mode"))
 
 ;;*** dea
 ;; REF: (@url :file-name "http://code.google.com/p/dea/" :display "SVN Source")
@@ -173,8 +173,9 @@
 ;; (xy/load-autoloads (concat my-local-lisp-path "/ibus-el-0.3.2"))
 
 ;;*** mailcrypt
-;; ;; REF: (@url :file-name "http://mailcrypt.sourceforge.net/" :display "Source")
-(xy/load-autoloads (concat my-local-lisp-path "/mailcrypt-3.5.8"))
+;; REF: (@url :file-name "http://mailcrypt.sourceforge.net/" :display "Source")
+;; NOTE: too old
+;; (xy/load-autoloads (concat my-local-lisp-path "/mailcrypt-3.5.8"))
 
 ;;*** matlab-emacs
 ;; REF: (@url :file-name "http://matlab-emacs.sourceforge.net/" :display "CVS Source")
@@ -195,7 +196,7 @@
 ;;*** elscreen
 ;; REF:  (@url :file-name "https://github.com/knu/elscreen" :display "Git Source")
 ;; NOTE: `elscreen-gf.el' and `elscreen-wl.el' are removed
-(xy/load-autoloads (concat my-local-lisp-path "/elscreen"))
+;; (xy/load-autoloads (concat my-local-lisp-path "/elscreen"))
 
 ;;*** ido-ubiquitous
 ;; REF:  (@url :file-name "https://github.com/DarwinAwardWinner/ido-ubiquitous" :display "Git Source")
@@ -315,7 +316,9 @@
 ;;
 ;;      6. No need to have a git submodule for them. I don't upgrade
 ;;         them very often.
-
+;; NOTE:
+;;      It seems being supported by ELPA mew & w3m packages, no need
+;;      to keep them any more.
 ;; (xy/load-autoloads (concat my-local-lisp-path "/apel"))
 ;; (xy/load-autoloads (concat my-local-lisp-path "/flim"))
 ;; (xy/load-autoloads (concat my-local-lisp-path "/semi"))
