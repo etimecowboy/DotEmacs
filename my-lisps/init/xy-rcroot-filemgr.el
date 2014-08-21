@@ -216,15 +216,20 @@
 ;;* Version control settings
 
 ;;** Emacs internal version control
-(setq make-backup-files t)
-(setq version-control t)
-(setq backup-by-copying t)
-(setq backup-directory-alist '(("." . "~/.emacs-backup")))
-(setq kept-old-versions 5)
-(setq kept-new-versions 5)
-(setq delete-old-versions t)
-(setq vc-make-backup-files t)
-(setq auto-revert-check-vc-info t)
+;; (setq make-backup-files t)
+;; (setq version-control t)
+;; (setq backup-by-copying t)
+;; (setq backup-directory-alist '(("." . "~/.emacs-backup")))
+(setq make-backup-files nil)
+
+;; (setq version-control t)
+;; (setq kept-old-versions 5)
+;; (setq kept-new-versions 5)
+;; (setq delete-old-versions t)
+(setq version-control nil)
+
+(setq vc-make-backup-files nil)
+(setq auto-revert-check-vc-info nil)
 
 ;; Autosaved files
 (setq auto-save-default nil)
