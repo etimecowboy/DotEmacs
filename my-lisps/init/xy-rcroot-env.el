@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-07 Thu 22:36 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-08-21 Thu 01:30 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -54,12 +54,13 @@
                           (concat my-local-exec-path "/win32")))
  (add-to-list 'exec-path (expand-file-name
                           (concat my-local-exec-path "/win64")))
- ;; (add-to-list 'exec-path (concat my-local-exec-path
- ;;                                 "/win32/aspell/bin"))
- (add-to-list 'exec-path (expand-file-name
-                          (concat my-local-exec-path "/win32/hunspell")))
- (add-to-list 'exec-path (expand-file-name
-                          (concat my-local-exec-path "/win32/stunnel"))))
+ (add-to-list 'exec-path (concat my-local-exec-path
+                                 "/win32/aspell/bin"))
+ ;; (add-to-list 'exec-path (expand-file-name
+ ;;                          (concat my-local-exec-path "/win32/hunspell")))
+ ;; (add-to-list 'exec-path (expand-file-name
+ ;;                          (concat my-local-exec-path "/win32/stunnel")))
+ )
 ;; NOTE: Linux don't need it
 (GNULinux
   ;; (setenv "PATH" (concat

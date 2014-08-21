@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 00:38 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 02:54 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -215,7 +215,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'ethan-wspace)
   (require-package 'everything)
   (require-package 'fic-ext-mode)
-  (require-package 'fit-frame)
+  ;; (require-package 'fit-frame) ;; not very useful
   (require-package 'flx-ido)
   (require-package 'flx)
   (require-package 'fold-this)
@@ -274,10 +274,10 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'magithub) ;; not useful
   (require-package 'markdown-mode)
   (require-package 'marmalade)
-  (require-package 'marmalade-test)
+  ;; (require-package 'marmalade-test)
   (require-package 'maxframe)
   ;; (require-package 'melpa) ;; not avaliable any more
-  (require-package 'mew)
+  ;; (require-package 'mew)
   (require-package 'mic-paren)
   (require-package 'mo-git-blame)
   (require-package 'modeline-posn)
@@ -290,9 +290,9 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'org '(8)) ;; NOTE: install the latest version
   ;; (require-package 'org-cua-dwim)
   ;; (require-package 'org-mime)
-  (require-package 'org-plus-contrib)
+  ;; (require-package 'org-plus-contrib)
   ;; (require-package 'org-table-comment)  ;; nerver used by now
-  (require-package 'org2blog)
+  (require-package 'org2blog) ;; NOTE: dependent on melpa org package
   ;; (require-package 'o-blog) ;; NOTE: o-blog package is not stable right now
   (require-package 'outline-magic)
   (require-package 'popup)
@@ -302,8 +302,8 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'rect-mark)
   (require-package 'region-list-edit)
   (require-package 'revive)
-  (require-package 'rw-hunspell)
-  (require-package 'rw-ispell)
+  ;; (require-package 'rw-hunspell)
+  ;; (require-package 'rw-ispell)
   (require-package 's)
   (require-package 'shell-command)
   (require-package 'shell-here)

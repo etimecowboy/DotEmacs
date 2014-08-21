@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 02:36 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 01:51 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -344,6 +344,7 @@ from tradition chinese to simple chinese" t)
 
 
 ;;* shell-pop
+
 ;; pop up a window for shell
 (autoload 'shell-pop "shell-pop" "Pop-up a shell" t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
@@ -352,24 +353,25 @@ from tradition chinese to simple chinese" t)
 
 
 
+
 ;;* shell-here
 (global-set-key (kbd "<f9> d") 'shell-here)
 
 
 ;;* hunspell
-;; NOTE: Commented due to use aspell instead of hunspell
-;; ;; (eval-after-load "rw-hunspell" '(rw-hunspell-postload))
-;; ;; (eval-after-load "rw-ispell" '(rw-ispell-postload))
-;; ;; (require 'rw-language-and-country-codes)
-;; ;; (require 'rw-ispell)
-;; ;; (Windows
-;; ;;  (require 'rw-hunspell))
+;; (eval-after-load "rw-hunspell" '(rw-hunspell-postload))
+;; (eval-after-load "rw-ispell" '(rw-ispell-postload))
+;; (require 'rw-language-and-country-codes)
+;; (require 'rw-ispell)
 ;; (Windows
-;;  (eval-after-load "rw-hunspell" '(rw-hunspell-postload))
-;;  (eval-after-load "rw-ispell" '(rw-ispell-postload))
-;;  ;; (require 'rw-language-and-country-codes)
-;;  (require 'rw-ispell)
 ;;  (require 'rw-hunspell))
+;; (Windows
+ ;; (eval-after-load "rw-hunspell" '(rw-hunspell-postload))
+ ;; (eval-after-load "rw-ispell" '(rw-ispell-postload))
+ ;; (require 'rw-language-and-country-codes)
+ ;; (require 'rw-ispell)
+ ;; (require 'rw-hunspell)
+;; )
 
 
 

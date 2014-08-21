@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-01-09 Thu 17:13 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-08-21 Thu 01:21 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -56,9 +56,10 @@
 
 ;;** icomplete
 ;; minibuffer中输入部分命令就可以使用补全
-(eval-after-load "icomplete"
-  '(progn
-    (icomplete-postload)))
+;; NOTE: Use smex instead
+;; (eval-after-load "icomplete"
+;;   '(progn
+;;     (icomplete-postload)))
 
 ;;     (eal-define-keys
 ;;      'completion-list-mode-map

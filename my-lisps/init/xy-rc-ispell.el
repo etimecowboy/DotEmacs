@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-03-01 Fri 01:29 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 01:54 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ispell.el'
 ;; Author:       Xin Yang
@@ -29,9 +29,15 @@
    ;; ispell-complete-word-dict "/usr/share/dict/words"))
    )
 
+  ;; (Windows
+  ;;  (setq ispell-program-name "hunspell.exe")
+  ;;  (setq-default ispell-dictionary "en_GB_hunspell"))
+
   (Windows
-   (setq ispell-program-name "hunspell.exe")
-   (setq-default ispell-dictionary "en_GB_hunspell"))
+   (setq ispell-program-name "aspell")
+   (setq-default ispell-dictionary "british")
+   (ispell-change-dictionary "british" t)
+   (ispell-change-dictionary "english" t))
 
   (setq ispell-choices-win-default-height 2
         ispell-check-comments t

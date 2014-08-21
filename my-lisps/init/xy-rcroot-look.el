@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 00:27 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 02:51 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -106,7 +106,7 @@
 
 (eal-define-keys-commonly
  global-map
- `(("S-<f5>"    fit-frame) ;; `fit-frame.el'
+ `(;; ("S-<f5>"    fit-frame) ;; `fit-frame.el'
    ("M-<f5>"    maximize-frame) ;; `maxframe.el'
    ("C-<f5>"    restore-frame)  ;; `maxframe.el'
    ;; ("M-<f5>"    toggle-max-frame)  ;; `frame-cmds.el'

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-07 Thu 22:37 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-08-21 Thu 02:24 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -44,7 +44,7 @@
   "Name of diretory where my local man files reside.")
 (defvar my-emacs-path (expand-file-name "~/Dropbox/emacs")
   "Name of directory where my working files reside.")
-(defvar my-var-path (expand-file-name "var" my-emacs-path)
+(defvar my-var-path (expand-file-name "var" my-emacs-sys-path)
   "Name of directory where my various Emacs log/record files reside.")
 
 ;;*** Machine names --- which machine are we using?

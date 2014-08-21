@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-07-01 Mon 17:19 by xin on vmlmde>
+;; Time-stamp: <2014-08-21 Thu 02:43 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-net.el'
 ;; Author:       Xin Yang
@@ -26,48 +26,50 @@
 
 
 
+;; NOTE: Commented due to use of emacs-w64
 ;; Use external program as the default web browser in X-window
-(if window-system
-    (progn
-      (Windows
-       (setq browse-url-browser-function
-             'browse-url-default-windows-browser))
-      (GNULinux
-       (setq browse-url-browser-function
-             'browse-url-default-browser)))
-  (setq browse-url-browser-function 'w3m-browse-url))
+;; (if window-system
+;;     (progn
+;;       (Windows
+;;        (setq browse-url-browser-function
+;;              'browse-url-default-windows-browser))
+;;       (GNULinux
+;;        (setq browse-url-browser-function
+;;              'browse-url-default-browser)))
+;;   (setq browse-url-browser-function 'w3m-browse-url))
 
 
 
 ;;* w3m
-(eval-after-load "w3m"
-  '(progn
-     (w3m-postload)
-     (eal-define-keys
-      'w3m-mode-map
-      `(("C-x W f"      w3m-external-view-current-url)
-        ("C-x W F"      w3m-external-view-this-url)
-        ("C-x W o"      org-w3m-copy-for-org-mode) ;; copy region as org format
-        ("S-<mouse-1>"  w3m-mouse-view-this-url-new-session)
-        ("<mouse-3>"    w3m-mouse-major-mode-menu)
-        ("C-x W s"      w3m-save-current-buffer)
-        ("C-x W w"      w3m-weather)
-        ("C-x W l"      w3m-copy-current-url)))))
+;; NOTE: Commented due to use of emacs-w64
+;; (eval-after-load "w3m"
+;;   '(progn
+;;      (w3m-postload)
+;;      (eal-define-keys
+;;       'w3m-mode-map
+;;       `(("C-x W f"      w3m-external-view-current-url)
+;;         ("C-x W F"      w3m-external-view-this-url)
+;;         ("C-x W o"      org-w3m-copy-for-org-mode) ;; copy region as org format
+;;         ("S-<mouse-1>"  w3m-mouse-view-this-url-new-session)
+;;         ("<mouse-3>"    w3m-mouse-major-mode-menu)
+;;         ("C-x W s"      w3m-save-current-buffer)
+;;         ("C-x W w"      w3m-weather)
+;;         ("C-x W l"      w3m-copy-current-url)))))
 
-(eal-define-keys-commonly
- global-map
- `(("C-x W n"     w3m-goto-url-new-session)
-   ("C-x W b"     view-w3m-bookmark)
-   ("C-x W w"     switch-to-w3m)
-   ("<f8> u"      browse-url)
-   ;; ("<f8> d"      lookup-word-definition)
-   ;; ("<f8> w"      lookup-wikipedia) ;; not very useful
-   ;; ("<f8> s"      google-region)
-   ))
+;; (eal-define-keys-commonly
+;;  global-map
+;;  `(("C-x W n"     w3m-goto-url-new-session)
+;;    ("C-x W b"     view-w3m-bookmark)
+;;    ("C-x W w"     switch-to-w3m)
+;;    ("<f8> u"      browse-url)
+;;    ;; ("<f8> d"      lookup-word-definition)
+;;    ;; ("<f8> w"      lookup-wikipedia) ;; not very useful
+;;    ;; ("<f8> s"      google-region)
+;;    ))
 
-(setq browse-url-generic-program "w3m") ;; It won't affect emacs
-                                        ;; default browser
-(global-set-key (kbd "<f8> w") 'w3m)
+;; (setq browse-url-generic-program "w3m") ;; It won't affect emacs
+;;                                         ;; default browser
+;; (global-set-key (kbd "<f8> w") 'w3m)
 
 
 
@@ -189,61 +191,64 @@
 
 ;;* emms
 ;; Emacs 音乐播放器
-(eval-after-load "emms-playlist-mode"
-  '(progn
-     (emms-postload)
-     (eal-define-keys
-     'emms-playlist-mode-map
-      `(("<double-mouse-1>" emms-pause)))))
+;; NOTE: Commented due to lack of usage
+;; (eval-after-load "emms-playlist-mode"
+;;   '(progn
+;;      (emms-postload)
+;;      (eal-define-keys
+;;      'emms-playlist-mode-map
+;;       `(("<double-mouse-1>" emms-pause)))))
 
-(eal-define-keys
- 'dired-mode-map
- `(("C-x a"    emms-add-dired)
-   ("C-x p"    emms-play-dired)))
+;; (eal-define-keys
+;;  'dired-mode-map
+;;  `(("C-x a"    emms-add-dired)
+;;    ("C-x p"    emms-play-dired)))
 
-(eal-define-keys-commonly
- global-map
- `(("<f8> e"  xy/emms-start)
-   ("C-x E b" emms-browser)
-   ("C-x E f" emms-play-file)
-   ("C-x E l" emms-play-playlist)
-   ("C-x E s" emms-playlist-save)
-   ("C-x E d" emms-play-directory)
-   ("C-x E m" emms-playlist-mode-go)
-   ("C-x E p" emms-playlist-mode-go-popup)
-   ("C-x E a" emms-add-directory)
-   ("C-x E t" emms-add-directory-tree)
-   ("C-x E <up>"      emms-start)
-   ("C-x E <down>"    emms-pause)
-   ("C-x E <left>"    emms-previous)
-   ("C-x E <right>"   emms-next)
-   ;; ("C-x E <right>"   emms-seek-forward)
-   ;; ("C-x E <left>"    emms-seek-backward)
-   ;; BUG: Only works in Linux with `amixer' installed
-   ("C-x E +"  emms-volume-raise)
-   ("C-x E -"  emms-volume-lower)))
+;; (eal-define-keys-commonly
+;;  global-map
+;;  `(("<f8> e"  xy/emms-start)
+;;    ("C-x E b" emms-browser)
+;;    ("C-x E f" emms-play-file)
+;;    ("C-x E l" emms-play-playlist)
+;;    ("C-x E s" emms-playlist-save)
+;;    ("C-x E d" emms-play-directory)
+;;    ("C-x E m" emms-playlist-mode-go)
+;;    ("C-x E p" emms-playlist-mode-go-popup)
+;;    ("C-x E a" emms-add-directory)
+;;    ("C-x E t" emms-add-directory-tree)
+;;    ("C-x E <up>"      emms-start)
+;;    ("C-x E <down>"    emms-pause)
+;;    ("C-x E <left>"    emms-previous)
+;;    ("C-x E <right>"   emms-next)
+;;    ;; ("C-x E <right>"   emms-seek-forward)
+;;    ;; ("C-x E <left>"    emms-seek-backward)
+;;    ;; BUG: Only works in Linux with `amixer' installed
+;;    ("C-x E +"  emms-volume-raise)
+;;    ("C-x E -"  emms-volume-lower)))
 
 
 
 ;;* gnus
 ;; 新闻组阅读
-(eval-after-load "gnus"
-  '(progn
-     (gnus-postload)
-     (define-key gnus-summary-mode-map (kbd "C-c C-x C-s")
-       'my-archive-article)))
-(global-set-key (kbd "<f8> g") 'gnus)
+;; NOTE: Commented due to lack of news server
+;; (eval-after-load "gnus"
+;;   '(progn
+;;      (gnus-postload)
+;;      (define-key gnus-summary-mode-map (kbd "C-c C-x C-s")
+;;        'my-archive-article)))
+;; (global-set-key (kbd "<f8> g") 'gnus)
 
 
 
 ;;* mew
 ;; email client
-(eval-after-load "mew" '(mew-postload))
-(setq mail-user-agent 'mew-user-agent) ;; set mew as emacs email agent
-(autoload 'mew "mew" nil t)
-(autoload 'mew-send "mew" nil t)
-(autoload 'mew-user-agent-compose "mew" nil t)
-(global-set-key (kbd "<f8> m") 'mew)
+;; NOTE: Commented due to use of emacs-w64
+;; (eval-after-load "mew" '(mew-postload))
+;; (setq mail-user-agent 'mew-user-agent) ;; set mew as emacs email agent
+;; (autoload 'mew "mew" nil t)
+;; (autoload 'mew-send "mew" nil t)
+;; (autoload 'mew-user-agent-compose "mew" nil t)
+;; (global-set-key (kbd "<f8> m") 'mew)
 
 
 
