@@ -235,8 +235,9 @@
 (setq auto-save-default nil)
 (setq-default auto-save-list-file-prefix
               (concat my-var-path "/auto-save-list/auto-saves-"
-                      user-login-name "@" system-name "@" system-configuration
-                      "-"))
+                      user-login-name "-"
+                      system-name "-"
+                      system-configuration "-"))
 
 
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-07-26 Sat 22:54 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 16:45 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-tramp.el'
 ;; Author:       Xin Yang
@@ -37,8 +37,8 @@
 
   (setq-default tramp-persistency-file-name
                 (concat my-var-path "/tramp-"
-                        user-login-name "@"
-                        system-name "@"
+                        user-login-name "-"
+                        system-name "-"
                         system-configuration))
   ;; (unless (file-exists-p tramp-persistency-file-name)
   ;;   (shell-command (concat "touch " tramp-persistency-file-name)))

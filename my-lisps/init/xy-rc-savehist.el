@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 16:22 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 16:34 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-savehist.el'
 ;; Author:       Xin Yang
@@ -19,15 +19,14 @@
 ;;;###autoload
 (defun savehist-preload ()
   "Settings of `savehist.el' before it's been loaded."
-  (Laptop
-   (setq-default savehist-file (concat my-var-path "/savehist-"
-                                       user-login-name "@"
-                                       system-name "@"
-                                       system-configuration))
-   (unless (file-exists-p savehist-file)
-     (shell-command (concat "touch " savehist-file))))
-  (OfficePC
-   (setq-default savehist-file (concat my-var-path "/savehist")))
+  (setq-default savehist-file
+                (concat my-var-path "/savehist-"
+                        user-login-name "-"
+                        system-name "-"
+                        system-configuration))
+  ;; (unless (file-exists-p savehist-file)
+  ;;   (shell-command (concat "touch " savehist-file))))
+
   (message "* ---[ savehist pre-load configuration is complete ]---"))
 
 

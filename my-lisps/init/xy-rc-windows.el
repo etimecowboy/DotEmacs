@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-29 Tue 08:16 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 16:45 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-windows.el'
 ;; Author:       Xin Yang
@@ -21,10 +21,11 @@
   "Settings of `windows' before it's been loaded."
 
   ;; set configuration file location.
-  (setq win:configuration-file (concat my-var-path "/windows-"
-                                       user-login-name "@"
-                                       system-name "@"
-                                       system-configuration))
+  (setq win:configuration-file
+        (concat my-var-path "/windows-"
+                user-login-name "-"
+                system-name "-"
+                system-configuration))
   ;; (unless (file-exists-p win:configuration-file)
   ;;   (shell-command (concat "touch " win:configuration-file)))
 
@@ -42,10 +43,11 @@
   ;; Remove frame number in `global-mode-string'
   (delete 'win:mode-string global-mode-string)
   ;; set configuration file location.
-  (setq win:configuration-file (concat my-var-path "/windows-"
-                                       user-login-name "@"
-                                       system-name "@"
-                                       system-configuration))
+  (setq win:configuration-file
+        (concat my-var-path "/windows-"
+                user-login-name "-"
+                system-name "-"
+                system-configuration))
   ;; (unless (file-exists-p win:configuration-file)
   ;;   (shell-command (concat "touch " win:configuration-file)))
 

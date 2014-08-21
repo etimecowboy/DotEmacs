@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 02:20 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 16:49 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-bookmark.el'
 ;; Author:       Xin Yang
@@ -20,9 +20,11 @@
 (defun bookmark-preload ()
   "Settings of `bookmark.el' before it's been loaded."
 
-  ;; (setq bookmark-default-file
-  ;;       (concat my-var-path "/bookmark-" user-login-name "@"
-  ;;               system-name "@" system-configuration))
+  ;; (setq-default bookmark-default-file
+  ;;       (concat my-var-path "/bookmark-"
+  ;;               user-login-name "-"
+  ;;               system-name "-"
+  ;;               system-configuration))
   (setq bookmark-save-flag 1)
 
   (message "* ---[ bookmark pre-load configuration is complete ]---"))
@@ -32,9 +34,11 @@
   "Settings of `bookmark.el' after it's been loaded."
 
   ;; BUG: not work! use default ~/.emacs.d/bookmarks instead.
-  ;; (setq bookmark-default-file
-  ;;       (concat my-var-path "/bookmark-" user-login-name "@"
-  ;;               system-name "@" system-configuration))
+  ;; (setq-default bookmark-default-file
+  ;;       (concat my-var-path "/bookmark-"
+  ;;               user-login-name "-"
+  ;;               system-name "-"
+  ;;               system-configuration))
   ;; (unless (file-exists-p bookmark-default-file)
   ;;   (shell-command (concat "touch " bookmark-default-file)))
 

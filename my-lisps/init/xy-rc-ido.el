@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-19 Sat 22:20 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 16:38 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ido.el'
 ;; Author:       Xin Yang
@@ -68,16 +68,16 @@
 
   ;; (setq ido-save-directory-list-file
   ;;               (concat my-var-path "/ido-last-"
-  ;;                         user-login-name "@"
-  ;;                         system-name "@"
+  ;;                         user-login-name "-"
+  ;;                         system-name "-"
   ;;                         system-configuration))
 
   ;; NOTE: no need to have different ido-last files on different
   ;;       machines.
   (setq ido-save-directory-list-file
         (concat my-var-path "/ido-last-"
-                user-login-name "@"
-                system-name "@"
+                user-login-name "-"
+                system-name "-"
                 system-configuration))
   (unless (file-exists-p ido-save-directory-list-file)
     (shell-command (concat "touch " ido-save-directory-list-file)))

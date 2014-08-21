@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 16:22 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 16:33 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-recentf.el'
 ;; Author:       Xin Yang
@@ -19,16 +19,13 @@
 ;;;###autoload
 (defun recentf-preload ()
   "Settings of `recentf.el' before it's been loaded."
-  (Laptop
    (setq-default recentf-save-file
                  (concat my-var-path "/recentf-"
-                         user-login-name "@"
-                         system-name "@"
+                         user-login-name "-"
+                         system-name "-"
                          system-configuration))
-   (unless (file-exists-p recentf-save-file)
-     (shell-command (concat "touch " recentf-save-file))))
-  (OfficePC
-   (setq-default recentf-save-file (concat my-var-path "/recentf")))
+   ;; (unless (file-exists-p recentf-save-file)
+   ;;   (shell-command (concat "touch " recentf-save-file))))
    (message "* ---[ recentf pre-load configuration is complete ]---"))
 
 ;; BUG: NOT working

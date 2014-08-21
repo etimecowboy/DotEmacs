@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-19 Sat 22:40 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 16:45 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-woman.el'
 ;; Author:       Xin Yang
@@ -21,10 +21,11 @@
   "Settings for `woman-mode' after it's been loaded."
 
   (add-to-list 'woman-manpath my-local-man-path)
-  (setq woman-cache-filename (concat my-var-path "/wmncach-"
-                                     user-login-name "@"
-                                     system-name "@"
-                                     system-configuration))
+  (setq woman-cache-filename
+        (concat my-var-path "/wmncach-"
+                user-login-name "-"
+                system-name "-"
+                system-configuration))
   (unless (file-exists-p woman-cache-filename)
     (shell-command (concat "touch " woman-cache-filename)))
   (setq woman-use-own-frame t)

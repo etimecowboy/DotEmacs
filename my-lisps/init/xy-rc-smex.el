@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-19 Sat 22:39 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 16:45 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-smex.el'
 ;; Author:       Xin Yang
@@ -33,12 +33,12 @@
 
   (setq-default smex-save-file
                 (concat my-var-path "/smex-save-"
-                        user-login-name "@"
-                        system-name "@"
+                        user-login-name "-"
+                        system-name "-"
                         system-configuration))
                 ;; (concat my-var-path "/smex-save"))
-  (unless (file-exists-p smex-save-file)
-    (shell-command (concat "touch " smex-save-file)))
+  ;; (unless (file-exists-p smex-save-file)
+  ;;   (shell-command (concat "touch " smex-save-file)))
   (setq smex-history-length 100)
 
   (defun smex-update-after-load (unused)

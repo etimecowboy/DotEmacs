@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-10-19 Sat 21:06 by xin on S13>
+;; Time-stamp: <2014-08-21 Thu 16:43 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-session.el'
 ;; Author:       Xin Yang
@@ -20,12 +20,13 @@
 (defun session-preload ()
   "Settings for `session' before it's been loaded."
 
-  (setq session-save-file (concat my-var-path "/session-"
-                                  user-login-name "@"
-                                  system-name "@"
-                                  system-configuration))
-  (unless (file-exists-p session-save-file)
-    (shell-command (concat "touch " session-save-file)))
+  (setq session-save-file
+        (concat my-var-path "/session-"
+                user-login-name "-"
+                system-name "-"
+                system-configuration))
+  ;; (unless (file-exists-p session-save-file)
+  ;;   (shell-command (concat "touch " session-save-file)))
 
   (message "* ---[ session pre-load configuration is complete ]---"))
 
@@ -37,12 +38,13 @@
   ;;      position.
   ;; (setq session-initialize '(session menus))
 
-  (setq-default session-save-file (concat my-var-path "/session-"
-                                          user-login-name "@"
-                                          system-name "@"
-                                          system-configuration))
-  (unless (file-exists-p session-save-file)
-    (shell-command (concat "touch " session-save-file)))
+  (setq-default session-save-file
+                (concat my-var-path "/session-"
+                        user-login-name "-"
+                        system-name "-"
+                        system-configuration))
+  ;; (unless (file-exists-p session-save-file)
+  ;;   (shell-command (concat "touch " session-save-file)))
 
   ;; OrgMode org-mark-ring is a circular object.
   ;; Don't recursively display gtd files in session list
