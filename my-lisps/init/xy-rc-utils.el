@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 02:24 by xin on S13>
+;; Time-stamp: <2014-08-23 Sat 13:38 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1367,14 +1367,14 @@ The process is:
 
   ;; downloaded lisps
   (xy/install-lisps my-local-lisp-path)
-  (xy/install-lisps (concat my-local-lisp-path "/ac-math"))
+  ;; (xy/install-lisps (concat my-local-lisp-path "/ac-math"))
   ;; (xy/recompile-dir
   ;;  (concat my-local-lisp-path "/auctex-11.87") 'with-subdirs 'recursive)
   ;; (xy/install-lisps (concat my-local-lisp-path "/apel"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/flim"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/semi"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/cc-mode-5.32.3"))
-  (xy/install-lisps (concat my-local-lisp-path "/command-log-mode"))
+  ;; (xy/install-lisps (concat my-local-lisp-path "/command-log-mode"))
   (xy/install-lisps (concat my-local-lisp-path "/dea"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/elib-1.0"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/mule-ucs-20061127-1/lisp"))
@@ -1383,11 +1383,11 @@ The process is:
   (xy/install-lisps (concat my-local-lisp-path "/eim-2.4"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/google-weather-el"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/ibus-el-0.3.2"))
-  (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
+  ;; (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
   (xy/install-lisps (concat my-local-lisp-path "/matlab-emacs"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/mew-6.5"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/auctex-11.87"))
-  (xy/install-lisps (concat my-local-lisp-path "/elscreen"))
+  ;; (xy/install-lisps (concat my-local-lisp-path "/elscreen"))
   (xy/install-lisps (concat my-local-lisp-path "/git-wip"))
   (xy/install-lisps (concat my-local-lisp-path "/o-blog-1.2"))
 

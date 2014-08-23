@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 23:42 by xin on S13>
+;; Time-stamp: <2014-08-23 Sat 13:35 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -19,8 +19,8 @@
 
 
 ;;* User information
-(setq user-full-name "Xin Yang")
-(setq user-mail-address "xin2.yang@gmail.com")
+(setq user-full-name "etimecowboy")
+(setq user-mail-address "etimecowboy@gmail.com")
 
 
 

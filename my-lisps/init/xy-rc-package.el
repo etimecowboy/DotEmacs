@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 23:56 by xin on S13>
+;; Time-stamp: <2014-08-23 Sat 13:33 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -356,6 +356,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'command-log-mode)
   (require-package 'hideshow-org)
   (require-package 'psvn)
+  (require-package 'ecb)
   
   (message "* ---[ package post-load configuration is complete ]---"))
 
