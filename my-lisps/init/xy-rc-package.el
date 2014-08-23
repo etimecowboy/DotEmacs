@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-23 Sat 13:33 by xin on S13>
+;; Time-stamp: <2014-08-23 Sat 14:07 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -155,7 +155,12 @@ re-downloaded in order to locate PACKAGE."
     (package-refresh-contents))
 
   (require-package 'ac-dabbrev)
+
   (require-package 'ace-jump-mode)
+  (require-package 'ace-jump-buffer)
+  (require-package 'ace-window)
+  (require-package 'ace-link)
+  
   ;; (require-package 'ack-menu)  ;; ack is not used
   ;; (require-package 'ansi)  ;; never used
   (require-package 'ahg)
