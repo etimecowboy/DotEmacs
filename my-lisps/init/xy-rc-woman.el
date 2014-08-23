@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 16:45 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-08-23 Sat 21:00 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-woman.el'
 ;; Author:       Xin Yang
@@ -26,9 +26,9 @@
                 user-login-name "-"
                 system-name "-"
                 system-configuration))
-  (unless (file-exists-p woman-cache-filename)
-    (shell-command (concat "touch " woman-cache-filename)))
-  (setq woman-use-own-frame t)
+  ;; (unless (file-exists-p woman-cache-filename)
+  ;;   (shell-command (concat "touch " woman-cache-filename)))
+  (setq woman-use-own-frame nil) ;; t have problem after close the man frame
   (setq woman-fill-column 100)
 
   (defun woman-mode-hook-settings ()

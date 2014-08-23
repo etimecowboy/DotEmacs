@@ -133,7 +133,7 @@
   (case system-type
     ;; HACK: use growl-for-windows instead of snarl
     ;; (windows-nt "C:/Program Files/full phat/Snarl/exrras/sncmd/snarl_command.exe")
-    (windows-nt "D:/Growl/growlnotify.exe")
+    (windows-nt "C:/Program Files/Growl/growlnotify.exe")
     (darwin "/usr/local/bin/growlnotify")
     (t "notify-send"))
   "Path to command for sending growl-like messages.
