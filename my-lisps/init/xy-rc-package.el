@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-23 Sat 14:07 by xin on S13>
+;; Time-stamp: <2014-08-23 Sat 15:03 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -167,6 +167,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'anti-zenburn-theme) ;; not pretty
   (require-package 'ascii)
   (require-package 'auto-complete)
+  (require-package 'ac-math)
   (require-package 'auto-dim-other-buffers)
   (require-package 'autopair)
   

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 16:35 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-08-23 Sat 15:02 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auto-complete.el'
 ;; Author:       Xin Yang
@@ -139,16 +139,16 @@
   ;; LaTeX math symbols and the another one for Unicode input of math
   ;; characters.
   ;; REF: (@url :file-name "http://code.google.com/p/ac-math/" :display "Official website")
-  (require 'ac-math)
+  (when (try-require 'ac-math)
 
-  (defun my-ac-latex-mode-setup ()         ; add ac-sources to default ac-sources
-    (setq ac-sources
-          (append '(ac-source-math-unicode ac-source-math-latex
-                                           ac-source-latex-commands)
-                  ac-sources)))
+    (defun my-ac-latex-mode-setup ()         ; add ac-sources to default ac-sources
+      (setq ac-sources
+            (append '(ac-source-math-unicode ac-source-math-latex
+                                             ac-source-latex-commands)
+                    ac-sources)))
 
-  (add-hook 'latex-mode-hook 'my-ac-latex-mode-setup)
-  (add-hook 'LaTeX-mode-hook 'my-ac-latex-mode-setup)
+    (add-hook 'latex-mode-hook 'my-ac-latex-mode-setup)
+    (add-hook 'LaTeX-mode-hook 'my-ac-latex-mode-setup))
 
   ;;------------------------------------------------------------------
   ;; org mode settings
