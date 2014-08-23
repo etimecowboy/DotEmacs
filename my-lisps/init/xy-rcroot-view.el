@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-23 Sat 14:18 by xin on S13>
+;; Time-stamp: <2014-08-23 Sat 20:34 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-view.el'
 ;; Author:       Xin Yang
@@ -59,6 +59,12 @@
 
 ;;** doc-view
 (eval-after-load "doc-view" '(doc-view-postload))
+;; REF: (@url :file-name "http://www.idryman.org/blog/2013/05/20/emacs-and-pdf/" :display "Blog post: \"Emacs and PDF\"")
+;; Navigate the pages while your cursor is in another window
+(fset 'doc-prev "\C-xo\C-x[\C-xo")
+(fset 'doc-next "\C-xo\C-x]\C-xo")
+(global-set-key (kbd "M-[") 'doc-prev)
+(global-set-key (kbd "M-]") 'doc-next)
 
 
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-24 Thu 15:41 by xin on vmlmde>
+;; Time-stamp: <2014-08-23 Sat 20:34 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-doc-view.el'
 ;; Author:       Xin Yang
