@@ -973,7 +973,7 @@
 
   ;;** General settings
   (setq org-export-backends
-        '(ascii beamer html icalendar latex md org freemind rss))
+        '(ascii beamer html latex md org))
   (setq org-file-apps ;; set default viewer for exported files
         '((auto-mode       . emacsclient)
           ("\\.odc\\'"     . system)
