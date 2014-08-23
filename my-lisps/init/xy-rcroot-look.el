@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-21 Thu 02:51 by xin on S13>
+;; Time-stamp: <2014-08-23 Sat 20:05 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -691,39 +691,7 @@
 
 ;; Change default text in the *scratch* buffer
 ;; NOTE: a warnning message is nessary for emacs fans like me
-(setq-default initial-scratch-message
-  "=====================================================================
-NOTE:
-
-1. Change of default key bindings
-   - Close current Emacs frame (C-x C-c or M-x xy/done)
-   - Close this Emacs session (C-x M-c or M-x save-buffers-kill-emacs)
-
-2. Installation and reconfiguration
-   1) Delete ~/.emacs.d/my-lisps/init/xy-rcroot-env.elc 
-   2) Start Emacs
-   3) Compile emacs lisp packages (C-x B or M-x xy/emacs-build)
-   4) Run 3) several times
-   5) Restart Emacs
-
-======================================================================
-Bookmarks:
-
-- ~/Dropbox/emacs/org/gtd
-- ~/Dropbox/emacs/org/source/myblogs/oblog
-- ~/Dropbox/emacs/org/html/myblogs/oblog/oblog-work/index.html
-- ~/Dropbox/emacs/org/html/myblogs/oblog/oblog-life/index.html
-- ~/Dropbox/emacs/org/html/myblogs/oblog/oblog-emacs/index.html
-- ~/Dropbox/emacs/org/html/myblogs/oblog/oblog-software/index.html
-- ~/Dropbox/emacs/org/xy-rc-custom.el
-
------------------------------------------------------------------------
-
-- ~/.emacs.d/my-lisps/init/
-- ~/.emacs.d/my-lisps/init/xy-rcroot-env.el
-
-======================================================================
-")
+(setq-default initial-scratch-message "")
 
 
 

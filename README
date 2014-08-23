@@ -8,8 +8,21 @@ account.
 
 * Installation
 
-1. Clone the repository to "~/.emacs.d/".
+1. Clone the repository to "~/.emacs.d/" with all submodules.
 2. Enter "~/.emacs.d/bin" folder, and then the sub-folder that matches
    the running operating system.
 3. Run the "make-my-emacs" script in your Linux terminal or the MinGW
-   bash shell in Windows.
+   bash shell in Windows, or just start emacs, then compile emacs lisps
+   (C-x B or M-x xy/emacs-build) serveral times if there were errors.
+
+* Reconfiguration
+
+1. Make sure there is no ~/.emacs.d/my-lisps/init/xy-rcroot-env.elc
+(normally, it has be deleted by emacs itself)
+2. Restart emacs.
+
+* Note
+
+1. Change of default key bindings
+   - Close current Emacs frame (C-x C-c or M-x xy/done)
+   - Close this Emacs session (C-x M-c or M-x save-buffers-kill-emacs)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-23 Sat 15:03 by xin on ubuntu>
+;; Time-stamp: <2014-08-23 Sat 15:21 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -294,7 +294,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'nzenburn-theme) ;; use my my hacked version
   (require-package 'oauth)
   ;; (require-package 'openwith)
-  ;; (require-package 'org '(8)) ;; NOTE: install the latest version
+  (require-package 'org '(8)) ;; NOTE: install the latest version
   ;; (require-package 'org-cua-dwim)
   ;; (require-package 'org-mime)
   ;; (require-package 'org-plus-contrib)
