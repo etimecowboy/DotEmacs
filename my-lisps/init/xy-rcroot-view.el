@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-23 Sat 14:07 by xin on S13>
+;; Time-stamp: <2014-08-23 Sat 14:18 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-view.el'
 ;; Author:       Xin Yang
@@ -73,13 +73,12 @@
 
 
 ;;** centered-cursor-mode
-;; (autoload 'centered-cursor-mode "centered-cursor-mode" nil t)
-;; (autoload 'global-centered-cursor-mode "centered-cursor-mode" nil t)
-;; (eval-after-load "centered-cursor-mode" '(centered-cursor-mode-postload))
-(when (try-require 'centered-cursor-mode)
-  (global-set-key (kbd "<f6> m") 'centered-cursor-mode)
-  (global-set-key (kbd "<f6> M") 'global-centered-cursor-mode)
-  (global-centered-cursor-mode 1))
+(autoload 'centered-cursor-mode "centered-cursor-mode" nil t)
+(autoload 'global-centered-cursor-mode "centered-cursor-mode" nil t)
+(eval-after-load "centered-cursor-mode" '(centered-cursor-mode-postload))
+(global-set-key (kbd "<f6> m") 'centered-cursor-mode)
+(global-set-key (kbd "<f6> M") 'global-centered-cursor-mode)
+
 
 
 ;;* Compare buffers/files
