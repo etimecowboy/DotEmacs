@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-14 Mon 23:44 by xin on S13>
+;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-pulse.el'
 ;; Author:       Xin Yang

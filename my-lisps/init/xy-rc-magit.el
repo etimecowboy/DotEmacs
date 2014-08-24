@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-04-26 Sat 19:39 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-magit.el'
 ;; Author:       Xin Yang

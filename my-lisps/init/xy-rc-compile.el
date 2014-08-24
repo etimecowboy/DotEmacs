@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-05 Sun 20:13 by xin on p5q>
+;; Time-stamp: <2014-08-24 Sun 03:47 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-compile.el'
 ;; Author:       Xin Yang

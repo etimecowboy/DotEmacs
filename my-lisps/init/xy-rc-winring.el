@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2012-08-06 Mon 11:00 by xin on p5q>
+;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-winring.el'
 ;; Author:       Xin Yang

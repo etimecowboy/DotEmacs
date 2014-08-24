@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-11-30 Sat 11:03 by xin on S13>
+;; Time-stamp: <2014-08-24 Sun 03:47 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elscreen.el'
 ;; Author:       Xin Yang
@@ -30,6 +30,8 @@
  ;; (remove-hook 'after-make-frame-functions 'elscreen-make-frame-confs)
  ;; (remove-hook 'delete-frame-functions 'elscreen-delete-frame-confs)
 
+ (try-require 'elscreen-mew)
+ 
  (message "* ---[ elscreen post-load configuration is complete ]---"))
 
 (provide 'xy-rc-elscreen)

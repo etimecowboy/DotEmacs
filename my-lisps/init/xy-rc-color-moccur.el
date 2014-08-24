@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2013-01-14 Mon 17:29 by xin on S13>
+;; Time-stamp: <2014-08-24 Sun 03:47 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-color-moccur.el'
 ;; Author:       Xin Yang

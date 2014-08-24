@@ -2,7 +2,7 @@
 ;; time-stamp: <2012-11-18 sun 23:55 by xin on s13>
 ;;--------------------------------------------------------------------
 ;; file name:    `xy-rcroot-filemgr.el'
-;; author:       xin yang
+;; author:       Xin Yang
 ;; email:        xin2.yang@gmail.com
 ;; description:  file management packages settings
 ;;    ___ _ __ ___   __ _  ___ ___
