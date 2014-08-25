@@ -44,7 +44,7 @@
 (require 'midnight)
 
 ;;kill buffers if they were last disabled more than this seconds ago
-(setq clean-buffer-list-delay-special 900)
+(setq clean-buffer-list-delay-special 1800)
 
 (defvar clean-buffer-list-timer nil
   "Stores clean-buffer-list timer if there is one. You can disable clean-buffer-list by (cancel-timer clean-buffer-list-timer).")
