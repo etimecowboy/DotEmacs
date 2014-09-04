@@ -713,16 +713,21 @@
                          "Scheduled Tasks in 7 Days")
                         (org-tags-match-list-sublevels nil)))
 
-            (tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-SCHEDULED<=\"<+7d>\"-SCHEDULED>\"<+14d>\"-DEADLINE<=\"<+7d>\"-DEADLINE>\"<+14d>\"-repeat-bookmark-appt-note-english"
+            (tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-SCHEDULED<=\"<+7d>\"-SCHEDULED>\"<+14d>\"-DEADLINE<=\"<+7d>\"-DEADLINE>\"<+14d>\"-repeat-bookmark-appt-note-english-prj"
                        ((org-agenda-overriding-header
                          "Pending Next Actions")
                         (org-tags-match-list-sublevels t)))
 
+            (tags-todo "prj-repeat-bookmark-note-english"
+                       ((org-agenda-overriding-header
+                         "Projects Reminder")
+                        (org-tags-match-list-sublevels t)))
+            
             (tags-todo "TODO=\"TODO\"-repeat"
                        ((org-agenda-overriding-header
                          "Task Inbox")
                         (org-tags-match-list-sublevels t)))
-            
+
             (tags-todo "TODO=\"SOMEDAY\"-sub"
                        ((org-agenda-overriding-header
                          "Future Work")
