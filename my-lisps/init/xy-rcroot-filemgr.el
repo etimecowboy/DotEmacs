@@ -63,7 +63,8 @@
   "Init value for clean-buffer-list-kill-never-buffer-names")
 (setq clean-buffer-list-kill-never-buffer-names
       (append
-       '("*Messages*" "*cmd*" "*scratch*" "*w3m*" "*w3m-cache*" "*Inferior Octave*")
+       '("*Messages*" "*cmd*" "*scratch*" "*w3m*" "*w3m-cache*"
+         "*Inferior Octave*" "%inbox" "*shell*" "*eshell*" "*MATLAB*")
        clean-buffer-list-kill-never-buffer-names-init))
 
 ;; prevent append multiple times

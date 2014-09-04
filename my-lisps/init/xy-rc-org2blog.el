@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2014-09-04 Thu 19:26 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org2blog.el'
 ;; Author:       Xin Yang
@@ -20,7 +20,18 @@
 (defun org2blog-postload ()
   "Settings of `org2blog.el' after it's been loaded."
   (setq org2blog/wp-blog-alist
-        '(("etimecowboy.wordpress.com"
+        '(
+          ("xinphd.wordpress.com"
+           :url "http://xinphd.wordpress.com/xmlrpc.php"
+           :username "xinphd"
+           :default-title "New Post"
+           :default-categories ("Uncategorized")
+           :tags-as-categories nil
+           ;; :keep-new-lines t
+           :confirm t
+           ;; :wp-code nil
+           )
+          ("etimecowboy.wordpress.com"
            :url "http://etimecowboy.wordpress.com/xmlrpc.php"
            :username "etimecowboy"
            :default-title "New Post"
@@ -30,16 +41,17 @@
            :confirm t
            ;; :wp-code nil
            )
-          ("etimecowboy.sinaapp.com"
-           :url "http://etimecowboy.sinaapp.com/xmlrpc.php"
-           :username "etimecowboy"
-           :default-title "新博文"
-           :default-categories ("未分类")
-           :tags-as-categories nil
-           ;; :keep-new-lines t
-           :confirm t
-           ;; :wp-code nil
-           )
+          ;; Deleted
+          ;; ("etimecowboy.sinaapp.com"
+          ;;  :url "http://etimecowboy.sinaapp.com/xmlrpc.php"
+          ;;  :username "etimecowboy"
+          ;;  :default-title "新博文"
+          ;;  :default-categories ("未分类")
+          ;;  :tags-as-categories nil
+          ;;  ;; :keep-new-lines t
+          ;;  :confirm t
+          ;;  ;; :wp-code nil
+          ;;  )
           ))
 
   (setq org2blog/wp-buffer-template "#   -*- mode: org; coding: utf-8-unix  -*-
