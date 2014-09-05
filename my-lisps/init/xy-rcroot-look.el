@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2014-09-05 Fri 17:59 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -582,16 +582,25 @@
 
 
 
-;;** Emacs built-in theme
+;;** Emacs built-in color system
+;; NOTE: two most popular color-theme: zenburn (low contrast for long
+;; time work at the screen) and solarized (for same color setting on
+;; dark and bright background)
+;; - zenburn
+;;   + `zenburn-theme': official zenburn color setting (my choise)
+;;   + `nzenburn': a home brew zenburn theme (out dated)
+;;   + `hc-zenburn-theme': a higher contrast zenburn theme
+;; - solarized
+(setq custom-safe-themes t)
+(when (and window-system (try-require 'zenburn-theme))
+  (load-theme 'zenburn t))
+(global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
+
 ;; (Windows
 ;;  (when (try-require 'color-theme-sanityinc-solarized)
 ;;    (load-theme 'sanityinc-solarized-dark t)))
-(setq custom-safe-themes t)
-(when (and window-system (try-require 'nzenburn-theme))
-   (load-theme 'nzenburn t))
 ;; (when (and window-system (try-require 'color-theme-sanityinc-tomorrow))
 ;;    (load-theme 'sanityinc-tomorrow-night t))
-(global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
 
 
 
@@ -660,6 +669,7 @@
 
 ;;** pp-c-l
 ;; Display Vontrol-l characters in a pretty way
+;; NOTE: C-L will be printed as page seperation
 (eval-after-load "pp-c-l" '(pp-c-l-postload))
 (autoload 'pretty-control-l-mode "pp-c-l" nil t)
 (global-set-key (kbd "<f6> p") 'xy/turn-on-pretty-control-l-mode)
