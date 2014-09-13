@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2014-09-14 Sun 05:16 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -716,7 +716,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
       (qiang-set-font
        '("DejaVu Sans Mono" "Consolas" "Monospace"
          "Monaco" "Courier") ":pixelsize=12"
-         '("STHeiti" "Microsoft Yahei" "文泉驿等宽正黑" "文泉驿等宽微米黑"
+         '("Microsoft Yahei" "STHeiti" "文泉驿等宽正黑" "文泉驿等宽微米黑"
            "黑体") 14)
     ;; 默认字体，term 下的字体
     (set-default-font "Monospace 9")))
