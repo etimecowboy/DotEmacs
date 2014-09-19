@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:47 by xin on ubuntu>
+;; Time-stamp: <2014-09-19 Fri 19:29 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-doc-view.el'
 ;; Author:       Xin Yang
@@ -22,9 +22,9 @@
 
   (setq doc-view-conversion-refresh-interval 3
         doc-view-continuous t
-        doc-view-image-width 900
+        doc-view-image-width 680
         doc-view-resolution 100)
-  
+
   (message "* ---[ doc-view post-load configuration is complete ]---"))
 
 (provide 'xy-rc-doc-view)

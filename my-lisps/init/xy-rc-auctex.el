@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:47 by xin on ubuntu>
+;; Time-stamp: <2014-09-19 Fri 19:28 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auctex.el'
 ;; Author:       Xin Yang
@@ -224,9 +224,9 @@
                ;; engine. NOTE: Preview does not work with xelatex
                (GNULinux
                 (setq TeX-view-program-selection
-                      '((output-pdf "Okular")
+                      '((output-pdf "okular")
                         ;; ((output-dvi style-pstricks) "dvips and gv")
-                        (output-dvi "Okular")
+                        (output-dvi "okular")
                         (output-html "xdg-open"))))
                (Windows
                 (setq TeX-view-program-selection
