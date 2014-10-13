@@ -1,7 +1,7 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
 ;;--------------------------------------------------------------------
 ;; File name:    `init.el'
-;; Time-stamp: <2013-10-31 Thu 12:19 by xy12g13 on UOS-208326>
+;; Time-stamp: <2014-10-13 Mon 21:27 by xin on S13>
 ;; Author:       Xin Yang
 ;; Email:        xin2.yang@gmail.com
 ;; Depend on:    None
@@ -19,7 +19,9 @@
 ;;* Debug Emacs
 
 ;;** Debugging information
-(setq debug-on-error t)   ;; Enter debug mode on a error, now you should get a backtrace
+;; Enter debug mode on a error, now you should get a backtrace
+;; NOTE: cause problem in emacs-snapshot version
+;; (setq debug-on-error t)
 ;; (setq debug-on-quit t) ;; Too annoying
 ;; NOTE: M-x toggle-debug-on-quit使用这条命令后，每次卡住后，马上按C-g，
 ;; 就会打出当前执行函数的调用栈，是哪个函数造成的卡住，也就一目了然了。
