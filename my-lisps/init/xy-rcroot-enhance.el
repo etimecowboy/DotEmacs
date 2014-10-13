@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2014-10-13 Mon 20:21 by xin on ubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -298,17 +298,18 @@ from tradition chinese to simple chinese" t)
 (global-set-key (kbd "<f6> l") 'linkd-mode)
 
 ;; NOTE: it is better to turn on linkd-mode manually
-(am-add-hooks
- `(lisp-mode-hook emacs-lisp-mode-hook
-                  c-common-mode-hook
-                  sh-mode-hook matlab-mode-hook
-                  vhdl-mode-hook verilog-mode-hook
-                  ;; org-mode-hook ;; NOTE: C-c ' conflicts with linkd
-                  LaTeX-mode-hook)
- '(lambda () (linkd-mode 1)))
-(am-add-hooks
- `(lisp-interaction-mode-hook org-mode-hook)
- '(lambda () (linkd-mode -1)))
+;; FIXME: cause highlight error when start
+;; (am-add-hooks
+;;  `(lisp-mode-hook emacs-lisp-mode-hook
+;;                   c-common-mode-hook
+;;                   sh-mode-hook matlab-mode-hook
+;;                   vhdl-mode-hook verilog-mode-hook
+;;                   ;; org-mode-hook ;; NOTE: C-c ' conflicts with linkd
+;;                   LaTeX-mode-hook)
+;;  '(lambda () (linkd-mode 1)))
+;; (am-add-hooks
+;;  `(lisp-interaction-mode-hook org-mode-hook)
+;;  '(lambda () (linkd-mode -1)))
 
 
 
