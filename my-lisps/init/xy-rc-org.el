@@ -903,26 +903,28 @@
 
   ;;** babel evaluation languages
   (setq org-babel-load-languages
-        '((C . t) ;; (R . t) (asymptote . t)
-                (ditaa . t) (dot . t) (emacs-lisp . t)
-                (latex . t) (org . t)
-                (matlab . t) (octave . t)
-                (python . t) ;; (perl . t) (ruby . t)
-                (sh . t)
-                ))
+        '(;; (C . t) (R . t) (asymptote . t)
+          (ditaa . t) (dot . t) (emacs-lisp . t)
+          (latex . t) (org . t)
+          (matlab . t) (octave . t)
+          (python . t) ;; (perl . t) (ruby . t)
+          (sh . t)
+          ))
 
-  (require 'ob-C)
-  ;; BUG: cannot find this library on Windows 7, strange bug.
-  ;;      cause emacs error on Linux, may related with my c-mode settings.
+  ;; (require 'ob-C)
   ;; (require 'ob-R)
   ;; (require 'asymptote)
-  (require 'ob-ditaa)
-  (require 'ob-dot)
-  (require 'ob-latex)
-  (require 'ob-org)
-  (require 'ob-emacs-lisp)
-  (require 'ob-matlab)
-  (require 'ob-octave)
+  ;; (require 'ob-ditaa)
+  ;; (require 'ob-dot)
+  ;; (require 'ob-latex)
+  ;; (require 'ob-org)
+  ;; (require 'ob-emacs-lisp)
+  ;; (require 'ob-matlab)
+  ;; (require 'ob-octave)
+  ;; (require 'ob-perl)
+  ;; (require 'ob-python)
+  ;; (require 'ob-ruby)
+  ;; (require 'ob-sh)
 
   (Windows
    (setq org-babel-matlab-shell-command "C:/MATLAB/R2014a/bin/win64/matlabshell.exe")
@@ -937,11 +939,6 @@
   (setq org-babel-default-header-args:matlab
   '((:results . "output") (:session . "*MATLAB*")))
 
-  (require 'ob-org)
-  ;; (require 'ob-perl)
-  (require 'ob-python)
-  ;; (require 'ob-ruby)
-  (require 'ob-sh)
   
   ;; Custom library of babel file. Add code blocks to the library from
   ;; any Org-mode file using the `org-babel-lob-ingest' (bound to C-c
@@ -979,7 +976,7 @@
 
   ;;** General settings
   (setq org-export-backends
-        '(ascii beamer html latex md org))
+        '(ascii beamer html latex md org odt))
   (setq org-file-apps ;; set default viewer for exported files
         '((auto-mode       . emacsclient)
           ("\\.odc\\'"     . system)
@@ -1380,8 +1377,10 @@ decorations.markings}
   
 
   ;;** odt export
-  (require 'ox-odt)
-  ;; (setq org-odt-data-dir (concat org-directory "/addon/odt/styles"))
+  ;; (require 'ox-odt)
+  ;; NOTE: fixed already
+  ;; (setq org-odt-data-dir
+  ;;       (concat org-directory "/addon/odt/styles"))
 
 
   
