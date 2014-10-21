@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-09-14 Sun 05:16 by xin on S13>
+;; Time-stamp: <2014-10-21 Tue 17:39 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1074,48 +1074,49 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 
 ;;** Smart fullscreen and maximize
+;; NOTE: in emacs-snapshot/emacs-w64, <f11> has been bound to toggle-frame-fullscreen.
 
-(defvar xy:fullscreen-flag nil)
+;; (defvar xy:fullscreen-flag nil)
 
-;;;###autoload
-(defun xy/fullscreen ()
-  "Enter fullscreen mode."
-  (interactive)
-  (when window-system
-    ;; From: xiaoxuan@newsmth.net-SPAM.no (小轩)
-    (setq xy:fullscreen-flag t)
-    (set-frame-parameter nil 'fullscreen 'fullscreen)))
+;; ;;;###autoload
+;; (defun xy/fullscreen ()
+;;   "Enter fullscreen mode."
+;;   (interactive)
+;;   (when window-system
+;;     ;; From: xiaoxuan@newsmth.net-SPAM.no (小轩)
+;;     (setq xy:fullscreen-flag t)
+;;     (set-frame-parameter nil 'fullscreen 'fullscreen)))
 
-;;;###autoload
-(defun xy/toggle-fullscreen ()
-  "Toggle fullscreen mode."
-  (interactive)
-  (when window-system
-    (progn
-      (GNULinux
-       ;; From: xiaoxuan@newsmth.net-SPAM.no (小轩)
-       (if xy:fullscreen-flag
-           (progn
-             (setq xy:fullscreen-flag nil)
-             (set-frame-parameter nil 'fullscreen nil))
-         (progn
-           (setq xy:fullscreen-flag t)
-           (set-frame-parameter nil 'fullscreen 'fullscreen))))
+;; ;;;###autoload
+;; (defun xy/toggle-fullscreen ()
+;;   "Toggle fullscreen mode."
+;;   (interactive)
+;;   (when window-system
+;;     (progn
+;;       (GNULinux
+;;        ;; From: xiaoxuan@newsmth.net-SPAM.no (小轩)
+;;        (if xy:fullscreen-flag
+;;            (progn
+;;              (setq xy:fullscreen-flag nil)
+;;              (set-frame-parameter nil 'fullscreen nil))
+;;          (progn
+;;            (setq xy:fullscreen-flag t)
+;;            (set-frame-parameter nil 'fullscreen 'fullscreen))))
 
-      (Windows ;; NOTE: Put `emacs_fullscreen.exe' in your $PATH, such as
-       ;;       your `emacs.exe' folder.
-       ;; REF: (@url :file-name "https://bitbucket.org/alexander_manenko/emacs-fullscreen-win32/wiki/Home" :display "Source:emacs-fullscreen-win32")
-       ;; NOTE: not works with `autofit-frame.el'
-       ;; ;; (setq autofit-frame-flag nil)
-       ;; (shell-command "%HOME%/.emacs.d/bin/win32/emacs_fullscreen.exe")))))
-       ;; Use patched fullscreen version Emacs
-       (if xy:fullscreen-flag
-           (progn
-             (setq xy:fullscreen-flag nil)
-             (set-frame-parameter nil 'fullscreen nil))
-         (progn
-           (setq xy:fullscreen-flag t)
-           (set-frame-parameter nil 'fullscreen 'fullscreen)))))))
+;;       (Windows ;; NOTE: Put `emacs_fullscreen.exe' in your $PATH, such as
+;;        ;;       your `emacs.exe' folder.
+;;        ;; REF: (@url :file-name "https://bitbucket.org/alexander_manenko/emacs-fullscreen-win32/wiki/Home" :display "Source:emacs-fullscreen-win32")
+;;        ;; NOTE: not works with `autofit-frame.el'
+;;        ;; ;; (setq autofit-frame-flag nil)
+;;        ;; (shell-command "%HOME%/.emacs.d/bin/win32/emacs_fullscreen.exe")))))
+;;        ;; Use patched fullscreen version Emacs
+;;        (if xy:fullscreen-flag
+;;            (progn
+;;              (setq xy:fullscreen-flag nil)
+;;              (set-frame-parameter nil 'fullscreen nil))
+;;          (progn
+;;            (setq xy:fullscreen-flag t)
+;;            (set-frame-parameter nil 'fullscreen 'fullscreen)))))))
 
 
 

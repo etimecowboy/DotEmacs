@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-09-05 Fri 17:59 by xin on ubuntu>
+;; Time-stamp: <2014-10-21 Tue 17:47 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -37,7 +37,7 @@
 ;;   (add-to-list 'default-frame-alist '(height . 40))
 ;;   (add-to-list 'default-frame-alist '(width . 95)))
 
-(global-set-key (kbd "C-c C-0") 'xy/toggle-fullscreen)
+;; (global-set-key (kbd "C-c C-0") 'xy/toggle-fullscreen)
 (global-set-key (kbd "C-M-o") 'other-frame)
 (global-set-key (kbd "C-M-c") 'new-frame)
 (global-set-key (kbd "C-M-k") 'delete-frame)
@@ -107,8 +107,8 @@
 (eal-define-keys-commonly
  global-map
  `(;; ("S-<f5>"    fit-frame) ;; `fit-frame.el'
-   ("M-<f5>"    maximize-frame) ;; `maxframe.el'
-   ("C-<f5>"    restore-frame)  ;; `maxframe.el'
+   ("M-<f11>"    maximize-frame) ;; `maxframe.el'
+   ("C-<f11>"    restore-frame)  ;; `maxframe.el'
    ;; ("M-<f5>"    toggle-max-frame)  ;; `frame-cmds.el'
    ;; ("C-M-<f5>"  xy/toggle-autofit-frame) ;; `autofit-frame.el'
    ;; ("C-z"     thumfr-toggle-thumbnail-frame) ;; `thumb-frm.el'
