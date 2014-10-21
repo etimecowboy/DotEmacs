@@ -919,6 +919,7 @@
   (require 'ob-ditaa)
   (require 'ob-dot)
   (require 'ob-latex)
+  (require 'ob-org)
   (require 'ob-emacs-lisp)
   (require 'ob-matlab)
   (require 'ob-octave)
@@ -1375,7 +1376,13 @@ decorations.markings}
                             "\\1\\2" orig-contents))
       (ad-set-arg 1 fixed-contents)
       ))
-  
+
+  
+
+  ;;** odt export
+  (require 'ox-odt)
+  ;; (setq org-odt-data-dir (concat org-directory "/addon/odt/styles"))
+
 
   
   ;;* Org publish settings
