@@ -903,7 +903,7 @@
 
   ;;** babel evaluation languages
   (setq org-babel-load-languages
-        '(;; (C . t) (R . t) (asymptote . t)
+        '((C . t) (R . t) ;; (asymptote . t)
           (ditaa . t) (dot . t) (emacs-lisp . t)
           (latex . t) (org . t)
           (matlab . t) (octave . t)
@@ -911,20 +911,20 @@
           (sh . t)
           ))
 
-  ;; (require 'ob-C)
-  ;; (require 'ob-R)
+  (require 'ob-C)
+  (require 'ob-R)
   ;; (require 'asymptote)
-  ;; (require 'ob-ditaa)
-  ;; (require 'ob-dot)
-  ;; (require 'ob-latex)
-  ;; (require 'ob-org)
-  ;; (require 'ob-emacs-lisp)
-  ;; (require 'ob-matlab)
-  ;; (require 'ob-octave)
-  ;; (require 'ob-perl)
-  ;; (require 'ob-python)
-  ;; (require 'ob-ruby)
-  ;; (require 'ob-sh)
+  (require 'ob-ditaa)
+  (require 'ob-dot)
+  (require 'ob-latex)
+  (require 'ob-org)
+  (require 'ob-emacs-lisp)
+  (require 'ob-matlab)
+  (require 'ob-octave)
+  (require 'ob-perl)
+  (require 'ob-python)
+  (require 'ob-ruby)
+  (require 'ob-sh)
 
   (Windows
    (setq org-babel-matlab-shell-command "C:/MATLAB/R2014a/bin/win64/matlabshell.exe")
