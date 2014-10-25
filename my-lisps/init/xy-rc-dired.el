@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:47 by xin on ubuntu>
+;; Time-stamp: <2014-10-25 Sat 10:41 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired.el'
 ;; Author:       Xin Yang
@@ -34,7 +34,7 @@
   "Run COMMAND on marked files. Any files not already open will be
 opened. After this command has been run, any buffers it's modified
 will remain open and unsaved."
-  (interactive "CRun on marked files M-x ")
+  (interactive "Run command on marked files M-x ")
   (save-window-excursion
     (mapc (lambda (filename)
             (find-file filename)

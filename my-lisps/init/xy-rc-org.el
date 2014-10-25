@@ -296,8 +296,9 @@
   ;;** General settings
   (setq org-todo-keywords
         '((sequence "TODO(t)" "SOMEDAY(x!)" "NEXT(n!)" "STARTED(s)" "WAITING(w!)"
-                    "|" "DONE(d!)" "CANCELLED(c@/!)")          
-          (sequence "NEW(a)" "REVIEW(r)" "|" "MARK(m!)" "USELESS(u!)")))
+                    "|" "DONE(d!)" "CANCELLED(c@/!)") ;; for tasks          
+          (sequence "NEW(a)" "REVIEW(r)"
+                    "|" "MARK(m!)" "USELESS(u!)"))) ;; for notes
   (setq org-use-fast-todo-selection t) ;; C-c C-t key
   (setq org-treat-insert-todo-heading-as-state-change t)
   (setq org-treat-S-cursor-todo-selection-as-state-change nil)
