@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-10-21 Tue 17:47 by xin on S13>
+;; Time-stamp: <2014-10-30 Thu 10:12 by xin on vmlubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -721,7 +721,8 @@
               (lambda (frame)
                 (with-selected-frame frame
                   (xy/set-font-default))))
-  (xy/set-font-default))
+  ;; (xy/set-font-default)
+  (xy/set-font-prog))
 
 (eal-define-keys-commonly
  global-map

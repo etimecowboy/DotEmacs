@@ -1197,6 +1197,22 @@ decorations.markings}
   (setq org-format-latex-signal-error t)
   (setq org-latex-create-formula-image-program 'imagemagick)
 
+  ;; Ignoring a heading on export to latex
+  ;; NOTE: not working anymore
+  ;;; Nicolas Goaziou, http://article.gmane.org/gmane.emacs.orgmode/67692
+  ;; (defun org-latex-ignore-heading-filter-headline (headline backend info)
+  ;;   "Strip headline from HEADLINE. Ignore BACKEND and INFO."
+  ;;   (when (and (org-export-derived-backend-p backend 'latex)
+  ;;              (string-match "\\`.*ignoreheading.*\n" headline))
+  ;;     (replace-match "" nil nil headline)))
+
+  ;; (add-to-list 'org-export-filter-headline-functions
+  ;;              'org-latex-ignore-heading-filter-headline)
+  ;; ;; useage:
+  ;; ;; * Abstract      :ignoreheading:
+  ;; ;; \section*{Abstract}
+  ;; ;; blah 
+
   ;; Use xelatex instead of pdflatex for better font supports.
   ;; REF: (@url :file-name "http://orgmode.org/worg/org-tutorials/org-latex-export.html" :display "Worg:org-latex-export")
   ;;      (@url :file-name "http://orgmode.org/worg/org-faq.html#using-xelatex-for-pdf-export" :display "Worg:faq:using-xelatex-for-pdf-export")
