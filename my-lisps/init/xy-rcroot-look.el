@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-10-30 Thu 10:12 by xin on vmlubuntu>
+;; Time-stamp: <2014-11-04 Tue 19:43 by xin on vmlubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -716,13 +716,13 @@
 ;;    (xy/set-font-and-scale 10 1.22)))
 
 ;; Uncomment the following code if emacs daemon is in use
-(if (and (fboundp 'daemonp) (daemonp))
-    (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (with-selected-frame frame
-                  (xy/set-font-default))))
-  ;; (xy/set-font-default)
-  (xy/set-font-prog))
+;; (if (and (fboundp 'daemonp) (daemonp))
+;;     (add-hook 'after-make-frame-functions
+;;               (lambda (frame)
+;;                 (with-selected-frame frame
+;;                   (xy/set-font-default))))
+;;   ;; (xy/set-font-default)
+;;   (xy/set-font-prog))
 
 (eal-define-keys-commonly
  global-map

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-03 Mon 00:54 by xin on vmlubuntu>
+;; Time-stamp: <2014-11-04 Tue 20:14 by xin on vmlubuntu>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -116,8 +116,8 @@
 (revive-preload)
 (eval-after-load "revive" '(revive-postload))
 (when (try-require 'revive)
-  (add-hook 'delete-frame-functions 'save-current-configuration)
-  (add-hook 'kill-emacs-hook 'save-current-configuration)
+  ;; (add-hook 'delete-frame-functions 'save-current-configuration)
+  ;; (add-hook 'kill-emacs-hook 'save-current-configuration)
   (global-set-key (kbd "C-c w s") 'save-current-configuration)
   (global-set-key (kbd "C-c w r") 'resume)
   (global-set-key (kbd "C-c w k") 'wipe))
