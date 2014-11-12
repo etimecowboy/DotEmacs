@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-09-05 Fri 17:50 by xin on ubuntu>
+;; Time-stamp: <2014-11-13 Thu 00:48 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -103,7 +103,7 @@ re-downloaded in order to locate PACKAGE."
   (setq package-archives
         '(("tromey" . "http://tromey.com/elpa/") ;; Original ELPA package.
           ("gnu" . "http://elpa.gnu.org/packages/") ;; Add the official packages
-          ("marmalade" . "http://marmalade-repo.org/packages/")
+          ;; ("marmalade" . "http://marmalade-repo.org/packages/")
           ("melpa" . "http://melpa.milkbox.net/packages/")
           ("org" . "http://orgmode.org/elpa/")
           ;; ("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
@@ -336,7 +336,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'sr-speedbar)
   (require-package 'strings)
   
-  ;; (require-package 'undo-tree) ;; cause some problem with menu
+  (require-package 'undo-tree)
   (require-package 'redo+)
   (require-package 'vline)
   (require-package 'w32-browser)
