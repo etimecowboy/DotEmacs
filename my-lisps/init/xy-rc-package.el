@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-13 Thu 00:48 by xin on S13>
+;; Time-stamp: <2014-11-13 Thu 00:58 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -296,10 +296,10 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'hc-zenburn-theme)
   (require-package 'oauth)
   ;; (require-package 'openwith)
-  (require-package 'org '(8)) ;; NOTE: install the latest version
+  ;; (require-package 'org '(8)) ;; NOTE: install the latest version
   ;; (require-package 'org-cua-dwim)
   ;; (require-package 'org-mime)
-  ;; (require-package 'org-plus-contrib)
+  (require-package 'org-plus-contrib)
   ;; (require-package 'org-table-comment)  ;; nerver used by now
   (require-package 'org2blog) ;; NOTE: dependent on melpa org package
   ;; (require-package 'o-blog) ;; NOTE: o-blog package is not stable right now
