@@ -220,16 +220,12 @@
 (setq make-backup-files t)
 (setq backup-by-copying t)
 (setq backup-directory-alist '(("." . "~/.emacs-backup")))
-(setq make-backup-files nil)
-
 (setq version-control t)
 (setq kept-old-versions 5)
 (setq kept-new-versions 3)
 (setq delete-old-versions t)
-;; (setq version-control nil)
-
-(setq vc-make-backup-files nil)
-(setq auto-revert-check-vc-info nil)
+(setq vc-make-backup-files t)
+(setq auto-revert-check-vc-info t)
 
 ;; Autosaved files
 (setq auto-save-default nil)

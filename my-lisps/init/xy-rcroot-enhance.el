@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-10-13 Mon 20:21 by xin on ubuntu>
+;; Time-stamp: <2014-11-12 Wed 17:18 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -173,8 +173,8 @@
 ;; NOTE: temperal disabled because of the conflict between undo-tree
 ;; and menu-bar(?)
 ;; (require 'undo-tree)
-;; (autoload 'global-undo-tree-mode "undo-tree" nil t)
-;; (global-undo-tree-mode 1)
+(autoload 'global-undo-tree-mode "undo-tree" nil t)
+(global-undo-tree-mode 1)
 ;; (global-set-key (kbd "<f6> u") 'global-undo-tree-mode)
 
 
