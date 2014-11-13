@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2014-11-13 Thu 20:34 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-mew.el'
 ;; Author:       Xin Yang
@@ -88,7 +88,9 @@
   ;; (setq mew-use-highlight-mouse-line t)
   (setq mew-icon-directory ;; "~/.emacs.d/icons/mew")
         (concat my-local-image-path "/mew"))
-
+  (setq mew-window-configuration
+        '((summary (15 0)) (message (15 31)) (draft (1 0))))
+  
   ;; html邮件相关设置（使用w3m）
   (setq mew-mime-multipart-alternative-list '("text/html" "text/plain" "*."))
   (setq mew-prog-text/html 'mew-mime-text/html-w3m) ;; See w3m.el
@@ -125,7 +127,8 @@
   ;; (setq mew-summary-form-size-0k t)
   (setq mew-summary-reply-with-citation-position 'body)
   (setq mew-summary-form
-        '(type " | " (15 from) " | " t (50 subj) " | " (5 date) " " (5 time) " | " (-4 size)))
+        ;; '(type " | " (15 from) " | " t (50 subj) " | " (5 date) " " (5 time) " | " (-4 size)))
+        '(type " | " (10 from) " | " t (35 subj) " | " (5 date) " " (5 time)))
 
   ;; (setq mew-trash-folder-list '("%Deleted Items" "%已删除邮件" "%Trash" "%trash"))
 

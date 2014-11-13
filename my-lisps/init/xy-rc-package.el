@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-13 Thu 00:58 by xin on S13>
+;; Time-stamp: <2014-11-13 Thu 22:07 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -365,6 +365,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'hideshow-org)
   (require-package 'psvn)
   (require-package 'ecb)
+  (require-package 'ebib)
   
   (message "* ---[ package post-load configuration is complete ]---"))
 

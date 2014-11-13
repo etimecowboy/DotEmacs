@@ -259,9 +259,15 @@
   
   ;;** Loaded modules
   (setq org-modules
-        '(org-bbdb org-bibtex org-crypt org-ctags org-docview org-gnus
-                   org-habit org-id org-info org-protocol org-w3m
-                   org-bookmark org-mew org-w3m org-protocol))
+        '(;; org official lisps
+          org-bbdb org-bibtex org-crypt org-ctags org-docview 
+          org-habit org-id org-info org-man org-protocol
+          org-w3m org-protocol ;; org-gnus
+          ;; org contribute lisps
+          ;; NOTE: it is better to load it with `try-require' to avoid
+          ;; problem when user don't have `org-plus-contrib' package
+          ;; org-bookmark org-mew org-expiry org-git-link
+          ))
 
   ;; (setq org-completion-use-iswitchb t)
   (setq org-completion-use-ido t)
@@ -1400,6 +1406,12 @@ decorations.markings}
   ;;       (concat org-directory "/addon/odt/styles"))
 
 
+
+  ;;** bibtex export
+  ;; NOTE: require bibtex2html
+  (GNULinux
+   (try-require 'ox-bibtex))
+
   
   ;;* Org publish settings
   ;; NOTE:
@@ -1418,6 +1430,22 @@ decorations.markings}
 
   
   ;;* Contributed lisps
+
+  ;;** `org-contacts'
+  (try-require 'org-contacts)
+
+  ;;** `org-expiry'
+  (try-require 'org-expiry)
+
+  ;;** `org-git-link'
+  (try-require 'org-git-link)
+
+  ;;** `org-mew'
+  (try-require 'org-mew)
+
+  
+  
+  ;;* Other plugins
 
   ;; ;;** org-mime
   ;; ;; REF: (@url :file-name "http://orgmode.org/worg/org-contrib/org-mime.html" :display "worg")
@@ -1478,8 +1506,9 @@ decorations.markings}
   ;; NOTE: not very useful, waiting for a upgrade for org version 8.0
   ;; (when window-system (try-require 'org-presie))
 
-  ;;** `org-contacts'
-  ;; (try-require 'org-contacts)
+  ;;** `ebib'
+  (org-add-link-type "ebib" 'ebib--open-org-link)
+  (org-add-link-type "cite" 'ebib--open-org-link)
   
   (message "* ---[ org post-load configuration is complete ]---"))
 

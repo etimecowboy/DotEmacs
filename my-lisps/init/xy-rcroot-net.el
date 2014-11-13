@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2014-11-13 Thu 20:50 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-net.el'
 ;; Author:       Xin Yang
@@ -243,7 +243,29 @@
 ;;* mew
 ;; email client
 ;; NOTE: Commented due to use of emacs-w64
-(eval-after-load "mew" '(mew-postload))
+(eval-after-load "mew"
+  '(progn
+     (mew-postload)
+     ;; NOTE: use `org-mew.el'
+     ;; 1. In the Mew's inbox folder, take a glance at new messages to find
+     ;;    a message that requires any action.
+     ;; 2. If the message is a reply from somebody and associated with the
+     ;;    existing orgmode entry, type M-x `org-mew-search' RET (or press
+     ;;    the ' key simply) to find the entry.  If you can find the entry
+     ;;    successfully and think you should start the task right now,
+     ;;    start the task by M-x `org-agenda-clock-in' RET.
+     ;; 3. If the message is a new message, type M-x `org-mew-capture' RET,
+     ;;    enter the refile folder, and the buffer to capture the message
+     ;;    is shown up (without selecting the template by hand).  Then you
+     ;;    can fill the template and type C-c C-c to complete the capture.
+     ;;    Note that you can configure `org-capture-templates' so that the
+     ;;    captured entry has a link to the message.
+     (eal-define-keys 'mew-summary-mode-map 
+      `(("'"     org-mew-search)
+        ("\C-o"  org-mew-capture)
+        ))))
+
+
 (setq mail-user-agent 'mew-user-agent) ;; set mew as emacs email agent
 (autoload 'mew "mew" nil t)
 (autoload 'mew-send "mew" nil t)

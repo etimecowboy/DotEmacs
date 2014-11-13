@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2014-11-13 Thu 23:56 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -102,6 +102,13 @@
 (autoload 'turn-on-reftex "reftex" "RefTeX Minor Mode" t)
 (autoload 'reftex-citation "reftex-cite" "Make citation" t)
 (autoload 'reftex-index-phrase-mode "reftex-index" "Phrase mode" t)
+
+
+
+;; ** ebib
+;; reference
+(eval-after-load "ebib" '(ebib-postload))
+(global-set-key (kbd "<f6> b") 'ebib)
 
 
 
