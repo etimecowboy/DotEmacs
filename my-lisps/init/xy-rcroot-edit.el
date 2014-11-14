@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-10-21 Tue 17:34 by xin on S13>
+;; Time-stamp: <2014-11-12 Wed 18:27 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -295,7 +295,7 @@
    ("C-@"      mark-command)
    ("C-x \\"   rm-mark-command)
    ("C-x M-s"  isearch-forward-cur-word)
-   ("C-\""     wcy-mark-some-thing-at-point)
+   ("C-S-/"    wcy-mark-some-thing-at-point)
    ("M-;"      qiang-comment-dwim-line)
    ;; ("M-K"      qiang-copy-line)
    ("C-S-p"    move-line-up)  ;; NOTE: cannot use "C-P"

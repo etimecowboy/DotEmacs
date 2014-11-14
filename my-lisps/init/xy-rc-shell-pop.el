@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2014-11-14 Fri 01:29 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-shell-pop.el'
 ;; Author:       Xin Yang
@@ -19,13 +19,12 @@
 ;;;###autoload
 (defun shell-pop-postload ()
   "Settings for `shell-pop.el' after it's been loaded."
-  (setq shell-pop-set-internal-mode "eshell")
-  ;; (shell-pop-set-internal-mode-shell "/bin/bash")
-  ;; the number for the percentage of the selected window.
-  ;; If 100, shell-pop use the whole of selected window, not spliting.
-  (setq shell-pop-set-window-height 35)
-  ;; shell-pop-up position. You can choose "top" or "bottom".
-  (setq shell-pop-set-window-position "bottom")
+
+  (setq shell-pop-shell-type
+        '("eshell" "*eshell*" (lambda nil (eshell))))
+  (setq shell-pop-window-height 35)
+  (setq shell-pop-window-position "bottom")
+
   (message "* ---[ shell-pop post-load configuration is complete ]---"))
 
 (provide 'xy-rc-shell-pop)
