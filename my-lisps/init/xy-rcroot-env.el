@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:52 by xin on ubuntu>
+;; Time-stamp: <2014-11-21 Fri 10:39 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -212,7 +212,7 @@
 ;; REF: (@url :file-name "https://github.com/renard/o-blog" :display "Git Source")
 ;;      (@url :file-name "http://renard.github.com/o-blog/index.html" :display "Website")
 ;; NOTE: ELPA package does not work now
-(xy/load-autoloads (concat my-local-lisp-path "/o-blog-1.2"))
+(xy/load-autoloads (concat my-local-lisp-path "/o-blog-2.5"))
 
 ;;** Rebuild Emacs configuration
 (global-set-key (kbd "C-x B") 'xy/emacs-build)
