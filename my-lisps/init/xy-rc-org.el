@@ -1435,7 +1435,7 @@ decorations.markings}
   (try-require 'org-contacts)
 
   ;;** `org-expiry'
-  (try-require 'org-expiry)
+  ;; (try-require 'org-expiry)
 
   ;;** `org-git-link'
   (try-require 'org-git-link)
