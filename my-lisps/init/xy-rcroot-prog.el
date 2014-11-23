@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2014-11-23 Sun 02:14 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -179,6 +179,8 @@
 
 ;;** outline
 ;; outline-mode, structural editing
+(defvar outline-minor-mode-prefix "\M-#")
+(eval-after-load "outline" '(outline-postload))
 ;; (eal-define-keys
 ;;  'outline-mode-map
 ;;  `(("C-M-h"   outline-mark-subtree)
@@ -189,15 +191,16 @@
 ;;*** outline 插件
 ;; REF: - (@url :file-name "http://www.cnblogs.com/bamanzi/archive/2011/10/09/emacs-outline-org-like.html" :display "Post")
 ;;      - (@url :file-name "http://code.google.com/p/bamanzi-misc/source/browse/trunk/_emacs.d/lisp/outline-org-like.el" :display "Source")
-(autoload 'outline-cycle "outline-magic" nil t)
-(add-hook 'outline-minor-mode-hook
-          (lambda ()
-              (setq indent-tabs-mode nil)
-              (setq tab-always-indent t)
-              (define-key outline-minor-mode-map (kbd "C-<tab>")
-                'outline-cycle)))
 
-(autoload 'outline-org-mode "outline-org-like" nil t)
+;; (autoload 'outline-cycle "outline-magic" nil t)
+;; (add-hook 'outline-minor-mode-hook
+;;           (lambda ()
+;;               (setq indent-tabs-mode nil)
+;;               (setq tab-always-indent t)
+;;               (define-key outline-minor-mode-map (kbd "C-<tab>")
+;;                 'outline-cycle)))
+
+;; (autoload 'outline-org-mode "outline-org-like" nil t)
 ;; NOTE: it takes a lot of time to load `org', so it is better to
 ;; turn it on manually.
 ;; (am-add-hooks
@@ -206,7 +209,7 @@
 ;;                       latex-mode-hook tex-mode-hook)
 ;;  '(lambda ()
 ;;       (outline-org-mode)))
-(global-set-key (kbd "<f6> o") 'outline-org-mode)
+;; (global-set-key (kbd "<f6> o") 'outline-org-mode)
 
 
 
