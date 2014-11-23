@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-23 Sun 02:08 by xin on S13>
+;; Time-stamp: <2014-11-23 Sun 15:51 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -42,7 +42,8 @@
         ("C-c M-L"     org-address-google-geocode-set)
         ("C-c M-A"     org-address-google-geocode-set)
         ("C-c M-l"     org-location-google-maps)
-        ("C-c G"       o-blog-publish)
+        ("C-c G"       org-publish-blog) ;; o-blog v1
+        ;; ("C-c G"       o-blog-publish) ;; o-blog v2
         ("C-c P"       xy/org-toggle-xelatex)
         ("C-c R"       xy/org-mode-reftex-setup)
         ("C-c L"       org-toggle-link-display)
