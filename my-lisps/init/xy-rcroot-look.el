@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-23 Sun 15:50 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2014-11-23 Sun 22:27 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -144,10 +144,10 @@
 
 (eal-define-keys-commonly
  global-map
- `(("C-J" windmove-left)
+ `(("C-S-j" windmove-left)
    ("C-L" windmove-right)
    ("C-I" windmove-up)
-   ("C-K" windmove-down)))
+   ("C-S-k" windmove-down)))
 
 
 

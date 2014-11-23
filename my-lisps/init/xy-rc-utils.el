@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-23 Sun 02:30 by xin on S13>
+;; Time-stamp: <2014-11-23 Sun 22:29 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1408,7 +1408,7 @@ The process is:
 
 
 
-;;** A fake of emacs --daemon in Windows
+;;** Emacs daemon in graphic environment
 ;;;###autoload
 (defun xy/done ()
   "Save buffers and make Emacs frame invisible.\
