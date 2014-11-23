@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-16 Sun 21:30 by xin on S13>
+;; Time-stamp: <2014-11-23 Sun 01:47 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -154,87 +154,15 @@ re-downloaded in order to locate PACKAGE."
   (when (not package-archive-contents)
     (package-refresh-contents))
 
-  (require-package 'ac-dabbrev)
+  (require-package 'marmalade)
+  ;; (require-package 'marmalade-test)
+  ;; (require-package 'melpa) ;; not avaliable any more
 
-  (require-package 'ace-jump-mode)
-  (require-package 'ace-jump-buffer)
-  (require-package 'ace-window)
-  (require-package 'ace-link)
-  
-  ;; (require-package 'ack-menu)  ;; ack is not used
-  ;; (require-package 'ansi)  ;; never used
-  (require-package 'ahg)
-  ;; (require-package 'anti-zenburn-theme) ;; not pretty
-  (require-package 'ascii)
+  ;; NOTE: may switch to company in future
   (require-package 'auto-complete)
+  (require-package 'ac-dabbrev)
   (require-package 'ac-math)
-  (require-package 'auto-dim-other-buffers)
-  (require-package 'autopair)
-  
-  (require-package 'back-button)
-  (require-package 'batch-mode)
-  ;; (require-package 'visible-mark) ;; clear install required
-  (require-package 'nav-flash)
-  (require-package 'smartrep)
-  (require-package 'ucs-utils)
-  (require-package 'ucs-cmds)
-  (require-package 'persistent-soft)
-  (require-package 'pcache)
-  
-  (require-package 'bash-completion)
-  (require-package 'bm)
-  (require-package 'bookmark+)
-  ;; (require-package 'boxquote)  ;; rarely used
-  (require-package 'browse-kill-ring)
-  (require-package 'buffer-move)
-  (require-package 'c-eldoc)
-  ;; (require-package 'cal-china-x) ;; fixed, moved to my-lisps
-  (require-package 'cdlatex)
-  (require-package 'centered-cursor-mode)
-  (require-package 'cl-lib)
-  (require-package 'cmake-mode)
-  (require-package 'col-highlight)
-  (require-package 'color-moccur)
-  (require-package 'color-theme-sanityinc-solarized)
-  ;; (require-package 'color-theme-sanityinc-tomorrow) ;; don't like it
-  ;; (require-package 'columnify) ;; never used
-  (require-package 'cperl-mode)
-  (require-package 'css-mode)
-  (require-package 'ctags)
-  (require-package 'ctags-update)
-  ;; (require-package 'cursor-chg)  ;; not very useful
-  (require-package 'dash)
-  ;; (require-package 'deft)        ;; nerver used
-  ;; (require-package 'desktop)
-  (require-package 'dictionary)
-  (require-package 'diff-git)
-  (require-package 'diff-hl)
-  (require-package 'diminish)
-  (require-package 'dired+)
-  ;; (require-package 'doc-mode)   ;; never used
-  ;; (require-package 'dropbox)    ;; never used
-  ;; (require-package 'edit-server);; I use firefox not chrome
-  (require-package 'eimp)
-  (require-package 'elpy)
-  (require-package 'elscreen)
-  ;; (require-package 'emms)       ;; not very useful
-  ;; (require-package 'ess)        ;; not very useful
-  (require-package 'ethan-wspace)
-  (require-package 'everything)
-  (require-package 'fic-ext-mode)
-  ;; (require-package 'fit-frame) ;; not very useful
-  (require-package 'flx-ido)
-  (require-package 'flx)
-  (require-package 'fold-this)
-  (require-package 'framesize)
-  (require-package 'furl)
-  (require-package 'fuzzy)
-  (require-package 'gh)
-  (require-package 'gist)
-  (require-package 'google-c-style)
-  (require-package 'google-maps)
-  (require-package 'graphviz-dot-mode)
-  ;; (require-package 'haskell-mode)  ;; don't want to learn haskell now
+  (require-package 'yasnippet)
   ;; NOTE: don't use helm
   ;; (require-package 'helm)
   ;; (require-package 'helm-R)
@@ -248,15 +176,105 @@ re-downloaded in order to locate PACKAGE."
   ;; ;; (require-package 'helm-migemo)
   ;; (require-package 'helm-projectile)
   ;; (require-package 'helm-themes)
+
+  ;; (require-package 'ack-menu)  ;; ack is not used
+  ;; (require-package 'ansi)  ;; never used
+  ;; (require-package 'ahg)
+
+  (require-package 'ace-jump-mode)
+  (require-package 'ace-jump-buffer)
+  (require-package 'ace-window)
+  (require-package 'ace-link)
+
+  (require-package 'buffer-move)
+  (require-package 'windsize)
+  (require-package 'winpoint)
+
+  (require-package 'color-theme-sanityinc-solarized)
+  (require-package 'zenburn-theme)
+  ;; (require-package 'anti-zenburn-theme) ;; not pretty
+  ;; (require-package 'nzenburn-theme)
+  ;; (require-package 'hc-zenburn-theme)
+  
+  (require-package 'ascii)  
+  (require-package 'auto-dim-other-buffers)
+  (require-package 'autopair)
+  (require-package 'back-button)
+  (require-package 'batch-mode)
+  ;; (require-package 'visible-mark) ;; clear install required
+  (require-package 'nav-flash)
+  (require-package 'smartrep)
+  (require-package 'ucs-utils)
+  (require-package 'ucs-cmds)
+  (require-package 'persistent-soft)
+  (require-package 'pcache)
+  (require-package 'bash-completion)
+
+  (require-package 'bm)
+  (require-package 'bookmark+)
+
+  ;; (require-package 'boxquote)  ;; rarely used
+  (require-package 'browse-kill-ring)
+
+  ;; (require-package 'cal-china-x) ;; fixed, moved to my-lisps
+  (require-package 'centered-cursor-mode)
+  (require-package 'cl-lib)
+  (require-package 'cmake-mode)
+  (require-package 'col-highlight)
+  (require-package 'color-moccur)
+  ;; (require-package 'columnify) ;; never used
+  (require-package 'cperl-mode)
+  (require-package 'css-mode)
+  (require-package 'ctags)
+  (require-package 'ctags-update)
+  ;; (require-package 'cursor-chg)  ;; not very useful
+  (require-package 'dash)
+  ;; (require-package 'deft)        ;; nerver used
+  (require-package 'dictionary)
+  (require-package 'diff-git)
+  (require-package 'diff-hl)
+  (require-package 'diminish)
+  (require-package 'dired+)
+  ;; (require-package 'doc-mode)   ;; never used
+  ;; (require-package 'dropbox)    ;; never used
+  ;; (require-package 'edit-server);; I use firefox not chrome
+  (require-package 'eimp)
+  (require-package 'elpy)
+  (require-package 'elscreen)
+  ;; (require-package 'emms)       ;; not very useful
+  ;; (require-package 'ess)        ;; not very useful
+
+  (require-package 'ethan-wspace)
+  (require-package 'everything)
+  (require-package 'fic-ext-mode)
+  ;; (require-package 'fit-frame) ;; not very useful
+  (require-package 'flx-ido)
+  (require-package 'flx)
+  (require-package 'fold-this)
+  (require-package 'framesize)
+  (require-package 'furl)
+  (require-package 'fuzzy)
+  (require-package 'gh)
+  (require-package 'gist)
+  
+  (require-package 'google-c-style)
+  (require-package 'c-eldoc)
+
+  (require-package 'google-maps)
+  (require-package 'graphviz-dot-mode)
+  ;; (require-package 'haskell-mode)  ;; don't want to learn haskell now
+
   (require-package 'highlight)
   (require-package 'highlight-parentheses)
   (require-package 'highlight-symbol)
   (require-package 'htmlize)
   (require-package 'hungry-delete)
   (require-package 'ibuffer-vc)
+
   (require-package 'ido-ubiquitous)
   (require-package 'ido-yes-or-no)
   (require-package 'idomenu) ;; required by `elpy'
+
   (require-package 'info+)
   (require-package 'ioccur)
   (require-package 'isearch+)
@@ -272,18 +290,13 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'mag-menu)
   ;; (require-package 'splitter) ;; just use basic split functions
 
-  ;; magit groups
-  ;; (require-package 'cl-lib)
   (require-package 'git-commit-mode)
   (require-package 'git-rebase-mode)
   (require-package 'magit)
-  
   ;; (require-package 'magithub) ;; not useful
+
   (require-package 'markdown-mode)
-  (require-package 'marmalade)
-  ;; (require-package 'marmalade-test)
   (require-package 'maxframe)
-  ;; (require-package 'melpa) ;; not avaliable any more
   (require-package 'mew)
   (require-package 'mic-paren)
   (require-package 'mo-git-blame)
@@ -291,19 +304,31 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'mouse+)  ;; don't want to use mouse
   (require-package 'multi-term)
   (require-package 'multiple-cursors)
-  ;; (require-package 'nzenburn-theme) ;; use my my hacked version
-  (require-package 'zenburn-theme)
-  ;; (require-package 'hc-zenburn-theme)
+
   (require-package 'oauth)
   ;; (require-package 'openwith)
+
   ;; (require-package 'org '(8)) ;; NOTE: install the latest version
   ;; (require-package 'org-cua-dwim)
   ;; (require-package 'org-mime)
   (require-package 'org-plus-contrib)
   ;; (require-package 'org-table-comment)  ;; nerver used by now
-  (require-package 'org2blog) ;; NOTE: dependent on melpa org package
-  ;; (require-package 'o-blog) ;; NOTE: o-blog package is not stable right now
-  (require-package 'outline-magic)
+  ;; NOTE: one of the following 5 package is used to fold code as
+  ;; org-mode, now I am using `outshine'
+  ;; (require-package 'fold-dwim)
+  ;; (require-package 'folder-dwim-org)
+  ;; (require-package 'outline-magic) ;; out dated
+  ;; (require-package 'hideshow-org) ;; out dated
+  ;; NOTE: outshine suite (`outshine', `outorg', `navi-mode')
+  (require-package 'outshine)
+  (require-package 'outorg) ;; depend on `outshine'
+  (require-package 'navi-mode)
+  ;; (require-package 'ox-twiki) ;; depend on melpa `org'
+  (require-package 'org2blog) ;; depend on melpa `org'
+  ;; NOTE: package is not stable right now, use downloaded pacakge in
+  ;; the lisps folder 
+  ;; (require-package 'o-blog) 
+  
   (require-package 'popup)
   (require-package 'popwin)
   (require-package 'pp-c-l)
@@ -320,6 +345,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'smarter-compile)
   (require-package 'smex)
   (require-package 'string-utils)
+
   ;; (require-package 'sunrise-commander)
   ;; ;; (require-package 'sunrise-x-buttons)
   ;; (require-package 'sunrise-x-checkpoints)
@@ -330,14 +356,13 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'sunrise-x-tabs)
   ;; ;; (require-package 'sunrise-x-tree)
   ;; (require-package 'sunrise-x-w32-addons)
-  ;; (require-package 'texdrive)
-  ;; (require-package 'ucs-utils)
 
   (require-package 'sr-speedbar)
   (require-package 'strings)
-  
+
   (require-package 'undo-tree)
-  (require-package 'redo+)
+  ;; (require-package 'redo+)
+
   (require-package 'vline)
   (require-package 'w32-browser)
   (require-package 'w3m)
@@ -346,23 +371,20 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'wgrep)
   ;; (require-package 'wgrep-helm) ;; don't use helm
   (require-package 'whole-line-or-region)
-  (require-package 'windsize)
-  (require-package 'winpoint)
   (require-package 'ws-trim)
   (require-package 'xcscope)
   (require-package 'xml-rpc)
-  (require-package 'yasnippet)
-  (require-package 'zjl-hl)
+  ;; (require-package 'zjl-hl)
 
   ;; New packages
   (require-package 'iedit)
+
   (require-package 'auctex)
   (require-package 'auctex-latexmk)
-  ;; (require-package 'fold-dwim)
-  ;; (require-package 'folder-dwim-org)
-
+  (require-package 'cdlatex)
+  ;; (require-package 'texdrive)
+  
   (require-package 'command-log-mode)
-  (require-package 'hideshow-org)
   (require-package 'psvn)
   (require-package 'ecb)
   (require-package 'ebib)

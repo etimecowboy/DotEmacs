@@ -1509,6 +1509,11 @@ decorations.markings}
   ;;** `ebib'
   (org-add-link-type "ebib" 'ebib--open-org-link)
   (org-add-link-type "cite" 'ebib--open-org-link)
+
+  ;;** `outshine' and `outorg' (literate programming)
+  (try-require 'outshine)
+  (try-require 'outorg)
+  (try-require 'navi-mode)
   
   (message "* ---[ org post-load configuration is complete ]---"))
 
