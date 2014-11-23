@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-23 Sun 02:14 by xin on S13>
+;; Time-stamp: <2014-11-23 Sun 02:24 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -181,6 +181,7 @@
 ;; outline-mode, structural editing
 (defvar outline-minor-mode-prefix "\M-#")
 (eval-after-load "outline" '(outline-postload))
+(global-set-key (kbd "<f6> o") 'outline-minor-mode)
 ;; (eal-define-keys
 ;;  'outline-mode-map
 ;;  `(("C-M-h"   outline-mark-subtree)
