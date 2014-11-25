@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-24 Mon 03:21 by xin on S13>
+;; Time-stamp: <2014-11-25 Tue 13:12 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -144,11 +144,11 @@
 
 ;; FIXME: strange shift problem
 (eal-define-keys-commonly
- global-map
- `(("C-S-J" windmove-left)
-   ("C-S-L" windmove-right)
-   ("C-S-I" windmove-up)
-   ("C-S-K" windmove-down)))
+ global-map ;; not work in linux console
+ `(("C-S-j" windmove-left)
+   ("C-S-l" windmove-right)
+   ("C-S-i" windmove-up)
+   ("C-S-k" windmove-down)))
 
 
 
@@ -160,7 +160,7 @@
 (autoload 'buf-move-right "buffer-move" nil t)
 
 (eal-define-keys-commonly
- global-map
+ global-map ;; not work in linux console
  `(("M-S-<up>"    buf-move-up)
    ("M-S-<down>"  buf-move-down)
    ("M-S-<left>"  buf-move-left)
@@ -183,7 +183,7 @@
  global-map
  `(("M-J" windsize-left)
    ("M-L" windsize-right)
-   ("M-I" windsize-up)
+   ("M-I" windsize-up) ;; not work in linux console
    ("M-K" windsize-down)))
 
 
