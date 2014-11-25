@@ -10,15 +10,17 @@
 ;;  \____|_| |_| |_|\__,_|\___|___/
 ;;
 ;;--------------------------------------------------------------------
-;; TODO: Divid org-settings into a few more funtions for org-agenda,
-;; org-capture and so on.
 
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 
 
-;; REF: (@url :file-name "http://www.mfasold.net/blog/2009/02/using-emacs-org-mode-to-draft-papers/" :display "Post")
+;;; Utility functions
+
+;;;; xy/org-mode-reftex-setup
+;; `reftex' setup
+;; REF: [[http://www.mfasold.net/blog/2009/02/using-emacs-org-mode-to-draft-papers/][Blog Post]]
 ;;;###autoload
 (defun xy/org-mode-reftex-setup ()
   (interactive)
@@ -30,7 +32,11 @@
 
 
 
-;; REF: (@url :file-name "http://permalink.gmane.org/gmane.emacs.gnus.general/78422" :display "auto-format code block for org")
+;;;; tzz-copy-region-with-mode-property
+;; Add org wrap for source code
+
+;; - REF: [[http://permalink.gmane.org/gmane.emacs.gnus.general/78422][News group: "auto-format code block for org"]]
+
 ;;;###autoload
 (defun tzz-copy-region-with-mode-property (beg end)
   (interactive "r")
@@ -51,10 +57,12 @@
       (require 'pc-select)
       (copy-region-as-kill (point-min) (point-max)))))
 
-
+;; 
 
-;; html输出时换行带来的多余空格
-;; NOTE: It makes html source less readable
+;;;; xy/org-html-chinese-no-extra-space
+;; 去除html输出时换行带来的多余空格
+
+;; 问题：It makes html source less readable
 ;; ;;;###autoload
 ;; (defun xy/org-html-chinese-no-extra-space
 ;;   (&optional html-file-name)
@@ -114,14 +122,18 @@
 ;;                     (next-logical-line))))
 ;;             (save-buffer)))))))
 
+;;;; defadvice
 ;; 更好的解决方法: html输出时换行带来的多余空格
-;; REF: (@url :file-name "http://www.newsmth.net/nForum/#!article/Emacs/103680" :display "newsmth.net")
+
+;; - REF: [[http://www.newsmth.net/nForum/#!article/Emacs/103680][Post@newsmth.net]]
+
 ;; 这儿有一种临时解决方法[1][2]，通过给函数 org-html-paragraph 添加
 ;; advice，使得导出 html 前自动将段落中的多行中文合并为一行，且不会影响
 ;; 源文件，个人认为还算实用，可供参考：
-;; REF: (@url :file-name "http://fasheng.github.io/blog/2013-09-25-fix-chinese-space-issue-when-exporting-org-mode-to-html.html" :display "[1]")
-;; REF: (@url :file-name "https://gist.github.com/fasheng/6696398 " :display "[2]")
-;; NOTE: add to `org-post-load'
+
+;; - [[http://fasheng.github.io/blog/2013-09-25-fix-chinese-space-issue-when-exporting-org-mode-to-html.html][方法1]]
+;; - [[https://gist.github.com/fasheng/6696398][方法2]]
+
 ;; (defadvice org-html-paragraph (before fsh-org-html-paragraph-advice
 ;;                                       (paragraph contents info) activate)
 ;;   "Join consecutive Chinese lines into a single long line without
@@ -135,9 +147,14 @@
 ;;     (ad-set-arg 1 fixed-contents)
 ;;     ))
 
-
+;; 
 
-;; REF: (@url :file-name "http://orgmode.org/worg/org-hacks.html#sec-1-3-1" :display "worg")
+
+;;;; org-transpose-table-at-point
+;; 互换 org-table 的行和列
+
+;; - REF: [[http://orgmode.org/worg/org-hacks.html#sec-1-3-1][worg]]
+
 ;;;###autoload
 (defun org-transpose-table-at-point ()
   "Transpose orgmode table at point, eliminate hlines."
@@ -155,10 +172,15 @@
                           "  |\n" )) contents ""))
     (org-table-align)))
 
-
+;; 
 
-;; NOTE: always use latexmk
+;;;; xy/org-toggle-xelatex
+;; 切换使用 latexmk 或 xelatex 生成 PDF
+
+;; NOTE: it is good to use latexmk all the time
+
 (defvar xy:org-xelatex-flag t)
+
 ;;;###autoload
 (defun xy/org-toggle-xelatex ()
   "Toggle the commands (latexmk/xelatex) to generate PDF file."
@@ -183,12 +205,18 @@
               "xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"
               "xelatex -shell-escape -interaction nonstopmode -synctex=1 -output-directory %o %f"))
       (setq xy:org-xelatex-flag t)
-      (message "* ---[ Using `xelatex' as the LaTeX PDF exporter now ]---"))))
+      (message "* ---[ Using `xelatex' as the LaTeX PDF exporter now
+]---"))))
 
-
+;; 
 
-;; REF: http://doc.norang.ca/org-mode.html
+;;;; bh/hide-other
+;; 仅显示当前标题内容
+
+;; - REF: [[http://doc.norang.ca/org-mode.html][Blog Post]]
+
 ;; FIXME: not work
+
 ;;;###autoload
 (defun bh/hide-other ()
   "Hide other org trees."
@@ -199,16 +227,17 @@
     (org-cycle)
     (org-cycle)
     (org-cycle)))
-
+;; 
+
+;;; org-postload
 
 ;;;###autoload
 (defun org-postload ()
   "Settings of `org' after it's been loaded."
 
-  ;;* Fix org and other lisp packages
-
-  ;;** For Emacs daemon mode
-  ;; 为了column view能够在emacs daemon模式下正常显示
+;;;; Fix org and other lisp packages
+;;;;; For Emacs daemon mode
+;; 为了column view能够在emacs daemon模式下正常显示
   (defun wl-org-column-view-uses-fixed-width-face ()
     ;; copy from org-faces.el
     (when (fboundp 'set-face-attribute)
@@ -221,43 +250,36 @@
     (add-hook 'org-mode-hook
               'wl-org-column-view-uses-fixed-width-face))
 
-  ;; ;;** `seesion.el'
-  ;; ;; Don't recursively display gtd files in session list
+;;;;; seesion.el
+;; Don't recursively display gtd files in session list
   ;; (add-to-list 'session-globals-exclude 'org-mark-ring)
   ;; ;; Don't display org agenda files
   ;; (add-to-list 'session-globals-exclude 'org-agenda-files)
 
-  ;;** 让链结后的空格问题
+;;;;; spaces after link
   (setq org-activate-links '(bracket angle radio tag date footnote))
   
 
   
-  ;;* Locate some files
+;;;; org files
 
-  (setq org-directory
-        (concat my-emacs-path "/org"))
-  (setq org-default-notes-file
-        (concat org-directory "/gtd/Note.org"))
-  (unless (file-exists-p org-default-notes-file)
-    (shell-command (concat "touch " org-default-notes-file)))
-  (setq org-combined-agenda-icalendar-file
-        (concat org-directory "/org.ics"))
-  (unless (file-exists-p org-combined-agenda-icalendar-file)
-    (shell-command (concat "touch " org-combined-agenda-icalendar-file)))
-  (setq org-id-locations-file
-        (concat org-directory "/org-id-locations"))
-  (unless (file-exists-p org-id-locations-file)
-    (shell-command (concat "touch " org-id-locations-file)))
-  (setq org-clock-persist-file
-        (concat org-directory "/org-clock-save"))
-  (unless (file-exists-p org-clock-persist-file)
-    (shell-command (concat "touch " org-clock-persist-file)))
+  (setq org-directory (concat my-emacs-path "/org"))
+  (setq org-default-notes-file (concat org-directory "/gtd/Note.org"))
+  ;; (unless (file-exists-p org-default-notes-file)
+  ;;   (shell-command (concat "touch " org-default-notes-file)))
+  (setq org-combined-agenda-icalendar-file (concat org-directory "/org.ics"))
+  ;; (unless (file-exists-p org-combined-agenda-icalendar-file)
+  ;;   (shell-command (concat "touch " org-combined-agenda-icalendar-file)))
+  (setq org-id-locations-file (concat org-directory "/org-id-locations"))
+  ;; (unless (file-exists-p org-id-locations-file)
+  ;;   (shell-command (concat "touch " org-id-locations-file)))
+  (setq org-clock-persist-file (concat org-directory "/org-clock-save"))
+  ;; (unless (file-exists-p org-clock-persist-file)
+  ;;   (shell-command (concat "touch " org-clock-persist-file)))
 
 
 
-  ;;* Some global settings
-  
-  ;;** Loaded modules
+;;;; loaded modules
   (setq org-modules
         '(;; org official lisps
           org-bbdb org-bibtex org-crypt org-ctags org-docview 
@@ -269,14 +291,13 @@
           ;; org-bookmark org-mew org-expiry org-git-link
           ))
 
+;;;; common settings
   ;; (setq org-completion-use-iswitchb t)
-  (setq org-completion-use-ido t)
+  (setq org-completion-use-ido t)    ;; I like ido
+  (setq org-return-follows-link nil) ;; Disable ENT to follow links
 
-  ;; Disable ENT to follow links
-  (setq org-return-follows-link nil)
-
-  ;; Enable inline image display.
-  ;; But may breaks access to emacs from an Android phone
+  ;; Disable inline image display
+  ;; May breaks access to emacs from an Android phone
   ;; (if window-system
   ;;     (setq org-startup-with-inline-images t)
   ;;   (setq org-startup-with-inline-images nil))
@@ -288,7 +309,8 @@
   ;; Check if in invisible region before inserting or deleting a character
   (setq org-catch-invisible-edits 'smart)
 
-  ;; Encrypting entries in an org file
+;;;; org-crypt
+;; Encrypting entries in an org file
   (require 'org-crypt)
   (org-crypt-use-before-save-magic)
   (setq org-tags-exclude-from-inheritance (quote ("crypt" "prj")))
@@ -297,9 +319,7 @@
   (setq org-crypt-key nil)
 
 
-  ;;* todo items
-
-  ;;** General settings
+;;;; todo items
   (setq org-todo-keywords
         '((sequence "TODO(t)" "SOMEDAY(x!)" "NEXT(n!)" "STARTED(s)" "WAITING(w!)"
                     "|" "DONE(d!)" "CANCELLED(c@/!)") ;; for tasks          
@@ -315,12 +335,51 @@
         t) ;; Block todo items from changing state to DONE while
            ;; they have children that are not DONE
 
-  ;;** Define stuck projects
+  ;; todo entry automatically changes to DONE when all children are done
+  ;; (defun org-summary-todo (n-done n-not-done)
+  ;;   "Switch entry to DONE when all subentries are done, to TODO
+  ;; otherwise."
+  ;;   (let (org-log-done org-log-states)   ; turn off logging
+  ;;     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+  ;; (add-hook ('org-after-todo-statistics-hook 'org-summary-todo)
+  
+;;;;; hooks
+;; - REF: [[http://thread.gmane.org/gmane.emacs.orgmode/21402/focus=21413][orgmode mail-list]]
+;; - BUG: `state' variable is not recognised
+;; - TODO: waiting for a `after-schedule-hook' in future release.
+  (add-hook 'org-after-todo-state-change-hook
+            '(lambda ()
+
+;;;;;; Delete scheduled time after changing the state to SOMEDAY
+;; - NOTE: current workflow doesn't need it
+               ;; (if (string= org-state "SOMEDAY")
+               ;;     (org-remove-timestamp-with-keyword
+               ;;     org-scheduled-string))
+               
+;;;;;; Automatically schedule the task to today after enter NEXT
+;; -NOTE: current workflow doesn't need it
+               ;; (if (string= org-state "NEXT") (org-schedule nil "+0"))
+               ;; (when window-system ;; also useful in console
+
+;;;;;; Popup notification when done               
+               (when (try-require 'todochiku)
+                 (if (string= org-state "DONE")
+                     (todochiku-message "Emacs Org"
+                                        "Task DONE, Great Work!"
+                                        (todochiku-icon 'check))))))
+
+
+
+;;;; projects
+  ;; Define stuck projects
   (setq org-stuck-projects
         '("+prj/!-TODO-SOMEDAY-NEXT"
           ("\\<STARTED\\>" "\\<WAITING\\>")))
-  
-  ;;** Tag change triggers
+
+
+
+;;;; tags
+;;;;; tag change with state change
   ;; (setq org-todo-state-tags-triggers
   ;;         '(("TODO"      ("new"))
   ;;           ("NEXT"      ("new"))
@@ -330,45 +389,8 @@
   ;;           ("SOMEDAY"   ("new"))
   ;;           ("CANCELLED" ("new") ("important") ("old" . t))))
 
-  ;;** Add some hook functions to assist my system
-  ;; See list of: (@url :file-name "http://orgmode.org/worg/org-configs/org-hooks.html" :display "org-mode hooks")
-  ;; REF: (@url :file-name "http://thread.gmane.org/gmane.emacs.orgmode/21402/focus=21413" :display "orgmode mail-list")
-  ;; BUG: `state' variable is not recognised
-  ;; TODO: waiting for a after-schedule-hook in future release.
-  ;; Automaticaly remove the scheduled date/time after
-  (add-hook 'org-after-todo-state-change-hook
-            '(lambda ()
-               ;; ;; NOTE: current workflow don't need to do this
-               ;; ;; Delete scheduled time after changing the state to SOMEDAY
-               ;; (if (string= org-state "SOMEDAY")
-               ;;     (org-remove-timestamp-with-keyword
-               ;;     org-scheduled-string))
-               
-               ;; ;; Automatically schedule the task to today after change
-               ;; ;; the state to NEXT
-               ;; (if (string= org-state "NEXT") (org-schedule nil "+0"))
-               ;; (when window-system ;; also useful in console
-
-               (when (try-require 'todochiku)
-                 (if (string= org-state "DONE")
-                     (todochiku-message "Emacs Org"
-                                        "Task DONE, Great Work!"
-                                        (todochiku-icon 'check))))))
-
-  ;; todo entry automatically changes to DONE
-  ;; when all children are done
-  ;; (defun org-summary-todo (n-done n-not-done)
-  ;;   "Switch entry to DONE when all subentries are done, to TODO
-  ;; otherwise."
-  ;;   (let (org-log-done org-log-states)   ; turn off logging
-  ;;     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
-  ;; (add-hook ('org-after-todo-statistics-hook 'org-summary-todo)
-
-
-  
-  ;;* Tags
-
-  ;;** Global tags
+;;;;; global tags
+;; - NOTE: define in org files
   ;; (setq org-tag-persistent-alist
   ;;       '(;; GTD contexts
   ;;         (:startgroup)
@@ -380,21 +402,21 @@
   ;;         ;; special tags
   ;;         ("appt" . ?A) ("prj" . ?P) ("repeat" . ?R)
   ;;         ("delegated" . ?D) ("noexport" . ?N)))
-  ;; NOTE: it is better to define all the tags in seperate files. 
 
   (setq org-use-tag-inheritance t)   ;; Inherit tags in most of cases
   (setq org-tags-exclude-from-inheritance '("prj" "crypt"))   ;; Exclusions
 
   
   
-  ;;* Properties
-
-  ;;** Global settings
+;;;; properties
   (setq org-use-property-inheritance
         nil)  ;; Don't inheritant property for sub-items,
               ;; since it slows down property searchings.
 
-  (setq org-global-properties   ;; Additional properties
+;;;;;; additional properties  
+;; - NOTE: a task should not takes more than 4 hours, otherwise it
+;; MUST be a project and can be broken into smaller tasks.
+  (setq org-global-properties
         '(("Effort_ALL" .
            "0:10 0:20 0:30 1:00 1:30 2:00 2:30 3:00 4:00")
           ("Importance_ALL" .
@@ -402,35 +424,23 @@
           ("Score_ALL" .
            "0 1 2 3 4 5 6 7 8 9 10")
           ))
-  ;; NOTE: a task should not takes more than 4 hours, otherwise it
-  ;; MUST be a project and can be broken into smaller tasks.
 
-  ;;** Priority settings
+;;;;;; priority
   (setq org-enable-priority-commands           t
         org-highest-priority                  ?A
         org-lowest-priority                   ?C
         org-default-priority                  ?B
         org-priority-start-cycle-with-default  t)
 
-  ;;** Column view
+  
+
+;;;; column view
   (setq org-columns-default-format ; Set default column view headings
         "%CATEGORY(Cat.) %PRIORITY(Pri.) %Importance(Imp.) %6TODO(State) %35ITEM(Details) %ALLTAGS(Tags) %5Effort(Plan){:} %6CLOCKSUM(Clock){Total} %Score(Score)")
 
     
   
-  ;;* Timing settings
-
-  ;;** Log settings
-  (setq org-log-done            'time
-        org-log-done-with-time   t
-        org-log-into-drawer      t
-        org-log-redeadline      'note
-        org-log-reschedule      'time
-        org-log-refile          'time
-        org-log-state-notes-insert-after-drawers t
-        org-agenda-log-mode-items '(closed state))
-
-  ;;** Clock settings
+;;;; clocking
   (setq org-clock-history-length 10
         org-clock-idle-time      15
         org-clock-in-resume      t
@@ -446,13 +456,25 @@
         org-clock-sound t)
   (org-clock-persistence-insinuate)
 
-  ;;** Alarm
+;;;;; log
+  (setq org-log-done            'time
+        org-log-done-with-time   t
+        org-log-into-drawer      t
+        org-log-redeadline      'note
+        org-log-reschedule      'time
+        org-log-refile          'time
+        org-log-state-notes-insert-after-drawers t
+        org-agenda-log-mode-items '(closed state))
 
-  ;;*** `appt' alarm
+  
+
+;;;; notification
+
+;;;;; add events in emacs diary  
   ;; (require 'appt)
   (setq org-agenda-include-diary t)
 
-  ;;**** update appt each time agenda opened
+;;;;; update appt each time agenda opened
   (add-hook 'org-finalize-agenda-hook 'org-agenda-to-appt)
   (defadvice  org-agenda-redo (after org-agenda-redo-add-appts)
     "Pressing `r' on the agenda will also add appointments."
@@ -461,7 +483,8 @@
       (org-agenda-to-appt)))
   (ad-activate 'org-agenda-redo)
 
-  ;;*** Python script alarm
+;;;;; Python script
+;; - NOTE: not in use
   ;; (progn
   ;;   (appt-activate 1)
   ;;   (setq appt-display-format 'window)
@@ -470,9 +493,8 @@
   ;;     (call-process "~/script/popup.py" nil 0 nil min-to-app msg
   ;;   new-time)))
 
-  ;;*** `todochiku' display pop-up notification in window-system
-  ;; NOTE: May do the job twice with (@file :file-name "xy-rc-appt.el" :to "appt-disp-window-function" :display "`appt-disp-window-function'")
-  ;;       May be deleted to use just one
+;;;;; todochiku
+;; - NOTE: already in `appt' setting
   ;; (when window-system
   ;;   (when (try-require 'todochiku)
   ;;     (setq org-show-notification-handler
@@ -482,12 +504,9 @@
 
 
 
-  ;;* Capture, refile & archive settings
-
-
-  ;;** Capture settings
+;;;; capture
   
-  ;; ;;*** For `remember.el'
+;;;;; `remember.el' (out-dated)
   ;; (setq org-remember-default-headline "Tasks")
   ;; (org-remember-insinuate)
   ;; (define-key global-map "\C-cr" 'org-remember)
@@ -495,7 +514,7 @@
   ;; (define-key global-map "\C-cc" 'org-capture)
   ;; NOTE: Swithed from `remember' to `org-capture'
 
-  ;;*** For `org-cpature.el'
+;;;;;  `org-cpature.el'
   (setq org-capture-templates
         '(("t" "Capture a New Task from Emacs"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Gtd.org" "Task Inbox")
@@ -607,10 +626,10 @@
           
           ))
 
-  ;;** Refile settings
+;;;; refile
   
   ;; Targets include this file and any file contributing to the agenda
-  ;; - up to 3 levels deep
+  ;; up to 3 levels deep
   (setq org-refile-targets '((nil :maxlevel . 3)
                              (org-agenda-files :maxlevel . 3)))
 
@@ -633,13 +652,13 @@
 
 
   
-  ;;* Agenda
+;;;; Agenda
 
-  ;;** Agenda files
+;;;;; Agenda files
+;; - NOTE: files are set in my local custom file for privacy reason
   ;; (setq org-agenda-files '())
-  ;; NOTE: files are set in my local custom file to keep privacy
 
-  ;;** Agenda look
+;;;;; Agenda look
   ;; Do not dim blocked tasks
   (setq org-agenda-dim-blocked-tasks nil)
 
@@ -662,7 +681,7 @@
         org-agenda-todo-ignore-timestamp nil
         org-agenda-todo-ignore-with-date nil)
 
-  ;; ;; Show all items when do a tag-todo search (C-c a M)
+  ;; Show all items when do a tag-todo search (C-c a M)
   ;; (org-agenda-tags-todo-honor-ignore-options nil)
 
   ;; Do not display sublevels
@@ -689,7 +708,7 @@
           (tags time-up category-keep priority-down todo-state-up)
           (search time-up category-keep priority-down todo-state-up)))
 
-  ;; Custom agenda commands
+;;;;; Custom agenda commands
   (setq org-agenda-custom-commands
         '(
           ("d" "Day Planner"
@@ -865,7 +884,7 @@
           ;;----------------------------------------------------------
                     ))
 
-  ;;** Agenda view export C-x C-w
+;;;;;; Agenda view export C-x C-w
   (setq org-agenda-exporter-settings
         '((ps-number-of-columns 2)
           (ps-landscape-mode t)
@@ -874,7 +893,7 @@
           ;; (org-agenda-remove-tags t)
           (org-agenda-add-entry-text-maxlines 5)
           (htmlize-output-type 'css)))
-  ;; ;; Add to custom command dispatcher
+;;;;;;; Add to custom command dispatcher
   ;; (setq org-agenda-custom-commands
   ;;       '(("X" agenda "" nil ("~/emacs/org/gtd/agenda.html" "~/emacs/org/gtd/agenda.pdf"))
   ;;         ("Y" alltodo "" nil ("~/emacs/org/gtd/todo.html" "~/emacs/org/gtd/todo.txt" "~/emacs/org/gtd/todo.pdf"))
@@ -891,8 +910,10 @@
   ;;          nil
   ;;          ("~/emacs/org/gtd/geek.html"))))
 
-  ;;** MobileOrg settings
-  ;; NOTE: I use Dropbox serveice
+  
+
+;;;; MobileOrg
+;; - NOTE: I use Dropbox serveice
   (setq org-mobile-directory "~/Dropbox/MobileOrg")
   (setq org-mobile-encryption-tempfile
         (concat org-directory "/orgtmpcrypt"))
@@ -906,9 +927,9 @@
 
 
 
-  ;;* Org Babel settings
+;;;; org-babel
 
-  ;;** babel evaluation languages
+;;;;; evaluation languages
   (setq org-babel-load-languages
         '((C . t) (R . t) ;; (asymptote . t)
           (ditaa . t) (dot . t) (emacs-lisp . t)
@@ -920,7 +941,7 @@
 
   (require 'ob-C)
   (require 'ob-R)
-  ;; (require 'asymptote)
+  ;; (require 'ob-asymptote)
   (require 'ob-ditaa)
   (require 'ob-dot)
   (require 'ob-latex)
@@ -933,23 +954,24 @@
   (require 'ob-ruby)
   (require 'ob-sh)
 
+  ;;;;;; matlab-shell
   (Windows
    (setq org-babel-matlab-shell-command "C:/MATLAB/R2014a/bin/win64/matlabshell.exe")
    (Laptop
     (setq org-babel-matlab-shell-command "matlabshell.exe"))
    (OfficePC
     (setq org-babel-matlab-shell-command "C:/PROGRA~1/MATLAB/R2014a/bin/win64/matlabshell.exe")))
-  
+ 
   (GNULinux
    (setq org-babel-matlab-shell-command "MATLAB"))
   
   (setq org-babel-default-header-args:matlab
   '((:results . "output") (:session . "*MATLAB*")))
 
-  
-  ;; Custom library of babel file. Add code blocks to the library from
-  ;; any Org-mode file using the `org-babel-lob-ingest' (bound to C-c
-  ;; C-v i).
+;;;;; babel-lob
+;; Custom library of babel file. Add code blocks to the library from
+;; any Org-mode file using the `org-babel-lob-ingest' (bound to C-c
+;; C-v i).
   ;; BUG:
   ;; (setq org-babel-lob-files
   ;;       '("~/emacs/org/babel/library-of-babel.org"))
@@ -958,6 +980,7 @@
   ;;     "%s
   ;; save -ascii %s ans")
 
+;;;;; src block
   (setq org-src-fontify-natively t
         org-confirm-babel-evaluate nil
         org-export-babel-evaluate nil
@@ -979,9 +1002,9 @@
 
 
   
-  ;;* Org export settings
+;;;; Org export
 
-  ;;** General settings
+;;;;; backends
   (setq org-export-backends
         '(ascii beamer html latex md org odt))
   (setq org-file-apps ;; set default viewer for exported files
@@ -1007,7 +1030,7 @@
           ("\\.gif\\'"     . system)
           ))
 
-  ;;** LaTeX export settings
+;;;;; LaTeX export
   ;; (require 'ox)
   ;; (require 'ox-latex)
   ;; (require 'ox-beamer)
@@ -1321,6 +1344,7 @@ decorations.markings}
   ;; load auctex for better latex editing support C-c '
   ;; (xy/auctex-start)
 
+;;;;; latex mode hook
   (add-hook 'org-mode-hook
             '(lambda ()
                ;; BUG: org-mobile
@@ -1338,7 +1362,8 @@ decorations.markings}
                ;; (xy/set-font-write)
                ))
 
-  ;;** Use ditaa/graphviz to generate png pictures.
+;;;;; ditaa export
+  ;; Use ditaa/graphviz to generate png pictures.
   ;;  *  Use artist mode to draw ascii picutre,
   ;;  *  then convert to png pictures using ditaa.
   ;; Now ditta is included in org, but I use the
@@ -1375,7 +1400,8 @@ decorations.markings}
 
   
   
-  ;;** html export
+;;;;; html export
+  
   ;; 更好的解决方法: html输出时换行带来的多余空格
   ;; REF: (@url :file-name "http://www.newsmth.net/nForum/#!article/Emacs/103680" :display "newsmth.net")
   ;; 这儿有一种临时解决方法[1][2]，通过给函数 org-html-paragraph 添加
@@ -1399,7 +1425,7 @@ decorations.markings}
 
   
 
-  ;;** odt export
+;;;;; odt export
   ;; (require 'ox-odt)
   ;; NOTE: fixed already
   ;; (setq org-odt-data-dir
@@ -1407,13 +1433,13 @@ decorations.markings}
 
 
 
-  ;;** bibtex export
+;;;;; bibtex export
   ;; NOTE: require bibtex2html
   (GNULinux
    (try-require 'ox-bibtex))
 
   
-  ;;* Org publish settings
+;;;; org publish
   ;; NOTE:
   ;; Org-mode 8.0 发布网页时要:
   ;; (require 'ox-publish)
@@ -1427,28 +1453,239 @@ decorations.markings}
         (concat org-directory "/timestamps"))
   (setq org-publish-use-timestamps-flag t)
 
+  ;; NOTE: not in use, use o-blog instead
+  ;; List of projects
+  ;; http://127.0.0.1/  (localhost)
+  ;; local-org are the org-files that generate the content
+  ;; local-extra are images and css files that need to be included
+  ;; local is the top-level project that gets published
+  ;; (setq org-publish-project-alist
+  ;;     (quote(
+  ;;            ("local-org"
+  ;;             :base-directory "~/emacs/org/source/"
+  ;;             ;;            :preparation-funtion
+  ;;             ;;            :completion-function
+  ;;             :base-extension "org"
+  ;;             ;;            :exclude
+  ;;             ;;            :include
+  ;;             :publishing-function org-publish-org-to-html
+  ;;             :plain-source nil
+  ;;             :htmlized-source nil
+  ;;             ;;            :link-up
+  ;;             ;;            :link-home
+  ;;             :language utf-8
+  ;;             ;;            :customtime
+  ;;             ;;            :headline-levels
+  ;;             ;;            :section-numbers
+  ;;             ;;            :section-number-format
+  ;;             :table-of-contents t
+  ;;             ;;            :preserve-breaks
+  ;;             :archived-trees nil
+  ;;             :emphasize t
+  ;;             :sub-superscript t
+  ;;             ;;            :special-strings
+  ;;             :footnotes t
+  ;;             :drawers nil
+  ;;             :tags t
+  ;;             :todo-keywords t
+  ;;             :priority t
+  ;;             :TeX-macros t
+  ;;             :LaTeX-fragments t
+  ;;             :latex-listings nil
+  ;;             :skip-before-1st-heading nil
+  ;;             :fixed-width t
+  ;;             :timestamps t
+  ;;             :author-info t
+  ;;             :email-info nil
+  ;;             :creator-info nil
+  ;;             :tables t
+  ;;             :table-auto-headline t
+  ;;             :style-include-default t
+  ;;             :style "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://dl.dropbox.com/u/7817597/stylesheets/org.css\" />"
+  ;;             ;;            :style-extra "<link rel=\"stylesheet\" href=\"http://127.0.0.1/stylesheets/org.css\" type=\"text/css\" />"
+  ;;             :convert-org-links t
+  ;;             :inline-images t
+  ;;             ;;            :html-extension
+  ;;             ;;            :xml-declaration
+  ;;             ;;            :html-table-tag
+  ;;             :expand-quoted-html t
+  ;;             :timestamp t
+  ;;             ;; :publishing-directory "/ftp:xin@127.0.0.1:/org/"
+  ;;             :publishing-directory "~/emacs/org/html/"
+  ;;             ;;            :preamble
+  ;;             ;;            :postamble
+  ;;             ;;            :auto-preamble
+  ;;             ;;            :auto-postamble
+  ;;             :author "Xin Yang"
+  ;;             :email "Xin2.Yang@gmail.com"
+  ;;             ;;            :select-tags
+  ;;             ;;            :exclude-tags
+  ;;             ;;            :latex-image-options
+  ;;             :auto-sitemap t
+  ;;             :sitemap-filename "SiteMap.org"
+  ;;             :sitemap-title "Sitemap of local website"
+  ;;             :sitemap-function org-publish-org-sitemap
+  ;;             :sitemap-sort-folders last
+  ;;             :sitemap-alphabetically t
+  ;;             :sitemap-ignore-case t
+  ;;             :makeindex nil
+  ;;             :recursive t
+  ;;             )
+  ;;            ("local-extra"
+  ;;             :base-directory "~/emacs/org/source/"
+  ;;             :base-extension "css\\|pdf\\|png\\|jpg\\|gif\\|CSS\\|PDF\\|PNG\\|JPG\\|GIF\\|c\\|C\\|m\\|M\\|vhd\\|VHD\\|v\\|V\\|cpp\\|CPP"
+  ;;             ;; :publishing-directory "/ftp:xin@127.0.0.1:/org/"
+  ;;             :publishing-directory "~/emacs/org/html/"
+  ;;             :publishing-function org-publish-attachment
+  ;;             :recursive t
+  ;;             :author nil
+  ;;             )
+  ;;            ("local-addon"
+  ;;             :base-directory "~/emacs/org/addon/"
+  ;;             :base-extension "css\\|pdf\\|png\\|jpg\\|gif\\|CSS\\|PDF\\|PNG\\|JPG\\|GIF"
+  ;;             ;; :publishing-directory "/ftp:xin@127.0.0.1:/org/"
+  ;;             :publishing-directory "~/emacs/org/html/"
+  ;;             :publishing-function org-publish-attachment
+  ;;             :recursive t
+  ;;             :author nil
+  ;;             )
+  ;;            ("local"
+  ;;             :components ("local-org" "local-extra" "local-addon")
+  ;;             )
+
+  ;;            ;; PhD documents export to LaTeX draft
+  ;;            ("phd-org"
+  ;;             :base-directory "~/emacs/org/source/phd"
+  ;;             ;;            :preparation-funtion
+  ;;             ;;            :completion-function
+  ;;             :base-extension "org"
+  ;;             ;;            :exclude
+  ;;             ;;            :include
+  ;;             :publishing-function org-publish-org-to-latex
+  ;;             :plain-source nil
+  ;;             :htmlized-source nil
+  ;;             :link-up t
+  ;;             :link-home t
+  ;;             :language utf-8
+  ;;             ;;            :customtime
+  ;;             ;;            :headline-levels
+  ;;             ;;            :section-numbers
+  ;;             ;;            :section-number-format
+  ;;             :table-of-contents t
+  ;;             ;;            :preserve-breaks
+  ;;             :archived-trees nil
+  ;;             :emphasize t
+  ;;             :sub-superscript t
+  ;;             ;;            :special-strings
+  ;;             :footnotes t
+  ;;             :drawers nil
+  ;;             :tags nil
+  ;;             :todo-keywords nil
+  ;;             :priority nil
+  ;;             :TeX-macros t
+  ;;             :LaTeX-fragments t
+  ;;             :latex-listings t
+  ;;             :skip-before-1st-heading nil
+  ;;             :fixed-width t
+  ;;             :timestamps t
+  ;;             :author-info t
+  ;;             :email-info t
+  ;;             :creator-info nil
+  ;;             :tables t
+  ;;             :table-auto-headline t
+  ;;             ;;            :style-include-default t
+  ;;             ;;            :style "<link rel=\"stylesheet\" href=\"https://dl.dropbox.com/u/7817597/stylesheets/org.css\" type=\"text/css\">"
+  ;;             ;;            :style-extra "<link rel=\"stylesheet\" href=\"http://127.0.0.1/stylesheets/org.css\" type=\"text/css\" />"
+  ;;             :convert-org-links t
+  ;;             :inline-images t
+  ;;             ;;            :html-extension
+  ;;             ;;            :xml-declaration
+  ;;             ;;            :html-table-tag
+  ;;             ;;            :expand-quoted-html t
+  ;;             ;;            :timestamp t
+  ;;             :publishing-directory "~/emacs/org/latex/phd"
+  ;;             ;;            :preamble
+  ;;             ;;            :postamble
+  ;;             ;;            :auto-preamble
+  ;;             ;;            :auto-postamble
+  ;;             :author "Xin Yang"
+  ;;             :email "Xin2.Yang@gmail.com"
+  ;;             ;;            :select-tags
+  ;;             ;;            :exclude-tags
+  ;;             ;;-----------------------------------------------------------
+  ;;             ;;            :latex-image-options
+  ;;             ;;------------------------------------------------------------
+  ;;             :auto-sitemap nil
+  ;;             ;; :sitemap-filename "SiteMap.org"
+  ;;             ;; :sitemap-title "Index of my PhD documents"
+  ;;             ;; :sitemap-function org-publish-org-sitemap
+  ;;             ;; :sitemap-sort-folders last
+  ;;             ;; :sitemap-alphabetically t
+  ;;             ;; :sitemap-ignore-case t
+  ;;             :makeindex nil
+  ;;             :recursive t
+  ;;             )
+  ;;            ("phd-img"
+  ;;             :base-directory "~/emacs/org/source/phd/img"
+  ;;             :base-extension "pdf\\|ps\\|png\\|jpg\\|bmp\\|eps\\|svg\\|PDF\\|PS\\|PNG\\|JPG\\|BMP\\|EPS\\|SVG"
+  ;;             :publishing-directory "~/emacs/org/latex/phd/img"
+  ;;             :publishing-function org-publish-attachment
+  ;;             :recursive t
+  ;;             )
+  ;;            ("phd-src"
+  ;;             :base-directory "~/emacs/org/source/phd/src"
+  ;;             :base-extension "v\\|vhd\\|c\\|hcc\\|cpp\\|m\\|V\\|VHD\\|C\\|HCC\\|CPP\\|M"
+  ;;             :publishing-directory "~/emacs/org/latex/phd/src"
+  ;;             :publishing-function org-publish-attachment
+  ;;             :recursive t
+  ;;             )
+  ;;            ("phd-bib"
+  ;;             :base-directory "~/emacs/org/source/phd/bib"
+  ;;             :base-extension "bib\\|bst\\|BIB\\|BST"
+  ;;             :publishing-directory "~/emacs/org/latex/phd/bib"
+  ;;             :publishing-function org-publish-attachment
+  ;;             :recursive t
+  ;;             )
+  ;;            ("phd-all"
+  ;;             :components ("phd-org" "phd-img" "phd-src" "phd-bib")
+  ;;             )
+  ;;            )))
+
+  ;; NOTE: not in use
+  ;; (setq org-protocol-project-alist
+  ;;       '(;; ("Worg"
+  ;;         ;;  :base-url "http://orgmode.org/worg/"
+  ;;         ;;  :working-directory "/home/user/worg/"
+  ;;         ;;  :online-suffix ".html"
+  ;;         ;;  :working-suffix ".org")
+  ;;         ("My local Org-notes"
+  ;;          :base-url "http://localhost/org/"
+  ;;          :working-directory "~/emacs/org/source/"
+  ;;          :online-suffix ".php"
+  ;;          :working-suffix ".org")))
+
 
   
-  ;;* Contributed lisps
+;;;; Contributed lisps
 
-  ;;** `org-contacts'
+;;;;; `org-contacts'
   (try-require 'org-contacts)
 
-  ;;** `org-expiry'
+;;;;; `org-expiry'
   ;; (try-require 'org-expiry)
 
-  ;;** `org-git-link'
+;;;;; `org-git-link'
   (try-require 'org-git-link)
 
-  ;;** `org-mew'
+;;;;; `org-mew'
   (try-require 'org-mew)
 
   
   
-  ;;* Other plugins
+;;;; third-party plugins
 
-  ;; ;;** org-mime
-  ;; ;; REF: (@url :file-name "http://orgmode.org/worg/org-contrib/org-mime.html" :display "worg")
+;;;;; `org-mime'
+;; REF: (@url :file-name "http://orgmode.org/worg/org-contrib/org-mime.html" :display "worg")
   ;; (when (try-require 'org-mime)
   ;;   ;; (setq org-mime-library 'mml)
   ;;   (add-hook 'org-mode-hook
@@ -1463,28 +1700,28 @@ decorations.markings}
   ;;               (org-mime-change-element-style
   ;;                "blockquote" "border-left: 2px solid gray; padding-left: 4px;"))))
 
-  ;;** `org-google-weather'
-  ;; NOTE: google disabled its weather api recently
-  ;; google-weather-el for org
+;;;;; `org-google-weather'
+;; NOTE: google disabled its weather api recently
+;; google-weather-el for org
   ;; Add the following in one of your Org file.
   ;;   * Weather
   ;;   %%(org-google-weather "New York" "en-gb")
   ;; (eval-after-load "org-google-weather" '(org-google-weather-postload))
   ;; (try-require 'org-google-weather)
 
-  ;;** `org-location-google-maps'
+;;;;; `org-location-google-maps'
   ;; google-maps API for org
   (try-require 'org-location-google-maps)
 
-  ;;** `org-html5presentation'
-  ;; NOTE: not very useful now
-  ;; HTML5 Presentation export for Org-mode
+;;;;; `org-html5presentation'
+;; NOTE: not very useful now
+;; HTML5 Presentation export for Org-mode
   ;; (try-require 'org-html5presentation)
 
-  ;;** `o-blog'
-  ;; A stand-alone blog and publication tool for org-mode.
+;;;;; `o-blog'
+;; A stand-alone blog and publication tool for org-mode.
   (try-require 'o-blog)
-  ;; NOTE: o-blog v2.0 or later
+  ;; NOTE: o-blog v2.5 or later
   ;; (try-require 'o-blog-utils)
   ;; (try-require 'o-blog-tag)
   ;; (try-require 'o-blog-entry)
@@ -1493,24 +1730,24 @@ decorations.markings}
   ;; (try-require 'o-blog-framework)
   ;; (try-require 'o-blog-obsolete)
 
-  ;;** `org2blog'
+;;;;; `org2blog'
   (try-require 'org2blog)
 
-  ;;** `org-bullets.el'
-  ;; NOTE: not very useful.
+;;;;; `org-bullets'
+;; NOTE: not very useful.
   ;; (when window-system
   ;;   (try-require 'org-bullets)
   ;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-  ;;** `org-presie.el'
-  ;; NOTE: not very useful, waiting for a upgrade for org version 8.0
+;;;;; `org-presie.el'
+;; NOTE: not very useful, waiting for a upgrade for org version 8.0
   ;; (when window-system (try-require 'org-presie))
 
-  ;;** `ebib'
+;;;;; `ebib'
   (org-add-link-type "ebib" 'ebib--open-org-link)
   (org-add-link-type "cite" 'ebib--open-org-link)
 
-  ;;** `outshine' and `outorg' (literate programming)
+;;;;; `outshine' and `outorg' (literate programming)
   (try-require 'outshine)
   (try-require 'outorg)
   (try-require 'navi-mode)

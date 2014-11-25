@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-04 Tue 20:14 by xin on vmlubuntu>
+;; Time-stamp: <2014-11-24 Mon 16:03 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -132,8 +132,7 @@
 ;;** `elscreen.el'
 ;; NOTE: old versions are based on APEL, current version is not.
 (eval-after-load "elscreen" '(elscreen-postload))
-(when window-system
-  (elscreen-start))
+(elscreen-start)
 ;; (global-set-key (kbd "<f2> s") 'elscreen-start)
 
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-23 Sun 22:27 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2014-11-24 Mon 03:21 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -142,12 +142,13 @@
 ;; with org-mode default key bindings.
 (eval-after-load "windmove" '(windmove-postload))
 
+;; FIXME: strange shift problem
 (eal-define-keys-commonly
  global-map
- `(("C-S-j" windmove-left)
-   ("C-L" windmove-right)
-   ("C-I" windmove-up)
-   ("C-S-k" windmove-down)))
+ `(("C-S-J" windmove-left)
+   ("C-S-L" windmove-right)
+   ("C-S-I" windmove-up)
+   ("C-S-K" windmove-down)))
 
 
 
