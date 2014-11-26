@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2014-11-27 Thu 00:28 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -186,33 +186,41 @@
 ;;** auto-complete settings
 ;; BUG: 不能与emacswiki上的`thingatpt+.el'同时使用，否则auto-complete
 ;; 不能正确工作。
-(eval-after-load "auto-complete"
-  '(progn
-     (auto-complete-postload)
-     ;; 不让回车的时候执行`ac-complete', 因为当你输入完一个
-     ;; 单词的时候, 很有可能补全菜单还在, 这时候你要回车的话,
-     ;; 必须要干掉补全菜单, 很麻烦, 用C-j来执行`ac-complete'
-     (eal-define-keys
-      'ac-complete-mode-map
-      `(("<return>"   nil)
-        ;; ("<space>"    nil)
-        ("<left>"     nil)
-        ("<right>"    nil)
-        ("<up>"       nil)
-        ("<down>"     nil)
-        ("C-n"        ac-next)
-        ("M-n"        ac-next)
-        ("C-p"        ac-previous)
-        ("M-p"        ac-previous)
-        ("<tab>"      auto-complete)
-        ("C-<tab>"    auto-complete)))))
+;; NOTE: switch to `company' 
+;; (eval-after-load "auto-complete"
+;;   '(progn
+;;      (auto-complete-postload)
+;;      ;; 不让回车的时候执行`ac-complete', 因为当你输入完一个
+;;      ;; 单词的时候, 很有可能补全菜单还在, 这时候你要回车的话,
+;;      ;; 必须要干掉补全菜单, 很麻烦, 用C-j来执行`ac-complete'
+;;      (eal-define-keys
+;;       'ac-complete-mode-map
+;;       `(("<return>"   nil)
+;;         ;; ("<space>"    nil)
+;;         ("<left>"     nil)
+;;         ("<right>"    nil)
+;;         ("<up>"       nil)
+;;         ("<down>"     nil)
+;;         ("C-n"        ac-next)
+;;         ("M-n"        ac-next)
+;;         ("C-p"        ac-previous)
+;;         ("M-p"        ac-previous)
+;;         ("<tab>"      auto-complete)
+;;         ("C-<tab>"    auto-complete)))))
 
 
 
 ;;** company settings
 ;; It is a modular in-buffer completion mechanism.
-;; (autoload 'company-mode "company" nil t)
-;; (eval-after-load "company" '(company-postload))
+;;(autoload 'company-mode "company-postload" nil t)
+(eval-after-load "company"
+  '(progn
+     (company-postload)
+     (eal-define-keys 'company-mode-map
+                      `(("C-<tab>"     company-complete)
+                        ("C-c C-<tab>" company-yasnippet)
+                        ))))
+
 ;; (am-add-hooks
 ;;  `(c-mode-common-hook lisp-mode-hook emacs-lisp-mode-hook
 ;;    java-mode-hook lisp-interaction-mode-hook sh-mode-hook
@@ -328,17 +336,26 @@
 
 
 ;;** Start auto-complete and yasnippet together
-(defun xy/toggle-ac-mode-with-yas ()
+;; (defun xy/toggle-ac-mode-with-yas ()
+;;   "Start auto-complete"
+;;   (interactive)
+;;   (when (try-require 'yasnippet)
+;;     (yas-minor-mode))
+;;   (when (try-require 'auto-complete)
+;;     ;; (require 'patch_yas0.7+ac1.4) ;; old patch
+;;     ;; (ac-config-default)
+;;     (auto-complete-mode)))
+
+(defun xy/toggle-company+yas ()
   "Start auto-complete"
   (interactive)
   (when (try-require 'yasnippet)
     (yas-minor-mode))
-  (when (try-require 'auto-complete)
-    ;; (require 'patch_yas0.7+ac1.4) ;; old patch
-    ;; (ac-config-default)
-    (auto-complete-mode)))
+  (when (try-require 'company)
+    (company-mode)))
 
-(global-set-key (kbd "<f6> a") 'xy/toggle-ac-mode-with-yas)
+;; (global-set-key (kbd "<f6> a") 'xy/toggle-ac-mode-with-yas)
+(global-set-key (kbd "<f6> a") 'xy/toggle-company+yas)
 
 
 

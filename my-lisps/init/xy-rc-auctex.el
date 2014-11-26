@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-09-19 Fri 19:28 by xin on ubuntu>
+;; Time-stamp: <2014-11-27 Thu 00:19 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auctex.el'
 ;; Author:       Xin Yang
@@ -20,18 +20,18 @@
 ;; GNU Emacs `url.el' and auctex's `style/url.el' have the same name.
 ;; You MUST NOT put auctex's `style/url.el' in a load-path.
 
-;;;###autoload
-(defun xy/auctex-start ()
-  "Settings of `auctex'."
-  (interactive)
-  ;; (load "auctex.el" nil t t)
-  (auctex-postload)
-  ;; (load "preview-latex.el" nil t t)
-  ;; (preview-latex-postload)
-  ;; (color-theme-solarized-light)
-  (revert-buffer)
-  ;; (menu-bar-mode 1)
-  )
+;; ;;;###autoload
+;; (defun xy/auctex-start ()
+;;   "Settings of `auctex'."
+;;   (interactive)
+;;   ;; (load "auctex.el" nil t t)
+;;   (auctex-postload)
+;;   ;; (load "preview-latex.el" nil t t)
+;;   ;; (preview-latex-postload)
+;;   ;; (color-theme-solarized-light)
+;;   (revert-buffer)
+;;   ;; (menu-bar-mode 1)
+;;   )
 
 ;; Automagic detection of master file
 ;; REF: (@url :file-name "http://emacswiki.org/emacs/AUCTeX#toc18" :display "emacswiki")
@@ -82,7 +82,7 @@
   (require 'bib-cite)
   ;; (Windows ;; Use texlive instead of miktex in Windows now.
   ;;  (require 'tex-mik))
-
+  
   (setq TeX-auto-save t
         TeX-parse-self t
         TeX-electric-escape t
@@ -211,42 +211,6 @@
           ("Evince" "evince %o")
           ("Firefox" "firefox %o")))
 
-  (add-hook 'LaTeX-mode-hook
-            '(lambda ()
-               (turn-on-auto-fill)
-               (flyspell-mode 1)
-               (autopair-mode -1)
-               (outline-minor-mode 1)
-               (LaTeX-math-mode 1)
-               (TeX-global-PDF-mode 1)
-               (TeX-PDF-mode 1)
-               (setq TeX-engine 'xetex) ;; set xelatex as default
-               ;; engine. NOTE: Preview does not work with xelatex
-               (GNULinux
-                (setq TeX-view-program-selection
-                      '((output-pdf "okular")
-                        ;; ((output-dvi style-pstricks) "dvips and gv")
-                        (output-dvi "okular")
-                        (output-html "xdg-open"))))
-               (Windows
-                (setq TeX-view-program-selection
-                      '((output-pdf "SumatraPDF")
-                        (output-dvi "Dviout"))))
-               (TeX-source-correlate-mode 1)
-               (setq TeX-fold-mode 1)
-               (setq Tex-source-specials-mode 1)
-               (turn-on-cdlatex)
-               (turn-on-reftex)
-               ;; (imenu-add-menubar-index)
-               ;; (local-set-key "\C-c\C-t" ; Displays a page around cursor.
-               ;;                'wysiwyg-tex-show-preview)
-               ;; (local-set-key "\C-c\C-T" ; Displays the whole page.
-                              ;; 'wysiwyg-tex-show-whole-preview)
-               ;; (define-key LaTeX-mode-map
-               ;;   (kbd "C-c r") 'reftex-parse-all)
-               (turn-on-bib-cite)
-               ))
-
   (setq LaTeX-section-hook
         '(LaTeX-section-heading
           LaTeX-section-title
@@ -289,6 +253,47 @@
   ;; auctex-latexmk
   (when (try-require 'auctex-latexmk)
     (auctex-latexmk-setup))
+
+  ;; company-auctex
+  ;; (when (try-require 'company-auctex)
+  ;;   (company-auctex-init))
+
+  ;; mode hook
+  (add-hook 'LaTeX-mode-hook
+            '(lambda ()
+               (turn-on-auto-fill)
+               (flyspell-mode 1)
+               (autopair-mode -1)
+               (outline-minor-mode 1)
+               (LaTeX-math-mode 1)
+               (TeX-global-PDF-mode 1)
+               (TeX-PDF-mode 1)
+               (setq TeX-engine 'xetex) ;; set xelatex as default
+               ;; engine. NOTE: Preview does not work with xelatex
+               (GNULinux
+                (setq TeX-view-program-selection
+                      '((output-pdf "okular")
+                        ;; ((output-dvi style-pstricks) "dvips and gv")
+                        (output-dvi "okular")
+                        (output-html "xdg-open"))))
+               (Windows
+                (setq TeX-view-program-selection
+                      '((output-pdf "SumatraPDF")
+                        (output-dvi "Dviout"))))
+               (TeX-source-correlate-mode 1)
+               (setq TeX-fold-mode 1)
+               (setq Tex-source-specials-mode 1)
+               (turn-on-cdlatex)
+               (turn-on-reftex)
+               ;; (imenu-add-menubar-index)
+               ;; (local-set-key "\C-c\C-t" ; Displays a page around cursor.
+               ;;                'wysiwyg-tex-show-preview)
+               ;; (local-set-key "\C-c\C-T" ; Displays the whole page.
+               ;; 'wysiwyg-tex-show-whole-preview)
+               ;; (define-key LaTeX-mode-map
+               ;;   (kbd "C-c r") 'reftex-parse-all)
+               (turn-on-bib-cite)
+               ))
 
   (message "* ---[ auctex post-load configuration is complete ]---"))
 

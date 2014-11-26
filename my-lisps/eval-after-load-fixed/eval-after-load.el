@@ -3,7 +3,7 @@
 ;; Author: ahei <ahei0802@gmail.com>
 ;; Keywords: eval-after-load, autoload
 ;; URL: http://code.google.com/p/dea/source/browse/trunk/my-lisps/eval-after-load.el
-;; Time-stamp: <2012-08-28 Tue 07:47 by xin on p5q>
+;; Time-stamp: <2014-11-27 Thu 00:23 by xin on vmdebian.xyang.com>
 
 ;; This  file is free  software; you  can redistribute  it and/or
 ;; modify it under the terms of the GNU General Public License as
@@ -128,6 +128,8 @@
     ("sh-script"       sh-mode                sh-mode-map)
     ("auto-complete"   auto-complete-mode     ac-completing-map)
     ("auto-complete"   nil                    ac-mode-map)
+    ("company"         company-mode           company-map)
+    ("company"         nil                    company-map)
     ("list-processes+" nil                    list-processes-mode-map)
     ("semantic-decoration-on-include" nil semantic-decoration-on-include-map)
     ("semantic-symref-list" semantic-symref-results-mode semantic-symref-results-mode-map)
@@ -137,7 +139,7 @@
     ("verilog-mode"    verilog-mode           verilog-mode-map) ;; HACK: add verilog-mode
     ("LaTeX-mode"      LaTeX-mode             LaTeX-mode-map)
     ("latex-mode"      latex-mode             latex-mode-map)
-    ("tex-mode"      tex-mode             tex-mode-map)
+    ("tex-mode"        tex-mode               tex-mode-map)
     )
   "*List used to find load file by mode or map.
 

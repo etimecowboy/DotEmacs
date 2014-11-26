@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-23 Sun 15:51 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2014-11-26 Wed 13:29 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -37,7 +37,7 @@
         ;; ("C-c o m"     org2blog/wp-mode)
         ;; ("C-c o l"     org2blog/wp-login)
         ;; ("c-c o t"     org2blog/wp-post-subtree)
-        ("C-c S"       org-export-as-html5presentation-and-open)
+        ;; ("C-c S"       org-export-as-html5presentation-and-open)
         ("C-c M-c"     org-coordinates-google-geocode-set)
         ("C-c M-L"     org-address-google-geocode-set)
         ("C-c M-A"     org-address-google-geocode-set)

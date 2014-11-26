@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-23 Sun 01:47 by xin on S13>
+;; Time-stamp: <2014-11-26 Wed 23:58 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -159,10 +159,18 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'melpa) ;; not avaliable any more
 
   ;; NOTE: may switch to company in future
-  (require-package 'auto-complete)
-  (require-package 'ac-dabbrev)
-  (require-package 'ac-math)
+  ;; (require-package 'auto-complete)
+  ;; (require-package 'ac-dabbrev)
+  ;; (require-package 'ac-math)
+
+  (require-package 'company)
+  (require-package 'anaconda-mode)
+  (require-package 'company-anaconda)
+  (require-package 'company-auctex)
+  (require-package 'company-c-headers)
+  
   (require-package 'yasnippet)
+  
   ;; NOTE: don't use helm
   ;; (require-package 'helm)
   ;; (require-package 'helm-R)
