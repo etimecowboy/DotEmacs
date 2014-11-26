@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-27 Thu 00:28 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2014-11-27 Thu 00:41 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -346,7 +346,7 @@
 ;;     ;; (ac-config-default)
 ;;     (auto-complete-mode)))
 
-(defun xy/toggle-company+yas ()
+(defun xy/toggle-local-company+yas ()
   "Start auto-complete"
   (interactive)
   (when (try-require 'yasnippet)
@@ -354,8 +354,17 @@
   (when (try-require 'company)
     (company-mode)))
 
+(defun xy/toggle-global-company+yas ()
+  "Start auto-complete"
+  (interactive)
+  (when (try-require 'yasnippet)
+    (yas-global-mode))
+  (when (try-require 'company)
+    (global-company-mode)))
+
 ;; (global-set-key (kbd "<f6> a") 'xy/toggle-ac-mode-with-yas)
-(global-set-key (kbd "<f6> a") 'xy/toggle-company+yas)
+(global-set-key (kbd "<f6> a") 'xy/toggle-local-company+yas)
+(global-set-key (kbd "<f6> A") 'xy/toggle-global-company+yas)
 
 
 
