@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-26 Wed 13:29 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2014-12-01 Mon 12:49 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -49,6 +49,7 @@
         ("C-c L"       org-toggle-link-display)
         ("C-c T"       timestamp)
         ("C-c <tab>"   bh/hide-other)
+        ("C-c b"       ebib-insert-bibtex-key)
         ))))
 (eval-after-load "org-agenda" '(org-postload))
 (eval-after-load "org-capture" '(org-postload))
@@ -94,6 +95,9 @@
      ;; (eal-define-keys ;; BUG: not working
      ;;  'latex-mode-map
      ;;  `(("C-x `" TeX-next-error)))
+     (eal-define-keys ;; BUG: not working
+     'LaTeX-mode-map
+     `(("C-c b" ebib-insert-bibtex-key)))
      )) ;; default C-c ` conflict with icy-mode
 ;; (global-set-key (kbd "<f6> t") 'xy/auctex-start)
 

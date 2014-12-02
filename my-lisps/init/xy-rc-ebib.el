@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-13 Thu 23:59 by xin on S13>
+;; Time-stamp: <2014-12-01 Mon 13:01 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ebib.el'
 ;; Author:       Xin Yang
@@ -24,6 +24,17 @@
   (setq ebib-bib-search-dirs '("~" "."))
   (setq ebib-bibtex-extensions '(".bib" ".bibtex" ".BIB" ".BIBTEX"))
   (setq ebib-create-backups t)
+  (setq ebib-hide-cursor nil)
+  (setq ebib-print-multiline t)
+  (setq ebib-hidden-fields '("addendum" "afterword" "annotator"
+  "bookauthor" "booksubtitle" "booktitleaddon" "chapter" "commentator"
+  "edition" "editora" "editorb" "editorc" "eid" "eprint" "eprintclass"
+  "eprinttype" "eventdate" "eventtitle" "foreword" "holder"
+  "howpublished" "introduction" "isrn" "issn" "issue" "issuesubtitle"
+  "issuetitle" "journalsubtitle" "language" "location" "mainsubtitle"
+  "maintitle" "maintitleaddon" "month" "origlanguage" "pagetotal"
+  "part" "remark" "subtitle" "timestamp" "titleaddon" "translator"
+  "urldate" "venue" "version"))
 
   (message "* ---[ ebib post-load configuration is complete ]---"))
 
