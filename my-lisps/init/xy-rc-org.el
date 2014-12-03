@@ -1751,7 +1751,10 @@ decorations.markings}
   (try-require 'outshine)
   (try-require 'outorg)
   (try-require 'navi-mode)
-  
+
+;;;;; `ox-s5'
+  (try-require 'ox-s5)
+
   (message "* ---[ org post-load configuration is complete ]---"))
 
 (provide 'xy-rc-org)

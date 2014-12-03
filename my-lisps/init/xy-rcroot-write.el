@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-12-01 Mon 12:49 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2014-12-03 Wed 14:51 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -79,6 +79,8 @@
 ;;** outshin
 (eval-after-load "outshine" '(outshine-postload))
 
+;;** ox-s5
+(eval-after-load "ox-s5" '(ox-s5-postload))
 
 
 ;; NOTE: not very useful
