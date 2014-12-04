@@ -1755,6 +1755,9 @@ decorations.markings}
 ;;;;; `ox-s5'
   (try-require 'ox-s5)
 
+;;;;; `ox-reveal' not working
+  ;; (try-require 'ox-reveal)
+  
   (message "* ---[ org post-load configuration is complete ]---"))
 
 (provide 'xy-rc-org)
