@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-25 Tue 13:12 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2014-12-19 Fri 13:42 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -476,12 +476,13 @@
 
 ;;** fic-ext-mode
 (eval-after-load "fic-ext-mode" '(fic-ext-mode-postload))
-(am-add-hooks
- `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
-                  sh-mode-hook cperl-mode-hook c-common-mode-hook
-                  vhdl-mode-hook verilog-mode-hook matlab-mode-hook
-                  LaTeX-mode-hook)
- 'xy/turn-on-fic-ext-mode)
+;; NOTE: have some problem if turn on it all the time
+;; (am-add-hooks
+;;  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
+;;                   sh-mode-hook cperl-mode-hook c-common-mode-hook
+;;                   vhdl-mode-hook verilog-mode-hook matlab-mode-hook
+;;                   LaTeX-mode-hook)
+;;  'xy/turn-on-fic-ext-mode)
 
 
 
