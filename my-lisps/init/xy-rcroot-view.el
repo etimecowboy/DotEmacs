@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2014-12-26 Fri 11:17 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-view.el'
 ;; Author:       Xin Yang
@@ -18,15 +18,13 @@
 
 
 
-;;* View files
-
-;; Allow to view read-only files
+;; Allow to view read-only files, switch with C-x C-q
 (setq view-read-only t)
-;; (toggle-read-only t)
+;; (setq toggle-read-only t)
 
 
 
-;;** view-mode settings
+;;; view-mode
 (eval-after-load "view"
   '(progn
      (view-mode-postload)
@@ -57,7 +55,7 @@
 
 
 
-;;** doc-view
+;;; doc-view
 (eval-after-load "doc-view" '(doc-view-postload))
 ;; REF: (@url :file-name "http://www.idryman.org/blog/2013/05/20/emacs-and-pdf/" :display "Blog post: \"Emacs and PDF\"")
 ;; Navigate the pages while your cursor is in another window
@@ -68,17 +66,17 @@
 
 
 
-;;** log-view
+;;; log-view
 
 
 
-;;** hexl-mode
+;;; hexl-mode
 (add-to-list 'auto-mode-alist
              '("\\.\\(exe\\|vsd\\|so\\|dll\\)$" . hexl-mode))
 
 
 
-;;** centered-cursor-mode
+;;; centered-cursor-mode
 (autoload 'centered-cursor-mode "centered-cursor-mode" nil t)
 (autoload 'global-centered-cursor-mode "centered-cursor-mode" nil t)
 (eval-after-load "centered-cursor-mode" '(centered-cursor-mode-postload))
@@ -87,9 +85,9 @@
 
 
 
-;;* Compare buffers/files
+;;; Compare contents
 
-;;** diff
+;;;; diff
 (eval-after-load "diff-mode"
   '(progn
      (diff-postload)
@@ -108,7 +106,7 @@
 
 
 
-;;** ediff
+;;;; ediff
 ;; (global-set-key (kbd "<f6> d") 'ediff)
 (eval-after-load "ediff"
   '(progn
@@ -137,9 +135,7 @@
 
 
 
-;;* Grep related settings
-
-;;** Use grep in Emacs
+;;; grep in Emacs
   (eal-define-keys-commonly
    global-map
    `(("C-x G f"   find-grep-in-current-dir)
@@ -166,7 +162,7 @@
 
 
 
-;;** full-ack
+;;;; full-ack
 ;; ack is a tool like grep, designed for programmers with large trees
 ;; of heterogeneous source code.
 ;; ack is written purely in Perl, and takes advantage of the power of
@@ -192,7 +188,7 @@
 
 
 
-;;** ack-and-a-half
+;;;; ack-and-a-half
 ;; provides a simple compilation mode for the perl grep-a-like ack
 ;; (http://petdance.com/ack/).
 ;; (defalias 'ack 'ack-and-a-half)
@@ -202,11 +198,12 @@
 
 
 
-;;** ack-menu
+;;;; ack-menu
 
 
 
-;;** color-moccur
+;;; occur in Emacs
+;;;; color-moccur
 ;; With color-moccur, you can search a regexp in all buffers. And you
 ;; can search files like grep(-find) without grep (and find) command.
 (autoload 'moccur-grep-find "color-moccur" nil t)
@@ -214,7 +211,7 @@
 (global-set-key (kbd "<f7> g") 'moccurd)
 (global-set-key (kbd "<f7> f") 'moccur-grep-find)
 
-;;*** moccur-edit
+;;;; moccur-edit
 ;; moccur-edit provides to edit moccur buffer of color-moccur.el and
 ;; to apply the changes to the file.
 ;; You can start editing the names of the files by typing "C-c C-i" or
@@ -225,7 +222,7 @@
 
 
 
-;;** ioccur
+;;;; ioccur
 ;; This package provide similar functionality as occur but is
 ;; incremental, (without `anything')
 ;; REF: (@url :file-name "http://mercurial.intuxication.org/hg/ioccur" :display "Source")

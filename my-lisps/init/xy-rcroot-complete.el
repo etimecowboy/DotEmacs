@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-27 Thu 00:41 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2014-12-26 Fri 11:24 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -17,9 +17,9 @@
 (require 'eval-after-load)
 
 
-;;* Mini buffer auto complete
+;;; Mini buffer complete
 
-;; an do stuff like M-x q-r-r TAB, and it expands to
+;; Do stuff like M-x q-r-r TAB, and it expands to
 ;; query-replace-regexp.
 ;; (unless is-after-emacs-23
 ;;   (partial-completion-mode 1))
@@ -27,7 +27,7 @@
 
 
 
-;;** ido
+;;;; ido
 ;; interactively do things with buffers and files
 ;; NOTE: From Emacs-22 it is a part of Emacs
 ;; (if is-before-emacs-21
@@ -54,7 +54,7 @@
 
 
 
-;;** icomplete
+;;;; icomplete
 ;; minibuffer中输入部分命令就可以使用补全
 ;; NOTE: Use smex instead
 ;; (eval-after-load "icomplete"
@@ -78,7 +78,7 @@
 
 
 
-;;** smex
+;;;; smex
 ;; Smex is a M-x enhancement for Emacs. Built on top of Ido, it
 ;; provides a convenient interface to your recently and most
 ;; frequently used commands. And to all the other commands, too.
@@ -95,7 +95,7 @@
 
 
 
-;;** ido+smex
+;;;; ido+smex
 ;; Use both ido and smex
 ;; NOTE: NEVER use both icy-mode and ido/smex. They are different in
 ;;       the way of using minibuffer, and conflicts with each other.
@@ -135,9 +135,9 @@
 
 
 
-;;** ido+icomplete
+;;;; ido+icomplete
 ;; Use both ido and icomplete
-;;;###autoload
+;; ;;;###autoload
 ;; (defun xy/ido+icomplete-start ()
 ;;   "Start ido and icomplete completion."
 ;;   (interactive)
@@ -151,15 +151,15 @@
 
 
 
-;;* Buffer auto complete
+;;; Buffer complete
 
-;;** Internal Emacs content auto complete system
+;;;; Internal buffer complete
 (setq-default abbrev-mode 1)
 (setq save-abbrevs nil)
 
 
 
-;;** hippie-expand
+;;;; hippie-expand
 ;; (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-/") 'my-ido-hippie-expand)
 (global-set-key (kbd "M-|") 'my-ido-hippie-expand-filename) ;;ywb-hippie-expand-filename)
@@ -167,7 +167,7 @@
 
 
 
-;;** skeleton-complete-mode
+;;;; skeleton-complete-mode
 ;; SOURCE: (@url :file-name "https://github.com/baohaojun/skeleton-complete" :display "GitHub")
 ;; NOTE:
 ;; (define-key skeleton-complete-mode-map (kbd "M-g <return>") 'skeleton-expand-symbols)
@@ -183,7 +183,7 @@
 
 
 
-;;** auto-complete settings
+;;;; auto-complete
 ;; BUG: 不能与emacswiki上的`thingatpt+.el'同时使用，否则auto-complete
 ;; 不能正确工作。
 ;; NOTE: switch to `company' 
@@ -210,7 +210,7 @@
 
 
 
-;;** company settings
+;;;; company
 ;; It is a modular in-buffer completion mechanism.
 ;;(autoload 'company-mode "company-postload" nil t)
 (eval-after-load "company"
@@ -229,7 +229,7 @@
 
 
 
-;;** pabbrev
+;;;; pabbrev
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/PredictiveAbbreviation" :display "Emacswiki page")
 ;; BUG: NOT work very well.
 ;; (require 'pabbrev)
@@ -264,7 +264,7 @@
 
 
 
-;;** predictive completion
+;;;; predictive
 ;; A minor-mode exploits the redundancy inherent in languages in order
 ;; to complete words you are typing before you've finished typing them
 ;; NOTE: makes emacs too slow!
@@ -280,7 +280,7 @@
 
 
 
-;;** template settings
+;;;; template
 ;; (require 'template)
 ;; (eal-define-keys
 ;;  '(emacs-lisp-mode-map c-mode-base-map makefile-mode-map
@@ -293,14 +293,14 @@
 
 
 
-;;** auto-insert
+;;;; auto-insert
 ;; 用template, 自动插入一些文件模板
 ;; (eval-after-load "autoinsert" '(auto-insert-postload))
 ;; (auto-insert-mode 1)
 
 
 
-;** yasnippet
+;;;; yasnippet
 (autoload 'yas-minor-mode "yasnippet" nil t)
 (eval-after-load "yasnippet"
   '(progn
@@ -335,7 +335,8 @@
 
 
 
-;;** Start auto-complete and yasnippet together
+;;;; Start auto-complete and yasnippet
+
 ;; (defun xy/toggle-ac-mode-with-yas ()
 ;;   "Start auto-complete"
 ;;   (interactive)
@@ -345,6 +346,7 @@
 ;;     ;; (require 'patch_yas0.7+ac1.4) ;; old patch
 ;;     ;; (ac-config-default)
 ;;     (auto-complete-mode)))
+;;;; Start company and yasnippet
 
 (defun xy/toggle-local-company+yas ()
   "Start auto-complete"
@@ -368,7 +370,7 @@
 
 
 
-;;* icicles
+;;; icicles
 ;; System-wide completion
 ;; NOTE: too heavy for Emacs
 ;; (eval-after-load "icicles" '(icicles-postload))
@@ -377,7 +379,7 @@
 
 
 
-;;** apropos-mode
+;;;; apropos-mode
 ;; (with icicles?) completion
 ;; (eval-after-load "apropos"
 ;;   '(progn
@@ -391,7 +393,7 @@
 
 
 
-;;* anything
+;;; anything
 ;; NOTE: replaced by helm
 ;; Quicksilver for Emacs
 ;; (eval-after-load 'anything '(anything-postload))
@@ -399,7 +401,7 @@
 
 
 
-;;* helm
+;;; helm
 ;; NOTE: helm is not used
 ;; (eval-after-load 'helm '(helm-postload))
 ;; ;; TODO: make my own helm setup and bind it to C-c i

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-23 Sun 02:24 by xin on S13>
+;; Time-stamp: <2014-12-26 Fri 11:05 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -18,13 +18,13 @@
 
 
 
-;;* Code formatting
+;;; Code formatting
 
 (setq-default comment-column 40) ;; set comment alignment position
 
 
 
-;;** Auto indent
+;;;; Auto indent
 (eal-define-keys
  `(lisp-mode-map emacs-lisp-mode-map lisp-interaction-mode-map
    sh-mode-map ruby-mode-map tcl-mode-map python-mode-map
@@ -33,7 +33,7 @@
 
 
 
-;;** align
+;;;; align
 (eal-define-keys-commonly
  global-map
  `(("C-x A n"   align)
@@ -41,7 +41,7 @@
 
 
 
-;;** auto-fill
+;;;; auto-fill
 (eval-after-load "simple" '(simple-postload))
 (am-add-hooks
  `(lisp-mode-hook emacs-lisp-mode-hook latex-mode-hook
@@ -53,7 +53,7 @@
 
 
 
-;;** hungry-delete-mode
+;;;; hungry-delete-mode
 ;; (autoload 'turn-on-hungry-delete-mode "hungry-delete"
 ;;   "Turns on hungry delete mode if the buffer is appropriate." t nil)
 ;; (am-add-hooks
@@ -64,14 +64,14 @@
 
 
 
-;;** paren-mode
+;;;; paren-mode
 (eval-after-load "paren" '(paren-postload))
 ;; (show-paren-mode 1)
 ;; (setq show-paren-style 'parenthesis)
 
 
 
-;;** mic-paren
+;;;; mic-paren
 ;; An extension and replacement to the packages `paren.el' and
 ;; `stig-paren.el' for Emacs
 (eval-after-load "mic-paren" '(mic-paren-postload))
@@ -79,7 +79,7 @@
 
 
 
-;;** rainbow-delimiters
+;;;; rainbow-delimiters
 ;; With this package, the delimiters all get different colors based on
 ;; their nesting level.
 ;; NOTE: It takes a lot of computation resource, so I disabled it.
@@ -99,7 +99,7 @@
 
 
 
-;;** highlight-parentheses
+;;;; highlight-parentheses
 (autoload 'highlight-parentheses-mode "highlight-parentheses" nil t)
 (eval-after-load "highlight-parentheses"
   '(highlight-parentheses-postload))
@@ -112,7 +112,7 @@
 
 
 
-;;** autopair
+;;;; autopair
 ;; NOTE: autopair-mode conflicts with `auctex'/`cdlatex', and
 ;; `yasnippet'. Need to use hooks to disable it in these modes.
 (autoload 'autopair-mode "autopair" nil t)
@@ -127,7 +127,7 @@
 
 
 
-;;** iedit
+;;;; iedit
 ;; FIXME: don't work
 ;; (autoload 'iedit-mode "iedit" nil t)
 ;; ;; (eval-after-load "iedit" '(iedit-postload))
@@ -146,9 +146,9 @@
 
 
 
-;;* Code folding
+;;; Code folding
 
-;;** hide-region
+;;;; hide-region
 ;; NOTE: very old, use `fold-this.el' instead, which is more powerful.
 ;; (eval-after-load "hide-region"
 ;;   '(progn
@@ -169,7 +169,7 @@
 
 
 
-;;** fold-this
+;;;; fold-this
 (eal-define-keys-commonly
  global-map
  `(("C-x M-f" fold-this)
@@ -177,7 +177,7 @@
    ("C-x M-U" fold-this-unfold-all)))
 
 
-;;** outline
+;;;; outline
 ;; outline-mode, structural editing
 (defvar outline-minor-mode-prefix "\M-#")
 (eval-after-load "outline" '(outline-postload))
@@ -189,7 +189,7 @@
 
 
 
-;;*** outline 插件
+;;;;; outline-magic
 ;; REF: - (@url :file-name "http://www.cnblogs.com/bamanzi/archive/2011/10/09/emacs-outline-org-like.html" :display "Post")
 ;;      - (@url :file-name "http://code.google.com/p/bamanzi-misc/source/browse/trunk/_emacs.d/lisp/outline-org-like.el" :display "Source")
 
@@ -201,6 +201,7 @@
 ;;               (define-key outline-minor-mode-map (kbd "C-<tab>")
 ;;                 'outline-cycle)))
 
+;;;;; outline-org-mode
 ;; (autoload 'outline-org-mode "outline-org-like" nil t)
 ;; NOTE: it takes a lot of time to load `org', so it is better to
 ;; turn it on manually.
@@ -212,9 +213,11 @@
 ;;       (outline-org-mode)))
 ;; (global-set-key (kbd "<f6> o") 'outline-org-mode)
 
+;;;;; outshine
+
 
 
-;;** hideshow
+;;;; hideshow
 ;; a minor mode similar to outline-mode.
 ;; It hides and shows blocks of text.
 ;; In particular, HideShow hides balanced-expression code blocks and
@@ -238,7 +241,7 @@
 ;;  '(lambda () (hs-minor-mode)))
 (global-set-key (kbd "<f6> H") 'hs-minor-mode)
 
-;;*** hideshow-org
+;;;;; hideshow-org
 ;; The extension makes hideshow.el’s functionality behave like org-mode’s.
 ;; REF: - (@url :file-name "https://github.com/secelis/hideshow-org" :display "Source")
 ;;      - (@url :file-name "http://gnufool.blogspot.com/2009/03/make-hideshow-behave-more-like-org-mode.html" :display "Post")
@@ -251,7 +254,7 @@
 
 
 
-;;** orgstruct-mode
+;;;; orgstruct-mode
 ;; universal cycling keys
 ;; BUG: not working in elisp code
 ;; (defun org-cycle-global ()
@@ -271,15 +274,15 @@
 
 
 
-;;* Code exploration
+;;; Code exploration
 
-;;** find-func
+;;;; find-func
 ;; emacs build-in lisp for finding functions
 ;; (find-function-setup-keys)
 
 
 
-;;** describe-symbol and find-symbol
+;;;; describe-symbol and find-symbol
 ;; (eal-define-keys
 ;;  `(emacs-lisp-mode-map lisp-interaction-mode-map
 ;;    completion-list-mode-map help-mode-map debugger-mode-map)
@@ -307,37 +310,37 @@
 
 
 
-;;** which-func
+;;;; which-func
 ;; 用来显示当前光标在哪个函数
 (eval-after-load "which-func" '(which-func-postload))
 (which-func-mode 1)
 
 
 
-;;** imenu
+;;;; imenu
 (eval-after-load "imenu" '(imenu-postload))
 ;; (add-hook 'font-lock-mode-hook ;; Add an Imenu index to the menu bar
 ;;                                ;; in any mode that supports Imenu.
 ;;           'try-to-add-imenu)
 
-;;*** imenu-tree
+;;;;; imenu-tree
 (eval-after-load "imenu-tree" '(imenu-tree-postload))
 (global-set-key (kbd "<f7> i") 'imenu-tree)
 
 
 
-;;** etags
+;;;; etags
 (eval-after-load "etags" '(etags-postload))
 
 
 
-;;** projectile
+;;;; projectile
 ;; A project management mode
 (eval-after-load "projectile" '(projectile-postload))
 (global-set-key (kbd "<f6> <f6>") 'projectile-mode)
 
 
-;;* Shell script development settings
+;;; Shell script development settings
 (eval-after-load "sh-script" '(sh-mode-postload))
 ;; (eal-define-keys
 ;;  'sh-mode-map
@@ -348,13 +351,13 @@
 
 
 
-;;* Windows DOS batch script programming
+;;; Windows DOS batch script programming
 (autoload 'batch-mode "batch-mode" t)
 (add-to-list 'auto-mode-alist '("\\.bat$" . batch-mode))
 
 
 
-;;* Emacs-lisp development settings
+;;; Emacs-lisp development settings
 (eval-after-load "emacs-lisp-mode"
   '(progn
      (emacs-lisp-mode-postload)
@@ -416,7 +419,7 @@
 
 
 
-;;** eldoc
+;;;; eldoc
 ;; 显示变量, 函数的声明，可用在很多语言中(c)
 ;; (eval-after-load "eldoc" '(eldoc-postload))
 (am-add-hooks
@@ -425,7 +428,7 @@
 
 
 
-;;* c/c++ development settings
+;;; c/c++ development settings
 ;; NOTE: C include directories' list are defined in `xy-util.el'
 ;; (add-to-list 'auto-mode-alist '("\\.c"   . c-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.cpp$" . c++-mode))
@@ -435,7 +438,7 @@
 
 
 
-;;** cc-mode
+;;;; cc-mode
 (eval-after-load "cc-mode"
   '(progn
      (cc-mode-postload)
@@ -466,12 +469,12 @@
 
 
 
-;;** ifdef
+;;;; ifdef
 (eval-after-load "ifdef" '(ifdef-postload))
 
 
 
-;;** hide-ifdef
+;;;; hide-ifdef
 (eval-after-load "hideif" '(hideif-postload))
 ;; (autoload 'hide-ifdef-block "hideif"
 ;;   "Hide the ifdef block (true or false part) enclosing or before the cursor."
@@ -492,12 +495,12 @@
 
 
 
-;;** c-includes
+;;;; c-includes
 (eval-after-load "c-includes" '(c-includes-postload))
 
 
 
-;;** sourcepair
+;;;; sourcepair
 (eval-after-load "sourcepair" '(sourcepair-postload))
 ;; (autoload 'sourcepair-load "sourcepair"
 ;;   "Load the corresponding C/C++ header or source file for the current
@@ -505,7 +508,7 @@
 
 
 
-;; ;;** codepilot
+;; ;;;; codepilot
 ;; REF: (@url :file-name "https://github.com/brianjcj/mylisp" :display "Source")
 ;; someone else's c/c++ development environment
 ;; (setq codepilot-dir (concat my-local-lisp-path "codepilot"))
@@ -546,7 +549,7 @@
 
 
 
-;;** snavigator
+;;;; snavigator
 ;; (try-require 'sn)
 ;; (eal-define-keys
 ;;  `(c-mode-base-map)
@@ -557,7 +560,7 @@
 
 
 
-;;** xrefactory settings
+;;;; xrefactory settings
 ;; (require 'xrefactory)
 ;; ;; 查找定义
 ;; (global-set-key (kbd "C-c x d") 'xref-push-and-goto-definition)
@@ -581,12 +584,12 @@
 
 
 
-;;** xcscope
+;;;; xcscope
 (eval-after-load "xcscope" '(xcscope-postload))
 
 
 
-;;** ctags
+;;;; ctags
 ;; TODO: try `ctags.el' and `ctags-update.el' in the future, and
 ;; make a comparison with the `xcscope.el' (ctags vs cscope)
 ;; REF:
@@ -595,17 +598,17 @@
 
 
 
-;;* vhdl development settings
+;;; vhdl development settings
 (eval-after-load "vhdl" '(vhdl-mode-postload))
 
 
 
-;;* verilog development settings
+;;; verilog development settings
 (eval-after-load "verilog" '(verilog-mode-postload))
 
 
 
-;;* Matlab development settings
+;;; Matlab development settings
 (eval-after-load "matlab" '(matlab-postload))
 (autoload 'matlab-mode "matlab" "MATLAB editing mode" t)
 (autoload 'matlab-shell "matlab" "Interactive MATLAB mode" t)
@@ -618,9 +621,9 @@
 
 
 
-;;* Documentation settings
+;;; Documentation settings
 
-;;** doxygen
+;;;; doxygen
 ;; (eval-after-load "doxymacs" '(doxymacs-postload))
 ;; (autoload 'doxymacs-mode "doxymacs"
 ;;   ;; All of the following text shows up in the "mode help" (C-h m)
@@ -644,30 +647,29 @@
 
 
 
-;;* Compiler settings
+;;; Compiler settings
 
-;;** autoconf-mode settings
+;;;; autoconf-mode settings
 ;; (eval-after-load "autoconf-mode" '(autoconf-mode-postload))
 ;; (require 'autoconf-mode-postload)
 
 
 
-;;** flymake
-;; 动态检查语法错误
-(autoload 'flymake-find-file-hook "flymake" "" t)
-(eval-after-load "flymake"
-  '(progn
-     (flymake-postload)
-     (eal-define-keys
-      'flymake-mode-map
-      `(("C-c N"   flymake-goto-next-error-disp)
-        ("C-c P"   flymake-goto-prev-error-disp)
-        ("C-c M-w" flymake-display-current-warning/error))) ))
-;; (add-hook 'find-file-hook 'flymake-find-file-hook)
+;;;; flymake
+;; (autoload 'flymake-find-file-hook "flymake" "" t)
+;; (eval-after-load "flymake"
+;;   '(progn
+;;      (flymake-postload)
+;;      (eal-define-keys
+;;       'flymake-mode-map
+;;       `(("C-c N"   flymake-goto-next-error-disp)
+;;         ("C-c P"   flymake-goto-prev-error-disp)
+;;         ("C-c M-w" flymake-display-current-warning/error))) ))
+;; ;; (add-hook 'find-file-hook 'flymake-find-file-hook)
 
 
 
-;;** ahei 的智能编译
+;;;; ahei 的智能编译
 ;; (require 'my-smart-compile)
 ;; (defalias 'cpl 'compile)
 ;; (defvar makefile-mode-map-list nil "the list of `makefile-mode-map'")
@@ -722,9 +724,9 @@
 
 
 
-;;* Debug settings
+;;; Debug settings
 
-;;** debug.el
+;;;; debug.el
 ;; (eval-after-load "debug"
 ;;   '(progn
 ;;      ;; (require 'util)
@@ -735,7 +737,7 @@
 
 
 
-;;** edebug
+;;;; edebug
 ;; (eval-after-load "edebug"
 ;;   '(progn
 ;;      (define-key edebug-mode-map (kbd "C-c C-d") nil)))
@@ -750,7 +752,7 @@
 
 
 
-;;** gdb
+;;;; gdb
 ;; (eal-define-keys
 ;;  'c-mode-base-map
 ;;  `(("C-c g" gdb)
@@ -795,29 +797,29 @@
 
 
 
-;;* Python development settings
+;;; Python development settings
 
 (eval-after-load "elpy" '(elpy-postload))
 (global-set-key (kbd "<f6> P") 'xy/elpy-start)
 
 
-;;* IDE settings
+;;; IDE settings
 
-;;** CEDET settings
+;;;; CEDET settings
 ;; FIXME: cedet need to be updated and reconfigured.
 ;; (eval-after-load "cedet" '(cedet-postload))
 ;; (global-set-key (kbd "<f6> C") 'xy/cedet-start)
 
 
 
-;;** ECB settings
+;;;; ECB settings
 ;; FIXME: ecb also need to be updated and reconfigured
 ;; (eval-after-load "ecb-autoloads" '(ecb-postload))
 ;; (global-set-key (kbd "<f6> B") 'xy/ecb-start)
 
 
 
-;;** eclim settings
+;;;; eclim settings
 ;; 把Eclipse的功能带给Emacs
 ;; (require 'eclim)
 ;; (dolist (hook (list 'c-mode-common-hook 'lisp-mode-hook

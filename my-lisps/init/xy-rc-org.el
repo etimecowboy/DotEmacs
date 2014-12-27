@@ -1744,8 +1744,8 @@ decorations.markings}
   ;; (when window-system (try-require 'org-presie))
 
 ;;;;; `ebib'
-  (org-add-link-type "ebib" 'ebib--open-org-link)
-  (org-add-link-type "cite" 'ebib--open-org-link)
+  (org-add-link-type "ebib" 'ebib-open-org-link)
+  (org-add-link-type "cite" 'ebib-open-org-link)
 
 ;;;;; `outshine' and `outorg' (literate programming)
   (try-require 'outshine)

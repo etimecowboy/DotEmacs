@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-12-03 Wed 14:51 by xin on S13>
+;; Time-stamp: <2014-12-26 Fri 11:40 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -18,12 +18,12 @@
 
 
 
-;;* muse
+;;; muse
 ;; (eval-after-load "muse-mode" '(muse-postload))
 
 
 
-;;* org
+;;; org
 (add-to-list 'auto-mode-alist
              '("\\.\\(org\\|org_archive\\)$" . org-mode))
 
@@ -68,29 +68,29 @@
 ;;      function `appt-make-list') in Emacs24 ((@url :file-name "http://www.mail-archive.com/emacs-orgmode@gnu.org/msg47051.html" :display "REF")) .
 ;; (add-hook 'diary-hook (function appt-make-list))
 
-;;** o-blog
+;;;; o-blog
 ;; A stand-alone blog and publication tool for org-mode.
 (eval-after-load "o-blog" '(o-blog-postload))
 
-;;** org2blog
+;;;; org2blog
 ;; use publish org to HTML then use xml-rpc to blog
 (eval-after-load "org2blog" '(org2blog-postload))
 
-;;** outshin
+;;;; outshin
 (eval-after-load "outshine" '(outshine-postload))
 
-;;** ox-s5
+;;;; ox-s5
 (eval-after-load "ox-s5" '(ox-s5-postload))
 
 
 ;; NOTE: not very useful
-;; ;;* deft
+;; ;;; deft
 ;; (eval-after-load "deft" '(deft-postload))
 ;; (global-set-key (kbd "<f6> d") 'deft)
 
 
 
-;;* auctex
+;;; auctex
 (eval-after-load "latex"
   '(progn
      (auctex-postload)
@@ -105,7 +105,7 @@
 
 
 
-;;** reftex
+;;;; reftex
 ;; reference
 (eval-after-load "reftex" '(reftex-postload))
 (autoload 'reftex-mode "reftex" "RefTeX Minor Mode" t)
@@ -122,14 +122,14 @@
 
 
 
-;;** cdlatex, tex writing tools
+;;;; cdlatex, tex writing tools
 (eval-after-load "cdlatex" '(cdlatex-postload))
 (autoload 'cdlatex-mode "cdlatex" "CDLaTeX Mode" t)
 (autoload 'turn-on-cdlatex "cdlatex" "CDLaTeX Mode" nil)
 
 
 
-;;** whizzytex-mode
+;;;; whizzytex-mode
 ;; A minor mode for incrementally viewing LATEX documents that you are
 ;; editing. It works under Unix with `gv' and `xdvi' viewers, but the
 ;; ActiveDVI `advi' viewer will provide much better visual effects and
@@ -141,7 +141,7 @@
 
 
 
-;;** wysiwyg-tex
+;;;; wysiwyg-tex
 ;; REF: (@url :file-name "https://github.com/laysakura/WYSIWYG-TeX-el" :display "Source")
 ;; WYSIWYG (What You See Is What You Get) tex writitng mode using
 ;; `doc-view.el' and `doc-view-fit-page.el'
@@ -157,7 +157,7 @@
 
 
 
-;;* txt2tags
+;;; txt2tags
 ;; convert plain text files to various formats
 (setq auto-mode-alist
       (append (list '("\\.t2t$" . t2t-mode))
@@ -166,7 +166,7 @@
 
 
 
-;;* pdftools
+;;; pdftools
 ;; Save current buffer as a pdf file
 ;; Should be used with `ps2pdf', which usually comes with a tex
 ;; distribution
@@ -181,7 +181,7 @@
 
 
 
-;;* markdown-mode
+;;; markdown-mode
 ;; major mode for editing [Markdown][]-formatted text files
 ;; REF: (@url :file-name "http://jblevins.org/projects/markdown-mode/" :display "Source")
 (autoload 'markdown-mode "markdown-mode.el"
@@ -195,7 +195,7 @@
 
 
 
-;;* artbollecks-mode and words-to-avoid-mode
+;;; artbollecks-mode and words-to-avoid-mode
 ;; Highlight bad words for academic writings
 ;; REF: (@url :file-name "https://gitorious.org/robmyers/scripts/trees/master" :display "Git Source")
 ;; (require 'artbollocks-mode)

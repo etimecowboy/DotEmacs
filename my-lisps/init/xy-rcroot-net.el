@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-13 Thu 20:50 by xin on S13>
+;; Time-stamp: <2014-12-26 Fri 10:57 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-net.el'
 ;; Author:       Xin Yang
@@ -18,7 +18,7 @@
 
 
 
-;;* url
+;;; url
 (eval-after-load "url" '(url-postload)) ;; proxy setting is in it
 
 ;; Abbrev quickurl
@@ -40,7 +40,7 @@
 
 
 
-;;* w3m
+;;; w3m
 ;; NOTE: Commented due to use of emacs-w64
 (eval-after-load "w3m"
   '(progn
@@ -73,24 +73,24 @@
 
 
 
-;;* erc
+;;; erc
 ;; (eval-after-load "erc" '(erc-postload))
 
 
 
-;;* weblogger
+;;; weblogger
 ;; (eval-after-load "weblogger" '(weblogger-postload))
 
 
 
-;;* org2blog
+;;; org2blog
 ;; use publish org to HTML then use xml-rpc to blog
 ;; NOTE: Moved to `xy-rcroot-write.el'
 ;; (eval-after-load "org2blog" '(org2blog-postload))
 
 
 
-;;* babel
+;;; babel
 ;; 网络翻译接口
 ;; (autoload 'babel "babel"
 ;;    "Use a web translation service to translate the message MSG." t)
@@ -107,7 +107,7 @@
 
 
 
-;;* dictionary
+;;; dictionary
 ;; Web dictionary via dictd
 ;; (require 'dictionary-autoloads)
 ;; (global-set-key "\C-cS" 'dictionary-search)
@@ -135,7 +135,7 @@
 
 
 
-;;* eagle
+;;; eagle
 ;; twitter client
 
 
@@ -163,7 +163,7 @@
 
 
 
-;;* google-maps
+;;; google-maps
 ;; REF: (@url :file-name "http://emacser.com/emacs-google-map.htm" :display "emacswiki")
 ;; (eval-after-load "google-maps"
 ;;   '(progn
@@ -182,14 +182,14 @@
 
 
 
-;;* cn-weather
+;;; cn-weather
 ;; (require 'cn-weather)
 ;; (defalias 'weather 'cn-weather-today)
 ;; (defalias 'weather-tomorrow 'cn-weather-forecast)
 
 
 
-;;* emms
+;;; emms
 ;; Emacs 音乐播放器
 ;; NOTE: Commented due to lack of usage
 ;; (eval-after-load "emms-playlist-mode"
@@ -228,7 +228,7 @@
 
 
 
-;;* gnus
+;;; gnus
 ;; 新闻组阅读
 ;; NOTE: Commented due to lack of news server
 (eval-after-load "gnus"
@@ -240,7 +240,7 @@
 
 
 
-;;* mew
+;;; mew
 ;; email client
 ;; NOTE: Commented due to use of emacs-w64
 (eval-after-load "mew"
@@ -274,7 +274,7 @@
 
 
 
-;;* ansit
+;;; ansit
 ;; 把emacs中的代码以ansi高亮形式贴到bbs上
 (autoload 'ansit "ansit" nil t)
 (autoload 'ansit-buffer "ansit" nil t)
@@ -282,7 +282,7 @@
 
 
 
-;;* edit-server
+;;; edit-server
 ;; Chrome extension: Edit with Emacs
 ;; REF: (@url :file-name "https://chrome.google.com/webstore/detail/ljobjlafonikaiipfkggjbhkghgicgoh" :display "website")
 (when (require 'edit-server nil t)
@@ -291,7 +291,7 @@
 
 
 
-;;* gist
+;;; gist
 ;; Github gist service
 ;; Online code snippet for sharing and version controlling
 (pcache-preload)

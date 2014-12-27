@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-24 Mon 16:03 by xin on S13>
+;; Time-stamp: <2014-12-26 Fri 11:42 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -18,9 +18,9 @@
 
 
 
-;;* Save editing information
+;;; Save editing information
 
-;;** Winpoint
+;;;; Winpoint
 ;; When two windows view the same buffer at the same time, and one
 ;; window is switched to another buffer and back, point is now the
 ;; same as in the other window, not as it was before we switched away.
@@ -32,7 +32,7 @@
 
 
 
-;;** Bookmark
+;;;; Bookmark
 ;; * ‘C-x r m’ – set a bookmark at the current location (e.g. in a file)
 ;; * ‘C-x r b’ – jump to a bookmark
 ;; * ‘C-x r l’ – list all of your bookmarks
@@ -52,11 +52,11 @@
 (bookmark-preload)
 (eval-after-load "bookmark" '(bookmark-postload))
 
-;;*** Bookmark+
+;;;;; Bookmark+
 (bookmark+-preload)
 (eval-after-load "bookmark+" '(bookmark+-postload))
 
-;;*** bm
+;;;;; bm
 ;; provides visible, buffer local, bookmarks and the ability
 ;; to jump forward and backward to the next bookmark.
 (autoload 'bm-toggle   "bm" "Toggle bookmark in current buffer." t)
@@ -78,9 +78,9 @@
 
 
 
-;;* Save Emacs session information
+;;; Save Emacs session information
 
-;;** recentf
+;;;; recentf
 ;; Save recent openned files
 (recentf-preload)
 (eval-after-load "recentf" '(recentf-postload))
@@ -90,14 +90,14 @@
 
 
 
-;;** save-place
+;;;; save-place
 ;; Save point places in buffers
 (saveplace-preload)
 (eval-after-load "saveplace" '(saveplace-postload))
 
 
 
-;;** savehist
+;;;; savehist
 (savehist-preload)
 (eval-after-load "savehist" '(savehist-postload))
 (if window-system        ;BUG: cause error in terminal ---
@@ -106,12 +106,12 @@
 
 
 
-;;** filecache
+;;;; filecache
 (eval-after-load "filecache" '(filecache-postload))
 
 
 
-;;** windows and revive
+;;;; windows and revive
 ;; NOTE: ;; Workspace store and recover. Heavy weight, cannot used with emacs daemon
 (revive-preload)
 (eval-after-load "revive" '(revive-postload))
@@ -129,7 +129,7 @@
 ;;   (when window-system
 ;;     (win:startup-with-window)))
 
-;;** `elscreen.el'
+;;;; `elscreen.el'
 ;; NOTE: old versions are based on APEL, current version is not.
 (eval-after-load "elscreen" '(elscreen-postload))
 (elscreen-start)
@@ -137,7 +137,7 @@
 
 
 
-;;** `winring.el'
+;;;; `winring.el'
 ;; ;; (eval-after-load "winring" '(winring-postload))
 ;; (when (try-require 'winring)
 ;;   (add-hook 'after-init-hook 'winring-initialize)
@@ -145,7 +145,7 @@
 
 
 
-;;** session
+;;;; session
 ;; session.el can remember more information.
 ;; NOTE: C-x C-/ 'session-jump-to-last-change
 (eval-after-load "session" '(session-postload))
@@ -154,19 +154,19 @@
 
 
 
-;;** `desktop.el'
+;;;; `desktop.el'
 ;; (eval-after-load "desktop" '(desktop-postload))
 ;; (desktop-save-mode 1)
 ;; NOTE: Cannot remember window layout
 
 
-;;** `wcy-desktop.el', light weight version `desktop.el'
+;;;; `wcy-desktop.el', light weight version `desktop.el'
 ;; (when (try-require 'wcy-desktop)
 ;;   (add-hook 'after-init-hook 'wcy-desktop-init))
 
 
 
-;;** `wcy-escreen.el' by 王纯业(wcy), based on `session.el'
+;;;; `wcy-escreen.el' by 王纯业(wcy), based on `session.el'
 ;; (when (try-require 'wcy-escreen)
 ;;   (add-hook 'after-init-hook 'wcy-escreen-install))
 

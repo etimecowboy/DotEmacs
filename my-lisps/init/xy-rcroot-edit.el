@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-23 Sun 01:44 by xin on S13>
+;; Time-stamp: <2014-12-26 Fri 11:29 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -18,7 +18,7 @@
 
 
 
-;;* Some basic edting settings
+;;; Some basic edting settings
 
 ;; Emacs找不到合适的模式时，缺省使用text-mode
 ;; (setq default-major-mode 'text-mode) ;;  obsolete variable
@@ -36,14 +36,14 @@
 ;; tab补全的模式
 (setq-default tab-always-indent t)
 
-;;** no-easy-keys
+;;;; no-easy-keys
 ;; be a Emacser!
 ;; NOTE: may cause problem in some modes, such as org-mode
 ;; (when (try-require 'no-easy-keys)
 ;;   (no-easy-keys 1))
 
 
-;;** ethan-wspace
+;;;; ethan-wspace
 ;; REF: (@url :file-name "https://github.com/glasserc/ethan-wspace" :display "Source")
 ;; (autoload 'global-ethan-wspace-mode "ethan-wspace" nil t)
 ;; (when (try-require 'ethan-wspace)
@@ -58,7 +58,7 @@
 
 
 
-;;** ws-trim
+;;;; ws-trim
 ;; automatically trims whitespace on edited lines. With a low
 ;; `ws-trim-level' it is complementary to `ethan-wspace', and may be
 ;; useful to encourage you to delete whitespace organically. Hopefully
@@ -69,10 +69,10 @@
 
 
 
-;;* Fast point move
+;;; Fast point move
 
 ;; NOTE: use back-button instead
-;; ;;** recent-jump
+;; ;;;; recent-jump
 ;; ;; 返回到最近去过的地方
 ;; ;; (require 'recent-jump)
 ;; ;; (require 'recent-jump-small)
@@ -90,14 +90,14 @@
 ;;        ("M-."   recent-jump-small-forward)
 ;;        ))))
 
-;; ;;** visible-mark
+;; ;;;; visible-mark
 ;; (when (try-require 'visible-mark)
 ;;   (setq visible-mark-max 10)
 ;;   (global-visible-mark-mode 1))
 ;; ;; color
 ;; '(visible-mark-face ((t (:box (:line-width 2 :color "red" :style released-button))))))
 
-;;** back-button
+;;;; back-button
 ;; Default key bindings:
 ;;
 ;;     C-x C-<SPC>    go back in `global-mark-ring', respects prefix arg
@@ -110,13 +110,13 @@
 (when (try-require 'back-button)
   (back-button-mode 1))
 
-;;** nav-flash
+;;;; nav-flash
 (when (try-require 'nav-flash)
   (setq nav-flash-use-pulse 'gui-only))
 
 
 
-;;** dot-mode
+;;;; dot-mode
 ;; 模拟vi的点(.)命令
 ;; (try-require 'dot-mode)
 ;; (autoload 'dot-mode "dot-mode" nil t) ; vi `.' command emulation
@@ -127,7 +127,7 @@
 
 
 
-;;** Incremental search
+;;;; incremental search
 (eval-after-load "isearch"
   '(progn
      ;; (isearch-face-settings)
@@ -151,7 +151,7 @@
 
 
 
-;;** ace-jump-mode
+;;;; ace-jump-mode
 ;; ace-jump-mode is an fast/direct cursor location minor mode.
 ;; (try-require 'ace-jump-mode)
 (define-key global-map (kbd "C-S-s") 'ace-jump-mode)
@@ -166,12 +166,12 @@
 
 
 
-;;** my own replace face
+;;;; my own replace face
 ;; (eval-after-load "replace" '(replace-postload))
 
 
 
-;;* Fast select regions
+;;; Fast select regions
 
 (transient-mark-mode 1)   ;; Reqired when using org-mode
 (delete-selection-mode 1)
@@ -199,7 +199,7 @@
 
 
 
-;;** 矩形区域操作
+;;;; rectangular operations
 ;; (eal-define-keys-commonly
 ;;   global-map
 ;;   `(("C-x \\"  rm-mark-command)
@@ -211,7 +211,7 @@
 (try-require 'rect-mark)
 
 
-;;** CUA model settings
+;;;; cua-mode
 ;; CUA的矩阵区域操作特别方便
 ;; (setq use-cua t)
 (eval-after-load "cua-base" '(cua-postload))
@@ -229,21 +229,21 @@
 
 
 
-;;** multiple-cursor
+;;;; multiple-cursor
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-;;* Graphic text tools
+;;; Graphic text tools
 
-;;** table
+;;;; table
 ;; 可以“所见即所得”的编辑一个文本模式的表格
 ;; (if is-before-emacs-21 (require 'table "table-for-21"))
 
 
 
-;;** artist
+;;;; artist
 ;; 非常强大的文本画图的工具
 ;; (global-set-key (kbd "C-x A d") 'artist-mode)
 (eval-after-load "artist"
@@ -259,7 +259,7 @@
 
 
 
-;;** palette
+;;;; palette
 ;; provides a general color palette that you can use to
 ;; examine color properties or choose colors.
 ;; Emacs配色的超级武器：Icicles，Color Palette和DoReMi
@@ -267,7 +267,7 @@
 
 
 
-;;* Global key bindings
+;;; Global key bindings
 
 ;; (global-set-key (kbd "M-;") 'qiang-comment-dwim-line)
 
@@ -308,7 +308,7 @@
 
 
 
-;;* Global keybindings for visiting some files/directory
+;;; Global keybindings for visiting some files/directory
 
 ;; ("C-x G i" open-init-dot-el-file)))
 

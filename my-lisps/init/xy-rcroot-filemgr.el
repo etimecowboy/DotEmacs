@@ -17,27 +17,27 @@
 
 
 
-;;* Buffer management
+;;; Buffer management
 
 ;; 按下C-x k立即关闭掉当前的buffer
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
 
 
-;;** ibuffer
+;;;; ibuffer
 (eval-after-load "ibuffer" '(ibuffer-postload))
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 
 
-;;** uniquify
+;;;; uniquify
 ;; 可以为重名的 buffer 在前面加上其父目录的名字来让名字区分开来，
 (eval-after-load "uniquify" '(uniquify-postload))
 (require 'uniquify)
 
 
 
-;;** Auto clear up your huge buffer list every 2 hours
+;;;; Auto clear up your huge buffer list every 2 hours
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/KillingBuffers#toc12" :display "emacswiki")
 
 ;;; midnight mode
@@ -78,9 +78,9 @@
 
 
 
-;;* File management
+;;; File management
 
-;;** dired
+;;;; dired
 (eval-after-load "dired"
   '(progn
      (dired-postload)
@@ -111,7 +111,7 @@
         ;; ("q"         kill-this-buffer) ;; BUG: cause `sunrise' error
         ))))
 
-;;*** GNU Emacs features for dired
+;;;;; GNU Emacs features for dired
 ;; 对特定文件简略显示
 (eval-after-load "dired-x" '(dired-x-postload))
 ;; (require 'dired-x)
@@ -126,7 +126,7 @@
 ;;     M-s a C-M-s – `dired-do-isearch-regexp'
 ;; (eval-after-load "dired-isearch" '(dired-isearch-postload))
 
-;;*** Contrib features for dired
+;;;;; Contrib features for dired
 ;; Use a single frame for visiting a sub-directory
 ;; (eval-after-load "dired-single" (dired-single-postload))
 ;; `T' 把目录压缩为.tar.gz文件
@@ -177,7 +177,7 @@
 
 
 
-;;** Sunrise commander; file manager
+;;;; Sunrise commander; file manager
 ;; FIXME: wrong color display
 ;; NOTE: It is not very useful, and it is very slow.
 ;; Check (@url :file-name "http://www.emacswiki.org/emacs/Sunrise_Commander_Tips" :display "emacswiki")
@@ -186,7 +186,7 @@
 
 
 
-;;** Speedbar and sr-speedbar
+;;;; Speedbar and sr-speedbar
 (eval-after-load "sr-speedbar" '(sr-speedbar-postload))
 (autoload 'sr-speedbar-toggle "sr-speedbar"
   "Toggle sr-speedbar window." t)
@@ -194,9 +194,9 @@
 ;; BUG: It seems cause error when using with `elscreen.el'
 
 
-;;* File searching
+;;; File searching
 
-;;** Use `everything.el' with `everything.exe' in Windows
+;;;; Use `everything.el' with `everything.exe' in Windows
 ;; NOTE: `everything' exe file must be `everything.exe', not
 ;; `everthing.1.2.xxx.exe'
 ;; (autoload 'everything "everything" "" t)
@@ -214,9 +214,9 @@
 
 
 
-;;* Version control settings
+;;; Version control settings
 
-;;** Emacs internal version control
+;;;; Emacs internal version control
 (setq make-backup-files t)
 (setq backup-by-copying t)
 (setq backup-directory-alist '(("." . "~/.emacs-backup")))
@@ -237,14 +237,14 @@
 
 
 
-;;** git settings
+;;;; git settings
 
-;;*** git.el
+;;;;; git.el
 
-;;*** egg
+;;;;; egg
 ;; (eval-after-load "egg" '(egg-postload))
 
-;;*** magit
+;;;;; magit
 (eval-after-load "magit"
   '(progn
      (magit-postload)
@@ -264,11 +264,11 @@
 (global-set-key (kbd "<f12> v") 'xy/magit-wip-quick-recover)
 ;; (global-set-key (kbd "<f12> w") 'global-magit-wip-save-mode)
 
-;;*** git-wip
+;;;;; git-wip
 ;; (try-require 'git-wip)
 ;; (try-require 'git-wip-mode)
 
-;;*** diff-git
+;;;;; diff-git
 ;; NOTE: magit is good enough
 (eval-after-load "diff-git"
   '(progn
@@ -283,23 +283,23 @@
 (global-set-key (kbd "<f12> u") 'diff-git-diff-unstaged)
 (global-set-key (kbd "<f12> s") 'diff-git-diff-staged)
 
-;;*** mo-git-blame
+;;;;; mo-git-blame
 (eval-after-load "mo-git-blame" '(mo-git-blame-postload))
 (global-set-key (kbd "<f12> r") 'mo-git-blame-current)
 (global-set-key (kbd "<f12> f") 'mo-git-blame-file)
 
 
 
-;;** Mecurial settings
+;;;; Mecurial settings
 
-;;*** ahg
+;;;;; ahg
 ;; (try-require 'ahg)
 (autoload 'ahg-status "ahg" "Run hg status." t)
 (global-set-key (kbd "<f12> h") 'ahg-status)
 
 
 
-;;** diff-hl
+;;;; diff-hl
 ;; Highlight vc diff section of current file
 ;;BUG: strange error after update to latest ELPA package, use old
 ;; package instead.

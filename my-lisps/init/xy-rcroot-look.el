@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-12-19 Fri 13:42 by xin on S13>
+;; Time-stamp: <2014-12-26 Fri 10:54 by xin on S13>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -17,10 +17,9 @@
 
 
 
-;;* Frame settings
+;;; Frame settings
 
-;; TODO: create my own frame layout
-;;** Default frame layout
+;;;; Default frame layout
 ;; (when window-system
 ;;   ;; Initial fram layout
 ;;   ;; (setq initial-frame-alist
@@ -44,7 +43,7 @@
 
 
 
-;;** Frame title
+;;;; Frame title
 ;; ;; Set frame title display: filename @ process
 ;; ;; (setq frame-title-format "%f @ %s")
 ;; (setq frame-title-format
@@ -73,9 +72,9 @@
 
 
 
-;;** Transparent frame
+;;;; Transparent frame
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/TransparentEmacs" :display "emacswiki")
-;;; `alpha.el'
+;;;;; alpha.el
 ;; sample keybinding for transparency manipulation
 ;; (global-set-key (kbd "M-?") 'transparency-set-value)
 ;; the two below let for smooth transparency control
@@ -84,7 +83,7 @@
 
 
 
-;;** Resize frame and window
+;;;; Resize frame and window
 ;; BUG: there is a bug in `fit-frame.el' or `thumb-frm.el' which
 ;;      causes info-mode reports an error when following a link. Have
 ;;      to load these two lisp files in order to fix it, whether it is
@@ -121,9 +120,9 @@
 
 
 
-;;* Window settings
+;;; Window settings
 
-;;** window-number
+;;;; window-number
 ;; (autoload 'window-number-mode "window-number"
 ;;   "A global minor mode that enables selection of windows according to
 ;; numbers with the C-x C-j prefix.  Another mode,
@@ -136,7 +135,7 @@
 
 
 
-;;** windmove
+;;;; windmove
 ;; NOTE: If not fast enough, use `window-number.el'
 ;; NOTE: the default key bindings C-left/right/up/down conflicts
 ;; with org-mode default key bindings.
@@ -152,7 +151,7 @@
 
 
 
-;;** buffer-move
+;;;; buffer-move
 ;; swap buffers without typing C-x b on each window
 (autoload 'buf-move-up "buffer-move" nil t)
 (autoload 'buf-move-down "buffer-move" nil t)
@@ -168,12 +167,12 @@
 
 
 
-;;** Winner mode for window splits
+;;;; Winner mode for window splits
 (winner-mode 1)
 
 
 
-;;** Windsize
+;;;; Windsize
 (autoload 'windsize-left "windsize" nil t)
 (autoload 'windsize-right "windsize" nil t)
 (autoload 'windsize-up "windsize" nil t)
@@ -188,7 +187,7 @@
 
 
 
-;;** win-switch
+;;;; win-switch
 ;; NOTE: the idle time makes it not good
 ;; (eval-after-load "windmove" '(windmove-postload))
 ;; (when (try-require 'win-switch)
@@ -208,7 +207,7 @@
 
 
 
-;;** popwin
+;;;; popwin
 ;; NOTE: 
 ;; Keymap:
 ;; | Key    | Command                               |
@@ -236,7 +235,7 @@
 
 
 
-;;* Buffer settings
+;;; Buffer settings
 
 (global-visual-line-mode 1) ;; Wrap line dynamically
 (setq word-wrap t)
@@ -258,7 +257,7 @@
 
 
 
-;;* Fringe settings
+;;; Fringe settings
 (fringe-mode '(nil . 0))
 (setq visual-line-fringe-indicators '(left-curly-arrow nil))
 (setq-default indicate-buffer-boundaries 'left ;; Display buffer boudaries
@@ -267,7 +266,7 @@
 
 
 
-;;* mode-line settings
+;;; mode-line settings
 
 (setq-default ;; Display mode-line the same in non-selected windows
   mode-line-in-non-selected-windows nil)
@@ -281,7 +280,7 @@
 
 
 
-;;** diminish
+;;;; diminish
 ;; Removing or abbreviating minor mode indicators
 (eval-after-load "filladapt" '(diminish 'filladapt-mode))
 ;; (eval-after-load "icicles" '(diminish 'icicle-mode))
@@ -310,12 +309,12 @@
 
 
 
-;;** modeline-posn
+;;;; modeline-posn
 ;; (try-require 'modeline-posn)  ;; Display number of characters in region
 
 
 
-;;** hide-mode-line
+;;;; hide-mode-line
 ;; REF: (@url :file-name "http://webonastick.com/emacs-lisp/hide-mode-line.el" :display "Source")
 ;; NOTE: NOT good for me, cause no screen sapce can be saved
 ;; (autoload 'hide-mode-line "hide-mode-line" nil t)
@@ -324,14 +323,14 @@
 
 
 
-;;** mode-line-frame
+;;;; mode-line-frame
 ;; offers a frame to show various information
 ;; Just call `xy/separate-line-frame' to use it.
 (eval-after-load "mode-line-frame" '(mode-line-frame-postload))
 
 
 
-;;* mini-buffer settings
+;;; mini-buffer settings
 
 (setq enable-recursive-minibuffers t)
 (add-hook 'comint-output-filter-functions
@@ -340,7 +339,7 @@
 
 
 
-;;* Menu settings
+;;; Menu settings
 (defvar menu-bar-rectangle-map
   (let
       ((map (make-sparse-keymap "Rectangle functions")))
@@ -360,16 +359,16 @@
 
 
 
-;;* Vaious bar settings
+;;; Vaious bar settings
 
-;;** menu-bar
+;;;; menu-bar
 (menu-bar-mode -1)
 (global-set-key (kbd "M-<f10>") 'menu-bar-mode)
 
-;; ;;*** menua-bar+
+;; ;;;;; menua-bar+
 ;; (require 'menu-bar+)
 
-;; ;;*** facemenu+
+;; ;;;;; facemenu+
 ;; ;; This library enhances the "Text Properties" menu.  It adds menu
 ;; ;; items to the menu, and provides two different versions of the
 ;; ;; menu: one for the menu-bar Edit menu (`facemenu-menu') and one for
@@ -379,16 +378,16 @@
 
 
 
-;;** tool-bar
+;;;; tool-bar
 (tool-bar-mode -1)
 (global-set-key (kbd "C-<f10>") 'tool-bar-mode)
 
-;; ;;*** tool-bar+
+;; ;;;;; tool-bar+
 ;; (require 'tool-bar+)
 
 
 
-;;** scroll related
+;;;; scroll related
 (scroll-bar-mode -1) ;; No vertical scroll bar
 (when (fboundp 'horizontal-scroll-bar-mode)
   (horizontal-scroll-bar-mode -1)) ;; Never show horizontal scroll bar
@@ -401,14 +400,14 @@
 
 
 
-;;** tabbar NOTE: not very useful
+;;;; tabbar NOTE: not very useful
 ;; tab style buffer switch
 ;; (require 'tabbar)
 ;; (tabbar-mode 1)
 ;; (setq tabbar-cycling-scope (quote tabs))
 ;; (setq tabbar-cycling-scope nil)
 
-;;*** tabbar-ruler NOTE: not very useful
+;;;;; tabbar-ruler NOTE: not very useful
 ;; (setq tabbar-ruler-global-tabbar 't) ; If you want tabbar
 ;; (setq tabbar-ruler-global-ruler 't) ; if you want a global ruler
 ;; (setq tabbar-ruler-popup-menu 't) ; If you want a popup menu.
@@ -417,13 +416,13 @@
 
 
 
-;;* Point (cursor) settings
+;;; Point (cursor) settings
 (blink-cursor-mode -1)
 (setq x-stretch-cursor t)
 
 
 
-;;** bar-cursor
+;;;; bar-cursor
 ;; 光标由方块变成一个小长条
 ;; (require 'bar-cursor)
 ;; (autoload 'bar-cursor-mode "bar-cursor" nil t)
@@ -431,7 +430,7 @@
 
 
 
-;;** cursor-change
+;;;; cursor-change
 ;; 智能的改变光标形状
 ;; REF: (@url :file-name "http://emacser.com/cursor-change.htm" :display "emacser")
 (autoload 'cursor-change-mode "cursor-change" nil t)
@@ -439,7 +438,7 @@
 
 
 
-;;* Mouse settings
+;;; Mouse settings
 
 ;; (mouse-wheel-mode 1)
 ;; (mouse-sel-mode 1)
@@ -459,9 +458,9 @@
 
 
 
-;;* Syntax highlighting
+;;; Syntax highlighting
 
-;;** font-lock
+;;;; font-lock
 (eval-after-load "font-lock" '(font-lock-postload))
 (global-font-lock-mode 1)
 ;; 避免打开大的文本文件时反应缓慢
@@ -474,7 +473,7 @@
 ;;                   org-mode-hook)
 ;;  '(lambda () (font-lock-mode 1)))
 
-;;** fic-ext-mode
+;;;; fic-ext-mode
 (eval-after-load "fic-ext-mode" '(fic-ext-mode-postload))
 ;; NOTE: have some problem if turn on it all the time
 ;; (am-add-hooks
@@ -486,12 +485,12 @@
 
 
 
-;;** hl-line
+;;;; hl-line
 ;; (global-hl-line-mode 1) ; (if window-system 1 -1)
 
 
 
-;;** hi-lock
+;;;; hi-lock
 ;; (global-hi-lock-mode 1)
 (eal-define-keys
  'hi-lock-map
@@ -505,7 +504,7 @@
 
 
 
-;;** highlight-symbol
+;;;; highlight-symbol
 ;; 像Eclipse那样高亮光标处单词, 基于hi-lock，方便但是不能保存高亮设置
 (eval-after-load "highlight-symbol"
   '(progn
@@ -528,7 +527,7 @@
 
 
 
-;;** smart-hl
+;;;; smart-hl
 ;; 像Eclipse那样双击高亮当前字符串
 ;; NOTE: A part of codepilot which is removed.
 ;;       Use highlight-symbol-mode instead.
@@ -548,7 +547,7 @@
 
 
 
-;;** Zjl-hl
+;;;; Zjl-hl
 ;; use CEDET semantic to highlight function calls
 (eval-after-load "zjl-hl"
   '(progn
@@ -557,15 +556,15 @@
 
 
 
-;;* Color & face settings
+;;; Color & face settings
 
-;;** generic-x
+;;;; generic-x
 ;; 增加更丰富的高亮
 ;; (require 'generic-x)
 
 
 
-;;** color-theme
+;;;; color-theme
 ;; NOTE: too old, too bugy. >emacs24.2 has built-in theme support.
 ;; fancy themes for emacs
 ;; REF: (@url :file-name "http://emacser.com/color-theme.htm" :display "emacser")
@@ -584,7 +583,7 @@
 
 
 
-;;** Emacs built-in color system
+;;;; Emacs built-in color system
 ;; NOTE: two most popular color-theme: zenburn (low contrast for long
 ;; time work at the screen) and solarized (for same color setting on
 ;; dark and bright background)
@@ -606,7 +605,7 @@
 
 
 
-;;** auto-dim-other-buffers
+;;;; auto-dim-other-buffers
 (eval-after-load "auto-dim-other-buffers"
   '(auto-dim-other-buffers-postload))
 (when window-system
@@ -614,12 +613,12 @@
     (auto-dim-other-buffers-mode 1)))
 
 
-;;** doremi
+;;;; doremi
 ;; (eval-after-load "icicles" `(doremi-postload))
 
 
 
-;; ;;** palette
+;; ;;;; palette
 ;; ;; emacs 的调色板
 ;; (eval-after-load "palette"
 ;;   '(progn
@@ -651,7 +650,7 @@
 
 
 
-;;** rainbow-mode
+;;;; rainbow-mode
 ;; displays strings representing colors with the color they represent
 ;; as background
 ;; (require 'rainbow-mode)
@@ -669,7 +668,7 @@
 
 
 
-;;** pp-c-l
+;;;; pp-c-l
 ;; Display Vontrol-l characters in a pretty way
 ;; NOTE: C-L will be printed as page seperation
 (eval-after-load "pp-c-l" '(pp-c-l-postload))
@@ -684,7 +683,7 @@
 
 
 
-;;** page-break-mode
+;;;; page-break-mode
 ;; display a play brake symbol as a horizontal line
 ;; BUG: NOT working
 ;; (when (try-require 'page-break-mode)
@@ -697,7 +696,7 @@
 
 
 
-;;* *Scratch* buffer settings
+;;; *Scratch* buffer settings
 ;; Change default major mode of *scratch* buffer
 (setq initial-major-mode 'text-mode)
 
@@ -707,7 +706,7 @@
 
 
 
-;;* Font settings
+;;; Font settings
 
 ;; (defun xy/set-font-default ()
 ;;   "Set Emacs font."
@@ -743,7 +742,7 @@
 ;;    ;; ("C-M--"  decrease-default-font-height)
    ))
 
-;;** Automatically set fonts for different modes
+;;;; Automatically set fonts for different modes
 ;; NOTE: a pain to my eyes
 ;; (am-add-hooks
 ;;  `(lisp-mode-hook emacs-lisp-mode-hook cc-mode-hook c-mode-hook
@@ -760,9 +759,9 @@
 
 
 
-;;** Zoom fonts by mouse wheel
+;;;; Zoom fonts by mouse wheel
 
-;;*** Use emacs internal functions
+;;;;; Use emacs internal functions
 (GNULinux 
  (global-set-key (kbd "<C-mouse-4>") 'text-scale-increase) 
  (global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease))
@@ -770,7 +769,7 @@
  (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase) 
  (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease))
 
-;;*** Use bhj's list of font sizes that lead to nicely alignment of Latin
+;;;;; Use bhj's list of font sizes that lead to nicely alignment of Latin
 ;; and Chinese characters.
 ;; NOTE: Cannot use other fonts
 ;; (GNULinux 
@@ -780,20 +779,20 @@
 ;;  (global-set-key (kbd "<C-wheel-up>")   'bhj-text-scale-increase) 
 ;;  (global-set-key (kbd "<C-wheel-down>") 'bhj-text-scale-decrease))
 
-;;*** Global font size scale
+;;;; Global font size scale
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/GlobalTextScaleMode" :display "GlobalTextScaleMode")
 ;; NOTE: Only for exsiting buffers.
 ;;       The font size of new buffers is not changed.
-(defadvice text-scale-increase
-  (around all-buffers (arg) activate)
-  (dolist (buffer (buffer-list))
-    (with-current-buffer buffer
-      ad-do-it)))
-(defadvice text-scale-decrease
-  (around all-buffers (arg) activate)
-  (dolist (buffer (buffer-list))
-    (with-current-buffer buffer
-      ad-do-it)))
+;; (defadvice text-scale-increase
+;;   (around all-buffers (arg) activate)
+;;   (dolist (buffer (buffer-list))
+;;     (with-current-buffer buffer
+;;       ad-do-it)))
+;; (defadvice text-scale-decrease
+;;   (around all-buffers (arg) activate)
+;;   (dolist (buffer (buffer-list))
+;;     (with-current-buffer buffer
+;;       ad-do-it)))
 
 
 
