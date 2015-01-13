@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-12-01 Mon 13:01 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2015-01-12 Mon 16:49 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ebib.el'
 ;; Author:       Xin Yang
@@ -26,9 +26,11 @@
   (setq ebib-create-backups t)
   (setq ebib-hide-cursor nil)
   (setq ebib-print-multiline t)
+  (setq ebib-index-window-size 20)
+  (setq ebib-index-display-fields '("type"))
   (setq ebib-hidden-fields '("addendum" "afterword" "annotator"
   "bookauthor" "booksubtitle" "booktitleaddon" "chapter" "commentator"
-  "edition" "editora" "editorb" "editorc" "eid" "eprint" "eprintclass"
+  "editora" "editorb" "editorc" "eid" "eprint" "eprintclass"
   "eprinttype" "eventdate" "eventtitle" "foreword" "holder"
   "howpublished" "introduction" "isrn" "issn" "issue" "issuesubtitle"
   "issuetitle" "journalsubtitle" "language" "location" "mainsubtitle"
