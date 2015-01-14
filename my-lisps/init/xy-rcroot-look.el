@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-12-27 Sat 02:59 by xin on S13>
+;; Time-stamp: <2015-01-14 Wed 11:46 by xin on vmdebian.xyang.com>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -721,7 +721,7 @@
     (add-hook 'after-make-frame-functions
               (lambda (frame)
                 (with-selected-frame frame
-                  (xy/set-font-default))))
+                  (xy/set-font-prog))))
   ;; (xy/set-font-default)
   (xy/set-font-prog))
 
