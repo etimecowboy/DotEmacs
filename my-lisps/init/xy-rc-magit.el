@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2015-01-20 Tue 01:41 by xy12g13 on UOS-208326>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-magit.el'
 ;; Author:       Xin Yang
@@ -121,6 +121,17 @@
             (string-match "^--" str))
         str
       (concat "'" (replace-regexp-in-string "'" "'\\''" str) "'")))
+
+  ;; https://github.com/magit/magit/issues/1318
+  (defadvice magit-expand-git-file-name
+      (before magit-expand-git-file-name-cygwin activate)
+    "Handle Cygwin directory names such as /cygdrive/c/*
+by changing them to C:/*"
+    ;; (when (string-match "^/cygdrive/\\([a-z]\\)/\\(.*\\)" filename)
+    ;; HACK: for msys2
+    (when (string-match "^/\\([a-z]\\)/\\(.*\\)" filename)
+      (setq filename (concat (match-string 1 filename) ":/"
+                             (match-string 2 filename)))))
 
   (message "* ---[ magit post-load configuration is complete ]---"))
 
