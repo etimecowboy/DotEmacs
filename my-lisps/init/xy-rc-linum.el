@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2015-01-22 Thu 22:35 by xin on UOS208326.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-linum.el'
 ;; Author:       Xin Yang
@@ -26,7 +26,8 @@
   ;; REF: (@url :file-name "http://emacser.com/linum-plus.htm" :display "emacser")
   (try-require 'linum+)
   ;; hlinum
-  (try-require 'hlinum)
+  (when (try-require 'hlinum)
+    (hlinum-activate))
 
   (custom-set-faces
    '(linum ((t (:height 0.7)))))

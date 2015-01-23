@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2015-01-22 Thu 22:50 by xin on UOS208326.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-mic-paren.el'
 ;; Author:       Xin Yang
@@ -21,6 +21,14 @@
   "Settings for `mic-paren' after it's been loaded."
   ;; (paren-activate)
   (setq paren-message-show-linenumber 'absolute)
+  (add-hook 'LaTeX-mode-hook
+            (function (lambda ()
+                        (paren-toggle-matching-quoted-paren 1)
+                        (paren-toggle-matching-paired-delimiter 1))))  
+  (add-hook 'c-mode-common-hook
+            (function (lambda ()
+                        (paren-toggle-open-paren-context 1))))
+  
   (message "* ---[ mic-paren post-load configuration is complete ]---"))
 
 ;; ;;;###autoload

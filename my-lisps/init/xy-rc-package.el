@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-12-04 Thu 11:42 by xin on S13>
+;; Time-stamp: <2015-01-23 Fri 00:11 by xin on UOS208326.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -154,41 +154,13 @@ re-downloaded in order to locate PACKAGE."
   (when (not package-archive-contents)
     (package-refresh-contents))
 
-  (require-package 'marmalade)
+  ;; =======================================================
+  ;; ELPA repositories
+  ;; (require-package 'marmalade)
   ;; (require-package 'marmalade-test)
   ;; (require-package 'melpa) ;; not avaliable any more
-
-  ;; NOTE: may switch to company in future
-  ;; (require-package 'auto-complete)
-  ;; (require-package 'ac-dabbrev)
-  ;; (require-package 'ac-math)
-
-  (require-package 'company)
-  (require-package 'anaconda-mode)
-  (require-package 'company-anaconda)
-  (require-package 'company-auctex)
-  (require-package 'company-c-headers)
+  ;; =======================================================
   
-  (require-package 'yasnippet)
-  
-  ;; NOTE: don't use helm
-  ;; (require-package 'helm)
-  ;; (require-package 'helm-R)
-  ;; (require-package 'helm-c-moccur)
-  ;; (require-package 'helm-c-yasnippet)
-  ;; (require-package 'helm-descbinds)
-  ;; (require-package 'helm-gist)
-  ;; (require-package 'helm-git)
-  ;; (require-package 'helm-gtags)
-  ;; (require-package 'helm-ls-git)
-  ;; ;; (require-package 'helm-migemo)
-  ;; (require-package 'helm-projectile)
-  ;; (require-package 'helm-themes)
-
-  ;; (require-package 'ack-menu)  ;; ack is not used
-  ;; (require-package 'ansi)  ;; never used
-  ;; (require-package 'ahg)
-
   (require-package 'ace-jump-mode)
   (require-package 'ace-jump-buffer)
   (require-package 'ace-window)
@@ -204,19 +176,19 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'nzenburn-theme)
   ;; (require-package 'hc-zenburn-theme)
   
-  (require-package 'ascii)  
+  ;; (require-package 'ascii)  
   (require-package 'auto-dim-other-buffers)
   (require-package 'autopair)
   (require-package 'back-button)
   (require-package 'batch-mode)
   ;; (require-package 'visible-mark) ;; clear install required
-  (require-package 'nav-flash)
-  (require-package 'smartrep)
-  (require-package 'ucs-utils)
-  (require-package 'ucs-cmds)
-  (require-package 'persistent-soft)
-  (require-package 'pcache)
-  (require-package 'bash-completion)
+  ;; (require-package 'nav-flash)
+  ;; (require-package 'smartrep)
+  ;; (require-package 'ucs-utils)
+  ;; (require-package 'ucs-cmds)
+  ;; (require-package 'persistent-soft)
+  ;; (require-package 'pcache)
+  ;; (require-package 'bash-completion)
 
   (require-package 'bm)
   (require-package 'bookmark+)
@@ -231,12 +203,12 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'col-highlight)
   (require-package 'color-moccur)
   ;; (require-package 'columnify) ;; never used
-  (require-package 'cperl-mode)
+  ;; (require-package 'cperl-mode)
   (require-package 'css-mode)
-  (require-package 'ctags)
-  (require-package 'ctags-update)
+  ;; (require-package 'ctags)
+  ;; (require-package 'ctags-update)
   ;; (require-package 'cursor-chg)  ;; not very useful
-  (require-package 'dash)
+  ;; (require-package 'dash)
   ;; (require-package 'deft)        ;; nerver used
   (require-package 'dictionary)
   (require-package 'diff-git)
@@ -246,55 +218,55 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'doc-mode)   ;; never used
   ;; (require-package 'dropbox)    ;; never used
   ;; (require-package 'edit-server);; I use firefox not chrome
-  (require-package 'eimp)
-  (require-package 'elpy)
+  ;; (require-package 'eimp)
+  ;; (require-package 'elpy)
   (require-package 'elscreen)
   ;; (require-package 'emms)       ;; not very useful
   ;; (require-package 'ess)        ;; not very useful
 
   (require-package 'ethan-wspace)
-  (require-package 'everything)
+  ;; (require-package 'everything)
   (require-package 'fic-ext-mode)
   ;; (require-package 'fit-frame) ;; not very useful
-  (require-package 'flx-ido)
-  (require-package 'flx)
+  ;; (require-package 'flx-ido)
+  ;; (require-package 'flx)
   (require-package 'fold-this)
-  (require-package 'framesize)
-  (require-package 'furl)
+  ;; (require-package 'framesize)
+  ;; (require-package 'furl)
   (require-package 'fuzzy)
-  (require-package 'gh)
-  (require-package 'gist)
+  ;; (require-package 'gh)
+  ;; (require-package 'gist)
   
   (require-package 'google-c-style)
   (require-package 'c-eldoc)
 
-  (require-package 'google-maps)
-  (require-package 'graphviz-dot-mode)
+  ;; (require-package 'google-maps)
+  ;; (require-package 'graphviz-dot-mode)
   ;; (require-package 'haskell-mode)  ;; don't want to learn haskell now
 
   (require-package 'highlight)
   (require-package 'highlight-parentheses)
   (require-package 'highlight-symbol)
   (require-package 'htmlize)
-  (require-package 'hungry-delete)
-  (require-package 'ibuffer-vc)
+  ;; (require-package 'hungry-delete)
+  ;; (require-package 'ibuffer-vc)
 
   (require-package 'ido-ubiquitous)
   (require-package 'ido-yes-or-no)
-  (require-package 'idomenu) ;; required by `elpy'
+  ;; (require-package 'idomenu) ;; required by `elpy'
 
   (require-package 'info+)
   (require-package 'ioccur)
   (require-package 'isearch+)
-  (require-package 'iy-go-to-char)
-  (require-package 'jira)
-  (require-package 'json)
-  (require-package 'key-chord)
+  ;; (require-package 'iy-go-to-char)
+  ;; (require-package 'jira)
+  ;; (require-package 'json)
+  ;; (require-package 'key-chord)
   (require-package 'kill-ring-search)
   (require-package 'hlinum)
-  (require-package 'list-utils)
+  ;; (require-package 'list-utils)
   (require-package 'list-processes+)
-  (require-package 'logito)
+  ;; (require-package 'logito)
   ;; (require-package 'mag-menu)
   ;; (require-package 'splitter) ;; just use basic split functions
 
@@ -347,13 +319,13 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'revive)
   ;; (require-package 'rw-hunspell)
   ;; (require-package 'rw-ispell)
-  (require-package 's)
+  ;; (require-package 's)
   (require-package 'shell-command)
   (require-package 'shell-here)
   (require-package 'shell-pop)
-  (require-package 'smarter-compile)
+  ;; (require-package 'smarter-compile)
   (require-package 'smex)
-  (require-package 'string-utils)
+  ;; (require-package 'string-utils)
 
   ;; (require-package 'sunrise-commander)
   ;; ;; (require-package 'sunrise-x-buttons)
@@ -367,7 +339,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'sunrise-x-w32-addons)
 
   (require-package 'sr-speedbar)
-  (require-package 'strings)
+  ;; (require-package 'strings)
 
   (require-package 'undo-tree)
   ;; (require-package 'redo+)
@@ -385,19 +357,54 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'xml-rpc)
   ;; (require-package 'zjl-hl)
 
+  ;; =======================================================
   ;; New packages
+  
   (require-package 'iedit)
-
   (require-package 'auctex)
   (require-package 'auctex-latexmk)
   (require-package 'cdlatex)
   ;; (require-package 'texdrive)
-  
-  (require-package 'command-log-mode)
-  (require-package 'psvn)
-  (require-package 'ecb)
+  ;; (require-package 'command-log-mode)
+  ;; (require-package 'psvn)
+  ;; (require-package 'ecb)
   (require-package 'ebib)
+
+  ;; =======================================================
+  ;; Completion system
+  ;; 
+  ;; NOTE: may switch to company in future
+  ;; (require-package 'auto-complete)
+  ;; (require-package 'ac-dabbrev)
+  ;; (require-package 'ac-math)
+
+  (require-package 'company)
+  (require-package 'anaconda-mode)
+  (require-package 'company-anaconda)
+  (require-package 'company-auctex)
+  (require-package 'company-c-headers)
   
+  (require-package 'yasnippet)
+  
+  ;; NOTE: don't use helm
+  ;; (require-package 'helm)
+  ;; (require-package 'helm-R)
+  ;; (require-package 'helm-c-moccur)
+  ;; (require-package 'helm-c-yasnippet)
+  ;; (require-package 'helm-descbinds)
+  ;; (require-package 'helm-gist)
+  ;; (require-package 'helm-git)
+  ;; (require-package 'helm-gtags)
+  ;; (require-package 'helm-ls-git)
+  ;; ;; (require-package 'helm-migemo)
+  ;; (require-package 'helm-projectile)
+  ;; (require-package 'helm-themes)
+
+  ;; (require-package 'ack-menu)  ;; ack is not used
+  ;; (require-package 'ansi)  ;; never used
+  ;; (require-package 'ahg)
+  ;; =======================================================
+
   (message "* ---[ package post-load configuration is complete ]---"))
 
 (provide 'xy-rc-package)
