@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-01-23 Fri 00:11 by xin on UOS208326.soton.ac.uk>
+;; Time-stamp: <2015-01-27 Tue 22:33 by xin on UOS208326.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -249,7 +249,8 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'highlight-symbol)
   (require-package 'htmlize)
   ;; (require-package 'hungry-delete)
-  ;; (require-package 'ibuffer-vc)
+
+  (require-package 'ibuffer-vc)
 
   (require-package 'ido-ubiquitous)
   (require-package 'ido-yes-or-no)
