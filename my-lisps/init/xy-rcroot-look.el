@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-01-14 Wed 11:46 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2015-02-10 Tue 00:33 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -727,12 +727,12 @@
 
 (eal-define-keys-commonly
  global-map
- `(("C-x F d" xy/set-font-default)
-   ("C-x F m" xy/set-font-Monofur-STHeiti)
-   ("C-x F w" xy/set-font-write)
-   ("C-x F p" xy/set-font-prog)
-   ("C-x F W" xy/set-font-write-big)
-   ("C-x F P" xy/set-font-prog-big)
+ `(("<f2> d" xy/set-font-default)
+   ("<f2> m" xy/set-font-Monofur-STHeiti)
+   ("<f2> w" xy/set-font-write)
+   ("<f2> g" xy/set-font-prog)
+   ("<f2> W" xy/set-font-write-big)
+   ("<f2> G" xy/set-font-prog-big)
    ;;------------------------------------
 ;;    ;; changing font size
 ;;    ;; ("C-+"    bhj-text-scale-increase)
