@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-02-10 Tue 00:33 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-03-12 Thu 12:16 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -515,7 +515,8 @@
 (eal-define-keys
  `(emacs-lisp-mode-map lisp-interaction-mode-map java-mode-map
    c-mode-base-map c++-mode-map perl-mode-map matlab-mode-map
-   org-mode-map text-mode-map ruby-mode-map html-mode-map)
+   org-mode-map text-mode-map ruby-mode-map html-mode-map
+   matlab-mode-map)
  `(("C-c H m" highlight-symbol-at-point)
    ("C-c H k" highlight-symbol-remove-all)
    ("C-c H n" highlidght-symbol-next)

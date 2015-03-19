@@ -190,7 +190,7 @@
 (eval-after-load "sr-speedbar" '(sr-speedbar-postload))
 (autoload 'sr-speedbar-toggle "sr-speedbar"
   "Toggle sr-speedbar window." t)
-(global-set-key (kbd "C-x D") 'sr-speedbar-toggle)
+(global-set-key (kbd "C-x C-d") 'sr-speedbar-toggle)
 ;; BUG: It seems cause error when using with `elscreen.el'
 
 

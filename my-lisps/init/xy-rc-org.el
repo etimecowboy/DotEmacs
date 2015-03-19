@@ -954,6 +954,14 @@
   (require 'ob-ruby)
   (require 'ob-sh)
 
+  ;; ensure this variable is defined
+  (unless (boundp 'org-babel-default-header-args:sh)
+    (setq org-babel-default-header-args:sh '()))
+
+  ;; add a default shebang header argument
+  (add-to-list 'org-babel-default-header-args:sh
+               '(:shebang . "#!/bin/bash"))
+  
   ;;;;;; matlab-shell
   (Windows
    (setq org-babel-matlab-shell-command "C:/MATLAB/R2014a/bin/win64/matlabshell.exe")
@@ -1385,6 +1393,7 @@ decorations.markings}
   ;;     in the block.
 
   (setq org-ditaa-jar-path (concat my-local-exec-path "/ditaa.jar"))
+  (setq org-ditaa-eps-jar-path (concat my-local-exec-path "/DitaaEps.jar"))
 
   ;; (try-require 'org-babel-init)
   ;; (try-require 'org-babel-ditaa)
