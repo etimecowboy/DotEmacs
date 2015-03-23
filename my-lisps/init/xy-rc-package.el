@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-01-27 Tue 22:33 by xin on UOS208326.soton.ac.uk>
+;; Time-stamp: <2015-03-23 Mon 09:35 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -100,6 +100,7 @@ re-downloaded in order to locate PACKAGE."
 
   (setq-default package-enable-at-startup nil) ;; NOTE: t will be slow
   (setq-default package-user-dir my-elpa-lisp-path)
+  (setq package-check-signature nil) ;; fix the epg problem (Emacs GnuPG interface)
   (setq package-archives
         '(("tromey" . "http://tromey.com/elpa/") ;; Original ELPA package.
           ("gnu" . "http://elpa.gnu.org/packages/") ;; Add the official packages
