@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-12-26 Fri 11:05 by xin on S13>
+;; Time-stamp: <2015-03-30 Mon 09:50 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -248,9 +248,9 @@
 ;; NOTE: the default <TAB> key conflicts with `icicles' and
 ;;       `yasnippet'
 ;; BUG: strange byte compile error which does not stop it from working.
-(autoload 'hs-org/minor-mode "hideshow-org" nil t)
-(eval-after-load "hideshow-org" '(hideshow-org-postload))
-(global-set-key (kbd "<f6> h") 'hs-org/minor-mode)
+;; (autoload 'hs-org/minor-mode "hideshow-org" nil t)
+;; (eval-after-load "hideshow-org" '(hideshow-org-postload))
+;; (global-set-key (kbd "<f6> h") 'hs-org/minor-mode)
 
 
 

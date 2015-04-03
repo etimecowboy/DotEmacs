@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-03-12 Thu 12:16 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-04-03 Fri 13:09 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -594,8 +594,8 @@
 ;;   + `hc-zenburn-theme': a higher contrast zenburn theme
 ;; - solarized
 (setq custom-safe-themes t)
-(when (and window-system (try-require 'zenburn-theme))
-  (load-theme 'zenburn t))
+;; (when (and window-system (try-require 'zenburn-theme))
+;;   (load-theme 'zenburn t))
 (global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
 
 ;; (Windows
@@ -722,9 +722,12 @@
     (add-hook 'after-make-frame-functions
               (lambda (frame)
                 (with-selected-frame frame
-                  (xy/set-font-prog))))
-  ;; (xy/set-font-default)
-  (xy/set-font-prog))
+                  (xy/set-font-default)
+                  ;; (xy/set-font-prog)
+                  (load-theme 'zenburn t))))
+  (xy/set-font-default)
+  ;; (xy/set-font-prog)
+  )
 
 (eal-define-keys-commonly
  global-map
@@ -735,12 +738,12 @@
    ("<f2> W" xy/set-font-write-big)
    ("<f2> G" xy/set-font-prog-big)
    ;;------------------------------------
-;;    ;; changing font size
-;;    ;; ("C-+"    bhj-text-scale-increase)
-;;    ;; ("C--"    bhj-text-scale-decrease)
-;;    ;; NOTE: default text scaling ("C-x C-=" and "C-x C--")
-;;    ;; ("C-M-="  increase-default-font-height)
-;;    ;; ("C-M--"  decrease-default-font-height)
+   ;; changing font size
+   ;; ("C-+"    bhj-text-scale-increase)
+   ;; ("C--"    bhj-text-scale-decrease)
+   ;; NOTE: default text scaling ("C-x C-=" and "C-x C--")
+   ;; ("C-M-="  increase-default-font-height)
+   ;; ("C-M--"  decrease-default-font-height)
    ))
 
 ;;;; Automatically set fonts for different modes
