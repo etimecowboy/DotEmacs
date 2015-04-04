@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-03-23 Mon 09:35 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-04-04 Sat 02:59 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -318,7 +318,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'projectile)
   (require-package 'rect-mark)
   (require-package 'region-list-edit)
-  (require-package 'revive)
+  ;; (require-package 'revive)
   ;; (require-package 'rw-hunspell)
   ;; (require-package 'rw-ispell)
   ;; (require-package 's)
@@ -371,6 +371,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'psvn)
   ;; (require-package 'ecb)
   (require-package 'ebib)
+  (require-package 'psession)
 
   ;; =======================================================
   ;; Completion system
@@ -387,7 +388,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'company-c-headers)
   
   (require-package 'yasnippet)
-  
+
   ;; NOTE: don't use helm
   ;; (require-package 'helm)
   ;; (require-package 'helm-R)

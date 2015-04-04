@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-27 Thu 00:19 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2015-04-04 Sat 01:57 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auctex.el'
 ;; Author:       Xin Yang
@@ -207,8 +207,9 @@
                           (mode-io-correlate " -forward-search %b %n ") " %o"))
           ("Gsview" "gsview32.exe %o")
           ("Dviout" "dviout.exe %o")
-          ("Okular" "okular --unique %o#src:%n%b")
+          ("MuPDF"  "mupdf -b 8 -r 96 %o")
           ("Evince" "evince %o")
+          ("Okular" "okular --unique %o#src:%n%b")
           ("Firefox" "firefox %o")))
 
   (setq LaTeX-section-hook
@@ -272,9 +273,10 @@
                ;; engine. NOTE: Preview does not work with xelatex
                (GNULinux
                 (setq TeX-view-program-selection
-                      '((output-pdf "okular")
+                      '((output-pdf "MuPDF")
+                        (output-dvi "Evince")
                         ;; ((output-dvi style-pstricks) "dvips and gv")
-                        (output-dvi "okular")
+                        ;; (output-dvi "Okular")
                         (output-html "xdg-open"))))
                (Windows
                 (setq TeX-view-program-selection

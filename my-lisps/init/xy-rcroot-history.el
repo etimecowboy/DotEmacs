@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-12-26 Fri 11:42 by xin on S13>
+;; Time-stamp: <2015-04-04 Sat 03:08 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -113,15 +113,15 @@
 
 ;;;; windows and revive
 ;; NOTE: ;; Workspace store and recover. Heavy weight, cannot used with emacs daemon
-(revive-preload)
-(eval-after-load "revive" '(revive-postload))
-(when (try-require 'revive)
-  ;; (add-hook 'delete-frame-functions 'save-current-configuration)
-  ;; (add-hook 'kill-emacs-hook 'save-current-configuration)
-  (global-set-key (kbd "C-c w s") 'save-current-configuration)
-  (global-set-key (kbd "C-c w r") 'resume)
-  (global-set-key (kbd "C-c w k") 'wipe))
-  ;; NOTE: C-u (num) to specify the window name
+;; (revive-preload)
+;; (eval-after-load "revive" '(revive-postload))
+;; (when (try-require 'revive)
+;;   ;; (add-hook 'delete-frame-functions 'save-current-configuration)
+;;   ;; (add-hook 'kill-emacs-hook 'save-current-configuration)
+;;   (global-set-key (kbd "C-c w s") 'save-current-configuration)
+;;   (global-set-key (kbd "C-c w r") 'resume)
+;;   (global-set-key (kbd "C-c w k") 'wipe))
+;;   ;; NOTE: C-u (num) to specify the window name
 
 ;; (windows-preload)
 ;; (eval-after-load "windows" '(windows-postload))
@@ -148,9 +148,19 @@
 ;;;; session
 ;; session.el can remember more information.
 ;; NOTE: C-x C-/ 'session-jump-to-last-change
-(eval-after-load "session" '(session-postload))
-(when (try-require 'session)
-  (add-hook 'after-init-hook 'session-initialize))
+;; (eval-after-load "session" '(session-postload))
+;; (when (try-require 'session)
+;;   (add-hook 'after-init-hook 'session-initialize))
+
+
+
+;; `psession.el'
+;; (autoload 'psession-mode "psession.el")
+(eval-after-load "psession" '(psession-postload))
+(psession-mode 1)
+(add-hook 'delete-frame-functions 'psession-save-winconf)
+(global-set-key (kbd "C-c w s") 'psession-save-winconf)
+(global-set-key (kbd "C-c w r") 'psession-restore-winconf)
 
 
 

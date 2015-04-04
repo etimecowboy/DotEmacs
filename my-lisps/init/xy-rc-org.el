@@ -1037,6 +1037,32 @@
           ("\\.bmp\\'"     . system)
           ("\\.gif\\'"     . system)
           ))
+  (GNULinux
+   (setq org-file-apps ;; set default viewer for exported files
+         '((auto-mode       . emacsclient)
+           ("\\.odc\\'"     . system)
+           ("\\.odf\\'"     . system)
+           ("\\.odi\\'"     . system)
+           ("\\.otp\\'"     . system)
+           ("\\.odp\\'"     . system)
+           ("\\.otg\\'"     . system)
+           ("\\.odg\\'"     . system)
+           ("\\.ots\\'"     . system)
+           ("\\.ods\\'"     . system)
+           ("\\.odm\\'"     . system)
+           ("\\.ott\\'"     . system)
+           ("\\.odt\\'"     . system)
+           ("\\.mm\\'"      . system)
+           ;; use mupdf for normal viewing
+           ("\\.pdf\\'"     . "mupdf -b 8 -r 96 %s")
+           ;; use evice for viewing specific number of page
+           ("\\.pdf::\\(\\d+\\)\\'" . "evince -p %1 %s")
+           ("\\.x?html?\\'" . system)
+           ("\\.png\\'"     . system)
+           ("\\.jpg\\'"     . system)
+           ("\\.bmp\\'"     . system)
+           ("\\.gif\\'"     . system)
+           )))
 
 ;;;;; LaTeX export
   ;; (require 'ox)
