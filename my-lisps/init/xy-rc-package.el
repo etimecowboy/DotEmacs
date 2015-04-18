@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-04-04 Sat 02:59 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-04-18 Sat 16:00 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -105,7 +105,7 @@ re-downloaded in order to locate PACKAGE."
         '(("tromey" . "http://tromey.com/elpa/") ;; Original ELPA package.
           ("gnu" . "http://elpa.gnu.org/packages/") ;; Add the official packages
           ("marmalade" . "http://marmalade-repo.org/packages/")
-          ("melpa" . "http://melpa.milkbox.net/packages/")
+          ("melpa" . "http://melpa.org/packages/")
           ("org" . "http://orgmode.org/elpa/")
           ;; ("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
           ))
