@@ -1748,11 +1748,9 @@ decorations.markings}
   ;; google-maps API for org
   (try-require 'org-location-google-maps)
 
-;;;;; `org-html5presentation'
-;; NOTE: not very useful now
-;; HTML5 Presentation export for Org-mode
-  ;; (try-require 'org-html5presentation)
-
+;;;;; `org-html5slide'
+  (try-require 'org-html5slide)
+  
 ;;;;; `o-blog'
 ;; A stand-alone blog and publication tool for org-mode.
   (try-require 'o-blog)

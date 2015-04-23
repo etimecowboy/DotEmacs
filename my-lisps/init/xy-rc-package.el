@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-04-18 Sat 16:00 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-04-23 Thu 22:55 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -388,7 +388,8 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'company-c-headers)
   
   (require-package 'yasnippet)
-
+  (require-package 'ox-html5slide)
+  
   ;; NOTE: don't use helm
   ;; (require-package 'helm)
   ;; (require-package 'helm-R)
