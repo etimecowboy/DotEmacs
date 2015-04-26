@@ -1014,7 +1014,7 @@
 
 ;;;;; backends
   (setq org-export-backends
-        '(ascii beamer html latex md org odt))
+        '(ascii beamer html latex md org odt freemind koma-letter))
   (setq org-file-apps ;; set default viewer for exported files
         '((auto-mode       . emacsclient)
           ("\\.odc\\'"     . system)
