@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-12-26 Fri 11:34 by xin on S13>
+;; Time-stamp: <2015-04-26 Sun 23:39 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -137,6 +137,8 @@
 (eval-after-load "diary-lib" '(diary-postload))
 (eval-after-load "appt" '(appt-postload))
 ;; (try-require 'chinese-calendar) ;;中文日历 by wanson@newsmth
+(eval-after-load "cal-china-x" '(cal-china-x-postload))
+;; (try-require 'cal-china-x)
 
 
 

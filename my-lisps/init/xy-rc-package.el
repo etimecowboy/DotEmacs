@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-04-23 Thu 22:55 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-04-26 Sun 23:12 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -197,7 +197,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'boxquote)  ;; rarely used
   (require-package 'browse-kill-ring)
 
-  ;; (require-package 'cal-china-x) ;; fixed, moved to my-lisps
+  (require-package 'cal-china-x)
   (require-package 'centered-cursor-mode)
   (require-package 'cl-lib)
   (require-package 'cmake-mode)
