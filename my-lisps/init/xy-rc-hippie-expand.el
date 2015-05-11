@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2015-04-27 Mon 21:50 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-hippie-expand.el'
 ;; Author:       Xin Yang
@@ -113,33 +113,33 @@ about what flexible matching means in this context."
     ;; Provide the options in the order in which they are normally generated.
     (delete he-search-string (reverse he-tried-table))))
 
-(defmacro my-ido-hippie-expand-with (hippie-expand-function)
-  "Generate an interactively-callable function that offers ido-based completion
-    using the specified hippie-expand function."
-  `(call-interactively
-    (lambda (&optional selection)
-      (interactive
-       (let ((options (my-hippie-expand-completions ,hippie-expand-function)))
-         (if options
-             (list (ido-completing-read "Completions: " options)))))
-      (if selection
-          (he-substitute-string selection t)
-        (message "No expansion found")))))
+;; (defmacro my-ido-hippie-expand-with (hippie-expand-function)
+;;   "Generate an interactively-callable function that offers ido-based completion
+;;     using the specified hippie-expand function."
+;;   `(call-interactively
+;;     (lambda (&optional selection)
+;;       (interactive
+;;        (let ((options (my-hippie-expand-completions ,hippie-expand-function)))
+;;          (if options
+;;              (list (ido-completing-read "Completions: " options)))))
+;;       (if selection
+;;           (he-substitute-string selection t)
+;;         (message "No expansion found")))))
 
-;;;###autoload
-(defun my-ido-hippie-expand ()
-  "Offer ido-based completion for the word at point."
-  (interactive)
-  (my-ido-hippie-expand-with 'hippie-expand))
+;; ;;;###autoload
+;; (defun my-ido-hippie-expand ()
+;;   "Offer ido-based completion for the word at point."
+;;   (interactive)
+;;   (my-ido-hippie-expand-with 'hippie-expand))
 
 ;; (global-set-key (kbd "C-c /") 'my-ido-hippie-expand)
 
-;;;###autoload
-(defun my-ido-hippie-expand-filename ()
-  "Offer ido-based completion for the filename at point."
-  (interactive)
-  (my-ido-hippie-expand-with
-   (make-hippie-expand-function '(try-complete-file-name))))
+;; ;;;###autoload
+;; (defun my-ido-hippie-expand-filename ()
+;;   "Offer ido-based completion for the filename at point."
+;;   (interactive)
+;;   (my-ido-hippie-expand-with
+;;    (make-hippie-expand-function '(try-complete-file-name))))
 
 ;; (global-set-key (kbd "C-c C-f") 'my-ido-hippie-expand-filename)
 

@@ -3,7 +3,7 @@
 ;; Author: ahei <ahei0802@gmail.com>
 ;; Keywords: eval-after-load, autoload
 ;; URL: http://code.google.com/p/dea/source/browse/trunk/my-lisps/eval-after-load.el
-;; Time-stamp: <2014-11-27 Thu 00:23 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2015-05-05 Tue 09:55 by xin on zbox.soton.ac.uk>
 
 ;; This  file is free  software; you  can redistribute  it and/or
 ;; modify it under the terms of the GNU General Public License as
@@ -140,6 +140,9 @@
     ("LaTeX-mode"      LaTeX-mode             LaTeX-mode-map)
     ("latex-mode"      latex-mode             latex-mode-map)
     ("tex-mode"        tex-mode               tex-mode-map)
+    ("helm"            helm-mode              helm-mode-map)
+    ("helm"            helm-mode              helm-command-map)
+    ;; ("helm-mode"       helm-mode              helm-mode-map)
     )
   "*List used to find load file by mode or map.
 

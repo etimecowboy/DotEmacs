@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-12-26 Fri 11:24 by xin on S13>
+;; Time-stamp: <2015-05-11 Mon 12:32 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -33,24 +33,24 @@
 ;; (if is-before-emacs-21
 ;;     (require 'ido "ido-for-21"))
 ;; (add-hook 'after-init-hook 'xy/ido-start)
-(eval-after-load 'ido
-  '(progn
-     (ido-postload)))
-     ;; (eal-define-keys
-     ;;  'ido-mode-map
-     ;;  `(("M-."   ido-next-match-dir)
-     ;;    ("M-,"   ido-prev-match-dir)
-     ;;    ("C-h"   ido-delete-backward-updir)
-     ;;    ("M-h"   ido-up-directory)
-     ;;    ("M-S-h"   ido-up-directory-clean-text)
-     ;;    ("C-M-h" ido-goto-home)
-     ;;    ("C-r"   ido-goto-root)
-     ;;    ("C-u"   ido-clean-text)
-     ;;    ("M-b"   backward-word)
-     ;;    ("C-w"   ido-delete-backward-word-updir)
-     ;;    ;; ("C-v"   ido-enter-svn-status-hide)
-     ;;    ("C-n"   ido-next-match)
-     ;;    ("C-p"   ido-prev-match)))))
+;; (eval-after-load 'ido
+;;   '(progn
+;;      (ido-postload)))
+;;      ;; (eal-define-keys
+;;      ;;  'ido-mode-map
+;;      ;;  `(("M-."   ido-next-match-dir)
+;;      ;;    ("M-,"   ido-prev-match-dir)
+;;      ;;    ("C-h"   ido-delete-backward-updir)
+;;      ;;    ("M-h"   ido-up-directory)
+;;      ;;    ("M-S-h"   ido-up-directory-clean-text)
+;;      ;;    ("C-M-h" ido-goto-home)
+;;      ;;    ("C-r"   ido-goto-root)
+;;      ;;    ("C-u"   ido-clean-text)
+;;      ;;    ("M-b"   backward-word)
+;;      ;;    ("C-w"   ido-delete-backward-word-updir)
+;;      ;;    ;; ("C-v"   ido-enter-svn-status-hide)
+;;      ;;    ("C-n"   ido-next-match)
+;;      ;;    ("C-p"   ido-prev-match)))))
 
 
 
@@ -83,15 +83,10 @@
 ;; provides a convenient interface to your recently and most
 ;; frequently used commands. And to all the other commands, too.
 ;; REF: (@url :file-name "https://github.com/nonsequitur/smex" :display "Source")
-(eval-after-load 'smex
-  '(progn
-     (smex-postload)
-     ;; (eal-define-keys-commonly
-     ;;  global-map
-     ;;  `(("M-x" smex)
-     ;;    ("M-S-x" smex-major-mode-commands)
-     ;;    ("C-c M-x" execute-extended-command)))
-      ))
+;; (eval-after-load 'smex
+;;   '(progn
+;;      (smex-postload)
+
 
 
 
@@ -99,29 +94,29 @@
 ;; Use both ido and smex
 ;; NOTE: NEVER use both icy-mode and ido/smex. They are different in
 ;;       the way of using minibuffer, and conflicts with each other.
-;;;###autoload
-(defun xy/ido+smex-start ()
-  "Start ido and smex completion."
-  (interactive)
-  (when (featurep 'icicles)
-    (icy-mode -1))
-  (require 'ido)
-  (ido-mode 1)
-  ;; `ido-ubiquitous.el'
-  (when (try-require 'ido-ubiquitous)
-    (ido-ubiquitous-mode 1))
-  ;; `idomenu.el'
-  ;; (autoload 'idomenu "idomenu" nil t)
-  ;; (global-set-key (kbd "<f10>") 'idomenu)
-  ;; `ido-yes-or-no.el'
-  (try-require 'ido-yes-or-no)
-  ;; `fix-ido'
-  (when (try-require 'flx-ido)
-    (flx-ido-mode 1))
-  (require 'smex)
-  (smex-initialize)
-  (global-set-key (kbd "M-x") 'smex)
-  )
+;; ;;;###autoload
+;; (defun xy/ido+smex-start ()
+;;   "Start ido and smex completion."
+;;   (interactive)
+;;   (when (featurep 'icicles)
+;;     (icy-mode -1))
+;;   (require 'ido)
+;;   (ido-mode 1)
+;;   ;; `ido-ubiquitous.el'
+;;   (when (try-require 'ido-ubiquitous)
+;;     (ido-ubiquitous-mode 1))
+;;   ;; `idomenu.el'
+;;   ;; (autoload 'idomenu "idomenu" nil t)
+;;   ;; (global-set-key (kbd "<f10>") 'idomenu)
+;;   ;; `ido-yes-or-no.el'
+;;   (try-require 'ido-yes-or-no)
+;;   ;; `fix-ido'
+;;   (when (try-require 'flx-ido)
+;;     (flx-ido-mode 1))
+;;   (require 'smex)
+;;   (smex-initialize)
+;;   (global-set-key (kbd "M-x") 'smex)
+;;   )
 
   ;; (smex-initialize-ido)) ;; BUG: `smex-initialize-ido' cause error
   ;;                        ;; in Emacs 23.2, but OK in 23.3
@@ -131,7 +126,7 @@
 ;;          ;;      Linux. Fixed by manually create it.
 ;;          ;; NOTE: Use this combination to reduce system load in Windows?
 ;;   (add-hook 'after-init-hook 'xy/ido+smex-start))
-(add-hook 'after-init-hook 'xy/ido+smex-start)
+;; (add-hook 'after-init-hook 'xy/ido+smex-start)
 
 
 
@@ -160,9 +155,9 @@
 
 
 ;;;; hippie-expand
-;; (global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "M-/") 'my-ido-hippie-expand)
-(global-set-key (kbd "M-|") 'my-ido-hippie-expand-filename) ;;ywb-hippie-expand-filename)
+(global-set-key (kbd "M-/") 'hippie-expand)
+;; (global-set-key (kbd "M-/") 'my-ido-hippie-expand)
+;; (global-set-key (kbd "M-|") 'my-ido-hippie-expand-filename) ;;ywb-hippie-expand-filename)
 (eval-after-load "hippie-exp" '(hippie-expand-postload))
 
 
@@ -213,13 +208,13 @@
 ;;;; company
 ;; It is a modular in-buffer completion mechanism.
 ;;(autoload 'company-mode "company-postload" nil t)
-(eval-after-load "company"
-  '(progn
-     (company-postload)
-     (eal-define-keys 'company-mode-map
-                      `(("C-<tab>"     company-complete)
-                        ("C-c C-<tab>" company-yasnippet)
-                        ))))
+;; (eval-after-load "company"
+;;   '(progn
+;;      (company-postload)
+;;      (eal-define-keys 'company-mode-map
+;;                       `(("C-<tab>"     company-complete)
+;;                         ("C-c C-<tab>" company-yasnippet)
+;;                         ))))
 
 ;; (am-add-hooks
 ;;  `(c-mode-common-hook lisp-mode-hook emacs-lisp-mode-hook
@@ -348,25 +343,25 @@
 ;;     (auto-complete-mode)))
 ;;;; Start company and yasnippet
 
-(defun xy/toggle-local-company+yas ()
-  "Start auto-complete"
-  (interactive)
-  (when (try-require 'yasnippet)
-    (yas-minor-mode))
-  (when (try-require 'company)
-    (company-mode)))
+;; (defun xy/toggle-local-company+yas ()
+;;   "Start auto-complete"
+;;   (interactive)
+;;   (when (try-require 'yasnippet)
+;;     (yas-minor-mode))
+;;   (when (try-require 'company)
+;;     (company-mode)))
 
-(defun xy/toggle-global-company+yas ()
-  "Start auto-complete"
-  (interactive)
-  (when (try-require 'yasnippet)
-    (yas-global-mode))
-  (when (try-require 'company)
-    (global-company-mode)))
+;; (defun xy/toggle-global-company+yas ()
+;;   "Start auto-complete"
+;;   (interactive)
+;;   (when (try-require 'yasnippet)
+;;     (yas-global-mode))
+;;   (when (try-require 'company)
+;;     (global-company-mode)))
 
-;; (global-set-key (kbd "<f6> a") 'xy/toggle-ac-mode-with-yas)
-(global-set-key (kbd "<f6> a") 'xy/toggle-local-company+yas)
-(global-set-key (kbd "<f6> A") 'xy/toggle-global-company+yas)
+;; ;; (global-set-key (kbd "<f6> a") 'xy/toggle-ac-mode-with-yas)
+;; (global-set-key (kbd "<f6> a") 'xy/toggle-local-company+yas)
+;; (global-set-key (kbd "<f6> A") 'xy/toggle-global-company+yas)
 
 
 
@@ -403,10 +398,72 @@
 
 ;;; helm
 ;; NOTE: helm is not used
-;; (eval-after-load 'helm '(helm-postload))
-;; ;; TODO: make my own helm setup and bind it to C-c i
-;; ;; (global-set-key (kbd "C-c i") 'helm-mini)
-;; (global-set-key (kbd "<f6> A") 'helm-mode)
+(eval-after-load "helm"
+  '(progn
+     (helm-postload)
+     ;; FIXME: doesn't work
+     ;; (eal-define-keys
+     ;;  'helm-command-map
+     ;;  `(("<tab>" helm-execute-persistent-action)
+     ;;    ("C-i"   helm-execute-persistent-action)
+     ;;    ("C-z"   helm-select-action)))
+     ))
+(global-set-key (kbd "<f6> h")  'helm-mode)
+(global-set-key (kbd "M-x")     'helm-M-x)
+(global-set-key (kbd "M-y")     'helm-show-kill-ring)
+(global-set-key (kbd "C-x b")   'helm-mini)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+;; REF: http://tuhdo.github.io/helm-intro.html
+;; The default "C-x c" is quite close to "C-x C-c", which quits
+;; Emacs. Changed to "C-c h". Note: We must set "C-c h" globally,
+;; because we cannot change `helm-command-prefix-key' once
+;; `helm-config' is loaded.
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
+
+;;; helm-bibtex
+(eval-after-load "helm-bibtex"
+  '(progn
+     (helm-bibtex-postload)
+     (eal-define-keys
+      'helm-command-map
+      `(("x" helm-bibtex)))))
+
+;;; hlem-firefox
+;; Have to set firefox to import bookmarks in his html file
+;; bookmarks.html.
+;; 1. open about:config in firefox
+;; 2. set =browser.bookmarks.autoExportHTML= to be true
+;; TODO: compare with `helm-bm'
+(eval-after-load "helm-firefox"
+  '(progn
+     (helm-firefox-postload)
+     (eal-define-keys
+      'helm-command-map
+      `(("u" helm-bibtex)))))
+
+;;; helm-c-yasnippet
+(eval-after-load "helm-c-yasnippet"
+  '(progn
+     (helm-c-yasnippet-postload)
+     (eal-define-keys
+      'helm-command-map
+      `(("y" helm-yas-complete)
+        ("Y" helm-yas-visit-snippet-file)
+        ))))
+
+;;; helm-c-moccur
+(eval-after-load "helm-c-moccur"
+  '(progn
+     (helm-c-moccur-postload)
+     (eal-define-keys
+      'helm-command-map
+      `(("o"   helm-c-moccur-occur-by-moccur)
+        ("O" helm-c-moccur-dmoccur)))
+     (global-set-key (kbd "C-M-s") 'helm-c-moccur-isearch-forward)
+     (global-set-key (kbd "C-M-r") 'helm-c-moccur-isearch-backward)
+     ))
 
 
 

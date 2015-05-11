@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-04-26 Sun 23:12 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-11 Mon 12:41 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -253,8 +253,8 @@ re-downloaded in order to locate PACKAGE."
 
   (require-package 'ibuffer-vc)
 
-  (require-package 'ido-ubiquitous)
-  (require-package 'ido-yes-or-no)
+  ;; (require-package 'ido-ubiquitous)
+  ;; (require-package 'ido-yes-or-no)
   ;; (require-package 'idomenu) ;; required by `elpy'
 
   (require-package 'info+)
@@ -326,7 +326,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'shell-here)
   (require-package 'shell-pop)
   ;; (require-package 'smarter-compile)
-  (require-package 'smex)
+  ;; (require-package 'smex)
   ;; (require-package 'string-utils)
 
   ;; (require-package 'sunrise-commander)
@@ -382,8 +382,8 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'ac-math)
 
   (require-package 'company)
-  (require-package 'anaconda-mode)
-  (require-package 'company-anaconda)
+  ;; (require-package 'anaconda-mode)
+  ;; (require-package 'company-anaconda)
   (require-package 'company-auctex)
   (require-package 'company-c-headers)
   
@@ -391,10 +391,12 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'ox-html5slide)
   
   ;; NOTE: don't use helm
-  ;; (require-package 'helm)
+  (require-package 'helm)
+  (require-package 'helm-bibtex)
+  (require-package 'helm-firefox)
+  (require-package 'helm-c-yasnippet)
   ;; (require-package 'helm-R)
   ;; (require-package 'helm-c-moccur)
-  ;; (require-package 'helm-c-yasnippet)
   ;; (require-package 'helm-descbinds)
   ;; (require-package 'helm-gist)
   ;; (require-package 'helm-git)

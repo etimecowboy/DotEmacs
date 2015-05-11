@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-04-04 Sat 03:13 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-04-27 Mon 21:31 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -717,22 +717,23 @@
 ;;   (Windows
 ;;    (xy/set-font-and-scale 10 1.22)))
 
-;; Uncomment the following code if emacs daemon is in use
-(if (and (fboundp 'daemonp) (daemonp))
-    (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (with-selected-frame frame
-                  (xy/set-font-default)
-                  ;; (xy/set-font-prog)
-                  (load-theme 'zenburn t))))
-  (xy/set-font-default)
-  ;; (xy/set-font-prog)
-  )
+;; If emacs daemon is in use
+;; (if (and (fboundp 'daemonp) (daemonp))
+;;     (add-hook 'after-make-frame-functions
+;;               (lambda (frame)
+;;                 (with-selected-frame frame
+;;                   (xy/set-font-default)
+;;                   ;; (xy/set-font-prog)
+;;                   (load-theme 'zenburn t)
+;;                   )))
+;;   (xy/set-font-default)
+;;   ;; (xy/set-font-prog)
+;;   )
 
 (eal-define-keys-commonly
  global-map
  `(("<f2> d" xy/set-font-default)
-   ("<f2> m" xy/set-font-Monofur-STHeiti)
+   ;; ("<f2> m" xy/set-font-Monofur-STHeiti)
    ("<f2> w" xy/set-font-write)
    ("<f2> g" xy/set-font-prog)
    ("<f2> W" xy/set-font-write-big)

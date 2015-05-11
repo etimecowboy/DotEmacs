@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-04-26 Sun 21:29 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-04-27 Mon 21:36 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -771,14 +771,14 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;     (set-default-font "Monospace 16")))
 
 ;; Monofur+STHeiti字体组合，可以一齐缩放
-;;;###autoload
-(defun xy/set-font-Monofur-STHeiti ()
-  "My Emacs font setting for writing articles."
-  (interactive)
-  (when window-system
-      (bhj-set-font '("Monofur") 11 '("华文黑体"))
-    ;; (set-default-font "Monospace 11")
-    ))
+;; ;;;###autoload
+;; (defun xy/set-font-Monofur-STHeiti ()
+;;   "My Emacs font setting for writing articles."
+;;   (interactive)
+;;   (when window-system
+;;       (bhj-set-font '("Monofur") 11 '("华文黑体"))
+;;     ;; (set-default-font "Monospace 11")
+;;     ))
 
 ;;** Use bhj's font setting
 ;; ;;;###autoload
