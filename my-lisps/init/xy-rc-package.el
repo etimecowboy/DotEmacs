@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-11 Mon 12:41 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-11 Mon 22:15 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -220,7 +220,6 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'dropbox)    ;; never used
   ;; (require-package 'edit-server);; I use firefox not chrome
   ;; (require-package 'eimp)
-  ;; (require-package 'elpy)
   (require-package 'elscreen)
   ;; (require-package 'emms)       ;; not very useful
   ;; (require-package 'ess)        ;; not very useful
@@ -256,6 +255,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'ido-ubiquitous)
   ;; (require-package 'ido-yes-or-no)
   ;; (require-package 'idomenu) ;; required by `elpy'
+  (require-package 'elpy)
 
   (require-package 'info+)
   (require-package 'ioccur)

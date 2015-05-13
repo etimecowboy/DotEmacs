@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-11 Mon 12:32 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-13 Wed 16:20 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -317,8 +317,9 @@
 
 (eal-define-keys-commonly
  global-map
- `(("<f6> y"         'yas-minor-mode)
-   ("C-x Y n"        'yas-new-snippet)
+ `(("<f6> y"         yas-global-mode)
+   ("<f6> Y"         yas-minor-mode)
+   ("C-x Y n"        yas-new-snippet)
    ))
 
 ;; (am-add-hooks
