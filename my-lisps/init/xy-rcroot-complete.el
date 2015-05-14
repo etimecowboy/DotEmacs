@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-13 Wed 16:20 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-13 Wed 20:53 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -207,14 +207,15 @@
 
 ;;;; company
 ;; It is a modular in-buffer completion mechanism.
-;;(autoload 'company-mode "company-postload" nil t)
-;; (eval-after-load "company"
-;;   '(progn
-;;      (company-postload)
-;;      (eal-define-keys 'company-mode-map
-;;                       `(("C-<tab>"     company-complete)
-;;                         ("C-c C-<tab>" company-yasnippet)
-;;                         ))))
+(autoload 'company-mode "company" nil t)
+(autoload 'company-global-mode "company" nil t)
+(eval-after-load "company"
+  '(progn
+     (company-postload)
+     (eal-define-keys 'company-mode-map
+                      `(("C-<tab>"     company-complete)
+                        ("C-c C-<tab>" company-yasnippet)
+                        ))))
 
 ;; (am-add-hooks
 ;;  `(c-mode-common-hook lisp-mode-hook emacs-lisp-mode-hook
