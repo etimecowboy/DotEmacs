@@ -1195,7 +1195,8 @@ a4paper, cap, punct, nospace, indent, fancyhdr, hypperref, fntef]\
           ("" "listings" t)
           ("" "setspace" nil)
           ;; Display various latex-related logos
-          ("" "metalogo" t) ("" "mflogo" t) ("" "texnames" t)
+          ;; ("" "metalogo" t) ;; conflict with tipa package
+          ;; ("" "mflogo" t) ("" "texnames" t) ;; not very useful
           ;; ("" "amsmath" nil) ;; this package cause error, no need
           ;; ("" "tikz" nil)
           ;; xelatex font adjustment (by default)
