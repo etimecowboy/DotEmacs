@@ -252,19 +252,17 @@
       magit-mode-map
       `(("M-n"   magit-show-commit-forward)
         ("M-p"   magit-show-commit-backward)
-        ("q"     xy/magit-q)
-        ("C-x 0" xy/magit-q)
-        ("C-x K" xy/magit-q)
+        ;; ("q"     xy/magit-q)
+        ;; ("C-x 0" xy/magit-q)
+        ;; ("C-x K" xy/magit-q)
         ))))
 (global-set-key (kbd "<f12> g") 'magit-status)
-;; NOTE: `magit-wip.el' not working,
-;; use original `git-wip.el' and `git-wip-mode.el'
-(global-set-key (kbd "<f12> w") 'xy/magit-wip-start)
+(global-set-key (kbd "<f12> W") 'xy/magit-wip-start)
+(global-set-key (kbd "<f12> w") 'global-magit-wip-save-mode)
 (global-set-key (kbd "<f12> c") 'xy/magit-wip-check-changes)
-(global-set-key (kbd "<f12> v") 'xy/magit-wip-quick-recover)
-;; (global-set-key (kbd "<f12> w") 'global-magit-wip-save-mode)
+(global-set-key (kbd "<f12> V") 'xy/magit-wip-quick-recover)
 
-;;;;; git-wip
+;;;;; official Emacs addon in `git-wip'
 ;; (try-require 'git-wip)
 ;; (try-require 'git-wip-mode)
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-01-20 Tue 01:41 by xy12g13 on UOS-208326>
+;; Time-stamp: <2015-05-19 Tue 14:56 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-magit.el'
 ;; Author:       Xin Yang
@@ -16,29 +16,28 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
-;;;###autoload
-(defun xy/magit-q ()
-  "Quit magit buffer, and recover windows system coding system."
+;; Fixed in new version of `magit'
+;; ;;;###autoload
+;; (defun xy/magit-q ()
+;;   "Quit magit buffer, and recover windows system coding system."
 
-  (interactive)
-  (Windows
-   (setq default-process-coding-system
-         '(gbk-dos . gbk-dos)))   ;; ==> `emms' and `everything.el' work! `magit' fails.
-  (delete-window))
+;;   (interactive)
+;;   (Windows
+;;    (setq default-process-coding-system
+;;          '(gbk-dos . gbk-dos)))   ;; ==> `emms' and `everything.el' work! `magit' fails.
+;;   (delete-window))
 
 ;; `magit-wip.el' need support of git-wip,
 ;; which uses WIP branches to save every edit
 ;; REF: (@url :file-name "https://github.com/bartman/git-wip" :display "official website")
 ;; REF: (@url :file-name "http://www.jukie.net/~bart/blog/save-everything-with-git-wip" :display "author's blog post")
-;;
-;; NOTE: elpa package have its autoload
 ;;;###autoload
 (defun xy/magit-wip-start ()
   "Start using magit-wip to record every changes."
   (interactive)
   (when (try-require 'magit-wip)
     (shell-command "git wip")
-    (global-magit-wip-save-mode 1) ;; don't use the global mode.
+    (global-magit-wip-save-mode 1)
   ))
 
 ;; Recover from a previous version
@@ -50,6 +49,21 @@
 ;; To review the differences between the last commit
 ;; git diff --cached
 
+;;;###autoload
+(defun xy/magit-wip-check-changes ()
+  (interactive)
+  (shell-command "git reflog show wip/master"))
+
+;; FIXME: problem
+;;;###autoload
+(defun xy/magit-wip-quick-recover (&optional depth)
+  (interactive)
+  (shell-command (concat "git checkout wip/"
+                         (magit-get-current-branch)
+                         "@{%d}"
+                         buffer-file-truename
+                         )))
+
 ;; TODO: write this function
 ;; Recover changes from wip shadow branch
 ;; ;;;###autoload
@@ -59,20 +73,6 @@
 ;;                          (magit-get-current-branch)
 ;;                          "@{%d}")))
 
-;;;###autoload
-(defun xy/magit-wip-check-changes ()
-  (interactive)
-  (shell-command "git reflog show wip/master"))
-
-;; FIXME: problem
-;; ;;;###autoload
-;; (defun xy/magit-wip-quick-recover (&optional depth)
-;;   (interactive)
-;;   (shell-command (concat "git checkout wip/"
-;;                          (magit-get-current-branch)
-;;                          "@{%d}"
-;;                          buffer-file-truename
-;;                          )))
 ;;;###autoload
 (defun magit-postload ()
   "Settings of `magit' after it's been loaded."
