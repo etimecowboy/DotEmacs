@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:47 by xin on ubuntu>
+;; Time-stamp: <2015-05-19 Tue 16:03 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elpy.el'
 ;; Author:       Xin Yang
@@ -23,7 +23,10 @@
   (interactive)
   (elpy-enable)
   (elpy-use-ipython)
-  (elpy-mode 1))
+  (elpy-mode 1)
+  (flyspell-prog-mode)
+  (autopair-mode 1)
+  (turn-on-auto-fill))
 
 ;;;###autoload
 (defun elpy-postload ()

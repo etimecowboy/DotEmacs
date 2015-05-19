@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-16 Sat 23:04 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-19 Tue 15:19 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -225,7 +225,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'ess)        ;; not very useful
 
   (require-package 'ethan-wspace)
-  ;; (require-package 'everything)
+  ;; (require-package 'everything) ;; not very useful
   (require-package 'fic-ext-mode)
   ;; (require-package 'fit-frame) ;; not very useful
   ;; (require-package 'flx-ido)
@@ -408,7 +408,7 @@ re-downloaded in order to locate PACKAGE."
 
   ;; (require-package 'ack-menu)  ;; ack is not used
   ;; (require-package 'ansi)  ;; never used
-  ;; (require-package 'ahg)
+  ;; (require-package 'ahg) ;; hg (mecurial) is not in use
   ;; =======================================================
 
   (message "* ---[ package post-load configuration is complete ]---"))

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-17 Sun 01:55 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-19 Tue 16:02 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -51,7 +51,7 @@
 ;;                   ;; magit-log-edit-mode-hook ;no hook for this mode
 ;;                   ;; TODO: fix it.
 ;;                   mew-draft-mode-hook) 'turn-on-auto-fill)
-(turn-on-auto-fill) ;; always use auto-fill mode
+;; (turn-on-auto-fill) ;; always use auto-fill mode
 
 
 ;;;; hungry-delete-mode

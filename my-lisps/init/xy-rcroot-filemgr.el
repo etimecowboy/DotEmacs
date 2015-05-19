@@ -200,17 +200,18 @@
 ;; NOTE: `everything' exe file must be `everything.exe', not
 ;; `everthing.1.2.xxx.exe'
 ;; (autoload 'everything "everything" "" t)
-(eval-after-load "everything"
-  '(progn
-     (everything-postload)
-     (Windows
-      (eal-define-keys-commonly
-       global-map
-       `(("C-c e c" everything-toggle-case)
-         ("C-c e w" everything-toggle-wholeword)
-         ("C-c e p" everything-toggle-path))))))
-(global-set-key (kbd "C-c e e") 'everything)
-(global-set-key (kbd "<f7> e") 'everything)
+;; (Windows
+;;  (eval-after-load "everything"
+;;    '(progn
+;;       (everything-postload)
+;;       (eal-define-keys-commonly
+;;        global-map
+;;        `(("C-c e c" everything-toggle-case)
+;;          ("C-c e w" everything-toggle-wholeword)
+;;          ("C-c e p" everything-toggle-path)))))
+;;  (global-set-key (kbd "C-c e e") 'everything)
+;;  (global-set-key (kbd "<f7> e") 'everything))
+
 
 
 
@@ -295,8 +296,8 @@
 
 ;;;;; ahg
 ;; (try-require 'ahg)
-(autoload 'ahg-status "ahg" "Run hg status." t)
-(global-set-key (kbd "<f12> h") 'ahg-status)
+;; (autoload 'ahg-status "ahg" "Run hg status." t)
+;; (global-set-key (kbd "<f12> h") 'ahg-status)
 
 
 
