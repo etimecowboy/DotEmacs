@@ -282,7 +282,7 @@
 ;;;; loaded modules
   (setq org-modules
         '(;; org official lisps
-          org-bbdb org-bibtex org-crypt org-ctags org-docview 
+          org-bbdb org-bibtex org-crypt org-docview 
           org-habit org-id org-info org-man org-protocol
           org-w3m org-protocol ;; org-gnus
           ;; org contribute lisps
@@ -309,7 +309,16 @@
   ;; Check if in invisible region before inserting or deleting a character
   (setq org-catch-invisible-edits 'smart)
 
-;;;; org-crypt
+;;;; `org-ctags': does not work
+  ;; (GNULinux
+  ;;  (setq org-ctags-path-to-ctags "/usr/bin/ctags"))
+  ;; (setq org-ctags-open-link-functions
+  ;;       '(org-ctags-find-tag
+  ;;         org-ctags-ask-rebuild-tags-file-then-find-tag
+  ;;         org-ctags-ask-append-topic
+  ;;         org-ctags-fail-silently))  ; <-- prevents org default behaviour
+
+;;;; `org-crypt'
 ;; Encrypting entries in an org file
   (require 'org-crypt)
   (org-crypt-use-before-save-magic)
@@ -1710,13 +1719,13 @@ decorations.markings}
 ;;;;; `org-expiry'
   ;; (try-require 'org-expiry)
 
-;;;;; `org-git-link'
-  (try-require 'org-git-link)
+;;;;; `org-git-link': breaks `org-store-link'
+  ;; (try-require 'org-git-link)
 
 ;;;;; `org-mew'
   (try-require 'org-mew)
 
-  
+;;   
   
 ;;;; third-party plugins
 
@@ -1796,213 +1805,213 @@ decorations.markings}
 
 (provide 'xy-rc-org)
 
-;; NOTE: not in use, use o-blog instead
-;; List of projects
-;; http://127.0.0.1/  (localhost)
-;; local-org are the org-files that generate the content
-;; local-extra are images and css files that need to be included
-;; local is the top-level project that gets published
-;; (setq org-publish-project-alist
-;;     (quote(
-;;            ("local-org"
-;;             :base-directory "~/emacs/org/source/"
-;;             ;;            :preparation-funtion
-;;             ;;            :completion-function
-;;             :base-extension "org"
-;;             ;;            :exclude
-;;             ;;            :include
-;;             :publishing-function org-publish-org-to-html
-;;             :plain-source nil
-;;             :htmlized-source nil
-;;             ;;            :link-up
-;;             ;;            :link-home
-;;             :language utf-8
-;;             ;;            :customtime
-;;             ;;            :headline-levels
-;;             ;;            :section-numbers
-;;             ;;            :section-number-format
-;;             :table-of-contents t
-;;             ;;            :preserve-breaks
-;;             :archived-trees nil
-;;             :emphasize t
-;;             :sub-superscript t
-;;             ;;            :special-strings
-;;             :footnotes t
-;;             :drawers nil
-;;             :tags t
-;;             :todo-keywords t
-;;             :priority t
-;;             :TeX-macros t
-;;             :LaTeX-fragments t
-;;             :latex-listings nil
-;;             :skip-before-1st-heading nil
-;;             :fixed-width t
-;;             :timestamps t
-;;             :author-info t
-;;             :email-info nil
-;;             :creator-info nil
-;;             :tables t
-;;             :table-auto-headline t
-;;             :style-include-default t
-;;             :style "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://dl.dropbox.com/u/7817597/stylesheets/org.css\" />"
-;;             ;;            :style-extra "<link rel=\"stylesheet\" href=\"http://127.0.0.1/stylesheets/org.css\" type=\"text/css\" />"
-;;             :convert-org-links t
-;;             :inline-images t
-;;             ;;            :html-extension
-;;             ;;            :xml-declaration
-;;             ;;            :html-table-tag
-;;             :expand-quoted-html t
-;;             :timestamp t
-;;             ;; :publishing-directory "/ftp:xin@127.0.0.1:/org/"
-;;             :publishing-directory "~/emacs/org/html/"
-;;             ;;            :preamble
-;;             ;;            :postamble
-;;             ;;            :auto-preamble
-;;             ;;            :auto-postamble
-;;             :author "Xin Yang"
-;;             :email "Xin2.Yang@gmail.com"
-;;             ;;            :select-tags
-;;             ;;            :exclude-tags
-;;             ;;            :latex-image-options
-;;             :auto-sitemap t
-;;             :sitemap-filename "SiteMap.org"
-;;             :sitemap-title "Sitemap of local website"
-;;             :sitemap-function org-publish-org-sitemap
-;;             :sitemap-sort-folders last
-;;             :sitemap-alphabetically t
-;;             :sitemap-ignore-case t
-;;             :makeindex nil
-;;             :recursive t
-;;             )
-;;            ("local-extra"
-;;             :base-directory "~/emacs/org/source/"
-;;             :base-extension "css\\|pdf\\|png\\|jpg\\|gif\\|CSS\\|PDF\\|PNG\\|JPG\\|GIF\\|c\\|C\\|m\\|M\\|vhd\\|VHD\\|v\\|V\\|cpp\\|CPP"
-;;             ;; :publishing-directory "/ftp:xin@127.0.0.1:/org/"
-;;             :publishing-directory "~/emacs/org/html/"
-;;             :publishing-function org-publish-attachment
-;;             :recursive t
-;;             :author nil
-;;             )
-;;            ("local-addon"
-;;             :base-directory "~/emacs/org/addon/"
-;;             :base-extension "css\\|pdf\\|png\\|jpg\\|gif\\|CSS\\|PDF\\|PNG\\|JPG\\|GIF"
-;;             ;; :publishing-directory "/ftp:xin@127.0.0.1:/org/"
-;;             :publishing-directory "~/emacs/org/html/"
-;;             :publishing-function org-publish-attachment
-;;             :recursive t
-;;             :author nil
-;;             )
-;;            ("local"
-;;             :components ("local-org" "local-extra" "local-addon")
-;;             )
+;; ;; org-publish projects
+;; ;; List of projects
+;; ;; http://127.0.0.1/  (localhost)
+;; ;; local-org are the org-files that generate the content
+;; ;; local-extra are images and css files that need to be included
+;; ;; local is the top-level project that gets published
+;; ;; (setq org-publish-project-alist
+;; ;;     (quote(
+;; ;;            ("local-org"
+;; ;;             :base-directory "~/emacs/org/source/"
+;; ;;             ;;            :preparation-funtion
+;; ;;             ;;            :completion-function
+;; ;;             :base-extension "org"
+;; ;;             ;;            :exclude
+;; ;;             ;;            :include
+;; ;;             :publishing-function org-publish-org-to-html
+;; ;;             :plain-source nil
+;; ;;             :htmlized-source nil
+;; ;;             ;;            :link-up
+;; ;;             ;;            :link-home
+;; ;;             :language utf-8
+;; ;;             ;;            :customtime
+;; ;;             ;;            :headline-levels
+;; ;;             ;;            :section-numbers
+;; ;;             ;;            :section-number-format
+;; ;;             :table-of-contents t
+;; ;;             ;;            :preserve-breaks
+;; ;;             :archived-trees nil
+;; ;;             :emphasize t
+;; ;;             :sub-superscript t
+;; ;;             ;;            :special-strings
+;; ;;             :footnotes t
+;; ;;             :drawers nil
+;; ;;             :tags t
+;; ;;             :todo-keywords t
+;; ;;             :priority t
+;; ;;             :TeX-macros t
+;; ;;             :LaTeX-fragments t
+;; ;;             :latex-listings nil
+;; ;;             :skip-before-1st-heading nil
+;; ;;             :fixed-width t
+;; ;;             :timestamps t
+;; ;;             :author-info t
+;; ;;             :email-info nil
+;; ;;             :creator-info nil
+;; ;;             :tables t
+;; ;;             :table-auto-headline t
+;; ;;             :style-include-default t
+;; ;;             :style "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://dl.dropbox.com/u/7817597/stylesheets/org.css\" />"
+;; ;;             ;;            :style-extra "<link rel=\"stylesheet\" href=\"http://127.0.0.1/stylesheets/org.css\" type=\"text/css\" />"
+;; ;;             :convert-org-links t
+;; ;;             :inline-images t
+;; ;;             ;;            :html-extension
+;; ;;             ;;            :xml-declaration
+;; ;;             ;;            :html-table-tag
+;; ;;             :expand-quoted-html t
+;; ;;             :timestamp t
+;; ;;             ;; :publishing-directory "/ftp:xin@127.0.0.1:/org/"
+;; ;;             :publishing-directory "~/emacs/org/html/"
+;; ;;             ;;            :preamble
+;; ;;             ;;            :postamble
+;; ;;             ;;            :auto-preamble
+;; ;;             ;;            :auto-postamble
+;; ;;             :author "Xin Yang"
+;; ;;             :email "Xin2.Yang@gmail.com"
+;; ;;             ;;            :select-tags
+;; ;;             ;;            :exclude-tags
+;; ;;             ;;            :latex-image-options
+;; ;;             :auto-sitemap t
+;; ;;             :sitemap-filename "SiteMap.org"
+;; ;;             :sitemap-title "Sitemap of local website"
+;; ;;             :sitemap-function org-publish-org-sitemap
+;; ;;             :sitemap-sort-folders last
+;; ;;             :sitemap-alphabetically t
+;; ;;             :sitemap-ignore-case t
+;; ;;             :makeindex nil
+;; ;;             :recursive t
+;; ;;             )
+;; ;;            ("local-extra"
+;; ;;             :base-directory "~/emacs/org/source/"
+;; ;;             :base-extension "css\\|pdf\\|png\\|jpg\\|gif\\|CSS\\|PDF\\|PNG\\|JPG\\|GIF\\|c\\|C\\|m\\|M\\|vhd\\|VHD\\|v\\|V\\|cpp\\|CPP"
+;; ;;             ;; :publishing-directory "/ftp:xin@127.0.0.1:/org/"
+;; ;;             :publishing-directory "~/emacs/org/html/"
+;; ;;             :publishing-function org-publish-attachment
+;; ;;             :recursive t
+;; ;;             :author nil
+;; ;;             )
+;; ;;            ("local-addon"
+;; ;;             :base-directory "~/emacs/org/addon/"
+;; ;;             :base-extension "css\\|pdf\\|png\\|jpg\\|gif\\|CSS\\|PDF\\|PNG\\|JPG\\|GIF"
+;; ;;             ;; :publishing-directory "/ftp:xin@127.0.0.1:/org/"
+;; ;;             :publishing-directory "~/emacs/org/html/"
+;; ;;             :publishing-function org-publish-attachment
+;; ;;             :recursive t
+;; ;;             :author nil
+;; ;;             )
+;; ;;            ("local"
+;; ;;             :components ("local-org" "local-extra" "local-addon")
+;; ;;             )
 
-;;            ;; PhD documents export to LaTeX draft
-;;            ("phd-org"
-;;             :base-directory "~/emacs/org/source/phd"
-;;             ;;            :preparation-funtion
-;;             ;;            :completion-function
-;;             :base-extension "org"
-;;             ;;            :exclude
-;;             ;;            :include
-;;             :publishing-function org-publish-org-to-latex
-;;             :plain-source nil
-;;             :htmlized-source nil
-;;             :link-up t
-;;             :link-home t
-;;             :language utf-8
-;;             ;;            :customtime
-;;             ;;            :headline-levels
-;;             ;;            :section-numbers
-;;             ;;            :section-number-format
-;;             :table-of-contents t
-;;             ;;            :preserve-breaks
-;;             :archived-trees nil
-;;             :emphasize t
-;;             :sub-superscript t
-;;             ;;            :special-strings
-;;             :footnotes t
-;;             :drawers nil
-;;             :tags nil
-;;             :todo-keywords nil
-;;             :priority nil
-;;             :TeX-macros t
-;;             :LaTeX-fragments t
-;;             :latex-listings t
-;;             :skip-before-1st-heading nil
-;;             :fixed-width t
-;;             :timestamps t
-;;             :author-info t
-;;             :email-info t
-;;             :creator-info nil
-;;             :tables t
-;;             :table-auto-headline t
-;;             ;;            :style-include-default t
-;;             ;;            :style "<link rel=\"stylesheet\" href=\"https://dl.dropbox.com/u/7817597/stylesheets/org.css\" type=\"text/css\">"
-;;             ;;            :style-extra "<link rel=\"stylesheet\" href=\"http://127.0.0.1/stylesheets/org.css\" type=\"text/css\" />"
-;;             :convert-org-links t
-;;             :inline-images t
-;;             ;;            :html-extension
-;;             ;;            :xml-declaration
-;;             ;;            :html-table-tag
-;;             ;;            :expand-quoted-html t
-;;             ;;            :timestamp t
-;;             :publishing-directory "~/emacs/org/latex/phd"
-;;             ;;            :preamble
-;;             ;;            :postamble
-;;             ;;            :auto-preamble
-;;             ;;            :auto-postamble
-;;             :author "Xin Yang"
-;;             :email "Xin2.Yang@gmail.com"
-;;             ;;            :select-tags
-;;             ;;            :exclude-tags
-;;             ;;-----------------------------------------------------------
-;;             ;;            :latex-image-options
-;;             ;;------------------------------------------------------------
-;;             :auto-sitemap nil
-;;             ;; :sitemap-filename "SiteMap.org"
-;;             ;; :sitemap-title "Index of my PhD documents"
-;;             ;; :sitemap-function org-publish-org-sitemap
-;;             ;; :sitemap-sort-folders last
-;;             ;; :sitemap-alphabetically t
-;;             ;; :sitemap-ignore-case t
-;;             :makeindex nil
-;;             :recursive t
-;;             )
-;;            ("phd-img"
-;;             :base-directory "~/emacs/org/source/phd/img"
-;;             :base-extension "pdf\\|ps\\|png\\|jpg\\|bmp\\|eps\\|svg\\|PDF\\|PS\\|PNG\\|JPG\\|BMP\\|EPS\\|SVG"
-;;             :publishing-directory "~/emacs/org/latex/phd/img"
-;;             :publishing-function org-publish-attachment
-;;             :recursive t
-;;             )
-;;            ("phd-src"
-;;             :base-directory "~/emacs/org/source/phd/src"
-;;             :base-extension "v\\|vhd\\|c\\|hcc\\|cpp\\|m\\|V\\|VHD\\|C\\|HCC\\|CPP\\|M"
-;;             :publishing-directory "~/emacs/org/latex/phd/src"
-;;             :publishing-function org-publish-attachment
-;;             :recursive t
-;;             )
-;;            ("phd-bib"
-;;             :base-directory "~/emacs/org/source/phd/bib"
-;;             :base-extension "bib\\|bst\\|BIB\\|BST"
-;;             :publishing-directory "~/emacs/org/latex/phd/bib"
-;;             :publishing-function org-publish-attachment
-;;             :recursive t
-;;             )
-;;            ("phd-all"
-;;             :components ("phd-org" "phd-img" "phd-src" "phd-bib")
-;;             )
-;;            )))
+;; ;;            ;; PhD documents export to LaTeX draft
+;; ;;            ("phd-org"
+;; ;;             :base-directory "~/emacs/org/source/phd"
+;; ;;             ;;            :preparation-funtion
+;; ;;             ;;            :completion-function
+;; ;;             :base-extension "org"
+;; ;;             ;;            :exclude
+;; ;;             ;;            :include
+;; ;;             :publishing-function org-publish-org-to-latex
+;; ;;             :plain-source nil
+;; ;;             :htmlized-source nil
+;; ;;             :link-up t
+;; ;;             :link-home t
+;; ;;             :language utf-8
+;; ;;             ;;            :customtime
+;; ;;             ;;            :headline-levels
+;; ;;             ;;            :section-numbers
+;; ;;             ;;            :section-number-format
+;; ;;             :table-of-contents t
+;; ;;             ;;            :preserve-breaks
+;; ;;             :archived-trees nil
+;; ;;             :emphasize t
+;; ;;             :sub-superscript t
+;; ;;             ;;            :special-strings
+;; ;;             :footnotes t
+;; ;;             :drawers nil
+;; ;;             :tags nil
+;; ;;             :todo-keywords nil
+;; ;;             :priority nil
+;; ;;             :TeX-macros t
+;; ;;             :LaTeX-fragments t
+;; ;;             :latex-listings t
+;; ;;             :skip-before-1st-heading nil
+;; ;;             :fixed-width t
+;; ;;             :timestamps t
+;; ;;             :author-info t
+;; ;;             :email-info t
+;; ;;             :creator-info nil
+;; ;;             :tables t
+;; ;;             :table-auto-headline t
+;; ;;             ;;            :style-include-default t
+;; ;;             ;;            :style "<link rel=\"stylesheet\" href=\"https://dl.dropbox.com/u/7817597/stylesheets/org.css\" type=\"text/css\">"
+;; ;;             ;;            :style-extra "<link rel=\"stylesheet\" href=\"http://127.0.0.1/stylesheets/org.css\" type=\"text/css\" />"
+;; ;;             :convert-org-links t
+;; ;;             :inline-images t
+;; ;;             ;;            :html-extension
+;; ;;             ;;            :xml-declaration
+;; ;;             ;;            :html-table-tag
+;; ;;             ;;            :expand-quoted-html t
+;; ;;             ;;            :timestamp t
+;; ;;             :publishing-directory "~/emacs/org/latex/phd"
+;; ;;             ;;            :preamble
+;; ;;             ;;            :postamble
+;; ;;             ;;            :auto-preamble
+;; ;;             ;;            :auto-postamble
+;; ;;             :author "Xin Yang"
+;; ;;             :email "Xin2.Yang@gmail.com"
+;; ;;             ;;            :select-tags
+;; ;;             ;;            :exclude-tags
+;; ;;             ;;-----------------------------------------------------------
+;; ;;             ;;            :latex-image-options
+;; ;;             ;;------------------------------------------------------------
+;; ;;             :auto-sitemap nil
+;; ;;             ;; :sitemap-filename "SiteMap.org"
+;; ;;             ;; :sitemap-title "Index of my PhD documents"
+;; ;;             ;; :sitemap-function org-publish-org-sitemap
+;; ;;             ;; :sitemap-sort-folders last
+;; ;;             ;; :sitemap-alphabetically t
+;; ;;             ;; :sitemap-ignore-case t
+;; ;;             :makeindex nil
+;; ;;             :recursive t
+;; ;;             )
+;; ;;            ("phd-img"
+;; ;;             :base-directory "~/emacs/org/source/phd/img"
+;; ;;             :base-extension "pdf\\|ps\\|png\\|jpg\\|bmp\\|eps\\|svg\\|PDF\\|PS\\|PNG\\|JPG\\|BMP\\|EPS\\|SVG"
+;; ;;             :publishing-directory "~/emacs/org/latex/phd/img"
+;; ;;             :publishing-function org-publish-attachment
+;; ;;             :recursive t
+;; ;;             )
+;; ;;            ("phd-src"
+;; ;;             :base-directory "~/emacs/org/source/phd/src"
+;; ;;             :base-extension "v\\|vhd\\|c\\|hcc\\|cpp\\|m\\|V\\|VHD\\|C\\|HCC\\|CPP\\|M"
+;; ;;             :publishing-directory "~/emacs/org/latex/phd/src"
+;; ;;             :publishing-function org-publish-attachment
+;; ;;             :recursive t
+;; ;;             )
+;; ;;            ("phd-bib"
+;; ;;             :base-directory "~/emacs/org/source/phd/bib"
+;; ;;             :base-extension "bib\\|bst\\|BIB\\|BST"
+;; ;;             :publishing-directory "~/emacs/org/latex/phd/bib"
+;; ;;             :publishing-function org-publish-attachment
+;; ;;             :recursive t
+;; ;;             )
+;; ;;            ("phd-all"
+;; ;;             :components ("phd-org" "phd-img" "phd-src" "phd-bib")
+;; ;;             )
+;; ;;            )))
 
-;; NOTE: not in use
-;; (setq org-protocol-project-alist
-;;       '(;; ("Worg"
-;;         ;;  :base-url "http://orgmode.org/worg/"
-;;         ;;  :working-directory "/home/user/worg/"
-;;         ;;  :online-suffix ".html"
-;;         ;;  :working-suffix ".org")
-;;         ("My local Org-notes"
-;;          :base-url "http://localhost/org/"
-;;          :working-directory "~/emacs/org/source/"
-;;          :online-suffix ".php"
-;;          :working-suffix ".org")))
+;; ;; NOTE: not in use
+;; ;; (setq org-protocol-project-alist
+;; ;;       '(;; ("Worg"
+;; ;;         ;;  :base-url "http://orgmode.org/worg/"
+;; ;;         ;;  :working-directory "/home/user/worg/"
+;; ;;         ;;  :online-suffix ".html"
+;; ;;         ;;  :working-suffix ".org")
+;; ;;         ("My local Org-notes"
+;; ;;          :base-url "http://localhost/org/"
+;; ;;          :working-directory "~/emacs/org/source/"
+;; ;;          :online-suffix ".php"
+;; ;;          :working-suffix ".org")))

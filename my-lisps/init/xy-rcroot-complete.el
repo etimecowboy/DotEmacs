@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-13 Wed 20:53 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-16 Sat 23:28 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -319,7 +319,7 @@
 (eal-define-keys-commonly
  global-map
  `(("<f6> y"         yas-global-mode)
-   ("<f6> Y"         yas-minor-mode)
+   ;; ("<f6> Y"         yas-minor-mode)
    ("C-x Y n"        yas-new-snippet)
    ))
 
@@ -462,9 +462,15 @@
      (eal-define-keys
       'helm-command-map
       `(("o"   helm-c-moccur-occur-by-moccur)
-        ("O" helm-c-moccur-dmoccur)))
+        ("O"   helm-c-moccur-dmoccur)))
      (global-set-key (kbd "C-M-s") 'helm-c-moccur-isearch-forward)
      (global-set-key (kbd "C-M-r") 'helm-c-moccur-isearch-backward)
+     ))
+
+;;; helm-c-moccur
+(eval-after-load "helm-projectile"
+  '(progn
+     (helm-projectile-postload)
      ))
 
 

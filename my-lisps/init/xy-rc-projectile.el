@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2015-05-17 Sun 01:54 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-projectile.el'
 ;; Author:       Xin Yang
@@ -21,10 +21,9 @@
   "Settings of `projectile.el' after it's been loaded."
 
   (setq ;; projectile-ack-function         'ack-and-a-half
-        projectile-completion-system    'ido
+        projectile-keymap-prefix        "p"
         projectile-enable-caching       t
-        projectile-global-mode          nil
-        ;; projectile-keymap-prefix        "p"
+        projectile-indexing-method      'alien
         projectile-require-project-root t
         projectile-tags-command         "ctags -Re %s")
 
@@ -33,6 +32,10 @@
                 user-login-name "-"
                 system-name "-"
                 system-configuration ".cache"))
+
+  ;; `helm-projectile'
+  (setq projectile-completion-system     'helm
+        projectile-switch-project-action 'helm-projectile)
 
   (message "* ---[ projectile post-load configuration is complete ]---"))
 

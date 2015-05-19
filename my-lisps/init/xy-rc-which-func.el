@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2015-05-16 Sat 22:43 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-which-func.el'
 ;; Author:       Xin Yang
@@ -23,7 +23,7 @@
   (setq which-func-modes
         '(emacs-lisp-mode cc-mode c-mode c++-mode perl-mode cperl-mode
           python-mode makefile-mode sh-mode fortran-mode f90-mode
-          ada-mode diff-mode vhdl-mode verilog-mode))
+          ada-mode diff-mode vhdl-mode verilog-mode matlab-mode))
   (message "* ---[ which-func post-load configuration is complete ]---"))
 
 ;; ;;;###autoload

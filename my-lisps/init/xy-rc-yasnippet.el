@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2015-05-16 Sat 23:15 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-yasnippet.el'
 ;; Author:       Xin Yang
@@ -75,10 +75,14 @@
         yas-use-menu 'abbreviate)
 
   ;; (require 'dropdown-list)
-  (setq yas-prompt-functions '(yas-ido-prompt
-                               yas-dropdown-prompt
-                               yas-completing-prompt))
-
+  ;; FIXME: use `helm' completion system instead of `ido'
+  ;; (setq yas-prompt-functions '(yas-ido-prompt
+  ;;                              yas-dropdown-prompt
+  ;;                              yas-completing-prompt))
+  (setq yas-prompt-functions '(yas-completing-prompt
+                               yas-x-prompt
+                               yas-dropdown-prompt))
+  
   ;; NOTE: seems no conflict now.
   ;; fix conflict with `ethan-wspace' snippet mode
   ;; (add-hook 'snippet-mode-hook

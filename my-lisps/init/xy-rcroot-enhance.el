@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-04-26 Sun 23:39 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-18 Mon 17:06 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -56,7 +56,7 @@
  `(lisp-mode-hook emacs-lisp-mode-hook ;; lisp-interaction-mode-hook
                   sh-mode-hook cperl-mode-hook c-common-mode-hook
                   vhdl-mode-hook verilog-mode-hook matlab-mode-hook
-                  haskell-mode-hook)
+                  haskell-mode-hook python-mode-hook)
  '(lambda () (linum-mode 1)))
 (am-add-hooks
  `(lisp-interaction-mode-hook)
@@ -219,36 +219,38 @@
 
 
 ;;; kill ring
+;; use `helm-show-kill-ring' instead
 ;;;; browse-kill-ring
-(eval-after-load "browse-kill-ring"
-  '(progn
-     (browse-kill-ring-postload)
-     (browse-kill-ring-face-settings)
-     (eal-define-keys
-      'browse-kill-ring-mode-map
-      `(("RET" browse-kill-ring-insert-and-quit)
-        ("<"   beginning-of-buffer)
-        (">"   end-of-buffer)
-        ("j"   next-line)
-        ("k"   previous-line)
-        ("h"   backward-char)
-        ("l"   forward-char)
-        ("n"   browse-kill-ring-forward-without-linum-mode)
-        ("p"   browse-kill-ring-previous-without-linum-mode)
-        ("SPC" scroll-up)
-        ("U"   scroll-down)
-        ("u"   View-scroll-half-page-backward)
-        ("o"   other-window)))))
-(global-set-key (kbd "<f2> k") 'browse-kill-ring)
+;; (eval-after-load "browse-kill-ring"
+;;   '(progn
+;;      (browse-kill-ring-postload)
+;;      (browse-kill-ring-face-settings)
+;;      (eal-define-keys
+;;       'browse-kill-ring-mode-map
+;;       `(("RET" browse-kill-ring-insert-and-quit)
+;;         ;; ("<"   beginning-of-buffer)
+;;         ;; (">"   end-of-buffer)
+;;         ;; ("j"   next-line)
+;;         ;; ("k"   previous-line)
+;;         ;; ("h"   backward-char)
+;;         ;; ("l"   forward-char)
+;;         ("n"   browse-kill-ring-forward-without-linum-mode)
+;;         ("p"   browse-kill-ring-previous-without-linum-mode)
+;;         ;; ("SPC" scroll-up)
+;;         ;; ("U"   scroll-down)
+;;         ("u"   View-scroll-half-page-backward)
+;;         ("o"   other-window)))))
+;; (global-set-key (kbd "<f2> k") 'browse-kill-ring)
 
 
 
 ;;;; kill-ring-search
+;; use `helm-show-kill-ring' instead
 ;; Search the kill ring in the minibuffer.
 ;; (autoload 'kill-ring-search "kill-ring-search"
 ;;  "Search the kill ring in the minibuffer."
 ;;  (interactive))
-(global-set-key (kbd "C-M-y") 'kill-ring-search)
+;; (global-set-key (kbd "C-M-y") 'kill-ring-search)
 
 
 
@@ -351,7 +353,6 @@ from tradition chinese to simple chinese" t)
 ;;;; shell-pop
 ;; pop up a window for shell
 (autoload 'shell-pop "shell-pop" "Pop-up a shell" t)
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (eval-after-load "shell-pop" '(shell-pop-postload))
 (global-set-key (kbd "<f9> p") 'shell-pop)
 

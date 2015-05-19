@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-13 Wed 17:26 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-16 Sat 23:24 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm.el'
 ;; Author:       Xin Yang
@@ -76,6 +76,9 @@
 
   ;;; `helm-c-moccur'
   (try-require 'helm-c-moccur)
+
+  ;;; `helm-projectile'
+  (try-require 'helm-projectile)
   
   (helm-mode 1)
   (message "* ---[ helm post-load configuration is complete ]---"))

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-11 Mon 22:15 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-16 Sat 23:04 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -195,7 +195,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'bookmark+)
 
   ;; (require-package 'boxquote)  ;; rarely used
-  (require-package 'browse-kill-ring)
+  ;; (require-package 'browse-kill-ring)
 
   (require-package 'cal-china-x)
   (require-package 'centered-cursor-mode)
@@ -230,7 +230,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'fit-frame) ;; not very useful
   ;; (require-package 'flx-ido)
   ;; (require-package 'flx)
-  (require-package 'fold-this)
+  ;; (require-package 'fold-this)
   ;; (require-package 'framesize)
   ;; (require-package 'furl)
   (require-package 'fuzzy)
@@ -264,7 +264,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'jira)
   ;; (require-package 'json)
   ;; (require-package 'key-chord)
-  (require-package 'kill-ring-search)
+  ;; (require-package 'kill-ring-search)
   (require-package 'hlinum)
   ;; (require-package 'list-utils)
   (require-package 'list-processes+)

@@ -1,7 +1,7 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
 ;;--------------------------------------------------------------------
 ;; File name:    `init.el'
-;; Time-stamp: <2015-05-05 Tue 14:40 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-18 Mon 10:37 by xin on zbox.soton.ac.uk>
 ;; Author:       Xin Yang
 ;; Email:        xin2.yang@gmail.com
 ;; Depend on:    None

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-14 Fri 01:29 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2015-05-16 Sat 23:07 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-shell-pop.el'
 ;; Author:       Xin Yang
@@ -24,7 +24,8 @@
         '("eshell" "*eshell*" (lambda nil (eshell))))
   (setq shell-pop-window-height 35)
   (setq shell-pop-window-position "bottom")
-
+  (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+  
   (message "* ---[ shell-pop post-load configuration is complete ]---"))
 
 (provide 'xy-rc-shell-pop)

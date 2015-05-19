@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-03-30 Mon 09:50 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-17 Sun 01:55 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -28,29 +28,30 @@
 (eal-define-keys
  `(lisp-mode-map emacs-lisp-mode-map lisp-interaction-mode-map
    sh-mode-map ruby-mode-map tcl-mode-map python-mode-map
-   perl-mode-map)
+   perl-mode-map matlab-mode-map)
  `(("RET" newline-and-indent)))
 
 
 
 ;;;; align
-(eal-define-keys-commonly
- global-map
- `(("C-x A n"   align)
-   ("C-x A r"   align-regexp)))
+;; don't want to use too many key bindings
+;; (eal-define-keys-commonly
+;;  global-map
+;;  `(("C-x A n"   align)
+;;    ("C-x A r"   align-regexp)))
 
 
 
 ;;;; auto-fill
 (eval-after-load "simple" '(simple-postload))
-(am-add-hooks
- `(lisp-mode-hook emacs-lisp-mode-hook latex-mode-hook
-                  c-common-mode-hook LaTeX-mode-hook
-                  matlab-mode-hook org-mode-hook
-                  ;; magit-log-edit-mode-hook ;no hook for this mode
-                  ;; TODO: fix it.
-                  mew-draft-mode-hook) 'turn-on-auto-fill)
-
+;; (am-add-hooks
+;;  `(lisp-mode-hook emacs-lisp-mode-hook latex-mode-hook
+;;                   c-common-mode-hook LaTeX-mode-hook
+;;                   matlab-mode-hook org-mode-hook
+;;                   ;; magit-log-edit-mode-hook ;no hook for this mode
+;;                   ;; TODO: fix it.
+;;                   mew-draft-mode-hook) 'turn-on-auto-fill)
+(turn-on-auto-fill) ;; always use auto-fill mode
 
 
 ;;;; hungry-delete-mode
@@ -103,13 +104,13 @@
 (autoload 'highlight-parentheses-mode "highlight-parentheses" nil t)
 (eval-after-load "highlight-parentheses"
   '(highlight-parentheses-postload))
-(am-add-hooks
- `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
-                  sh-mode-hook cperl-mode-hook c-common-mode-hook
-                  vhdl-mode-hook verilog-mode-hook matlab-mode-hook)
- '(lambda ()
-    (highlight-parentheses-mode 1)))
-
+;; (am-add-hooks
+;;  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
+;;                   sh-mode-hook cperl-mode-hook c-common-mode-hook
+;;                   vhdl-mode-hook verilog-mode-hook matlab-mode-hook)
+;;  '(lambda ()
+;;     (highlight-parentheses-mode 1)))
+(global-highlight-parentheses-mode 1) ;; always use it
 
 
 ;;;; autopair
@@ -117,13 +118,11 @@
 ;; `yasnippet'. Need to use hooks to disable it in these modes.
 (autoload 'autopair-mode "autopair" nil t)
 (eval-after-load "autopair" '(autopair-postload))
-(am-add-hooks
- `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
-                  sh-mode-hook cperl-mode-hook c-common-mode-hook
-                  ;; vhdl-mode-hook
-                  verilog-mode-hook matlab-mode-hook)
- '(lambda () (autopair-mode 1)))
-
+;; (am-add-hooks
+;;  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
+;;                   sh-mode-hook cperl-mode-hook c-common-mode-hook
+;;                   ;; vhdl-mode-hook verilog-mode-hook 
+;;  '(lambda () (autopair-mode 1))))
 
 
 
@@ -170,11 +169,12 @@
 
 
 ;;;; fold-this
-(eal-define-keys-commonly
- global-map
- `(("C-x M-f" fold-this)
-   ("C-x M-F" fold-this-all)
-   ("C-x M-U" fold-this-unfold-all)))
+;; not very useful
+;; (eal-define-keys-commonly
+;;  global-map
+;;  `(("C-x M-f" fold-this)
+;;    ("C-x M-F" fold-this-all)
+;;    ("C-x M-U" fold-this-unfold-all)))
 
 
 ;;;; outline
@@ -313,7 +313,8 @@
 ;;;; which-func
 ;; 用来显示当前光标在哪个函数
 (eval-after-load "which-func" '(which-func-postload))
-(which-func-mode 1)
+;; (which-func-mode 1) ;; This function is obsolete since 24.1;
+;; (which-function-mode 1)
 
 
 
@@ -337,7 +338,9 @@
 ;;;; projectile
 ;; A project management mode
 (eval-after-load "projectile" '(projectile-postload))
-(global-set-key (kbd "<f6> <f6>") 'projectile-mode)
+;; (global-set-key (kbd "<f6> <f6>") 'projectile-global-mode)
+(projectile-global-mode 1)
+
 
 
 ;;; Shell script development settings
@@ -365,7 +368,7 @@
       'emacs-lisp-mode-map
       `(;; ("C-c M-a"             beginning-of-defun)
         ;; ("C-c M-e"             end-of-defun)
-        ("C-M-f"               mark-function)
+        ("C-M-h"               mark-function)
         ;; ("C-c D"               edebug-defun)
         ("C-c C-d"             eval-defun)
         ;; ("C-c B"               eval-buffer)
@@ -374,8 +377,8 @@
         ;; ("C-c F"               kill-function)
         ;; ("C-c C-q"             indent-function)
         ;; ("C-c C"               comment-function)
-        ("C-M-f"               insert-sequence-symbol)
-        ("C-M-k"               insert-sequence-key)
+        ;; ("C-M-f"               insert-sequence-symbol)
+        ;; ("C-M-k"               insert-sequence-key)
         ))))
 
 (eval-after-load "lisp-mode"
