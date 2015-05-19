@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-19 Tue 14:56 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-19 Tue 15:08 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-magit.el'
 ;; Author:       Xin Yang
@@ -55,14 +55,14 @@
   (shell-command "git reflog show wip/master"))
 
 ;; FIXME: problem
-;;;###autoload
-(defun xy/magit-wip-quick-recover (&optional depth)
-  (interactive)
-  (shell-command (concat "git checkout wip/"
-                         (magit-get-current-branch)
-                         "@{%d}"
-                         buffer-file-truename
-                         )))
+;; ;;;###autoload
+;; (defun xy/magit-wip-quick-recover (&optional depth)
+;;   (interactive)
+;;   (shell-command (concat "git checkout wip/"
+;;                          (magit-get-current-branch)
+;;                          "@{%d}"
+;;                          buffer-file-truename ;; this is absolute path, must be changed to an relative path to the root of git repository
+;;                          )))
 
 ;; TODO: write this function
 ;; Recover changes from wip shadow branch

@@ -257,10 +257,13 @@
         ;; ("C-x K" xy/magit-q)
         ))))
 (global-set-key (kbd "<f12> g") 'magit-status)
+;; run this at the first time
 (global-set-key (kbd "<f12> W") 'xy/magit-wip-start)
+;; run this after wip branch has been created
 (global-set-key (kbd "<f12> w") 'global-magit-wip-save-mode)
 (global-set-key (kbd "<f12> c") 'xy/magit-wip-check-changes)
-(global-set-key (kbd "<f12> V") 'xy/magit-wip-quick-recover)
+;; FIXME: not work
+;; (global-set-key (kbd "<f12> V") 'xy/magit-wip-quick-recover)
 
 ;;;;; official Emacs addon in `git-wip'
 ;; (try-require 'git-wip)
