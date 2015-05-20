@@ -178,11 +178,19 @@
 
 
 ;;;; Sunrise commander; file manager
-;; FIXME: wrong color display
-;; NOTE: It is not very useful, and it is very slow.
 ;; Check (@url :file-name "http://www.emacswiki.org/emacs/Sunrise_Commander_Tips" :display "emacswiki")
-;; (eval-after-load "sunrise-commander" '(sunrise-postload))
-;; (global-set-key (kbd "C-x J") 'sunrise)
+(eval-after-load "sunrise-commander" '(sunrise-postload))
+;; BUG: have to load them here
+(try-require 'sunrise-commander)
+(try-require 'sunrise-x-buttons)
+(try-require 'sunrise-x-checkpoints)
+(try-require 'sunrise-x-loop)
+(try-require 'sunrise-x-mirror)
+(try-require 'sunrise-x-modeline)
+(try-require 'sunrise-x-tabs)
+(try-require 'sunrise-x-w32-addons)
+(global-set-key (kbd "<f12> <f12>") 'sunrise)
+(global-set-key (kbd "<f12> <f11>") 'sunrise-cd)
 
 
 

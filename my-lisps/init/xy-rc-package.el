@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-19 Tue 15:19 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-20 Wed 01:35 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -107,7 +107,7 @@ re-downloaded in order to locate PACKAGE."
           ("marmalade" . "http://marmalade-repo.org/packages/")
           ("melpa" . "http://melpa.org/packages/")
           ("org" . "http://orgmode.org/elpa/")
-          ;; ("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
+          ("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
           ))
 
   ;; ;; NOTE: there is an enhancement lisp `melpa.el' for the
@@ -329,16 +329,16 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'smex)
   ;; (require-package 'string-utils)
 
-  ;; (require-package 'sunrise-commander)
-  ;; ;; (require-package 'sunrise-x-buttons)
-  ;; (require-package 'sunrise-x-checkpoints)
-  ;; (require-package 'sunrise-x-loop)
-  ;; (require-package 'sunrise-x-mirror)
-  ;; (require-package 'sunrise-x-modeline)
-  ;; ;; (require-package 'sunrise-x-popviewer)
-  ;; (require-package 'sunrise-x-tabs)
-  ;; ;; (require-package 'sunrise-x-tree)
-  ;; (require-package 'sunrise-x-w32-addons)
+  (require-package 'sunrise-commander)
+  (require-package 'sunrise-x-buttons)
+  (require-package 'sunrise-x-checkpoints)
+  (require-package 'sunrise-x-loop)
+  (require-package 'sunrise-x-mirror)
+  (require-package 'sunrise-x-modeline)
+  ;; (require-package 'sunrise-x-popviewer)
+  (require-package 'sunrise-x-tabs)
+  ;; (require-package 'sunrise-x-tree)
+  (require-package 'sunrise-x-w32-addons)
 
   (require-package 'sr-speedbar)
   ;; (require-package 'strings)
