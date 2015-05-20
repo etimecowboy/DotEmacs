@@ -330,8 +330,8 @@
 
 ;;;; todo items
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "SOMEDAY(x!)" "NEXT(n!)" "STARTED(s)" "WAITING(w!)"
-                    "|" "DONE(d!)" "CANCELLED(c@/!)") ;; for tasks          
+        '((sequence "TODO(t)" "SOMEDAY(x)" "NEXT(n)" "STARTED(s!)" "WAITING(w@/!)"
+                    "|" "DONE(d!)" "CANCELLED(c@/!)") ;; for tasks
           (sequence "NEW(a)" "REVIEW(r)"
                     "|" "MARK(m!)" "USELESS(u!)"))) ;; for notes
   (setq org-use-fast-todo-selection t) ;; C-c C-t key
@@ -1764,14 +1764,6 @@ decorations.markings}
 ;;;;; `o-blog'
 ;; A stand-alone blog and publication tool for org-mode.
   (try-require 'o-blog)
-  ;; NOTE: o-blog v2.5 or later
-  ;; (try-require 'o-blog-utils)
-  ;; (try-require 'o-blog-tag)
-  ;; (try-require 'o-blog-entry)
-  ;; (try-require 'o-blog-i18n)
-  ;; (try-require 'o-blog-backend)
-  ;; (try-require 'o-blog-framework)
-  ;; (try-require 'o-blog-obsolete)
 
 ;;;;; `org2blog'
   (try-require 'org2blog)
