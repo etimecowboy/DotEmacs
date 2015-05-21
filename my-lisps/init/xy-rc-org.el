@@ -1792,6 +1792,14 @@ decorations.markings}
 
 ;;;;; `ox-reveal' not working
   ;; (try-require 'ox-reveal)
+
+;;;;; `org-present'
+  ;; very simple org presentation in emacs frame
+  (try-require 'org-present)
+
+;;;;; `epresent'
+  ;; more powerful presentation in emacs, not easy to set up
+  ;; (try-require 'epresent')
   
   (message "* ---[ org post-load configuration is complete ]---"))
 

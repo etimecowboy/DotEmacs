@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-20 Wed 01:35 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-20 Wed 22:12 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -311,7 +311,8 @@ re-downloaded in order to locate PACKAGE."
   ;; the lisps folder 
   ;; (require-package 'o-blog)
   ;; (require-package 'ox-reveal) ;; not working
-  
+  (require-package 'org-present)
+
   (require-package 'popup)
   (require-package 'popwin)
   (require-package 'pp-c-l)

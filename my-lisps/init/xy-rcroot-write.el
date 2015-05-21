@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-20 Wed 01:22 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-20 Wed 22:14 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -69,19 +69,22 @@
 ;;      function `appt-make-list') in Emacs24 ((@url :file-name "http://www.mail-archive.com/emacs-orgmode@gnu.org/msg47051.html" :display "REF")) .
 ;; (add-hook 'diary-hook (function appt-make-list))
 
-;;;; o-blog
+;;;; `o-blog'
 ;; A stand-alone blog and publication tool for org-mode.
 (eval-after-load "o-blog" '(o-blog-postload))
 
-;;;; org2blog
+;;;; `org2blog'
 ;; use publish org to HTML then use xml-rpc to blog
 (eval-after-load "org2blog" '(org2blog-postload))
 
-;;;; outshin
+;;;; `outshin'
 (eval-after-load "outshine" '(outshine-postload))
 
-;;;; ox-s5
+;;;; `ox-s5'
 (eval-after-load "ox-s5" '(ox-s5-postload))
+
+;;;; `org-present'
+(eval-after-load "org-present" '(org-present-postload))
 
 
 ;; NOTE: not very useful

@@ -1,7 +1,7 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
 ;;--------------------------------------------------------------------
 ;; File name:    `init.el'
-;; Time-stamp: <2015-05-18 Mon 10:37 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-20 Wed 22:30 by xin on zbox.soton.ac.uk>
 ;; Author:       Xin Yang
 ;; Email:        xin2.yang@gmail.com
 ;; Depend on:    None
@@ -20,10 +20,9 @@
 
 ;;** Debugging information
 ;; Enter debug mode on a error, now you should get a backtrace
-;; NOTE: cause problem in emacs-snapshot version
-;; (setq debug-on-error t)
-;; (setq debug-on-quit t) ;; Too annoying
-;; NOTE: M-x toggle-debug-on-quit使用这条命令后，每次卡住后，马上按C-g，
+;; (setq debug-on-error t) ;; very annoying 
+;; (setq debug-on-quit t)  ;; very annoying
+;; NOTE: M-x toggle-debug-on-quit 使用这条命令后，每次卡住后，马上按C-g，
 ;; 就会打出当前执行函数的调用栈，是哪个函数造成的卡住，也就一目了然了。
 ;; 然后根据这个造成卡住的函数属于哪个扩展包，再分别想解决办法。
 
@@ -80,7 +79,7 @@
 (load "xy-rcroot-env")
 (measure-time "xy-rcroot-env.el")
 
-;; Emacs apparence
+;; Emacs appearance
 ;; (require 'xy-rcroot-look)
 (load "xy-rcroot-look")
 (measure-time "xy-rcroot-look.el")
@@ -132,4 +131,4 @@
 (measure-time "xy-rcroot-history.el")
 
 (measure-time "init.el")
-(message "* ---[ Emacs is ready!]---" (getenv "USER"))
+(message "* ---[ Emacs is ready to use!]---" (getenv "USER"))
