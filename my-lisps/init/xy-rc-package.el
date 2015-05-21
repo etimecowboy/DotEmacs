@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-20 Wed 22:12 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-21 Thu 16:49 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -412,6 +412,9 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'ahg) ;; hg (mecurial) is not in use
   ;; =======================================================
 
+  (require-package 'runner)
+  (require-package 'unify-opening)
+  
   (message "* ---[ package post-load configuration is complete ]---"))
 
 (provide 'xy-rc-package)

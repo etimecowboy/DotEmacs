@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-10-25 Sat 10:41 by xin on S13>
+;; Time-stamp: <2015-05-21 Thu 16:15 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired.el'
 ;; Author:       Xin Yang
@@ -105,6 +105,9 @@ will remain open and unsaved."
 
   ;; (try-require 'thumb)
 
+  ;;-------------------------------------------------------------------
+  (try-require 'runner)
+  
   (message "* ---[ dired post-load configuration is complete ]---"))
 
 (provide 'xy-rc-dired)

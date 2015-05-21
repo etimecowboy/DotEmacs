@@ -127,13 +127,13 @@
 ;; (eval-after-load "dired-isearch" '(dired-isearch-postload))
 
 ;;;;; Contrib features for dired
-;; Use a single frame for visiting a sub-directory
+;;;;;; `dired-tar': Use a single frame for visiting a sub-directory
 ;; (eval-after-load "dired-single" (dired-single-postload))
 ;; `T' 把目录压缩为.tar.gz文件
 ;; (GNULinux
 ;;  (try-require 'dired-tar))
 
-;; open-with, open files in external applications
+;;;;;; `open-with': open files in external applications
 ;; NOTE: it need to be patched in order to run on windows
 ;; NOTE: works in Linux but give a error message.
 ;; NOTE: not very useful
@@ -141,8 +141,8 @@
 ;; (GNULinux
 ;;  (when (try-require 'openwith) (openwith-mode 1)))
 
-;; dired-details
-;; 简略文件列表信息, BUG: not working properly
+;;;;;; `dired-details': simplified file details
+;; BUG: not working properly
 ;; (eval-after-load "dired-details" '(dired-details-postload))
 ;; (require 'dired-details)
 ;; ;; (dired-details-install) ;; called in `dired-details+'
@@ -153,14 +153,17 @@
 ;; (setq dired-details-propagate-flag t) ;option added by
 ;;                                         ;`dired-details+'
 
-;; TODO: do a research and add more configurations.
+;;;;;; `dired+'
 (eval-after-load "dired+" '(dired+-postload)) ;; dired大补
 ;; (require 'dired+)
 ;; (setq diredp-prompt-for-bookmark-prefix-flag nil)
 
+;;;;;; `dired-sort-menu'
 ;; BUG: NOT work
 ;; Pop up a sort menu when press `C-d' or `S-mouse2' in dired mode
 ;; (eval-after-load "dired-sort-menu" '(dired-sort-menu-postload))
+
+;;;;;; `image-dird'
 (when window-system
   ;; image-dired
   (image-dired-preload)
@@ -169,6 +172,12 @@
   (thumbs-preload)
   (eval-after-load "thumbs" '(thumbs-postload)))
 
+;;;;;; `runner': an new `open-with' for dired-mode
+(runner-preload)
+(eval-after-load "runner" '(runner-postload)) ;; dired大补
+
+;;;;;; `unify-opening': unified method to open files
+(try-require 'unify-opening)
 
 
 ;; ** w32-browser

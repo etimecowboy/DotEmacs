@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-04-27 Mon 21:31 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-21 Thu 16:25 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -609,9 +609,13 @@
 ;;;; auto-dim-other-buffers
 (eval-after-load "auto-dim-other-buffers"
   '(auto-dim-other-buffers-postload))
-(when window-system
-  (when (try-require 'auto-dim-other-buffers)
-    (auto-dim-other-buffers-mode 1)))
+;; (when window-system 
+;;   (when (try-require 'auto-dim-other-buffers)
+;;     (auto-dim-other-buffers-mode 1)))
+;; NOTE: terminal may be strange
+(when (try-require 'auto-dim-other-buffers)
+  (auto-dim-other-buffers-mode 1))
+
 
 
 ;;;; doremi
@@ -679,7 +683,7 @@
  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
                   sh-mode-hook cperl-mode-hook c-common-mode-hook
                   vhdl-mode-hook verilog-mode-hook matlab-mode-hook
-                  org-mode-hook LaTeX-mode-hook)
+                  org-mode-hook LaTeX-mode-hook python-mode-hook)
  'xy/turn-on-pretty-control-l-mode)
 
 

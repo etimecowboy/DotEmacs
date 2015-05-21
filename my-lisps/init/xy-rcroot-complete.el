@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-16 Sat 23:28 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-21 Thu 10:19 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -403,7 +403,6 @@
 (eval-after-load "helm"
   '(progn
      (helm-postload)
-     ;; FIXME: doesn't work
      ;; (eal-define-keys
      ;;  'helm-command-map
      ;;  `(("<tab>" helm-execute-persistent-action)
