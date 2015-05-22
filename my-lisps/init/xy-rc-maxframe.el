@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2015-05-22 Fri 10:13 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-maxframe.el'
 ;; Author:       Xin Yang
@@ -29,9 +29,13 @@ the `maximize-frame command."
 ;;;###autoload
 (defun maxframe-postload ()
   "Settings of `maxframe.el' after it's been loaded."
-  ;; (Laptop
-  ;;  (setq mf-max-width 1366
-  ;;        mf-max-height 768))
+
+  (Laptop ;; S13
+   (setq mf-max-width 1366
+         mf-max-height 768))
+  ;; default: desktop
+  (setq mf-max-width 1920
+        mf-max-height 1080)
 
   (message "* ---[ maxframe post-load configuration is complete ]---"))
 

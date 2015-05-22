@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-21 Thu 16:25 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-21 Thu 21:39 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -679,12 +679,12 @@
 (eval-after-load "pp-c-l" '(pp-c-l-postload))
 (autoload 'pretty-control-l-mode "pp-c-l" nil t)
 (global-set-key (kbd "<f6> p") 'xy/turn-on-pretty-control-l-mode)
-(am-add-hooks
- `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
-                  sh-mode-hook cperl-mode-hook c-common-mode-hook
-                  vhdl-mode-hook verilog-mode-hook matlab-mode-hook
-                  org-mode-hook LaTeX-mode-hook python-mode-hook)
- 'xy/turn-on-pretty-control-l-mode)
+;; (am-add-hooks
+;;  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
+;;                   sh-mode-hook cperl-mode-hook c-common-mode-hook
+;;                   vhdl-mode-hook verilog-mode-hook matlab-mode-hook
+;;                   org-mode-hook LaTeX-mode-hook python-mode-hook)
+;;  'xy/turn-on-pretty-control-l-mode)
 
 
 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-16 Sat 23:24 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-21 Thu 21:23 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm.el'
 ;; Author:       Xin Yang
@@ -22,10 +22,15 @@
 
   (require 'helm-config)
 
-  (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
-        helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-        helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-        helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+  (setq helm-split-window-default-side       'below
+        ; open helm buffer inside current window, not occupy whole other window
+        helm-split-window-in-side-p           nil
+        ; move to end or beginning of source when reaching top or bottom of source.
+        helm-move-to-line-cycle-in-source     t
+        ; search for library in `require' and `declare-function' sexp.
+        helm-ff-search-library-in-sexp        t
+        ; scroll 8 lines other window using M-<next>/M-<prior>
+        helm-scroll-amount                    8
         helm-ff-file-name-history-use-recentf t)
 
   (when (executable-find "curl")

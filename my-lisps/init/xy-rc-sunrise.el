@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-21 Thu 10:40 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-22 Fri 10:17 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sunrise.el'
 ;; Author:       Xin Yang
@@ -67,13 +67,13 @@
         sr-window-split-style 'horizontal
         sr-use-commander-keys nil)
 
-  ;; (setq sr-start-hook
-  ;;       'maximize-frame ;; this takes all the monitors you have
-  ;;       ;; NOTE: the following codes has been added in autoloads
-  ;;       ;;   sr-tree-menu-init  
-  ;;       ;;   sr-tabs-start-once
-  ;;       ;;   sr-modeline-start-once
-  ;;       )
+  (setq sr-start-hook
+        'maximize-frame ;; this takes all the monitors you have
+        ;; NOTE: the following codes has been added in autoloads
+        ;;   sr-tree-menu-init  
+        ;;   sr-tabs-start-once
+        ;;   sr-modeline-start-once
+        )
 
   (message "* ---[ sunrise post-load configuration is complete ]---"))
 
