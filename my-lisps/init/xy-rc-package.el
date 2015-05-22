@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-21 Thu 16:49 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-22 Fri 10:27 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -163,9 +163,9 @@ re-downloaded in order to locate PACKAGE."
   ;; =======================================================
   
   (require-package 'ace-jump-mode)
-  (require-package 'ace-jump-buffer)
-  (require-package 'ace-window)
-  (require-package 'ace-link)
+  ;; (require-package 'ace-jump-buffer)
+  ;; (require-package 'ace-window)
+  ;; (require-package 'ace-link)
 
   (require-package 'buffer-move)
   (require-package 'windsize)
