@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-04-27 Mon 21:36 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-23 Sat 15:28 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -54,6 +54,8 @@
   (string-match "p5q" (prin1-to-string (downcase system-name))))
 (defvar using-laptop
   (string-match "s13" (prin1-to-string (downcase system-name))))
+(defvar using-zbox
+  (string-match "zbox" (prin1-to-string (downcase system-name))))
 ;; OS type --- are we running Microsoft Windows?
 (defvar running-ms-windows
   (string-match "windows" (prin1-to-string system-type)))
@@ -85,6 +87,12 @@
   (list
    'if (string-match
         "s13" (prin1-to-string (downcase system-name)))
+   (cons 'progn body)))
+
+(defmacro Zbox (&rest body)
+  (list
+   'if (string-match
+        "zbox" (prin1-to-string (downcase system-name)))
    (cons 'progn body)))
 
 ;;*** OS type --- are we running GNU Linux?

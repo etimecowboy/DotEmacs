@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-04-04 Sat 01:57 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-23 Sat 15:52 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auctex.el'
 ;; Author:       Xin Yang
@@ -56,14 +56,17 @@
         (message "TeX master document: %s" (file-name-nondirectory candidate)))
     candidate))
 
-;; (defun okular-make-url ()
-;;   (concat
-;;    "\"file://"
-;;    (expand-file-name (funcall file "pdf" t) (file-name-directory
-;;                                              (TeX-master-file)))
-;;    "#src:"
-;;    (TeX-current-line) (buffer-file-name) "\""))
-
+;; REF: http://tex.stackexchange.com/questions/60170/how-to-set-up-okular-for-forward-backward-search-with-tex-live-2011-not-trivia
+;; set up okular for forward/backward searc with texlive
+(defun Okular-make-url () (concat
+                           "file://"
+                           (expand-file-name (funcall file (TeX-output-extension) t)
+                                             (file-name-directory (TeX-master-file)))
+                           "#src:"
+                           (TeX-current-line)
+                           (expand-file-name (TeX-master-directory))
+                           "./"
+                           (TeX-current-file-name-master-relative)))
 ;; (add-hook 'LaTeX-mode-hook
 ;;           '(lambda ()
 ;;              (add-to-list 'TeX-expand-list
@@ -205,11 +208,12 @@
   (setq TeX-view-program-list
         '(("SumatraPDF" ("\"SumatraPDF.exe\" -reuse-instance" 
                           (mode-io-correlate " -forward-search %b %n ") " %o"))
-          ("Gsview" "gsview32.exe %o")
-          ("Dviout" "dviout.exe %o")
+          ;; ("Okular" "okular --unique %o#src:%n%(dir).%b") ;;old
+          ("Okular" "okular --unique %u")
           ("MuPDF"  "mupdf -b 8 -r 96 %o")
           ("Evince" "evince %o")
-          ("Okular" "okular --unique %o#src:%n%b")
+          ("Gsview" "gsview32.exe %o")
+          ("Dviout" "dviout.exe %o")
           ("Firefox" "firefox %o")))
 
   (setq LaTeX-section-hook
@@ -273,11 +277,12 @@
                ;; engine. NOTE: Preview does not work with xelatex
                (GNULinux
                 (setq TeX-view-program-selection
-                      '((output-pdf "MuPDF")
-                        (output-dvi "Evince")
+                      '((output-pdf "Okular")
+                        (output-dvi "Okular")
                         ;; ((output-dvi style-pstricks) "dvips and gv")
-                        ;; (output-dvi "Okular")
-                        (output-html "xdg-open"))))
+                        (output-html "xdg-open")))
+                (add-to-list 'TeX-expand-list
+                             '("%u" Okular-make-url)))
                (Windows
                 (setq TeX-view-program-selection
                       '((output-pdf "SumatraPDF")

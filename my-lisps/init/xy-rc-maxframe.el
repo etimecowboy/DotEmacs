@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-22 Fri 10:13 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-23 Sat 15:29 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-maxframe.el'
 ;; Author:       Xin Yang
@@ -16,26 +16,27 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
-;;;###autoload
-(defun xy/smart-maximize-frame ()
-  "Improve the `maximize-frame' function of `maxframe.el'. \
-If the current emacs frame is in full screen mode, then give up \
-the `maximize-frame command."
+;; ;;;###autoload
+;; (defun xy/smart-maximize-frame ()
+;;   "Improve the `maximize-frame' function of `maxframe.el'. \
+;; If the current emacs frame is in full screen mode, then give up \
+;; the `maximize-frame command."
 
-  (interactive)
-  (when (and window-system (try-require 'maxframe) (not xy:fullscreen-flag))
-    (maximize-frame)))
+;;   (interactive)
+;;   (when (and window-system (try-require 'maxframe) (not xy:fullscreen-flag))
+;;     (maximize-frame)))
 
 ;;;###autoload
 (defun maxframe-postload ()
   "Settings of `maxframe.el' after it's been loaded."
 
-  (Laptop ;; S13
-   (setq mf-max-width 1366
-         mf-max-height 768))
   ;; default: desktop
   (setq mf-max-width 1920
         mf-max-height 1080)
+
+  (Laptop ;; S13
+   (setq mf-max-width 1366
+         mf-max-height 768))
 
   (message "* ---[ maxframe post-load configuration is complete ]---"))
 
