@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2013-01-14 Mon 18:09 by xin on S13>
+;; Time-stamp: <2015-05-23 Sat 17:35 by xin on zbox.soton.ac.uk>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -18,27 +18,28 @@
 
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
-(try-require 'rect-mark)
-(require 'cua-base)
-(require 'cua-rect)
-(require 'cua-gmrk)
-;; (require 'paragraph)
-(require 'pc-select)
+;; (try-require 'rect-mark)
+;; (require 'cua-base)
+;; (require 'cua-rect)
+;; (require 'cua-gmrk)
+;; ;; (require 'paragraph)
+;; (require 'pc-select)
+
 
 
-;; 关于mark的一些设置，使你非常方便的选择region
-;;;###autoload
-(defun mark-command (&optional no-record)
-  "如果是CUA mode, 则执行`cua-set-mark', 否则执行`set-mark-command'.
-if NO-RECORD is non-nil, do not record last-region."
-  (interactive)
-  (unless no-record
-    (setq last-region-beg (point))
-    (setq last-region-is-rect nil))
-  (let ((command (if cua-mode 'cua-set-mark 'set-mark-command)))
-    (if (interactive-p)
-        (call-interactively command)
-      (funcall command))))
+;; ;; 关于mark的一些设置，使你非常方便的选择region
+;; ;;;###autoload
+;; (defun mark-command (&optional no-record)
+;;   "如果是CUA mode, 则执行`cua-set-mark', 否则执行`set-mark-command'.
+;; if NO-RECORD is non-nil, do not record last-region."
+;;   (interactive)
+;;   (unless no-record
+;;     (setq last-region-beg (point))
+;;     (setq last-region-is-rect nil))
+;;   (let ((command (if cua-mode 'cua-set-mark 'set-mark-command)))
+;;     (if (interactive-p)
+;;         (call-interactively command)
+;;       (funcall command))))
 
 ;; ;;;###autoload
 ;; (defmacro def-mark-move-command (command)
@@ -67,139 +68,140 @@ if NO-RECORD is non-nil, do not record last-region."
 
 
 
-;;;###autoload
-(defun rm-mark-command ()
-  "如果是CUA mode, 则执行`cua-set-rectangle-mark', 否则执行\
-`rm-set-mark'"
-  (interactive)
-  (setq last-region-beg (point))
-  (setq last-region-is-rect t)
-  (setq last-region-use-cua cua-mode)
-  (if cua-mode
-      (call-interactively 'cua-set-rectangle-mark)
-    (call-interactively 'rm-set-mark)))
-
-
-;;;###autoload
-(defun copy-region (beg end)
-  "根据`mark-active'和`rm-mark-active'来决定是执行\
-`copy-region-as-kill'还是`rm-kill-ring-save'"
-  (interactive "r")
-  (if cua-mode
-      (if cua--rectangle
-          (progn
-            (cua-copy-rectangle t)
-            (cua-cancel))
-        (call-interactively 'cua-copy-region))
-    (if (rm-mark-active) (call-interactively 'rm-kill-ring-save)
-      (progn
-        (require 'pc-select)
-        (copy-region-as-kill beg end)))))
+;; ;;;###autoload
+;; (defun rm-mark-command ()
+;;   "如果是CUA mode, 则执行`cua-set-rectangle-mark', 否则执行\
+;; `rm-set-mark'"
+;;   (interactive)
+;;   (setq last-region-beg (point))
+;;   (setq last-region-is-rect t)
+;;   (setq last-region-use-cua cua-mode)
+;;   (if cua-mode
+;;       (call-interactively 'cua-set-rectangle-mark)
+;;     (call-interactively 'rm-set-mark)))
 
 
 
-;;;###autoload
-(defun copy-region-and-paste ()
-  "拷贝region并且粘贴到region后"
-  (interactive)
-  (call-interactively 'copy-region)
-  (call-interactively 'yank))
+;; ;;;###autoload
+;; (defun copy-region (beg end)
+;;   "根据`mark-active'和`rm-mark-active'来决定是执行\
+;; `copy-region-as-kill'还是`rm-kill-ring-save'"
+;;   (interactive "r")
+;;   (if cua-mode
+;;       (if cua--rectangle
+;;           (progn
+;;             (cua-copy-rectangle t)
+;;             (cua-cancel))
+;;         (call-interactively 'cua-copy-region))
+;;     (if (rm-mark-active) (call-interactively 'rm-kill-ring-save)
+;;       (progn
+;;         (require 'pc-select)
+;;         (copy-region-as-kill beg end)))))
 
 
 
-;;;###autoload
-(defun copy-line-left ()
-  "拷贝当前行光标后面的文字"
-  (interactive)
-  (copy-region-as-kill
-   (point) (min (1+ (line-end-position)) (point-max))))
+;; ;;;###autoload
+;; (defun copy-region-and-paste ()
+;;   "拷贝region并且粘贴到region后"
+;;   (interactive)
+;;   (call-interactively 'copy-region)
+;;   (call-interactively 'yank))
 
 
 
-;;;###autoload
-(defun copy-cur-line ()
-  "拷贝当前行"
-  (interactive)
-  (let ((end (min (point-max) (1+ (line-end-position)))))
-    (copy-region-as-kill (line-beginning-position) end)))
+;; ;;;###autoload
+;; (defun copy-line-left ()
+;;   "拷贝当前行光标后面的文字"
+;;   (interactive)
+;;   (copy-region-as-kill
+;;    (point) (min (1+ (line-end-position)) (point-max))))
 
 
 
-;;;###autoload
-(defun copy-lines (&optional number)
-  "从当前行开始拷贝NUMBER行"
-  (interactive "p")
-  (if (null number)
-      (copy-cur-line)
-    (let ((lineNo))
-      (save-excursion
-        (if (< number 0)
-            (next-line))
-        (setq lineNo (line-number-at-pos nil))
-        (move-beginning-of-line nil)
-        (set-mark-command nil)
-        (goto-line (+ number lineNo))
-        (call-interactively 'copy-region-as-kill)))))
+;; ;;;###autoload
+;; (defun copy-cur-line ()
+;;   "拷贝当前行"
+;;   (interactive)
+;;   (let ((end (min (point-max) (1+ (line-end-position)))))
+;;     (copy-region-as-kill (line-beginning-position) end)))
 
 
 
-;;;###autoload
-(defun smart-copy ()
-  "智能拷贝, 如果`mark-active'的话, 则`copy-region', 否则`copy-lines'"
-  (interactive)
-  (if mark-active
-      (call-interactively 'copy-region)
-    (call-interactively 'copy-lines)))
+;; ;;;###autoload
+;; (defun copy-lines (&optional number)
+;;   "从当前行开始拷贝NUMBER行"
+;;   (interactive "p")
+;;   (if (null number)
+;;       (copy-cur-line)
+;;     (let ((lineNo))
+;;       (save-excursion
+;;         (if (< number 0)
+;;             (next-line))
+;;         (setq lineNo (line-number-at-pos nil))
+;;         (move-beginning-of-line nil)
+;;         (set-mark-command nil)
+;;         (goto-line (+ number lineNo))
+;;         (call-interactively 'copy-region-as-kill)))))
 
 
 
-;;;###autoload
-(defun kill-whole-paragraph (&optional arg)
-  "Kill whole paragraph."
-  (interactive "P")
-  (if arg
-      (kill-paragraph nil)
-    (call-interactively 'mark-paragraph)
-    (call-interactively 'kill-region)))
+;; ;;;###autoload
+;; (defun smart-copy ()
+;;   "智能拷贝, 如果`mark-active'的话, 则`copy-region', 否则`copy-lines'"
+;;   (interactive)
+;;   (if mark-active
+;;       (call-interactively 'copy-region)
+;;     (call-interactively 'copy-lines)))
 
 
 
-;;;###autoload
-(defun copy-whole-paragraph (&optional arg)
-  "Copy whole paragraph."
-  (interactive "P")
-  (save-excursion
-    (if arg
-        (progn
-          (mark-command t)
-          (forward-paragraph))
-      (call-interactively 'mark-paragraph))
-    (call-interactively 'copy-region)))
+;; ;;;###autoload
+;; (defun kill-whole-paragraph (&optional arg)
+;;   "Kill whole paragraph."
+;;   (interactive "P")
+;;   (if arg
+;;       (kill-paragraph nil)
+;;     (call-interactively 'mark-paragraph)
+;;     (call-interactively 'kill-region)))
 
 
 
-;;;###autoload
-(defun which-copy ()
-  "如果`mark-active'的话, 则`copy-region-and-paste', 否则
-`copy-line-left'"
-  (interactive)
-  (if mark-active (copy-region-and-paste) (copy-line-left)))
+;; ;;;###autoload
+;; (defun copy-whole-paragraph (&optional arg)
+;;   "Copy whole paragraph."
+;;   (interactive "P")
+;;   (save-excursion
+;;     (if arg
+;;         (progn
+;;           (mark-command t)
+;;           (forward-paragraph))
+;;       (call-interactively 'mark-paragraph))
+;;     (call-interactively 'copy-region)))
 
 
 
-;;;###autoload
-(defun backward-kill-word-or-kill-region ()
-  "`mark-active'时, 剪切选择的区域, 平时向后删除word, 和bash下面一样."
-  (interactive)
-  (if (rm-mark-active)
-      (call-interactively 'rm-kill-region)
-    (if mark-active
-        (if cua--rectangle
-            (progn
-              (cua-cut-rectangle t)
-              (cua-cancel))
-        (call-interactively 'kill-region))
-      (call-interactively 'backward-kill-word))))
+;; ;;;###autoload
+;; (defun which-copy ()
+;;   "如果`mark-active'的话, 则`copy-region-and-paste', 否则
+;; `copy-line-left'"
+;;   (interactive)
+;;   (if mark-active (copy-region-and-paste) (copy-line-left)))
+
+
+
+;; ;;;###autoload
+;; (defun backward-kill-word-or-kill-region ()
+;;   "`mark-active'时, 剪切选择的区域, 平时向后删除word, 和bash下面一样."
+;;   (interactive)
+;;   (if (rm-mark-active)
+;;       (call-interactively 'rm-kill-region)
+;;     (if mark-active
+;;         (if cua--rectangle
+;;             (progn
+;;               (cua-cut-rectangle t)
+;;               (cua-cancel))
+;;         (call-interactively 'kill-region))
+;;       (call-interactively 'backward-kill-word))))
 
 
 
@@ -247,45 +249,47 @@ if NO-RECORD is non-nil, do not record last-region."
   (interactive)
   (wcy-mark-some-thing-at-point)
   (backward-kill-word-or-kill-region))
+
 
 
-;;;###autoload
-(defun mark-whole-sexp (&optional not-whole)
-  "Mark whole sexp.
+;; ;;;###autoload
+;; (defun mark-whole-sexp (&optional not-whole)
+;;   "Mark whole sexp.
 
-If NOT-WHOLE is non-nil, do not mark whole sexp."
-  (interactive "P")
-  (if not-whole
-      (mark-sexp)
-    (let ((region (bounds-of-thing-at-point 'sexp)))
-      (if (not region)
-          (message "Can not found sexp.")
-        (goto-char (car region))
-        (call-interactively 'set-mark-command)
-        (forward-sexp)))))
-  
+;; If NOT-WHOLE is non-nil, do not mark whole sexp."
+;;   (interactive "P")
+;;   (if not-whole
+;;       (mark-sexp)
+;;     (let ((region (bounds-of-thing-at-point 'sexp)))
+;;       (if (not region)
+;;           (message "Can not found sexp.")
+;;         (goto-char (car region))
+;;         (call-interactively 'set-mark-command)
+;;         (forward-sexp)))))
 
-;;;###autoload
-(defun kill-whole-sexp (&optional not-whole)
-  "Kill whole sexp.
+
 
-If NOT-WHOLE is non-nil, do not kill whole sexp."
-    (interactive)
-    (mark-whole-sexp not-whole)
-    (backward-kill-word-or-kill-region))
+;; ;;;###autoload
+;; (defun kill-whole-sexp (&optional not-whole)
+;;   "Kill whole sexp.
 
-  
+;; If NOT-WHOLE is non-nil, do not kill whole sexp."
+;;     (interactive)
+;;     (mark-whole-sexp not-whole)
+;;     (backward-kill-word-or-kill-region))
 
-;;;###autoload
-(defun copy-sexp (&optional not-whole)
-  "Copy whole sexp.
+
 
-If NOT-WHOLE is non-nil, do not copy whole sexp."
-  (interactive)
-  (save-excursion
-    (mark-whole-sexp not-whole)
-    (if mark-active
-        (copy-region (region-beginning) (region-end)))))
+;; ;;;###autoload
+;; (defun copy-sexp (&optional not-whole)
+;;   "Copy whole sexp.
+
+;; If NOT-WHOLE is non-nil, do not copy whole sexp."
+;;   (interactive)
+;;   (save-excursion
+;;     (mark-whole-sexp not-whole)
+;;     (if mark-active
+;;         (copy-region (region-beginning) (region-end)))))
 
 
 
@@ -351,13 +355,13 @@ If NOT-WHOLE is non-nil, do not copy whole sexp."
 
 
 
-;;;###autoload
-(defun copy-sentence ()
-  "拷贝sentence"
-  (interactive)
-  (save-excursion
-    (call-interactively 'mark-end-of-sentence)
-    (call-interactively 'copy-region-as-kill)))
+;; ;;;###autoload
+;; (defun copy-sentence ()
+;;   "拷贝sentence"
+;;   (interactive)
+;;   (save-excursion
+;;     (call-interactively 'mark-end-of-sentence)
+;;     (call-interactively 'copy-region-as-kill)))
 
 
 
@@ -408,21 +412,21 @@ If NOT-WHOLE is non-nil, do not copy whole sexp."
 
 
 
-;;;###autoload
-(defun mark-invisible-region ()
-  "Mark invisible region."
-  (interactive)
-  (if (not (and last-region-beg last-region-end))
-      (message "No previous region.")
-    (goto-char last-region-beg)
-    (if last-region-is-rect
-        (if last-region-use-cua
-            (call-interactively 'cua-set-rectangle-mark)
-          (call-interactively 'rm-set-mark))
-      (call-interactively 'set-mark-command))
-    (goto-char last-region-end)
-    (if (and last-region-is-rect last-region-use-cua)
-        (cua--activate-rectangle))))
+;; ;;;###autoload
+;; (defun mark-invisible-region ()
+;;   "Mark invisible region."
+;;   (interactive)
+;;   (if (not (and last-region-beg last-region-end))
+;;       (message "No previous region.")
+;;     (goto-char last-region-beg)
+;;     (if last-region-is-rect
+;;         (if last-region-use-cua
+;;             (call-interactively 'cua-set-rectangle-mark)
+;;           (call-interactively 'rm-set-mark))
+;;       (call-interactively 'set-mark-command))
+;;     (goto-char last-region-end)
+;;     (if (and last-region-is-rect last-region-use-cua)
+;;         (cua--activate-rectangle))))
 
 
 
@@ -490,14 +494,14 @@ If NOT-WHOLE is non-nil, do not copy whole sexp."
 
 
 
-;;;###autoload
-(defun smart-kill ()
-  "If `mark-active', call `kill-region', otherwise call
-`kill-and-join-forward'."
-  (interactive)
-  (if mark-active
-      (call-interactively 'kill-region)
-    (call-interactively 'kill-and-join-forward)))
+;; ;;;###autoload
+;; (defun smart-kill ()
+;;   "If `mark-active', call `kill-region', otherwise call
+;; `kill-and-join-forward'."
+;;   (interactive)
+;;   (if mark-active
+;;       (call-interactively 'kill-region)
+;;     (call-interactively 'kill-and-join-forward)))
 
 
 
@@ -584,6 +588,7 @@ If NOT-WHOLE is non-nil, do not copy whole sexp."
 ;; ;;    ruby-mode-map html-mode-map python-mode-map
 ;; ;;    java-mode-map conf-javaprop-mode-map conf-space-mode-map)
 ;; ;;  `(("C-c M-C" copy-file-name)))
+
 
 
 (provide 'xy-edit-1)

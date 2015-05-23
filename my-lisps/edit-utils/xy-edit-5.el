@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2013-01-14 Mon 01:40 by xin on S13>
+;; Time-stamp: <2015-05-23 Sat 17:18 by xin on zbox.soton.ac.uk>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -26,14 +26,14 @@
 
 
 
-;;;###autoload
-(defun toggle-line-move-visual ()
-  "Toggle behavior of up/down arrow key, by visual line vs logical line."
-  (interactive)
-  (if line-move-visual
-      (setq line-move-visual nil)
-    (setq line-move-visual t))
-  )
+;; ;;;###autoload
+;; (defun toggle-line-move-visual ()
+;;   "Toggle behavior of up/down arrow key, by visual line vs logical line."
+;;   (interactive)
+;;   (if line-move-visual
+;;       (setq line-move-visual nil)
+;;     (setq line-move-visual t))
+;;   )
 
 
 

@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 28 Jan 2011
-;; Time-stamp: <2014-07-03 Thu 09:27 by xy12g13 on UOS-208326>
+;; Time-stamp: <2015-05-23 Sat 17:28 by xin on zbox.soton.ac.uk>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -36,47 +36,47 @@
 
 
 ;;** 切换 major mode，可以记住上次的选择
-;;;###autoload
-(defun major-mode-heuristic (symbol)
-  (and (fboundp symbol)
-       (string-match ".*-mode$" (symbol-name symbol))))
+;; ;;;###autoload
+;; (defun major-mode-heuristic (symbol)
+;;   (and (fboundp symbol)
+;;        (string-match ".*-mode$" (symbol-name symbol))))
 
-;;;###autoload
-(defun switch-major-mode (mode)
-  "切换 major mode，可以记住上次的选择."
-  (defvar switch-major-mode-last-mode nil)
-  (make-variable-buffer-local 'switch-major-mode-last-mode)
-  (interactive
-   (let ((fn switch-major-mode-last-mode) val)
-     (setq val
-           (completing-read
-            (if fn
-                (format "Switch major mode to (default %s): " fn)
-              "Switch major mode to: ")
-            obarray 'major-mode-heuristic t nil nil (symbol-name fn)))
-     (list (intern val))))
-  (let ((last-mode major-mode))
-    (funcall mode)
-    (setq switch-major-mode-last-mode last-mode)))
+;; ;;;###autoload
+;; (defun switch-major-mode (mode)
+;;   "切换 major mode，可以记住上次的选择."
+;;   (defvar switch-major-mode-last-mode nil)
+;;   (make-variable-buffer-local 'switch-major-mode-last-mode)
+;;   (interactive
+;;    (let ((fn switch-major-mode-last-mode) val)
+;;      (setq val
+;;            (completing-read
+;;             (if fn
+;;                 (format "Switch major mode to (default %s): " fn)
+;;               "Switch major mode to: ")
+;;             obarray 'major-mode-heuristic t nil nil (symbol-name fn)))
+;;      (list (intern val))))
+;;   (let ((last-mode major-mode))
+;;     (funcall mode)
+;;     (setq switch-major-mode-last-mode last-mode)))
 
 
 ;;** 显示`major-mode'及`mode-name'"
-;;;###autoload
-(defun get-mode-name ()
-  "显示`major-mode'及`mode-name'"
-  (interactive)
-  (message "major-mode is %s, mode-name is %s" major-mode mode-name))
+;; ;;;###autoload
+;; (defun get-mode-name ()
+;;   "显示`major-mode'及`mode-name'"
+;;   (interactive)
+;;   (message "major-mode is %s, mode-name is %s" major-mode mode-name))
 
 
 ;;** 插入日期时间
 ;; insert the variations of date formats (ISO and european formats)
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/InsertingTodaysDate" :display "Source")
-;;;###autoload
-(defun date (arg)
-  (interactive "P")
-  (insert (if arg
-              (format-time-string "%d.%m.%Y")
-            (format-time-string "%Y-%m-%d"))))
+;; ;;;###autoload
+;; (defun date (arg)
+;;   (interactive "P")
+;;   (insert (if arg
+;;               (format-time-string "%d.%m.%Y")
+;;             (format-time-string "%Y-%m-%d"))))
 
 ;;;###autoload
 (defun timestamp ()
@@ -256,38 +256,38 @@
   (kill-new (which-function)))
 
 
-;;;###autoload
-(defun skeleton-c-mode-left-brace (arg)
-  (interactive "P")
-  (if  (c-in-literal (c-most-enclosing-brace (c-parse-state)))
-      (self-insert-command 1)
-    ;; auto insert complex things.
-    (let* ((current-line (delete-and-extract-region
-                          (line-beginning-position)
-                          (line-end-position)))
-           (lines (and arg (mark t)
-                       (delete-and-extract-region (mark t) (point))))
-           (after-point (make-marker)))
-       ;;; delete extra blank begin and after the LINES
-      (setq lines (and lines
-                       (with-temp-buffer
-                         (insert lines)
-                         (beginning-of-buffer)
-                         (delete-blank-lines)
-                         (delete-blank-lines)
-                         (end-of-buffer)
-                         (delete-blank-lines)
-                         (delete-blank-lines)
-                         (buffer-string))))
-      (save-excursion
-        (let* ((old-point (point)))
-          (insert (if current-line current-line "")  "{\n")
-          (and lines (insert lines))
-          (move-marker after-point (point))
-          (insert "\n}")
-          (indent-region old-point (point) nil)))
-      (goto-char after-point)
-      (c-indent-line))))
+;; ;;;###autoload
+;; (defun skeleton-c-mode-left-brace (arg)
+;;   (interactive "P")
+;;   (if  (c-in-literal (c-most-enclosing-brace (c-parse-state)))
+;;       (self-insert-command 1)
+;;     ;; auto insert complex things.
+;;     (let* ((current-line (delete-and-extract-region
+;;                           (line-beginning-position)
+;;                           (line-end-position)))
+;;            (lines (and arg (mark t)
+;;                        (delete-and-extract-region (mark t) (point))))
+;;            (after-point (make-marker)))
+;;        ;;; delete extra blank begin and after the LINES
+;;       (setq lines (and lines
+;;                        (with-temp-buffer
+;;                          (insert lines)
+;;                          (beginning-of-buffer)
+;;                          (delete-blank-lines)
+;;                          (delete-blank-lines)
+;;                          (end-of-buffer)
+;;                          (delete-blank-lines)
+;;                          (delete-blank-lines)
+;;                          (buffer-string))))
+;;       (save-excursion
+;;         (let* ((old-point (point)))
+;;           (insert (if current-line current-line "")  "{\n")
+;;           (and lines (insert lines))
+;;           (move-marker after-point (point))
+;;           (insert "\n}")
+;;           (indent-region old-point (point) nil)))
+;;       (goto-char after-point)
+;;       (c-indent-line))))
 
 ;; (setq my-shebang-patterns
 ;;       (list "^#!\\s-*/usr/.*/perl\\(\\( \\)\\|\\( .+ \\)\\)-w *.*"
@@ -329,158 +329,158 @@
 ;; Remove any extra spaces caused by indentation when killing the
 ;; newline between.
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/AutoIndentation" :display "Source")
-;;;###autoload
-(defun kill-and-join-forward (&optional arg)
-  "If at end of line, join with following; otherwise kill line.
-     Deletes whitespace at join."
-  (interactive "P")
-  (if (and (eolp) (not (bolp)))
-      (progn
-         (delete-indentation t)
-         (if (looking-at " $")
-             (delete-char 1)))
-    (kill-line arg)))
+;; ;;;###autoload
+;; (defun kill-and-join-forward (&optional arg)
+;;   "If at end of line, join with following; otherwise kill line.
+;;      Deletes whitespace at join."
+;;   (interactive "P")
+;;   (if (and (eolp) (not (bolp)))
+;;       (progn
+;;          (delete-indentation t)
+;;          (if (looking-at " $")
+;;              (delete-char 1)))
+;;     (kill-line arg)))
 
 
 
 ;; merge a line with the line before it.
 ;; REF: (@url :file-name "http://blog.jdhuntington.com/2011/01/emacs-elisp-snipped-jlhjoinlin.html" :display "Source")
-;;;###autoload
-(defun jlh-join-lines (arg)
-  "Join this line to the line above n times
-Running this command with an argument of 1 is equivalent
-to running 'delete-indentation (aka 'join-line)."
-  (interactive "NHow many lines to join?: ")
-  (while (> arg 0)
-    (join-line)
-    (setq arg (- arg 1))))
+;; ;;;###autoload
+;; (defun jlh-join-lines (arg)
+;;   "Join this line to the line above n times
+;; Running this command with an argument of 1 is equivalent
+;; to running 'delete-indentation (aka 'join-line)."
+;;   (interactive "NHow many lines to join?: ")
+;;   (while (> arg 0)
+;;     (join-line)
+;;     (setq arg (- arg 1))))
 
 
 
 ;;* From pluskid (星黎殿)
 ;; REF: (@url :file-name "http://lifegoo.pluskid.org/wiki/index.html" :display "Source")
 
-;;** 在 Emacs 里面使用 Stardict
-;; 调用 stardict 的命令行接口来查辞典
-;; 如果选中了 region 就查询 region 的内容，
-;; 否则就查询当前光标所在的词
-;;;###autoload
-;; (global-set-key (kbd "C-c d") 'kid-star-dict)
-(defun kid-star-dict ()
-  (interactive)
-  (let ((begin (point-min))
-        (end (point-max)))
-    (if mark-active
-        (setq begin (region-beginning)
-              end (region-end))
-      (save-excursion
-        (backward-word)
-        (mark-word)
-        (setq begin (region-beginning)
-              end (region-end))))
-    ;; 有时候 stardict 会很慢，所以在回显区显示一点东西
-    ;; 以免觉得 Emacs 在干什么其他奇怪的事情。
-    (message "searching for %s ..." (buffer-substring begin end))
-    (tooltip-show
-     (shell-command-to-string
-      (concat "sdcv -n "
-              (buffer-substring begin end))))))
+;; ;;** 在 Emacs 里面使用 Stardict
+;; ;; 调用 stardict 的命令行接口来查辞典
+;; ;; 如果选中了 region 就查询 region 的内容，
+;; ;; 否则就查询当前光标所在的词
+;; ;;;###autoload
+;; ;; (global-set-key (kbd "C-c d") 'kid-star-dict)
+;; (defun kid-star-dict ()
+;;   (interactive)
+;;   (let ((begin (point-min))
+;;         (end (point-max)))
+;;     (if mark-active
+;;         (setq begin (region-beginning)
+;;               end (region-end))
+;;       (save-excursion
+;;         (backward-word)
+;;         (mark-word)
+;;         (setq begin (region-beginning)
+;;               end (region-end))))
+;;     ;; 有时候 stardict 会很慢，所以在回显区显示一点东西
+;;     ;; 以免觉得 Emacs 在干什么其他奇怪的事情。
+;;     (message "searching for %s ..." (buffer-substring begin end))
+;;     (tooltip-show
+;;      (shell-command-to-string
+;;       (concat "sdcv -n "
+;;               (buffer-substring begin end))))))
 
-;; 调用 stardict 的命令行程序 sdcv 来查辞典
-;; 如果选中了 region 就查询 region 的内容，否则查询当前光标所在的单词
-;; 查询结果在一个叫做 *sdcv* 的 buffer 里面显示出来，在这个 buffer 里面
-;; 按 q 可以把这个 buffer 放到 buffer 列表末尾，按 d 可以查询单词
-;; (global-set-key (kbd "C-c d") 'kid-sdcv-to-buffer)
-;;;###autoload
-(defun kid-sdcv-to-buffer ()
-  (interactive)
-  (let ((word (if mark-active
-                  (buffer-substring-no-properties
-                   (region-beginning) (region-end))
-                (current-word nil t))))
-    (setq word
-          (read-string
-           (format "Search the dictionary for (default %s): " word)
-           nil nil word))
-    (set-buffer (get-buffer-create "*sdcv*"))
-    (buffer-disable-undo)
-    (erase-buffer)
-    (let ((process
-           (start-process-shell-command
-            "sdcv" "*sdcv*" "sdcv" "-n" word)))
-      (set-process-sentinel
-       process
-       (lambda (process signal)
-         (when (memq (process-status process) '(exit signal))
-           (unless (string= (buffer-name) "*sdcv*")
-             (setq kid-sdcv-window-configuration
-                   (current-window-configuration))
-             (switch-to-buffer-other-window "*sdcv*")
-             (local-set-key (kbd "d") 'kid-sdcv-to-buffer)
-             (local-set-key (kbd "q")
-                            (lambda ()
-                              (interactive)
-                              (bury-buffer)
-                              (unless
-                                  (null (cdr (window-list)))
-                                (delete-window)))))
-           (goto-char (point-min))))))))
+;; ;; 调用 stardict 的命令行程序 sdcv 来查辞典
+;; ;; 如果选中了 region 就查询 region 的内容，否则查询当前光标所在的单词
+;; ;; 查询结果在一个叫做 *sdcv* 的 buffer 里面显示出来，在这个 buffer 里面
+;; ;; 按 q 可以把这个 buffer 放到 buffer 列表末尾，按 d 可以查询单词
+;; ;; (global-set-key (kbd "C-c d") 'kid-sdcv-to-buffer)
+;; ;;;###autoload
+;; (defun kid-sdcv-to-buffer ()
+;;   (interactive)
+;;   (let ((word (if mark-active
+;;                   (buffer-substring-no-properties
+;;                    (region-beginning) (region-end))
+;;                 (current-word nil t))))
+;;     (setq word
+;;           (read-string
+;;            (format "Search the dictionary for (default %s): " word)
+;;            nil nil word))
+;;     (set-buffer (get-buffer-create "*sdcv*"))
+;;     (buffer-disable-undo)
+;;     (erase-buffer)
+;;     (let ((process
+;;            (start-process-shell-command
+;;             "sdcv" "*sdcv*" "sdcv" "-n" word)))
+;;       (set-process-sentinel
+;;        process
+;;        (lambda (process signal)
+;;          (when (memq (process-status process) '(exit signal))
+;;            (unless (string= (buffer-name) "*sdcv*")
+;;              (setq kid-sdcv-window-configuration
+;;                    (current-window-configuration))
+;;              (switch-to-buffer-other-window "*sdcv*")
+;;              (local-set-key (kbd "d") 'kid-sdcv-to-buffer)
+;;              (local-set-key (kbd "q")
+;;                             (lambda ()
+;;                               (interactive)
+;;                               (bury-buffer)
+;;                               (unless
+;;                                   (null (cdr (window-list)))
+;;                                 (delete-window)))))
+;;            (goto-char (point-min))))))))
 
 
 
 ;; An function get from newsgroup cn.bbs.comp.emacs
 
-(defvar my-default-mode-line-modes mode-line-modes)
+;; (defvar my-default-mode-line-modes mode-line-modes)
 
-;;;###autoload
-(defun my-modeline-format-toggle-minor-modes ()
-  "toggle minor modes display on mode-line"
-  (interactive)
-  (setq my-modeline-format-toggle-minor-modes 'mode-name)
-  (if (not (equal mode-line-modes 'mode-name))
-      (setq mode-line-modes 'mode-name)
-    (setq mode-line-modes my-default-mode-line-modes))
-  (force-mode-line-update))
-;; (my-modeline-format-toggle-minor-modes)
-;; (global-set-key (kbd "<f6> h") 'my-modeline-format-toggle-minor-modes)
+;; ;;;###autoload
+;; (defun my-modeline-format-toggle-minor-modes ()
+;;   "toggle minor modes display on mode-line"
+;;   (interactive)
+;;   (setq my-modeline-format-toggle-minor-modes 'mode-name)
+;;   (if (not (equal mode-line-modes 'mode-name))
+;;       (setq mode-line-modes 'mode-name)
+;;     (setq mode-line-modes my-default-mode-line-modes))
+;;   (force-mode-line-update))
+;; ;; (my-modeline-format-toggle-minor-modes)
+;; ;; (global-set-key (kbd "<f6> h") 'my-modeline-format-toggle-minor-modes)
 
 
 ;; Emacs Lisp Scripting Quirk: Relative Paths
 ;; (@url :file-name "http://ergoemacs.org/emacs/elisp_relative_path.html" :display "Source")
 
-(defun fullpath-relative-to-current-file (file-relative-path)
-  "Returns the full path of FILE-RELATIVE-PATH, relative to file location where this function is called.
+;; (defun fullpath-relative-to-current-file (file-relative-path)
+;;   "Returns the full path of FILE-RELATIVE-PATH, relative to file location where this function is called.
 
-Example: If you have this line
- (fullpath-relative-to-current-file \"../xyz.el\")
-in the file at
- /home/mary/emacs/emacs_lib.el
-then the return value is
- /home/mary/xyz.el
-Regardless how or where emacs_lib.el is called.
+;; Example: If you have this line
+;;  (fullpath-relative-to-current-file \"../xyz.el\")
+;; in the file at
+;;  /home/mary/emacs/emacs_lib.el
+;; then the return value is
+;;  /home/mary/xyz.el
+;; Regardless how or where emacs_lib.el is called.
 
-This function solves 2 problems.
+;; This function solves 2 problems.
 
- ① If you have file A, that calls the `load' on a file at B, and
-B calls “load” on file C using a relative path, then Emacs will
-complain about unable to find C. Because, emacs does not switch
-current directory with “load”.
+;;  ① If you have file A, that calls the `load' on a file at B, and
+;; B calls “load” on file C using a relative path, then Emacs will
+;; complain about unable to find C. Because, emacs does not switch
+;; current directory with “load”.
 
- To solve this problem, when your code only knows the relative
-path of another file C, you can use the variable `load-file-name'
-to get the current file's full path, then use that with the
-relative path to get a full path of the file you are interested.
+;;  To solve this problem, when your code only knows the relative
+;; path of another file C, you can use the variable `load-file-name'
+;; to get the current file's full path, then use that with the
+;; relative path to get a full path of the file you are interested.
 
- ② To know the current file's full path, emacs has 2 ways:
-`load-file-name' and `buffer-file-name'. If the file is loaded
-by “load”, then load-file-name works but buffer-file-name
-doesn't. If the file is called by `eval-buffer', then
-load-file-name is nil. You want to be able to get the current
-file's full path regardless the file is run by “load” or
-interactively by “eval-buffer”."
-  (concat (file-name-directory
-           (or load-file-name buffer-file-name))
-          file-relative-path))
+;;  ② To know the current file's full path, emacs has 2 ways:
+;; `load-file-name' and `buffer-file-name'. If the file is loaded
+;; by “load”, then load-file-name works but buffer-file-name
+;; doesn't. If the file is called by `eval-buffer', then
+;; load-file-name is nil. You want to be able to get the current
+;; file's full path regardless the file is run by “load” or
+;; interactively by “eval-buffer”."
+;;   (concat (file-name-directory
+;;            (or load-file-name buffer-file-name))
+;;           file-relative-path))
 
 
 

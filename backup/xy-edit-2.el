@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2013-01-14 Mon 14:55 by xin on S13>
+;; Time-stamp: <2015-05-23 Sat 17:08 by xin on zbox.soton.ac.uk>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -50,32 +50,32 @@
 
 
 ;;;###autoload
-(defun insert-prior-line-char ()
-  "Insert the same character as in the prior line. Space if none."
-  (interactive)
-  (let* ((cur (current-column))
-         (char (save-excursion
-                 (if (or (not (eq 0 (forward-line -1)))
-                         (not (eq cur (move-to-column cur)) ))
-                     32
-                   (char-after)))))
-    (insert char)))
+;; (defun insert-prior-line-char ()
+;;   "Insert the same character as in the prior line. Space if none."
+;;   (interactive)
+;;   (let* ((cur (current-column))
+;;          (char (save-excursion
+;;                  (if (or (not (eq 0 (forward-line -1)))
+;;                          (not (eq cur (move-to-column cur)) ))
+;;                      32
+;;                    (char-after)))))
+;;     (insert char)))
 
 
 
 ;;;###autoload
-(defun insert-sequence-symbol (key)
-  "Insert the name of the function that key chord executes."
-  (interactive "kInseret key description: ")
-  (insert (symbol-name (key-binding key))))
+;; (defun insert-sequence-symbol (key)
+;;   "Insert the name of the function that key chord executes."
+;;   (interactive "kInseret key description: ")
+;;   (insert (symbol-name (key-binding key))))
 
 
 
 ;;;###autoload
-(defun insert-sequence-key (key)
-  "Inserts a keystroke suitable for use in fcns like global-set-key"
-  (interactive "kInseret key chord: ")
-  (insert (format "(kbd \"%s\")" (key-description key))))
+;; (defun insert-sequence-key (key)
+;;   "Inserts a keystroke suitable for use in fcns like global-set-key"
+;;   (interactive "kInseret key chord: ")
+;;   (insert (format "(kbd \"%s\")" (key-description key))))
 
 
 

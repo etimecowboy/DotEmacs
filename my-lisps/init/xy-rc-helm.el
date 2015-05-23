@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-21 Thu 21:23 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-23 Sat 16:19 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm.el'
 ;; Author:       Xin Yang
@@ -22,9 +22,9 @@
 
   (require 'helm-config)
 
-  (setq helm-split-window-default-side       'below
+  (setq helm-split-window-default-side       'right
         ; open helm buffer inside current window, not occupy whole other window
-        helm-split-window-in-side-p           nil
+        helm-split-window-in-side-p           t
         ; move to end or beginning of source when reaching top or bottom of source.
         helm-move-to-line-cycle-in-source     t
         ; search for library in `require' and `declare-function' sexp.

@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2013-01-14 Mon 01:15 by xin on S13>
+;; Time-stamp: <2015-05-23 Sat 17:12 by xin on zbox.soton.ac.uk>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -109,40 +109,40 @@ Like eclipse's Ctrl+Alt+F."
 
 
 
-;;;###autoload
-(defun cxx-file-p (file)
-  (let ((file-extension (file-name-extension file)))
-    (and file-extension
-         (string= file (file-name-sans-versions file))
-         (find file-extension
-               '("h" "hpp" "hxx" "c" "cpp" "cxx")
-               :test 'string=))))
+;; ;;;###autoload
+;; (defun cxx-file-p (file)
+;;   (let ((file-extension (file-name-extension file)))
+;;     (and file-extension
+;;          (string= file (file-name-sans-versions file))
+;;          (find file-extension
+;;                '("h" "hpp" "hxx" "c" "cpp" "cxx")
+;;                :test 'string=))))
+
+;; 
+
+;; ;;;###autoload
+;; (defun format-cxx-file (file)
+;;   "Format a c/c++ file."
+;;   (interactive "F")
+;;   (if (cxx-file-p file)
+;;       (let ((buffer (find-file-noselect file))) ;; open buffer
+;;         (save-excursion
+;;           (set-buffer buffer)
+;;           ;; (mark-whole-buffer)
+;;           (when (fboundp 'whitespace-cleanup)
+;;             (whitespace-cleanup))
+;;           (untabify (point-min) (point-max))
+;;           (indent-region (point-min) (point-max))
+;;           (save-buffer)
+;;           (kill-buffer)
+;;           (message "Formated c++ file:%s" file)))
+;;     (progn
+;;       (format-region)
+;;       (message "%s isn't a c++ file" file))))
 
 
 
-;;;###autoload
-(defun format-cxx-file (file)
-  "Format a c/c++ file."
-  (interactive "F")
-  (if (cxx-file-p file)
-      (let ((buffer (find-file-noselect file))) ;; open buffer
-        (save-excursion
-          (set-buffer buffer)
-          ;; (mark-whole-buffer)
-          (when (fboundp 'whitespace-cleanup)
-            (whitespace-cleanup))
-          (untabify (point-min) (point-max))
-          (indent-region (point-min) (point-max))
-          (save-buffer)
-          (kill-buffer)
-          (message "Formated c++ file:%s" file)))
-    (progn
-      (format-region)
-      (message "%s isn't a c++ file" file))))
-
-
-
-;; NOTE: dangerous!
+;; note: dangerous!
 ;; ;;;###autoload
 ;; (defun format-cxx-directory (dirname)
 ;;   "Format all c/c++ file in a directory."

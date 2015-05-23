@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-23 Sat 15:29 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-23 Sat 16:16 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-maxframe.el'
 ;; Author:       Xin Yang
@@ -30,9 +30,9 @@
 (defun maxframe-postload ()
   "Settings of `maxframe.el' after it's been loaded."
 
-  ;; default: desktop
-  (setq mf-max-width 1920
-        mf-max-height 1080)
+  ;; ;; default: stardard HD monitor
+  ;; (setq mf-max-width 1920
+  ;;       mf-max-height 1080)
 
   (Laptop ;; S13
    (setq mf-max-width 1366

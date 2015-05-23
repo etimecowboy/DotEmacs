@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-12-26 Fri 11:29 by xin on S13>
+;; Time-stamp: <2015-05-23 Sat 17:41 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -160,7 +160,7 @@
 ;;      - "M-s"         ==> ace-jump-word-mode
 ;;      - "C-u M-s"     ==> ace-jump-char-mode
 ;;      - "C-u C-u M-s" ==> ace-jump-line-mode
-;;      - tricks to use ace-jump
+;;      - tricks to use ac e-jump
 ;;        1) C-s ----- normal isearch
 ;;        2) <f11> ----- use ace-jump-mode to locate your point
 
@@ -278,13 +278,14 @@
    ("C-x C-m"  execute-extended-command)
    ("C-c C-m"  execute-extended-command)
    ("C-w"      backward-kill-word-or-kill-region)
-   ("M-w"      smart-copy)
-   ("M-W"      which-copy)
+   ;; ("M-W"      smart-copy)
+   ;; ("M-w"      copy-region)
+   ;; ("M-W"      which-copy)
    ("C-S-d"    backward-delete-char)
-   ("M-D"      my-kill-word)
-   ("C-k"      smart-kill)
+   ("M-d"      my-kill-word)
+   ;; ("C-k"      smart-kill)
    ;; ("M-k"      kill-sentence)
-   ("C-M-6"    jlh-join-lines)
+   ;; ("C-M-6"    jlh-join-lines)
    ("C-c ["    goto-paren) ;; NOTE: C-[ is Esc
    ("C-c ]"    goto-paren) ;; NOTE: C-] is `abort-recursive-edit'
    ;; ("C-M-]"    ywb-indent-accoding-to-paren)
@@ -293,16 +294,17 @@
    ("C-^"      case-trans)
    ("C-6"      case-trans)
    ("C-@"      mark-command)
-   ("C-x \\"   rm-mark-command)
-   ("C-x M-s"  isearch-forward-cur-word)
-   ("C-S-/"    wcy-mark-some-thing-at-point)
+   ("C-<SPC>"  mark-command)
+   ;; ("C-x \\"   rm-mark-command)
+   ("C-s"      isearch-forward-cur-word)
+   ("M-@"      wcy-mark-some-thing-at-point)
    ("M-;"      qiang-comment-dwim-line)
    ;; ("M-K"      qiang-copy-line)
    ("C-S-p"    move-line-up)  ;; NOTE: cannot use "C-P"
    ("C-S-n"    move-line-down);; NOTE: cannot use "C-N"
-   ("C-M-f"    format-cxx-file)
-   ("C-*"      insert-prior-line-char)
-   ("M-<f4>"   name-last-kbd-marco)
+   ;; ("C-M-f"    format-cxx-file)
+   ;; ("C-*"      insert-prior-line-char)
+   ("C-<f4>"   name-last-kbd-marco)
    ("S-<f4>"   insert-kbd-marco)
    ))
 

@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2013-01-14 Mon 02:09 by xin on S13>
+;; Time-stamp: <2015-05-23 Sat 17:20 by xin on zbox.soton.ac.uk>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -116,41 +116,41 @@
 
 ;; From file: `init-fonts.el'
 
-;;;###autoload
-(defun font-name-replace-size (font-name new-size)
-  (let ((parts (split-string font-name "-")))
-    (setcar (nthcdr 7 parts) (format "%d" new-size))
-    (mapconcat 'identity parts "-")))
+;; ;;;###autoload
+;; (defun font-name-replace-size (font-name new-size)
+;;   (let ((parts (split-string font-name "-")))
+;;     (setcar (nthcdr 7 parts) (format "%d" new-size))
+;;     (mapconcat 'identity parts "-")))
 
 
-;;;###autoload
-(defun increment-default-font-height (delta)
-  "Adjust the default font height by DELTA on every frame.
-The pixel size of the frame is kept (approximately) the same.
-DELTA should be a multiple of 10, in the units used by the
-:height face attribute."
-  (let* ((new-height (+ (face-attribute 'default :height) delta))
-         (new-point-height (/ new-height 10)))
-    (dolist (f (frame-list))
-      (with-selected-frame f
-        ;; Latest 'set-frame-font supports a "frames" arg, but
-        ;; we cater to Emacs 23 by looping instead.
-        (set-frame-font (font-name-replace-size (face-font 'default)
-                                                new-point-height)
-                        t)))
-    (set-face-attribute 'default nil :height new-height)
-    (message "default font size is now %d" new-point-height)))
+;; ;;;###autoload
+;; (defun increment-default-font-height (delta)
+;;   "Adjust the default font height by DELTA on every frame.
+;; The pixel size of the frame is kept (approximately) the same.
+;; DELTA should be a multiple of 10, in the units used by the
+;; :height face attribute."
+;;   (let* ((new-height (+ (face-attribute 'default :height) delta))
+;;          (new-point-height (/ new-height 10)))
+;;     (dolist (f (frame-list))
+;;       (with-selected-frame f
+;;         ;; Latest 'set-frame-font supports a "frames" arg, but
+;;         ;; we cater to Emacs 23 by looping instead.
+;;         (set-frame-font (font-name-replace-size (face-font 'default)
+;;                                                 new-point-height)
+;;                         t)))
+;;     (set-face-attribute 'default nil :height new-height)
+;;     (message "default font size is now %d" new-point-height)))
 
-;;;###autoload
-(defun increase-default-font-height ()
-  (interactive)
-  (increment-default-font-height 10))
+;; ;;;###autoload
+;; (defun increase-default-font-height ()
+;;   (interactive)
+;;   (increment-default-font-height 10))
 
 
-;;;###autoload
-(defun decrease-default-font-height ()
-  (interactive)
-  (increment-default-font-height -10))
+;; ;;;###autoload
+;; (defun decrease-default-font-height ()
+;;   (interactive)
+;;   (increment-default-font-height -10))
 
 
 

@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 27 Nov 2011
-;; Time-stamp: <2013-10-31 Thu 15:33 by xy12g13 on UOS-208326>
+;; Time-stamp: <2015-05-23 Sat 17:10 by xin on zbox.soton.ac.uk>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -130,6 +130,8 @@ the end of the line."
                      verilog-mode
                      ;; plain-tex-mode
                      ;; org-mode
+                     python-mode
+                     elpy-mode
                      ))
            (let ((mark-even-if-inactive transient-mark-mode))
              (indent-region (region-beginning) (region-end) nil))))))

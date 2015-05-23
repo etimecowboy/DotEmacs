@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-21 Thu 21:39 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-23 Sat 17:18 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -237,7 +237,7 @@
 
 ;;; Buffer settings
 
-(global-visual-line-mode 1) ;; Wrap line dynamically
+(global-visual-line-mode nil) ;; use logical line, not viusal line
 (setq word-wrap t)
 (setq inhibit-startup-screen t) ;; Do not display starup welcome screen
 (setq visible-bell t) ;; Use visible bell instead of bell sound
