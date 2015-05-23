@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-23 Sat 15:28 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-23 Sat 17:58 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -17,9 +17,9 @@
 
 
 
-;;* Definitions
-;;** System variables
-;;*** Important pathes
+;;; Definitions
+;;;; System variables
+;;;;; Important pathes
 (defvar my-emacs-sys-path (expand-file-name "~/.emacs.d")
   "Name of root directory where all user configuration files reside.")
 (defvar my-git-lisp-path (expand-file-name "git-lisps" my-emacs-sys-path)
@@ -47,7 +47,7 @@
 (defvar my-var-path (expand-file-name "var" my-emacs-sys-path)
   "Name of directory where my various Emacs log/record files reside.")
 
-;;*** Machine names --- which machine are we using?
+;;;;; Machine names --- which machine are we using?
 (defvar using-office-pc
   (string-match "uos" (prin1-to-string (downcase system-name))))
 (defvar using-home-desktop
@@ -63,8 +63,8 @@
   (string-match "linux" (prin1-to-string system-type)))
 
 
-;;** System marcos
-;;*** Machine name --- which machine are we using?
+;;;; System marcos
+;;;;; Machine name --- which machine are we using?
 (defmacro OfficePC (&rest body)
   (list
    'if (string-match
@@ -95,7 +95,7 @@
         "zbox" (prin1-to-string (downcase system-name)))
    (cons 'progn body)))
 
-;;*** OS type --- are we running GNU Linux?
+;;;;; OS type --- are we running GNU Linux?
 (defmacro GNULinux (&rest body)
   (list
    'if (string-match
@@ -108,11 +108,11 @@
         "windows" (prin1-to-string system-type))
    (cons 'progn body)))
 
-;;*** Graphic mode --- are we running any window system ?
+;;;;; Graphic mode --- are we running any window system ?
 (defmacro XLaunch (&rest body)
   (list 'if (eq window-system 'x)(cons 'progn body)))
 
-;;*** Emacs version
+;;;;; Emacs version
 (defmacro GNUEmacs (&rest body)
   "Execute any number of forms if running under GNU Emacs."
   (list 'if (string-match "GNU Emacs" (version))
@@ -142,7 +142,7 @@
 
 
 
-;;** c/c++ include dir
+;;;; c/c++ include dir
 (Windows
 
  (Laptop
@@ -247,7 +247,7 @@
 
 
 
-;;* F.Niessen's utilities in his .emacs
+;;; F.Niessen's utilities in his .emacs
 ;; REF: (@url :file-name "http://www.mygooglest.com/fni/dot-emacs.html" :display "Website")
 
 ;;;###autoload
@@ -383,7 +383,7 @@ just add the package to a list of missing packages."
 
 
 
-;;* From ahei-misc.el
+;;; From ahei-misc.el
 
 ;;;###autoload
 (defun am-add-hooks (hooks function &optional append local)
@@ -445,7 +445,7 @@ like `progn'. See also `with-temp-buffer'."
      '(progn ,@body)))
 
 
-;;* Emacs auto font selection for different OS
+;;; Emacs auto font selection for different OS
 ;; REF: (@url :file-name "http://emacser.com/torture-emacs.htm" :display "emacser")
 
 ;;;###autoload
@@ -519,7 +519,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;       一二三四五
 ;;       1l0oO
 
-;;* bhj's font setting
+;;; bhj's font setting
 ;; REF: (@url :file-name "https://raw.github.com/baohaojun/system-config/master/.emacs_d/lisp/bhj-fonts.el" :display "baohaojun's font setting")
 ;;      (@url :file-name "http://att.newsmth.net/nForum/#!article/Emacs/104729" :display "article by flonk@newsmth")
 ;;      (@url :file-name "http://att.newsmth.net/nForum/#!article/Emacs/104728" :display "article by flonk@newsmth")
@@ -638,7 +638,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ; {%/org-mode%}
 
 
-;;* Scalable Chinese font settings
+;;; Scalable Chinese font settings
 ;; NOTE: not working
 ;; REF: http://att.newsmth.net/nForum/#!article/Emacs/103607
 ;; BUG: 汉字宽度和英文字符宽度不匹配，不成整倍数
@@ -688,8 +688,8 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 
 
-;;* My font functions
-;;** Use qiang's font setting, fixed font size
+;;; My font functions
+;;;; Use qiang's font setting, fixed font size
 ;; ;;;###autoload
 ;; (defun xy/set-font-default ()
 ;;   "My default Emacs font setting."
@@ -788,7 +788,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;     ;; (set-default-font "Monospace 11")
 ;;     ))
 
-;;** Use bhj's font setting
+;;;; Use bhj's font setting
 ;; ;;;###autoload
 ;; (defun xy/set-font-default()
 ;;   "My Emacs default font setting."
@@ -868,7 +868,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;     (message "Set font size to %f. Scale Chinese font size by %f."
 ;;              xy:font-size xy:chinese-font-scale)))
 
-;;** Simple font setting
+;;;; Simple font setting
 ;; ;;;###autoload
 ;; (defun xy/set-font-default ()
 ;;   "Set Emacs font."
@@ -901,7 +901,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;     (set-default-font "Monospace")))
 
 
-;;* For compatibility among different version of Emacs
+;;; For compatibility among different version of Emacs
 
 ;; NOTE: the following 3 functions are used in `template.el', and
 ;; `session.el'
@@ -988,7 +988,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;   (defalias 'move-end-of-line       'end-of-line))
 
 
-;; ;;** 定义一些emacs 21没有的函数
+;; ;;;; 定义一些emacs 21没有的函数
 ;; (when is-before-emacs-21
 ;;     '(progn
 ;;        (defun line-number-at-pos (&optional pos)
@@ -1040,7 +1040,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;        (not (null pos))))
 ;;        ))
 
-;;** `make-local-hook' for `dictionary' and etc. packages
+;;;; `make-local-hook' for `dictionary' and etc. packages
 
 ;; REF: (@url :file-name "http://lists.gnu.org/archive/html/bug-gnu-emacs/2012-03/msg00806.html" :display "Post1")
 ;; REF: (@url :file-name "http://lists.gnu.org/archive/html/bug-gnu-emacs/2012-03/msg00806.html" :display "Post2")
@@ -1053,10 +1053,10 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 
 
-;;* My functions
+;;; My functions
 
 
-;;** Automatically set Emacs after it starts (for terminal-mode (daemon) and GUI-mode)
+;;;; Automatically set Emacs after it starts (for terminal-mode (daemon) and GUI-mode)
 ;; ;;;###autoload
 ;; (defun xy/emacs-start ()
 ;;   "Tasks been done after emacsclient first start."
@@ -1081,7 +1081,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;   )
 
 
-;;** Smart fullscreen and maximize
+;;;; Smart fullscreen and maximize
 ;; NOTE: in emacs-snapshot/emacs-w64, <f11> has been bound to toggle-frame-fullscreen.
 
 ;; (defvar xy:fullscreen-flag nil)
@@ -1130,13 +1130,13 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 ;; Setup Emacs
 
-;;** Reload init file
+;;;; Reload init file
 ;;;###autoload
 (defun load-dot-emacs-file ()
   (interactive)
   (load "init" 'noerror t t))
 
-;;** Open init file
+;;;; Open init file
 ;; ;;;###autoload
 ;; (defun open-init-dot-el-file ()
 ;;   (interactive)
@@ -1417,7 +1417,7 @@ The process is:
 
 
 
-;;** Emacs daemon in graphic environment
+;;;; Emacs daemon in graphic environment
 ;;;###autoload
 (defun xy/done ()
   "Save buffers and make Emacs frame invisible.\
@@ -1451,5 +1451,9 @@ See `bypass-trash-in-function' for more information."
        ad-do-it)))
 
 
+
+
+
+
 
 (provide 'xy-rc-utils)

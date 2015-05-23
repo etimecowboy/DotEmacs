@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-23 Sat 17:41 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-23 Sat 20:09 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -275,10 +275,10 @@
  global-map
  `(("C-x <f5>" revert-buffer)
    ("C-c <f5>" gbk-revert)
-   ("C-x C-m"  execute-extended-command)
-   ("C-c C-m"  execute-extended-command)
+   ;; ("C-x C-m"  execute-extended-command)
+   ;; ("C-c C-m"  execute-extended-command)
    ("C-w"      backward-kill-word-or-kill-region)
-   ;; ("M-W"      smart-copy)
+   ("M-w"      smart-copy)
    ;; ("M-w"      copy-region)
    ;; ("M-W"      which-copy)
    ("C-S-d"    backward-delete-char)
@@ -286,16 +286,15 @@
    ;; ("C-k"      smart-kill)
    ;; ("M-k"      kill-sentence)
    ;; ("C-M-6"    jlh-join-lines)
-   ("C-c ["    goto-paren) ;; NOTE: C-[ is Esc
-   ("C-c ]"    goto-paren) ;; NOTE: C-] is `abort-recursive-edit'
+   ("C-x %"    goto-paren) ;; NOTE: C-[ is Esc
+   ;; ("C-c ]"    goto-paren) ;; NOTE: C-] is `abort-recursive-edit'
    ;; ("C-M-]"    ywb-indent-accoding-to-paren)
    ;; ("C-c F f"  iy-go-to-char) ;; use `ace-jump'
    ;; ("C-c F b"  iy-go-to-char-backward)
    ("C-^"      case-trans)
-   ("C-6"      case-trans)
    ("C-@"      mark-command)
    ("C-<SPC>"  mark-command)
-   ;; ("C-x \\"   rm-mark-command)
+   ("C-x \\"   rm-mark-command)
    ("C-s"      isearch-forward-cur-word)
    ("M-@"      wcy-mark-some-thing-at-point)
    ("M-;"      qiang-comment-dwim-line)

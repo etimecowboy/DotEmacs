@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-23 Sat 16:37 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-23 Sat 22:37 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sunrise.el'
 ;; Author:       Xin Yang
@@ -38,8 +38,8 @@
 
   (add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
 
-  (setq ;; sr-avfs-root "~/"
-        sr-autoload-extensions t
+  (setq sr-autoload-extensions t
+        ;; sr-avfs-root "~/"
         sr-confirm-kill-viewer nil
         sr-fast-backup-extension ".bak"
         sr-history-length 100
@@ -52,7 +52,7 @@
         ;; sr-popviewer-enabled nil
         ;; sr-popviewer-mode nil
         ;; sr-popviewer-style 'single-dedicated-frame
-        sr-show-file-attributes t
+        sr-show-file-attributes nil
         sr-show-hidden-files t
         sr-tabs-follow-panes t
         sr-tabs-max-tabsize 30
@@ -62,19 +62,19 @@
         ;; sr-tree-explosion-ratio 3
         ;; sr-tree-isearch-always-sticky nil
         sr-w32-follow-shortcuts t
-        sr-windows-default-ratio 50
+        sr-windows-default-ratio 65
         sr-windows-locked t
         sr-window-split-style 'vertical
         sr-use-commander-keys nil)
-
-  ;; (setq sr-start-hook
-  ;;         'xy/set-font-prog ;; Use smaller fonts so that two columns can be displayed 
-  ;;         ;; 'maximize-frame ;; this takes all the monitors you have in Linux
-  ;;         ;; NOTE: the following codes has been added in autoloads
-  ;;         ;;   sr-tree-menu-init  
-  ;;         ;;   sr-tabs-start-once
-  ;;         ;;   sr-modeline-start-once
-  ;;         )
+  
+  (setq sr-start-hook
+        '(xy/set-font-prog ;; Use smaller fonts so that two columns can be displayed 
+          ;; maximize-frame ;; this takes all the monitors you have in Linux
+          ;; NOTE: the following codes has been added in autoloads
+          ;; (sr-tree-menu-init)
+          ;; (sr-tabs-start-once)
+          ;; (sr-modeline-start-once)
+        ))
 
   (message "* ---[ sunrise post-load configuration is complete ]---"))
 
