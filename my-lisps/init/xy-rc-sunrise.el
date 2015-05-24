@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-23 Sat 22:37 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-24 Sun 20:34 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sunrise.el'
 ;; Author:       Xin Yang
@@ -68,8 +68,8 @@
         sr-use-commander-keys nil)
   
   (setq sr-start-hook
-        '(xy/set-font-prog ;; Use smaller fonts so that two columns can be displayed 
-          ;; maximize-frame ;; this takes all the monitors you have in Linux
+        '(toggle-frame-maximized   ;; this takes all the monitors you have in Linux
+          xy/set-font-prog ;; Use smaller fonts so that two columns can be displayed 
           ;; NOTE: the following codes has been added in autoloads
           ;; (sr-tree-menu-init)
           ;; (sr-tabs-start-once)

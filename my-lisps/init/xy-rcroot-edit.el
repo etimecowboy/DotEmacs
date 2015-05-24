@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-23 Sat 20:09 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-24 Sun 20:39 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -295,7 +295,7 @@
    ("C-@"      mark-command)
    ("C-<SPC>"  mark-command)
    ("C-x \\"   rm-mark-command)
-   ("C-s"      isearch-forward-cur-word)
+   ;; ("C-s"      isearch-forward-cur-word)
    ("M-@"      wcy-mark-some-thing-at-point)
    ("M-;"      qiang-comment-dwim-line)
    ;; ("M-K"      qiang-copy-line)

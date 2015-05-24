@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-22 Fri 10:27 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-24 Sun 20:34 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -278,7 +278,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'magithub) ;; not useful
 
   (require-package 'markdown-mode)
-  (require-package 'maxframe)
+  ;; (require-package 'maxframe)
   (require-package 'mew)
   (require-package 'mic-paren)
   (require-package 'mo-git-blame)

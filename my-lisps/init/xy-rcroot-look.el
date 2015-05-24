@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-23 Sat 17:18 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-24 Sun 20:32 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -92,7 +92,12 @@
 ;;       terminal mode
 ;; BUG: `maxframe.el' doesn't work in my laptop Windows 7.(eval-after-load "fit-frame" '(fit-frame-postload))
 
-(eval-after-load "maxframe"  '(maxframe-postload))
+;; NOTE: it is now no need of addon packages to maximize the emacs
+;; frame nor the whole screen. Since 24.4, Emacs `frame.el' provides
+;; `toggle-frame-maximized' (ESC-<F10>) and `toggle-frame-fullscreen'
+;; (<F11>) to do it.
+
+;; (eval-after-load "maxframe"  '(maxframe-postload))
 ;; (eval-after-load "autofit-frame" '(autofit-frame-postload))
 ;; (try-require 'fit-frame)
 ;; (try-require 'maxframe) ;; NOTE: not stable with two or more monitors
@@ -103,20 +108,20 @@
 ;; (autoload 'fit-frame "fit-frame" nil t)
 ;; NOTE: not very useful
 
-(eal-define-keys-commonly
- global-map
- `(;; ("S-<f5>"    fit-frame) ;; `fit-frame.el'
-   ("M-<f11>"    maximize-frame) ;; `maxframe.el'
-   ("C-<f11>"    restore-frame)  ;; `maxframe.el'
-   ;; ("M-<f5>"    toggle-max-frame)  ;; `frame-cmds.el'
-   ;; ("C-M-<f5>"  xy/toggle-autofit-frame) ;; `autofit-frame.el'
-   ;; ("C-z"     thumfr-toggle-thumbnail-frame) ;; `thumb-frm.el'
-   ;; ("C-S-z"   thumfr-thumbify-other-frames)
-   ;; ("C-M-z"   thumfr-fisheye-next-frame)
-   ;; ("C-M-S-z" thumfr-fisheye-previous-frame)
-   ));; ;; avoid system maximize window icon conflict with `maxframe.el'
-;; (define-key special-event-map [iconify-frame]
-;;   'thumfr-thumbify-frame-upon-event)
+;; (eal-define-keys-commonly
+;;  global-map
+;;  `(;; ("S-<f5>"    fit-frame) ;; `fit-frame.el'
+;;    ;; ("M-<f11>"    maximize-frame) ;; `maxframe.el'
+;;    ;; ("C-<f11>"    restore-frame)  ;; `maxframe.el'
+;;    ;; ("M-<f5>"    toggle-max-frame)  ;; `frame-cmds.el'
+;;    ;; ("C-M-<f5>"  xy/toggle-autofit-frame) ;; `autofit-frame.el'
+;;    ;; ("C-z"     thumfr-toggle-thumbnail-frame) ;; `thumb-frm.el'
+;;    ;; ("C-S-z"   thumfr-thumbify-other-frames)
+;;    ;; ("C-M-z"   thumfr-fisheye-next-frame)
+;;    ;; ("C-M-S-z" thumfr-fisheye-previous-frame)
+;;    ));; ;; avoid system maximize window icon conflict with `maxframe.el'
+;; ;; (define-key special-event-map [iconify-frame]
+;; ;;   'thumfr-thumbify-frame-upon-event)
 
 
 
