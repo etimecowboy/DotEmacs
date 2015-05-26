@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-24 Sun 20:34 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-25 Mon 10:40 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sunrise.el'
 ;; Author:       Xin Yang
@@ -62,13 +62,13 @@
         ;; sr-tree-explosion-ratio 3
         ;; sr-tree-isearch-always-sticky nil
         sr-w32-follow-shortcuts t
-        sr-windows-default-ratio 65
+        sr-windows-default-ratio 75
         sr-windows-locked t
         sr-window-split-style 'vertical
         sr-use-commander-keys nil)
   
   (setq sr-start-hook
-        '(toggle-frame-maximized   ;; this takes all the monitors you have in Linux
+        '(;; toggle-frame-maximized
           xy/set-font-prog ;; Use smaller fonts so that two columns can be displayed 
           ;; NOTE: the following codes has been added in autoloads
           ;; (sr-tree-menu-init)
