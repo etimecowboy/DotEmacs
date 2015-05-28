@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-19 Tue 16:03 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-28 Thu 10:44 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elpy.el'
 ;; Author:       Xin Yang
@@ -19,10 +19,7 @@
 ;;;###autoload
 (defun xy/elpy-start ()
   "Start elpy for Python development"
-
   (interactive)
-  (elpy-enable)
-  (elpy-use-ipython)
   (elpy-mode 1)
   (flyspell-prog-mode)
   (autopair-mode 1)
@@ -34,7 +31,12 @@
 
   (setq elpy-rpc-backend "jedi"
         elpy-rpc-project-specific t)
-
+  (elpy-use-ipython)
+  (elpy-enable)
+  ;; FIXME: it doesn't work
+  ;; (setq elpy-mode-hook '((autopair-mode)
+  ;;                        (turn-on-auto-fill)))
+  
   (message "* ---[ elpy post-load configuration is complete ]---"))
 
 (provide 'xy-rc-elpy)

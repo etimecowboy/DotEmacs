@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:47 by xin on ubuntu>
+;; Time-stamp: <2015-05-28 Thu 10:21 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elscreen.el'
 ;; Author:       Xin Yang
@@ -21,10 +21,10 @@
   "Settings of `elscreen.el' after it's been loaded."
 
  (setq elscreen-display-screen-number t
+       ;; elscreen-tab-display-control t
+       ;; elscreen-tab-display-kill-screen t
        elscreen-display-tab nil
-       elscreen-prefix-key (kbd "C-z")
-       elscreen-tab-display-control nil
-       elscreen-tab-display-kill-screen t)
+       elscreen-prefix-key (kbd "C-z"))
 
  ;; TODO: Keep settings in different frames
  ;; (remove-hook 'after-make-frame-functions 'elscreen-make-frame-confs)

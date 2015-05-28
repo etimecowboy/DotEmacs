@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2015-05-28 Thu 10:38 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-flyspell.el'
 ;; Author:       Xin Yang
@@ -28,10 +28,10 @@
 ;;;###autoload
 (defun flyspell-postload ()
   "Settings of `flyspell.el' after it's been loaded."
-  (setq flyspell-delay 1)
+  (setq flyspell-delay 0.5)
   (setq flyspell-issue-welcome-flag nil)
   ;; 令flyspell按照相近程度补齐
-  (setq flyspell-sort-corrections nil)
+  (setq flyspell-sort-corrections t)
   ;; (add-hook 'flyspell-incorrect-hook 'my-flyspell-ignore-uppercase)
   (message "* ---[ flyspell post-load configuration is complete ]---"))
 

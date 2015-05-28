@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-04-04 Sat 03:08 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-28 Thu 10:01 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang

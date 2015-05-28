@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-20 Wed 22:14 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-28 Thu 09:51 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -51,19 +51,24 @@
         ("C-c <tab>"   bh/hide-other)
         ;; ("C-c b"       ebib-insert-bibtex-key)
         ))))
+
+(global-set-key (kbd "<f12> <f12>") 'org-agenda)
+(global-set-key (kbd "<f12> <f11>") 'org-capture)
+(global-set-key (kbd "<f12> <f12>") 'org-store-link)
+
 (eval-after-load "org-agenda" '(org-postload))
 (eval-after-load "org-capture" '(org-postload))
 
-(eal-define-keys-commonly
- global-map
- `(("<f12> a"   org-agenda)
-   ("<f12> n"   org-capture)
-   ("<f12> l"   org-store-link)
-   ;; ("C-c o"   org-ctags-find-tag-interactive)
-   ;; ("<f12> b"       org-ido-switchb)
-   ;; ("C-c n"   org2blog/wp-new-entry)
-   ;; ("M-S-w"   tzz-copy-region-with-mode-property)
-   ))
+;; (eal-define-keys-commonly
+;;  global-map
+;;  `(("<f12> <f12>"   org-agenda)
+;;    ("<f12> <f11>"   org-capture)
+;;    ("<f12> <f10>"   org-store-link)
+;;    ;; ("C-c o"   org-ctags-find-tag-interactive)
+;;    ;; ("<f12> b"       org-ido-switchb)
+;;    ;; ("C-c n"   org2blog/wp-new-entry)
+;;    ;; ("M-S-w"   tzz-copy-region-with-mode-property)
+;;    ))
 
 ;; BUG: when use this to fix org-agenda/org-mobile-push error ((error
 ;;      function `appt-make-list') in Emacs24 ((@url :file-name "http://www.mail-archive.com/emacs-orgmode@gnu.org/msg47051.html" :display "REF")) .
