@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-21 Thu 10:19 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-28 Thu 11:13 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -216,12 +216,13 @@
                       `(("C-<tab>"     company-complete)
                         ("C-c C-<tab>" company-yasnippet)
                         ))))
-
+(global-set-key (kbd "<f6> c") 'global-company-mode)
 ;; (am-add-hooks
 ;;  `(c-mode-common-hook lisp-mode-hook emacs-lisp-mode-hook
 ;;    java-mode-hook lisp-interaction-mode-hook sh-mode-hook
 ;;   ,(if (not is-before-emacs-21) 'awk-mode-hook) ruby-mode-hook)
 ;;   'company-mode)
+
 
 
 

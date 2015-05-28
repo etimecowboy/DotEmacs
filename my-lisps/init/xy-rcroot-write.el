@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-28 Thu 09:51 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-28 Thu 12:02 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -54,7 +54,7 @@
 
 (global-set-key (kbd "<f12> <f12>") 'org-agenda)
 (global-set-key (kbd "<f12> <f11>") 'org-capture)
-(global-set-key (kbd "<f12> <f12>") 'org-store-link)
+(global-set-key (kbd "<f12> <f10>") 'org-store-link)
 
 (eval-after-load "org-agenda" '(org-postload))
 (eval-after-load "org-capture" '(org-postload))
