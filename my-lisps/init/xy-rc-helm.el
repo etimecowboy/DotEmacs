@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-23 Sat 16:19 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-05-31 Sun 11:42 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm.el'
 ;; Author:       Xin Yang
@@ -22,7 +22,7 @@
 
   (require 'helm-config)
 
-  (setq helm-split-window-default-side       'right
+  (setq helm-split-window-default-side        'below
         ; open helm buffer inside current window, not occupy whole other window
         helm-split-window-in-side-p           t
         ; move to end or beginning of source when reaching top or bottom of source.
