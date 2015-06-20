@@ -34,9 +34,7 @@
 
 ;;;; tzz-copy-region-with-mode-property
 ;; Add org wrap for source code
-
-;; - REF: [[http://permalink.gmane.org/gmane.emacs.gnus.general/78422][News group: "auto-format code block for org"]]
-
+;; REF: [[http://permalink.gmane.org/gmane.emacs.gnus.general/78422][News group: "auto-format code block for org"]]
 ;;;###autoload
 (defun tzz-copy-region-with-mode-property (beg end)
   (interactive "r")

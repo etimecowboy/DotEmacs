@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-25 Mon 10:57 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-06-21 Sun 00:31 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -171,7 +171,8 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'windsize)
   (require-package 'winpoint)
 
-  (require-package 'color-theme-sanityinc-solarized)
+  ;; (require-package 'color-theme-sanityinc-solarized)
+  (require-package 'solarized-theme)
   (require-package 'zenburn-theme)
   ;; (require-package 'anti-zenburn-theme) ;; not pretty
   ;; (require-package 'nzenburn-theme)
