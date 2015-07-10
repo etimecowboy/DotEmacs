@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-24 Sun 20:32 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-06-22 Mon 13:41 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -599,8 +599,8 @@
 ;;   + `hc-zenburn-theme': a higher contrast zenburn theme
 ;; - solarized
 (setq custom-safe-themes t)
-(when (and window-system (try-require 'zenburn-theme))
-  (load-theme 'zenburn t))
+(when (and window-system (try-require 'solarized-dark-theme))
+  (load-theme 'solarized-dark t))
 (global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
 
 ;; (Windows

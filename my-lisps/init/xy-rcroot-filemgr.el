@@ -180,7 +180,7 @@
 (try-require 'unify-opening)
 
 
-;; ** w32-browser
+;;;;; w32-browser
 (Windows
  (try-require 'w32-browser))
 

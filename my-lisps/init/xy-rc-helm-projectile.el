@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-17 Sun 01:53 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-07-09 Thu 11:02 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm-projectile.el'
 ;; Author:       Xin Yang
@@ -20,13 +20,13 @@
 (defun helm-projectile-postload ()
   "Settings of `helm-projectile.el' after it's been loaded."
 
-  (setq helm-projectile-fuzzy-match t)
-  (setq helm-projectile-sources-list
-    (quote
-     (helm-source-projectile-buffers-list
-      helm-source-projectile-files-list
-      helm-source-projectile-projects)))
-  (setq projectile-switch-project-action 'helm-projectile-find-file)
+  ;; (setq helm-projectile-fuzzy-match t)
+  ;; (setq helm-projectile-sources-list
+  ;;   (quote
+  ;;    (helm-source-projectile-buffers-list
+  ;;     helm-source-projectile-files-list
+  ;;     helm-source-projectile-projects)))
+  ;; (setq projectile-switch-project-action 'helm-projectile-find-file)
 
   (helm-projectile-on)
   

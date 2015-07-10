@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-06-21 Sun 00:31 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-07-10 Fri 10:27 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -174,9 +174,6 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'color-theme-sanityinc-solarized)
   (require-package 'solarized-theme)
   (require-package 'zenburn-theme)
-  ;; (require-package 'anti-zenburn-theme) ;; not pretty
-  ;; (require-package 'nzenburn-theme)
-  ;; (require-package 'hc-zenburn-theme)
   
   ;; (require-package 'ascii)  
   (require-package 'auto-dim-other-buffers)
@@ -273,8 +270,8 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'mag-menu)
   ;; (require-package 'splitter) ;; just use basic split functions
 
-  (require-package 'git-commit-mode)
-  (require-package 'git-rebase-mode)
+  ;; (require-package 'git-commit-mode) ;; not supported by magit since 2015-07-10
+  ;; (require-package 'git-rebase-mode) ;; not supported by magit since 2015-07-10
   (require-package 'magit)
   ;; (require-package 'magithub) ;; not useful
   
@@ -398,14 +395,14 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'helm-firefox)
   (require-package 'helm-c-yasnippet)
   ;; (require-package 'helm-R)
-  ;; (require-package 'helm-c-moccur)
-  ;; (require-package 'helm-descbinds)
+  (require-package 'helm-c-moccur)
+  (require-package 'helm-descbinds)
   ;; (require-package 'helm-gist)
   ;; (require-package 'helm-git)
   ;; (require-package 'helm-gtags)
   ;; (require-package 'helm-ls-git)
   ;; ;; (require-package 'helm-migemo)
-  ;; (require-package 'helm-projectile)
+  (require-package 'helm-projectile)
   ;; (require-package 'helm-themes)
 
   ;; (require-package 'ack-menu)  ;; ack is not used

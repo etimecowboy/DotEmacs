@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-04-27 Mon 14:05 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-07-10 Fri 12:09 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -469,6 +469,7 @@ Toggle keyboard command logging of whole emacs.
 
 ;; Use clipboard with x-window system
 (setq x-select-enable-clipboard t)
+(setq x-select-enable-clipboard-manager nil)
 
 ;; Time string format
 (setq system-time-locale "C")

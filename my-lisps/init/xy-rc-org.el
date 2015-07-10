@@ -1070,7 +1070,10 @@
            ("\\.bmp\\'"     . system)
            ("\\.gif\\'"     . system)
            )))
-
+;;;;; Special symboles
+  (setq org-entities-user
+        '(("sp" "~" nil "&nbsp;" " " " " " ") ;; non-breaking spaces
+          ))
 ;;;;; LaTeX export
   ;; (require 'ox)
   ;; (require 'ox-latex)
