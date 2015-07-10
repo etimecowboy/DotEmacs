@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-23 Sat 17:58 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-07-10 Fri 12:23 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -718,7 +718,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 ;;;###autoload
 (defun xy/set-font-prog ()
-  "My default Emacs font setting."
+  "Set font for programming."
   (interactive)
   (if window-system
       (qiang-set-font
@@ -731,7 +731,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 ;;;###autoload
 (defun xy/set-font-prog-big ()
-  "My default Emacs font setting."
+  "Set font for programming (big)."
   (interactive)
   (if window-system
       (qiang-set-font
@@ -744,7 +744,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 ;;;###autoload
 (defun xy/set-font-write ()
-  "My Emacs font setting for writing articles."
+  "Set font for writing."
   (interactive)
   (if window-system
       (qiang-set-font
@@ -756,7 +756,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 ;;;###autoload
 (defun xy/set-font-write-big ()
-  "My Emacs font setting for writing articles."
+  "Set font for writing (big)."
   (interactive)
   (if window-system
       (qiang-set-font
