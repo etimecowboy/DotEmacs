@@ -3,7 +3,7 @@
 ;; Author: ahei <ahei0802@gmail.com>
 ;; Keywords: eval-after-load, autoload
 ;; URL: http://code.google.com/p/dea/source/browse/trunk/my-lisps/eval-after-load.el
-;; Time-stamp: <2015-05-11 Mon 16:26 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-07-20 Mon 15:08 by xin on zbox.soton.ac.uk>
 
 ;; This  file is free  software; you  can redistribute  it and/or
 ;; modify it under the terms of the GNU General Public License as
@@ -144,6 +144,7 @@
     ("helm"            helm-mode              helm-command-map)
     ("projectile"      projectile-mode        projectile-mode-map)
     ("projectile"      projectile-mode        projectile-command-map)
+    ("highlight-symbol" highlight-symbol-mode highlight-symbol-mode-map)
     )
   "*List used to find load file by mode or map.
 

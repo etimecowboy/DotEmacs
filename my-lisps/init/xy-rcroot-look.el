@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-07-10 Fri 12:24 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-07-20 Mon 15:14 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -499,13 +499,13 @@
 ;; (global-hi-lock-mode 1)
 (eal-define-keys
  'hi-lock-map
- `(("C-c H l" highlight-lines-matching-regexp)
-   ("C-c H f" hi-lock-find-patterns)
-   ("C-c H x" highlight-regexp)
-   ("C-c H h" highlight-phrase)
-   ("C-c H u" unhighlight-regexp)
-   ("C-c H w" hi-lock-write-interactive-patterns)
-   ("C-c H a" hi-lock-show-all)))
+ `(("C-c l l" highlight-lines-matching-regexp)
+   ("C-c l f" hi-lock-find-patterns)
+   ("C-c l x" highlight-regexp)
+   ("C-c l h" highlight-phrase)
+   ("C-c l u" unhighlight-regexp)
+   ("C-c l w" hi-lock-write-interactive-patterns)
+   ("C-c l a" hi-lock-show-all)))
 
 
 
@@ -515,21 +515,38 @@
   '(progn
      ;; (highlight-symbol-face-settings)
      (highlight-symbol-postload)))
-
+(global-set-key (kbd "<f6> L") 'global-highlight-symbol-mode)
+ 
 ;; NOTE: C-x H has been binded to `goto-help-buffer'
-(eal-define-keys
- `(emacs-lisp-mode-map lisp-interaction-mode-map java-mode-map
-   c-mode-base-map c++-mode-map perl-mode-map matlab-mode-map
-   org-mode-map text-mode-map ruby-mode-map html-mode-map
-   matlab-mode-map)
- `(("C-c H m" highlight-symbol-at-point)
-   ("C-c H k" highlight-symbol-remove-all)
-   ("C-c H n" highlidght-symbol-next)
-   ("C-c H p" highldight-symbol-prev)
-   ("C-c H %" highlight-symbol-query-replace)
-   ("C-c H N" highlight-symbol-next-in-defun)
-   ("C-c H P" highlig
-    ht-symbol-prev-in-defun)))
+;; (eal-define-keys
+;;  `(emacs-lisp-mode-map lisp-interaction-mode-map java-mode-map
+;;    c-mode-base-map c++-mode-map perl-mode-map matlab-mode-map
+;;    ruby-mode-map html-mode-map)
+;;  `(("C-c l m" highlight-symbol)
+;;    ("C-c l k" highlight-symbol-remove-all)
+;;    ("C-c l n" highlidght-symbol-next)
+;;    ("C-c l p" highldight-symbol-prev)
+;;    ("C-c l %" highlight-symbol-query-replace)
+;;    ("C-c l N" highlight-symbol-next-in-defun)
+;;    ("C-c l P" highlight-symbol-prev-in-defun)))
+(eal-define-keys-commonly
+ global-map
+ `(("C-c l m" highlight-symbol)
+   ("C-c l k" highlight-symbol-remove-all)
+   ("C-c l n" highlidght-symbol-next)
+   ("C-c l p" highldight-symbol-prev)
+   ("C-c l %" highlight-symbol-query-replace)
+   ("C-c l N" highlight-symbol-next-in-defun)
+   ("C-c l P" highlight-symbol-prev-in-defun)))
+;; (eal-define-keys
+;;  'highlight-symbol-mode-map
+;;  `(("C-c l m" highlight-symbol)
+;;    ("C-c l k" highlight-symbol-remove-all)
+;;    ("C-c l n" highlidght-symbol-next)
+;;    ("C-c l p" highldight-symbol-prev)
+;;    ("C-c l %" highlight-symbol-query-replace)
+;;    ("C-c l N" highlight-symbol-next-in-defun)
+;;    ("C-c l P" highlight-symbol-prev-in-defun)))
 
 
 
