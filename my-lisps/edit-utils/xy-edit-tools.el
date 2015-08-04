@@ -4,7 +4,7 @@
 
 ;; Author: Xin Yang <xin2.yang@gmail.com>
 ;; Created: 28 Jan 2011
-;; Time-stamp: <2015-05-23 Sat 17:28 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-08-03 Mon 22:04 by xin on zbox.soton.ac.uk>
 ;; Keywords: auto install lisp load-path autoloads
 ;; Compatibility: Only tested on GNU Emacs 23.2
 
@@ -483,6 +483,19 @@
 ;;           file-relative-path))
 
 
+;; REF: http://stackoverflow.com/questions/23636226/how-to-round-all-the-numbers-in-a-region
+;;;###autoload
+(defun my-round-nb (start end)
+  "round the nb of the region."
+  (interactive "r")
+  (save-restriction
+    (narrow-to-region start end)
+    (goto-char 1)
+    (let ((case-fold-search nil))
+      (while (search-forward-regexp "\\([0-9]+\\.[0-9]+\\)" nil t)
+        (replace-match (format "%0.2f" (string-to-number (match-string 1)))
+                       )))))
+
 
 (provide 'xy-edit-tools)
 
