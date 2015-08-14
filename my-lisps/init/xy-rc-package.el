@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-07-10 Fri 10:27 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-08-05 Wed 19:05 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -292,6 +292,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'org-cua-dwim)
   ;; (require-package 'org-mime)
   (require-package 'org-plus-contrib)
+  (require-package 'gnuplot)
   ;; (require-package 'org-table-comment)  ;; nerver used by now
   ;; NOTE: one of the following 5 package is used to fold code as
   ;; org-mode, now I am using `outshine'
