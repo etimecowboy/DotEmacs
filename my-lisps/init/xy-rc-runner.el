@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-21 Thu 16:46 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-09-16 Wed 12:05 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-runner.el'
 ;; Author:       Xin Yang
@@ -16,16 +16,14 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
-;;;###autoload
-(defun runner-preload ()
-  "Settings of `recentf.el' before it's been loaded."
-  
-  (setq runner-init-file (concat my-var-path "/runner-conf-"
-                                 user-login-name "-"
-                                 system-name "-"
-                                 system-configuration ".el"))
-
-  (message "* ---[ runner pre-load configuration is complete ]---"))
+;; ;;;###autoload
+;; (defun runner-preload ()
+;;   "Settings of `recentf.el' before it's been loaded."
+;;   (setq runner-init-file (concat my-var-path "/runner-conf-"
+;;                                  user-login-name "-"
+;;                                  system-name "-"
+;;                                  system-configuration ".el"))
+;;   (message "* ---[ runner pre-load configuration is complete ]---"))
 
 ;;;###autoload
 (defun runner-postload ()
@@ -39,6 +37,10 @@
   (setq runner-run-in-background t
         runner-show-label        nil
         runner-shell-function   'runner-shell-function-eshell)
+
+  ;; fix the problem of loading runner-init-file
+  (runner-settings-load)
+  (runner-reset)
 
   (message "* ---[ runner post-load configuration is complete ]---"))
 

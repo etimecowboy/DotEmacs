@@ -173,8 +173,8 @@
   (eval-after-load "thumbs" '(thumbs-postload)))
 
 ;;;;;; `runner': an new `open-with' for dired-mode
-(runner-preload)
-(eval-after-load "runner" '(runner-postload)) ;; dired大补
+(eval-after-load "runner" '(runner-postload))
+(try-require 'runner)
 
 ;;;;;; `unify-opening': unified method to open files
 (try-require 'unify-opening)
