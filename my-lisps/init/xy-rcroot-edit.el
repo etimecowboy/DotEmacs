@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-24 Sun 20:39 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-10-28 Wed 09:19 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -134,7 +134,7 @@
      (isearch-postload)
      (eal-define-keys
       'isearch-mode-map
-      `(("M-i" isearch-query-replace-current)
+      `(;; ("M-i" isearch-query-replace-current) ;; not work
         ("M-k" isearch-clean)
         ("M-g" isearch-cancel)
         ("M-u" isearch-toggle-word)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-08-05 Wed 19:05 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-10-28 Wed 09:06 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -258,6 +258,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'info+)
   (require-package 'ioccur)
   (require-package 'isearch+)
+  (require-package 'isearch-prop)
   ;; (require-package 'iy-go-to-char)
   ;; (require-package 'jira)
   ;; (require-package 'json)

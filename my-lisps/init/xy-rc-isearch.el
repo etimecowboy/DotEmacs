@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2015-10-28 Wed 09:18 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-isearch.el'
 ;; Author:       Xin Yang
@@ -18,31 +18,32 @@
 (eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
+;; FIXME: not work
 ;; 在C-s进入incremental search的时候,按M-i,替换当前查找内容
-;;;###autoload
-(defun isearch-query-replace-current ()
-  "Replace current searching string."
-  (interactive)
-  (let ((case-fold-search isearch-case-fold-search)
-    (from-string isearch-string))
-    (if (string= from-string "")
-    (isearch-update)
-      (if (not isearch-success)
-      (progn
-        (message "Search string not found")
-        (sleep-for 0.5)
-        (isearch-update))
-    (progn
-      (isearch-done)
-      (goto-char (min (point) isearch-other-end)))
-    (perform-replace
-     from-string
-     (read-from-minibuffer
-      (format "Query replace %s with: " from-string)
-      "" nil nil query-replace-to-history-variable from-string t)
-     t                                ; query flag
-     isearch-regexp
-     nil)))))
+;; ;;;###autoload
+;; (defun isearch-query-replace-current ()
+;;   "Replace current searching string."
+;;   (interactive)
+;;   (let ((case-fold-search isearch-case-fold-search)
+;;     (from-string isearch-string))
+;;     (if (string= from-string "")
+;;     (isearch-update)
+;;       (if (not isearch-success)
+;;       (progn
+;;         (message "Search string not found")
+;;         (sleep-for 0.5)
+;;         (isearch-update))
+;;     (progn
+;;       (isearch-done)
+;;       (goto-char (min (point) isearch-other-end)))
+;;     (perform-replace
+;;      from-string
+;;      (read-from-minibuffer
+;;       (format "Query replace %s with: " from-string)
+;;       "" nil nil query-replace-to-history-variable from-string t)
+;;      t                                ; query flag
+;;      isearch-regexp
+;;      nil)))))
 
 ;;;###autoload
 (defun toggle-case-fold-search-when-search ()
@@ -145,6 +146,9 @@ This is useful when followed by an immediate kill."
 ;;;###autoload
 (defun isearch-postload ()
   "Settings for `isearch' after it's been loaded."
+
+  (try-require 'isearch+)
+  ;; (try-require 'isearch-prop) % auto-load in `isearch+'
   (setq-default case-fold-search t) ;; 搜索时不区分大小写
   (message "* ---[ isearch post-load configuration is complete ]---"))
 
