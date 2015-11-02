@@ -704,7 +704,7 @@
   (setq org-agenda-use-time-grid t)
   (setq org-agenda-time-grid
         '((daily today require-timed) "----------------"
-          (800 1000 1200 1400 1600 1800)))
+          (800 1000 1200 1400 1600 1800 20:00 22:00)))
 
   ;; Agenda view presentation and sorting
   ;; org-agenda-tags-column
