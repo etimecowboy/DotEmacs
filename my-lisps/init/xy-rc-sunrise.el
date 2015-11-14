@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-28 Thu 11:05 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-11-13 Fri 15:09 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sunrise.el'
 ;; Author:       Xin Yang
@@ -52,7 +52,7 @@
         ;; sr-popviewer-enabled nil
         ;; sr-popviewer-mode nil
         ;; sr-popviewer-style 'single-dedicated-frame
-        sr-show-file-attributes nil
+        sr-show-file-attributes t
         sr-show-hidden-files t
         sr-tabs-follow-panes t
         sr-tabs-max-tabsize 30
@@ -62,9 +62,9 @@
         ;; sr-tree-explosion-ratio 3
         ;; sr-tree-isearch-always-sticky nil
         sr-w32-follow-shortcuts t
-        sr-windows-default-ratio 75
+        sr-windows-default-ratio 65
         sr-windows-locked t
-        sr-window-split-style 'vertical
+        sr-window-split-style 'horizontal
         sr-use-commander-keys nil)
   
   ;; (setq sr-start-hook
