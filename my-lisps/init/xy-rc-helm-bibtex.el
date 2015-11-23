@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-01 Fri 11:47 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-11-15 Sun 16:41 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm-bibtex.el'
 ;; Author:       Xin Yang

@@ -1048,33 +1048,26 @@
   (GNULinux
    (setq org-file-apps ;; set default viewer for exported files
          '((auto-mode       . emacsclient)
-           ("\\.odc\\'"     . system)
-           ("\\.odf\\'"     . system)
-           ("\\.odi\\'"     . system)
-           ("\\.otp\\'"     . system)
-           ("\\.odp\\'"     . system)
-           ("\\.otg\\'"     . system)
-           ("\\.odg\\'"     . system)
-           ("\\.ots\\'"     . system)
-           ("\\.ods\\'"     . system)
-           ("\\.odm\\'"     . system)
-           ("\\.ott\\'"     . system)
-           ("\\.odt\\'"     . system)
-           ("\\.mm\\'"      . system)
+           ("\\.x?html?\\'" . system)
            ;; use mupdf for normal viewing
            ("\\.pdf\\'"     . "mupdf -b 8 -r 96 %s")
            ;; use evice for viewing specific number of page
-           ("\\.pdf::\\(\\d+\\)\\'" . "evince -p %1 %s")
-           ("\\.x?html?\\'" . system)
-           ("\\.png\\'"     . system)
-           ("\\.jpg\\'"     . system)
-           ("\\.bmp\\'"     . system)
-           ("\\.gif\\'"     . system)
+           ;; ("\\.pdf::\\(\\d+\\)\\'" . "evince -p %1 %s")
+           ("\\.pdf::\\(\\d+\\)\\'" . "okular -p %1 %s")
+           ("\\.pdf.xoj"    . "xournal %s")
+           ("\\.png\\'"     . "ristretto %s")
+           ("\\.jpg\\'"     . "ristretto %s")
+           ("\\.bmp\\'"     . "ristretto %s")
+           ("\\.gif\\'"     . "ristretto %s")
            )))
+
 ;;;;; Special symboles
-  (setq org-entities-user
-        '(("sp" "~" nil "&nbsp;" " " " " " ") ;; non-breaking spaces
-          ))
+  ;; check http://orgmode.org/manual/Special-symbols.html
+  ;; Just use standard \nbsp{} instead of custom entities
+  ;; (setq org-entities-user
+  ;;       '(("sp" "~" nil "&nbsp;" " " " " " ") ;; non-breaking spaces
+  ;;         ))
+
 ;;;;; LaTeX export
   ;; (require 'ox)
   ;; (require 'ox-latex)
