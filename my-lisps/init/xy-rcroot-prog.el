@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-06-22 Mon 13:33 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-11-23 Mon 09:02 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -420,10 +420,10 @@
         ))))
 
 ;;;; ifdef
-(eval-after-load "ifdef" '(ifdef-postload))
+;; (eval-after-load "ifdef" '(ifdef-postload))
 
 ;;;; hide-ifdef
-(eval-after-load "hideif" '(hideif-postload))
+;; (eval-after-load "hideif" '(hideif-postload))
 ;; (autoload 'hide-ifdef-block "hideif"
 ;;   "Hide the ifdef block (true or false part) enclosing or before the cursor."
 ;;   t)
@@ -442,81 +442,13 @@
 ;;   t)
 
 ;;;; c-includes
-(eval-after-load "c-includes" '(c-includes-postload))
+;;(eval-after-load "c-includes" '(c-includes-postload))
 
 ;;;; sourcepair
-(eval-after-load "sourcepair" '(sourcepair-postload))
+;; (eval-after-load "sourcepair" '(sourcepair-postload))
 ;; (autoload 'sourcepair-load "sourcepair"
 ;;   "Load the corresponding C/C++ header or source file for the current
 ;; buffer."  t)
-
-;;;; codepilot
-;; REF: (@url :file-name "https://github.com/brianjcj/mylisp" :display "Source")
-;; someone else's c/c++ development environment
-;; (setq codepilot-dir (concat my-local-lisp-path "codepilot"))
-;; (try-require 'mycutil)
-;; ;;;###autoload
-;; (defun codepilot-settings-4-emaci ()
-;;   "`codepilot' settings for `emaci'."
-;;   (emaci-add-key-definition
-;;    "[" 'cp-pb-where-we-are
-;;    '(memq major-mode dev-modes)))
-;; (eval-after-load "emaci"
-;;   '(progn
-;;     (codepilot-settings-4-emaci)))
-
-;;;; kde-emacs
-;; 一个方便开发c的工具
-;; ;; 包中定义了C-j 为goto-line, 还设置了c-style
-;; (require 'kde-emacs-core)
-;; (autoload 'agulbra-make-member "kde-emacs-utils"
-;;   "make a skeleton member function in the .cpp or .cc file" t)
-;; (eal-define-keys
-;;  'c++-mode-map
-;;  `(("C-c C-b" agulbra-make-member)))
-;; ;;;###autoload
-;; (defun kde-emacs-settings ()
-;;   "Settings for `kde-emacs'."
-;;   (setq magic-keys-mode nil)
-;;   (setq kde-tab-behavior 'indent)
-;;   (am-add-hooks
-;;    `(java-mode-hook)
-;;    (lambda ()
-;;      (c-set-style "kde-c++"))))
-;; (eval-after-load "kde-emacs-core"
-;;   '(progn
-;;     (kde-emacs-settings)))
-
-;;;; snavigator
-;; (try-require 'sn)
-;; (eal-define-keys
-;;  `(c-mode-base-map)
-;;  `(("C-h"     c-electric-backspace)
-;;    ("C-c M-a" beginning-of-defun)
-;;    ("C-c M-e" end-of-defun)
-;;    ("C-c M-F" copy-current-fun-name)))
-
-;;;; xrefactory
-;; (require 'xrefactory)
-;; ;; 查找定义
-;; (global-set-key (kbd "C-c x d") 'xref-push-and-goto-definition)
-;; ;; 返回
-;; (global-set-key (kbd "C-c x r") 'xref-pop-and-return)
-;; ;; 浏览符号
-;; (global-set-key (kbd "C-c x b") 'xref-browse-symbol)
-;; ;; 上一个引用
-;; (global-set-key (kbd "C-c x ,") 'xref-previous-reference)
-;; ;; 下一个引用
-;; (global-set-key (kbd "C-c x .") 'xref-next-reference)
-;; ;;;###autoload
-;; (defun xref-settings ()
-;;   "settings for `xref'."
-;;   (defvar xref-current-project nil)
-;;   (defvar xref-key-binding 'global)
-;;   (setq exec-path (cons (concat my-local-lisp-path "xref") exec-path)))
-;; (eval-after-load "xref"
-;;   '(progn
-;;     (xref-settings)))
 
 ;;;; xcscope
 (eval-after-load "xcscope" '(xcscope-postload))
@@ -574,10 +506,6 @@
 
 
 ;;; Compile
-;;;; autoconf-mode
-;; (eval-after-load "autoconf-mode" '(autoconf-mode-postload))
-;; (require 'autoconf-mode-postload)
-
 ;;;; flymake
 ;; (autoload 'flymake-find-file-hook "flymake" "" t)
 ;; (eval-after-load "flymake"
@@ -590,82 +518,7 @@
 ;;         ("C-c M-w" flymake-display-current-warning/error))) ))
 ;; ;; (add-hook 'find-file-hook 'flymake-find-file-hook)
 
-;;;; ahei 的智能编译
-;; (require 'my-smart-compile)
-;; (defalias 'cpl 'compile)
-;; (defvar makefile-mode-map-list nil "the list of `makefile-mode-map'")
-;; (if is-before-emacs-21
-;;     (setq makefile-mode-map-list '(makefile-mode-map))
-;;   (setq makefile-mode-map-list '(makefile-gmake-mode-map
-;; makefile-automake-mode-map)))
-
-;; (eal-define-keys
-;;  (append makefile-mode-map-list
-;;          '(c-mode-base-map svn-status-mode-map sh-mode-map
-;;                            compilation-mode-map ruby-mode-map))
-;;  `(("C-c C-m"  make-sb)
-;;    ("C-c m"    make-check-sb)
-;;    ("C-c M"    make-clean-sb)
-;;    ("C-c c"    compile-buffer-sb)
-;;    ("C-c r"    run-program-sb)
-;;    ("C-c C"    smart-compile-sb)))
-
-;; (eal-define-keys
-;;  'java-mode-map
-;;  `(("C-c C-m" ant-sb)
-;;    ("C-c M"      ant-clean-sb)
-;;    ("C-c m"      ant-test-sb)))
-
-;; (eal-define-keys-commonly
-;;  global-map
-;;  `(("M-n" next-error)
-;;    ("M-p" previous-error)))
-
-;; (eal-define-keys
-;;  makefile-mode-map-list
-;;  `(("M-p"      previous-error)
-;;    ("M-n"      next-error)
-;;    ("C-c p" makefile-previous-dependency)
-;;    ("C-c n" makefile-next-dependency)))
-
-;; (eal-define-keys
-;;  'compilation-mode-map
-;;  `(("n" compilation-next-error)
-;;    ("p" compilation-previous-error)
-;;    ("'" switch-to-other-buffer)
-;;    ("u" View-scroll-half-page-backward)
-;;    ("f" am-forward-word-or-to-word)
-;;    ("d" scroll-up)
-;;    ("w" scroll-down)))
-
-;; (eval-after-load "compile"
-;;   '(progn
-;;      (compile-face-settings)
-;;      (compile-postload)))
-
-
 ;;; Debug
-;;;; debug.el
-;; (eval-after-load "debug"
-;;   '(progn
-;;      ;; (require 'util)
-;;      (apply-define-key
-;;       debugger-mode-map
-;;       `(("'" switch-to-other-buffer)
-;;         ("o" other-window)))))
-
-;;;; edebug
-;; (eval-after-load "edebug"
-;;   '(progn
-;;      (define-key edebug-mode-map (kbd "C-c C-d") nil)))
-;; (eal-define-keys-commonly
-;;  global-map
-;;  `(("C-x M-E" toggle-debug-on-error)
-;;    ("C-x Q"   toggle-debug-on-quit)))
-;; (defun edebug-clear-global-break-condition ()
-;;   "Clear `edebug-global-break-condition'."
-;;   (interactive)
-;;   (setq edebug-global-break-condition nil))
 
 ;;;; gdb
 ;; (eal-define-keys
@@ -727,11 +580,4 @@
 ;; (eval-after-load "ecb-autoloads" '(ecb-postload))
 ;; (global-set-key (kbd "<f6> B") 'xy/ecb-start)
 
-;;;; eclim settings
-;; 把Eclipse的功能带给Emacs
-;; (require 'eclim)
-;; (dolist (hook (list 'c-mode-common-hook 'lisp-mode-hook
-;;                     'emacs-lisp-mode-hook 'java-mode-hook))
-;;   (add-hook hook 'eclim-mode))
-
 (provide 'xy-rcroot-prog)

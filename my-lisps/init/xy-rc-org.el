@@ -358,22 +358,22 @@
             '(lambda ()
 
 ;;;;;; Delete scheduled time after changing the state to SOMEDAY
-;; - NOTE: current workflow doesn't need it
-               ;; (if (string= org-state "SOMEDAY")
-               ;;     (org-remove-timestamp-with-keyword
-               ;;     org-scheduled-string))
-               
+               (if (string= org-state "SOMEDAY")
+                   (org-remove-timestamp-with-keyword
+                   org-scheduled-string))
+               (if (string= org-state "WAITING")
+                   (org-remove-timestamp-with-keyword
+                    org-scheduled-string))
 ;;;;;; Automatically schedule the task to today after enter NEXT
-;; -NOTE: current workflow doesn't need it
-               ;; (if (string= org-state "NEXT") (org-schedule nil "+0"))
-               ;; (when window-system ;; also useful in console
-
+               (if (string= org-state "NEXT")
+                   (org-schedule nil "+0"))
+               (when window-system ;; also useful in console
 ;;;;;; Popup notification when done               
-               (when (try-require 'todochiku)
-                 (if (string= org-state "DONE")
-                     (todochiku-message "Emacs Org"
-                                        "Task DONE, Great Work!"
-                                        (todochiku-icon 'check))))))
+                 (when (try-require 'todochiku)
+                   (if (string= org-state "DONE")
+                       (todochiku-message "Emacs Org"
+                                          "Task DONE, Great Work!"
+                                          (todochiku-icon 'check)))))))
 
 
 

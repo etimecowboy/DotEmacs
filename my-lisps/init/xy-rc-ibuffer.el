@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2015-11-26 Thu 09:08 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ibuffer.el'
 ;; Author:       Xin Yang
@@ -51,15 +51,16 @@
   ;; Modify the default ibuffer-formats
   (setq ibuffer-formats
         '((mark modified read-only " "
-                (name 18 18 :left :elide)
+                (name 50 50 :left :elide)
                 " | "
                 (size-h 9 -1 :right)
                 " | "
-                (mode 16 16 :left :elide)
+                (mode 10 10 :left :elide)
                 " | "
-                (vc-status 16 16 :left)
-                " | "
-                (filename-and-process 30 30 :left :elide))))
+                (vc-status 10 10 :left))))
+                ;; Not very useful
+                ;; " | "
+                ;; (filename-and-process 30 30 :left :elide))))
 
   (setq ibuffer-saved-filter-groups
         '(("default"
@@ -87,6 +88,8 @@
                    (mode . tex-mode)
                    (mode . TeX-mode)))
 
+           ("dir" (mode . dired-mode))
+           
            ("messages" (or
                    (mode . mew-addrbook-mode)
                    (mode . mew-summary-mode)
@@ -132,6 +135,7 @@
                      (mode . woman-mode)
                      (mode . apropos-mode)
                      (mode . dired-mode)))
+
            ;; ("emms" (or
            ;;          (mode . emms-playlist-mode)
            ;;          (mode . emms-browser-mode)))

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-10-28 Wed 09:06 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-11-23 Mon 08:38 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -414,6 +414,7 @@ re-downloaded in order to locate PACKAGE."
 
   (require-package 'runner)
   (require-package 'unify-opening)
+  (require-package 'auto-install) ;; emacswiki auto install packages
   
   (message "* ---[ package post-load configuration is complete ]---"))
 
