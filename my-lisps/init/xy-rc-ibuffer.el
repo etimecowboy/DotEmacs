@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-11-26 Thu 09:08 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2015-11-26 Thu 09:18 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ibuffer.el'
 ;; Author:       Xin Yang
@@ -90,7 +90,7 @@
 
            ("dir" (mode . dired-mode))
            
-           ("messages" (or
+           ("email" (or
                    (mode . mew-addrbook-mode)
                    (mode . mew-summary-mode)
                    (mode . mew-message-mode)
@@ -133,9 +133,7 @@
                      (mode . help-mode)
                      (mode . Info-mode)
                      (mode . woman-mode)
-                     (mode . apropos-mode)
-                     (mode . dired-mode)))
-
+                     (mode . apropos-mode)))
            ;; ("emms" (or
            ;;          (mode . emms-playlist-mode)
            ;;          (mode . emms-browser-mode)))
