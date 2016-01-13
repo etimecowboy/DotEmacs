@@ -361,9 +361,9 @@
                (if (string= org-state "SOMEDAY")
                    (org-remove-timestamp-with-keyword
                    org-scheduled-string))
-               (if (string= org-state "WAITING")
-                   (org-remove-timestamp-with-keyword
-                    org-scheduled-string))
+               ;; (if (string= org-state "WAITING")
+               ;;     (org-remove-timestamp-with-keyword
+               ;;      org-scheduled-string))
 ;;;;;; Automatically schedule the task to today after enter NEXT
                (if (string= org-state "NEXT")
                    (org-schedule nil "+0"))
@@ -380,8 +380,7 @@
 ;;;; projects
   ;; Define stuck projects
   (setq org-stuck-projects
-        '("+prj/!-TODO-SOMEDAY-NEXT"
-          ("\\<STARTED\\>" "\\<WAITING\\>")))
+        '("+prj/-SOMEDAY-DONE" ("NEXT" "STARTED")))
 
 
 
@@ -756,10 +755,10 @@
                          "Scheduled Tasks in 7 Days")
                         (org-tags-match-list-sublevels nil)))
 
-            (tags-todo "prj-repeat-bookmark-note-english"
-                       ((org-agenda-overriding-header
-                         "Projects Reminder")
-                        (org-tags-match-list-sublevels t)))
+            ;; (tags-todo "prj-repeat-bookmark-note-english"
+            ;;            ((org-agenda-overriding-header
+            ;;              "Projects Reminder")
+            ;;             (org-tags-match-list-sublevels t)))
 
             (tags-todo "TODO=\"SOMEDAY\"-sub"
                        ((org-agenda-overriding-header
