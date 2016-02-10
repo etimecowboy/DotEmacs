@@ -320,7 +320,8 @@
 ;; Encrypting entries in an org file
   (require 'org-crypt)
   (org-crypt-use-before-save-magic)
-  (setq org-tags-exclude-from-inheritance (quote ("crypt" "prj")))
+  (setq org-use-tag-inheritance t)   ;; Inherit tags in most of cases
+  (setq org-tags-exclude-from-inheritance (quote ("crypt" "prj" "book")))
   ;; GPG key to use for encryption
   ;; Either the Key ID or set to nil to use symmetric encryption.
   (setq org-crypt-key nil)
@@ -410,7 +411,7 @@
   ;;         ("delegated" . ?D) ("noexport" . ?N)))
 
   (setq org-use-tag-inheritance t)   ;; Inherit tags in most of cases
-  (setq org-tags-exclude-from-inheritance '("prj" "crypt"))   ;; Exclusions
+  (setq org-tags-exclude-from-inheritance '("prj" "crypt" "book"))   ;; Exclusions
 
   
   
@@ -740,7 +741,7 @@
                      (org-agenda-todo-list-sublevel t)
                      (org-agenda-timeline-show-empty-dates nil)))
 
-            (tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-SCHEDULED<=\"<+7d>\"-SCHEDULED>\"<+14d>\"-DEADLINE<=\"<+7d>\"-DEADLINE>\"<+14d>\"-repeat-bookmark-appt-note-english-prj"
+            (tags-todo "TODO<>\"TODO\"+TODO<>\"SOMEDAY\"-SCHEDULED<=\"<+7d>\"-SCHEDULED>\"<+14d>\"-DEADLINE<=\"<+7d>\"-DEADLINE>\"<+14d>\"-repeat-bookmark-appt-note-en-prj"
                        ((org-agenda-overriding-header
                          "Pending Next Actions")
                         (org-tags-match-list-sublevels t)))
@@ -750,12 +751,12 @@
                          "Task Inbox")
                         (org-tags-match-list-sublevels t)))
 
-            (tags-todo "SCHEDULED>=\"<+1d>\"+SCHEDULED<=\"<+7d>\"-repeat-note-bookmark-english"
+            (tags-todo "SCHEDULED>=\"<+1d>\"+SCHEDULED<=\"<+7d>\"-repeat-note-bookmark-en"
                        ((org-agenda-overriding-header
                          "Scheduled Tasks in 7 Days")
                         (org-tags-match-list-sublevels nil)))
 
-            ;; (tags-todo "prj-repeat-bookmark-note-english"
+            ;; (tags-todo "prj-repeat-bookmark-note-en"
             ;;            ((org-agenda-overriding-header
             ;;              "Projects Reminder")
             ;;             (org-tags-match-list-sublevels t)))
@@ -883,8 +884,8 @@
 
           ;;----------------------------------------------------------
           ("l" "English study (30d)" tags
-           "+english+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
-           ((org-agenda-overriding-header "Recent ideas (refile ASAP)")
+           "+en+TIMESTAMP_IA<\"<tomorrow>\"+TIMESTAMP_IA>=\"<-30d>\""
+           ((org-agenda-overriding-header "English study")
             (org-tags-match-list-sublevels nil)))
 
           ;;----------------------------------------------------------
@@ -1175,6 +1176,14 @@ a4paper, cap, punct, nospace, indent, fancyhdr, hypperref, fntef]\
             ("\\section{%s}" . "\\section*{%s}")
             ("\\subsection{%s}" . "\\subsection*{%s}")
             ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+           ;;--------------------------------------------------
+           ;; nice layout, but not very useful
+           ;; ("pracjourn" "\\documentclass{pracjourn}"
+           ;;   ("\\section{%s}" . "\\section*{%s}")
+           ;;   ("\\subsection{%s}" . "\\subsection*{%s}")
+           ;;   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+           ;;   ("\\paragraph{%s}" . "\\paragraph*{%s}")
+           ;;   ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
            )))
   
   ;; NOTE: The default `inputenc' and `fontenc' packages conflicts
