@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-11-27 Thu 00:05 by xin on vmdebian.xyang.com>
+;; Time-stamp: <2016-02-18 Thu 15:44 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-company.el'
 ;; Author:       Xin Yang
@@ -26,8 +26,8 @@
                    company-etags company-keywords) company-files
                    company-dabbrev) company-yasnippet)
   
-  (setq company-idle-delay 0.5
-        company-minimum-prefix-length 3
+  (setq company-idle-delay 0.1
+        company-minimum-prefix-length 2
         company-tooltip-align-annotations t)
 
   ;; (setq company-begin-commands '(self-insert-command))
@@ -48,8 +48,37 @@
     (company-auctex-init))
 
   ;; company-anaconda
-  (try-require 'company-anacoda)
+  ;; (try-require 'company-anacoda)
 
+  ;; company-flx
+  ;; (with-eval-after-load 'company
+  ;;   (company-flx-mode +1))
+  (when (try-require 'company-flx)
+    (company-flx-mode 1))
+
+  ;; company-quickhelp
+  (when (try-require 'company-quickhelp)
+    (company-quickhelp-mode 1))
+
+  ;; company-try-hard
+  ;; (when (try-require 'company-try-hard)
+  ;;   (global-set-key (kbd "") 'company-try-hard)
+  ;;   (define-key company-active-map (kbd "") 'company-try-hard)
+  ;;   )
+
+  ;; company-math
+  (when (try-require 'company-math)
+    (add-to-list 'company-backends
+                 '(company-latex-commands company-math-symbols-latex
+                                          company-math-symbols-unicode)))
+  ;; company-shell
+  (when (try-require 'company-shell)
+    (add-to-list 'company-backends 'company-shell))
+
+  ;; company-tern
+  (when (try-require 'company-shell)
+    (add-to-list 'company-backends 'company-tern))
+  
   (message "* ---[ company post-load configuration is complete ]---"))
 
 (provide 'xy-rc-company)

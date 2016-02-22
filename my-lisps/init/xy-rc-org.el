@@ -325,6 +325,15 @@
   ;; GPG key to use for encryption
   ;; Either the Key ID or set to nil to use symmetric encryption.
   (setq org-crypt-key nil)
+  ;; (setq auto-save-default nil)
+  ;; Auto-saving does not cooperate with org-crypt.el: so you need
+  ;; to turn it off if you plan to use org-crypt.el quite often.
+  ;; Otherwise, you'll get an (annoying) message each time you
+  ;; start Org.
+  ;; To turn it off only locally, you can insert this:
+  ;;
+  ;; # -*- buffer-auto-save-file-name: nil; -*-
+
 
 
 ;;;; todo items
@@ -525,13 +534,13 @@
   (setq org-capture-templates
         '(("t" "Capture a New Task from Emacs"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Gtd.org" "Task Inbox")
-           "** TODO %^{New Task} %^G
+           "** TODO %^{Task} %^G
 :LOGBOOK:
 - Initial State           \"TODO\"       %U
 - Link %a
 :END:
 :PROPERTIES:
-:DESCRIPTION: %?
+:DESCRIPTION:
 :END:"
 :empty-lines 1 :prepend t :clock-keep t)
 
@@ -570,7 +579,7 @@
 
           ("1" "Capture a New Task from Web Browser"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Gtd.org" "Task Inbox")
-           "** TODO %^{New Task} %^G
+           "** TODO %^{Task} %^G
 :LOGBOOK:
 - Initial State           \"TODO\"       %U
 - Link %c

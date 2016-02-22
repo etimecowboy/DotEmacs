@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-11-23 Mon 08:38 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-02-22 Mon 13:18 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -373,6 +373,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'ecb)
   (require-package 'ebib)
   (require-package 'psession)
+  (require-package 'matlab-mode)
 
   ;; =======================================================
   ;; Completion system
@@ -385,9 +386,17 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'company)
   ;; (require-package 'anaconda-mode)
   ;; (require-package 'company-anaconda)
+  (require-package 'company-flx)
+  (require-package 'company-quickhelp)
+  (require-package 'company-math)
+  (require-package 'company-shell)
+  (require-package 'company-tern)
+  ;; (require-package 'company-try-hard)
+  (require-package 'company-auctex)
+  (require-package 'company-auctex)
   (require-package 'company-auctex)
   (require-package 'company-c-headers)
-  
+
   (require-package 'yasnippet)
   (require-package 'ox-html5slide)
   
