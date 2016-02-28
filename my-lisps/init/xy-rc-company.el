@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-02-18 Thu 15:44 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-02-25 Thu 09:58 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-company.el'
 ;; Author:       Xin Yang
@@ -28,7 +28,9 @@
   
   (setq company-idle-delay 0.1
         company-minimum-prefix-length 2
-        company-tooltip-align-annotations t)
+        company-tooltip-align-annotations t
+        company-dabbrev-downcase nil
+        company-dabbrev-ignore-case nil)
 
   ;; (setq company-begin-commands '(self-insert-command))
   ;; (define-key company-mode-map

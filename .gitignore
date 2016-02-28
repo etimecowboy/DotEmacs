@@ -11,6 +11,7 @@ _*
 *.asv
 .mc*
 *loaddefs*
+*srecode-map*
 bookmarks
 ac-comphist.dat
 anything-c-adaptive-history

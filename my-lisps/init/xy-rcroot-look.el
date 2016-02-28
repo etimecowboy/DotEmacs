@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-02-12 Fri 10:59 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-02-28 Sun 22:27 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -148,7 +148,7 @@
 
 ;; FIXME: strange shift problem
 (eal-define-keys-commonly
- global-map ;; not work in linux console
+ global-map ;; BUG: not work in linux console
  `(("C-S-j" windmove-left)
    ("C-S-l" windmove-right)
    ("C-S-i" windmove-up)

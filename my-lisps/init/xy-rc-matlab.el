@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2016-02-25 Thu 16:46 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-matlab.el'
 ;; Author:       Xin Yang
@@ -41,11 +41,11 @@
   ;; the latest `CEDET'.
   
   (require 'matlab-load)
-  (require 'cedet)
+  ;; (require 'cedet)
   
   ;; load files of recent version `CEDET' in ~/.emacs.d/lisps
   ;; instead of the old version shipped with GNU Emacs.
-  (autoload 'srecode-template-mode "srecode-template-mode" nil t)
+  ;; (autoload 'srecode-template-mode "srecode-template-mode" nil t)
 
   ;; (server-start) ;; server must be started for backtracing errors
                     ;; BUG: backtrace does not work
@@ -87,7 +87,7 @@
         matlab-comment-column 40
         matlab-comment-line-s "% "
         matlab-comment-on-line-s "% "
-        matlab-comment-region-s "%%%% "
+        matlab-comment-region-s "% "
         matlab-completion-technique 'increment
         matlab-cont-level 4
         matlab-cont-requires-ellipsis t
@@ -104,7 +104,7 @@
         matlab-indent-function t
         matlab-indent-function-body 'guess
         matlab-indent-level 4
-        matlab-return-add-semicolon nil
+        matlab-return-add-semicolon t
         matlab-return-function 'matlab-indent-end-before-ret
         matlab-show-mlint-warnings nil
         matlab-show-periodic-code-details-flag nil ;; BUG: not working
@@ -112,7 +112,8 @@
         matlab-verify-on-save-flag nil
         matlab-vers-on-startup nil)
   
-  ;; (matlab-cedet-setup) ;; NOTE: outdated!
+  (matlab-cedet-setup) ;; NOTE: outdated!
+  
   (message "* ---[ matlab post-load configuration is complete ]---"))
 
 ;; ;;;###autoload
