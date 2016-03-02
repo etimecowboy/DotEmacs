@@ -948,7 +948,8 @@
 ;;;;; evaluation languages
   (setq org-babel-load-languages
         '((C . t) (R . t) ;; (asymptote . t)
-          (ditaa . t) (dot . t) (emacs-lisp . t)
+          (ditaa . t) (dot . t) (plantuml . t)
+          (emacs-lisp . t)
           (latex . t) (org . t)
           (matlab . t) (octave . t)
           (python . t) ;; (perl . t) (ruby . t)
@@ -959,6 +960,7 @@
   (require 'ob-R)
   ;; (require 'ob-asymptote)
   (require 'ob-ditaa)
+  (require 'ob-plantuml)
   (require 'ob-dot)
   (require 'ob-latex)
   (require 'ob-org)
@@ -1443,6 +1445,9 @@ decorations.markings}
   (setq org-ditaa-jar-path (concat my-local-exec-path "/ditaa.jar"))
   (setq org-ditaa-eps-jar-path (concat my-local-exec-path "/DitaaEps.jar"))
 
+;;;;; plantuml export
+  (setq org-plantuml-jar-path (concat my-local-exec-path "/plantuml.jar"))
+  
   ;; (try-require 'org-babel-init)
   ;; (try-require 'org-babel-ditaa)
   ;; (try-require 'org-babel-dot)

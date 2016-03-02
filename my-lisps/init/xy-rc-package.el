@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-02-22 Mon 13:18 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-02 Wed 11:00 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -166,7 +166,8 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'ace-jump-buffer)
   ;; (require-package 'ace-window)
   ;; (require-package 'ace-link)
-
+  (require-package 'ag)
+  
   (require-package 'buffer-move)
   (require-package 'windsize)
   (require-package 'winpoint)
@@ -319,7 +320,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'projectile)
   (require-package 'rect-mark)
   (require-package 'region-list-edit)
-  ;; (require-package 'revive)
+  (require-package 'revive)
   ;; (require-package 'rw-hunspell)
   ;; (require-package 'rw-ispell)
   ;; (require-package 's)

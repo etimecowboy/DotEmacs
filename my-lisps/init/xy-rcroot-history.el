@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-28 Thu 10:01 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-02 Wed 12:43 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -113,15 +113,15 @@
 
 ;;;; windows and revive
 ;; NOTE: ;; Workspace store and recover. Heavy weight, cannot used with emacs daemon
-;; (revive-preload)
-;; (eval-after-load "revive" '(revive-postload))
-;; (when (try-require 'revive)
-;;   ;; (add-hook 'delete-frame-functions 'save-current-configuration)
-;;   ;; (add-hook 'kill-emacs-hook 'save-current-configuration)
-;;   (global-set-key (kbd "C-c w s") 'save-current-configuration)
-;;   (global-set-key (kbd "C-c w r") 'resume)
-;;   (global-set-key (kbd "C-c w k") 'wipe))
-;;   ;; NOTE: C-u (num) to specify the window name
+(revive-preload)
+(eval-after-load "revive" '(revive-postload))
+(when (try-require 'revive)
+  ;; (add-hook 'delete-frame-functions 'save-current-configuration)
+  ;; (add-hook 'kill-emacs-hook 'save-current-configuration)
+  (global-set-key (kbd "C-c w s") 'save-current-configuration)
+  (global-set-key (kbd "C-c w r") 'resume)
+  (global-set-key (kbd "C-c w k") 'wipe))
+  ;; NOTE: C-u (num) to specify the window name
 
 ;; (windows-preload)
 ;; (eval-after-load "windows" '(windows-postload))
@@ -129,7 +129,38 @@
 ;;   (when window-system
 ;;     (win:startup-with-window)))
 
-;;;; `elscreen.el'
+;;;;; revive+
+(when (try-require 'revive+)
+  (setq revive-plus:all-frames t)
+  (setq revive-plus:last-wconf-file
+        (concat my-var-path "/last-wconf-"
+                user-login-name "-"
+                system-name "-"
+                system-configuration))
+  (setq revive-plus:wconf-archive-file
+        (concat my-var-path "/wconf-archive-"
+                user-login-name "-"
+                system-name "-"
+                system-configuration))
+  (setq revive-plus:wconf-archive-limit 20)
+  ;; (revive-plus:demo)
+  (global-set-key (kbd "<f5><f5>") #'revive-plus:toggle-single-window)
+  (revive-plus:start-wconf-archive t)
+  (revive-plus:start-last-wconf nil)
+  (when (boundp 'desktop-save-hook)
+    (add-hook 'desktop-save-hook
+              ;; prevent crashes' loss if DESKTOP is autosaved
+              #'revive-plus:save-window-configuration 'append))
+  (add-hook 'delete-frame-function
+            ;; force window configuration special case like `ecb' if any
+            'revive-plus:wonf-archive-save)
+  (add-hook 'kill-emacs-hook
+            ;; force window configuration special case like `ecb' if any
+            #'(lambda () (revive-plus:save-window-configuration t)) 'append)
+  )
+
+
+;;;; elscreen
 ;; NOTE: old versions are based on APEL, current version is not.
 (eval-after-load "elscreen" '(elscreen-postload))
 (elscreen-start)
