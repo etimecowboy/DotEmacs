@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-18 Mon 17:06 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-06 Sun 16:16 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -91,13 +91,32 @@
                    mew-draft-mode-hook)
  '(lambda ()
     (flyspell-mode 1)))
+
 ;; BUG: error when uncomment the following code
 ;; (am-add-hooks
 ;;  `(lisp-mode-hook emacs-lisp-mode-hook c-common-mode-hook
 ;;                   matlab-mode-hook)
 ;;  '(lambda ()
 ;;     (flyspell-prog-mode 1)))
-(global-set-key (kbd "M-Q") 'flyspell-correct-word-before-point)
+;; (global-set-key (kbd "M-Q") 'flyspell-correct-word-before-point)
+
+;; REF: https://www.emacswiki.org/emacs/FlySpell#toc1
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode -1))))
+
+(global-set-key (kbd "M-Q") 'flyspell-auto-correct-previous-word)
+
+;; REF: http://superuser.com/questions/540942/is-it-possible-to-auto-correct-spelling-on-space-in-emacs
+;; (defun  xy/flyspell-auto-correct-and-space ()
+;;   (interactive)
+;;   (flyspell-auto-correct-word)    ;; Auto-correct the word at point
+;;   (when (not (or (looking-at " ") ;; If after the correction we are in the
+;;                  (eolp)))         ;; middle of the word, forward to the end
+;;     (forward-word))             ;; of the word.
+;;   (insert " "))                   ;; insert a space
+;; (global-set-key (kbd "SPC") 'xy/flyspell-auto-correct-and-space)
 
 ;; ;; NOTE: not necssary when using a single language
 ;; ;;;; auto-dictionary
@@ -179,15 +198,39 @@
 (when (try-require 'undo-tree)
   (global-undo-tree-mode 1))
 ;; (global-set-key (kbd "<f6> u") 'global-undo-tree-mode)
+;;
+;; NOTE:
+;; `undo-tree-mode' and `global-undo-tree-mode'
+;;   Enable undo-tree mode (either in the current buffer or globally).
+;;
+;; C-_  C-/  (`undo-tree-undo')
+;;   Undo changes.
+;;
+;; M-_  C-?  (`undo-tree-redo')
+;;   Redo changes.
+;;
+;; `undo-tree-switch-branch'
+;;   Switch undo-tree branch.
+;;   (What does this mean? Better press the button and see!)
+;;
+;; C-x u  (`undo-tree-visualize')
+;;   Visualize the undo tree.
+;;   (Better try pressing this button too!)
+;;
+;; C-x r u  (`undo-tree-save-state-to-register')
+;;   Save current buffer state to register.
+;;
+;; C-x r U  (`undo-tree-restore-state-from-register')
+;;   Restore buffer state from register.
 
 
 
 ;;;; redo+
 ;; (autoload 'undo "redo+" "Undo some previous changes." t)
 ;; (autoload 'redo "redo+" "Redo the the most recent undo." t)
-(when (try-require 'redo+)
-  (global-set-key (kbd "C-/") 'undo)
-  (global-set-key (kbd "C-?") 'redo))
+;; (when (try-require 'redo+)
+;;   (global-set-key (kbd "C-/") 'undo)
+;;   (global-set-key (kbd "C-?") 'redo))
 
 
 

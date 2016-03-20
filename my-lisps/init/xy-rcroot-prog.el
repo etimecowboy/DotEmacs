@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-11-23 Mon 09:02 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-20 Sun 21:02 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -181,13 +181,17 @@
 ;; (am-add-hooks
 ;;  `(c-mode-common-hook lisp-mode-hook emacs-lisp-mode-hook
 ;;                       vhdl-mode-hook verilog-mode-hook
-;;                       latex-mode-hook tex-mode-hook)
+;;                       latex-mode-hook tex-mode-hook
+;;                       LaTeX-mode-hook)
 ;;  '(lambda ()
 ;;       (outline-org-mode)))
 ;; (global-set-key (kbd "<f6> o") 'outline-org-mode)
 
 ;;;;; outshine (in use)
+;; loaded in `outline-postload'
+
 
+
 ;;;; hideshow
 ;; a minor mode similar to outline-mode.
 ;; It hides and shows blocks of text.

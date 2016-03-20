@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-02 Wed 12:43 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-07 Mon 20:12 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -57,8 +57,9 @@
 (eval-after-load "bookmark+" '(bookmark+-postload))
 
 ;;;;; bm
-;; provides visible, buffer local, bookmarks and the ability
-;; to jump forward and backward to the next bookmark.
+;; provides visible, buffer local, bookmarks and the ability to jump
+;; forward and backward to the next bookmark, with powerfull regexp
+;; filtering.
 (autoload 'bm-toggle   "bm" "Toggle bookmark in current buffer." t)
 (autoload 'bm-next     "bm" "Goto bookmark."                     t)
 (autoload 'bm-previous "bm" "Goto previous bookmark."            t)
@@ -75,6 +76,38 @@
    ("<left-fringe> <mouse-5>"   bm-next-mouse)
    ("<left-fringe> <mouse-4>"   bm-previous-mouse)
    ("<left-fringe> <mouse-1>"   bm-toggle-mouse)))
+
+;;;;; back-button
+;; alternative method for navigation by analogy with the BACK button
+;; in a web brower.
+;; - press the plus sign in the toolbar to create a mark
+;; - press the arrows in the toolbar to navigate marks
+;; - use C-x C-Space as usual, then try C-x C-<right> to reverse the operation
+;;-  Default key bindings:
+;;
+;;     C-x C-<SPC>    go back in `global-mark-ring', respects prefix arg
+;;     C-x C-<left>   go back in `global-mark-ring'
+;;     C-x C-<right>  go forward in `global-mark-ring'
+;;
+;;     C-x <SPC>      go back in (buffer-local) `mark-ring', respects prefix arg
+;;     C-x <left>     go back in (buffer-local) `mark-ring'
+;;     C-x <right>    go forward in (buffer-local) `mark-ring'
+;;
+;; When the smartrep package is installed, the C-x prefix need not
+;; be used for consecutive back-button commands.
+;;
+;; When the visible-mark package is installed, marks will be
+;; made visible in the current buffer during navigation.
+;; (eval-after-load "back-button" '(back-button-postload))
+;; (eal-define-keys-commonly
+;;  global-map
+;;  `(("<f2> j"   back-button-local-backward)
+;;    ("<f2> l"   back-button-local-forward)
+;;    ("<f2> k"   back-button-local)
+;;    ("<f2> J"   back-button-global-backward)
+;;    ("<f2> L"   back-button-global-forward)
+;;    ("<f2> K"   back-button-global)
+;;    ))
 
 
 

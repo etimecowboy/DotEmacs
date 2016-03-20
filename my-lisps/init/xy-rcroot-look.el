@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-02-28 Sun 22:27 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-20 Sun 20:44 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -422,7 +422,7 @@
 
 
 ;;; Point (cursor) settings
-(blink-cursor-mode -1)
+(blink-cursor-mode 1)
 (setq x-stretch-cursor t)
 
 
@@ -430,7 +430,7 @@
 ;;;; bar-cursor
 ;; 光标由方块变成一个小长条
 ;; (require 'bar-cursor)
-;; (autoload 'bar-cursor-mode "bar-cursor" nil t)
+(autoload 'bar-cursor-mode "bar-cursor" nil t)
 ;; (bar-cursor-mode 1)
 
 
@@ -438,7 +438,7 @@
 ;;;; cursor-change
 ;; 智能的改变光标形状
 ;; REF: (@url :file-name "http://emacser.com/cursor-change.htm" :display "emacser")
-(autoload 'cursor-change-mode "cursor-change" nil t)
+;; (autoload 'cursor-change-mode "cursor-change" nil t)
 ;; (cursor-change-mode 1) ;; 细细的找不着
 
 
@@ -619,6 +619,7 @@
 (when (and window-system (try-require 'solarized-dark-theme))
   (load-theme 'solarized-dark t))
 (global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
+(global-set-key (kbd "<f2> C") 'disable-theme)
 
 ;; (Windows
 ;;  (when (try-require 'color-theme-sanityinc-solarized)
@@ -626,17 +627,21 @@
 ;; (when (and window-system (try-require 'color-theme-sanityinc-tomorrow))
 ;;    (load-theme 'sanityinc-tomorrow-night t))
 
+;;;;; load a fresh color-theme instead on overwrite current color-theme
+;; REF: http://emacs.stackexchange.com/questions/3112/how-to-reset-color-theme
+;; Advise load-theme, so that it first disables all custom themes
+;; before loading (enabling) another one. 
+(defadvice load-theme (before theme-dont-propagate activate)
+  (mapcar #'disable-theme custom-enabled-themes))
+
+
 
 
 ;;;; auto-dim-other-buffers
-(eval-after-load "auto-dim-other-buffers"
-  '(auto-dim-other-buffers-postload))
-;; (when window-system 
-;;   (when (try-require 'auto-dim-other-buffers)
-;;     (auto-dim-other-buffers-mode 1)))
-;; NOTE: terminal may be strange
-(when (try-require 'auto-dim-other-buffers)
-  (auto-dim-other-buffers-mode 1))
+;; (eval-after-load "auto-dim-other-buffers"
+;;   '(auto-dim-other-buffers-postload))
+;; (when (try-require 'auto-dim-other-buffers)
+;;   (auto-dim-other-buffers-mode 1))
 
 
 
@@ -772,7 +777,8 @@
    ;; ("C-M-="  increase-default-font-height)
    ;; ("C-M--"  decrease-default-font-height)
    ))
-(xy/set-font-prog-big)
+(xy/set-font-default)
+(xy/set-font-prog)
 
 ;;;; Automatically set fonts for different modes
 ;; NOTE: a pain to my eyes

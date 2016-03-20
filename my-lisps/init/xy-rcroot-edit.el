@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-10-28 Wed 09:19 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-10 Thu 09:09 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -154,8 +154,8 @@
 ;;;; ace-jump-mode
 ;; ace-jump-mode is an fast/direct cursor location minor mode.
 ;; (try-require 'ace-jump-mode)
-(define-key global-map (kbd "C-S-s") 'ace-jump-mode)
-(define-key isearch-mode-map (kbd "C-S-s") 'sl-isearch-ace-jump)
+(define-key global-map (kbd "C-c C-e") 'ace-jump-mode)
+(define-key isearch-mode-map (kbd "C-e") 'sl-isearch-ace-jump)
 ;; NOTE: For my key binding
 ;;      - "M-s"         ==> ace-jump-word-mode
 ;;      - "C-u M-s"     ==> ace-jump-char-mode

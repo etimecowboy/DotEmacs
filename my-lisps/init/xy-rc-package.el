@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-02 Wed 11:00 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-20 Sun 16:23 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -177,9 +177,9 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'zenburn-theme)
   
   ;; (require-package 'ascii)  
-  (require-package 'auto-dim-other-buffers)
+  ;; (require-package 'auto-dim-other-buffers)
   (require-package 'autopair)
-  (require-package 'back-button)
+  ;; (require-package 'back-button) ;; use bm instead
   (require-package 'batch-mode)
   ;; (require-package 'visible-mark) ;; clear install required
   ;; (require-package 'nav-flash)
@@ -375,6 +375,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'ebib)
   (require-package 'psession)
   (require-package 'matlab-mode)
+  (require-package 'flycheck)
 
   ;; =======================================================
   ;; Completion system

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-02-18 Thu 14:56 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-03 Thu 12:05 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -472,10 +472,21 @@
      (global-set-key (kbd "C-M-r") 'helm-c-moccur-isearch-backward)
      ))
 
-;;; helm-c-moccur
+;;; helm-projectile
 (eval-after-load "helm-projectile"
   '(progn
      (helm-projectile-postload)
+     ))
+
+;;; helm-flyspell
+(eval-after-load "helm-flyspell"
+  '(progn
+     (helm-flyspell-postload)
+     (eal-define-keys
+      'helm-command-map
+      `(;; ("\\"   helm-flyspell-correct)
+        (">"    check-next-spelling-error)
+        ("<"    check-previous-spelling-error)))
      ))
 
 

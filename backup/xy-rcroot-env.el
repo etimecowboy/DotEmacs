@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-06 Sun 16:30 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-03 Thu 17:06 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -564,29 +564,29 @@ Toggle keyboard command logging of whole emacs.
 (try-require 'eim)
 ;; (global-set-key "C-\\" 'toggle-input-method))
 
-;;*** ibus-el
-;; IBus client for GNU Emacs
-;; REF:  (@url :file-name "http://www11.atwiki.jp/s-irie/pages/21.html" :display "Source")
-;; NOTE: Dead :-(
-;; (GNULinux
-;;  (when (try-require 'ibus)
-;;    ;; ;; Turn on ibus-mode automatically after loading .emacs
-;;    (add-hook 'after-init-hook 'ibus-mode-on)
-;;    ;; ;; If you use the client-server mode of emacs, replace the
-;;    ;; after-init-hook line by this:
-;;    ;; (add-hook 'after-make-frame-functions
-;;    ;;           (lambda (new-frame)
-;;    ;;             (select-frame new-frame)
-;;    ;;             (or ibus-mode (ibus-mode-on))))
-;;    ;; Use C-SPC for Set Mark command
-;;    ;; (ibus-define-common-key ?\C-\s nil)
-;;    ;; Use C-/ for Undo command
-;;    (ibus-define-common-key ?\C-/ nil)
-;;    ;; Change cursor color depending on IBus status
-;;    (setq ibus-cursor-color '("purple" "red" "blue"))
-;;    (setq ibus-python-shell-command-name "python2.7")
-;;    (setq ibus-agent-file-name "~/.emacs.d/bin/lin64/ibus-el-agent")
-;;    ))
+*** ibus-el
+IBus client for GNU Emacs
+REF:  (@url :file-name "http://www11.atwiki.jp/s-irie/pages/21.html" :display "Source")
+NOTE: Dead :-(
+(GNULinux
+ (when (try-require 'ibus)
+   ;; ;; Turn on ibus-mode automatically after loading .emacs
+   (add-hook 'after-init-hook 'ibus-mode-on)
+   ;; ;; If you use the client-server mode of emacs, replace the
+   ;; after-init-hook line by this:
+   ;; (add-hook 'after-make-frame-functions
+   ;;           (lambda (new-frame)
+   ;;             (select-frame new-frame)
+   ;;             (or ibus-mode (ibus-mode-on))))
+   ;; Use C-SPC for Set Mark command
+   ;; (ibus-define-common-key ?\C-\s nil)
+   ;; Use C-/ for Undo command
+   (ibus-define-common-key ?\C-/ nil)
+   ;; Change cursor color depending on IBus status
+   (setq ibus-cursor-color '("purple" "red" "blue"))
+   (setq ibus-python-shell-command-name "python2.7")
+   (setq ibus-agent-file-name "~/.emacs.d/bin/lin64/ibus-el-agent")
+   ))
 
 
 
@@ -661,17 +661,6 @@ Toggle keyboard command logging of whole emacs.
 
 
 ;;; Distinguish  tab and C-i
-;; REF: https://www.emacswiki.org/emacs/TabKey
-;; On a tty, the TAB key is usually not distinguished from C-i. Other
-;; environments (such as X), allows a distinction. Emacs, therefore,
-;; supports this as well. The following changes the keybinding for the
-;; TAB key only
-;;  (local-set-key [tab] 'tab-to-tab-stop)
-
-;; This, however, changes the keybindings of TAB and C-i, whichever is
-;; appropriate.
-;; (local-set-key (kbd "TAB") 'tab-to-tab-stop)
-
-(global-set-key (kbd "TAB") 'tab-to-tab-stop)
+(gobal-set-key (kbd "TAB") 'tab-to-tab-stop)
 
 (provide 'xy-rcroot-env)
