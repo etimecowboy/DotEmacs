@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-20 Sun 16:23 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-23 Wed 11:39 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -376,7 +376,9 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'psession)
   (require-package 'matlab-mode)
   (require-package 'flycheck)
-
+  ;; (require-package 'powerline)
+  (require-package 'smart-mode-line)
+  ;; (require-package 'smart-mode-line-powerline-theme)
   ;; =======================================================
   ;; Completion system
   ;; 

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-12-26 Fri 10:57 by xin on S13>
+;; Time-stamp: <2016-03-20 Sun 23:19 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-net.el'
 ;; Author:       Xin Yang
@@ -28,15 +28,15 @@
 
 ;; NOTE: Commented due to use of emacs-w64
 ;; Use external program as the default web browser in X-window
-;; (if window-system
-;;     (progn
-;;       (Windows
-;;        (setq browse-url-browser-function
-;;              'browse-url-default-windows-browser))
-;;       (GNULinux
-;;        (setq browse-url-browser-function
-;;              'browse-url-default-browser)))
-;;   (setq browse-url-browser-function 'w3m-browse-url))
+(if window-system
+    (progn
+      (Windows
+       (setq browse-url-browser-function
+             'browse-url-default-windows-browser))
+      (GNULinux
+       (setq browse-url-browser-function
+             'browse-url-default-browser)))
+  (setq browse-url-browser-function 'w3m-browse-url))
 
 
 

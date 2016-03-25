@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-11-26 Thu 09:18 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-21 Mon 13:53 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ibuffer.el'
 ;; Author:       Xin Yang
@@ -68,6 +68,7 @@
                    (mode . matlab-mode)
                    (mode . c-mode)
                    (mode . cc-mode)
+                   (mode . C++/lah)
                    (mode . emacs-lisp-mode)
                    (mode . lisp-interaction-mode)
                    (mode . vhdl-mode)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-06 Sun 16:16 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-20 Sun 23:26 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -61,7 +61,7 @@
 (am-add-hooks
  `(lisp-interaction-mode-hook)
    '(lambda () (linum-mode -1)))
-
+;; (global-linum-mode 1) ;; always turn on linum-mode
 (global-set-key (kbd "<f6> n") 'linum-mode)
 
 

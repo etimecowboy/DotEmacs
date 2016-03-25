@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-05-21 Thu 10:26 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-23 Wed 13:02 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-magit.el'
 ;; Author:       Xin Yang
@@ -82,7 +82,7 @@
            (flyspell-mode 1)))
 
   (setq magit-auto-revert-mode nil)
-  (setq magit-last-seen-setup-instructions "1.4.0")
+  ;; (setq magit-last-seen-setup-instructions "1.4.0")
   
   ;; (when (try-require 'magit-blame)
   ;;   (magit-blame-mode 1))

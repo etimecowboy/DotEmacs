@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-20 Sun 21:02 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-23 Wed 11:58 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -521,9 +521,16 @@
 ;;         ("C-c P"   flymake-goto-prev-error-disp)
 ;;         ("C-c M-w" flymake-display-current-warning/error))) ))
 ;; ;; (add-hook 'find-file-hook 'flymake-find-file-hook)
+
+;;;; flycheck
+;; TODO: check flycheck info for further setup
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 
 ;;; Debug
+
 
+
 ;;;; gdb
 ;; (eal-define-keys
 ;;  'c-mode-base-map

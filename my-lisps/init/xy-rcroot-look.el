@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-20 Sun 20:44 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-23 Wed 13:32 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -146,7 +146,6 @@
 ;; with org-mode default key bindings.
 (eval-after-load "windmove" '(windmove-postload))
 
-;; FIXME: strange shift problem
 (eal-define-keys-commonly
  global-map ;; BUG: not work in linux console
  `(("C-S-j" windmove-left)
@@ -333,10 +332,25 @@
 ;; Just call `xy/separate-line-frame' to use it.
 (eval-after-load "mode-line-frame" '(mode-line-frame-postload))
 
+;;;; modeline face
+;; (set-face-background 'modeline "grey90")
+;; (set-face-background 'modeline-inactive "grey60")
+
+;;;; smart-mode-line
+;; with powerline theme
+;; (setq powerline-arrow-shape 'curve)
+;; (Setq powerline-default-separator-dir '(right . left))
+;; (setq sml/theme 'powerline)
+;; (setq sml/theme 'dark)
+;; (setq sml/theme 'light)
+;; (setq sml/theme 'respectful)
+;; (sml/setup))
+(eval-after-load "smart-mode-line" '(smart-mode-line-postload))
+(global-set-key (kbd "<f2> m") 'sml/setup)
+
 
 
 ;;; mini-buffer settings
-
 (setq enable-recursive-minibuffers t)
 (add-hook 'comint-output-filter-functions
           'comint-watch-for-password-prompt)
@@ -616,8 +630,9 @@
 ;;   + `hc-zenburn-theme': a higher contrast zenburn theme
 ;; - solarized
 (setq custom-safe-themes t)
-(when (and window-system (try-require 'solarized-dark-theme))
-  (load-theme 'solarized-dark t))
+;; don't load any color theme when starting emacs
+;; (when (and window-system (try-require 'solarized-dark-theme))
+;;   (load-theme 'solarized-dark t))
 (global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
 (global-set-key (kbd "<f2> C") 'disable-theme)
 
@@ -631,9 +646,13 @@
 ;; REF: http://emacs.stackexchange.com/questions/3112/how-to-reset-color-theme
 ;; Advise load-theme, so that it first disables all custom themes
 ;; before loading (enabling) another one. 
-(defadvice load-theme (before theme-dont-propagate activate)
-  (mapcar #'disable-theme custom-enabled-themes))
-
+;;
+;; However, when using together with `smart-mode-line', I want the
+;; overwrite behave. Then, I must use the `disable-theme' function
+;; (<f2> C) to manually undo the customization.
+;;
+;; (Defadvice load-theme (before theme-dont-propagate activate)
+;;   (mapcar #'disable-theme custom-enabled-themes))
 
 
 

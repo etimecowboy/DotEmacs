@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-10 Thu 09:09 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-22 Tue 09:58 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -147,15 +147,15 @@
         ("M-S-z" zap-to-isearch)
         ("C-<return>" isearch-exit-other-end)
         ))))
-(global-set-key (kbd "C-x M-s") 'isearch-forward-cur-word)
+(global-set-key (kbd "C-c C-s") 'isearch-forward-cur-word)
 
 
 
 ;;;; ace-jump-mode
 ;; ace-jump-mode is an fast/direct cursor location minor mode.
-;; (try-require 'ace-jump-mode)
-(define-key global-map (kbd "C-c C-e") 'ace-jump-mode)
-(define-key isearch-mode-map (kbd "C-e") 'sl-isearch-ace-jump)
+(when (try-require 'ace-jump-mode)
+    (global-set-key (kbd "C-c C-j") 'ace-jump-mode)
+    (define-key isearch-mode-map (kbd "C-j") 'sl-isearch-ace-jump))
 ;; NOTE: For my key binding
 ;;      - "M-s"         ==> ace-jump-word-mode
 ;;      - "C-u M-s"     ==> ace-jump-char-mode
