@@ -149,7 +149,7 @@ re-downloaded in order to locate PACKAGE."
   ;;                          findr))))))
 
   ;; Fire up package.el and ensure the following packages are installed.
-  (package-initialize)  ;; Activate all packages
+  ;; (package-initialize) ;; Activate all packages
 
   ;; Generate archive folder
   (when (not package-archive-contents)

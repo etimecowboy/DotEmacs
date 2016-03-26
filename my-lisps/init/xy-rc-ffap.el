@@ -21,11 +21,11 @@
   "Settings of `ffap.el' after it's been loaded."
   (setq ffap-require-prefix t
         dired-at-point-require-prefix t)
-  (setq ffap-c-path (append
-                     ffap-c-path
-                     ;;system-head-file-dir
-                     ;;user-head-file-dir)))
-                     user-include-dirs))
+  ;; (setq ffap-c-path (append
+  ;;                    ffap-c-path
+  ;;                    ;;system-head-file-dir
+  ;;                    ;;user-head-file-dir)))
+  ;;                    user-include-dirs))
   (message "* ---[ ffap post-load configuration is complete ]---"))
 
 (provide 'xy-rc-ffap)

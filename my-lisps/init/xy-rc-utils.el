@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-20 Sun 20:51 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-26 Sat 01:50 by xin on DESKTOP-U1I5A54>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -145,6 +145,34 @@
 ;;;; c/c++ include dir
 (Windows
 
+ (defvar my-mingw-path (expand-file-name "D:/opt/msys64/mingw64")
+   "mingw-w64 installation path in the Windows system.")
+
+ (defvar user-include-dirs
+   '(;; User header files
+     "." "./include" "./inc" "./common" "./public"
+     ".." "../include" "../inc" "../common" "../public"
+     "../.." "../../include" "../../inc" "../../common" "../../public"
+     ;; GCC header files
+     "D:/opt/msys64/mingw64/include"
+     "D:/opt/msys64/mingw64/x86_64-w64-mingw32/include"
+     "D:/opt/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/5.3.0/include"
+     ;; MSYS2 header files
+     "D:/opt/msys64/usr/include"
+     ;; VC 12 header files
+     "C:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/include"
+     "C:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/atlmfc/include"
+     )
+   "User include dirs for c/c++ mode")
+
+ ;; (defvar c-preprocessor-symbol-files
+ ;;   '(;; "C:/Protable/MinGW/lib/gcc/mingw32/4.8.1/include/c++/bits/c++0x_warning.h"
+ ;;     ;; "D:/Microsoft Visual Studio/VC98/Include/xstddef"
+ ;;     ;; "C:/Program Files/Microsoft Visual Studio 10.0/VC/include/yvals.h"
+ ;;     ;; "C:/Program Files/Microsoft Visual Studio 10.0/VC/include/crtdefs.h"
+ ;;     )
+ ;;   "Preprocessor symbol files for cedet")
+ 
  (Laptop
   (defvar my-mingw-path (expand-file-name "E:/program/MinGW")
     "MinGW installation path in the Windows system.")

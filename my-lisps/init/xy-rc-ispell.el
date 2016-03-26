@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2014-08-24 Sun 03:48 by xin on ubuntu>
+;; Time-stamp: <2016-03-26 Sat 03:10 by xin on DESKTOP-U1I5A54>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ispell.el'
 ;; Author:       Xin Yang
@@ -31,7 +31,8 @@
 
   ;; (Windows
   ;;  (setq ispell-program-name "hunspell.exe")
-  ;;  (setq-default ispell-dictionary "en_GB_hunspell"))
+  ;;  (setq-default ispell-dictionary "en_GB_hunspell")
+  ;; )
 
   (Windows
    (setq ispell-program-name "aspell")
