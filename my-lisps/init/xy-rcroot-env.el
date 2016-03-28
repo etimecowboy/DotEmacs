@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-26 Sat 02:42 by xin on DESKTOP-U1I5A54>
+;; Time-stamp: <2016-03-28 Mon 13:50 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -12,17 +12,11 @@
 ;;  \____|_| |_| |_|\__,_|\___|___/
 ;;
 ;;--------------------------------------------------------------------
-
-(eval-when-compile (require 'cl))
-(require 'xy-rc-utils) ;; `header' for all
-
-
+(require 'xy-rc-utils)
 
 ;;; user information
 (setq user-full-name "Xin Yang")
 (setq user-mail-address "xin2.yang@gmail.com")
-
-
 
 ;;; local custom file
 ;; Emacs generated customization, which overwrites settings above
@@ -30,10 +24,7 @@
 (setq custom-file (expand-file-name "xy-rc-custom.el" my-emacs-path))
 (load custom-file) ;; NOTE: Remove '(session-use-package t nil (session)))
 
-
-
 ;;; pathes
-
 ;; load-path
 ;; NOTE: add all = very slow
 (fni/add-to-load-path my-emacswiki-lisp-path)

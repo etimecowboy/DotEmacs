@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-26 Sat 01:50 by xin on DESKTOP-U1I5A54>
+;; Time-stamp: <2016-03-28 Mon 13:25 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -12,8 +12,7 @@
 ;;  \____|_| |_| |_|\__,_|\___|___/
 ;;
 ;;--------------------------------------------------------------------
-
-(eval-when-compile (require 'cl))
+(require 'cl)
 
 
 
@@ -75,12 +74,6 @@
   (list
    'if (string-match
         "p5q" (prin1-to-string (downcase system-name)))
-   (cons 'progn body)))
-
-(defmacro UKDesktop (&rest body)
-  (list
-   'if (string-match
-        "p6t" (prin1-to-string (downcase system-name)))
    (cons 'progn body)))
 
 (defmacro Laptop (&rest body)
@@ -277,8 +270,6 @@
 
 ;;; F.Niessen's utilities in his .emacs
 ;; REF: (@url :file-name "http://www.mygooglest.com/fni/dot-emacs.html" :display "Website")
-
-;;;###autoload
 (defun fni/add-to-load-path
   (this-directory &optional with-subdirs recursive)
   "Add THIS-DIRECTORY at the beginning of the load-path, if it exists.
@@ -326,7 +317,6 @@ argument is not nil."
 ;;         (normal-top-level-add-subdirs-to-load-path)))
 ;;   (delete-dups load-path))
 
-;;;###autoload
 (defun fni/add-to-image-load-path
   (this-directory &optional with-subdirs recursive)
   "Add THIS-DIRECTORY at the beginning of the image-load-path, if it
@@ -362,7 +352,6 @@ third argument is not nil."
 (defvar missing-packages-list nil
   "List of packages that `try-require' can't find.")
 
-;;;###autoload
 (defun try-require (feature)
   "Attempt to load a library or module. Return true if the library
 given as argument is successfully loaded. If not, instead of an error,
@@ -413,7 +402,6 @@ just add the package to a list of missing packages."
 
 ;;; From ahei-misc.el
 
-;;;###autoload
 (defun am-add-hooks (hooks function &optional append local)
   "Call `add-hook' on hook list HOOKS use arguments FUNCTION, APPEND,
 LOCAL. HOOKS can be one list or just a hook."
@@ -425,7 +413,6 @@ LOCAL. HOOKS can be one list or just a hook."
        hooks)
     (add-hook hooks function append local)))
 
-;;;###autoload
 (defun am-intern (&rest strings)
   "`intern' use STRINGS."
   (intern
@@ -436,19 +423,16 @@ LOCAL. HOOKS can be one list or just a hook."
        (if (stringp element) element (symbol-name element)))
      strings))))
 
-;;;###autoload
 (defun am-variable-is-t (symbol)
   "Return SYMBOL's value is t or not."
   (and (boundp symbol) (symbol-value symbol)))
 
-;;;###autoload
 (defmacro am-def-active-fun (symbol &optional fun-name)
   "Make definition of function judge variable is active or not."
   `(defun ,(if fun-name fun-name symbol) ()
      ,(concat "`" (symbol-name symbol) "' is t or not.")
      (am-variable-is-t ',symbol)))
 
-;;;###autoload
 (defmacro am-with-temp-mode (mode &rest body)
   "Create a temporary buffer with mode MODE, and evaluate BODY there
 like `progn'. See also `with-temp-buffer'."
@@ -456,7 +440,6 @@ like `progn'. See also `with-temp-buffer'."
      (funcall ,mode)
      ,@body))
 
-;;;###autoload
 (defun am-equal-ignore-case (str1 str2)
   "STR1 equal ignore case to STR2 or not."
   (string= (downcase str1) (downcase str2)))
@@ -464,8 +447,6 @@ like `progn'. See also `with-temp-buffer'."
 
 
 ;; REF: (@url :file-name "http://milkbox.net/note/single-file-master-emacs-configuration/" :display "By Donald Curtis (Milkypostman, the proprietor of the Melpa archive)")
-
-;;;###autoload
 (defmacro After (mode &rest body)
   "`eval-after-load' MODE evaluate BODY."
   (declare (indent defun))
@@ -475,8 +456,6 @@ like `progn'. See also `with-temp-buffer'."
 
 ;;; Emacs auto font selection for different OS
 ;; REF: (@url :file-name "http://emacser.com/torture-emacs.htm" :display "emacser")
-
-;;;###autoload
 (defun qiang-font-existsp (font)
   "判断某个字体在系统中是否安装"
   (if (null (x-list-fonts font))
@@ -488,7 +467,6 @@ like `progn'. See also `with-temp-buffer'."
 ;; ;; (require 'cl) ;; find-if is in common list package
 ;; (find-if #'qiang-font-existsp font-list)
 
-;;;###autoload
 (defun qiang-make-font-string (font-name font-size)
   "产生带上 font size 信息的 font 描述文本"
   (if (and (stringp font-size)
@@ -496,7 +474,6 @@ like `progn'. See also `with-temp-buffer'."
       (format "%s%s" font-name font-size)
     (format "%s %s" font-name font-size)))
 
-;;;###autoload
 (defun qiang-set-font (english-fonts
                        english-font-size
                        chinese-fonts
@@ -1394,53 +1371,16 @@ The process is:
 
   (load "~/.emacs.d/my-lisps/init/xy-rc-utils.el")
   (load "~/.emacs.d/my-lisps/init/xy-rcroot-env.el")
-
-  ;; NOTE: ecb and cedet are closely related, ecb must be byte-compiled
-  ;; with cedet. Just activate ecb without byte-compiled lisps, then
-  ;; run `M-x ecb-byte-compile'.
-
   ;; emacswiki lisps
   (xy/install-lisps my-emacswiki-lisp-path)
-
   ;; downloaded lisps
   (xy/install-lisps my-local-lisp-path)
-  ;; (xy/install-lisps (concat my-local-lisp-path "/ac-math"))
-  ;; (xy/recompile-dir
-  ;;  (concat my-local-lisp-path "/auctex-11.87") 'with-subdirs 'recursive)
-  ;; (xy/install-lisps (concat my-local-lisp-path "/apel"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/flim"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/semi"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/cc-mode-5.32.3"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/command-log-mode"))
   (xy/install-lisps (concat my-local-lisp-path "/dea"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/elib-1.0"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/mule-ucs-20061127-1/lisp"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/emacs-w3m/shimbun"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/emacs-w3m"))
   (xy/install-lisps (concat my-local-lisp-path "/eim-2.4"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/google-weather-el"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/ibus-el-0.3.2"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/mailcrypt-3.5.8"))
-  (xy/install-lisps (concat my-local-lisp-path "/matlab-emacs"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/mew-6.5"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/auctex-11.87"))
-  ;; (xy/install-lisps (concat my-local-lisp-path "/elscreen"))
-  (xy/install-lisps (concat my-local-lisp-path "/git-wip"))
   ;; (xy/install-lisps (concat my-local-lisp-path "/o-blog-1.2"))
   (xy/install-lisps (concat my-local-lisp-path "/o-blog-2.6/lisp"))
-
-  ;; git repository lisps
-  ;; (xy/install-lisps (concat my-git-lisp-path "/dictionary-el"))
-  
-  ;; git submodules
-
-  ;; ELPA lisps
-  ;; NOTE: ELPA lisps need clean installation
-  ;; (xy/recompile-dir my-elpa-lisp-path 'with-subdirs 'recursive)
-
   ;; my own lisps
   (xy/install-lisps my-own-lisp-path 'with-subdirs 'recursive)
-
   (load-dot-emacs-file))
 
 

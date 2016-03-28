@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-23 Wed 13:32 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-28 Mon 13:59 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -11,11 +11,7 @@
 ;;  \____|_| |_| |_|\__,_|\___|___/
 ;;
 ;;--------------------------------------------------------------------
-
-(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
-
-
 
 ;;; Frame settings
 
@@ -37,9 +33,9 @@
 ;;   (add-to-list 'default-frame-alist '(width . 95)))
 
 ;; (global-set-key (kbd "C-c C-0") 'xy/toggle-fullscreen)
-(global-set-key (kbd "C-M-o") 'other-frame)
-(global-set-key (kbd "C-M-c") 'new-frame)
-(global-set-key (kbd "C-M-k") 'delete-frame)
+;; (global-set-key (kbd "C-M-o") 'other-frame)
+;; (global-set-key (kbd "C-M-c") 'new-frame)
+;; (global-set-key (kbd "C-M-k") 'delete-frame)
 
 
 
@@ -586,10 +582,10 @@
 
 ;;;; Zjl-hl
 ;; use CEDET semantic to highlight function calls
-(eval-after-load "zjl-hl"
-  '(progn
-     (zjl-hl-face-settings)
-     (zjl-hl-postload)))
+;; (eval-after-load "zjl-hl"
+;;   '(progn
+;;      (zjl-hl-face-settings)
+;;      (zjl-hl-postload)))
 
 
 

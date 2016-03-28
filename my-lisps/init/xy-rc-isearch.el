@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2015-10-28 Wed 09:18 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-28 Mon 13:42 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-isearch.el'
 ;; Author:       Xin Yang
@@ -14,8 +14,6 @@
 ;; TODO: add a function to switch to grep (moccur) words
 ;;       in the current file or directory
 ;;--------------------------------------------------------------------
-
-(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 
 ;; FIXME: not work

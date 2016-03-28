@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-03 Thu 12:04 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-28 Mon 13:41 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm-flyspell.el'
 ;; Author:       Xin Yang
@@ -12,8 +12,6 @@
 ;;  \____|_| |_| |_|\__,_|\___|___/
 ;;
 ;;--------------------------------------------------------------------
-
-(eval-when-compile (require 'cl))
 (require 'xy-rc-utils)
 ;; REF:
 ;; http://emacs.stackexchange.com/questions/14909/how-to-use-flyspell-to-efficiently-correct-previous-word
