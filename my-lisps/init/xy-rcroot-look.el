@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:59 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-29 Tue 18:18 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -225,13 +225,10 @@
 ;; | e      | popwin:messages                       |
 ;; | C-u    | popwin:universal-display              |
 ;; | 1      | popwin:one-window                     |
+(eval-after-load "popwin" '(popwin-postload))
 (when (try-require 'popwin)
-  (setq display-buffer-function 'popwin:display-buffer)
-  ;; NOTE:
-  ;; `display-buffer-function' should be replaced by
-  ;; `display-buffer-alist' after Emacs 24.3
   (popwin-mode 1)
-  (global-set-key (kbd "C-S-z") popwin:keymap))
+  (global-set-key (kbd "<f> o") popwin:keymap))
 
 
 
@@ -303,7 +300,7 @@
 ;; (eval-after-load "ws-trim" '(diminish 'ws-trim-mode))
 (eval-after-load "skeleton-complete" '(diminish 'skeleton-complete-mode))
 (eval-after-load "auto-dim-other-buffers" '(diminish 'auto-dim-other-buffers-mode))
-(eval-after-load "fic-ext-mode" '(diminish 'fic-ext-mode))
+(eval-after-load "fic-ext-mode" '(diminish 'fic-mode))
 (eval-after-load "face-remap" '(diminish 'buffer-face-mode))
 (eval-after-load "back-button" '(diminish 'back-button-mode))
 
@@ -327,20 +324,13 @@
 ;; offers a frame to show various information
 ;; Just call `xy/separate-line-frame' to use it.
 (eval-after-load "mode-line-frame" '(mode-line-frame-postload))
+(global-set-key (kbd "<f2> f") 'xy/separate-line-frame)
 
 ;;;; modeline face
 ;; (set-face-background 'modeline "grey90")
 ;; (set-face-background 'modeline-inactive "grey60")
 
 ;;;; smart-mode-line
-;; with powerline theme
-;; (setq powerline-arrow-shape 'curve)
-;; (Setq powerline-default-separator-dir '(right . left))
-;; (setq sml/theme 'powerline)
-;; (setq sml/theme 'dark)
-;; (setq sml/theme 'light)
-;; (setq sml/theme 'respectful)
-;; (sml/setup))
 (eval-after-load "smart-mode-line" '(smart-mode-line-postload))
 (global-set-key (kbd "<f2> m") 'sml/setup)
 
@@ -488,15 +478,15 @@
 ;;                   org-mode-hook)
 ;;  '(lambda () (font-lock-mode 1)))
 
-;;;; fic-ext-mode
-(eval-after-load "fic-ext-mode" '(fic-ext-mode-postload))
-;; NOTE: have some problem if turn on it all the time
-;; (am-add-hooks
-;;  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
-;;                   sh-mode-hook cperl-mode-hook c-common-mode-hook
-;;                   vhdl-mode-hook verilog-mode-hook matlab-mode-hook
-;;                   LaTeX-mode-hook)
-;;  'xy/turn-on-fic-ext-mode)
+;;;; fic-mode
+(eval-after-load "fic-mode" '(fic-mode-postload))
+;; NOTE: have some problem
+(am-add-hooks
+ `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
+                  sh-mode-hook cperl-mode-hook c-common-mode-hook
+                  vhdl-mode-hook verilog-mode-hook matlab-mode-hook
+                  LaTeX-mode-hook)
+ 'xy/turn-on-fic-mode)
 
 
 

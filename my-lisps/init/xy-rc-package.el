@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:46 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-29 Tue 18:16 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -162,7 +162,9 @@ re-downloaded in order to locate PACKAGE."
   
   (require-package 'ace-jump-mode)
   ;; (require-package 'ace-jump-buffer)
-  ;; (require-package 'ace-window)
+  (require-package 'ace-window)
+  ;; (require-package 'ace-pinyin)
+  ;; (require-package 'ace-popup-menu)
   ;; (require-package 'ace-link)
   (require-package 'ag)
   
@@ -223,7 +225,7 @@ re-downloaded in order to locate PACKAGE."
 
   (require-package 'ethan-wspace)
   ;; (require-package 'everything) ;; not very useful
-  (require-package 'fic-ext-mode)
+  (require-package 'fic-mode)
   ;; (require-package 'fit-frame) ;; not very useful
   ;; (require-package 'flx-ido)
   ;; (require-package 'flx)
@@ -377,6 +379,9 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'powerline)
   (require-package 'smart-mode-line)
   ;; (require-package 'smart-mode-line-powerline-theme)
+  ;; (require-package 'bash-completion)
+  (require-package 'fcitx)
+  
   ;; =======================================================
   ;; Completion system
   ;; 

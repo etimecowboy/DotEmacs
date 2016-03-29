@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:49 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-28 Mon 20:56 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -160,9 +160,22 @@
 ;;        1) C-s ----- normal isearch
 ;;        2) <f11> ----- use ace-jump-mode to locate your point
 
+;;;; ace-window
+(when (try-require 'ace-window)
+  (global-set-key (kbd "M-o") 'ace-window))
+
+;;;; ace-pinyin ;; not very usefull
+;; (when (try-require 'ace-pinyin)
+;;   (ace-pinyin-global-mode 1))
+
+;;;; ace-popup-menu
+;; (when (try-require 'ace-popup-menu)
+;;   (ace-popup-menu-mode t)
+;;   (global-set-key (kbd "<f2> j") 'ace-popup-menu))
+  
 
 
-;;;; my own replace face
+;;;; My own replace face
 ;; (eval-after-load "replace" '(replace-postload))
 
 
