@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-29 Tue 18:18 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-03-29 Tue 19:17 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -54,17 +54,33 @@
 ;; ;;         ":"
 ;; ;;         (:eval (or (buffer-file-name) (buffer-name)))))
 
-(setq frame-title-format
-      '("%b"
-        (:eval
-         (if (buffer-file-name)
-             (concat " (" (directory-file-name
-                           (file-name-directory
-                            (abbreviate-file-name
-                             (buffer-file-name))))
-                     ")")
-           ""))
-        " - Emacs"))
+;; (setq frame-title-format
+;;       '("%b"
+;;         (:eval
+;;          (if (buffer-file-name)
+;;              (concat " (" (directory-file-name
+;;                            (file-name-directory
+;;                             (abbreviate-file-name
+;;                              (buffer-file-name))))
+;;                      ")")
+;;            ""))
+;;         " - Emacs"))
+
+(setq-default frame-title-format
+              '(:eval
+                (format "%s@%s: %s %s"
+                        (or (file-remote-p default-directory 'user)
+                            user-real-login-name)
+                        (or (file-remote-p default-directory 'host)
+                            system-name)
+                        (buffer-name)
+                        (cond
+                         (buffer-file-truename
+                          (concat "(" buffer-file-truename ")"))
+                         (dired-directory
+                          (concat "{" dired-directory "}"))
+                         (t
+                          "[no file]")))))
 
 
 
@@ -323,8 +339,8 @@
 ;;;; mode-line-frame
 ;; offers a frame to show various information
 ;; Just call `xy/separate-line-frame' to use it.
-(eval-after-load "mode-line-frame" '(mode-line-frame-postload))
-(global-set-key (kbd "<f2> f") 'xy/separate-line-frame)
+;; (eval-after-load "mode-line-frame" '(mode-line-frame-postload))
+;; (global-set-key (kbd "<f2> f") 'xy/separate-line-frame)
 
 ;;;; modeline face
 ;; (set-face-background 'modeline "grey90")
