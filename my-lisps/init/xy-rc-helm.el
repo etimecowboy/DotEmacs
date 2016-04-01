@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:40 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-01 Fri 10:48 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm.el'
 ;; Author:       Xin Yang
@@ -78,6 +78,7 @@
   ;; (try-require 'helm-bm)
 
   ;;; `helm-c-moccur'
+  (setq helm-idle-delay nil)
   (try-require 'helm-c-moccur)
 
   ;;; `helm-projectile'

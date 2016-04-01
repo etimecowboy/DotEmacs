@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-29 Tue 19:17 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-01 Fri 09:29 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -304,21 +304,22 @@
 (eval-after-load "simple" '(diminish 'visual-line-mode))
 (eval-after-load "abbrev" '(diminish 'abbrev-mode))
 (eval-after-load "flyspell" '(diminish 'flyspell-mode))
+;; (eval-after-load "flycheck" '(diminish 'flycheck-mode))
 (eval-after-load "autopair" '(diminish 'autopair-mode))
 (eval-after-load "hideshow" '(diminish 'hs-minor-mode))
-(eval-after-load "recent-jump" '(diminish 'recent-jump-mode))
-(eval-after-load "recent-jump-small" '(diminish 'recent-jump-small-mode))
-(eval-after-load "ibus" '(diminish 'ibus-mode))
-(eval-after-load "outline" '(diminish 'outline-minor-mode))
-(eval-after-load "eldoc" '(diminish 'eldoc-mode))
+;; (eval-after-load "ibus" '(diminish 'ibus-mode))
+;; (eval-after-load "outline" '(diminish 'outline-minor-mode))
+;; (eval-after-load "eldoc" '(diminish 'eldoc-mode))
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 ;; (eval-after-load "ethan-wspace" '(diminish 'ethan-wspace-mode))
 ;; (eval-after-load "ws-trim" '(diminish 'ws-trim-mode))
 (eval-after-load "skeleton-complete" '(diminish 'skeleton-complete-mode))
 (eval-after-load "auto-dim-other-buffers" '(diminish 'auto-dim-other-buffers-mode))
-(eval-after-load "fic-ext-mode" '(diminish 'fic-mode))
+(eval-after-load "fic-mode" '(diminish 'fic-mode))
 (eval-after-load "face-remap" '(diminish 'buffer-face-mode))
 (eval-after-load "back-button" '(diminish 'back-button-mode))
+;; (eval-after-load "helm" '(diminish 'helm-mode))
+;; (eval-after-load "company" '(diminish 'company-mode))
 
 
 

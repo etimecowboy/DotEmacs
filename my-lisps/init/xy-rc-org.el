@@ -1069,6 +1069,8 @@
            ("\\.bmp\\'"     . "ristretto %s")
            ("\\.gif\\'"     . "ristretto %s")
            )))
+  ;; FIXME: there is a problem with history files, cannot start new emacs process for exporting
+  ;; (setq org-export-in-background t) ;; use background export by default
 
 ;;;;; Special symboles
   ;; check http://orgmode.org/manual/Special-symbols.html
