@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-01 Fri 09:29 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-02 Sat 15:45 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -153,11 +153,10 @@
 
 
 ;;;; windmove
-;; NOTE: If not fast enough, use `window-number.el'
+;; NOTE: If not fast enough, use `window-number.el' or `ace-window.el'
 ;; NOTE: the default key bindings C-left/right/up/down conflicts
 ;; with org-mode default key bindings.
 (eval-after-load "windmove" '(windmove-postload))
-
 (eal-define-keys-commonly
  global-map ;; BUG: not work in linux console
  `(("C-S-j" windmove-left)
@@ -173,7 +172,6 @@
 (autoload 'buf-move-down "buffer-move" nil t)
 (autoload 'buf-move-left "buffer-move" nil t)
 (autoload 'buf-move-right "buffer-move" nil t)
-
 (eal-define-keys-commonly
  global-map ;; not work in linux console
  `(("M-S-<up>"    buf-move-up)
@@ -193,7 +191,6 @@
 (autoload 'windsize-right "windsize" nil t)
 (autoload 'windsize-up "windsize" nil t)
 (autoload 'windsize-down "windsize" nil t)
-
 (eal-define-keys-commonly
  global-map
  `(("M-J" windsize-left)
