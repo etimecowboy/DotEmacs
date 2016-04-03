@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:33 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-03 Sun 22:44 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-eshell.el'
 ;; Author:       Xin Yang
@@ -17,15 +17,19 @@
 ;;;###autoload
 (defun eshell-postload ()
   "Settings for `term' after it's been loaded."
-  ;; (add-hook 'eshell-preoutput-filter-functions
-  ;;           'ansi-color-filter-apply)
 
-  ;; (defun eshell-handle-ansi-color ()
-  ;;     (ansi-color-apply-on-region
-  ;;      eshell-last-output-start
-  ;;      eshell-last-output-end))
-  ;; (add-to-list 'eshell-output-filter-functions
-  ;;              'eshell-handle-ansi-color)
+  (require 'ansi-color)
+  
+  (add-hook 'eshell-preoutput-filter-functions
+            'ansi-color-filter-apply)
+
+  (defun eshell-handle-ansi-color ()
+      (ansi-color-apply-on-region
+       eshell-last-output-start
+       eshell-last-output-end))
+
+  (add-to-list 'eshell-output-filter-functions
+               'eshell-handle-ansi-color)
 
   (setq eshell-directory-name (concat my-emacs-path "/eshell")
   ;; (wrong) (setq eshell-ls-use-in-dired t nil (em-ls))

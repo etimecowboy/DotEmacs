@@ -1,5 +1,5 @@
 ;;   -*- Mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:42 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-02 Sat 21:51 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-imenu.el'
 ;; Author:       Xin Yang
@@ -22,7 +22,8 @@
 ;;;###autoload
 (defun imenu-postload ()
   "Settings for `imenu' after it's been loaded."
-  (try-require 'imenu+)
+
+  ;; (try-require 'imenu+)
 
   (defvar text-imenu-generic-expression
     `((nil ,"^ \\{0,4\\}\\([一二三四五六七八九十]+[、. )]\\)+ *[^,。，]+?$" 0)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:54 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-04 Mon 00:23 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-term.el'
 ;; Author:       Xin Yang
@@ -84,7 +84,8 @@
   ;; 当光标最屏幕底部时，有可能使得屏幕发生抖动
   (make-local-variable 'scroll-margin)
   (setq scroll-margin 0)
-  (kill-buffer-when-shell-command-exit))
+  ;; (kill-buffer-when-shell-command-exit)
+  )
 
 ;;;###autoload
 (defun switch-term-and-text ()
@@ -108,6 +109,39 @@
   (interactive)
   (text-mode))
 
+;;; Switch between Term-mode and Shell-mode
+;;
+;; REF: https://www.emacswiki.org/emacs/ShellMode
+;;
+;; Below is a function which allows you to switch between Term mode
+;; and Shell mode, in the same buffer.
+;;
+;; Notice that it works properly only if started from an term buffer
+;; (started with ‘ansi-term’) which properly initializes bash for
+;; working in a terminal.
+;;;###autoload
+(defun term-switch-to-shell-mode ()
+  (interactive)
+  (require 'shell)
+  (require 'term)
+  (if (equal major-mode 'term-mode)
+      (progn
+        (shell-mode)
+        (set-process-filter  (get-buffer-process (current-buffer)) 'comint-output-filter )
+        (local-set-key (kbd "C-j") 'term-switch-to-shell-mode)
+        (compilation-shell-minor-mode 1)
+        (comint-send-input)
+        )
+    (progn
+      (compilation-shell-minor-mode -1)
+      (font-lock-mode -1)
+      (set-process-filter  (get-buffer-process (current-buffer)) 'term-emulate-terminal)
+      (term-mode)
+      (term-char-mode)
+      (term-send-raw-string (kbd "C-l"))
+      )))
+
+
 ;;;###autoload
 (defun term-postload ()
   "Settings for `term' after it's been loaded."
@@ -115,31 +149,55 @@
   ;; multi-term: a mode based on term.el,
   ;; for managing multiple terminal buffers in Emacs.
   (require 'multi-term)
-  (add-hook 'term-mode-hook 'term-mode-hook-settings)
+  ;; (add-hook 'term-mode-hook 'term-mode-hook-settings)
 
-  (setq term-unbind-key-list '("C-x" "<ESC>" "<up>" "<down>" "C-j"))
+  ;; (setq term-unbind-key-list '("C-x" "<ESC>" "<up>" "<down>")) ;; "C-j"))
   (setq term-bind-key-alist
-      `(("C-c"   . term-send-raw)
-        ("C-p"   . term-send-raw)
-        ("C-n"   . term-send-raw)
-        ("C-s"   . isearch-forward)
-        ("C-r"   . term-send-raw)
-        ("C-m"   . term-send-raw)
+      `(;; ("C-c"   . term-send-raw)
+        ;; ("C-p"   . term-send-raw)
+        ;; ("C-n"   . term-send-raw)
+        ("C-p"   . previous-line)
+        ("C-n"   . next-line)
+        ;; ("C-s"   . isearch-forward)
+        ;; ("C-r"   . term-send-raw)
+        ;; ("C-m"   . term-send-raw)
         ("C-k"   . term-send-kill-whole-line)
         ("C-y"   . term-send-raw)
+        ("C-c C-j" . 'term-line-mode)
+        ("C-c C-k" . 'term-char-mode)
+        ;; ("<f1>"   . term-send-raw)
+        ;; ("<f2>"   . term-send-raw)
+        ;; ("<f3>"   . term-send-raw)
+        ;; ("<f4>"   . term-send-raw)
+        ;; ("<f5>"   . term-send-raw)
+        ;; ("<f6>"   . term-send-raw)
+        ;; ("<f7>"   . term-send-raw)
+        ;; ("<f8>"   . term-send-raw)
+        ;; ("<f9>"   . term-send-raw)
+        ;; ("<f10>"   . term-send-raw)
+        ;; ("<f11>"   . term-send-raw)
+        ;; ("<f12>"   . term-send-raw)
         (,(if window-system "C-/" "C-_") . term-send-undo)
-        ("C-M-h" . term-send-backward-kill-semi-word)
-        ("M-S-h"   . enter-text-mode)
-        ("M-S-j"   . switch-term-and-text)
-        ("M-f"   . term-send-raw-meta)
-        ("M-b"   . term-send-raw-meta)
-        ("M-d"   . term-send-raw-meta)
-        ("M-K"   . term-send-kill-line)
-        ("M-p"   . previous-line)
-        ("M-n"   . next-line)
-        ("M-u"   . term-send-raw-meta)
-        ("M-w"   . term-send-copy-line)
-        ("M-S-w"   . term-send-copy-line-left)
+        ;; ("C-M-h" . term-send-backward-kill-semi-word)
+        ;; ("M-S-h"   . enter-text-mode)
+        ;; ("M-S-j"   . switch-term-and-text)
+        ;; ("M-f"   . term-send-raw-meta)
+        ;; ("M-b"   . term-send-raw-meta)
+        ("M-f"   . term-send-forward-word)
+        ("M-b"   . term-send-backward-word)
+        ("M-DEL" . term-send-backward-kill-word)
+        ("M-d"   . term-send-forward-kill-word)
+        ("<C-left>"  . term-send-backward-word)
+        ("<C-right>" . term-send-forward-word)
+        ("C-r"   . term-send-reverse-search-history)
+        ("M-p"   . term-send-raw-meta)
+        ;; ("M-d"   . term-send-raw-meta)
+        ;; ("M-K"   . term-send-kill-line)
+        ;; ("M-p"   . previous-line)
+        ;; ("M-n"   . next-line)
+        ;; ("M-u"   . term-send-raw-meta)
+        ;; ("M-w"   . term-send-copy-line)
+        ;; ("M-S-w" . term-send-copy-line-left)
         ("M-y"   . term-send-raw-meta)
         ("M-."   . term-send-raw-meta)
         ("M-/"   . term-send-raw-meta)
@@ -152,8 +210,11 @@
         ("M-6"   . term-send-raw-meta)
         ("M-7"   . term-send-raw-meta)
         ("M-8"   . term-send-raw-meta)
-        ("M-9"   . term-send-raw-meta)))
+        ("M-9"   . term-send-raw-meta)
+        ))
 
+  (define-key term-raw-map (kbd "C-j") 'term-switch-to-shell-mode)
+  
   (message "* ---[ term-mode post-load configuration is complete ]---"))
 
 ;; emacs上水木的一些配置

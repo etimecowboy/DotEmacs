@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:52 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-03 Sun 22:44 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-shell.el'
 ;; Author:       Xin Yang
@@ -14,18 +14,23 @@
 ;;--------------------------------------------------------------------
 (require 'xy-rc-utils)
 
+;; Use this command to clear the shell buffer:
+;;;###autoload
+(defun clear-shell ()
+  (interactive)
+  (let ((comint-buffer-maximum-size 0))
+    (comint-truncate-buffer)))
+
 ;;;###autoload
 (defun shell-postload ()
   "Settings for `term' after it's been loaded."
 
-  ;; Remove ^M characters
-  ;; (add-hook 'comint-output-filter-functions
-  ;;          'comint-strip-ctrl-m)
   (require 'ansi-color) ;; Use ansi-color in shell and eshell mode
   ;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
   ;; (require 'shell-completion) ;; Press tab for completions
   ;; Add command of `shell-command', `shell-command-on-region',
   ;; `compile', `grep', and `background' to shell history file
+
   (require 'shell-history)
 
   ;; SHELL = %your_emacs_path%\bin\cmdproxy.exe

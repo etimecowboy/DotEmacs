@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-01 Fri 10:48 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-03 Sun 15:27 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm.el'
 ;; Author:       Xin Yang
@@ -34,9 +34,9 @@
   (when (executable-find "curl")
     (setq helm-google-suggest-use-curl-p t))
 
-  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
-  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-  (define-key helm-map (kbd "C-z") 'helm-select-action) ; list actions using C-z
+  ;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+  ;; (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+  ;; (define-key helm-map (kbd "C-z") 'helm-select-action) ; list actions using C-z
 
   (helm-autoresize-mode t)
   (setq helm-autoresize-max-height 50
@@ -86,6 +86,12 @@
 
   ;;; `helm-flyspell'
   (try-require 'helm-flyspell)
+
+  ;;; `helm-swoop'
+  (try-require 'helm-swoop)
+
+  ;;; `ace-jump-helm-line'
+  (try-require 'ace-jump-helm-line)
   
   (helm-mode 1)
   (message "* ---[ helm post-load configuration is complete ]---"))

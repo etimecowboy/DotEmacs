@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:52 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-03 Sun 23:01 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-shell-pop.el'
 ;; Author:       Xin Yang
@@ -18,8 +18,30 @@
 (defun shell-pop-postload ()
   "Settings for `shell-pop.el' after it's been loaded."
 
+  ;; (setq shell-pop-shell-type
+  ;;       '("eshell" "*eshell*" (lambda nil (eshell))))
+
+  ;; (setq shell-pop-shell-type
+  ;;       (quote
+  ;;        ("ansi-term" "*ansi-term*"
+  ;;         (lambda nil
+  ;;           (ansi-term shell-pop-term-shell)))))
+
+  ;; (setq shell-pop-shell-type
+  ;;       (quote
+  ;;        ("ansi-term" "*ansi-term*"
+  ;;         (lambda nil
+  ;;           (ansi-term)))))
+
+  ;; (setq shell-pop-shell-type
+  ;;   (quote
+  ;;    ("terminal" "*terminal*"
+  ;;     (lambda nil
+  ;;       (term shell-pop-term-shell)))))
+
   (setq shell-pop-shell-type
-        '("eshell" "*eshell*" (lambda nil (eshell))))
+        (quote ("shell" "*shell*" (lambda nil (shell)))))
+  
   (setq shell-pop-window-height 35)
   (setq shell-pop-window-position "bottom")
   (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)

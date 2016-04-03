@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:41 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-03 Sun 12:47 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm-firefox.el'
 ;; Author:       Xin Yang
@@ -18,6 +18,10 @@
 (defun helm-firefox-postload ()
   "Settings of `helm-firefox.el' after it's been loaded."
 
+  (GNULinux
+   (setq helm-firefox-default-directory "~/.mozilla/firefox/"))
+  (setq helm-firefox-show-structure t)
+  
   (message "* ---[ helm-firefox post-load configuration is complete ]---"))
 
 (provide 'xy-rc-helm-firefox)

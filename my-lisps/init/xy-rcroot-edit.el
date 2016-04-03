@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-31 Thu 17:18 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-03 Sun 15:59 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -162,7 +162,7 @@
 
 ;;;; ace-window
 (when (try-require 'ace-window)
-  (global-set-key (kbd "M-o") 'ace-window))
+  (global-set-key (kbd "M-#") 'ace-window))
 
 ;;;; ace-pinyin ;; not very usefull
 ;; (when (try-require 'ace-pinyin)
@@ -172,7 +172,42 @@
 ;; (when (try-require 'ace-popup-menu)
 ;;   (ace-popup-menu-mode t)
 ;;   (global-set-key (kbd "<f2> j") 'ace-popup-menu))
-  
+
+;;;; ace-isearch
+;; provides a minor mode which combines `isearch', `ace-jump-mode', `avy', and `helm-swoop'.
+;;
+;; L = 1     : `ace-jump-mode' or `avy'
+;; 1 < L < 6 : `isearch'
+;; L >= 6    : `helm-swoop'
+;;
+;; where L is the input string length during `isearch'. When L is 1,
+;; after a few seconds specified by `ace-isearch-jump-delay',
+;; `ace-jump-mode' or `avy' will be invoked. Of course you can
+;; customize the above behaviour.
+;;
+;; Installation:
+;;
+;; To use this package, add following code to your init file.
+;;
+;;   (require 'ace-isearch)
+;;   (global-ace-isearch-mode +1)
+
+;;;; ace-jump-helm-line
+;; moved to helm configurantio in xy-rcroot-complete
+;; (eval-after-load "helm"
+;;   '(define-key helm-map (kbd "C-'") 'ace-jump-helm-line))
+
+;;;; ace-mc (check mc package also)
+(global-set-key (kbd "C-)") 'ace-mc-add-multiple-cursors)
+(global-set-key (kbd "C-M-)") 'ace-mc-add-single-cursor)
+
+;;;; multiple-cursor
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+
 
 
 ;;;; My own replace face
@@ -238,11 +273,6 @@
 
 
 
-;;;; multiple-cursor
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;;; Graphic text tools
 

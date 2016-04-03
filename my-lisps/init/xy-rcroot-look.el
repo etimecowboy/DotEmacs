@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-02 Sat 15:45 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-04 Mon 00:39 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -40,20 +40,25 @@
 
 
 ;;;; Frame title
-;; ;; Set frame title display: filename @ process
-;; ;; (setq frame-title-format "%f @ %s")
+;; Set frame title display
+;; NOTE: `windows.el' and `revive.el' overwirte title
+
+;;;;; setting 1: filename @ process
+;; (setq frame-title-format "%f @ %s")
 ;; (setq frame-title-format
 ;;       `(,(user-login-name) "@" ,(system-name) "     "
 ;;         global-mode-string "     %f" ))
-;; ;; NOTE: `windows.el' and `revive.el' overwirte title
-;; ;; (setq frame-title-format
-;; ;;       '((:eval
-;; ;;          (let ((login-name (getenv-internal "LOGNAME")))
-;; ;;            (if login-name (concat login-name "@") "")))
-;; ;;         (:eval (system-name))
-;; ;;         ":"
-;; ;;         (:eval (or (buffer-file-name) (buffer-name)))))
 
+;;;;; setting 2:
+;; (setq frame-title-format
+;;       '((:eval
+;;          (let ((login-name (getenv-internal "LOGNAME")))
+;;            (if login-name (concat login-name "@") "")))
+;;         (:eval (system-name))
+;;         ":"
+;;         (:eval (or (buffer-file-name) (buffer-name)))))
+
+;;;;; setting 3:
 ;; (setq frame-title-format
 ;;       '("%b"
 ;;         (:eval
@@ -66,6 +71,7 @@
 ;;            ""))
 ;;         " - Emacs"))
 
+;;;;; setting 4:
 (setq-default frame-title-format
               '(:eval
                 (format "%s@%s: %s %s"
@@ -150,6 +156,9 @@
 ;; the mode-line." t)
 ;; (window-number-meta-mode 1)
 
+;;;; ace-window
+;; configured in xy-rcroot-edit.el
+
 
 
 ;;;; windmove
@@ -158,7 +167,7 @@
 ;; with org-mode default key bindings.
 (eval-after-load "windmove" '(windmove-postload))
 (eal-define-keys-commonly
- global-map ;; BUG: not work in linux console
+ global-map ;; BUG: keybindings do not work in linux console
  `(("C-S-j" windmove-left)
    ("C-S-l" windmove-right)
    ("C-S-i" windmove-up)
@@ -241,7 +250,7 @@
 (eval-after-load "popwin" '(popwin-postload))
 (when (try-require 'popwin)
   (popwin-mode 1)
-  (global-set-key (kbd "<f> o") popwin:keymap))
+  (global-set-key (kbd "<f2> o") popwin:keymap))
 
 
 
@@ -346,7 +355,8 @@
 
 ;;;; smart-mode-line
 (eval-after-load "smart-mode-line" '(smart-mode-line-postload))
-(global-set-key (kbd "<f2> m") 'sml/setup)
+(global-set-key (kbd "<f2> m") 'xy/sml-setup)
+;; (xy/sml-setup)
 
 
 
@@ -367,9 +377,7 @@
     (define-key map [yank] (quote ("yank rectangle" . yank-rectangle)))
     (define-key map [delete] (quote ("delete rectangle" . delete-rectangle)))
     (define-key map [kill] (quote ("kill rectangle" . kill-rectangle)))
-    map
-    )
-  )
+    map))
 (defalias (quote menu-bar-rectangle-map) menu-bar-rectangle-map)
 (define-key-after
   (lookup-key global-map [menu-bar edit])
@@ -618,8 +626,6 @@
 ;;   ;;  (color-theme-solarized-dark))
 ;; )
 
-
-
 ;;;; Emacs built-in color system
 ;; NOTE: two most popular color-theme: zenburn (low contrast for long
 ;; time work at the screen) and solarized (for same color setting on
@@ -633,6 +639,8 @@
 ;; don't load any color theme when starting emacs
 ;; (when (and window-system (try-require 'solarized-dark-theme))
 ;;   (load-theme 'solarized-dark t))
+(when (try-require 'solarized-dark-theme)
+  (load-theme 'solarized-dark t))
 (global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
 (global-set-key (kbd "<f2> C") 'disable-theme)
 
@@ -796,8 +804,8 @@
    ;; ("C-M-="  increase-default-font-height)
    ;; ("C-M--"  decrease-default-font-height)
    ))
-(xy/set-font-default)
-(xy/set-font-prog)
+;; (xy/set-font-default)
+(xy/set-font-prog-big)
 
 ;;;; Automatically set fonts for different modes
 ;; NOTE: a pain to my eyes

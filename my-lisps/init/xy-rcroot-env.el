@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 20:22 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-02 Sat 22:20 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -579,18 +579,18 @@ Toggle keyboard command logging of whole emacs.
 ;;    (setq ibus-agent-file-name "~/.emacs.d/bin/lin64/ibus-el-agent")
 ;;    ))
 
-;;;; `fcitx'
-(when (try-require 'fcitx)
-  ;; (fcitx-default-setup)
-  (fcitx-aggressive-setup)
-  ;; (fcitx-prefix-keys-setup)
-  ;; (fcitx-prefix-keys-turn-on)
-  (fcitx-evil-turn-off)
-  (fcitx-isearch-turn-on)
-  (GNULinux
-   (setq fcitx-use-dbus t)
-   ;; (fcitx-read-funcs-turn-on)
-  ))
+;;;; `fcitx' - better integration with fcitx im
+(GNULinux
+    (when (try-require 'fcitx)
+      ;; (fcitx-default-setup)
+      (fcitx-aggressive-setup)
+      ;; (fcitx-prefix-keys-setup)
+      ;; (fcitx-prefix-keys-turn-on)
+      (fcitx-evil-turn-off)
+      (fcitx-isearch-turn-on)
+      (setq fcitx-use-dbus t)
+      ;; (fcitx-read-funcs-turn-on)
+    ))
 
 
 

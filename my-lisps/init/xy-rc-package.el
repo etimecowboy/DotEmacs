@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-29 Tue 18:16 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-03 Sun 15:30 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -381,6 +381,8 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'smart-mode-line-powerline-theme)
   ;; (require-package 'bash-completion)
   (require-package 'fcitx)
+  (require-package 'imenu+)
+  ;; (require-package 'imenu-anywhere)
   
   ;; =======================================================
   ;; Completion system
@@ -414,14 +416,16 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'helm-c-yasnippet)
   ;; (require-package 'helm-R)
   (require-package 'helm-c-moccur)
+  (require-package 'helm-swoop)
   (require-package 'helm-descbinds)
   ;; (require-package 'helm-gist)
   ;; (require-package 'helm-git)
   ;; (require-package 'helm-gtags)
   ;; (require-package 'helm-ls-git)
-  ;; ;; (require-package 'helm-migemo)
+  ;; (require-package 'helm-migemo)
   (require-package 'helm-projectile)
   ;; (require-package 'helm-themes)
+  (require-package 'ace-jump-helm-line)
 
   ;; (require-package 'ack-menu)  ;; ack is not used
   ;; (require-package 'ansi)  ;; never used

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:53 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-03 Sun 16:54 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-smart-mode-line.el'
 ;; Author:       Xin Yang
@@ -13,6 +13,16 @@
 ;;
 ;;--------------------------------------------------------------------
 (require 'xy-rc-utils)
+
+;;;###autoload
+(defun xy/sml-setup ()
+  "Set mode line face but not the default background face."
+
+  (interactive)
+  (sml/setup)
+  (custom-set-faces
+   '(default ((t (:background nil))))))
+
 
 ;;;###autoload
 (defun smart-mode-line-postload ()

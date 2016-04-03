@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:49 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-04 Mon 00:28 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -162,16 +162,11 @@
 (tramp-preload)
 (eval-after-load "tramp" '(tramp-postload))
 (GNULinux
- (global-set-key (kbd "C-c C-R") 'sudo-edit-current-file))
+ (global-set-key (kbd "C-c C-r") 'sudo-edit-current-file))
 
 
 
-;;;; term-mode
-(eval-after-load "term" '(term-postload))
-
-
-
-;;;; Shell/eshell-mode
+;;; eshell
 ;;(define-key shell-mode-map "\M-m" 'shell-add-to-history)
 ;; Backgrounding a process in shell mode
 ;; You might find it difficult to background
@@ -181,10 +176,50 @@
 ;;  M-x local-set-key RET C-z self-insert-command
 ;; And if you want to background Emacs, just go to a different buffer.
 ;; ‘C-q C-z’ doesn’t work? - No, but C-c C-z should.
-(global-set-key (kbd "<f9> s") 'ansi-shell)
 (global-set-key (kbd "<f9> e") 'eshell)
 
 
+
+;;; shell
+;; Remove ^M characters
+(add-hook 'comint-output-filter-functions
+          'comint-strip-ctrl-m)
+(global-set-key (kbd "<f9> s") 'shell)
+
+;;;; shell-pop
+;; pop up a window for shell
+(autoload 'shell-pop "shell-pop" "Pop-up a shell" t)
+(eval-after-load "shell-pop" '(shell-pop-postload))
+(global-set-key (kbd "<f9> p") 'shell-pop)
+;;;; shell-here
+(global-set-key (kbd "<f9> d") 'shell-here)
+
+;;; term / ansi-term
+(eval-after-load "term" '(term-postload))
+(global-set-key (kbd "<f9> t") 'ansi-term)
+;;;; multi-term
+(eval-after-load "multi-term" '(multi-term-postload))
+(eval-after-load "multi-term"
+  '(progn
+     (multi-term-postload)
+     (eal-define-keys
+      'term-mode-map
+      `(("C-x n" multi-term-next)
+        ("C-x p" multi-term-prev)))
+
+     ;; (eal-define-keys-commonly
+     ;;  global-map
+     ;;  `(("C-c T n" multi-term-next)
+     ;;    ("C-c T p" multi-term-prev)))
+     ;; (eal-define-keys
+     ;;  'text-mode-map
+     ;;  `(("M-S-j"   switch-term-and-text)
+     ;;    ("M-S-l"   enter-term-mode)))
+     ))
+(global-set-key (kbd "<f9> m") 'multi-term)
+
+
+
 ;;; undo and redo
 ;;;; undo-tree
 ;; NOTE: temperal disabled because of the conflict between undo-tree
@@ -369,36 +404,6 @@ from tradition chinese to simple chinese" t)
 ;; (autoload 'ascii-customize "ascii"
 ;;   "Customize ASCII code display." t)
 
-
-
-;;; shell
-;;;; multi-term
-;; ;; a mode based on term.el, for managing multiple terminal buffers
-;; (autoload 'multi-term "multi-term" nil t)
-;; (eval-after-load "multi-term"
-;;   '(progn
-;;      (multi-term-postload)
-;;      (eal-define-keys-commonly
-;;       global-map
-;;       `(("C-c T n" multi-term-next)
-;;         ("C-c T p" multi-term-prev)))))
-;;      ;; (eal-define-keys
-;;      ;;  'text-mode-map
-;;      ;;  `(("M-S-j"   switch-term-and-text)
-;;      ;;    ("M-S-l"   enter-term-mode)))))
-;; (global-set-key (kbd "C-x S-t") 'multi-term)
-;; NOTE: not very useful
-
-;;;; shell-pop
-;; pop up a window for shell
-(autoload 'shell-pop "shell-pop" "Pop-up a shell" t)
-(eval-after-load "shell-pop" '(shell-pop-postload))
-(global-set-key (kbd "<f9> p") 'shell-pop)
-
-
-
-;;;; shell-here
-(global-set-key (kbd "<f9> d") 'shell-here)
 
 
 ;;; spell check

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:49 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-03 Sun 15:55 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -407,12 +407,13 @@
 (eval-after-load "helm"
   '(progn
      (helm-postload)
-     ;; (eal-define-keys
-     ;;  'helm-command-map
-     ;;  `(("<tab>" helm-execute-persistent-action)
-     ;;    ("C-i"   helm-execute-persistent-action)
-     ;;    ("C-z"   helm-select-action)))
-     ))
+     (eal-define-keys
+      'helm-map
+      `(("<tab>" helm-execute-persistent-action)
+        ("C-i"   helm-execute-persistent-action)
+        ("C-z"   helm-select-action)
+        ("C-'"   ace-jump-helm-line)
+	))))
 (global-set-key (kbd "<f6> h")  'helm-mode)
 (global-set-key (kbd "M-x")     'helm-M-x)
 (global-set-key (kbd "M-y")     'helm-show-kill-ring)
@@ -446,7 +447,7 @@
      (helm-firefox-postload)
      (eal-define-keys
       'helm-command-map
-      `(("u" helm-bibtex)))))
+      `(("u" helm-firefox-bookmarks)))))
 
 ;;; helm-c-yasnippet
 (eval-after-load "helm-c-yasnippet"
@@ -466,6 +467,9 @@
       'helm-command-map
       `(("o"   helm-c-moccur-occur-by-moccur)
         ("O"   helm-c-moccur-dmoccur)))
+     (add-hook 'dired-mode-hook
+               '(lambda ()
+                  (local-set-key (kbd "O") 'helm-c-moccur-dired-do-moccur-by-moccur)))
      (global-set-key (kbd "C-M-s") 'helm-c-moccur-isearch-forward)
      (global-set-key (kbd "C-M-r") 'helm-c-moccur-isearch-backward)
      ))
@@ -488,5 +492,52 @@
      ))
 
 
+
+;;; helm-swoop
+(eval-after-load "helm-swoop"
+  '(progn
+     (helm-swoop-postload)
+     (global-set-key (kbd "C-s") 'helm-swoop)
+     ;; (global-set-key (kbd "C-s") 'helm-swoop-without-pre-input)
+     (global-set-key (kbd "C-r") 'helm-swoop-back-to-last-point)
+     (global-set-key (kbd "C-S-r") 'helm-multi-swoop)
+     (global-set-key (kbd "C-S-s") 'helm-multi-swoop-all)
+     ;; (eal-define-keys
+     ;;  'helm-command-map
+     ;;  `(("C-s"   helm-swoop)
+     ;;    ("C-r"   helm-swoop-back-to-last-point)
+     ;;    ("C-c C-s"   helm-multi-swoop)
+     ;;    ("C-x C-s" helm-multi-swoop-all)
+     ;;    ))
+     (eal-define-keys
+      'helm-swoop-map
+      `(("C-r"   helm-previous-line)
+        ("C-s"   helm-next-line)
+        ))
+     (eal-define-keys
+      'helm-multi-swoop-map
+      `(("C-r"   helm-previous-line)
+        ("C-s"   helm-next-line)
+        ("C-S-r"   helm-previous-line)
+        ("C-S-s"   helm-next-line)
+        ))
+     ))
+
+;; ;; When doing isearch, hand the word over to helm-swoop
+;; (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+;; ;; From helm-swoop to helm-multi-swoop-all
+;; (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+;; ;; When doing evil-search, hand the word over to helm-swoop
+;; ;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
+
+;; ;; Instead of helm-multi-swoop-all, you can also use helm-multi-swoop-current-mode
+;; (define-key helm-swoop-map (kbd "M-m") 'helm-multi-swoop-current-mode-from-helm-swoop)
+
+;; ;; Move up and down like isearch
+;; (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+;; (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
+;; (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
+;; (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
+
 
 (provide 'xy-rcroot-complete)

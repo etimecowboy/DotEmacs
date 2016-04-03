@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:44 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-04 Mon 00:23 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-multi-term.el'
 ;; Author:       Xin Yang
@@ -21,7 +21,7 @@
   ;; (when use-cua (cua-selection-mode 1))
   (setq multi-term-switch-after-close nil)
   (GNULinux
-   (setq multi-term-program "bash"))
+   (setq multi-term-program "/bin/bash"))
   (Windows
    (setq multi-term-program "bash.exe"))
 
