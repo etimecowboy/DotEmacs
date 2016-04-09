@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-03 Sun 15:55 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-05 Tue 10:23 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -418,6 +418,7 @@
 (global-set-key (kbd "M-x")     'helm-M-x)
 (global-set-key (kbd "M-y")     'helm-show-kill-ring)
 (global-set-key (kbd "C-x b")   'helm-mini)
+(global-set-key (kbd "C-x r b") 'helm-bookmarks)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 ;; REF: http://tuhdo.github.io/helm-intro.html
@@ -511,13 +512,13 @@
      ;;    ))
      (eal-define-keys
       'helm-swoop-map
-      `(("C-r"   helm-previous-line)
-        ("C-s"   helm-next-line)
+      `(("C-r"     helm-previous-line)
+        ("C-s"     helm-next-line)
         ))
      (eal-define-keys
       'helm-multi-swoop-map
-      `(("C-r"   helm-previous-line)
-        ("C-s"   helm-next-line)
+      `(("C-r"     helm-previous-line)
+        ("C-s"     helm-next-line)
         ("C-S-r"   helm-previous-line)
         ("C-S-s"   helm-next-line)
         ))

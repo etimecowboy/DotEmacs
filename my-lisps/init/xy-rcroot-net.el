@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-02 Sat 21:55 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-07 Thu 14:44 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-net.el'
 ;; Author:       Xin Yang
@@ -46,7 +46,8 @@
      (eal-define-keys
       'w3m-mode-map
       `(("C-x W f"      w3m-external-view-current-url)
-        ("C-x W F"      w3m-external-view-this-url)
+        ;; ("C-x W F"      w3m-external-view-this-url)   ;; obsolete command since 2013-10-17
+        ("C-x W F"      w3m-view-url-with-browse-url)
         ("C-x W o"      org-w3m-copy-for-org-mode) ;; copy region as org format
         ("S-<mouse-1>"  w3m-mouse-view-this-url-new-session)
         ("<mouse-3>"    w3m-mouse-major-mode-menu)

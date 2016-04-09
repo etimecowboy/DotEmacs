@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:40 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-07 Thu 09:00 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm-bibtex.el'
 ;; Author:       Xin Yang
@@ -14,16 +14,30 @@
 ;;--------------------------------------------------------------------
 (require 'xy-rc-utils)
 
+;; move to `bibtex-completion.el'
+;; ;;;###autoload
+;; (defun helm-bibtex-format-citation-ox-bibtex (keys)
+;;   "Formatter for ox-bibtex references in org mode."
+;;   (s-join ", "
+;;           (--map (format "\\nbsp[[cite:%s]]" it) keys)))
+
 ;;;###autoload
 (defun helm-bibtex-postload ()
   "Settings of `helm-bibtex.el' after it's been loaded."
 
-  ;; Add to `helm-bibtex.el' to use it.
-  ;; (defun helm-bibtex-format-citation-ox-bibtex (keys)
-  ;;   "Formatter for ox-bibtex references in org mode."
-  ;;   (s-join ", "
-  ;;           (--map (format "[[cite:%s]]" it) keys)))
-
+  ;; new custom variables: from version-20160406
+  ;; (cl-loop
+  ;;  for var in '("bibliography" "library-path" "pdf-open-function"
+  ;;               "pdf-symbol" "format-citation-functions" "notes-path"
+  ;;               "notes-template-multiple-files"
+  ;;               "notes-template-one-file" "notes-key-pattern"
+  ;;               "notes-extension" "notes-symbol" "fallback-options"
+  ;;               "browser-function" "additional-search-fields"
+  ;;               "no-export-fields" "cite-commands"
+  ;;               "cite-default-command"
+  ;;               "cite-prompt-for-optional-arguments"
+  ;;               "cite-default-as-initial-input" "pdf-field")
+  
   (setq helm-bibtex-format-citation-functions
         '((org-mode      . helm-bibtex-format-citation-ox-bibtex)
           (latex-mode    . helm-bibtex-format-citation-cite)
