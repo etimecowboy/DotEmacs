@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:44 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-10 Sun 12:25 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-mew.el'
 ;; Author:       Xin Yang
@@ -355,11 +355,14 @@
   ;;       mew-nntp-msgid-user "etimecowboy"
   ;;       mew-nntp-msgid-domain "gmail.com")
 
-   ;; org-mime for mew
+  ;; org-mime for mew
   (when (try-require 'org-mime)
     (add-hook 'mew-draft-mode-hook
               (lambda ()
                 (local-set-key "\C-c\M-o" 'org-mime-htmlize))))
+
+  ;;; elscreen-mew
+  (try-require 'elscreen-mew)
 
   (message "* ---[ mew post-load configuration is complete ]---"))
 

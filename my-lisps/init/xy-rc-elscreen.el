@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:32 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-10 Sun 15:17 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elscreen.el'
 ;; Author:       Xin Yang
@@ -18,18 +18,70 @@
 (defun elscreen-postload ()
   "Settings of `elscreen.el' after it's been loaded."
 
- (setq elscreen-display-screen-number t
-       ;; elscreen-tab-display-control t
-       ;; elscreen-tab-display-kill-screen t
-       elscreen-display-tab nil
-       elscreen-prefix-key (kbd "C-z"))
+  (require 'elscreen-color-theme)
+  (require 'elscreen-dired)
+  (require 'elscreen-server)
+  (require 'elscreen-dnd)
+  ;; (require 'elscreen-gf)
+  ;; (require 'elscreen-goby)
+  ;; (require 'elscreen-howm)
+  (require 'elscreen-speedbar)
+  (require 'elscreen-w3m)
 
- ;; TODO: Keep settings in different frames
- ;; (remove-hook 'after-make-frame-functions 'elscreen-make-frame-confs)
- ;; (remove-hook 'delete-frame-functions 'elscreen-delete-frame-confs)
+  (setq elscreen-display-screen-number nil
+        ;; elscreen-tab-display-control t
+        ;; elscreen-tab-display-kill-screen t
+        elscreen-display-tab t
+        elscreen-prefix-key (kbd "C-z"))
 
- (try-require 'elscreen-mew)
+  ;; TODO: Keep settings in different frames
+  ;; (remove-hook 'after-make-frame-functions 'elscreen-make-frame-confs)
+  ;; (remove-hook 'delete-frame-functions 'elscreen-delete-frame-confs)
+
+
+ (defmacro elscreen-create-automatically (ad-do-it)
+   (` (if (not (elscreen-one-screen-p))
+          (, ad-do-it)
+        (elscreen-create)
+        (elscreen-notify-screen-modification 'force-immediately)
+        (elscreen-message "New screen is automatically created"))))
  
- (message "* ---[ elscreen post-load configuration is complete ]---"))
+ (defadvice elscreen-next (around elscreen-create-automatically activate)
+   (elscreen-create-automatically ad-do-it))
+ 
+ (defadvice elscreen-previous (around elscreen-create-automatically activate)
+   (elscreen-create-automatically ad-do-it))
+ 
+ (defadvice elscreen-toggle (around elscreen-create-automatically activate)
+   (elscreen-create-automatically ad-do-it))
+
+ ;; FIXME: not work
+ ;; (defun elscreen-frame-title-update ()
+ ;;   (when (elscreen-screen-modified-p 'elscreen-frame-title-update)
+ ;;     (let* ((screen-list (sort (elscreen-get-screen-list) '<))
+ ;; 	   (screen-to-name-alist (elscreen-get-screen-to-name-alist))
+ ;; 	   (title (mapconcat
+ ;; 		   (lambda (screen)
+ ;; 		     (format "%d%s %s"
+ ;; 			     screen (elscreen-status-label screen)
+ ;; 			     (get-alist screen screen-to-name-alist)))
+ ;; 		   screen-list " ")))
+ ;;       (if (fboundp 'set-frame-name)
+ ;;           (set-frame-name title)
+ ;;         (setq frame-title-format title)))))
+
+ ;; (eval-after-load "elscreen"
+ ;;   '(add-hook 'elscreen-screen-update-hook 'elscreen-frame-title-update))
+ 
+  ;;; elscreen-buffer-group
+  ;; (when (try-require 'elscreen-buffer-group)
+  ;;   (setq elscreen-buffer-group-exclusive t)
+  ;;   ;; (setq 'elscreen-buffer-group-skip-commands
+  ;;   ;;       `(my-special-buffer-switching-command))
+  ;; )
+
+
+  
+  (message "* ---[ elscreen post-load configuration is complete ]---"))
 
 (provide 'xy-rc-elscreen)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-03 Sun 15:30 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-10 Sun 12:28 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -220,6 +220,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'edit-server);; I use firefox not chrome
   ;; (require-package 'eimp)
   (require-package 'elscreen)
+  (require-package 'elscreen-buffer-group)
   ;; (require-package 'emms)       ;; not very useful
   ;; (require-package 'ess)        ;; not very useful
 
@@ -280,6 +281,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'markdown-mode)
   ;; (require-package 'maxframe)
   (require-package 'mew)
+  (require-package 'elscreen-mew)
   (require-package 'mic-paren)
   (require-package 'mo-git-blame)
   (require-package 'modeline-posn)
@@ -383,6 +385,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'fcitx)
   (require-package 'imenu+)
   ;; (require-package 'imenu-anywhere)
+  (require-package 'emamux)
   
   ;; =======================================================
   ;; Completion system

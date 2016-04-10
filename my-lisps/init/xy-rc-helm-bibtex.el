@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-07 Thu 09:00 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-10 Sun 11:41 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm-bibtex.el'
 ;; Author:       Xin Yang
@@ -43,6 +43,10 @@
           (latex-mode    . helm-bibtex-format-citation-cite)
           (markdown-mode . helm-bibtex-format-citation-pandoc-citeproc)
           (default       . helm-bibtex-format-citation-default)))
+
+  (setq helm-bibtex-pdf-field "File")
+  (setq helm-bibtex-pdf-symbol "⌘")
+  (setq helm-bibtex-notes-symbol "✎")
 
   (message "* ---[ helm-bibtex post-load configuration is complete ]---"))
 

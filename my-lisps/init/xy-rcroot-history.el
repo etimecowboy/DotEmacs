@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:37 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-10 Sun 15:14 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -193,7 +193,12 @@
 
 ;;;; elscreen
 ;; NOTE: old versions are based on APEL, current version is not.
-(eval-after-load "elscreen" '(elscreen-postload))
+(eval-after-load "elscreen"
+  '(progn
+     (elscreen-postload)
+     ;; (add-hook 'elscreen-screen-update-hook
+     ;;           'elscreen-frame-title-update)
+     ))
 (elscreen-start)
 ;; (global-set-key (kbd "<f2> s") 'elscreen-start)
 
