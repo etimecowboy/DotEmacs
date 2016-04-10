@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-04 Mon 00:28 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-10 Sun 21:49 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -217,6 +217,48 @@
      ;;    ("M-S-l"   enter-term-mode)))
      ))
 (global-set-key (kbd "<f9> m") 'multi-term)
+
+
+
+;;; emamux: emacs and tmux
+(eval-after-load "emamux" '(emamux-postload))
+(global-set-key (kbd "<f2> &")   'emamux:send-command)
+(global-set-key (kbd "<f2> !")   'emamux:run-command)
+(global-set-key (kbd "<f2> $")   'emamux:run-last-command)
+(global-set-key (kbd "<f2> M-w") 'emamux:send-region)
+(global-set-key (kbd "<f2> C-W") 'emamux:copy-kill-ring)
+(global-set-key (kbd "<f2> C-y") 'emamux:yank-from-list-buffers)
+(global-set-key (kbd "<f2> C-k") 'emamux:close-panes)
+(global-set-key (kbd "<f2> k")   'emamux:close-runner-pane)
+(global-set-key (kbd "<f2> r")   'emamux:inspect-runner)
+(global-set-key (kbd "<f2> z")   'emamux:interrupt-runner)
+(global-set-key (kbd "<f2> l")   'emamux:clear-runner-history)
+(global-set-key (kbd "<f2> +")   'emamux:zoom-runner)
+;; UI:
+;;   - emamux:send-command ()
+;;     "Send command to target-session of tmux"
+;;   - emamux:send-region (beg end)
+;;     "Send region to target-session of tmux"
+;;   - emamux:copy-kill-ring (arg)
+;;     "Set (car kill-ring) to tmux buffer"
+;;   - emamux:yank-from-list-buffers ()
+;;   - emamux:kill-session ()
+;;     "Kill tmux session"
+;;   - emamux:run-command (cmd &optional cmddir)
+;;     "Run command"
+;;   - emamux:run-last-command;; () 
+;;   - emamux:close-runner-pane ()
+;;     "Close runner pane"
+;;   - emamux:close-panes ()
+;;    "Close all panes except current pane"
+;;   - emamux:inspect-runner ()
+;;     "Enter copy-mode in runner pane"
+;;   - emamux:interrupt-runner ()
+;;     "Send SIGINT to runner pane"
+;;   - emamux:clear-runner-history ()
+;;     "Clear history of runner pane"
+;;   - emamux:zoom-runner ()
+;;     "Zoom runner pane. This feature requires tmux 1.8 or higher"
 
 
 
