@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:52 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-12 Tue 11:21 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -36,19 +36,22 @@
         ;; ("C-c o l"     org2blog/wp-login)
         ;; ("c-c o t"     org2blog/wp-post-subtree)
         ;; ("C-c S"       org-export-as-html5presentation-and-open)
-        ("C-c M-c"     org-coordinates-google-geocode-set)
-        ("C-c M-L"     org-address-google-geocode-set)
-        ("C-c M-A"     org-address-google-geocode-set)
-        ("C-c M-l"     org-location-google-maps)
+        ;; ("C-c M-c"     org-coordinates-google-geocode-set)
+        ;; ("C-c M-L"     org-address-google-geocode-set)
+        ;; ("C-c M-A"     org-address-google-geocode-set)
+        ;; ("C-c M-l"     org-location-google-maps)
         ;; ("C-c G"       org-publish-blog) ;; o-blog v1
-        ("C-c G"       o-blog-publish) ;; o-blog v2
-        ("C-c P"       xy/org-toggle-xelatex)
-        ("C-c R"       xy/org-mode-reftex-setup)
-        ("C-c L"       org-toggle-link-display)
-        ("C-c T"       timestamp)
-        ("C-c <tab>"   bh/hide-other)
+        ("C-c o p"       o-blog-publish) ;; o-blog v2
+        ;; ("C-c o x"       xy/org-toggle-xelatex)
+        ;; ("C-c o r"       xy/org-mode-reftex-setup)
+        ("C-c o e"       org-toggle-link-display)
+        ("C-c o t"       timestamp)
+        ("C-c o h"       bh/hide-other)
         ;; ("C-c b"       ebib-insert-bibtex-key)
         ))))
+
+(eval-after-load "org-agenda" '(org-postload))
+(eval-after-load "org-capture" '(org-postload))
 
 (global-set-key (kbd "<f12> <f12>") 'org-agenda)
 (global-set-key (kbd "C-c o a")     'org-agenda)
@@ -56,9 +59,6 @@
 (global-set-key (kbd "C-c o c")     'org-capture)
 (global-set-key (kbd "<f12> <f10>") 'org-store-link)
 (global-set-key (kbd "C-c o l")     'org-store-link)
-
-(eval-after-load "org-agenda" '(org-postload))
-(eval-after-load "org-capture" '(org-postload))
 
 ;; (eal-define-keys-commonly
 ;;  global-map

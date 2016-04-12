@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-10 Sun 12:28 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-11 Mon 21:49 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -386,6 +386,8 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'imenu+)
   ;; (require-package 'imenu-anywhere)
   (require-package 'emamux)
+  (require-package 'speck)
+  (require-package 'flyspell-lazy)
   
   ;; =======================================================
   ;; Completion system
