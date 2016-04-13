@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-10 Sun 15:14 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-12 Tue 11:39 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -161,34 +161,34 @@
 ;;     (win:startup-with-window)))
 
 ;;;;; revive+
-(when (try-require 'revive+)
-  (setq revive-plus:all-frames t)
-  (setq revive-plus:last-wconf-file
-        (concat my-var-path "/last-wconf-"
-                user-login-name "-"
-                system-name "-"
-                system-configuration))
-  (setq revive-plus:wconf-archive-file
-        (concat my-var-path "/wconf-archive-"
-                user-login-name "-"
-                system-name "-"
-                system-configuration))
-  (setq revive-plus:wconf-archive-limit 20)
-  ;; (revive-plus:demo)
-  (global-set-key (kbd "<f5><f5>") #'revive-plus:toggle-single-window)
-  (revive-plus:start-wconf-archive t)
-  (revive-plus:start-last-wconf nil)
-  (when (boundp 'desktop-save-hook)
-    (add-hook 'desktop-save-hook
-              ;; prevent crashes' loss if DESKTOP is autosaved
-              #'revive-plus:save-window-configuration 'append))
-  (add-hook 'delete-frame-function
-            ;; force window configuration special case like `ecb' if any
-            'revive-plus:wonf-archive-save)
-  (add-hook 'kill-emacs-hook
-            ;; force window configuration special case like `ecb' if any
-            #'(lambda () (revive-plus:save-window-configuration t)) 'append)
-  )
+;; (when (try-require 'revive+)
+;;   (setq revive-plus:all-frames t)
+;;   (setq revive-plus:last-wconf-file
+;;         (concat my-var-path "/last-wconf-"
+;;                 user-login-name "-"
+;;                 system-name "-"
+;;                 system-configuration))
+;;   (setq revive-plus:wconf-archive-file
+;;         (concat my-var-path "/wconf-archive-"
+;;                 user-login-name "-"
+;;                 system-name "-"
+;;                 system-configuration))
+;;   (setq revive-plus:wconf-archive-limit 20)
+;;   ;; (revive-plus:demo)
+;;   (global-set-key (kbd "<f5><f5>") #'revive-plus:toggle-single-window)
+;;   (revive-plus:start-wconf-archive t)
+;;   (revive-plus:start-last-wconf nil)
+;;   (when (boundp 'desktop-save-hook)
+;;     (add-hook 'desktop-save-hook
+;;               ;; prevent crashes' loss if DESKTOP is autosaved
+;;               #'revive-plus:save-window-configuration 'append))
+;;   (add-hook 'delete-frame-function
+;;             ;; force window configuration special case like `ecb' if any
+;;             'revive-plus:wonf-archive-save)
+;;   (add-hook 'kill-emacs-hook
+;;             ;; force window configuration special case like `ecb' if any
+;;             #'(lambda () (revive-plus:save-window-configuration t)) 'append)
+;;   )
 
 
 ;;;; elscreen

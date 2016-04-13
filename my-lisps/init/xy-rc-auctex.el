@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:27 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-13 Wed 09:08 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auctex.el'
 ;; Author:       Xin Yang
@@ -33,26 +33,27 @@
 
 ;; Automagic detection of master file
 ;; REF: (@url :file-name "http://emacswiki.org/emacs/AUCTeX#toc18" :display "emacswiki")
-;;;###autoload
-(defun guess-TeX-master (filename)
-  "Guess the master file for FILENAME from currently open .tex files."
-  (let ((candidate nil)
-        (filename (file-name-nondirectory filename)))
-    (save-excursion
-      (dolist (buffer (buffer-list))
-        (with-current-buffer buffer
-          (let ((name (buffer-name))
-                (file buffer-file-name))
-            (if (and file (string-match "\\.tex$" file))
-                (progn
-                  (goto-char (point-min))
-                  (if (re-search-forward (concat "\\\\input{" filename "}") nil t)
-                      (setq candidate file))
-                  (if (re-search-forward (concat "\\\\include{" (file-name-sans-extension filename) "}") nil t)
-                      (setq candidate file))))))))
-    (if candidate
-        (message "TeX master document: %s" (file-name-nondirectory candidate)))
-    candidate))
+;; FIXME: report error in postload
+;; ;;;###autoload
+;; (defun guess-TeX-master (filename)
+;;   "Guess the master file for FILENAME from currently open .tex files."
+;;   (let ((candidate nil)
+;;         (filename (file-name-nondirectory filename)))
+;;     (save-excursion
+;;       (dolist (buffer (buffer-list))
+;;         (with-current-buffer buffer
+;;           (let ((name (buffer-name))
+;;                 (file buffer-file-name))
+;;             (if (and file (string-match "\\.tex$" file))
+;;                 (progn
+;;                   (goto-char (point-min))
+;;                   (if (re-search-forward (concat "\\\\input{" filename "}") nil t)
+;;                       (setq candidate file))
+;;                   (if (re-search-forward (concat "\\\\include{" (file-name-sans-extension filename) "}") nil t)
+;;                       (setq candidate file))))))))
+;;     (if candidate
+;;         (message "TeX master document: %s" (file-name-nondirectory candidate)))
+;;     candidate))
 
 ;; REF: http://tex.stackexchange.com/questions/60170/how-to-set-up-okular-for-forward-backward-search-with-tex-live-2011-not-trivia
 ;; set up okular for forward/backward searc with texlive
@@ -100,8 +101,8 @@
         font-latex-fontify-script t
         reftex-plug-into-AUCTeX t)
 
-  ;; (setq-default TeX-master nil) ;; project support
-  (setq-default TeX-master (guess-TeX-master (buffer-file-name)))
+  (setq-default TeX-master nil) ;; project support
+  ;; (setq-default TeX-master (guess-TeX-master (buffer-file-name)))
 
   (setq TeX-fold-env-spec-list
         (quote (("[comment]" ("comment"))

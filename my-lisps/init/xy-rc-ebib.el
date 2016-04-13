@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-10 Sun 12:11 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-12 Tue 14:33 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ebib.el'
 ;; Author:       Xin Yang
@@ -19,7 +19,6 @@
   "Settings of `ebib.el' after it's been loaded."
 
   (setq ebib-autogenerate-keys t)
-  (setq ebib-bib-search-dirs '("~" "."))
   (setq ebib-bibtex-extensions '(".bib" ".bibtex" ".BIB" ".BIBTEX"))
   (setq ebib-citation-commands
     (quote
@@ -35,7 +34,7 @@
   (setq ebib-create-backups t)
   (setq ebib-file-associations
     (quote
-     (("pdf")
+     (("pdf" . "mupdf")
       ("ps"  . "gv")
       ("xoj" . "xournal"))))
   (setq ebib-hide-cursor nil)

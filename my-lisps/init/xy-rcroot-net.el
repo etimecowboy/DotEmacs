@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-07 Thu 14:44 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-12 Tue 14:24 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-net.el'
 ;; Author:       Xin Yang
@@ -23,18 +23,25 @@
 ;; (setq quickurl-url-file (concat my-emacs-path "/quickurls"))
 
 
+;; use w3m in CLI, but default browser under GUI
+;; (if window-system
+;;     (progn
+;;       (Windows
+;;        (setq browse-url-browser-function
+;;              'browse-url-default-windows-browser))
+;;       (GNULinux
+;;        (setq browse-url-browser-function
+;;              'browse-url-default-browser)))
+;;   (setq browse-url-browser-function 'w3m-browse-url))
 
-;; NOTE: Commented due to use of emacs-w64
-;; Use external program as the default web browser in X-window
-(if window-system
-    (progn
-      (Windows
-       (setq browse-url-browser-function
-             'browse-url-default-windows-browser))
-      (GNULinux
-       (setq browse-url-browser-function
-             'browse-url-default-browser)))
-  (setq browse-url-browser-function 'w3m-browse-url))
+;; w3m sucks, always use external web brower, by default.
+;; TODO: write a function to switch `browse-url-browser-function'
+(GNULinux
+  (setq browse-url-browser-function
+       'browse-url-default-browser))
+(Windows
+ (setq browse-url-browser-function
+       'browse-url-default-windows-browser))
 
 
 

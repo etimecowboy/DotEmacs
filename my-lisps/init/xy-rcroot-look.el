@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-05 Tue 10:25 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-12 Tue 13:55 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -639,8 +639,9 @@
 ;; don't load any color theme when starting emacs
 ;; (when (and window-system (try-require 'solarized-dark-theme))
 ;;   (load-theme 'solarized-dark t))
-(when (try-require 'solarized-dark-theme)
-  (load-theme 'solarized-dark t))
+(when window-system
+    (when (try-require 'solarized-dark-theme)
+      (load-theme 'solarized-dark t)))
 (global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
 (global-set-key (kbd "<f2> C") 'disable-theme)
 
@@ -665,10 +666,10 @@
 
 
 ;;;; auto-dim-other-buffers
-;; (eval-after-load "auto-dim-other-buffers"
-;;   '(auto-dim-other-buffers-postload))
-;; (when (try-require 'auto-dim-other-buffers)
-;;   (auto-dim-other-buffers-mode 1))
+(eval-after-load "auto-dim-other-buffers"
+  '(auto-dim-other-buffers-postload))
+(when (try-require 'auto-dim-other-buffers)
+  (auto-dim-other-buffers-mode 1))
 
 
 
