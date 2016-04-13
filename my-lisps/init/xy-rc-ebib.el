@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-12 Tue 14:33 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-13 Wed 16:32 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ebib.el'
 ;; Author:       Xin Yang
@@ -25,8 +25,8 @@
      ((any
        (("cite" "\\cite%<[%A]%>{%K}")))
       (org-mode
-       (("ebib" "[[ebib:%K][%D]]")
-        ("cite" "[[cite:%K][%D]]")))
+       (("~cite" "\\nbsp[[cite:%K]]")
+        ("ebib" "[[ebib:%K][%D]]")))
       (markdown-mode
        (("text" "@%K%< [%A]%>")
         ("paren" "[%(%<%A %>@%K%<, %A%>%; )]")
@@ -39,7 +39,7 @@
       ("xoj" . "xournal"))))
   (setq ebib-hide-cursor nil)
   (setq ebib-print-multiline t)
-  (setq ebib-index-window-size 25)
+  (setq ebib-index-window-size 35)
   (setq ebib-index-display-fields '("type"))
   (setq ebib-hidden-fields '("addendum" "afterword" "annotator"
   "bookauthor" "booksubtitle" "booktitleaddon" "chapter" "commentator"

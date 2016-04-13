@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-12 Tue 13:55 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-13 Wed 23:20 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -230,8 +230,11 @@
 
 
 ;;;; popwin
-;; NOTE: 
-;; Keymap:
+(eval-after-load "popwin" '(popwin-postload))
+(when (try-require 'popwin)
+  (popwin-mode 1)
+  (global-set-key (kbd "<f2> o") popwin:keymap))
+;; NOTE: popwin:keymap + key
 ;; | Key    | Command                               |
 ;; |--------+---------------------------------------|
 ;; | b      | popwin:popup-buffer                   |
@@ -247,10 +250,6 @@
 ;; | e      | popwin:messages                       |
 ;; | C-u    | popwin:universal-display              |
 ;; | 1      | popwin:one-window                     |
-(eval-after-load "popwin" '(popwin-postload))
-(when (try-require 'popwin)
-  (popwin-mode 1)
-  (global-set-key (kbd "<f2> o") popwin:keymap))
 
 
 
@@ -286,15 +285,14 @@
 
 
 ;;; mode-line settings
-
-(setq-default ;; Display mode-line the same in non-selected windows
-  mode-line-in-non-selected-windows nil)
+;; Display mode-line the same in non-selected windows
+(setq-default mode-line-in-non-selected-windows nil)
 (column-number-mode 1) ;; Display column number
 (size-indication-mode 1) ;; Display the current location in the file
 ;; (setq-default mode-line-buffer-identification
 ;;               (propertized-buffer-identification "%b"))
 (setq display-time-day-and-date nil) ;; Display only time but not date
-(display-time-mode 1)
+(display-time-mode -1)
 ;; (Laptop (display-battery-mode 1)) ;; when is-after-emacs-23
 
 
@@ -733,13 +731,13 @@
 ;; NOTE: C-L will be printed as page seperation
 (eval-after-load "pp-c-l" '(pp-c-l-postload))
 (autoload 'pretty-control-l-mode "pp-c-l" nil t)
-(global-set-key (kbd "<f6> p") 'xy/turn-on-pretty-control-l-mode)
-;; (am-add-hooks
-;;  `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
-;;                   sh-mode-hook cperl-mode-hook c-common-mode-hook
-;;                   vhdl-mode-hook verilog-mode-hook matlab-mode-hook
-;;                   org-mode-hook LaTeX-mode-hook python-mode-hook)
-;;  'xy/turn-on-pretty-control-l-mode)
+(global-set-key (kbd "<f6> p") 'pretty-control-l-mode)
+(am-add-hooks
+ `(lisp-mode-hook emacs-lisp-mode-hook lisp-interaction-mode-hook
+                  sh-mode-hook cperl-mode-hook c-common-mode-hook
+                  vhdl-mode-hook verilog-mode-hook matlab-mode-hook
+                  org-mode-hook LaTeX-mode-hook python-mode-hook)
+ 'xy/turn-on-pretty-control-l-mode)
 
 
 

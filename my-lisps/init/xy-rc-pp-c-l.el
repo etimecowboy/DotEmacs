@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:47 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-13 Wed 23:20 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-pp-c-l.el'
 ;; Author:       Xin Yang
@@ -32,7 +32,7 @@
   (if window-system
       (custom-set-faces
         '(pp^L-highlight ((t (:strike-through t)))))
-    ;; (custom-set-faces '(pp^L-highlight ((t (:background "cyan")))))
+    (custom-set-faces '(pp^L-highlight ((t (:background "cyan")))))
     )
 
   (message "* ---[ pp-c-l post-load configuration is complete ]---"))

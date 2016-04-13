@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-10 Sun 11:41 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-13 Wed 15:31 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm-bibtex.el'
 ;; Author:       Xin Yang
@@ -16,7 +16,7 @@
 
 ;; move to `bibtex-completion.el'
 ;; ;;;###autoload
-;; (defun helm-bibtex-format-citation-ox-bibtex (keys)
+;; (defun bibtex-completion-format-citation-ox-bibtex (keys)
 ;;   "Formatter for ox-bibtex references in org mode."
 ;;   (s-join ", "
 ;;           (--map (format "\\nbsp[[cite:%s]]" it) keys)))
@@ -25,28 +25,30 @@
 (defun helm-bibtex-postload ()
   "Settings of `helm-bibtex.el' after it's been loaded."
 
-  ;; new custom variables: from version-20160406
-  ;; (cl-loop
-  ;;  for var in '("bibliography" "library-path" "pdf-open-function"
-  ;;               "pdf-symbol" "format-citation-functions" "notes-path"
-  ;;               "notes-template-multiple-files"
-  ;;               "notes-template-one-file" "notes-key-pattern"
-  ;;               "notes-extension" "notes-symbol" "fallback-options"
-  ;;               "browser-function" "additional-search-fields"
-  ;;               "no-export-fields" "cite-commands"
-  ;;               "cite-default-command"
-  ;;               "cite-prompt-for-optional-arguments"
-  ;;               "cite-default-as-initial-input" "pdf-field")
-  
-  (setq helm-bibtex-format-citation-functions
-        '((org-mode      . helm-bibtex-format-citation-ox-bibtex)
-          (latex-mode    . helm-bibtex-format-citation-cite)
-          (markdown-mode . helm-bibtex-format-citation-pandoc-citeproc)
-          (default       . helm-bibtex-format-citation-default)))
+  (setq bibtex-completion-additional-search-fields
+        (quote ("Title" "Year" "Editor")))
 
-  (setq helm-bibtex-pdf-field "File")
-  (setq helm-bibtex-pdf-symbol "⌘")
-  (setq helm-bibtex-notes-symbol "✎")
+  ;; BUG: error when loading bib file 2016-04-13
+  ;; (setq bibtex-completion-pdf-field "File" t)
+
+  (setq bibtex-completion-pdf-open-function
+        (lambda (fpath)
+          (call-process "mupdf" nil 0 nil fpath)))
+
+  (setq bibtex-completion-format-citation-functions
+        '((org-mode      . bibtex-completion-format-citation-ox-bibtex)
+          (latex-mode    . bibtex-completion-format-citation-cite)
+          (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+          (default       . bibtex-completion-format-citation-default)))
+  
+  ;; FIXME: change to use xournal notes (.xoj)
+  ;; (defun bibtex-completion-open-annotated-pdf (key)
+  ;;   (let ((pdf (car (bibtex-completion-find-pdf-in-library (s-concat key "-annotated")))))
+  ;;     (if pdf
+  ;;         (bibtex-completion-pdf-open-function pdf)
+  ;;       (message "No annotated PDF found."))))
+  ;; (helm-add-action-to-source "Open annotated PDF (if present)"
+  ;;                            'bibtex-completion-open-annotated-pdf helm-source-bibtex 1)
 
   (message "* ---[ helm-bibtex post-load configuration is complete ]---"))
 
