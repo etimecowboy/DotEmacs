@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-03 Sun 16:54 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-18 Mon 00:13 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-smart-mode-line.el'
 ;; Author:       Xin Yang
@@ -20,8 +20,9 @@
 
   (interactive)
   (sml/setup)
-  (custom-set-faces
-   '(default ((t (:background nil))))))
+  (setq sml/active-background-color "grey85"))
+  ;; (custom-set-faces
+  ;;  '(default ((t (:background nil))))))
 
 
 ;;;###autoload

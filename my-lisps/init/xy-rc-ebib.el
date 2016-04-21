@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-13 Wed 16:32 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-21 Thu 13:57 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ebib.el'
 ;; Author:       Xin Yang
@@ -39,7 +39,7 @@
       ("xoj" . "xournal"))))
   (setq ebib-hide-cursor nil)
   (setq ebib-print-multiline t)
-  (setq ebib-index-window-size 35)
+  (setq ebib-index-window-size 20)
   (setq ebib-index-display-fields '("type"))
   (setq ebib-hidden-fields '("addendum" "afterword" "annotator"
   "bookauthor" "booksubtitle" "booktitleaddon" "chapter" "commentator"
@@ -51,8 +51,9 @@
   "part" "remark" "subtitle" "timestamp" "titleaddon" "translator"
   "urldate" "venue" "version"))
 
-  (setq ebib-layout (quote custom))
-  (setq ebib-width 75)
+  ;; (setq ebib-layout (quote custom))
+  (setq ebib-layout 'full)
+  (setq ebib-width 50)
 
   (message "* ---[ ebib post-load configuration is complete ]---"))
 

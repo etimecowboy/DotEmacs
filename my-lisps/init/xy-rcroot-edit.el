@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-03 Sun 15:59 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-21 Thu 09:50 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -143,7 +143,7 @@
         ("M-S-z" zap-to-isearch)
         ("C-<return>" isearch-exit-other-end)
         ))))
-(global-set-key (kbd "C-c C-s") 'isearch-forward-cur-word)
+(global-set-key (kbd "C-c s") 'isearch-forward-cur-word)
 
 
 

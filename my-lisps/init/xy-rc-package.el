@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-13 Wed 09:09 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-19 Tue 22:31 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -417,6 +417,7 @@ re-downloaded in order to locate PACKAGE."
   ;; NOTE: don't use helm
   (require-package 'helm)
   (require-package 'helm-bibtex)
+  (require-package 'biblio)
   (require-package 'helm-firefox)
   (require-package 'helm-c-yasnippet)
   ;; (require-package 'helm-R)

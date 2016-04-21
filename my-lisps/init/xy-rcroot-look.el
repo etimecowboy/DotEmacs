@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-13 Wed 23:20 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-21 Thu 22:05 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -168,10 +168,14 @@
 (eval-after-load "windmove" '(windmove-postload))
 (eal-define-keys-commonly
  global-map ;; BUG: keybindings do not work in linux console
- `(("C-S-j" windmove-left)
-   ("C-S-l" windmove-right)
-   ("C-S-i" windmove-up)
-   ("C-S-k" windmove-down)))
+ `(;; ("C-S-j" windmove-left)
+   ;; ("C-S-l" windmove-right)
+   ;; ("C-S-i" windmove-up)
+   ;; ("C-S-k" windmove-down)
+   ("<f5> <left>"  windmove-left)
+   ("<f5> <right>" windmove-right)
+   ("<f5> <up>"    windmove-up)
+   ("<f5> <down>"  windmove-down)))
 
 
 
@@ -202,10 +206,14 @@
 (autoload 'windsize-down "windsize" nil t)
 (eal-define-keys-commonly
  global-map
- `(("M-J" windsize-left)
-   ("M-L" windsize-right)
-   ("M-I" windsize-up) ;; not work in linux console
-   ("M-K" windsize-down)))
+ `(;; ("M-J" windsize-left)
+   ;; ("M-L" windsize-right)
+   ;; ("M-I" windsize-up) ;; not work in linux console
+   ;; ("M-K" windsize-down)
+   ("<f8> <left>"  windsize-left)
+   ("<f8> <right>" windsize-right)
+   ("<f8> <up>"    windsize-up) ;; not work in linux console
+   ("<f8> <down>"  windsize-down)))
 
 
 
@@ -335,7 +343,7 @@
 ;;;; hide-mode-line
 ;; REF: (@url :file-name "http://webonastick.com/emacs-lisp/hide-mode-line.el" :display "Source")
 ;; NOTE: NOT good for me, cause no screen sapce can be saved
-;; (autoload 'hide-mode-line "hide-mode-line" nil t)
+(autoload 'hide-mode-line "hide-mode-line" nil t)
 ;; (hide-mode-line)
 ;; Don't show mode-line, after all mode-line configureation is done
 
@@ -510,6 +518,7 @@
 
 
 
+
 ;;;; hl-line
 ;; (global-hl-line-mode 1) ; (if window-system 1 -1)
 
@@ -638,8 +647,11 @@
 ;; (when (and window-system (try-require 'solarized-dark-theme))
 ;;   (load-theme 'solarized-dark t))
 (when window-system
-    (when (try-require 'solarized-dark-theme)
-      (load-theme 'solarized-dark t)))
+    ;; (when (try-require 'solarized-dark-theme)
+    ;;   (load-theme 'solarized-dark t)))
+    (when (try-require 'zenburn-theme)
+      (load-theme 'zenburn t)))
+
 (global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
 (global-set-key (kbd "<f2> C") 'disable-theme)
 
@@ -796,15 +808,15 @@
    ("<f2> W" xy/set-font-write-big)
    ("<f2> G" xy/set-font-prog-big)
    ;;------------------------------------
-   ;; changing font size
+
    ;; ("C-+"    bhj-text-scale-increase)
    ;; ("C--"    bhj-text-scale-decrease)
    ;; NOTE: default text scaling ("C-x C-=" and "C-x C--")
    ;; ("C-M-="  increase-default-font-height)
    ;; ("C-M--"  decrease-default-font-height)
    ))
-;; (xy/set-font-default)
-;; (xy/set-font-prog-big)
+(xy/set-font-default)
+(xy/set-font-prog-big)
 
 ;;;; Automatically set fonts for different modes
 ;; NOTE: a pain to my eyes

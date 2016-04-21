@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-12 Tue 14:24 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-20 Wed 13:34 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-net.el'
 ;; Author:       Xin Yang
@@ -23,6 +23,7 @@
 ;; (setq quickurl-url-file (concat my-emacs-path "/quickurls"))
 
 
+
 ;; use w3m in CLI, but default browser under GUI
 ;; (if window-system
 ;;     (progn
@@ -75,7 +76,7 @@
 
 (setq browse-url-generic-program "w3m") ;; It won't affect emacs
                                         ;; default browser
-(global-set-key (kbd "<f8> w") 'w3m)
+(global-set-key (kbd "<f8> W") 'w3m)
 
 
 

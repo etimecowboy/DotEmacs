@@ -197,8 +197,8 @@
 (try-require 'sunrise-x-modeline)
 (try-require 'sunrise-x-tabs)
 (try-require 'sunrise-x-w32-addons)
-(global-set-key (kbd "<f9> <f9>") 'sunrise)
-(global-set-key (kbd "<f9> <f8>") 'sunrise-cd)
+(global-set-key (kbd "<f9> <f9>") 'sunrise-cd)
+;; (global-set-key (kbd "<f9> <f8>") 'sunrise)
 
 
 
