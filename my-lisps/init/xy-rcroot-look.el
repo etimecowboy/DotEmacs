@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-21 Thu 22:05 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-22 Fri 21:39 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -73,20 +73,19 @@
 
 ;;;;; setting 4:
 (setq-default frame-title-format
-              '(:eval
-                (format "%s@%s: %s %s"
-                        (or (file-remote-p default-directory 'user)
-                            user-real-login-name)
-                        (or (file-remote-p default-directory 'host)
-                            system-name)
-                        (buffer-name)
-                        (cond
-                         (buffer-file-truename
-                          (concat "(" buffer-file-truename ")"))
-                         (dired-directory
-                          (concat "{" dired-directory "}"))
-                         (t
-                          "[no file]")))))
+              '(:eval (format "%s@%s: %s %s"
+                              (or (file-remote-p default-directory 'user)
+                                  user-real-login-name)
+                              (or (file-remote-p default-directory 'host)
+                                  system-name)
+                              (buffer-name)
+                              (cond
+                               (buffer-file-truename
+                                (concat "(" buffer-file-truename ")"))
+                               (dired-directory
+                                (concat "{" dired-directory "}"))
+                               (t
+                                "[no file]")))))
 
 
 
@@ -168,11 +167,7 @@
 (eval-after-load "windmove" '(windmove-postload))
 (eal-define-keys-commonly
  global-map ;; BUG: keybindings do not work in linux console
- `(;; ("C-S-j" windmove-left)
-   ;; ("C-S-l" windmove-right)
-   ;; ("C-S-i" windmove-up)
-   ;; ("C-S-k" windmove-down)
-   ("<f5> <left>"  windmove-left)
+ `(("<f5> <left>"  windmove-left)
    ("<f5> <right>" windmove-right)
    ("<f5> <up>"    windmove-up)
    ("<f5> <down>"  windmove-down)))
@@ -206,13 +201,9 @@
 (autoload 'windsize-down "windsize" nil t)
 (eal-define-keys-commonly
  global-map
- `(;; ("M-J" windsize-left)
-   ;; ("M-L" windsize-right)
-   ;; ("M-I" windsize-up) ;; not work in linux console
-   ;; ("M-K" windsize-down)
-   ("<f8> <left>"  windsize-left)
+ `(("<f8> <left>"  windsize-left)
    ("<f8> <right>" windsize-right)
-   ("<f8> <up>"    windsize-up) ;; not work in linux console
+   ("<f8> <up>"    windsize-up)
    ("<f8> <down>"  windsize-down)))
 
 
@@ -308,28 +299,26 @@
 ;;;; diminish
 ;; Removing or abbreviating minor mode indicators
 (eval-after-load "filladapt" '(diminish 'filladapt-mode))
-;; (eval-after-load "icicles" '(diminish 'icicle-mode))
 (eval-after-load "highlight-symbol" '(diminish 'highlight-symbol-mode))
 (eval-after-load "highlight-parentheses" '(diminish 'highlight-parentheses-mode))
 ;; (eval-after-load "linkd" '(diminish 'linkd-mode))
 ;; (eval-after-load "simple" '(diminish 'global-visual-line-mode))
 (eval-after-load "simple" '(diminish 'visual-line-mode))
 (eval-after-load "abbrev" '(diminish 'abbrev-mode))
-(eval-after-load "flyspell" '(diminish 'flyspell-mode))
+;; (eval-after-load "flyspell" '(diminish 'flyspell-mode))
 ;; (eval-after-load "flycheck" '(diminish 'flycheck-mode))
 (eval-after-load "autopair" '(diminish 'autopair-mode))
-(eval-after-load "hideshow" '(diminish 'hs-minor-mode))
-;; (eval-after-load "ibus" '(diminish 'ibus-mode))
+;; (eval-after-load "hideshow" '(diminish 'hs-minor-mode))
 ;; (eval-after-load "outline" '(diminish 'outline-minor-mode))
 ;; (eval-after-load "eldoc" '(diminish 'eldoc-mode))
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 ;; (eval-after-load "ethan-wspace" '(diminish 'ethan-wspace-mode))
 ;; (eval-after-load "ws-trim" '(diminish 'ws-trim-mode))
-(eval-after-load "skeleton-complete" '(diminish 'skeleton-complete-mode))
+;; (eval-after-load "skeleton-complete" '(diminish 'skeleton-complete-mode))
 (eval-after-load "auto-dim-other-buffers" '(diminish 'auto-dim-other-buffers-mode))
 (eval-after-load "fic-mode" '(diminish 'fic-mode))
 (eval-after-load "face-remap" '(diminish 'buffer-face-mode))
-(eval-after-load "back-button" '(diminish 'back-button-mode))
+;; (eval-after-load "back-button" '(diminish 'back-button-mode))
 ;; (eval-after-load "helm" '(diminish 'helm-mode))
 ;; (eval-after-load "company" '(diminish 'company-mode))
 
