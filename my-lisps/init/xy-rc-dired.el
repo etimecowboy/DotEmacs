@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:30 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-05-01 Sun 01:15 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired.el'
 ;; Author:       Xin Yang
@@ -92,6 +92,21 @@ will remain open and unsaved."
   (add-hook 'dired-mode-hook 'auto-revert-mode)
   ;; (def-redo-command dired-redo 'dired-redo 'dired-undo)
 
+  ;; get rid of the `async-shell-command-buffer' when run command in
+  ;; dired mode (`&')
+  ;; REF:
+  ;; - http://emacs.stackexchange.com/questions/5553/async-shell-process-buffer-always-clobbers-window-arrangement
+  ;;
+  ;; You can follow the advice in documentation of async-shell-command
+  ;; (you can read it by doing C-h f async-shell-command RET)
+  ;; customize display-buffer-alist as follows.
+  (add-to-list 'display-buffer-alist ;; for `dired-aux.el'
+               (cons "\\*Async Shell Command\\*.*"
+                     (cons #'display-buffer-no-window nil)))
+  (add-to-list 'display-buffer-alist ;; for `runner.el'
+               (cons "\\*Runner Output\\*.*"
+                     (cons #'display-buffer-no-window nil)))
+    
   ;;------------------------------------------------------------------
   (try-require 'dired+)
   ;; (try-require 'dired-sort-menu) ;; NOT work.

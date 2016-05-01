@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:53 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-23 Sat 13:46 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sunrise.el'
 ;; Author:       Xin Yang
@@ -26,14 +26,14 @@
 (defun sunrise-postload ()
   "Settings of `sunrise.el' after it's been loaded."
 
-  ;; (try-require 'sunrise-x-buttons)
-  ;; (try-require 'sunrise-x-checkpoints)
-  ;; (try-require 'sunrise-x-loop)
-  ;; (try-require 'sunrise-x-mirror)
-  ;; (try-require 'sunrise-x-modeline)
-  ;; (try-require 'sunrise-x-tabs)
-  ;; (try-require 'sunrise-x-w32-addons)
-
+  (try-require 'sunrise-x-buttons)
+  (try-require 'sunrise-x-checkpoints)
+  (try-require 'sunrise-x-loop)
+  (try-require 'sunrise-x-mirror)
+  (try-require 'sunrise-x-modeline)
+  (try-require 'sunrise-x-tabs)
+  (try-require 'sunrise-x-w32-addons)
+  
   (add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
 
   (setq sr-autoload-extensions t

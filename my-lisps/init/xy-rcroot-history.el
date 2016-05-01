@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-20 Wed 22:24 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-23 Sat 13:41 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -12,9 +12,9 @@
 ;;  \____|_| |_| |_|\__,_|\___|___/
 ;;
 ;;--------------------------------------------------------------------
-(require 'xy-rc-utils)
+;; NOTE: This is the last root configuration file loaded
 
-
+(require 'xy-rc-utils)
 
 ;;; Save editing information
 
@@ -250,5 +250,3 @@
 
 
 (provide 'xy-rcroot-history)
-
-;; NOTE: This is the last root configuration file loaded

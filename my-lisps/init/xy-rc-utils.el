@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-03 Sun 22:40 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-23 Sat 14:35 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1420,5 +1420,18 @@ See `bypass-trash-in-function' for more information."
 
 
 
+;;;; Prepare emacs after server-start
+;;;###autoload
+(defun xy/prepare-emacs ()
+  "Prepare emacs after server-start."
+  (interactive)
+  (load-theme 'zenburn t)
+  (xy/sml-setup)
+  (helm-mode)
+  (yas-global-mode)
+  (global-company-mode)
+  (if window-system
+      (elscreen-start))
+  (org-agenda))
 
 (provide 'xy-rc-utils)

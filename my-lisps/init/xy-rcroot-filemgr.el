@@ -13,8 +13,6 @@
 ;;--------------------------------------------------------------------
 (require 'xy-rc-utils)
 
-
-
 ;;; Buffer management
 
 ;; 按下C-x k立即关闭掉当前的buffer
@@ -189,14 +187,14 @@
 ;; Check (@url :file-name "http://www.emacswiki.org/emacs/Sunrise_Commander_Tips" :display "emacswiki")
 (eval-after-load "sunrise-commander" '(sunrise-postload))
 ;; BUG: have to load them here
-(try-require 'sunrise-commander)
-(try-require 'sunrise-x-buttons)
-(try-require 'sunrise-x-checkpoints)
-(try-require 'sunrise-x-loop)
-(try-require 'sunrise-x-mirror)
-(try-require 'sunrise-x-modeline)
-(try-require 'sunrise-x-tabs)
-(try-require 'sunrise-x-w32-addons)
+;; (try-require 'sunrise-commander)
+;; (try-require 'sunrise-x-buttons)
+;; (try-require 'sunrise-x-checkpoints)
+;; (try-require 'sunrise-x-loop)
+;; (try-require 'sunrise-x-mirror)
+;; (try-require 'sunrise-x-modeline)
+;; (try-require 'sunrise-x-tabs)
+;; (try-require 'sunrise-x-w32-addons)
 (global-set-key (kbd "<f9> <f9>") 'sunrise-cd)
 ;; (global-set-key (kbd "<f9> <f8>") 'sunrise)
 

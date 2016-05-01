@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-21 Thu 13:57 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-23 Sat 20:21 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ebib.el'
 ;; Author:       Xin Yang
@@ -51,9 +51,8 @@
   "part" "remark" "subtitle" "timestamp" "titleaddon" "translator"
   "urldate" "venue" "version"))
 
-  ;; (setq ebib-layout (quote custom))
-  (setq ebib-layout 'full)
-  (setq ebib-width 50)
+  (setq ebib-layout (quote custom))
+  (setq ebib-width 45)
 
   (message "* ---[ ebib post-load configuration is complete ]---"))
 

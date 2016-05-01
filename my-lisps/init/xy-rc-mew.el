@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-10 Sun 12:25 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-23 Sat 14:26 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-mew.el'
 ;; Author:       Xin Yang
@@ -362,7 +362,7 @@
                 (local-set-key "\C-c\M-o" 'org-mime-htmlize))))
 
   ;;; elscreen-mew
-  (try-require 'elscreen-mew)
+  ;; (try-require 'elscreen-mew)
 
   (message "* ---[ mew post-load configuration is complete ]---"))
 

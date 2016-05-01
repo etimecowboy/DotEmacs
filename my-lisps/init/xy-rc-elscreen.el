@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-10 Sun 15:17 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-23 Sat 14:26 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elscreen.el'
 ;; Author:       Xin Yang
@@ -27,6 +27,9 @@
   ;; (require 'elscreen-howm)
   (require 'elscreen-speedbar)
   (require 'elscreen-w3m)
+
+  ;; elscreen-mew
+  (try-require 'elscreen-mew)
 
   (setq elscreen-display-screen-number nil
         ;; elscreen-tab-display-control t

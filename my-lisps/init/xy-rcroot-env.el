@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-10 Sun 19:40 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-04-23 Sat 09:08 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -677,5 +677,11 @@ Toggle keyboard command logging of whole emacs.
 ;; (local-set-key (kbd "TAB") 'tab-to-tab-stop)
 
 (global-set-key (kbd "TAB") 'tab-to-tab-stop)
+
+
+
+;;; Prepare emacs after server-start
+(global-set-key (kbd "<f12> <f12>") 'xy/prepare-emacs)
+
 
 (provide 'xy-rcroot-env)
