@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-05-01 Sun 01:15 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-05-01 Sun 01:22 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired.el'
 ;; Author:       Xin Yang
@@ -100,9 +100,9 @@ will remain open and unsaved."
   ;; You can follow the advice in documentation of async-shell-command
   ;; (you can read it by doing C-h f async-shell-command RET)
   ;; customize display-buffer-alist as follows.
-  (add-to-list 'display-buffer-alist ;; for `dired-aux.el'
-               (cons "\\*Async Shell Command\\*.*"
-                     (cons #'display-buffer-no-window nil)))
+  ;; (add-to-list 'display-buffer-alist ;; for `dired-aux.el'
+  ;;              (cons "\\*Async Shell Command\\*.*"
+  ;;                    (cons #'display-buffer-no-window nil)))
   (add-to-list 'display-buffer-alist ;; for `runner.el'
                (cons "\\*Runner Output\\*.*"
                      (cons #'display-buffer-no-window nil)))
