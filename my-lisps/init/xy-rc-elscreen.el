@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-23 Sat 14:26 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-05-09 Mon 14:28 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elscreen.el'
 ;; Author:       Xin Yang
@@ -28,14 +28,11 @@
   (require 'elscreen-speedbar)
   (require 'elscreen-w3m)
 
-  ;; elscreen-mew
-  (try-require 'elscreen-mew)
-
   (setq elscreen-display-screen-number nil
         ;; elscreen-tab-display-control t
         ;; elscreen-tab-display-kill-screen t
         elscreen-display-tab t
-        elscreen-prefix-key (kbd "C-z"))
+        elscreen-prefix-key (kbd "M-z"))
 
   ;; TODO: Keep settings in different frames
   ;; (remove-hook 'after-make-frame-functions 'elscreen-make-frame-confs)
@@ -83,7 +80,8 @@
   ;;   ;;       `(my-special-buffer-switching-command))
   ;; )
 
-
+  ;; elscreen-mew
+  (try-require 'elscreen-mew)
   
   (message "* ---[ elscreen post-load configuration is complete ]---"))
 

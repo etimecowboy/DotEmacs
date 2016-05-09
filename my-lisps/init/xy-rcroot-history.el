@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-23 Sat 13:41 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-05-09 Mon 12:26 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -199,7 +199,7 @@
      ;; (add-hook 'elscreen-screen-update-hook
      ;;           'elscreen-frame-title-update)
      ))
-;; (elscreen-start)
+(elscreen-start)
 ;; (global-set-key (kbd "<f2> s") 'elscreen-start)
 
 
