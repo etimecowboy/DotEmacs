@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-10 Sun 21:41 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-05-10 Tue 23:54 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-emamux.el'
 ;; Author:       Xin Yang
@@ -18,10 +18,11 @@
 (defun emamux-postload ()
   "Settings of `emamux.el' after it's been loaded."
 
-  (setq emamux:completing-read-type (quote helm)
-    emamux:default-orientation (quote vertical)
-    emamux:runner-pane-height 15
-    emamux:use-nearest-pane nil)  
+  (setq emamux:completing-read-type 'helm
+        emamux:default-orientation  'vertical
+        emamux:runner-pane-height   15
+        emamux:use-nearest-pane     nil)
+  
   (message "* ---[ emamux post-load configuration is complete ]---"))
 
 (provide 'xy-rc-emamux)

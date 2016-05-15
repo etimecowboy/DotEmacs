@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-11 Mon 22:18 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-05-11 Wed 00:11 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-enhance.el'
 ;; Author:       Xin Yang
@@ -433,7 +433,7 @@ from tradition chinese to simple chinese" t)
 (eval-after-load "emamux" '(emamux-postload))
 (global-set-key (kbd "<f2> &")   'emamux:send-command)
 (global-set-key (kbd "<f2> !")   'emamux:run-command)
-(global-set-key (kbd "<f2> $")   'emamux:run-last-command)
+(global-set-key (kbd "<f2> M-r") 'emamux:run-last-command)
 (global-set-key (kbd "<f2> M-w") 'emamux:send-region)
 (global-set-key (kbd "<f2> C-W") 'emamux:copy-kill-ring)
 (global-set-key (kbd "<f2> C-y") 'emamux:yank-from-list-buffers)
@@ -443,6 +443,8 @@ from tradition chinese to simple chinese" t)
 (global-set-key (kbd "<f2> z")   'emamux:interrupt-runner)
 (global-set-key (kbd "<f2> l")   'emamux:clear-runner-history)
 (global-set-key (kbd "<f2> +")   'emamux:zoom-runner)
+(global-set-key (kbd "<f2> c")   'emamux:new-window)
+(global-set-key (kbd "<f2> M-k") 'emamux:kill-session)
 ;; UI:
 ;;   - emamux:send-command ()
 ;;     "Send command to target-session of tmux"
@@ -468,6 +470,23 @@ from tradition chinese to simple chinese" t)
 ;;     "Clear history of runner pane"
 ;;   - emamux:zoom-runner ()
 ;;     "Zoom runner pane. This feature requires tmux 1.8 or higher"
+
+;; "Default keymap for emamux commands. Use like
+;; \(global-set-key (kbd \"M-g\") emamux:keymap\)
+;; Keymap:
+;; | Key | Command                       |
+;; |-----+-------------------------------|
+;; | C-s | emamux:send-command           |
+;; | C-y | emamux:yank-from-list-buffers |
+;; | M-! | emamux:run-command            |
+;; | M-r | emamux:run-last-command       |
+;; | C-i | emamux:inspect-runner         |
+;; | C-k | emamux:close-panes            |
+;; | C-c | emamux:interrupt-runner       |
+;; | M-k | emamux:clear-runner-history   |
+;; | c   | emamux:new-window             |
+;; ")
+
 
 
 (provide 'xy-rcroot-enhance)
