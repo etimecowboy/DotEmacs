@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-22 Fri 21:39 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-05-15 Sun 21:24 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -804,8 +804,9 @@
    ;; ("C-M-="  increase-default-font-height)
    ;; ("C-M--"  decrease-default-font-height)
    ))
-(xy/set-font-default)
-(xy/set-font-prog-big)
+;; Add to `xy/prepare-emacs' (<f12> <f12>)
+;; (xy/set-font-default)
+;; (xy/set-font-prog)
 
 ;;;; Automatically set fonts for different modes
 ;; NOTE: a pain to my eyes

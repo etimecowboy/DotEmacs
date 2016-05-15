@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-05-09 Mon 12:26 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-05-15 Sun 21:22 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -144,7 +144,7 @@
 
 ;;;; windows and revive
 ;; NOTE: ;; Workspace store and recover. Heavy weight, cannot used with emacs daemon
-(revive-preload)
+;; (revive-preload)
 (eval-after-load "revive" '(revive-postload))
 (when (try-require 'revive)
   ;; (add-hook 'delete-frame-functions 'save-current-configuration)
