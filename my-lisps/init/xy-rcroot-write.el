@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-30 Sat 09:24 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-05-30 Mon 02:04 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-write.el'
 ;; Author:       Xin Yang
@@ -45,10 +45,13 @@
         ;; ("C-c o x"       xy/org-toggle-xelatex)
         ;; ("C-c o r"       xy/org-mode-reftex-setup)
         ("C-c o e"       org-toggle-link-display)
-        ("C-c o t"       timestamp)
+        ("C-c o ."       timestamp)
         ("C-c o h"       bh/hide-other)
+        ("C-c o t"       org-todo)
         ;; ("C-c b"       ebib-insert-bibtex-key)
-        ))))
+        ))
+      (define-key org-mode-map (kbd "C-c C-t") nil)
+     ))
 
 (eval-after-load "org-agenda" '(org-postload))
 (eval-after-load "org-capture" '(org-postload))

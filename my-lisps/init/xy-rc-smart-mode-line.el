@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-18 Mon 00:13 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-05-25 Wed 14:39 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-smart-mode-line.el'
 ;; Author:       Xin Yang
@@ -14,16 +14,15 @@
 ;;--------------------------------------------------------------------
 (require 'xy-rc-utils)
 
-;;;###autoload
-(defun xy/sml-setup ()
-  "Set mode line face but not the default background face."
-
-  (interactive)
-  (sml/setup)
-  (setq sml/active-background-color "grey85"))
-  ;; (custom-set-faces
-  ;;  '(default ((t (:background nil))))))
-
+;; ;;;###autoload
+;; (defun xy/sml-setup ()
+;;   "Set mode line face but not the default background face."
+;;   (interactive)
+;;   (sml/setup)
+;;   ;; (setq sml/active-background-color "grey85")
+;;   ;; (custom-set-faces
+;;   ;;  '(default ((t (:background nil))))))
+;;   )
 
 ;;;###autoload
 (defun smart-mode-line-postload ()
@@ -37,7 +36,7 @@
         sml/show-remote t
         sml/use-projectile-p (quote after-prefixes)
         sml/vc-mode-show-backend t
-        sml/theme 'light)
+        sml/theme 'dark)
 
   (message "* ---[ smart-mode-line post-load configuration is complete ]---"))
 
