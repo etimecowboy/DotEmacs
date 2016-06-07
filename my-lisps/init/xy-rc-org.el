@@ -435,7 +435,7 @@
            "0:10 0:20 0:30 1:00 1:30 2:00 2:30 3:00 4:00")
           ("Importance_ALL" .
            "A B C")
-          ("Score_ALL" .
+          ("SCORE_ALL" .
            "0 1 2 3 4 5 6 7 8 9 10")
           ))
 
@@ -450,7 +450,7 @@
 
 ;;;; column view
   (setq org-columns-default-format ; Set default column view headings
-        "%CATEGORY(Cat.) %PRIORITY(Pri.) %Importance(Imp.) %6TODO(State) %35ITEM(Details) %ALLTAGS(Tags) %5Effort(Plan){:} %6CLOCKSUM(Clock){Total} %Score(Score)")
+        "%CATEGORY(Cat.) %PRIORITY(Pri.) %Importance(Imp.) %6TODO(State) %35ITEM(Details) %ALLTAGS(Tags) %5Effort(Plan){:} %6CLOCKSUM(Clock){Total} %SCORE(SCORE)")
 
     
   
@@ -536,9 +536,6 @@
 :LOGBOOK:
 - Initial State           \"TODO\"       %U
 - Link %a
-:END:
-:PROPERTIES:
-:DESCRIPTION:
 :END:"
 :empty-lines 1 :prepend t :clock-keep t)
 
@@ -603,7 +600,7 @@
 - Timestamp               \"NEW\"        %U
 :END:
 :PROPERTIES:
-:Score: %?
+:SCORE: %?
 :DESCRIPTION:
 :END:"
 :empty-lines 1 :prepend t :clock-keep t)
