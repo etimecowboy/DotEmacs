@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-05 Tue 10:13 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-05 Tue 10:20 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm.el'
 ;; Author:       Xin Yang
@@ -32,7 +32,8 @@
         helm-ff-file-name-history-use-recentf t)
 
   (when (executable-find "curl")
-    (setq helm-google-suggest-use-curl-p t))
+    ;; (setq helm-google-suggest-use-curl-p t))
+    (setq helm-net-prefer-curl t))
 
   ;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
   ;; (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
@@ -91,6 +92,9 @@
 
   ;;; `ace-jump-helm-line'
   (try-require 'ace-jump-helm-line)
+
+  ;;; `helm-fzf'
+  (try-require 'helm-fzf)
   
   (helm-mode 1)
   (message "* ---[ helm post-load configuration is complete ]---"))

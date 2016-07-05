@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-05-25 Wed 21:27 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-05 Tue 01:59 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1428,7 +1428,7 @@ See `bypass-trash-in-function' for more information."
   (load-theme 'zenburn t)
   (sml/setup)
   (xy/set-font-default)
-  (xy/set-font-prog)
+  (xy/set-font-prog-big)
   (helm-mode t)
   (yas-global-mode t)
   (global-company-mode t)

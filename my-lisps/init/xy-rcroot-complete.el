@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-23 Sat 03:18 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-05 Tue 10:10 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -531,5 +531,13 @@
 ;; (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
 ;; (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
 
+
+
+;; Standalone program intergration
+;;; fzf
+;; (eval-after-load "fzf" 'fzf-postload)
+(global-set-key (kbd "<f6> F") 'fzf-directory)
+(global-set-key (kbd "<f6> f") 'fzf)
+  
 
 (provide 'xy-rcroot-complete)
