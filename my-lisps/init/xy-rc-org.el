@@ -575,12 +575,12 @@
           ("1" "Capture a New Task from Web Browser"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Gtd.org" "Task Inbox")
            "** TODO %^{Task} %^G
+:PROPERTIES:
+:DESCRIPTION: %?
+:END:
 :LOGBOOK:
 - Initial State           \"TODO\"       %U
 - Link %c
-:END:
-:PROPERTIES:
-:DESCRIPTION: %?
 :END:"
 :empty-lines 1 :prepend t :clock-keep t)
 
@@ -596,12 +596,12 @@
           ("4" "Add a bookmark"
            entry (file+headline "~/Dropbox/emacs/org/gtd/Bookmark.org" "Bookmark Inbox")
            "** NEW %c %^G
-:LOGBOOK:
-- Timestamp               \"NEW\"        %U
-:END:
 :PROPERTIES:
 :SCORE: %?
 :DESCRIPTION:
+:END:
+:LOGBOOK:
+- Timestamp               \"NEW\"        %U
 :END:"
 :empty-lines 1 :prepend t :clock-keep t)
 
