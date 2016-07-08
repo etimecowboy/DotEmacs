@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-03 Sun 22:44 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-08 Fri 13:34 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-shell.el'
 ;; Author:       Xin Yang
@@ -38,6 +38,11 @@
    ;; (setenv SHELL "cmdproxy.exe")
    (setq shell-file-name "cmdproxy.exe"))
 
+  (GNULinux
+   (setq explicit-shell-file-name "/bin/bash")
+   (setq shell-file-name "bash")
+   (setenv "SHELL" shell-file-name))
+   
   ;; `shell-command.el'
   (when (try-require 'shell-command)
     (shell-command-completion-mode t))
