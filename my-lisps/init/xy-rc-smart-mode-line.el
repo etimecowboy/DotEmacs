@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-05-25 Wed 14:39 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-10 Sun 16:00 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-smart-mode-line.el'
 ;; Author:       Xin Yang
@@ -36,7 +36,7 @@
         sml/show-remote t
         sml/use-projectile-p (quote after-prefixes)
         sml/vc-mode-show-backend t
-        sml/theme 'dark)
+        sml/theme 'powerline)
 
   (message "* ---[ smart-mode-line post-load configuration is complete ]---"))
 

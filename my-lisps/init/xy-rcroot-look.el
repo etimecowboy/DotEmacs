@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-05-15 Sun 21:24 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-11 Mon 02:28 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -350,7 +350,7 @@
 
 ;;;; smart-mode-line
 (eval-after-load "smart-mode-line" '(smart-mode-line-postload))
-(global-set-key (kbd "<f2> m") 'xy/sml-setup)
+;; (global-set-key (kbd "<f2> m") 'sml-setup)
 ;; (xy/sml-setup)
 
 
@@ -788,22 +788,22 @@
 ;;   ;; (xy/set-font-prog)
 ;;   )
 
-(eal-define-keys-commonly
- global-map
- `(("<f2> d" xy/set-font-default)
-   ;; ("<f2> m" xy/set-font-Monofur-STHeiti)
-   ("<f2> w" xy/set-font-write)
-   ("<f2> g" xy/set-font-prog)
-   ("<f2> W" xy/set-font-write-big)
-   ("<f2> G" xy/set-font-prog-big)
-   ;;------------------------------------
+;; (eal-define-keys-commonly
+;;  global-map
+;;  `(("<f2> d" xy/set-font-default)
+;;    ;; ("<f2> m" xy/set-font-Monofur-STHeiti)
+;;    ;; ("<f2> w" xy/set-font-write)
+;;    ;; ("<f2> g" xy/set-font-prog)
+;;    ;; ("<f2> W" xy/set-font-write-big)
+;;    ;; ("<f2> G" xy/set-font-prog-big)
+;;    ;;------------------------------------
 
-   ;; ("C-+"    bhj-text-scale-increase)
-   ;; ("C--"    bhj-text-scale-decrease)
-   ;; NOTE: default text scaling ("C-x C-=" and "C-x C--")
-   ;; ("C-M-="  increase-default-font-height)
-   ;; ("C-M--"  decrease-default-font-height)
-   ))
+;;    ;; ("C-+"    bhj-text-scale-increase)
+;;    ;; ("C--"    bhj-text-scale-decrease)
+;;    ;; NOTE: default text scaling ("C-x C-=" and "C-x C--")
+;;    ;; ("C-M-="  increase-default-font-height)
+;;    ;; ("C-M--"  decrease-default-font-height)
+;;    ))
 ;; Add to `xy/prepare-emacs' (<f12> <f12>)
 ;; (xy/set-font-default)
 ;; (xy/set-font-prog)
@@ -849,16 +849,16 @@
 ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/GlobalTextScaleMode" :display "GlobalTextScaleMode")
 ;; NOTE: Only for exsiting buffers.
 ;;       The font size of new buffers is not changed.
-;; (defadvice text-scale-increase
-;;   (around all-buffers (arg) activate)
-;;   (dolist (buffer (buffer-list))
-;;     (with-current-buffer buffer
-;;       ad-do-it)))
-;; (defadvice text-scale-decrease
-;;   (around all-buffers (arg) activate)
-;;   (dolist (buffer (buffer-list))
-;;     (with-current-buffer buffer
-;;       ad-do-it)))
+(defadvice text-scale-increase
+  (around all-buffers (arg) activate)
+  (dolist (buffer (buffer-list))
+    (with-current-buffer buffer
+      ad-do-it)))
+(defadvice text-scale-decrease
+  (around all-buffers (arg) activate)
+  (dolist (buffer (buffer-list))
+    (with-current-buffer buffer
+      ad-do-it)))
 
 
 
