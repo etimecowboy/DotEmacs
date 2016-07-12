@@ -186,17 +186,8 @@
 ;;;; Sunrise commander; file manager
 ;; Check (@url :file-name "http://www.emacswiki.org/emacs/Sunrise_Commander_Tips" :display "emacswiki")
 (eval-after-load "sunrise-commander" '(sunrise-postload))
-;; BUG: have to load them here
-;; (try-require 'sunrise-commander)
-;; (try-require 'sunrise-x-buttons)
-;; (try-require 'sunrise-x-checkpoints)
-;; (try-require 'sunrise-x-loop)
-;; (try-require 'sunrise-x-mirror)
-;; (try-require 'sunrise-x-modeline)
-;; (try-require 'sunrise-x-tabs)
-;; (try-require 'sunrise-x-w32-addons)
-(global-set-key (kbd "<f9> <f9>") 'sunrise-cd)
-;; (global-set-key (kbd "<f9> <f8>") 'sunrise)
+(global-set-key (kbd "<f9> <f8>") 'sunrise-cd)
+(global-set-key (kbd "<f9> <f9>") 'sunrise)
 
 
 
@@ -241,6 +232,23 @@
 (setq delete-old-versions t)
 (setq vc-make-backup-files t)
 (setq auto-revert-check-vc-info t)
+;; REF: (@url :file-name "http://stackoverflow.com/questions/15390178/emacs-and-symbolic-links" :display "emacs and symbolic links")
+;; Symbolic link to Git-controlled source file; follow link? (y or n)
+;; Documentation: C-h v vc-follow-symlinks (default value: ask)
+;;
+;; - t: VC follows the link and visits the real file, telling you
+;;   about it in the echo area.
+;; - ask: VC asks for confirmation whether it should follow the link.
+;; - nil: the link is visited and a warning displayed.
+
+;; always follow the symlink (and edit the
+;; "actual" file directly), or
+(setq vc-follow-symlinks t)
+;; to always edit the file as if it's at the symlink itself (this
+;; seems to work ok - it won't delete the symlink or anything - but it
+;; won't let you use version-control related stuff on the file). I
+;; prefer the former (unlike the OP).
+;; (setq vc-follow-symlinks nil)
 
 ;; Autosaved files
 (setq auto-save-default nil)

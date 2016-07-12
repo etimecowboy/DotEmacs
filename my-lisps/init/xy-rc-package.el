@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-10 Sun 15:58 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-13 Wed 00:33 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -334,7 +334,8 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'string-utils)
 
   (require-package 'sunrise-commander)
-  (require-package 'sunrise-x-buttons)
+  ;; (require-package 'sunrise-x-buttons)
+  (require-package 'sunrise-x-popviewer)
   (require-package 'sunrise-x-checkpoints)
   (require-package 'sunrise-x-loop)
   (require-package 'sunrise-x-mirror)

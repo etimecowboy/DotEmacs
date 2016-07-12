@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-23 Sat 13:46 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-13 Wed 00:51 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-sunrise.el'
 ;; Author:       Xin Yang
@@ -26,7 +26,9 @@
 (defun sunrise-postload ()
   "Settings of `sunrise.el' after it's been loaded."
 
-  (try-require 'sunrise-x-buttons)
+  (try-require 'sunrise-x-popviewer) ;; not with x-buttons
+  ;; (try-require 'sunrise-x-buttons) ;; not with x-popviewer
+  ;; (try-require 'sunrise‐x‐tree)
   (try-require 'sunrise-x-checkpoints)
   (try-require 'sunrise-x-loop)
   (try-require 'sunrise-x-mirror)
@@ -47,13 +49,12 @@
         sr-loop-use-popups t
         sr-mirror-keep-backups t
         sr-modeline-use-utf8-marks t
-        ;; sr-popviewer-enabled nil
-        ;; sr-popviewer-mode nil
-        ;; sr-popviewer-style 'single-dedicated-frame
-        sr-show-file-attributes nil
+        sr-popviewer-enabled t
+        sr-popviewer-style 'single-dedicated-frame
+        sr-show-file-attributes t
         sr-show-hidden-files t
         sr-tabs-follow-panes t
-        sr-tabs-max-tabsize 30
+        sr-tabs-max-tabsize 40
         sr-traditional-other-window nil
         sr-terminal-kill-buffer-on-exit t
         sr-terminal-program "eshell"
@@ -64,6 +65,8 @@
         sr-windows-locked t
         sr-window-split-style 'horizontal
         sr-use-commander-keys nil)
+
+  (sr-popviewer-mode t)
   
   ;; (setq sr-start-hook
   ;;       '(;; toggle-frame-maximized
