@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-13 Wed 00:33 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-13 Wed 23:45 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -108,6 +108,17 @@ re-downloaded in order to locate PACKAGE."
           ("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
           ))
 
+  ;; TUNA mirrors of melpa
+  ;; TODO: activate these mirrors when back to China
+  ;; (setq package-archives
+  ;;       '(("gnu"          . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+  ;;         ("melpa"        . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+  ;;         ("melpa-stable" .
+  ;;          "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
+  ;;         ("org"          . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+  ;;         ("marmalade"    .
+  ;;          "https://mirrors.tuna.tsinghua.edu.cn/elpa/marmalade/")))
+  
   ;; ;; NOTE: there is an enhancement lisp `melpa.el' for the
   ;; ;; `package.el' shipped by Emacs24. Provided by melpa.
   ;; ;; REF: (@url :file-name "http://melpa.milkbox.net/" :display "Site")

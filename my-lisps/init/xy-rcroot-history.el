@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-05-15 Sun 21:22 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-14 Thu 14:38 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -199,7 +199,7 @@
      ;; (add-hook 'elscreen-screen-update-hook
      ;;           'elscreen-frame-title-update)
      ))
-(elscreen-start)
+(elscreen-start) ;; FIXME: cannot moved to xy/prepare-emacs (<f12> <f12>)
 ;; (global-set-key (kbd "<f2> s") 'elscreen-start)
 
 

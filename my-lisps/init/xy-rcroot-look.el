@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-11 Mon 02:28 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-14 Thu 14:32 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -635,11 +635,8 @@
 ;; don't load any color theme when starting emacs
 ;; (when (and window-system (try-require 'solarized-dark-theme))
 ;;   (load-theme 'solarized-dark t))
-(when window-system
-    ;; (when (try-require 'solarized-dark-theme)
-    ;;   (load-theme 'solarized-dark t)))
-    (when (try-require 'zenburn-theme)
-      (load-theme 'zenburn t)))
+;; (when (and window-system (try-require 'zenburn-theme))
+;;   (load-theme 'zenburn t))
 
 (global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
 (global-set-key (kbd "<f2> C") 'disable-theme)

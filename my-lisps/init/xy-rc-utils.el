@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-11 Mon 10:10 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-14 Thu 18:12 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -727,7 +727,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;   (interactive)
 ;;   (if window-system
 ;;       (qiang-set-font
-;;        '("mplus Nerd Font" 
+;;        '(;; "mplus Nerd Font" 
 ;;          ;; "SauceCodePro Nerd Font"
 ;;          ;; "DejaVuSansMonoForPowerline Nerd Font"         
 ;;          ;; "ProFontWindows Nerd Font"
@@ -737,7 +737,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;;          "DejaVu Sans Mono"
 ;;          "Consolas"
 ;;          "Monospace" 
-;;          "Courier") ":pixelsize=12"
+;;          "Courier") ":pixelsize=11"
 ;;          '("Microsoft Yahei" "STHeiti" "文泉驿等宽正黑" "文泉驿等宽微米黑"
 ;;            "黑体") 14)
 ;;     ;; 默认字体，term 下的字体
@@ -821,85 +821,169 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 ;; 				     ("WenQuanYi Zen Hei" . 1.2)))
 ;;       (bhj-set-font bhj-english-fonts 9 bhj-chinese-fonts))))
 
-;;;###autoload
-(defun xy/set-font-default()
-  "My Emacs default font setting. Tips: use scale-down only."
-  (interactive)
-  (setq xy:english-fonts '("mplus Nerd Font"   ;; not good for scaling with chinese
-                           ;; "Hurmit Nerd Font"  ;; ok, but not perfect scalling
-                           ;; "SauceCodePro Nerd Font" ;; better than hurmit but not perfect
-                           "DejaVuSansMonoForPowerline Nerd Font" ;; old best, not perfect
-                           ;; "ProFontWindows Nerd Font" ;; small font for programming
-                           ;; "AurulentSansMono Nerd Font"
-                           ;; "Knack Nerd Font"
-                           ;; "UbuntuMono Nerd Font"
-                           "DejaVu Sans Mono"
-                           "Consolas" "Monaco"
-                           "Monospace" "Courier New"))
-  (setq xy:chinese-fonts '(;; "FZZhunYuan-M02"     ;; good
-                           ;; "FZZhanBiHei-M22S"   ;; very good
-                           ;; "FZYiHei-M20S"       ;; very good
-                           ;; "FZXingKai-S04"      ;; too small
-                           ;; "FZShaoEr-M11"       ;; good
-                           ;; "FZMeiHei-M07"       ;; narrow font, fit mplus
-                           ;; "FZLiShu II-S06"     ;; good
-                           ;; "FZLiShu-S01"        ;; too flat, too wide
-                           "FZKaTong-M19S"      ;; very good
-                           ;; "FZJingLeiS-R-GB"    ;; too thin, too handwrite
-                           ;; "FZFangSong-Z02"     ;; too thin
-                           ;; "FZShuSong-Z01"      ;; too thin  
-                           ;; "FZSongHei-B07"      ;; good
-                           ;; "FZXiaoBiaoSong-B05" ;; good
-                           ;; "FZKai-Z03"          ;; too thin
-                           ;; "FZHei-B01"          ;; too thin
-                           ;; "Adobe Song Std"     ;; too thin
-                           "Microsoft Yahei" "微软雅黑"
-                           "WenQuanyi Micro Hei Mono" "文泉驿等宽微米黑"
-                           "WenQuanyi Zen Hei" "文泉驿正黑"
-                           "黑体" "新宋体" "宋体" "YouYuan"))
-  (when window-system
-    (GNULinux
-     (setq scalable-fonts-allowed t    ;; Use scalable fonts
-           text-scale-mode-step   1.2) ;; default 1.2
-     (setq face-font-rescale-alist
-           '(("FZZhunYuan-M02" . 1.2)
-             ("FZZhanBiHei-M22S" . 1.2)
-             ("FZYiHei-M20S" . 1.2)
-             ("FZXingKai-S04" . 1.2)
-             ("FZShaoEr-M11" . 1.2)
-             ("FZMeiHei-M07" . 1.2)
-             ("FZLiShu-S01" . 1.2)
-             ("FZLiShu II-S06" . 1.2)
-             ("FZKaTong-M19S" . 1.2)
-             ("FZJingLeiS-R-GB" . 1.2)
-             ("FZFangSong-Z02" . 1.2)
-             ("FZShuSong-Z01" . 1.2)
-             ("FZSongHei-B07" . 1.2)
-             ("FZXiaoBiaoSong-B05" . 1.2)
-             ("FZKai-Z03" . 1.2)
-             ("FZHei-B01" . 1.2)
-             ("YouYuan" . 1.2)
-             ("Adobe Song Std" . 1.2)
-             ("微软雅黑" . 1.2)
-             ("Microsoft Yahei" . 1.2)
-             ("文泉驿等宽微米黑" . 1.2)
-             ("WenQuanYi Micro Hei Mono" . 1.2)
-             ("文泉驿正黑" . 1.2)
-             ("WenQuanYi Zen Hei" . 1.2)))
-     (qiang-set-font xy:english-fonts 10 xy:chinese-fonts)) ;; default 11
+;;;; Test bench
+;; ;;;###autoload
+;; (defun xy/set-font-default()
+;;   "My Emacs default font setting. Tips: use scale-down only."
+;;   (interactive)
+;;   (setq xy:english-fonts '(;; "Input Mono Narrow" ;;
+;;                            ;; "Input Mono Compressed" ;; best font for coding, but too narrow when combines with chinese
+;;                            "mplus Nerd Font"   ;; not good for scaling with chinese
+;;                            ;; "Hurmit Nerd Font"  ;; ok, but not perfect scalling
+;;                            ;; "SauceCodePro Nerd Font" ;; better than hurmit but not perfect
+;;                            "DejaVuSansMonoForPowerline Nerd Font" ;; old best, not perfect
+;;                            ;; "ProFontWindows Nerd Font" ;; small font for programming
+;;                            ;; "AurulentSansMono Nerd Font"
+;;                            ;; "Knack Nerd Font"
+;;                            ;; "UbuntuMono Nerd Font"
+;;                            "DejaVu Sans Mono"
+;;                            "Consolas" "Monaco"
+;;                            "Monospace" "Courier New"))
+;;   (setq xy:chinese-fonts '(;; "FZZhunYuan-M02"     ;; good
+;;                            ;; "FZZhanBiHei-M22S"   ;; very good
+;;                            "FZYiHei-M20S"          ;; very good
+;;                            ;; "FZXingKai-S04"      ;; too small
+;;                            ;; "FZShaoEr-M11"       ;; good
+;;                            ;; "FZMeiHei-M07"       ;; narrow font, fit mplus or input mono compressed
+;;                            ;; "FZLiShu II-S06"     ;; good
+;;                            ;; "FZLiShu-S01"        ;; too flat, too wide
+;;                            ;; "FZKaTong-M19S"      ;; very good
+;;                            ;; "FZJingLeiS-R-GB"    ;; too thin, too handwrite
+;;                            ;; "FZFangSong-Z02"     ;; too thin
+;;                            ;; "FZShuSong-Z01"      ;; too thin  
+;;                            ;; "FZSongHei-B07"      ;; good
+;;                            ;; "FZXiaoBiaoSong-B05" ;; good
+;;                            ;; "FZKai-Z03"          ;; too thin
+;;                            ;; "FZHei-B01"          ;; too thin
+;;                            ;; "Adobe Song Std"     ;; too thin
+;;                            "Microsoft Yahei" "微软雅黑"
+;;                            "WenQuanyi Micro Hei Mono" "文泉驿等宽微米黑"
+;;                            "WenQuanyi Zen Hei" "文泉驿正黑"
+;;                            "黑体" "新宋体" "宋体" "YouYuan"))
+;;   (when window-system
+;;     (GnuLinux
+;;      (setq scalable-fonts-allowed t    ;; Use scalable fonts
+;;            text-scale-mode-step   1.1) ;; default 1.2
 
-    (Windows
-     (setq scalable-fonts-allowed t    ;; Use scalable fonts
-           text-scale-mode-step   1.22) ;; default 1.22
-     (setq face-font-rescale-alist
-           '(("FZKaTong-M19S" . 1.2)
-             ("微软雅黑" . 1.22)
-             ("Microsoft Yahei" . 1.22)
-             ("文泉驿等宽微米黑" . 1.22)
-             ("WenQuanYi Micro Hei Mono" . 1.22)
-             ("文泉驿正黑" . 1.22)
-             ("WenQuanYi Zen Hei" . 1.22)))
-     (qiang-set-font xy:english-fonts 11 xy:chinese-fonts)))) ;; default 11
+;;      (setq face-font-rescale-alist
+;;            '(("mplus Nerd Font" . 1.1)
+;;              ("FZZhunYuan-M02" . 1.2)
+;;              ("FZZhanBiHei-M22S" . 1.2)
+;;              ("FZYiHei-M20S" . 1.3) ;; start from 10 pt English font
+;;              ("FZXingKai-S04" . 1.2)
+;;              ("FZShaoEr-M11" . 1.2)
+;;              ("FZMeiHei-M07" . 1.2)
+;;              ("FZLiShu-S01" . 1.2)
+;;              ("FZLiShu II-S06" . 1.2)
+;;              ("FZKaTong-M19S" . 1.2)
+;;              ("FZJingLeiS-R-GB" . 1.2)
+;;              ("FZFangSong-Z02" . 1.2)
+;;              ("FZShuSong-Z01" . 1.2)
+;;              ("FZSongHei-B07" . 1.2)
+;;              ("FZXiaoBiaoSong-B05" . 1.2)
+;;              ("FZKai-Z03" . 1.2)
+;;              ("FZHei-B01" . 1.2)
+;;              ("YouYuan" . 1.2)
+;;              ("Adobe Song Std" . 1.2)
+;;              ("微软雅黑" . 1.2)
+;;              ("Microsoft Yahei" . 1.2)
+;;              ("文泉驿等宽微米黑" . 1.2)
+;;              ("WenQuanYi Micro Hei Mono" . 1.2)
+;;              ("文泉驿正黑" . 1.2)
+;;              ("WenQuanYi Zen Hei" . 1.2)))
+;;      (qiang-set-font xy:english-fonts 10 xy:chinese-fonts)) ;; default 11
+
+;;     (Windows
+;;      (setq scalable-fonts-allowed t    ;; Use scalable fonts
+;;            text-scale-mode-step   1.22) ;; default 1.22
+;;      (setq face-font-rescale-alist
+;;            '(("FZKaTong-M19S" . 1.2)
+;;              ("微软雅黑" . 1.22)
+;;              ("Microsoft Yahei" . 1.22)
+;;              ("文泉驿等宽微米黑" . 1.22)
+;;              ("WenQuanYi Micro Hei Mono" . 1.22)
+;;              ("文泉驿正黑" . 1.22)
+;;              ("WenQuanYi Zen Hei" . 1.22)))
+;;      (qiang-set-font xy:english-fonts 11 xy:chinese-fonts)))) ;; default 11
+
+;;;; mplus + FZYiHei, loose alignment after scaling
+;;;###autoload
+(defun xy/set-font-mplus()
+  "Set font. Small and narrow font that is perfect for coding on a vertical monitor."
+  (interactive)
+  (setq xy:english-fonts '("mplus Nerd Font"))
+  (setq xy:chinese-fonts '("FZYiHei-M20S"))
+
+  (when window-system
+    (setq scalable-fonts-allowed t    ;; Use scalable fonts
+          text-scale-mode-step   1.1) ;; default 1.2
+    (setq face-font-rescale-alist
+          '(("mplus Nerd Font" . 1.1)
+            ("FZYiHei-M20S" . 1.2)
+            ))
+    (qiang-set-font xy:english-fonts 10 xy:chinese-fonts)))
+
+;;;; InputMonoCompressed + FZMeiHei, loose alignment after scaling
+;;;###autoload
+(defun xy/set-font-InputMonoCompressed()
+  "Set font. Compressed terminal font that is perfect for shell operations."
+  (interactive)
+  (setq xy:english-fonts '("Input Mono Compressed"))
+  (setq xy:chinese-fonts '("FZMeiHei-M07"))
+
+  (when window-system
+    (setq scalable-fonts-allowed t    ;; Use scalable fonts
+          text-scale-mode-step   1.1) ;; default 1.2
+    (setq face-font-rescale-alist
+          '(("Input Mono Compressed" . 1.1)
+            ("FZMeiHei-M07" . 1.25) ;; scaling does not work on this font
+            ))
+    (qiang-set-font xy:english-fonts 10 xy:chinese-fonts)))
+
+;;;; DejaVu Sans Mono + Microsoft YaHei
+;;;###autoload
+(defun xy/set-font-DejaVuSansMono()
+  "Set font. Open source font that was ranked as the best font for coding."
+  (interactive)
+  (setq xy:english-fonts
+        '("DejaVuSansMonoForPowerline Nerd Font"
+          "DejaVu Sans Mono for Powerline"
+          "DejaVu Sans Mono" ;; in case there is no nerd nor powerline fonts
+         ))
+  (setq xy:chinese-fonts '("Microsoft YaHei" "微软雅黑"))
+  ;; (setq xy:chinese-fonts '("FZMeiHei-M07"))
+
+  (when window-system
+    (setq scalable-fonts-allowed t    ;; Use scalable fonts
+          text-scale-mode-step   1.1) ;; default 1.2
+    (setq face-font-rescale-alist
+          '(("DejaVuSansMonoForPowerline Nerd Font" . 1.0)
+            ("DejaVu Sans Mono for Powerline" . 1.0)
+            ("DejaVu Sans Mono" . 1.0)
+            ("Microsoft YaHei" . 1.25)
+            ("微软雅黑" . 1.25)
+            ))
+    (qiang-set-font xy:english-fonts 10 xy:chinese-fonts)))
+
+;;;; Consolas + Microsoft YaHei
+;;;###autoload
+(defun xy/set-font-Consolas()
+  "Set font. Small microsoft coding font that is aviable on Windows Vista or above versions."
+  (interactive)
+  (setq xy:english-fonts
+        '("Consolas"))
+  (setq xy:chinese-fonts '("Microsoft YaHei" "微软雅黑"))
+
+  (when window-system
+    (setq scalable-fonts-allowed t    ;; Use scalable fonts
+          text-scale-mode-step   1.1) ;; default 1.2
+    (setq face-font-rescale-alist
+          '(("Consolas" . 1.0)
+            ("Microsoft YaHei" . 1.1)
+            ("微软雅黑" . 1.1)
+            ))
+    (qiang-set-font xy:english-fonts 10 xy:chinese-fonts)))
+
 
 ;; ;; NOTE: simplified version of the above function
 ;; ;; BUG: not working, why?
@@ -1480,13 +1564,12 @@ See `bypass-trash-in-function' for more information."
   (interactive)
   (load-theme 'zenburn t)
   (sml/setup)
-  (xy/set-font-default)
-  ;; (xy/set-font-prog-big)
+  (xy/set-font-InputMonoCompressed)
   (helm-mode t)
   (yas-global-mode t)
   (global-company-mode t)
-  ;; (linkd-mode t)
-  ;; (elscreen-start)
+  (linkd-mode t)
+  ;; (elscreen-start) ;; error when call it here
   (org-agenda))
 
 (provide 'xy-rc-utils)
