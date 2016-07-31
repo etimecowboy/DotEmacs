@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-05-09 Mon 14:28 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-27 Wed 11:04 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elscreen.el'
 ;; Author:       Xin Yang
@@ -28,10 +28,10 @@
   (require 'elscreen-speedbar)
   (require 'elscreen-w3m)
 
-  (setq elscreen-display-screen-number nil
+  (setq elscreen-display-screen-number t
+        elscreen-display-tab nil
         ;; elscreen-tab-display-control t
         ;; elscreen-tab-display-kill-screen t
-        elscreen-display-tab t
         elscreen-prefix-key (kbd "M-z"))
 
   ;; TODO: Keep settings in different frames

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-14 Thu 14:32 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-27 Wed 10:21 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -483,8 +483,9 @@
 ;;; Syntax highlighting
 
 ;;;; font-lock
-(eval-after-load "font-lock" '(font-lock-postload))
+;; (eval-after-load "font-lock" '(font-lock-postload))
 (global-font-lock-mode 1)
+
 ;; 避免打开大的文本文件时反应缓慢
 ;; BUG: org-mode 显示错误
 ;; (global-font-lock-mode -1)

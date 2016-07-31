@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:36 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-27 Wed 13:48 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-font-lock.el'
 ;; Author:       Xin Yang
@@ -18,14 +18,23 @@
 (defun font-lock-postload ()
   "Settings for `font-lock' after it's been loaded."
 
-  (setq  font-lock-maximum-decoration t
-         font-lock-support-mode 'jit-lock-mode)
-
-  (setq  jit-lock-stealth-time 16
+  (setq  font-lock-maximum-decoration 1 ;; t
+         font-lock-support-mode 'jit-lock-mode
          jit-lock-defer-contextually t
-         jit-lock-stealth-nice 0.5)
-
+         jit-lock-stealth-time nil
+         jit-lock-stealth-nice 2)
   (setq-default font-lock-multiline t)
+
+  ;; `lazy-lock-mode' is obsolete in emacs 22
+  ;; `jit-lock-mode' should be used instead
+  ;; (setq font-lock-support-mode 'lazy-lock-mode)
+  ;; (setq lazy-lock-minimum-size 30000)
+  ;; (setq lazy-lock-defer-time 3)
+  ;; (setq lazy-lock-defer-on-scrolling t)
+  ;; (setq lazy-lock-defer-contextually t)
+  ;; (setq lazy-lock-stealth-time 16)
+  ;; (setq lazy-lock-stealth-lines 200)
+  ;; (setq lazy-lock-stealth-verbose nil)
 
   ;; ;; 增加自定义关键字
   ;; ;; NOTE: use fic-ext-mode instead
