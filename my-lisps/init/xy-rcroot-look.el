@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-27 Wed 10:21 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-31 Sun 15:30 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -315,7 +315,7 @@
 ;; (eval-after-load "ethan-wspace" '(diminish 'ethan-wspace-mode))
 ;; (eval-after-load "ws-trim" '(diminish 'ws-trim-mode))
 ;; (eval-after-load "skeleton-complete" '(diminish 'skeleton-complete-mode))
-(eval-after-load "auto-dim-other-buffers" '(diminish 'auto-dim-other-buffers-mode))
+;; (eval-after-load "auto-dim-other-buffers" '(diminish 'auto-dim-other-buffers-mode))
 (eval-after-load "fic-mode" '(diminish 'fic-mode))
 (eval-after-load "face-remap" '(diminish 'buffer-face-mode))
 ;; (eval-after-load "back-button" '(diminish 'back-button-mode))
@@ -581,12 +581,17 @@
 ;; 实现Emacs的淡入淡出效果, is a part of cedet
 ;; REF: (@url :file-name "http://emacser.com/pulse.htm" :display "Emacser")
 ;; BUG: face-settings seem not working
-(eval-after-load "pulse"
-  '(progn
-     (pulse-face-settings)
-     (pulse-postload)))
-(try-require 'pulse)
+;; (eval-after-load "pulse"
+;;   '(progn
+;;      (pulse-face-settings)
+;;      (pulse-postload)))
+;; (try-require 'pulse)
 
+
+
+
+';; beacon
+(eval-after-load "beacon" '(beacon-postload))
 
 
 ;;;; Zjl-hl
@@ -639,6 +644,7 @@
 ;; (when (and window-system (try-require 'zenburn-theme))
 ;;   (load-theme 'zenburn t))
 
+(load-theme 'zenburn t)
 (global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
 (global-set-key (kbd "<f2> C") 'disable-theme)
 
@@ -660,13 +666,27 @@
 ;; (Defadvice load-theme (before theme-dont-propagate activate)
 ;;   (mapcar #'disable-theme custom-enabled-themes))
 
+;;;; No background color in terminal
+;; (@url :file-name "http://stackoverflow.com/questions/19054228/emacs-disable-theme-background-color-in-terminal" :display "Emacs: disable theme background color in terminal")
+(defun on-frame-open (frame)
+  (if (not (display-graphic-p frame))
+      (set-face-background 'default "unspecified-bg" frame)))
+(on-frame-open (selected-frame))
+(add-hook 'after-make-frame-functions 'on-frame-open)
+
+;;;;; This doesn't work for me
+;; (defun on-after-init ()
+;;   (unless (display-graphic-p (selected-frame))
+;;     (set-face-background 'default "unspecified-bg" (selected-frame))))
+;; (add-hook 'window-setup-hook 'on-after-init)
+
 
 
 ;;;; auto-dim-other-buffers
-(eval-after-load "auto-dim-other-buffers"
-  '(auto-dim-other-buffers-postload))
-(when (try-require 'auto-dim-other-buffers)
-  (auto-dim-other-buffers-mode 1))
+;; (eval-after-load "auto-dim-other-buffers"
+;;   '(auto-dim-other-buffers-postload))
+;; (when (try-require 'auto-dim-other-buffers)
+;;   (auto-dim-other-buffers-mode 1))
 
 
 
@@ -805,6 +825,7 @@
 ;; Add to `xy/prepare-emacs' (<f12> <f12>)
 ;; (xy/set-font-default)
 ;; (xy/set-font-prog)
+(xy/set-font-InputMonoCompressed)
 
 ;;;; Automatically set fonts for different modes
 ;; NOTE: a pain to my eyes

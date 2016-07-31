@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-13 Wed 23:45 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-07-31 Sun 15:02 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -188,7 +188,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'zenburn-theme)
   
   ;; (require-package 'ascii)  
-  (require-package 'auto-dim-other-buffers)
+  ;; (require-package 'auto-dim-other-buffers)
   (require-package 'autopair)
   ;; (require-package 'back-button) ;; use bm instead
   (require-package 'batch-mode)
@@ -401,6 +401,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'speck)
   (require-package 'flyspell-lazy)
   (require-package 'fzf)
+  (require-package 'beacon)
   
   ;; =======================================================
   ;; Completion system
