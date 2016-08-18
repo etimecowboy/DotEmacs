@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:55 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-08-18 Thu 12:03 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-tramp.el'
 ;; Author:       Xin Yang
@@ -49,7 +49,9 @@
   "Settings of `tramp' after it's been loaded."
 
   (GNULinux
-   (setq tramp-default-method "pscp"))
+   ;; (setq tramp-default-method "pscp")
+   (setq tramp-default-method "ssh") ;; faster than the default scp
+   )
 
   ;; REF: (@url :file-name "http://www.jeremyenglish.org/docs/tramp_ntmacs.pdf" :display "PDF file")
   ;; REF: readme.org and startup.org in (@url :file-name "https://github.com/mlf176f2/EmacsPortable.App/" :display "EmacsProtable.app")
