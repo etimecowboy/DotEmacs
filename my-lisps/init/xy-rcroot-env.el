@@ -581,6 +581,7 @@ Toggle keyboard command logging of whole emacs.
 
 ;;;; `fcitx' - better integration with fcitx im
 (GNULinux
+  (when window-system
     (when (try-require 'fcitx)
       ;; (fcitx-default-setup)
       (fcitx-aggressive-setup)
@@ -590,7 +591,7 @@ Toggle keyboard command logging of whole emacs.
       (fcitx-isearch-turn-on)
       (setq fcitx-use-dbus t)
       ;; (fcitx-read-funcs-turn-on)
-    ))
+    )))
 
 
 
