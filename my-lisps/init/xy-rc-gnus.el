@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 16:19 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-08-19 Fri 14:24 by xin on zbox.soton.ac.uk>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-gnus.el'
 ;; Author:       Xin Yang
@@ -104,7 +104,9 @@
   (setq gnus-select-method
         ;; '(nntp "forums.sybase.com"))
         ;; '(nntp "nntp.aioe.org")
-        '(nntp "news.virginmedia.com"))
+        ;; '(nntp "news.virginmedia.com"))
+        '(nntp "test.xennanews.com"))
+
   ;; (UKDesktop
   ;;  (setq gnus-select-method
   ;;        '(nntp "news.virginmedia.com"
@@ -212,10 +214,10 @@
   ;;   smtpmail-default-smtp-server "smtp.blueyonder.co.uk"
   ;;   smtpmail-smtp-server "smtp.blueyonder.co.uk"))
   ;; @brl
-  (OfficePC
-   (setq
-    smtpmail-default-smtp-server "staf-smtp.uwe.ac.uk"
-    smtpmail-smtp-server "staf-smtp.uwe.ac.uk"))
+  ;; (OfficePC
+  ;;  (setq
+  ;;   smtpmail-default-smtp-server "staf-smtp.uwe.ac.uk"
+  ;;   smtpmail-smtp-server "staf-smtp.uwe.ac.uk"))
 
   ;;==================================================================
   ;; 语言环境设定
