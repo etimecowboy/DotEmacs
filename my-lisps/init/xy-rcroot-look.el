@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-31 Sun 15:30 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-08-24 Wed 17:35 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -668,6 +668,8 @@
 
 ;;;; No background color in terminal
 ;; (@url :file-name "http://stackoverflow.com/questions/19054228/emacs-disable-theme-background-color-in-terminal" :display "Emacs: disable theme background color in terminal")
+;; NOTE: works in Debian 8 but not in Ubuntu 16.04
+;; Updates: works in Ubuntu, but newly created frames have transparent background
 (defun on-frame-open (frame)
   (if (not (display-graphic-p frame))
       (set-face-background 'default "unspecified-bg" frame)))
