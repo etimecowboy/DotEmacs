@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-08-24 Wed 17:35 by xin on zboxum>
+;; Time-stamp: <2016-08-25 Thu 16:27 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -167,10 +167,10 @@
 (eval-after-load "windmove" '(windmove-postload))
 (eal-define-keys-commonly
  global-map ;; BUG: keybindings do not work in linux console
- `(("<f5> <left>"  windmove-left)
-   ("<f5> <right>" windmove-right)
-   ("<f5> <up>"    windmove-up)
-   ("<f5> <down>"  windmove-down)))
+ `(("<f5> j"  windmove-left)
+   ("<f5> l"  windmove-right)
+   ("<f5> i"  windmove-up)
+   ("<f5> k"  windmove-down)))
 
 
 
@@ -182,10 +182,10 @@
 (autoload 'buf-move-right "buffer-move" nil t)
 (eal-define-keys-commonly
  global-map ;; not work in linux console
- `(("M-S-<up>"    buf-move-up)
-   ("M-S-<down>"  buf-move-down)
-   ("M-S-<left>"  buf-move-left)
-   ("M-S-<right>" buf-move-right)))
+ `(("<f5> <up>"    buf-move-up)
+   ("<f5> <down>"  buf-move-down)
+   ("<f5> <left>"  buf-move-left)
+   ("<f5> <right>" buf-move-right)))
 
 
 
@@ -201,10 +201,10 @@
 (autoload 'windsize-down "windsize" nil t)
 (eal-define-keys-commonly
  global-map
- `(("<f8> <left>"  windsize-left)
-   ("<f8> <right>" windsize-right)
-   ("<f8> <up>"    windsize-up)
-   ("<f8> <down>"  windsize-down)))
+ `(("<f8> j"  windsize-left)
+   ("<f8> l"  windsize-right)
+   ("<f8> i"  windsize-up)
+   ("<f8> k"  windsize-down)))
 
 
 

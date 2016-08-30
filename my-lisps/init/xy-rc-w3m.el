@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:56 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-08-30 Tue 14:50 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-w3m.el'
 ;; Author:       Xin Yang
@@ -13,6 +13,19 @@
 ;;
 ;;--------------------------------------------------------------------
 (require 'xy-rc-utils)
+
+;; Emacs W3M 直接播放Youtube BiliBili (use mpv)
+;; REF: https://segmentfault.com/a/1190000003000831
+;;;###autoload
+(defun w3m-play-movie ()
+  (interactive)
+  (let ((url (w3m-anchor)))
+    (cond ((string-match "^http:\\/\\/www\\.youtube\\.com" url)
+           (message (concat "loading from youtube... " url))
+           (call-process "mpv" nil nil nil url))
+          ((string-match "^http:\\/\\/www\\.bilibili\\.com" url)
+           (message (concat "loading from bilibili..." url))
+                      (call-process "bili" nil nil nil url)))))
 
 ;; REF: ahei's settings
 ;;;###autoload

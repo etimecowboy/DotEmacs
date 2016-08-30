@@ -1,7 +1,7 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
 ;;--------------------------------------------------------------------
 ;; File name:    `init.el'
-;; Time-stamp: <2015-05-20 Wed 22:30 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-08-24 Wed 23:21 by xin on zboxum>
 ;; Author:       Xin Yang
 ;; Email:        xin2.yang@gmail.com
 ;; Depend on:    None
@@ -80,11 +80,6 @@
 (load "xy-rcroot-env")
 (measure-time "xy-rcroot-env.el")
 
-;; Emacs appearance
-;; (require 'xy-rcroot-look)
-(load "xy-rcroot-look")
-(measure-time "xy-rcroot-look.el")
-
 ;; Some enhancements
 ;; (require 'xy-rcroot-enhance)
 (load "xy-rcroot-enhance")
@@ -125,6 +120,11 @@
 ;; (require 'xy-rcroot-write)
 (load "xy-rcroot-write")
 (measure-time "xy-rcroot-write.el")
+
+;; Emacs appearance
+;; (require 'xy-rcroot-look)
+(load "xy-rcroot-look")
+(measure-time "xy-rcroot-look.el")
 
 ;; Save history information between emacs sessions
 ;; Must be put at last to avoid failing
