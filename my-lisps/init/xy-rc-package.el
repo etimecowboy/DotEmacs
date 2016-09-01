@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-31 Sun 15:02 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-09-01 Thu 11:07 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -402,6 +402,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'flyspell-lazy)
   (require-package 'fzf)
   (require-package 'beacon)
+  (require-package 'ranger)
   
   ;; =======================================================
   ;; Completion system
@@ -428,7 +429,6 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'yasnippet)
   (require-package 'ox-html5slide)
   
-  ;; NOTE: don't use helm
   (require-package 'helm)
   (require-package 'helm-bibtex)
   (require-package 'biblio)
