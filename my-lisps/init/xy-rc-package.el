@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-09-01 Thu 11:07 by xin on zboxum>
+;; Time-stamp: <2016-09-19 Mon 22:17 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-05 Tue 10:20 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-11-16 Wed 10:34 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm.el'
 ;; Author:       Xin Yang
@@ -95,6 +95,9 @@
 
   ;;; `helm-fzf'
   (try-require 'helm-fzf)
+
+  ;;; `flyspell-correct-helm'
+  (try-require 'flyspell-correct-helm)
   
   (helm-mode 1)
   (message "* ---[ helm post-load configuration is complete ]---"))

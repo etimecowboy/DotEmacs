@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-05 Tue 10:10 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-11-16 Wed 10:33 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -473,14 +473,23 @@
      ))
 
 ;;; helm-flyspell
-(eval-after-load "helm-flyspell"
+;; (eval-after-load "helm-flyspell"
+;;   '(progn
+;;      (helm-flyspell-postload)
+;;      (eal-define-keys
+;;       'helm-command-map
+;;       `(;; ("\\"   helm-flyspell-correct)
+;;         (">"    check-next-spelling-error)
+;;         ("<"    check-previous-spelling-error)))
+;;      ))
+
+;;; flyspell-correct-helm
+(eval-after-load "flyspell-correct-helm"
   '(progn
-     (helm-flyspell-postload)
      (eal-define-keys
       'helm-command-map
-      `(;; ("\\"   helm-flyspell-correct)
-        (">"    check-next-spelling-error)
-        ("<"    check-previous-spelling-error)))
+      `((">"    flyspell-correct-word-generic)
+        ("<"    flyspell-correct-previous-word-generic)))
      ))
 
 

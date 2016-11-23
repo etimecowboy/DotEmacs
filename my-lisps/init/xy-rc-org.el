@@ -734,7 +734,7 @@
             ;;             (org-tags-match-list-sublevels t)))
 
             (agenda ""
-                    ((org-agenda-ndays 1)
+                    ((org-agenda-span 1)
                      (org-agenda-deadline-warning-days 14)
                      (org-agenda-use-time-grid t)
                      (org-agenda-skip-scheduled-if-done t)

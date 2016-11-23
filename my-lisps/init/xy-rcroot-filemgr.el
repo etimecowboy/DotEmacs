@@ -199,6 +199,11 @@
 ;; BUG: It seems cause error when using with `elscreen.el'
 
 
+;;;; ranger
+(eval-after-load "ranger" '(ranger-postload))
+
+
+
 ;;; File searching
 
 ;;;; Use `everything.el' with `everything.exe' in Windows
