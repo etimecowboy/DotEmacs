@@ -332,7 +332,7 @@
 ;; Highlight vc diff section of current file
 ;;BUG: strange error after update to latest ELPA package, use old
 ;; package instead.
-(when (try-require 'diff-hl) (global-diff-hl-mode 1))
+;; (when (try-require 'diff-hl) (global-diff-hl-mode 1))
 
 
 (provide 'xy-rcroot-filemgr)
