@@ -948,7 +948,7 @@
           (latex . t) (org . t)
           (matlab . t) (octave . t)
           (python . t) ;; (perl . t) (ruby . t)
-          (sh . t) (gnuplot . t)
+          (shell . t) (gnuplot . t)
           ))
 
   (require 'ob-C)
@@ -965,7 +965,7 @@
   (require 'ob-perl)
   (require 'ob-python)
   (require 'ob-ruby)
-  (require 'ob-sh)
+  (require 'ob-shell)
   (require 'ob-gnuplot)
 
   ;; ensure this variable is defined

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-11-16 Wed 10:34 by xin on zboxum>
+;; Time-stamp: <2016-12-20 Tue 11:48 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm.el'
 ;; Author:       Xin Yang

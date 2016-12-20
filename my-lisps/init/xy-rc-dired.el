@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-05-01 Sun 01:22 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2016-12-20 Tue 11:43 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-dired.el'
 ;; Author:       Xin Yang
@@ -14,17 +14,17 @@
 ;;--------------------------------------------------------------------
 (require 'xy-rc-utils)
 
-;;;###autoload
-(defun his-dired-sort ()
-  "List directories before files"
-  (save-excursion
-    (let (buffer-read-only)
-      (forward-line 2) ;; beyond dir. header
-      (sort-regexp-fields t "^.*$" "[ ]*." (point) (point-max))))
-  (and (featurep 'xemacs)
-       (fboundp 'dired-insert-set-properties)
-       (dired-insert-set-properties (point-min) (point-max)))
-  (set-buffer-modified-p nil))
+;; ;;;###autoload
+;; (defun his-dired-sort ()
+;;   "List directories before files"
+;;   (save-excursion
+;;     (let (buffer-read-only)
+;;       (forward-line 2) ;; beyond dir. header
+;;       (sort-regexp-fields t "^.*$" "[ ]*." (point) (point-max))))
+;;   (and (featurep 'xemacs)
+;;        (fboundp 'dired-insert-set-properties)
+;;        (dired-insert-set-properties (point-min) (point-max)))
+;;   (set-buffer-modified-p nil))
 
 ;; REF: (@url :file-name "http://superuser.com/questions/176627/in-emacs-dired-how-can-i-run-a-command-on-multiple-marked-files" :display "Post")
 ;;;###autoload
@@ -39,29 +39,29 @@ will remain open and unsaved."
             (call-interactively command))
           (dired-get-marked-files))))
 
-;;;###autoload
-(defun dired-sort-by-size ()
-  "sort by Size"
-  (interactive)
-  (dired-sort-other (concat dired-listing-switches "S")))
+;; ;;;###autoload
+;; (defun dired-sort-by-size ()
+;;   "sort by Size"
+;;   (interactive)
+;;   (dired-sort-other (concat dired-listing-switches "S")))
 
-;;;###autoload
-(defun dired-sort-by-extension ()
-  "sort by eXtension"
-  (interactive)
-  (dired-sort-other (concat dired-listing-switches "X")))
+;; ;;;###autoload
+;; (defun dired-sort-by-extension ()
+;;   "sort by eXtension"
+;;   (interactive)
+;;   (dired-sort-other (concat dired-listing-switches "X")))
 
-;;;###autoload
-(defun dired-sort-by-time ()
-  "sort by Time"
-  (interactive)
-  (dired-sort-other (concat dired-listing-switches "t")))
+;; ;;;###autoload
+;; (defun dired-sort-by-time ()
+;;   "sort by Time"
+;;   (interactive)
+;;   (dired-sort-other (concat dired-listing-switches "t")))
 
-;;;###autoload
-(defun dired-sort-by-name ()
-  "sort by Name"
-  (interactive)
-  (dired-sort-other dired-listing-switches))
+;; ;;;###autoload
+;; (defun dired-sort-by-name ()
+;;   "sort by Name"
+;;   (interactive)
+;;   (dired-sort-other dired-listing-switches))
 
 ;;;###autoload
 (defun dired-postload ()
@@ -86,8 +86,8 @@ will remain open and unsaved."
   ;;         (propertized-buffer-identification "%b")))
   ;; (add-hook 'dired-mode-hook 'dired-mode-hook-settings)
 
-  (add-hook 'dired-after-readin-hook 'his-dired-sort)
-  (add-hook 'dired-lood-hook 'his-dired-sort)
+  ;; (add-hook 'dired-after-readin-hook 'his-dired-sort)
+  ;; (add-hook 'dired-lood-hook 'his-dired-sort)
   ;; Auto-refresh dired on file change
   (add-hook 'dired-mode-hook 'auto-revert-mode)
   ;; (def-redo-command dired-redo 'dired-redo 'dired-undo)
@@ -117,6 +117,9 @@ will remain open and unsaved."
   ;;  (try-require 'dired-tar))
 
   ;; (try-require 'thumb)
+
+  ;;-------------------------------------------------------------------
+  (try-require 'dired-sort)
 
   ;;-------------------------------------------------------------------
   (try-require 'runner)

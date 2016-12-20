@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-09-19 Mon 22:17 by xin on zboxum>
+;; Time-stamp: <2016-12-20 Tue 11:44 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -226,6 +226,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'diff-hl)
   (require-package 'diminish)
   (require-package 'dired+)
+  (require-package 'dired-sort)
   ;; (require-package 'doc-mode)   ;; never used
   ;; (require-package 'dropbox)    ;; never used
   ;; (require-package 'edit-server);; I use firefox not chrome
