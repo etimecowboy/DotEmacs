@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-11-16 Wed 10:33 by xin on zboxum>
+;; Time-stamp: <2016-12-23 Fri 14:09 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -407,7 +407,7 @@
 	))))
 (global-set-key (kbd "<f6> h")  'helm-mode)
 (global-set-key (kbd "M-x")     'helm-M-x)
-(global-set-key (kbd "M-y")     'helm-show-kill-ring)
+(global-set-key (kbd "C-y")     'helm-show-kill-ring)
 (global-set-key (kbd "C-x b")   'helm-mini)
 (global-set-key (kbd "C-x r b") 'helm-bookmarks)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)

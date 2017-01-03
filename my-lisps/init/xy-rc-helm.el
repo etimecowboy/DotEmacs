@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-12-20 Tue 11:48 by xin on zboxum>
+;; Time-stamp: <2016-12-23 Fri 14:04 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-helm.el'
 ;; Author:       Xin Yang
@@ -68,24 +68,27 @@
   ;; (when (try-require 'helm-bibtex)
   ;;   (define-key helm-command-map (kbd "x") 'helm-bibtex))
 
-  ;;; `helm-firefox'
-  (try-require 'helm-firefox)
-
-  ;;; `helm-c-yasnippet'
-  (try-require 'helm-c-yasnippet)
+  ;;; `flyspell-correct-helm'
+  (try-require 'flyspell-correct-helm)
 
   ;;; `helm-bm'
-  ;; TODO: compare with `helm-firefox'
+  ;; NOTE: helm-firefox is better
   ;; (try-require 'helm-bm)
+
+  ;;; `helm-firefox'
+  ;; (try-require 'helm-firefox)
+
+  ;;; `helm-c-yasnippet'
+  ;; (try-require 'helm-c-yasnippet)
+
+  ;;; `helm-projectile'
+  ;; (try-require 'helm-projectile)
 
   ;;; `helm-c-moccur'
   (try-require 'helm-c-moccur)
 
-  ;;; `helm-projectile'
-  (try-require 'helm-projectile)
-
   ;;; `helm-flyspell'
-  (try-require 'helm-flyspell)
+  ;; (try-require 'helm-flyspell)
 
   ;;; `helm-swoop'
   (try-require 'helm-swoop)
@@ -95,11 +98,9 @@
 
   ;;; `helm-fzf'
   (try-require 'helm-fzf)
-
-  ;;; `flyspell-correct-helm'
-  (try-require 'flyspell-correct-helm)
   
-  (helm-mode 1)
+  ;; (helm-mode 1)
+
   (message "* ---[ helm post-load configuration is complete ]---"))
 
 (provide 'xy-rc-helm)

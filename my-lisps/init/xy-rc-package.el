@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-12-20 Tue 11:44 by xin on zboxum>
+;; Time-stamp: <2016-12-23 Fri 13:46 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -446,6 +446,9 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'helm-migemo)
   (require-package 'helm-projectile)
   ;; (require-package 'helm-themes)
+  (require-package 'flyspell-correct)
+  (require-package 'flyspell-correct-helm)
+  
   (require-package 'ace-jump-helm-line)
 
   ;; (require-package 'ack-menu)  ;; ack is not used
