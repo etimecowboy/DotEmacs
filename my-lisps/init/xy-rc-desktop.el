@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:29 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-01-13 Fri 16:12 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-desktop.el'
 ;; Author:       Xin Yang
@@ -18,7 +18,7 @@
 (defun desktop-postload ()
   "Settings of `desktop' after it's been loaded."
 
-  (setq desktop-path '("~/Dropbox/emacs/var/")
+  (setq desktop-path '("~/.emacs.d/var/")
 
         desktop-base-file-name (concat "desktop-"
                                        user-login-name "@"

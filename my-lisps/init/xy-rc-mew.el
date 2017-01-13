@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-23 Sat 14:26 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-01-13 Fri 16:16 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-mew.el'
 ;; Author:       Xin Yang
@@ -179,7 +179,7 @@
          ("name"                 . "Xin Yang")
          ("user"                 . "xin2.yang")
          ("reply-to"             . "xin2.yang@gmail.com")
-         ("signature-file"       . "~/Dropbox/emacs/mew/sig/sigsimple")
+         ("signature-file"       . "~/emacs/mew/sig/sigsimple")
          ("mail-domain"          . "gmail.com")
          ("imap-server"          . "imap.gmail.com")
          ("imap-ssl"             . t)
@@ -196,7 +196,7 @@
          ("user"                 . "xy12g13")
          ("reply-to"             . "xin.yang@soton.ac.uk")
          ("mail-domain"          . "soton.ac.uk")
-         ("signature-file"       . "~/Dropbox/emacs/mew/sig/sigsoton")
+         ("signature-file"       . "~/emacs/mew/sig/sigsoton")
          ("imap-server"          . "imap.exchange.soton.ac.uk")
          ("imap-ssl"             . t)
          ("imap-ssl-port"        . "993")
@@ -217,7 +217,7 @@
          ("user"                 . "xy2c13")
          ("reply-to"             . "xy2c13@soton.ac.uk")
          ("mail-domain"          . "soton.ac.uk")
-         ("signature-file"       . "~/Dropbox/emacs/mew/sig/sigsimple")
+         ("signature-file"       . "~/emacs/mew/sig/sigsimple")
          ("imap-server"          . "imap.exchange.soton.ac.uk")
          ("imap-ssl"             . t)
          ("imap-ssl-port"        . "993")
@@ -238,7 +238,7 @@
          ("name"                 . "etimecowboy")
          ("user"                 . "etimecowboy")
          ("reply-to"             . "etimecowboy@gmail.com")
-         ("signature-file"       . "~/Dropbox/emacs/mew/sig/sigbulb")
+         ("signature-file"       . "~/emacs/mew/sig/sigbulb")
          ("mail-domain"          . "gmail.com")
          ("imap-server"          . "imap.gmail.com")
          ("imap-ssl"             . t)
@@ -255,7 +255,7 @@
         ;;  ("user"                 . "x4-yang")
         ;;  ("reply-to"             . "xin2.yang@uwe.ac.uk")
         ;;  ("mail-domain"          . "uwe.ac.uk")
-        ;;  ("signature-file"       . "~/Dropbox/emacs/mew/sig/siguwe")
+        ;;  ("signature-file"       . "~/emacs/mew/sig/siguwe")
         ;;  ("imap-server"          . "ses-imap.uwe.ac.uk")
         ;;  ("imap-ssl"             . t)
         ;;  ("imap-ssl-port"        . "993")
@@ -274,7 +274,7 @@
         ;;  ("proto"                 . "-")
         ;;  ("nntp-server"           . "news.virginmedia.com")
         ;;  ("nntp-user"             . "etimecowboy")
-        ;;  ("signature-file"        . "~/Dropbox/emacs/mew/sig/bulb")
+        ;;  ("signature-file"        . "~/emacs/mew/sig/bulb")
         ;;  ("name"                  . "etimecowboy")
         ;;  ("mew-nntp-msgid-user"   . "etimecowboy")
         ;;  ("mew-nntp-msgid-domain" . "gmail.com")

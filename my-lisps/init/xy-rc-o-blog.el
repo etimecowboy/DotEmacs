@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:44 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-01-13 Fri 16:16 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-o-blog.el'
 ;; Author:       Xin Yang
@@ -21,7 +21,7 @@
 ;;   (browse-url
 ;;    (concat "file://"
 ;;            (expand-file-name
-;;             "~/Dropbox/emacs/org/html/myblogs/oblog-emacs/index.html"))))
+;;             "~/emacs/org/html/myblogs/oblog-emacs/index.html"))))
 
 ;;;###autoload
 (defun o-blog-postload ()

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-08-19 Fri 14:24 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-01-13 Fri 16:15 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-gnus.el'
 ;; Author:       Xin Yang
@@ -20,27 +20,27 @@
 
   ;; Set Gnus directorys
   (setq gnus-init-file "~/.emacs.d/init-gnus.el" ;gnus设置文件
-        gnus-default-directory "~/Dropbox/emacs/gnus"   ;默认目录
-        gnus-home-directory "~/Dropbox/emacs/gnus"      ;主目录
-        gnus-dribble-directory "~/Dropbox/emacs/gnus"   ;恢复目录
-        gnus-startup-file "~/Dropbox/emacs/gnus/newsrc" ;初始文件
-        gnus-directory "~/Dropbox/emacs/gnus/news"      ;新闻组的存储目录
-        gnus-article-save-directory "~/Dropbox/emacs/gnus/news"  ;文章保存目录
-        gnus-kill-files-directory "~/Dropbox/emacs/gnus/news"    ;文件删除目录
-        gnus-agent-directory "~/Dropbox/emacs/gnus/news/agent"    ;代理目录
-        gnus-cache-directory "~/Dropbox/emacs/gnus/news/cache"    ;缓存目录
-        gnus-cache-active-file "~/Dropbox/emacs/gnus/news/cache/active" ;缓存激活文件
+        gnus-default-directory "~/emacs/gnus"   ;默认目录
+        gnus-home-directory "~/emacs/gnus"      ;主目录
+        gnus-dribble-directory "~/emacs/gnus"   ;恢复目录
+        gnus-startup-file "~/emacs/gnus/newsrc" ;初始文件
+        gnus-directory "~/emacs/gnus/news"      ;新闻组的存储目录
+        gnus-article-save-directory "~/emacs/gnus/news"  ;文章保存目录
+        gnus-kill-files-directory "~/emacs/gnus/news"    ;文件删除目录
+        gnus-agent-directory "~/emacs/gnus/news/agent"    ;代理目录
+        gnus-cache-directory "~/emacs/gnus/news/cache"    ;缓存目录
+        gnus-cache-active-file "~/emacs/gnus/news/cache/active" ;缓存激活文件
         gnus-newsgroup-maximum-articles 1000    ;最大的文章获取量，避免内存消耗过大
-        message-directory "~/Dropbox/emacs/gnus/mail"   ;邮件的存储目录
-        message-auto-save-directory "~/Dropbox/emacs/gnus/mail/drafts" ;自动保存的目录
-        mail-source-directory "~/Dropbox/emacs/gnus/mail"  ;邮件的源目录
-        mail-source-crash-box "~/Dropbox/emacs/gnus/emacs-mail-crash-box" ;邮件源崩溃目录
-        ;; nnml-newsgroups-file "~/Dropbox/emacs/gnus/mail/newsgroup"      ;邮件新闻组解释文件
-        nnmail-message-id-cache-file "~/Dropbox/emacs/gnus/nnmail-cache" ;nnmail的消息ID缓存
-        nntp-marks-directory "~/Dropbox/emacs/gnus/news/marks"          ;nntp组存储目录
-        ;; mml-default-directory "~/Dropbox/emacs/gnus/attachement"   ;附件的存储位置
-        nntp-authinfo-file "~/Dropbox/emacs/gnus/authinfo" ;nntp用户身分认证文件
-        nnimap-authinfo-file "~/Dropbox/emacs/gnus/authinfo" ;imap 用户身分认证文件
+        message-directory "~/emacs/gnus/mail"   ;邮件的存储目录
+        message-auto-save-directory "~/emacs/gnus/mail/drafts" ;自动保存的目录
+        mail-source-directory "~/emacs/gnus/mail"  ;邮件的源目录
+        mail-source-crash-box "~/emacs/gnus/emacs-mail-crash-box" ;邮件源崩溃目录
+        ;; nnml-newsgroups-file "~/emacs/gnus/mail/newsgroup"      ;邮件新闻组解释文件
+        nnmail-message-id-cache-file "~/emacs/gnus/nnmail-cache" ;nnmail的消息ID缓存
+        nntp-marks-directory "~/emacs/gnus/news/marks"          ;nntp组存储目录
+        ;; mml-default-directory "~/emacs/gnus/attachement"   ;附件的存储位置
+        nntp-authinfo-file "~/emacs/gnus/authinfo" ;nntp用户身分认证文件
+        nnimap-authinfo-file "~/emacs/gnus/authinfo" ;imap 用户身分认证文件
         )
 
   ;; canlock 密码
@@ -81,10 +81,10 @@
   ;; ;次要选择方法
   ;; (setq gnus-secondary-select-methods
   ;;       '((nnmaildir "Gmail" ;从本地文件中读邮件 (getmail 抓取)
-  ;;            (directory "~/Dropbox/emacs/mail/")) ;读取目录
+  ;;            (directory "~/emacs/mail/")) ;读取目录
   ;;         ))
   ;; (setq mail-sources ;邮件源设置
-  ;;       '((maildir :path "~/Dropbox/emacs/mail/"  ;本地邮件存储位置
+  ;;       '((maildir :path "~/emacs/mail/"  ;本地邮件存储位置
   ;;                  :subdirs ("cur" "new" "tmp")))) ;本地邮件子目录
 
   ;;==================================================================
@@ -181,7 +181,7 @@
   ;;     send-mail-function 'smtpmail-send-it
   ;;     message-send-mail-function 'smtpmail-send-it
   ;;     smtpmail-auth-credentials (expand-file-name
-  ;;                                "~/Dropbox/emacs/gnus/authinfo")
+  ;;                                "~/emacs/gnus/authinfo")
   ;;     smtpmail-debug-info t
   ;;     smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
   ;;     smtpmail-default-smtp-server "smtp.gmail.com"
@@ -473,8 +473,8 @@ archive more then one article."
   ;; 这是一种对默认分组方式的修改
   ;; (setq gnus-outgoing-message-group
   ;;       '(nnml "archives"
-  ;;              (nnml-directory   "~/Dropbox/emacs/gnus/mail/archives")
-  ;;              (nnml-active-file "~/Dropbox/emacs/gnus/mail/archives/active")
+  ;;              (nnml-directory   "~/emacs/gnus/mail/archives")
+  ;;              (nnml-active-file "~/emacs/gnus/mail/archives/active")
   ;;              (nnml-get-new-mail nil)
   ;;              (nnml-inhibit-expiry t)))
   ;; 这是干脆关闭默认分组方法

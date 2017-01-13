@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-12-23 Fri 13:23 by xin on zboxum>
+;; Time-stamp: <2017-01-13 Fri 16:18 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -41,7 +41,7 @@
   "Name of diretory where my local info files reside.")
 (defvar my-local-man-path (expand-file-name "man" my-emacs-sys-path)
   "Name of diretory where my local man files reside.")
-(defvar my-emacs-path (expand-file-name "~/Dropbox/emacs")
+(defvar my-emacs-path (expand-file-name "~/emacs")
   "Name of directory where my working files reside.")
 (defvar my-var-path (expand-file-name "var" my-emacs-sys-path)
   "Name of directory where my various Emacs log/record files reside.")

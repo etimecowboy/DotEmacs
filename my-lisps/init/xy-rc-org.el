@@ -531,7 +531,7 @@
 ;;;;;  `org-cpature.el'
   (setq org-capture-templates
         '(("t" "Capture a New Task from Emacs"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Gtd.org" "Task Inbox")
+           entry (file+headline "~/emacs/org/gtd/Gtd.org" "Task Inbox")
            "** TODO %^{Task} %^G
 :LOGBOOK:
 - Initial State           \"TODO\"       %U
@@ -540,7 +540,7 @@
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("n" "Take a Note from Emacs"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Note.org" "Note Inbox")
+           entry (file+headline "~/emacs/org/gtd/Note.org" "Note Inbox")
            "** NEW %^{Title} %^G
 :LOGBOOK:
 - Timestamp               \"NEW\"        %U
@@ -549,7 +549,7 @@
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("e" "English language study: phrases/sentences"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/English.org" "English Inbox")
+           entry (file+headline "~/emacs/org/gtd/English.org" "English Inbox")
            "** %? %^g
 :LOGBOOK:
 - Timestamp                              %U
@@ -558,7 +558,7 @@
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("c" "Contacts"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Contacts.org" "New Contacts")
+           entry (file+headline "~/emacs/org/gtd/Contacts.org" "New Contacts")
            "** %(org-contacts-template-name)
 :PROPERTIES:%(org-contacts-template-email)
 :OCCUPATION:
@@ -573,7 +573,7 @@
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("1" "Capture a New Task from Web Browser"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Gtd.org" "Task Inbox")
+           entry (file+headline "~/emacs/org/gtd/Gtd.org" "Task Inbox")
            "** TODO %^{Task} %^G
 :PROPERTIES:
 :DESCRIPTION: %?
@@ -585,7 +585,7 @@
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("2" "Take a Note from Web Browser"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Note.org" "Note Inbox")
+           entry (file+headline "~/emacs/org/gtd/Note.org" "Note Inbox")
            "** NEW %^{Title} %^G
 :LOGBOOK:
 - Timestamp               \"NEW\"        %U
@@ -594,7 +594,7 @@
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("4" "Add a bookmark"
-           entry (file+headline "~/Dropbox/emacs/org/gtd/Bookmark.org" "Bookmark Inbox")
+           entry (file+headline "~/emacs/org/gtd/Bookmark.org" "Bookmark Inbox")
            "** NEW %c %^G
 :PROPERTIES:
 :SCORE: %?
@@ -606,7 +606,7 @@
 :empty-lines 1 :prepend t :clock-keep t)
 
           ;;           ("s" "Scrap Text from Emacs"
-          ;;            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
+          ;;            entry (file+headline "~/emacs/org/gtd/Capture.org" "Scrapbook")
           ;;            "** %^{Title} %^G
           ;; *** Source
           ;; - Timestamp                               %U
@@ -621,7 +621,7 @@
 
           
           ;;           ("3" "Scrap Text from Web Browser"
-          ;;            entry (file+headline "~/Dropbox/emacs/org/gtd/Capture.org" "Scrapbook")
+          ;;            entry (file+headline "~/emacs/org/gtd/Capture.org" "Scrapbook")
           ;;            "** %^{Title} %^G
           ;; *** Source
           ;; - Timestamp                               %U
