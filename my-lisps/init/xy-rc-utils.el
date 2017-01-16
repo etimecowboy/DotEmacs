@@ -41,7 +41,7 @@
   "Name of diretory where my local info files reside.")
 (defvar my-local-man-path (expand-file-name "man" my-emacs-sys-path)
   "Name of diretory where my local man files reside.")
-(defvar my-emacs-path (expand-file-name "~/Dropbox/emacs")
+(defvar my-emacs-path (expand-file-name "~/emacs")
   "Name of directory where my working files reside.")
 (defvar my-var-path (expand-file-name "var" my-emacs-sys-path)
   "Name of directory where my various Emacs log/record files reside.")
