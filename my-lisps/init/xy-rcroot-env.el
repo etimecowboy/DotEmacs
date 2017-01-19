@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-12 Tue 10:47 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-01-19 Thu 14:42 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -21,7 +21,14 @@
 ;;; local custom file
 ;; Emacs generated customization, which overwrites settings above
 (add-to-list 'load-path my-var-path)
-(setq custom-file (expand-file-name "xy-rc-custom.el" my-emacs-path))
+(setq custom-file
+      (concat my-var-path "/custom-"
+              user-login-name "-"
+              system-name "-"
+              system-configuration ".el"))
+;;    (expand-file-name "xy-rc-custom.el" my-emacs-path))
+(unless (file-exists-p custom-file)
+  (shell-command (concat "touch " custom-file)))
 (load custom-file) ;; NOTE: Remove '(session-use-package t nil (session)))
 
 ;;; pathes

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-14 Thu 14:38 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-01-19 Thu 16:40 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -24,9 +24,9 @@
 ;; same as in the other window, not as it was before we switched away.
 ;; This mode tries to work around this problem by storing and
 ;; restoring per-window positions for each buffer.
-(eval-after-load "winpoint" '(winpoint-postload))
-(autoload 'window-point-remember-mode "winpoint" nil t)
-(window-point-remember-mode 1)
+;; (eval-after-load "winpoint" '(winpoint-postload))
+;; (autoload 'window-point-remember-mode "winpoint" nil t)
+;; (window-point-remember-mode 1)
 
 
 
