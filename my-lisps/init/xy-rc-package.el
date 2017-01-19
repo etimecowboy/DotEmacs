@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-12-23 Fri 13:46 by xin on zboxum>
+;; Time-stamp: <2017-01-19 Thu 17:34 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -181,7 +181,7 @@ re-downloaded in order to locate PACKAGE."
   
   (require-package 'buffer-move)
   (require-package 'windsize)
-  (require-package 'winpoint)
+  ;; (require-package 'winpoint)
 
   ;; (require-package 'color-theme-sanityinc-solarized)
   (require-package 'solarized-theme)
