@@ -4,3 +4,6 @@
 [submodule "lisps"]
 	path = lisps
 	url = git@github.com:etimecowboy/lisps.git
+[submodule "snippets"]
+	path = snippets
+	url = git@github.com:etimecowboy/snippets.git

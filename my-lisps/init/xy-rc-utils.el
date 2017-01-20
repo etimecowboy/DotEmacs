@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-01-13 Fri 16:18 by xin on zboxum>
+;; Time-stamp: <2017-01-19 Thu 17:35 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1571,7 +1571,7 @@ See `bypass-trash-in-function' for more information."
   (global-company-mode t)
   (linkd-mode t)
   (elscreen-start) ;; error when call it here
-  ;; (org-agenda)
+  (org-agenda)
   )
 
 ;;;; stopping the emacs daemon

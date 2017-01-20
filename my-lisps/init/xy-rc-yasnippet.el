@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-05-23 Mon 15:25 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-01-19 Thu 17:42 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-yasnippet.el'
 ;; Author:       Xin Yang
@@ -68,7 +68,6 @@
   (setq yas-also-auto-indent-first-line nil
         yas-indent-line 'nothing
         yas-choose-keys-first nil
-        yas-snippet-dirs (concat my-emacs-path "/yasnippet/snippets")
         yas-snippet-revival t
         yas-trigger-symbol " ===>>>"
         yas-use-menu 'abbreviate)
