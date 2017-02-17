@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-01-19 Thu 17:34 by xin on zboxum>
+;; Time-stamp: <2017-02-17 Fri 11:58 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -262,7 +262,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'htmlize)
   ;; (require-package 'hungry-delete)
 
-  (require-package 'ibuffer-vc)
+  ;; (require-package 'ibuffer-vc) ;; not working in Emacs 25
 
   ;; (require-package 'ido-ubiquitous)
   ;; (require-package 'ido-yes-or-no)

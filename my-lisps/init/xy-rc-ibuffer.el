@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:42 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-02-17 Fri 12:04 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ibuffer.el'
 ;; Author:       Xin Yang
@@ -35,31 +35,45 @@
 
   ;; REF: (@url :file-name "http://www.emacswiki.org/emacs/IbufferMode" :display "emacswiki")
   ;; Use human readable Size column instead of original one
-  (define-ibuffer-column size-h
-    (:name "Size" :inline t)
-    (cond
-     ((> (buffer-size) 1000) (format "%7.3fk" (/ (buffer-size) 1000.0)))
-     ((> (buffer-size) 1000000) (format "%7.3fM" (/ (buffer-size) 1000000.0)))
-     (t (format "%8d" (buffer-size)))))
-
-  ;; Explicitly require ibuffer-vc to get its column definitions, which
-  ;; can't be autoloaded
-  (require 'ibuffer-vc)
+  ;; (define-ibuffer-column size-h
+  ;;   (:name "Size" :inline t)
+  ;;   (cond
+  ;;    ((> (buffer-size) 1000) (format "%7.3fk" (/ (buffer-size) 1000.0)))
+  ;;    ((> (buffer-size) 1000000) (format "%7.3fM" (/ (buffer-size) 1000000.0)))
+  ;;    (t (format "%8d" (buffer-size)))))
 
   ;; Modify the default ibuffer-formats
+  ;;
+  ;; NOTE: not working in Emacs 25
+  ;; ;; Explicitly require ibuffer-vc to get its column definitions, which
+  ;; ;; can't be autoloaded
+  ;; (require 'ibuffer-vc)
+  ;; (setq ibuffer-formats
+  ;;       '((mark modified read-only vc-status-mini " "
+  ;;               (name 50 50 :right :elide)
+  ;;               " | "
+  ;;               (size  9 -1 :right)
+  ;;               " | "
+  ;;               (mode 10 10 :left :elide)
+  ;;               " | "
+  ;;               (vc-status 16 16 :left)
+  ;;               ;; Not very useful
+  ;;               ;; " | "
+  ;;               ;; (filename-and-process 30 30 :left :elide)
+  ;;               )))
+
   (setq ibuffer-formats
         '((mark modified read-only " "
-                (name 50 50 :left :elide)
+                (name 50 50 :right :elide)
                 " | "
-                (size-h 9 -1 :right)
+                (size  9 -1 :right)
                 " | "
-                (mode 10 10 :left :elide)
-                " | "
-                (vc-status 10 10 :left))))
+                (mode 20 20 :left :elide)
                 ;; Not very useful
                 ;; " | "
-                ;; (filename-and-process 30 30 :left :elide))))
-
+                ;; (filename-and-process 30 30 :left :elide)
+                )))
+  
   (setq ibuffer-saved-filter-groups
         '(("default"
            ("src" (or
