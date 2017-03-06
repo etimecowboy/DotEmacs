@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-02-17 Fri 11:58 by xin on zboxum>
+;; Time-stamp: <2017-03-06 Mon 20:56 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -99,25 +99,25 @@ re-downloaded in order to locate PACKAGE."
   (setq-default package-enable-at-startup nil) ;; NOTE: t will be slow
   (setq-default package-user-dir my-elpa-lisp-path)
   (setq package-check-signature nil) ;; fix the epg problem (Emacs GnuPG interface)
-  (setq package-archives
-        '(("tromey" . "http://tromey.com/elpa/") ;; Original ELPA package.
-          ("gnu" . "http://elpa.gnu.org/packages/") ;; Add the official packages
-          ("marmalade" . "http://marmalade-repo.org/packages/")
-          ("melpa" . "http://melpa.org/packages/")
-          ("org" . "http://orgmode.org/elpa/")
-          ("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
-          ))
-
-  ;; TUNA mirrors of melpa
-  ;; TODO: activate these mirrors when back to China
   ;; (setq package-archives
-  ;;       '(("gnu"          . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-  ;;         ("melpa"        . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-  ;;         ("melpa-stable" .
-  ;;          "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
-  ;;         ("org"          . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-  ;;         ("marmalade"    .
-  ;;          "https://mirrors.tuna.tsinghua.edu.cn/elpa/marmalade/")))
+  ;;       '(("tromey" . "http://tromey.com/elpa/") ;; Original ELPA package.
+  ;;         ("gnu" . "http://elpa.gnu.org/packages/") ;; Add the official packages
+  ;;         ("marmalade" . "http://marmalade-repo.org/packages/")
+  ;;         ("melpa" . "http://melpa.org/packages/")
+  ;;         ("org" . "http://orgmode.org/elpa/")
+  ;;         ("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
+  ;;         ))
+
+  ;; TUNA mirrors of melpa (清华大学开源镜像站)
+  ;; TODO: activate these mirrors when back to China
+  (setq package-archives
+        '(("gnu"          . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+          ("melpa"        . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ;; ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/")
+          ("org"          . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("marmalade"    . "https://mirrors.tuna.tsinghua.edu.cn/elpa/marmalade/")
+          ("sunrise" . "http://joseito.republika.pl/sunrise-commander/")
+    ))
   
   ;; ;; NOTE: there is an enhancement lisp `melpa.el' for the
   ;; ;; `package.el' shipped by Emacs24. Provided by melpa.

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:53 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-02-22 Wed 07:46 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-simple.el'
 ;; Author:       Xin Yang
