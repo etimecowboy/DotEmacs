@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-07-27 Wed 11:04 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-03-07 Tue 09:32 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elscreen.el'
 ;; Author:       Xin Yang
@@ -32,7 +32,7 @@
         elscreen-display-tab nil
         ;; elscreen-tab-display-control t
         ;; elscreen-tab-display-kill-screen t
-        elscreen-prefix-key (kbd "M-z"))
+        elscreen-prefix-key (kbd "M-Z"))
 
   ;; TODO: Keep settings in different frames
   ;; (remove-hook 'after-make-frame-functions 'elscreen-make-frame-confs)
