@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-13 Wed 09:08 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-03-13 Mon 08:04 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auctex.el'
 ;; Author:       Xin Yang
@@ -276,8 +276,8 @@
                ;; engine. NOTE: Preview does not work with xelatex
                (GNULinux
                 (setq TeX-view-program-selection
-                      '((output-pdf "Okular")
-                        (output-dvi "Okular")
+                      '((output-pdf "MuPDF")
+                        (output-dvi "Evince")
                         ;; ((output-dvi style-pstricks) "dvips and gv")
                         (output-html "xdg-open")))
                 (add-to-list 'TeX-expand-list
