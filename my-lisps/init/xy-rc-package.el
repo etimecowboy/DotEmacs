@@ -222,7 +222,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'dash)
   ;; (require-package 'deft)        ;; nerver used
   (require-package 'dictionary)
-  (require-package 'diff-git)
+  ;; (require-package 'diff-git)
   (require-package 'diff-hl)
   (require-package 'diminish)
   (require-package 'dired+)

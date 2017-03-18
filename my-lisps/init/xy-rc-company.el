@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-11 Mon 09:42 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-03-18 Sat 09:43 by xin on zboxum>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-company.el'
 ;; Author:       Xin Yang
@@ -18,11 +18,11 @@
 (defun company-postload ()
   "Settings of `company' after it's been loaded."
 
-  (setq company-backends '(company-bbdb company-nxml company-css
-                   company-semantic company-clang company-cmake
-                   company-capf (company-dabbrev-code company-gtags
-                   company-etags company-keywords) company-files
-                   company-dabbrev) company-yasnippet)
+  ;; (setq company-backends '(company-bbdb company-nxml company-css
+  ;;                  company-semantic company-clang company-cmake
+  ;;                  company-capf (company-dabbrev-code company-gtags
+  ;;                  company-etags company-keywords) company-files
+  ;;                  company-dabbrev) company-yasnippet)
   
   (setq company-idle-delay 0.1
         company-minimum-prefix-length 4
