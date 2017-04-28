@@ -273,6 +273,12 @@
 ;; (eval-after-load "egg" '(egg-postload))
 
 ;;;;; magit
+;; FIXME: due to a bug mentioned in https://github.com/arnested/bug-reference-github/pull/1
+;; emacs 25.1 reports a error when dired into a directory
+;; "Error running timer ‘auto-revert-buffers’: (void-function vc-git-root)"
+;; load lisp `vc-git.el' first
+(require 'vc-git) ;; remove when the bug is fixed
+
 (eval-after-load "magit"
   '(progn
      (magit-postload)
