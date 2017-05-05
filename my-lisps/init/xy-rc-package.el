@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-03-06 Mon 20:56 by xin on zboxum>
+;; Time-stamp: <2017-05-05 Fri 16:10 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -404,6 +404,14 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'fzf)
   (require-package 'beacon)
   (require-package 'ranger)
+  ;; Python ide
+  (require-package 'ein)
+  (require-package 'py-autopep8)
+  ;; (require-package 'jedi) ;; use with auto-complete
+  (require-package 'smartrep)
+  (require-package 'company-jedi)
+  (require-package 'virtualenvwrapper)
+  
   
   ;; =======================================================
   ;; Completion system

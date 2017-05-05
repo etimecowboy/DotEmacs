@@ -1061,10 +1061,10 @@
            ;; ("\\.pdf::\\(\\d+\\)\\'" . "evince -p %1 %s")
            ("\\.pdf::\\(\\d+\\)\\'" . "okular -p %1 %s")
            ("\\.pdf.xoj"    . "xournal %s")
-           ("\\.png\\'"     . "ristretto %s")
-           ("\\.jpg\\'"     . "ristretto %s")
-           ("\\.bmp\\'"     . "ristretto %s")
-           ("\\.gif\\'"     . "ristretto %s")
+           ("\\.png\\'"     . "display %s")
+           ("\\.jpg\\'"     . "display %s")
+           ("\\.bmp\\'"     . "display %s")
+           ("\\.gif\\'"     . "display %s")
            )))
   ;; FIXME: there is a problem with history files, cannot start new emacs process for exporting
   ;; (setq org-export-in-background t) ;; use background export by default
