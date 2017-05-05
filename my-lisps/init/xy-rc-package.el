@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-05-05 Fri 16:10 by xin on xinud>
+;; Time-stamp: <2017-05-05 Fri 17:04 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -409,7 +409,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'py-autopep8)
   ;; (require-package 'jedi) ;; use with auto-complete
   (require-package 'smartrep)
-  (require-package 'company-jedi)
+  (require-package 'jedi-core)
   (require-package 'virtualenvwrapper)
   
   
@@ -431,9 +431,8 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'company-tern)
   ;; (require-package 'company-try-hard)
   (require-package 'company-auctex)
-  (require-package 'company-auctex)
-  (require-package 'company-auctex)
   (require-package 'company-c-headers)
+  (require-package 'company-jedi)
 
   (require-package 'yasnippet)
   (require-package 'ox-html5slide)

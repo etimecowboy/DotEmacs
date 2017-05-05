@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-03-18 Sat 09:43 by xin on zboxum>
+;; Time-stamp: <2017-05-05 Fri 16:45 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-company.el'
 ;; Author:       Xin Yang
@@ -78,6 +78,12 @@
   ;; company-tern
   (when (try-require 'company-shell)
     (add-to-list 'company-backends 'company-tern))
+
+  ;; company-jedi
+  (when (try-require 'company-jedi)
+    (add-to-list 'company-backends 'comapy-jedi)
+    (setq jedi:complete-on-dot t)
+    )
   
   (message "* ---[ company post-load configuration is complete ]---"))
 
