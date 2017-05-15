@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-05-05 Fri 16:45 by xin on xinud>
+;; Time-stamp: <2017-05-15 Mon 11:26 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-company.el'
 ;; Author:       Xin Yang
@@ -83,6 +83,11 @@
   (when (try-require 'company-jedi)
     (add-to-list 'company-backends 'comapy-jedi)
     (setq jedi:complete-on-dot t)
+    )
+
+  ;; company-quickhelp
+  (when (try-require 'company-quickhelp)
+    (company-quickhelp-mode 1)
     )
   
   (message "* ---[ company post-load configuration is complete ]---"))

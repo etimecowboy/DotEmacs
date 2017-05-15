@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-05-05 Fri 17:04 by xin on xinud>
+;; Time-stamp: <2017-05-15 Mon 11:38 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -248,8 +248,9 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'fuzzy)
   ;; (require-package 'gh)
   ;; (require-package 'gist)
-  
+
   (require-package 'google-c-style)
+  (require-package 'eldoc)
   (require-package 'c-eldoc)
 
   ;; (require-package 'google-maps)
@@ -267,6 +268,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'ido-ubiquitous)
   ;; (require-package 'ido-yes-or-no)
   ;; (require-package 'idomenu) ;; required by `elpy'
+  (require-package 'pyvenv)
   (require-package 'elpy)
 
   (require-package 'info+)
@@ -411,6 +413,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'smartrep)
   (require-package 'jedi-core)
   (require-package 'virtualenvwrapper)
+  (require-package 'ob-ipython) ;; maybe better than ein in the case of using org
   
   
   ;; =======================================================

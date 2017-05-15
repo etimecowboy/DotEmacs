@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-05-05 星期五 09:38 by xin on xinud>
+;; Time-stamp: <2017-05-15 星期一 11:01 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elpy.el'
 ;; Author:       Xin Yang
@@ -32,23 +32,24 @@
 (defun elpy-postload ()
   "Settings of `elpy.el' after it's been loaded."
 
-  ;; use flycheck not flymake with elpy
-  (when (require 'flycheck nil t)
-    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-    (add-hook 'elpy-mode-hook 'flycheck-mode))
+  ;; Try defaults: 20170515
+  ;; ;; use flycheck not flymake with elpy
+  ;; (when (require 'flycheck nil t)
+  ;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  ;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-  (require 'py-autopep8)
-  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+  ;; (require 'py-autopep8)
+  ;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
   
-  (setq elpy-rpc-backend "jedi"
-        elpy-rpc-project-specific t)
+  ;; (setq elpy-rpc-backend "jedi"
+  ;;       elpy-rpc-project-specific t)
 
-  ;; (elpy-enable)
-  ;; (elpy-use-ipython)
+  ;; ;; (elpy-enable)
+  ;; ;; (elpy-use-ipython)
 
-  ;; FIXME: it doesn't work
-  ;; (setq elpy-mode-hook '((autopair-mode)
-  ;;                        (turn-on-auto-fill)))
+  ;; ;; FIXME: it doesn't work
+  ;; ;; (setq elpy-mode-hook '((autopair-mode)
+  ;; ;;                        (turn-on-auto-fill)))
 
   
   (message "* ---[ elpy post-load configuration is complete ]---"))

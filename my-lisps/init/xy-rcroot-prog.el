@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-04-02 Sat 21:42 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-05-15 星期一 11:13 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
