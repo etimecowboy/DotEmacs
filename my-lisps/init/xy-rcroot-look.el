@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-08-25 Thu 16:27 by xin on zboxum>
+;; Time-stamp: <2017-05-16 Tue 09:47 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -644,7 +644,7 @@
 ;; (when (and window-system (try-require 'zenburn-theme))
 ;;   (load-theme 'zenburn t))
 
-(load-theme 'zenburn t)
+(load-theme 'solarized-dark t)
 (global-set-key (kbd "<f2> c") 'load-theme) ;; NOTE: default key C-x 6 c
 (global-set-key (kbd "<f2> C") 'disable-theme)
 
