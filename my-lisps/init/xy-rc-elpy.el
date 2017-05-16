@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-05-15 星期一 11:01 by xin on xinud>
+;; Time-stamp: <2017-05-15 Mon 15:43 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elpy.el'
 ;; Author:       Xin Yang
@@ -32,19 +32,25 @@
 (defun elpy-postload ()
   "Settings of `elpy.el' after it's been loaded."
 
+  ;; NOTE: it is better to reopen the py file after elpy is enabled
+  
+  ;; use flycheck instead of flymake
+  (when (try-require 'flycheck)
+    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+    (add-hook 'elpy-mode-hook 'flycheck-mode))
+
   ;; Try defaults: 20170515
   ;; ;; use flycheck not flymake with elpy
   ;; (when (require 'flycheck nil t)
   ;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   ;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-  ;; (require 'py-autopep8)
-  ;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-  
+  (when (try-require 'py-autopep8)
+    (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+
   ;; (setq elpy-rpc-backend "jedi"
   ;;       elpy-rpc-project-specific t)
 
-  ;; ;; (elpy-enable)
   ;; ;; (elpy-use-ipython)
 
   ;; ;; FIXME: it doesn't work

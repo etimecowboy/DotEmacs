@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-05-15 Mon 11:38 by xin on xinud>
+;; Time-stamp: <2017-05-15 Mon 21:30 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -177,7 +177,6 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'ace-pinyin)
   ;; (require-package 'ace-popup-menu)
   ;; (require-package 'ace-link)
-  (require-package 'ag)
   
   (require-package 'buffer-move)
   (require-package 'windsize)
@@ -267,9 +266,6 @@ re-downloaded in order to locate PACKAGE."
 
   ;; (require-package 'ido-ubiquitous)
   ;; (require-package 'ido-yes-or-no)
-  ;; (require-package 'idomenu) ;; required by `elpy'
-  (require-package 'pyvenv)
-  (require-package 'elpy)
 
   (require-package 'info+)
   (require-package 'ioccur)
@@ -359,7 +355,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'sunrise-x-tree)
   (require-package 'sunrise-x-w32-addons)
 
-  (require-package 'sr-speedbar)
+  ;; (require-package 'sr-speedbar)
   ;; (require-package 'strings)
 
   (require-package 'undo-tree)
@@ -406,15 +402,20 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'fzf)
   (require-package 'beacon)
   (require-package 'ranger)
-  ;; Python ide
-  (require-package 'ein)
-  (require-package 'py-autopep8)
-  ;; (require-package 'jedi) ;; use with auto-complete
-  (require-package 'smartrep)
+  ;; Python development
+  ;;; elpy
+  ;; (require-package 'idomenu) ;; required by `elpy'
+  (require-package 'pyvenv)
   (require-package 'jedi-core)
   (require-package 'virtualenvwrapper)
+  (require-package 'elpy)
+  ;;; org babel for ipython
   (require-package 'ob-ipython) ;; maybe better than ein in the case of using org
-  
+  ;;; ein
+  (require-package 'py-autopep8)
+  ;; (require-package 'jedi) ;; use with auto-complete, but I use company
+  (require-package 'smartrep)
+  (require-package 'ein)
   
   ;; =======================================================
   ;; Completion system
@@ -441,6 +442,8 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'ox-html5slide)
   
   (require-package 'helm)
+  ;; (require-package 'ag)
+  (require-package 'helm-ag)
   (require-package 'helm-bibtex)
   (require-package 'biblio)
   (require-package 'helm-firefox)
