@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-05-15 Mon 21:30 by xin on xinud>
+;; Time-stamp: <2017-05-22 Mon 19:28 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -414,7 +414,7 @@ re-downloaded in order to locate PACKAGE."
   ;;; ein
   (require-package 'py-autopep8)
   ;; (require-package 'jedi) ;; use with auto-complete, but I use company
-  (require-package 'smartrep)
+  ;; (require-package 'smartrep) ;; changes the whole emacs, not good
   (require-package 'ein)
   
   ;; =======================================================

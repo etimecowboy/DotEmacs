@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-05-16 Tue 08:49 by xin on xinud>
+;; Time-stamp: <2017-05-22 Mon 17:50 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ibuffer.el'
 ;; Author:       Xin Yang
@@ -82,10 +82,12 @@
                    (mode . cc-mode)
                    (mode . C++/lah)
                    (mode . python-mode)
+                   (mode . ein:notebook-multilang-mode)
                    (mode . emacs-lisp-mode)
                    (mode . lisp-interaction-mode)
                    (mode . vhdl-mode)
-                   (mode . verilog-mode)))
+                   (mode . verilog-mode)
+                   ))
 
            ("org" (or
                    (mode . org-mode)

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-05-15 星期一 11:13 by xin on xinud>
+;; Time-stamp: <2017-05-22 Mon 14:58 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-prog.el'
 ;; Author:       Xin Yang
@@ -636,8 +636,13 @@
 
 
 ;;; Python
+;;;; elpy
 (eval-after-load "elpy" '(elpy-postload))
-(global-set-key (kbd "<f6> P") 'xy/elpy-start)
+(global-set-key (kbd "<f6> P") 'elpy-enable)
+
+;;;; ein
+(eval-after-load "ein" '(ein-postload))
+(global-set-key (kbd "<f6> I") 'ein:notebooklist-open)
 
 
 
