@@ -28,3 +28,4 @@ session.*-*
 /elpa
 /*dired*
 /recentf
+/request
