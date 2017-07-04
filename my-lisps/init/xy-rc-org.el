@@ -817,7 +817,7 @@
                      (org-agenda-todo-list-sublevel t)
                      (org-agenda-timeline-show-empty-dates t)))
 
-            (tags     "CLOSED<\"<tomorrow>\"-repeat-sub-note-bookmark"
+            (tags     "CLOSED<\"<tomorrow>\"-repeat-sub-bookmark-note-idea-ARCHIVE"
                       ((org-agenda-overriding-header
                         "Archieve Closed Next Actions")
                        (org-tags-match-list-sublevels t)
@@ -955,27 +955,8 @@
           (python . t) (perl . t) (ruby . t)
           (shell . t) (gnuplot . t)
           (ein . t) (ipython . t)
+          (clojure . t)
           ))
-
-  ;; No need to use it when `org-babel-do-load-languages' get config
-  ;; (require 'ob-C)
-  ;; (require 'ob-R)
-  ;; ;; (require 'ob-asymptote)
-  ;; (require 'ob-ditaa)
-  ;; (require 'ob-plantuml)
-  ;; (require 'ob-dot)
-  ;; (require 'ob-latex)
-  ;; (require 'ob-org)
-  ;; (require 'ob-emacs-lisp)
-  ;; (require 'ob-matlab)
-  ;; (require 'ob-octave)
-  ;; (require 'ob-perl)
-  ;; (require 'ob-python)
-  ;; (require 'ob-ruby)
-  ;; (require 'ob-shell)
-  ;; (require 'ob-gnuplot)
-  ;; (require 'ein-org)
-  ;; (require 'ob-ipython)
 
   ;; ensure this variable is defined
   (unless (boundp 'org-babel-default-header-args:sh)

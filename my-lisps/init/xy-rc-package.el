@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-05-22 Mon 19:28 by xin on xinud>
+;; Time-stamp: <2017-06-24 星期六 14:02 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -416,6 +416,10 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'jedi) ;; use with auto-complete, but I use company
   ;; (require-package 'smartrep) ;; changes the whole emacs, not good
   (require-package 'ein)
+  ;; clang ide
+  (require-package 'cmake-ide)
+  (require-package 'rtags)
+  (require-package 'flycheck-rtags)
   
   ;; =======================================================
   ;; Completion system
@@ -438,6 +442,8 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'company-c-headers)
   (require-package 'company-jedi)
 
+  (require-package 'company-rtags)
+
   (require-package 'yasnippet)
   (require-package 'ox-html5slide)
   
@@ -459,6 +465,9 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'helm-migemo)
   (require-package 'helm-projectile)
   ;; (require-package 'helm-themes)
+
+  (require-package 'helm-rtags)
+  
   (require-package 'flyspell-correct)
   (require-package 'flyspell-correct-helm)
   
