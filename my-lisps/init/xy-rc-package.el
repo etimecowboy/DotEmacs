@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-06-24 星期六 14:02 by xin on xinud>
+;; Time-stamp: <2017-08-08 Tue 14:00 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -413,13 +413,15 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'ob-ipython) ;; maybe better than ein in the case of using org
   ;;; ein
   (require-package 'py-autopep8)
-  ;; (require-package 'jedi) ;; use with auto-complete, but I use company
+  (require-package 'jedi) ;; use with auto-complete, but I use company
+  (require-package 'jedi-direx)
   ;; (require-package 'smartrep) ;; changes the whole emacs, not good
   (require-package 'ein)
   ;; clang ide
   (require-package 'cmake-ide)
   (require-package 'rtags)
   (require-package 'flycheck-rtags)
+  ;; (require-package 'aumix-mode)
   
   ;; =======================================================
   ;; Completion system

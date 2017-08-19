@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-05-23 星期二 09:33 by xin on xinud>
+;; Time-stamp: <2017-08-07 Mon 11:02 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ein.el'
 ;; Author:       Xin Yang
@@ -20,10 +20,11 @@
 
   (require 'ein-org)
   (require 'ob-ein)
-  (require 'ein-company)
+  ;; (require 'ein-company)  ;; current company backend doesn't support Jedi
  
-  (setq ein:complete-on-dot nil
-        ;; ein:helm-kernel-history-search-key t ;; FIXME: cause error
+  (setq ein:complete-on-dot t
+        ein:completion-backend (quote ein:use-ac-jedi-backend)
+        ein:use-auto-complete-superpack t
         ein:jupyter-default-notebook-directory "~/work/jupyter"
         ein:jupyter-default-server-command "/usr/local/bin/jupyter"
         ein:jupyter-server-args (quote ("--no-browser"))
@@ -34,6 +35,7 @@
         ein:worksheet-enable-undo (quote yes)
         ein:worksheet-show-slide-data t
         ein:use-smartrep nil
+        ;; ein:helm-kernel-history-search-key t ;; FIXME: cause error
         )
 
   ;; NOTE: `smartrep' is a heavy package which influence the whole emacs

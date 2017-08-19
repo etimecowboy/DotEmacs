@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-01-19 Thu 17:35 by xin on zboxum>
+;; Time-stamp: <2017-07-22 Sat 13:04 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-utils.el'
 ;; Author:       Xin Yang
@@ -1568,7 +1568,8 @@ See `bypass-trash-in-function' for more information."
   (xy/set-font-InputMonoCompressed)
   (helm-mode t)
   (yas-global-mode t)
-  (global-company-mode t)
+  ;; (global-company-mode t)
+  (global-auto-complete-mode t)
   (linkd-mode t)
   (elscreen-start) ;; error when call it here
   (org-agenda)
