@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-08-07 Mon 11:02 by xin on xinud>
+;; Time-stamp: <2017-08-28 Mon 10:26 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-ein.el'
 ;; Author:       Xin Yang
@@ -18,6 +18,7 @@
 (defun ein-postload ()
   "Settings of `ein' after it's been loaded."
 
+  (require 'ein-connect)
   (require 'ein-org)
   (require 'ob-ein)
   ;; (require 'ein-company)  ;; current company backend doesn't support Jedi
