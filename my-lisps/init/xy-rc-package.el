@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-08-08 Tue 14:00 by xin on xinud>
+;; Time-stamp: <2017-11-18 Sat 01:44 by xin on zboxwx>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -332,7 +332,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'projectile)
   (require-package 'rect-mark)
   (require-package 'region-list-edit)
-  (require-package 'revive)
+  ;; (require-package 'revive)
   ;; (require-package 'rw-hunspell)
   ;; (require-package 'rw-ispell)
   ;; (require-package 's)

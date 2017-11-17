@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-05-22 星期一 10:13 by xin on xinud>
+;; Time-stamp: <2017-11-18 Sat 01:37 by xin on zboxwx>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-look.el'
 ;; Author:       Xin Yang
@@ -275,11 +275,12 @@
 
 
 ;;; Fringe settings
-(fringe-mode '(nil . 0))
-(setq visual-line-fringe-indicators '(left-curly-arrow nil))
-(setq-default indicate-buffer-boundaries 'left ;; Display buffer boudaries
-              indicate-empty-lines t ;; Indicate empty lines
-              overflow-newline-into-fringe t)
+(when window-system
+    (fringe-mode '(nil . 0))
+    (setq visual-line-fringe-indicators '(left-curly-arrow nil))
+    (setq-default indicate-buffer-boundaries 'left ;; Display buffer boudaries
+                  indicate-empty-lines t ;; Indicate empty lines
+                  overflow-newline-into-fringe t))
 
 
 
@@ -401,8 +402,9 @@
 
 
 ;;;; tool-bar
-(tool-bar-mode -1)
-(global-set-key (kbd "C-<f10>") 'tool-bar-mode)
+(when window-system
+    (tool-bar-mode -1)
+    (global-set-key (kbd "C-<f10>") 'tool-bar-mode))
 
 ;; ;;;;; tool-bar+
 ;; (require 'tool-bar+)
@@ -410,15 +412,16 @@
 
 
 ;;;; scroll related
-(scroll-bar-mode -1) ;; No vertical scroll bar
-(when (fboundp 'horizontal-scroll-bar-mode)
-  (horizontal-scroll-bar-mode -1)) ;; Never show horizontal scroll bar
-(setq scroll-step 1
-      scroll-margin 3
-      scroll-up-aggressively 0.01
-      scroll-down-aggressively 0.01
-      scroll-conservatively 10000
-      scroll-preserve-screen-position 'always)
+(when window-system
+    (scroll-bar-mode -1) ;; No vertical scroll bar
+    (when (fboundp 'horizontal-scroll-bar-mode)
+        (horizontal-scroll-bar-mode -1)) ;; Never show horizontal scroll bar
+    (setq scroll-step 1
+          scroll-margin 3
+          scroll-up-aggressively 0.01
+          scroll-down-aggressively 0.01
+          scroll-conservatively 10000
+          scroll-preserve-screen-position 'always))
 
 
 
