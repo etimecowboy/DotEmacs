@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-07-23 Sun 13:55 by xin on xinud>
+;; Time-stamp: <2017-11-16 星期四 13:21 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-complete.el'
 ;; Author:       Xin Yang
@@ -499,9 +499,9 @@
 (eval-after-load "helm-swoop"
   '(progn
      (helm-swoop-postload)
-     (global-set-key (kbd "C-s") 'helm-swoop)
+     (global-set-key (kbd "C-c C-s") 'helm-swoop)
      ;; (global-set-key (kbd "C-s") 'helm-swoop-without-pre-input)
-     (global-set-key (kbd "C-r") 'helm-swoop-back-to-last-point)
+     (global-set-key (kbd "C-c <backspace>") 'helm-swoop-back-to-last-point)
      (global-set-key (kbd "C-S-r") 'helm-multi-swoop)
      (global-set-key (kbd "C-S-s") 'helm-multi-swoop-all)
      ;; (eal-define-keys

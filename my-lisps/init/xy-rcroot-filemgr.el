@@ -127,8 +127,8 @@
 ;;;;;; `dired-tar': Use a single frame for visiting a sub-directory
 ;; (eval-after-load "dired-single" (dired-single-postload))
 ;; `T' 把目录压缩为.tar.gz文件
-;; (GNULinux
-;;  (try-require 'dired-tar))
+(GNULinux
+  (try-require 'dired-tar))
 
 ;;;;;; `open-with': open files in external applications
 ;; NOTE: it need to be patched in order to run on windows
