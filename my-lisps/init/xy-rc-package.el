@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-11-18 Sat 01:44 by xin on zboxwx>
+;; Time-stamp: <2017-11-28 星期二 11:20 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -363,7 +363,8 @@ re-downloaded in order to locate PACKAGE."
 
   (require-package 'vline)
   (require-package 'w32-browser)
-  (require-package 'w3m)
+  (require-package 'apel)
+  (require-package 'w3m) ;; depends on apel
   (require-package 'weblogger)
   ;; (require-package 'weather-metno) ;; not working
   (require-package 'wgrep)
