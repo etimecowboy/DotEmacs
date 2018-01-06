@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-03-13 Mon 08:04 by xin on zboxum>
+;; Time-stamp: <2017-03-20 Mon 12:22 by xin on s13um>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-auctex.el'
 ;; Author:       Xin Yang
@@ -208,9 +208,9 @@
         '(("SumatraPDF" ("\"SumatraPDF.exe\" -reuse-instance" 
                           (mode-io-correlate " -forward-search %b %n ") " %o"))
           ;; ("Okular" "okular --unique %o#src:%n%(dir).%b") ;;old
-          ("Okular" "okular --unique %u")
           ("MuPDF"  "mupdf -b 8 -r 96 %o")
           ("Evince" "evince %o")
+          ("Okular" "okular --unique %u")
           ("Gsview" "gsview32.exe %o")
           ("Dviout" "dviout.exe %o")
           ("Firefox" "firefox %o")))

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-01-19 Thu 14:42 by xin on zboxum>
+;; Time-stamp: <2017-03-20 Mon 12:19 by xin on s13um>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
@@ -176,8 +176,9 @@
 ;; (xy/load-autoloads (concat my-local-lisp-path "/mailcrypt-3.5.8"))
 
 ;;*** matlab-emacs
+;; NOTE: use elpa matlab-mode package
 ;; REF: (@url :file-name "http://matlab-emacs.sourceforge.net/" :display "CVS Source")
-(xy/load-autoloads (concat my-local-lisp-path "/matlab-emacs"))
+;; (xy/load-autoloads (concat my-local-lisp-path "/matlab-emacs"))
 
 ;;*** mew
 ;; REF: (@url :file-name "http://www.mew.org/en/" :display "Source")
@@ -204,7 +205,7 @@
 ;;*** git-wip
 ;; REF: (@url :file-name "https://github.com/bartman/git-wip" :display "Git Source")
 ;; NOTE: git-wip vs magit-wip
-(xy/load-autoloads (concat my-local-lisp-path "/git-wip"))
+;; (xy/load-autoloads (concat my-local-lisp-path "/git-wip"))
 
 ;;*** o-blog
 ;; REF: (@url :file-name "https://github.com/renard/o-blog" :display "Git Source")
