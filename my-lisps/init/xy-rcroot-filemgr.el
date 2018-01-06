@@ -127,8 +127,8 @@
 ;;;;;; `dired-tar': Use a single frame for visiting a sub-directory
 ;; (eval-after-load "dired-single" (dired-single-postload))
 ;; `T' 把目录压缩为.tar.gz文件
-;; (GNULinux
-;;  (try-require 'dired-tar))
+(GNULinux
+  (try-require 'dired-tar))
 
 ;;;;;; `open-with': open files in external applications
 ;; NOTE: it need to be patched in order to run on windows
@@ -192,11 +192,12 @@
 
 
 ;;;; Speedbar and sr-speedbar
-(eval-after-load "sr-speedbar" '(sr-speedbar-postload))
-(autoload 'sr-speedbar-toggle "sr-speedbar"
-  "Toggle sr-speedbar window." t)
-(global-set-key (kbd "C-x C-d") 'sr-speedbar-toggle)
-;; BUG: It seems cause error when using with `elscreen.el'
+;; NOTE: not very useful.
+;; (eval-after-load "sr-speedbar" '(sr-speedbar-postload))
+;; (autoload 'sr-speedbar-toggle "sr-speedbar"
+;;   "Toggle sr-speedbar window." t)
+;; (global-set-key (kbd "C-x C-d") 'sr-speedbar-toggle)
+;; ;; BUG: It seems cause error when using with `elscreen.el'
 
 
 ;;;; ranger
@@ -273,6 +274,12 @@
 ;; (eval-after-load "egg" '(egg-postload))
 
 ;;;;; magit
+;; FIXME: due to a bug mentioned in https://github.com/arnested/bug-reference-github/pull/1
+;; emacs 25.1 reports a error when dired into a directory
+;; "Error running timer ‘auto-revert-buffers’: (void-function vc-git-root)"
+;; load lisp `vc-git.el' first
+(require 'vc-git) ;; remove when the bug is fixed
+
 (eval-after-load "magit"
   '(progn
      (magit-postload)

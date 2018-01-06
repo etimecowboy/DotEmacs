@@ -1,3 +1,4 @@
+
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-org.el'
@@ -298,6 +299,9 @@
   ;;     (setq org-startup-with-inline-images t)
   ;;   (setq org-startup-with-inline-images nil))
   (setq org-startup-with-inline-images nil)
+  
+  ;;; display/update images in the buffer after I evaluate
+  (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
 
   (setq org-startup-folded nil)
   (setq org-cycle-include-plain-lists t)
@@ -580,7 +584,7 @@
 :END:
 :LOGBOOK:
 - Initial State           \"TODO\"       %U
-- Link %c
+- Link %a
 :END:"
 :empty-lines 1 :prepend t :clock-keep t)
 
@@ -589,13 +593,13 @@
            "** NEW %^{Title} %^G
 :LOGBOOK:
 - Timestamp               \"NEW\"        %U
-- Link %c
+- Link %a
 :END:"
 :empty-lines 1 :prepend t :clock-keep t)
 
           ("4" "Add a bookmark"
            entry (file+headline "~/emacs/org/gtd/Bookmark.org" "Bookmark Inbox")
-           "** NEW %c %^G
+           "** NEW %A %^G
 :PROPERTIES:
 :SCORE: %?
 :DESCRIPTION:
@@ -813,7 +817,7 @@
                      (org-agenda-todo-list-sublevel t)
                      (org-agenda-timeline-show-empty-dates t)))
 
-            (tags     "CLOSED<\"<tomorrow>\"-repeat-sub-note-bookmark"
+            (tags     "CLOSED<\"<tomorrow>\"-repeat-sub-bookmark-note-idea-ARCHIVE"
                       ((org-agenda-overriding-header
                         "Archieve Closed Next Actions")
                        (org-tags-match-list-sublevels t)
@@ -941,32 +945,18 @@
 ;;;; org-babel
 
 ;;;;; evaluation languages
-  (setq org-babel-load-languages
+  (org-babel-do-load-languages
+   'org-babel-load-languages
         '((C . t) (R . t) ;; (asymptote . t)
           (ditaa . t) (dot . t) (plantuml . t)
           (emacs-lisp . t)
           (latex . t) (org . t)
           (matlab . t) (octave . t)
-          (python . t) ;; (perl . t) (ruby . t)
+          (python . t) (perl . t) (ruby . t)
           (shell . t) (gnuplot . t)
+          (ein . t) (ipython . t)
+          (clojure . t)
           ))
-
-  (require 'ob-C)
-  (require 'ob-R)
-  ;; (require 'ob-asymptote)
-  (require 'ob-ditaa)
-  (require 'ob-plantuml)
-  (require 'ob-dot)
-  (require 'ob-latex)
-  (require 'ob-org)
-  (require 'ob-emacs-lisp)
-  (require 'ob-matlab)
-  (require 'ob-octave)
-  (require 'ob-perl)
-  (require 'ob-python)
-  (require 'ob-ruby)
-  (require 'ob-shell)
-  (require 'ob-gnuplot)
 
   ;; ensure this variable is defined
   (unless (boundp 'org-babel-default-header-args:sh)
@@ -1061,10 +1051,10 @@
            ;; ("\\.pdf::\\(\\d+\\)\\'" . "evince -p %1 %s")
            ("\\.pdf::\\(\\d+\\)\\'" . "okular -p %1 %s")
            ("\\.pdf.xoj"    . "xournal %s")
-           ("\\.png\\'"     . "ristretto %s")
-           ("\\.jpg\\'"     . "ristretto %s")
-           ("\\.bmp\\'"     . "ristretto %s")
-           ("\\.gif\\'"     . "ristretto %s")
+           ("\\.png\\'"     . "display %s")
+           ("\\.jpg\\'"     . "display %s")
+           ("\\.bmp\\'"     . "display %s")
+           ("\\.gif\\'"     . "display %s")
            )))
   ;; FIXME: there is a problem with history files, cannot start new emacs process for exporting
   ;; (setq org-export-in-background t) ;; use background export by default

@@ -1,6 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-03-20 Mon 12:19 by xin on s13um>
-;;--------------------------------------------------------------------
+;; Time-stamp: <2018-01-06 Sat 22:17 by xin on s13um>
 ;; File name:    `xy-rcroot-env.el'
 ;; Author:       Xin Yang
 ;; Email:        xin2.yang@gmail.com
@@ -41,9 +40,10 @@
 (delete-dups load-path)
 
 ;; image-path
-(fni/add-to-image-load-path my-local-image-path
-                            'with-subdirs 'recursive)
-(delete-dups image-load-path)
+(when window-system
+    (fni/add-to-image-load-path my-local-image-path
+                                'with-subdirs 'recursive)
+    (delete-dups image-load-path))
 
 ;; exec-path
 (add-to-list 'exec-path (expand-file-name my-local-exec-path))

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-12-14 Wed 16:15 by xin on zboxum>
+;; Time-stamp: <2017-11-16 星期四 13:13 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-edit.el'
 ;; Author:       Xin Yang
@@ -338,8 +338,8 @@
    ("M-@"      wcy-mark-some-thing-at-point)
    ("M-;"      qiang-comment-dwim-line)
    ;; ("M-K"      qiang-copy-line)
-   ("C-S-p"    move-line-up)  ;; NOTE: cannot use "C-P"
-   ("C-S-n"    move-line-down);; NOTE: cannot use "C-N"
+   ;; ("C-S-p"    move-line-up)  ;; NOTE: cannot use "C-P"
+   ;; ("C-S-n"    move-line-down);; NOTE: cannot use "C-N"
    ;; ("C-M-f"    format-cxx-file)
    ;; ("C-*"      insert-prior-line-char)
    ("C-<f4>"   name-last-kbd-marco)

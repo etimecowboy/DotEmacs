@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2016-03-28 Mon 13:32 by xin on zbox.soton.ac.uk>
+;; Time-stamp: <2017-05-15 Mon 15:43 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-elpy.el'
 ;; Author:       Xin Yang
@@ -18,8 +18,13 @@
 (defun xy/elpy-start ()
   "Start elpy for Python development"
   (interactive)
-  (elpy-mode 1)
-  (flyspell-prog-mode)
+  ;; (require 'elpy)
+  ;; (require 'py-autopep8)
+  ;; (when (try-require 'py-autopep8)
+  ;;   (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+  (elpy-enable)
+  (elpy-use-ipython)
+  (flyspell-prog-mode 1)
   (autopair-mode 1)
   (turn-on-auto-fill))
 
@@ -27,13 +32,31 @@
 (defun elpy-postload ()
   "Settings of `elpy.el' after it's been loaded."
 
-  (setq elpy-rpc-backend "jedi"
-        elpy-rpc-project-specific t)
-  (elpy-use-ipython)
-  (elpy-enable)
-  ;; FIXME: it doesn't work
-  ;; (setq elpy-mode-hook '((autopair-mode)
-  ;;                        (turn-on-auto-fill)))
+  ;; NOTE: it is better to reopen the py file after elpy is enabled
+  
+  ;; use flycheck instead of flymake
+  (when (try-require 'flycheck)
+    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+    (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+  ;; Try defaults: 20170515
+  ;; ;; use flycheck not flymake with elpy
+  ;; (when (require 'flycheck nil t)
+  ;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  ;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+  (when (try-require 'py-autopep8)
+    (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+
+  ;; (setq elpy-rpc-backend "jedi"
+  ;;       elpy-rpc-project-specific t)
+
+  ;; ;; (elpy-use-ipython)
+
+  ;; ;; FIXME: it doesn't work
+  ;; ;; (setq elpy-mode-hook '((autopair-mode)
+  ;; ;;                        (turn-on-auto-fill)))
+
   
   (message "* ---[ elpy post-load configuration is complete ]---"))
 

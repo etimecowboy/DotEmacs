@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-03-06 Mon 20:56 by xin on zboxum>
+;; Time-stamp: <2017-11-28 星期二 11:20 by xin on xinud>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rc-package.el'
 ;; Author:       Xin Yang
@@ -177,7 +177,6 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'ace-pinyin)
   ;; (require-package 'ace-popup-menu)
   ;; (require-package 'ace-link)
-  (require-package 'ag)
   
   (require-package 'buffer-move)
   (require-package 'windsize)
@@ -248,8 +247,9 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'fuzzy)
   ;; (require-package 'gh)
   ;; (require-package 'gist)
-  
+
   (require-package 'google-c-style)
+  (require-package 'eldoc)
   (require-package 'c-eldoc)
 
   ;; (require-package 'google-maps)
@@ -266,8 +266,6 @@ re-downloaded in order to locate PACKAGE."
 
   ;; (require-package 'ido-ubiquitous)
   ;; (require-package 'ido-yes-or-no)
-  ;; (require-package 'idomenu) ;; required by `elpy'
-  (require-package 'elpy)
 
   (require-package 'info+)
   (require-package 'ioccur)
@@ -334,7 +332,7 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'projectile)
   (require-package 'rect-mark)
   (require-package 'region-list-edit)
-  (require-package 'revive)
+  ;; (require-package 'revive)
   ;; (require-package 'rw-hunspell)
   ;; (require-package 'rw-ispell)
   ;; (require-package 's)
@@ -357,7 +355,7 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'sunrise-x-tree)
   (require-package 'sunrise-x-w32-addons)
 
-  (require-package 'sr-speedbar)
+  ;; (require-package 'sr-speedbar)
   ;; (require-package 'strings)
 
   (require-package 'undo-tree)
@@ -365,7 +363,8 @@ re-downloaded in order to locate PACKAGE."
 
   (require-package 'vline)
   (require-package 'w32-browser)
-  (require-package 'w3m)
+  (require-package 'apel)
+  (require-package 'w3m) ;; depends on apel
   (require-package 'weblogger)
   ;; (require-package 'weather-metno) ;; not working
   (require-package 'wgrep)
@@ -404,6 +403,26 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'fzf)
   (require-package 'beacon)
   (require-package 'ranger)
+  ;; Python development
+  ;;; elpy
+  ;; (require-package 'idomenu) ;; required by `elpy'
+  (require-package 'pyvenv)
+  (require-package 'jedi-core)
+  (require-package 'virtualenvwrapper)
+  (require-package 'elpy)
+  ;;; org babel for ipython
+  (require-package 'ob-ipython) ;; maybe better than ein in the case of using org
+  ;;; ein
+  (require-package 'py-autopep8)
+  (require-package 'jedi) ;; use with auto-complete, but I use company
+  (require-package 'jedi-direx)
+  ;; (require-package 'smartrep) ;; changes the whole emacs, not good
+  (require-package 'ein)
+  ;; clang ide
+  (require-package 'cmake-ide)
+  (require-package 'rtags)
+  (require-package 'flycheck-rtags)
+  ;; (require-package 'aumix-mode)
   
   ;; =======================================================
   ;; Completion system
@@ -423,14 +442,17 @@ re-downloaded in order to locate PACKAGE."
   (require-package 'company-tern)
   ;; (require-package 'company-try-hard)
   (require-package 'company-auctex)
-  (require-package 'company-auctex)
-  (require-package 'company-auctex)
   (require-package 'company-c-headers)
+  (require-package 'company-jedi)
+
+  (require-package 'company-rtags)
 
   (require-package 'yasnippet)
   (require-package 'ox-html5slide)
   
   (require-package 'helm)
+  ;; (require-package 'ag)
+  (require-package 'helm-ag)
   (require-package 'helm-bibtex)
   (require-package 'biblio)
   (require-package 'helm-firefox)
@@ -446,6 +468,9 @@ re-downloaded in order to locate PACKAGE."
   ;; (require-package 'helm-migemo)
   (require-package 'helm-projectile)
   ;; (require-package 'helm-themes)
+
+  (require-package 'helm-rtags)
+  
   (require-package 'flyspell-correct)
   (require-package 'flyspell-correct-helm)
   

@@ -1,5 +1,5 @@
 ;;   -*- mode: emacs-lisp; coding: utf-8-unix  -*-
-;; Time-stamp: <2017-01-19 Thu 16:40 by xin on zboxum>
+;; Time-stamp: <2017-11-18 Sat 01:43 by xin on zboxwx>
 ;;--------------------------------------------------------------------
 ;; File name:    `xy-rcroot-history.el'
 ;; Author:       Xin Yang
@@ -143,16 +143,18 @@
 
 
 ;;;; windows and revive
-;; NOTE: ;; Workspace store and recover. Heavy weight, cannot used with emacs daemon
-;; (revive-preload)
-(eval-after-load "revive" '(revive-postload))
-(when (try-require 'revive)
-  ;; (add-hook 'delete-frame-functions 'save-current-configuration)
-  ;; (add-hook 'kill-emacs-hook 'save-current-configuration)
-  (global-set-key (kbd "C-c w s") 'save-current-configuration)
-  (global-set-key (kbd "C-c w r") 'resume)
-  (global-set-key (kbd "C-c w k") 'wipe))
-  ;; NOTE: C-u (num) to specify the window name
+;; NOTE: Workspace store and recover. Heavy weight, cannot used with emacs daemon
+;; not very useful deactivated on 2017-11-18
+;; ;; (revive-preload)
+;; (eval-after-load "revive" '(revive-postload))
+;; (when (try-require 'revive)
+;;   ;; (add-hook 'delete-frame-functions 'save-current-configuration)
+;;   ;; (add-hook 'kill-emacs-hook 'save-current-configuration)
+;;   (global-set-key (kbd "C-c w s") 'save-current-configuration)
+;;   (global-set-key (kbd "C-c w r") 'resume)
+;;   (global-set-key (kbd "C-c w k") 'wipe))
+;;   ;; NOTE: C-u (num) to specify the window name
+;; ------- deactivated ends here
 
 ;; (windows-preload)
 ;; (eval-after-load "windows" '(windows-postload))
