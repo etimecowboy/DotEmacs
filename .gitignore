@@ -29,3 +29,4 @@ session.*-*
 /*dired*
 /recentf
 /request
+/.python-environments
